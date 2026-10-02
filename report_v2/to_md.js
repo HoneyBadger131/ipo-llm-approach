@@ -24,6 +24,8 @@ function toMarkdown(d) {
     `tag: ${q(d.tag)}`,
     `sentiment: ${q(d.sentiment.label)}`,
     `impact_summary: ${q(d.impact_summary)}`,
+    `brief: ${q(d.brief || "")}`,
+    `importance: ${Number(d.importance) || 0}`,
     `keywords: ${list(d.keywords)}`,
     `themes: ${list(d.themes)}`,
     `related_ids: ${list(d.related_ids)}   # 같은 날/같은 회사 등 직접 관련된 공시(접수번호). 유사도 기반 연결은 이후 단계에서 채움`,
