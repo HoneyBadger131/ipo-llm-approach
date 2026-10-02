@@ -1,6 +1,6 @@
 // 통합 리포트 렌더러: 날짜별 *_v2.json 전체 -> 간결한 대시보드(HTML/PDF)
 // 사용법: node report_v2/render_summary.js <reports 디렉터리> <공시일 YYYY-MM-DD> [meta.json] [outBase]
-//  - 중요도(importance) 내림차순으로 정렬, 상위 5건은 카드, 나머지는 한 줄 표.
+//  - 중요도(importance) 내림차순으로 정렬, TOP 카드(최대 10건, 회사당 1건)는 중요도 3 이상만(5건 미만이면 5건까지 채움), 나머지는 한 줄 표.
 //  - meta.json(선택): {"funnel":[["전체 공시",1096],...], "top_order":["접수번호",...]}  top_order는 동점 정렬/수동 순서.
 const fs = require("fs");
 const path = require("path");
@@ -23,9 +23,14 @@ items.sort((a, b) => {
   if (ia !== -1 || ib !== -1) return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
   return (b.importance || 0) - (a.importance || 0) || (b.importance_score || 0) - (a.importance_score || 0) || String(a.corp_name).localeCompare(b.corp_name, "ko");
 });
-// TOP 5는 회사당 1건만(같은 회사의 다른 공시는 아래 표로). 정렬 순서는 유지한다.
+// TOP은 최대 10건·회사당 1건(같은 회사의 다른 공시는 아래 표로). 중요도 3 미만은 TOP에서 뺀다(단 최소 5건은 채운다).
+const TOP_MAX = 10, TOP_MIN = 5, TOP_IMP = 3;
 const top = [], seen = new Set();
-for (const d of items) { if (top.length < 5 && !seen.has(d.stock_code)) { top.push(d); seen.add(d.stock_code); } }
+for (const d of items) {
+  if (top.length >= TOP_MAX || seen.has(d.stock_code)) continue;
+  if ((d.importance || 0) < TOP_IMP && top.length >= TOP_MIN) continue;
+  top.push(d); seen.add(d.stock_code);
+}
 const rest = items.filter((d) => !top.includes(d));
 
 const cnt = (f) => items.filter(f).length;
@@ -54,7 +59,7 @@ header h1{margin:0;font-size:19px}header .sub{opacity:.85;font-size:10.5px;margi
 h2{margin:2px 0 0;font-size:12.5px;color:var(--brand)}
 .chip{border-radius:999px;padding:1px 8px;font-size:10px;font-weight:700;white-space:nowrap;display:inline-block}
 .chip.tag{background:#e8edf6;color:var(--brand)}.chip.pos{background:var(--pos-bg);color:var(--pos)}.chip.neg{background:var(--neg-bg);color:var(--neg)}.chip.mix{background:var(--mix-bg);color:var(--mix)}.chip.unk{background:var(--unk-bg);color:var(--unk)}
-.card{display:flex;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 12px;align-items:stretch;break-inside:avoid}
+.card{display:flex;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:5px 12px;align-items:stretch;break-inside:avoid}
 .rank{flex:none;width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}
 .cb{flex:1}.l1{display:flex;align-items:baseline;gap:6px}.l1 b{font-size:13px}.code{color:var(--mute);font-size:10px;margin-left:3px}.ttl{color:var(--mute);font-size:10px;margin-left:auto}
 .l2{display:flex;gap:6px;align-items:center;margin:3px 0 4px}.dots{margin-left:auto;color:var(--brand);font-size:10px;letter-spacing:1px}
@@ -64,11 +69,11 @@ td{padding:3.5px 7px;border-bottom:1px solid var(--line);vertical-align:top}tr:l
 td.n{width:21%}td.n b{display:block;font-size:11px}td.t{width:21%;color:var(--mute)}td.c{width:17%}td.c .chip{margin-bottom:2px}td.b{width:41%}
 footer{margin-top:auto;color:var(--mute);font-size:8.5px}
 </style></head><body><div class="page">
-<header><h1>공시 브리프 · ${esc(date)}</h1><div class="sub">핵심 공시 ${items.length}건 · 중요도 상위 5건을 먼저 보여줍니다</div>
+<header><h1>공시 브리프 · ${esc(date)}</h1><div class="sub">핵심 공시 ${items.length}건 · 중요도 상위 ${top.length}건을 먼저 보여줍니다</div>
 <div class="stats"><span class="s">사업 변동 ${cnt((d) => d.tag === "사업 변동")}</span><span class="s">기타 사항 ${cnt((d) => d.tag !== "사업 변동")}</span>
 <span class="s">▲ 긍정 ${cnt((d) => d.sentiment.label === "긍정적")}</span><span class="s">▼ 부정 ${cnt((d) => d.sentiment.label === "부정적")}</span><span class="s">◆ 혼재 ${cnt((d) => d.sentiment.label === "혼재됨")}</span><span class="s">? 미확인 ${cnt((d) => d.sentiment.label === "알수 없음")}</span></div>
 ${funnel ? `<div class="funnel">${funnel}</div>` : ""}</header>
-<h2>TOP 5</h2>${top.map(card).join("")}
+<h2>TOP ${top.length}</h2>${top.map(card).join("")}
 ${rest.length ? `<h2>그 외 공시</h2><table><tbody>${rest.map(row).join("")}</tbody></table>` : ""}
 <footer>세부 내용은 공시별 대시보드(PDF)·MD 참조. 정보 제공용이며 투자 권유가 아닙니다.</footer></div></body></html>`;
 

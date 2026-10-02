@@ -92,7 +92,7 @@ def brief(day):
     print(out.stdout.strip() or out.stderr.strip())
 
     pages = lambda p: re.search(r"Pages:\s+(\d+)", subprocess.run(["pdfinfo", p], capture_output=True, text=True).stdout)
-    bad = re.compile(r"계산|도구 이력|시장 추정|공시가 아님|역산")
+    bad = re.compile(r"(?<!세금)계산|도구 이력|시장 추정|공시가 아님|역산")
     problems, no_news, no_cons = [], [], []
     for f in reports:
         j = json.load(open(f, encoding="utf-8"))
@@ -109,12 +109,17 @@ def brief(day):
                 problems.append(f"{j['corp_name']} {j['rcept_no']}: {k} 없음")
         if not j["news"]:
             no_news.append(j["corp_name"])
-        if not j.get("consensus"):
+        if j.get("report_version") == 3:
+            if j.get("financials") or j.get("valuation") or j.get("consensus"):
+                problems.append(f"{j['corp_name']} {j['rcept_no']}: v3인데 재무/가치평가/컨센서스 포함")
+        elif not j.get("consensus"):
             no_cons.append(j["corp_name"])
     sp = pages(f"trial_case/{day}/summary_{date}.pdf")
     print(f"통합 브리프 {sp.group(1) if sp else '?'}쪽 / 대시보드 {len(reports)}개")
     print("문제:", problems or "없음")
-    print("뉴스 없음:", no_news or "없음", "| 컨센서스 없음:", no_cons or "없음")
+    print("뉴스 없음:", no_news or "없음")
+    if no_cons:
+        print("컨센서스 없음(v2):", no_cons)
 
 
 if __name__ == "__main__":

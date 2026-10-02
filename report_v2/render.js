@@ -1,4 +1,5 @@
 // V2 공시 대시보드 렌더러: JSON -> HTML -> PDF(A4 1쪽) + 인덱싱용 MD
+// v3: financials / valuation / consensus 는 선택(null이면 해당 카드를 그리지 않는다).
 // 사용법: node report_v2/render.js <data.json> [outBase]   (outBase 기본값: data.json 경로에서 .json 제거)
 // 예) node report_v2/render.js trial_case/20260910/reports/329180_20260910800161_v2.json
 const fs = require("fs");
@@ -50,7 +51,8 @@ ${c.note ? `<p class="note">${esc(c.note)}</p>` : ""}</section>`;
 
 function html(d) {
   const s = SENTIMENT[d.sentiment.label] || SENTIMENT["알수 없음"];
-  const fin = d.financials;
+  const fin = d.financials && d.financials.rows && d.financials.rows.length ? d.financials : null;
+  const finCard = fin ? `<section class="card"><h2>최근 3년 실적 <span class="sub">${esc(fin.basis)}</span></h2>${finTable(fin)}</section>` : "";
   const val = d.valuation && d.valuation.items && d.valuation.items.length
     ? `<section class="card"><h2>가치평가 · 추정치</h2><div class="mini">${d.valuation.items
         .map((k) => `<div><span class="k">${esc(k.label)}</span><b>${esc(k.value)}</b>${k.sub ? `<small>${esc(k.sub)}</small>` : ""}</div>`)
@@ -124,7 +126,7 @@ footer{margin-top:auto;color:var(--mute);font-size:8.5px;line-height:1.45}
 <section class="card"><h2>핵심 포인트</h2>
 <div class="impact ${s.cls}"><span class="chip">${s.icon} ${esc(d.sentiment.label)}</span><span class="t">${esc(d.impact_summary)}<span class="why">${esc(d.sentiment.reason)}</span></span></div>
 <ul class="points">${d.points.map((p) => `<li><span class="pt ${p.type}">${POINT_LABEL[p.type]}</span><span>${esc(p.text)}</span></li>`).join("")}</ul></section>
-<div class="row2"${val ? "" : ' style="grid-template-columns:1fr"'}><section class="card"><h2>최근 3년 실적 <span class="sub">${esc(fin.basis)}</span></h2>${finTable(fin)}</section>${val}</div>
+${finCard || val ? `<div class="row2"${finCard && val ? "" : ' style="grid-template-columns:1fr"'}>${finCard}${val}</div>` : ""}
 ${consensusCard(d.consensus)}
 ${d.news && d.news.length ? `<section class="card"><h2>뉴스 근거 <span class="sub">링크</span></h2><ul class="news">${d.news.map((n) => `<li><span class="o">${esc(n.outlet)} · ${esc(n.date)}</span><a href="${esc(n.url)}">${esc(n.title)}</a></li>`).join("")}</ul></section>` : ""}
 <footer>${esc(d.sources_note)}<br>DART <a href="${esc(d.dart_url)}">${esc(d.dart_url)}</a> · 정보 제공용이며 투자 권유가 아닙니다.</footer>

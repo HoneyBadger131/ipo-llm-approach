@@ -1,9 +1,11 @@
-# 프로젝트 인수인계 문서 (다른 Claude Code 대화에서 이어 작업하기 위한 맥락)
+# 프로젝트 인수인계 문서 (V3: 2026-10-02 개편 반영) (다른 Claude Code 대화에서 이어 작업하기 위한 맥락)
 
 작성 기준: 2026-10-02 / 브랜치 `claude/open-dart-api-disclosure-test-482bxk` (레포 `honeybadger131/ipo-llm-approach`, PR 없음)
 사용자는 한국어로 소통한다. 답변·산출물도 한국어.
 
 ---
+
+> **V3 (10/2 사용자 결정)**: 개별 종목 보고서는 최근 3년 실적·가치평가/추정치·컨센서스를 넣지 않는 **기본형**(`financials/valuation/consensus: null`, `report_version: 3`). 에이전트는 재무·가치평가·컨센서스 MCP를 부르지 않고 DART 본문+뉴스 중심으로 작성하며, 통합 브리프는 **TOP 10**(중요도 3 이상만, 최소 5건, 회사당 1건)이다. 이하 §7·§8의 실적·가치평가·컨센서스 관련 기술은 V2(9월 첫 주까지) 기준이다. 상세는 `report_v2/AGENT_SPEC.md`.
 
 ## 1. 프로젝트 목표
 
@@ -66,7 +68,7 @@ bodies/<YYYYMMDD>/         review 공시 전체 본문 (git 제외)
 2. **판단(Claude가 직접)**: digest를 읽고 `judge_rules.md` 규칙으로 가/부·태그 판단 → `trial_case/N/judgments.json`. 스키마는 기존 파일 참고(rcept_no, stock_code, corp_name, report_nm, proceed, tag, rules, reason, borderline?). 에이전트에게 줄 추가 지시는 `agent_note`, 다른 회사의 관련 공시는 `related_with`(접수번호 리스트)로 항목에 적는다. 긴 본문은 digest만으로 부족할 수 있으니 필요하면 해당 구간을 직접 읽는다.
 3. **에이전트 입력 준비**: `python dart_day_pipeline.py stage N [배치크기=3]` — 통과 공시와 같은 회사의 같은 날 다른 공시 본문을 `trial_case/N/`로 복사하고 `trial_case/N/agent_tasks.json`(회사 단위 작업 정의)을 만든 뒤, **공시 배치크기건 이내로 회사를 묶은** 에이전트별 **한 줄 프롬프트**를 출력한다(§12 토큰 분석: 고정 컨텍스트를 나눠 쓰기 위함).
 4. **심화 분석 에이전트**: 출력된 한 줄 프롬프트를 에이전트별(`Agent` general-purpose) 1개씩, **6개씩 병렬**. 프롬프트마다 투입 여부를 `agent_tasks.json` 회사 목록과 대조해 빠뜨리지 않는다(9/1에 한 회사를 누락한 적 있음). 상세 지침은 모두 `report_v2/AGENT_SPEC.md`에 있어 프롬프트는 짧다(이 덕에 호출자 토큰도 절약). 에이전트는 JSON 작성 후 `node report_v2/render.js <json>`로 HTML/PDF/MD를 만들고 1쪽·한글을 검증한다. 에이전트는 git 금지.
-5. **통합 브리프·점검**: `python dart_day_pipeline.py brief N` — `prep.json`으로 퍼널을 갱신하고 `render_summary.js`를 실행(`trial_case/N/summary_YYYY-MM-DD.pdf`)한 뒤 점검 결과(PDF 쪽수, 금지 문구, 기준일 이후 뉴스, importance/brief 누락, 뉴스·컨센서스 없는 회사)를 출력한다. TOP 5는 `importance` → `importance_score` 내림차순이고 **회사당 1건**. 수동 순서가 필요하면 `summary_meta.json`의 `top_order`(접수번호 리스트)에 적는다(`brief`는 기존 `top_order`를 유지).
+5. **통합 브리프·점검**: `python dart_day_pipeline.py brief N` — `prep.json`으로 퍼널을 갱신하고 `render_summary.js`를 실행(`trial_case/N/summary_YYYY-MM-DD.pdf`, 2쪽 허용)한 뒤 점검 결과(PDF 쪽수, 금지 문구, 기준일 이후 뉴스, importance/brief 누락, v3인데 재무·가치평가·컨센서스 포함, 뉴스 없는 회사)를 출력한다. TOP 10은 `importance` → `importance_score` 내림차순이고 **회사당 1건**. 수동 순서가 필요하면 `summary_meta.json`의 `top_order`(접수번호 리스트)에 적는다(`brief`는 기존 `top_order`를 유지).
 6. **커밋·푸시**: 이 환경은 stop-hook이 미커밋 파일을 막는다. 메인이 날짜별로 커밋하고 푸시 전에 `git pull --rebase`.
 
 참고 사례: `trial_case/20260930/`, `trial_case/20261001/` (summary PDF, reports, judgments.json). `agent_tasks.json`/`stage`는 10/1에 사후 생성해 시험했고, 10/2 이후 날짜부터 정식 사용.

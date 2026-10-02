@@ -15,6 +15,7 @@ function toMarkdown(d) {
   const fm = [
     "---",
     "schema_version: 1",
+    `report_version: ${Number(d.report_version) || 2}`,
     `id: ${q(d.rcept_no)}`,
     `corp_name: ${q(d.corp_name)}`,
     `stock_code: ${q(d.stock_code)}`,
@@ -38,7 +39,7 @@ function toMarkdown(d) {
 
   const kpis = (d.kpis || []).map((k) => `- ${k.label}: ${k.value}${k.sub ? ` (${k.sub})` : ""}`).join("\n");
   const pts = (d.points || []).map((p) => `- [${{ pos: "긍정", neg: "리스크", unk: "미확인" }[p.type]}] ${p.text}`).join("\n");
-  const finLines = fin.rows
+  const finLines = !(fin && fin.rows && fin.rows.length) ? "" : fin.rows
     .map((r) => `- ${r.label}: ` + fin.years.map((y, i) => `${y} ${r.values[i].d}`).join(", "))
     .join("\n");
   const val = d.valuation && d.valuation.items && d.valuation.items.length
@@ -70,15 +71,9 @@ function toMarkdown(d) {
     "## 핵심 수치",
     kpis,
     "",
-    `## 실적 추이 (${fin.basis})`,
-    finLines,
-    "",
-    "## 가치평가·추정치",
-    val,
-    "",
-    "## 컨센서스 추이",
-    cons,
-    "",
+    ...(finLines ? [`## 실적 추이 (${fin.basis})`, finLines, ""] : []),
+    ...(d.valuation && d.valuation.items && d.valuation.items.length ? ["## 가치평가·추정치", val, ""] : []),
+    ...(c && c.series && c.series.length ? ["## 컨센서스 추이", cons, ""] : []),
     "## 뉴스 근거",
     news || "- 없음",
     "",

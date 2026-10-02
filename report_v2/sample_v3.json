@@ -1,0 +1,92 @@
+{
+ "corp_name": "SKC",
+ "stock_code": "011790",
+ "disclosure_date": "2026-09-04",
+ "disclosure_title": "타법인주식및출자증권취득결정",
+ "rcept_no": "20260904800462",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260904800462",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "글라스기판 투자 가속, 적자 지속 부담"
+ },
+ "headline": "미국 자회사 Absolics에 2,810억 원 출자",
+ "impact_summary": "글라스기판 투자 실행, 자기자본 8.8% 규모입니다.",
+ "event_type": "타법인주식취득",
+ "keywords": [
+  "글라스기판",
+  "Absolics",
+  "유상증자 참여",
+  "현금출자",
+  "반도체소재",
+  "자회사"
+ ],
+ "themes": [
+  "반도체 소재",
+  "글라스기판"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "출자금액",
+   "value": "약 2,810억",
+   "sub": "현금출자, 취득예정 11/24"
+  },
+  {
+   "label": "자기자본 대비",
+   "value": "8.76%",
+   "sub": "공시 기준"
+  },
+  {
+   "label": "자산총액 대비",
+   "value": "4.2%",
+   "sub": "2025 연결"
+  },
+  {
+   "label": "출자 후 지분",
+   "value": "70.05%",
+   "sub": "자회사 Absolics"
+  }
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {
+   "type": "pos",
+   "text": "지난 상반기 유상증자 자금의 첫 집행, 글라스기판 상업화 가속"
+  },
+  {
+   "type": "pos",
+   "text": "자기자본 8.8%, 자산 4.2% 규모로 재무 감당 가능"
+  },
+  {
+   "type": "neg",
+   "text": "3년 연속 영업적자, 2025년 영업손실 약 3,050억"
+  },
+  {
+   "type": "neg",
+   "text": "Absolics도 적자 지속(2025 순손실 약 400억)"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "아시아경제",
+   "date": "2026-09-04",
+   "title": "SKC, 앱솔릭스에 2810억원 출자…글라스기판 상업화 속도",
+   "url": "https://view.asiae.co.kr/article/2026090416400377414"
+  },
+  {
+   "outlet": "네이트뉴스",
+   "date": "2026-09-04",
+   "title": "SKC, 앱솔릭스에 2810억 출자…글라스기판 상업화 속도",
+   "url": "https://m.news.nate.com/view/20260904n22392"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "자회사 Absolics에 2,810억 원 출자(자기자본 8.8%). 글라스기판 투자 본격화, 적자 부담은 지속.",
+ "importance": 4,
+ "importance_reason": "자기자본 대비 8.76%로 5~10% 구간인 대규모 자회사 출자입니다.",
+ "importance_score": 62,
+ "report_version": 3
+}
