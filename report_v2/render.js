@@ -126,7 +126,7 @@ footer{margin-top:auto;color:var(--mute);font-size:8.5px;line-height:1.45}
 <ul class="points">${d.points.map((p) => `<li><span class="pt ${p.type}">${POINT_LABEL[p.type]}</span><span>${esc(p.text)}</span></li>`).join("")}</ul></section>
 <div class="row2"${val ? "" : ' style="grid-template-columns:1fr"'}><section class="card"><h2>최근 3년 실적 <span class="sub">${esc(fin.basis)}</span></h2>${finTable(fin)}</section>${val}</div>
 ${consensusCard(d.consensus)}
-<section class="card"><h2>뉴스 근거 <span class="sub">링크</span></h2><ul class="news">${d.news.map((n) => `<li><span class="o">${esc(n.outlet)} · ${esc(n.date)}</span><a href="${esc(n.url)}">${esc(n.title)}</a></li>`).join("")}</ul></section>
+${d.news && d.news.length ? `<section class="card"><h2>뉴스 근거 <span class="sub">링크</span></h2><ul class="news">${d.news.map((n) => `<li><span class="o">${esc(n.outlet)} · ${esc(n.date)}</span><a href="${esc(n.url)}">${esc(n.title)}</a></li>`).join("")}</ul></section>` : ""}
 <footer>${esc(d.sources_note)}<br>DART <a href="${esc(d.dart_url)}">${esc(d.dart_url)}</a> · 정보 제공용이며 투자 권유가 아닙니다.</footer>
 </div></body></html>`;
 }
