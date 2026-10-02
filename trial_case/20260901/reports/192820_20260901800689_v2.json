@@ -84,7 +84,11 @@
  "rcept_no": "20260901800689",
  "disclosure_title": "타인에대한채무보증결정",
  "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260901800689",
- "related_ids": [],
+ "related_ids": [
+  "20260901800717",
+  "20260901800710",
+  "20260901800706"
+ ],
  "tag": "기타 사항",
  "sentiment": {
   "label": "부정적",

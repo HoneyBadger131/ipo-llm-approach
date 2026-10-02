@@ -84,14 +84,18 @@
  "rcept_no": "20260901800706",
  "disclosure_title": "타인에대한채무보증결정",
  "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260901800706",
- "related_ids": [],
+ "related_ids": [
+  "20260901800717",
+  "20260901800710",
+  "20260901800689"
+ ],
  "tag": "기타 사항",
  "sentiment": {
   "label": "혼재됨",
   "reason": "자회사는 흑자지만 보증 잔액이 더 늘어남"
  },
  "headline": "중국 법인 COSMAX CHINA에 225억 원 채무보증",
- "impact_summary": "자기자본 3.7% 규모, 흑자 중국 법인 대출 만기 연장성 보증입니다.",
+ "impact_summary": "자기자본 3.7% 규모, 흑자 중국 법인 대출에 대한 보증입니다.",
  "event_type": "채무보증",
  "keywords": [
   "채무보증",
