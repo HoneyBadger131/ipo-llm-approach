@@ -1,0 +1,65 @@
+{
+ "corp_name": "삼성에피스홀딩스",
+ "stock_code": "0126Z0",
+ "disclosure_date": "2026-10-01",
+ "disclosure_title": "투자판단관련주요경영사항(자회사의 주요경영사항)(SB41·SB44 Teva 파트너십 계약 체결)",
+ "rcept_no": "20261001800667",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261001800667",
+ "tag": "사업 변동",
+ "sentiment": {"label": "긍정적", "reason": "판매망 확보, 다만 수익은 임상·허가 성공에 달림"},
+ "headline": "자회사 삼성바이오에피스가 Teva와 바이오시밀러 2종 판매 협력을 맺었습니다.",
+ "impact_summary": "SB41·SB44 Teva 협력, 금액 비공개·수익은 허가 성공 후",
+ "event_type": "자회사 파트너십 계약(투자판단관련 주요경영사항)",
+ "keywords": ["삼성바이오에피스", "Teva", "SB41", "SB44", "Fasenra 바이오시밀러", "Ilaris 바이오시밀러", "조건부 계약", "공시 유보"],
+ "themes": ["바이오시밀러", "기술·판매 제휴"],
+ "related_ids": [],
+ "kpis": [
+  {"label": "계약 금액", "value": "비공개", "sub": "경영상 비밀, 유보기한 2042-05"},
+  {"label": "수취액 하한", "value": "약 420억 이상", "sub": "자회사 2025 매출의 2.5%"},
+  {"label": "Teva 판매 지역", "value": "미국·유럽·캐나다", "sub": "추가 지역·파이프라인은 옵션"},
+  {"label": "자산총액 비중", "value": "97.4%", "sub": "자회사, 2025말 별도"}
+ ],
+ "financials": {
+  "basis": "연결, 단위 억원 (2025년만 제공)",
+  "years": ["2025"],
+  "rows": [
+   {"label": "매출", "values": [{"v": 2517, "d": "2,517"}]},
+   {"label": "영업이익", "values": [{"v": -636, "d": "-636"}]},
+   {"label": "순이익", "values": [{"v": 853, "d": "853"}]}
+  ]
+ },
+ "valuation": {
+  "items": [
+   {"label": "선행 PER(2026E)", "value": "약 35배", "sub": "컨센서스, 9/23 종가"},
+   {"label": "선행 PBR(2026E)", "value": "약 1.3배", "sub": "컨센서스, 9/23 종가"},
+   {"label": "2026E 영업이익", "value": "약 2,470억", "sub": "컨센서스, 2025 -636억"}
+  ],
+  "note": ""
+ },
+ "consensus": {
+  "metric": "2026E 영업이익",
+  "window": "최근 4주",
+  "window_label": "4주 전 대비",
+  "series": [
+   {"label": "4주 전", "v": 2468, "d": "약 2,468억"},
+   {"label": "1주 전", "v": 2468, "d": "약 2,468억"},
+   {"label": "현재", "v": 2468, "d": "약 2,468억"}
+  ],
+  "note": "",
+  "meta": "4주 전 값은 도구가 제공한 변화율로 환산한 값(주 1회 스냅샷, 제공 이력 약 4주)."
+ },
+ "points": [
+  {"type": "pos", "text": "Teva가 미국·유럽·캐나다 판매를 맡아 상업화 부담 감소"},
+  {"type": "pos", "text": "수취액은 자회사 매출 2.5% 이상(약 420억 이상)"},
+  {"type": "neg", "text": "조건부 계약, 임상·허가 실패 시 해지 가능"},
+  {"type": "unk", "text": "계약 기간·총액 비공개, 실제 기여도 확인 어려움"}
+ ],
+ "news": [
+  {"outlet": "머니투데이", "date": "2026-10-01", "title": "삼성바이오에피스, 테바와 신규 바이오시밀러 2종 파트너십 체결", "url": "https://www.mt.co.kr/thebio/2026/10/01/2026100118014136857"},
+  {"outlet": "The Korea Times", "date": "2026-10-01", "title": "Samsung Bioepis, Teva enter commercialization agreement on 6 biosimilar candidates", "url": "https://www.koreatimes.co.kr/business/companies/20261001/samsung-bioepis-teva-enter-commercialization-agreement-on-6-biosimilar-candidates"}
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP(재무·가치평가·컨센서스), 뉴스 링크.",
+ "brief": "삼성바이오에피스가 Teva와 시밀러 2종 판매 협력. 금액 비공개, 수익은 허가 성공에 달림.",
+ "importance": 3,
+ "importance_reason": "금액은 비공개지만 자회사 매출 2.5% 이상으로, 수익 인식은 임상·허가 성공에 달려 있다."
+}
