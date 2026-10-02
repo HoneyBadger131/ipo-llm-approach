@@ -43,7 +43,13 @@ def normalize(report_nm):
     return _PREFIX.sub("", re.sub(r"\s+", " ", report_nm).strip())
 
 
+# 정정 공시는 신규 정보가 아니므로 판단 대상에서 제외한다.
+_CORRECTION = re.compile(r"^\[(기재|첨부)정정\]")
+
+
 def classify(report_nm):
+    if _CORRECTION.match(re.sub(r"\s+", " ", report_nm).strip()):
+        return "exclude"
     name = normalize(report_nm)
     if any(re.search(p, name) for p in SEPARATE_PATTERNS):
         return "separate"
