@@ -1,34 +1,180 @@
 {
- "corp_name":"HD현대중공업","stock_code":"329180","disclosure_date":"2026-09-10",
- "disclosure_title":"신규시설투자등","rcept_no":"20260910800161",
- "dart_url":"https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800161",
- "tag":"사업 변동",
- "sentiment":{"label":"긍정적","reason":"발전엔진 수요 증가에 맞춘 증설, 재무 여력 충분"},
- "headline":"발전엔진 공장 증설에 약 8,300억 원을 투자합니다.",
- "kpis":[
-  {"label":"투자금액","value":"약 8,300억","sub":"2026.9~2028.5"},
-  {"label":"자기자본 대비","value":"8.9%","sub":"공시 기준"},
-  {"label":"매출 대비","value":"약 4.7%","sub":"2025 연결, 계산"},
-  {"label":"현금·단기금융자산","value":"약 3.6조","sub":"2025말, 투자금의 4배 이상(계산)"}
+ "corp_name": "HD현대중공업",
+ "stock_code": "329180",
+ "disclosure_date": "2026-09-10",
+ "disclosure_title": "신규시설투자등",
+ "rcept_no": "20260910800161",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800161",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "발전엔진 수요 증가에 맞춘 증설, 재무 여력 충분"
+ },
+ "headline": "발전엔진 공장 증설에 약 8,300억 원을 투자합니다.",
+ "kpis": [
+  {
+   "label": "투자금액",
+   "value": "약 8,300억",
+   "sub": "2026.9~2028.5"
+  },
+  {
+   "label": "자기자본 대비",
+   "value": "8.9%",
+   "sub": "공시 기준"
+  },
+  {
+   "label": "매출 대비",
+   "value": "약 4.7%",
+   "sub": "2025 연결, 계산"
+  },
+  {
+   "label": "현금·단기금융자산",
+   "value": "약 3.6조",
+   "sub": "2025말, 투자금의 4배 이상(계산)"
+  }
  ],
- "financials":{"basis":"연결, 단위 조원","years":["2023","2024","2025"],"rows":[
-  {"label":"매출","values":[{"v":12.0,"d":"12.0"},{"v":14.5,"d":"14.5"},{"v":17.6,"d":"17.6"}]},
-  {"label":"영업이익","values":[{"v":0.18,"d":"0.18"},{"v":0.71,"d":"0.71"},{"v":2.04,"d":"2.0"}]}]},
- "valuation":{"items":[
-  {"label":"PER(최근 12개월)","value":"18.0배","sub":"주가 431,500원, 10/1 종가"},
-  {"label":"PBR","value":"4.3배","sub":"최근 분기 기준"},
-  {"label":"2026 예상 PER","value":"약 14.4배","sub":"컨센서스, 9/23 종가 기준"}],
-  "note":"2026년 컨센서스 영업이익은 약 4.1조 원(애널리스트 추정, 공시 아님)."},
- "points":[
-  {"type":"pos","text":"계약 확보한 발전엔진 수요에 대응"},
-  {"type":"pos","text":"현금이 투자금보다 많아 부담 작음"},
-  {"type":"neg","text":"가동은 2028년 이후, 단기 실적 효과 적음"},
-  {"type":"unk","text":"연도별 집행 계획·조달 방식 미확인"}
+ "financials": {
+  "basis": "연결, 단위 조원",
+  "years": [
+   "2023",
+   "2024",
+   "2025"
+  ],
+  "rows": [
+   {
+    "label": "매출",
+    "values": [
+     {
+      "v": 12.0,
+      "d": "12.0"
+     },
+     {
+      "v": 14.5,
+      "d": "14.5"
+     },
+     {
+      "v": 17.6,
+      "d": "17.6"
+     }
+    ]
+   },
+   {
+    "label": "영업이익",
+    "values": [
+     {
+      "v": 0.18,
+      "d": "0.18"
+     },
+     {
+      "v": 0.71,
+      "d": "0.71"
+     },
+     {
+      "v": 2.04,
+      "d": "2.0"
+     }
+    ]
+   }
+  ]
+ },
+ "valuation": {
+  "items": [
+   {
+    "label": "PER(최근 12개월)",
+    "value": "18.0배",
+    "sub": "주가 431,500원, 10/1 종가"
+   },
+   {
+    "label": "PBR",
+    "value": "4.3배",
+    "sub": "최근 분기 기준"
+   },
+   {
+    "label": "2026 예상 PER",
+    "value": "약 14.4배",
+    "sub": "컨센서스, 9/23 종가 기준"
+   }
+  ],
+  "note": "2026년 컨센서스 영업이익은 약 4.1조 원(애널리스트 추정, 공시 아님)."
+ },
+ "points": [
+  {
+   "type": "pos",
+   "text": "계약 확보한 발전엔진 수요에 대응"
+  },
+  {
+   "type": "pos",
+   "text": "현금이 투자금보다 많아 부담 작음"
+  },
+  {
+   "type": "neg",
+   "text": "가동은 2028년 이후, 단기 실적 효과 적음"
+  },
+  {
+   "type": "unk",
+   "text": "연도별 집행 계획·조달 방식 미확인"
+  }
  ],
- "news":[
-  {"outlet":"딜사이트","date":"2026-09","title":"[공시모음] 현대중공업, 8336억 투자 外","url":"https://dealsite.co.kr/articles/168803"},
-  {"outlet":"딜사이트","date":"2026-09","title":"HD현대중공업, '엔진·SMR' 미래사업에 1조 투자","url":"https://dealsite.co.kr/articles/168759"},
-  {"outlet":"블로터","date":"2026-09","title":"엔진부터 SMR까지…HD현대중공업, AI 인프라 1조 베팅","url":"https://www.bloter.net/news/articleView.html?idxno=673480"}
+ "news": [
+  {
+   "outlet": "딜사이트",
+   "date": "2026-09",
+   "title": "[공시모음] 현대중공업, 8336억 투자 外",
+   "url": "https://dealsite.co.kr/articles/168803"
+  },
+  {
+   "outlet": "딜사이트",
+   "date": "2026-09",
+   "title": "HD현대중공업, '엔진·SMR' 미래사업에 1조 투자",
+   "url": "https://dealsite.co.kr/articles/168759"
+  },
+  {
+   "outlet": "블로터",
+   "date": "2026-09",
+   "title": "엔진부터 SMR까지…HD현대중공업, AI 인프라 1조 베팅",
+   "url": "https://www.bloter.net/news/articleView.html?idxno=673480"
+  }
  ],
- "sources_note":"출처: DART 공시 원문, OpenProxyMCP(financial_metrics, price_multiple_data, forward_estimates_data). 기사 게재일은 페이지에서 확인되지 않아 월만 표기, 증권사 반응은 확인되지 않음."
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP(financial_metrics, price_multiple_data, forward_estimates_data). 기사 게재일은 페이지에서 확인되지 않아 월만 표기, 증권사 반응은 확인되지 않음. 컨센서스 이력은 주 1회 스냅샷 기준 약 4주치만 제공되어 3~6개월 추이는 확인되지 않음.",
+ "impact_summary": "발전엔진 공장 8,300억 증설, 현금으로 충분히 감당",
+ "event_type": "신규시설투자",
+ "keywords": [
+  "발전엔진",
+  "시설투자",
+  "AI 데이터센터 전력",
+  "엔진 증설",
+  "HD현대중공업",
+  "친환경 엔진",
+  "2028년 가동"
+ ],
+ "themes": [
+  "전력 인프라",
+  "조선·기계"
+ ],
+ "related_ids": [
+  "20260910800163"
+ ],
+ "consensus": {
+  "metric": "2026E 영업이익(조원)",
+  "window": "최근 4주",
+  "window_label": "4주 전(8/29) 대비",
+  "series": [
+   {
+    "label": "4주 전",
+    "v": 4.052,
+    "d": "4.052조"
+   },
+   {
+    "label": "1주 전",
+    "v": 4.054,
+    "d": "4.054조"
+   },
+   {
+    "label": "현재",
+    "v": 4.054,
+    "d": "4.054조"
+   }
+  ],
+  "note": "도구 이력이 약 4주뿐(3~6개월 불가). 변화 +0.04%로 사실상 불변, 4주 전 값은 변화율로 역산."
+ }
 }
