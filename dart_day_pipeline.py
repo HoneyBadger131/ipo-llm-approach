@@ -1,6 +1,6 @@
 """하루치 파이프라인 보조 도구 (준비는 dart_prep_day.py, 판단은 대화에서).
 
-  python dart_day_pipeline.py stage <YYYYMMDD>   judgments.json -> 에이전트 입력 준비 + agent_tasks.json 생성
+  python dart_day_pipeline.py stage <YYYYMMDD> [배치크기=3]   judgments.json -> 에이전트 입력 준비 + agent_tasks.json 생성
   python dart_day_pipeline.py brief <YYYYMMDD>   통합 브리프 생성 + 점검(1쪽, 금지 문구, 기준일 이후 뉴스)
 
 stage
@@ -24,7 +24,7 @@ def _date(day):
     return f"{day[:4]}-{day[4:6]}-{day[6:]}"
 
 
-def stage(day):
+def stage(day, batch=3):
     d = f"trial_case/{day}"
     judg = json.load(open(f"{d}/judgments.json", encoding="utf-8"))
     by_co = defaultdict(list)
@@ -56,11 +56,25 @@ def stage(day):
     missing = [f["rcept_no"] for t in tasks for f in t["filings"] if not f["body"]]
     print(f"{day}: 통과 {sum(len(t['filings']) for t in tasks)}건 / 회사 {len(tasks)}개 -> {d}/agent_tasks.json"
           + (f" | 본문 누락: {missing}" if missing else ""))
-    print("\n에이전트 프롬프트(회사별로 이 한 줄을 사용):")
+    # 에이전트 1개당 공시 batch건 이내로 회사를 묶는다(고정 컨텍스트 약 4만 토큰을 나눠 쓰기 위해). 한 회사는 쪼개지 않는다.
+    groups, cur, w = [], [], 0
     for t in tasks:
-        print(f"[{t['stock_code']} {t['corp_name']}] 레포 /home/user/ipo-llm-approach 에서 공시 대시보드를 만든다. "
+        n = len(t["filings"])
+        if cur and w + n > batch:
+            groups.append(cur)
+            cur, w = [], 0
+        cur.append(t)
+        w += n
+    if cur:
+        groups.append(cur)
+    print(f"\n에이전트 프롬프트(에이전트 {len(groups)}개, 공시 {batch}건 이내로 묶음 — 6개씩 병렬):")
+    for g in groups:
+        names = ", ".join(f"{t['stock_code']} {t['corp_name']}" for t in g)
+        codes = ", ".join(t["stock_code"] for t in g)
+        print(f"[{names}] 레포 /home/user/ipo-llm-approach 에서 공시 대시보드를 만든다. "
               f"먼저 report_v2/AGENT_SPEC.md 를 읽고 그대로 따른다. 작업 정의는 {d}/agent_tasks.json 의 "
-              f"stock_code={t['stock_code']} 항목(기준일 {t['base_date']}).")
+              f"stock_code={codes} 항목(기준일 {g[0]['base_date']}). "
+              + ("종목이 여럿이면 종목별로 차례로(MCP·검색은 종목마다) 처리한다." if len(g) > 1 else ""))
 
 
 def brief(day):
@@ -105,4 +119,7 @@ def brief(day):
 
 if __name__ == "__main__":
     cmd, day = sys.argv[1], sys.argv[2]
-    {"stage": stage, "brief": brief}[cmd](day)
+    if cmd == "stage":
+        stage(day, int(sys.argv[3]) if len(sys.argv) > 3 else 3)
+    else:
+        brief(day)

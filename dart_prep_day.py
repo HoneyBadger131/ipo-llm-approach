@@ -20,6 +20,7 @@ from dart_list_test import fetch_all
 from dart_rules import classify, normalize
 from dart_watchlist_filings import load_watchlist
 from dart_body import fetch_body_text
+from dart_subsidiary import is_sub_filing, find_listed_twin, sub_name
 
 
 def digest(text, cap=1500):
@@ -43,6 +44,7 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
     os.makedirs(body_dir, exist_ok=True)
 
+    allrows = None
     if "--digest-only" in flags:
         prep = json.load(open(f"{out_dir}/prep.json", encoding="utf-8"))
     else:
@@ -70,12 +72,39 @@ def main():
             except Exception as e:  # 개별 실패는 건너뛰고 표시
                 print("ERR", r["rcept_no"], str(e)[:80])
                 continue
+    # 자회사 공시 중복 제거: 상장 자회사가 같은 날 낸 동일 공시가 있으면 모회사 쪽은 제외(본회사만 처리).
+    # 쌍둥이를 못 찾으면(비상장 자회사 가능) 판단 대상에 남기고 digest에 확인 표시를 붙인다.
+    unresolved = {}
+    if allrows is not None:
+        keep, dup = [], []
+        for r in prep["review"]:
+            path = f"{body_dir}/{r['stock_code']}_{r['rcept_no']}.txt"
+            if is_sub_filing(r["report_nm"]) and os.path.exists(path):
+                t = open(path, encoding="utf-8").read()
+                tw = find_listed_twin(r, t, allrows, fetch_body_text)
+                if tw:
+                    dup.append(dict(r, twin_rcept_no=tw["rcept_no"], twin_corp=tw["corp_name"], sub_name=sub_name(t)))
+                    continue
+                unresolved[r["rcept_no"]] = sub_name(t)
+            keep.append(r)
+        if dup:
+            prep["review"], prep["subsidiary_dup"] = keep, dup
+            prep["excluded"] += len(dup)
+            json.dump(prep, open(f"{out_dir}/prep.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+            print(f"자회사 중복 제외 {len(dup)}건 (상장 자회사 공시로 처리): "
+                  + ", ".join(f"{d['corp_name']}→{d['twin_corp']}" for d in dup))
+            print(f"판단 대상 {len(prep['review'])}건({len({r['stock_code'] for r in prep['review']})}개 회사)", flush=True)
+
     print("\n===== 판단 대상 digest =====")
     for r in sorted(prep["review"], key=lambda r: r["stock_code"]):
         path = f"{body_dir}/{r['stock_code']}_{r['rcept_no']}.txt"
         if os.path.exists(path):
             t = open(path, encoding="utf-8").read()
-            print(f"\n#### {r['stock_code']} {r['corp_name']} | {r['report_nm']} | {r['rcept_no']} | {len(t)}자\n{digest(t)}")
+            warn = ""
+            if r["rcept_no"] in unresolved:
+                warn = (f" ⚠자회사 '{unresolved[r['rcept_no']]}' 상장 공시 쌍둥이 없음: 비상장이면 이 공시를 처리, "
+                        "상장사면 제외(상장 여부 확인)")
+            print(f"\n#### {r['stock_code']} {r['corp_name']} | {r['report_nm']} | {r['rcept_no']} | {len(t)}자{warn}\n{digest(t)}")
     if prep["separate"]:
         print("\n===== 별도 처리 대상 =====")
         for r in prep["separate"]:
