@@ -1,0 +1,61 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>HD현대중공업 공시 대시보드</title>
+<style>
+:root{--bg:#f4f6f9;--card:#fff;--ink:#1c2430;--mute:#6a7686;--line:#e3e8ef;--brand:#26457a;
+--pos:#127a4a;--pos-bg:#e3f4eb;--neg:#b3261e;--neg-bg:#fbe7e5;--mix:#8a5a00;--mix-bg:#fdf0d5;--unk:#4f5b6b;--unk-bg:#e8ebf0}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"WenQuanYi Zen Hei","Noto Sans CJK KR","Malgun Gothic",sans-serif;font-size:11px;line-height:1.5}
+.page{width:210mm;height:297mm;padding:12mm 12mm 9mm;display:flex;flex-direction:column;gap:9px;overflow:hidden}
+header{background:var(--brand);color:#fff;border-radius:10px;padding:12px 14px}
+header .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+header h1{margin:0;font-size:19px;letter-spacing:-.3px}
+header .sub{opacity:.85;font-size:10.5px;margin-top:2px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.chip{border-radius:999px;padding:3px 10px;font-size:10.5px;font-weight:700;white-space:nowrap}
+.chip.tag{background:rgba(255,255,255,.18);color:#fff}
+.chip.pos{background:var(--pos-bg);color:var(--pos)}.chip.neg{background:var(--neg-bg);color:var(--neg)}
+.chip.mix{background:var(--mix-bg);color:var(--mix)}.chip.unk{background:var(--unk-bg);color:var(--unk)}
+.headline{margin-top:9px;font-size:13.5px;font-weight:700;line-height:1.45}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+.kpi .l{color:var(--mute);font-size:10px}.kpi .v{font-size:19px;font-weight:800;color:var(--brand);letter-spacing:-.5px;margin:1px 0}
+.kpi .s{color:var(--mute);font-size:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+h2{margin:0 0 7px;font-size:12px;color:var(--brand)}
+.row2{display:grid;grid-template-columns:1.15fr 1fr;gap:8px}
+.bars{display:flex;align-items:flex-end;justify-content:space-around;height:104px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.bar-col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;width:30%}
+.bar{width:60%;background:var(--brand);border-radius:4px 4px 0 0;opacity:.85}.bar-val{font-weight:700;font-size:10.5px}
+table{width:100%;border-collapse:collapse;margin-top:2px;font-size:10.5px}
+th,td{padding:3px 4px;border-bottom:1px solid var(--line);text-align:right}th{text-align:left;color:var(--mute);font-weight:400}
+thead th{color:var(--ink);font-weight:700;text-align:right}thead th:first-child{text-align:left}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px}
+.mini div{display:flex;flex-direction:column;border-left:3px solid var(--line);padding-left:7px}
+.mini .k{color:var(--mute);font-size:10px}.mini b{font-size:14px}.mini small{color:var(--mute);font-size:9.5px}
+.note{margin:7px 0 0;color:var(--mute);font-size:9.5px}
+.sent{display:flex;gap:10px;align-items:center}
+.sent .chip{font-size:13px;padding:5px 14px}
+.sent .why{font-size:11px}
+.points{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.points li{display:flex;gap:8px;align-items:flex-start}
+.pt{flex:none;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:700}
+.pt.pos{background:var(--pos-bg);color:var(--pos)}.pt.neg{background:var(--neg-bg);color:var(--neg)}.pt.unk{background:var(--unk-bg);color:var(--unk)}
+.news{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px}
+.news li{display:flex;gap:6px;align-items:baseline}
+.news .o{flex:none;color:var(--mute);font-size:10px;min-width:92px}
+.news a{color:var(--brand);text-decoration:none;border-bottom:1px solid #b8c6e0}
+footer{margin-top:auto;color:var(--mute);font-size:8.5px;line-height:1.45}
+</style></head><body><div class="page">
+<header><div class="top"><div><h1>HD현대중공업 <span style="font-weight:400;font-size:13px">329180</span></h1>
+<div class="sub">2026-09-10 · 신규시설투자등 · 접수번호 20260910800161</div></div>
+<div class="chips"><span class="chip tag">사업 변동</span><span class="chip pos">투심 ▲ 긍정적</span></div></div>
+<div class="headline">발전엔진 공장 증설에 약 8,300억 원을 투자합니다.</div></header>
+<div class="kpis"><div class="kpi"><div class="l">투자금액</div><div class="v">약 8,300억</div><div class="s">2026.9~2028.5</div></div><div class="kpi"><div class="l">자기자본 대비</div><div class="v">8.9%</div><div class="s">공시 기준</div></div><div class="kpi"><div class="l">매출 대비</div><div class="v">약 4.7%</div><div class="s">2025 연결, 계산</div></div><div class="kpi"><div class="l">현금·단기금융자산</div><div class="v">약 3.6조</div><div class="s">2025말, 투자금의 4배 이상(계산)</div></div></div>
+<div class="row2"><section class="card"><h2>최근 3년 실적 <span style="font-weight:400;color:var(--mute)">(연결, 단위 조원)</span></h2><div class="bars"><div class="bar-col"><div class="bar-val">12.0</div><div class="bar" style="height:48px"></div></div><div class="bar-col"><div class="bar-val">14.5</div><div class="bar" style="height:58px"></div></div><div class="bar-col"><div class="bar-val">17.6</div><div class="bar" style="height:70px"></div></div></div>
+<table><thead><tr><th></th><th>2023</th><th>2024</th><th>2025</th></tr></thead><tbody><tr><th>매출</th><td>12.0</td><td>14.5</td><td>17.6</td></tr><tr><th>영업이익</th><td>0.18</td><td>0.71</td><td>2.0</td></tr></tbody></table></section>
+<div style="display:flex;flex-direction:column;gap:8px"><section class="card"><h2>가치평가 · 추정치</h2><div class="mini"><div><span class="k">PER(최근 12개월)</span><b>18.0배</b><small>주가 431,500원, 10/1 종가</small></div><div><span class="k">PBR</span><b>4.3배</b><small>최근 분기 기준</small></div><div><span class="k">2026 예상 PER</span><b>약 14.4배</b><small>컨센서스, 9/23 종가 기준</small></div></div><p class="note">2026년 컨센서스 영업이익은 약 4.1조 원(애널리스트 추정, 공시 아님).</p></section>
+<section class="card"><h2>투자심리 영향</h2><div class="sent"><span class="chip pos">▲ 긍정적</span><span class="why">발전엔진 수요 증가에 맞춘 증설, 재무 여력 충분</span></div></section></div></div>
+<section class="card"><h2>핵심 포인트</h2><ul class="points"><li><span class="pt pos">긍정</span><span>계약 확보한 발전엔진 수요에 대응</span></li><li><span class="pt pos">긍정</span><span>현금이 투자금보다 많아 부담 작음</span></li><li><span class="pt neg">리스크</span><span>가동은 2028년 이후, 단기 실적 효과 적음</span></li><li><span class="pt unk">미확인</span><span>연도별 집행 계획·조달 방식 미확인</span></li></ul></section>
+<section class="card"><h2>뉴스 근거 <span style="font-weight:400;color:var(--mute)">(링크)</span></h2><ul class="news"><li><span class="o">딜사이트 · 2026-09</span><a href="https://dealsite.co.kr/articles/168803">[공시모음] 현대중공업, 8336억 투자 外</a></li><li><span class="o">딜사이트 · 2026-09</span><a href="https://dealsite.co.kr/articles/168759">HD현대중공업, &#39;엔진·SMR&#39; 미래사업에 1조 투자</a></li><li><span class="o">블로터 · 2026-09</span><a href="https://www.bloter.net/news/articleView.html?idxno=673480">엔진부터 SMR까지…HD현대중공업, AI 인프라 1조 베팅</a></li></ul></section>
+<footer>출처: DART 공시 원문, OpenProxyMCP(financial_metrics, price_multiple_data, forward_estimates_data). 기사 게재일은 페이지에서 확인되지 않아 월만 표기, 증권사 반응은 확인되지 않음.<br>DART <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800161">https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800161</a> · 정보 제공용이며 투자 권유가 아닙니다.</footer>
+</div></body></html>

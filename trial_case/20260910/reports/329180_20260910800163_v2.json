@@ -1,0 +1,31 @@
+{
+ "corp_name":"HD현대중공업","stock_code":"329180","disclosure_date":"2026-09-10",
+ "disclosure_title":"신규시설투자등(자율공시)","rcept_no":"20260910800163",
+ "dart_url":"https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800163",
+ "tag":"사업 변동",
+ "sentiment":{"label":"혼재됨","reason":"신사업 진입은 긍정, 수주 근거는 아직 없음"},
+ "headline":"SMR 주기기 전용 공장에 약 2,400억 원 투자",
+ "kpis":[
+  {"label":"투자금액","value":"약 2,400억","sub":"2026.10~2029.4"},
+  {"label":"자기자본 대비","value":"2.6%","sub":"공시 기준"},
+  {"label":"영업이익 대비","value":"약 12%","sub":"2025 연결, 계산"},
+  {"label":"같은 날 엔진공장 합산","value":"약 1.07조","sub":"자기자본 약 11.5%, 계산"}],
+ "financials":{"basis":"연결, 단위 조원","years":["2023","2024","2025"],"rows":[
+  {"label":"매출","values":[{"v":12.0,"d":"12.0"},{"v":14.5,"d":"14.5"},{"v":17.6,"d":"17.6"}]},
+  {"label":"영업이익","values":[{"v":0.18,"d":"0.2"},{"v":0.71,"d":"0.7"},{"v":2.0,"d":"2.0"}]}]},
+ "valuation":{"items":[
+  {"label":"PER (최근 12개월)","value":"18.0배","sub":"주가 431,500원(10/1)"},
+  {"label":"PBR","value":"4.3배","sub":"최근 분기 기준"},
+  {"label":"2026 영업이익 전망","value":"약 4.05조","sub":"컨센서스, 2025 대비 약 2배"},
+  {"label":"2026 예상 PER","value":"약 14배","sub":"컨센서스, 9/23 종가"}],
+  "note":"가치평가·전망치는 시장 추정이며 공시가 아님."},
+ "points":[
+  {"type":"pos","text":"원전 신사업 진입 신호"},
+  {"type":"pos","text":"규모는 영업이익의 약 12%로 감당 가능"},
+  {"type":"neg","text":"3년 연속 잉여현금흐름 적자"},
+  {"type":"unk","text":"SMR 수주·고객·매출 기여 미확인"}],
+ "news":[
+  {"outlet":"파이낸셜뉴스","date":"2026-09-10","title":"HD현대중공업 발전엔진·SMR 1조 투자","url":"https://www.fnnews.com/news/202609101834187832"},
+  {"outlet":"헤럴드경제","date":"2026-09-11","title":"HD현대중공업, 울산에 SMR 공장 구축","url":"https://biz.heraldcorp.com/article/10870343"}],
+ "sources_note":"출처: DART 공시 원문, OpenProxyMCP(financial_metrics, price_multiple_data, forward_estimates_data). 매출·이익은 반올림값 기반 근사이며 SMR 수주·증권사 의견은 확인되지 않음. 투자 권유 아님."
+}
