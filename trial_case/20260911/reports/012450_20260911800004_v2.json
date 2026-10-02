@@ -1,0 +1,92 @@
+{
+ "corp_name": "한화에어로스페이스",
+ "stock_code": "012450",
+ "disclosure_title": "단일판매ㆍ공급계약체결(자율공시)",
+ "rcept_no": "20260911800004",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "유럽 천무 수출 확대, 선급금 60% 구조"
+ },
+ "headline": "크로아티아에 천무 6,411억 원 수출 확정",
+ "impact_summary": "매출 2.4% 규모, 9/7 풍문을 확정한 수주입니다.",
+ "event_type": "단일판매공급계약",
+ "keywords": [
+  "천무",
+  "다연장로켓",
+  "크로아티아",
+  "방산수출",
+  "선급금",
+  "유럽"
+ ],
+ "themes": [
+  "방산 수출",
+  "K-방산"
+ ],
+ "kpis": [
+  {
+   "label": "계약금액",
+   "value": "약 6,411억",
+   "sub": "EUR 환산(1,556.98원)"
+  },
+  {
+   "label": "매출 대비",
+   "value": "2.40%",
+   "sub": "2025 연결"
+  },
+  {
+   "label": "계약기간",
+   "value": "2026.9~2030.9",
+   "sub": "상대: 크로아티아 국방부"
+  },
+  {
+   "label": "선급금",
+   "value": "25%+35%",
+   "sub": "서명 후 30일 내/12개월 후"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "계약금의 60%를 선급금으로 받아 초기 현금 유입이 큼"
+  },
+  {
+   "type": "pos",
+   "text": "9/7 풍문 해명(미확정)이 확정 공시로 마무리, 불확실성 해소"
+  },
+  {
+   "type": "pos",
+   "text": "언론 보도: 천무 18문 등 공급, 올해 노르웨이·에스토니아에 이어 유럽 세 번째 수출"
+  },
+  {
+   "type": "unk",
+   "text": "유로화 계약이라 환율에 따라 원화 금액이 변할 수 있음"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "전자신문",
+   "date": "2026-09-11",
+   "title": "한화에어로, '천무' 유럽 수출 성공…크로아티아와 공급계약",
+   "url": "https://www.etnews.com/20260911000099"
+  },
+  {
+   "outlet": "파이낸셜뉴스",
+   "date": "2026-09-11",
+   "title": "한화에어로, 크로아티아에 다연장로켓 6410억원 수출",
+   "url": "https://www.fnnews.com/news/202609110938059957"
+  }
+ ],
+ "brief": "크로아티아에 천무 6,411억 원 수출 확정(매출 2.4%). 선급금 60%, 올해 유럽 세 번째 천무 수출.",
+ "importance": 3,
+ "importance_reason": "매출 대비 2.40%로 1~5% 구간의 의미 있는 수주입니다.",
+ "importance_score": 80,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3,
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800004",
+ "disclosure_date": "2026-09-11",
+ "related_ids": [],
+ "tag": "사업 변동",
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크."
+}

@@ -1,0 +1,88 @@
+{
+ "report_version": 3,
+ "corp_name": "HS효성첨단소재",
+ "stock_code": "298050",
+ "disclosure_date": "2026-09-11",
+ "disclosure_title": "타인에대한채무보증결정",
+ "rcept_no": "20260911800519",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800519",
+ "tag": "기타 사항",
+ "event_type": "채무보증(만기연장)",
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "importance": 3,
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "기존 대출 연장이나 채무자 자본잠식"
+ },
+ "headline": "루마니아 GST 법인 대출 보증 342억 연장",
+ "impact_summary": "기존 대출 만기연장, 자기자본 4.1% 규모입니다.",
+ "keywords": [
+  "채무보증",
+  "만기연장",
+  "GST Safety Textiles RO",
+  "루마니아",
+  "Shinhan Bank Europe",
+  "자본잠식"
+ ],
+ "themes": [
+  "계열사 보증",
+  "차량용 안전부품"
+ ],
+ "related_ids": [
+  "20260911800524"
+ ],
+ "kpis": [
+  {
+   "label": "보증금액",
+   "value": "약 342억",
+   "sub": "EUR 2,200만, 2026-09~2027-09"
+  },
+  {
+   "label": "자기자본 대비",
+   "value": "4.14%",
+   "sub": "2025 연결 기준"
+  },
+  {
+   "label": "대상 대출",
+   "value": "약 311억",
+   "sub": "EUR 2,000만 일반대"
+  },
+  {
+   "label": "채무자 자본총계",
+   "value": "약 -283억",
+   "sub": "2025년 말, 자본잠식"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "기존 일반대출의 만기연장으로 신규 위험 증가는 아님"
+  },
+  {
+   "type": "pos",
+   "text": "채무자 순손실이 2024년 약 275억에서 2025년 약 26억으로 축소"
+  },
+  {
+   "type": "neg",
+   "text": "채무자 GST Safety Textiles RO는 자본총계 약 -283억의 자본잠식 상태"
+  },
+  {
+   "type": "neg",
+   "text": "채무자 부채 약 1,874억으로 자산 약 1,590억 초과, 보증 부담 가능성"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "데이터투자",
+   "date": "2026-09-11",
+   "title": "HS효성첨단소재, 계열사 GST에 341억원 채무보증 결정",
+   "url": "https://www.datatooza.com/article/20260911164034200652ef332b74_80"
+  }
+ ],
+ "brief": "루마니아 GST 법인 대출 보증 342억 원(자기자본 4.1%) 1년 연장. 채무자는 자본잠식 상태.",
+ "importance_reason": "자기자본 대비 4.14%로 3점 구간 상단이며 채무자가 자본잠식이라 같은 날 베트남 건보다 높게 봤습니다.",
+ "importance_score": 55
+}
