@@ -1,0 +1,88 @@
+{
+ "corp_name": "GS건설",
+ "stock_code": "006360",
+ "disclosure_title": "단일판매ㆍ공급계약체결",
+ "tag": "사업 변동",
+ "event_type": "공사수주",
+ "themes": [
+  "건설",
+  "도시정비"
+ ],
+ "news": [
+  {
+   "outlet": "뉴스웨이",
+   "date": "2026-09-10",
+   "title": "GS건설, 수지삼성4·수영1 수주···올해 최대 실적 달성 '목전'",
+   "url": "https://newsway.co.kr/news/view?ud=2026091019254346248"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "rcept_no": "20260910800109",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "매출 5%대 대형 재개발 수주, 분양불 부담"
+ },
+ "headline": "부산 수영1구역 재개발 6,374억 수주",
+ "impact_summary": "매출의 5.12%인 대형 재개발 수주로 일감이 늘었습니다.",
+ "keywords": [
+  "수영1구역",
+  "재개발",
+  "공사수주",
+  "부산",
+  "1,533세대",
+  "분양불"
+ ],
+ "related_ids": [
+  "20260910800149"
+ ],
+ "kpis": [
+  {
+   "label": "계약금액",
+   "value": "약 6,374억",
+   "sub": "VAT 별도"
+  },
+  {
+   "label": "매출액 대비",
+   "value": "5.12%",
+   "sub": "2025 연결 기준"
+  },
+  {
+   "label": "규모",
+   "value": "1,533세대",
+   "sub": "지하3층~지상42층, 8개동"
+  },
+  {
+   "label": "공사기간",
+   "value": "46개월",
+   "sub": "실착공일부터"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "부산 수영구 재개발, 최근 매출의 5.12% 규모 신규 수주"
+  },
+  {
+   "type": "pos",
+   "text": "수지삼성4차(5,043억)와 합쳐 하루 약 1.14조 원 수주"
+  },
+  {
+   "type": "neg",
+   "text": "분양불 방식이라 분양 성과에 따라 공사대금 회수 시점이 달라짐"
+  },
+  {
+   "type": "unk",
+   "text": "언론 보도: 올해 누적 수주 약 5.5조 원, 착공 시점은 미확인"
+  }
+ ],
+ "brief": "부산 수영1구역 재개발 6,374억 원 수주(매출 5.12%). 1,533세대, 분양불 조건.",
+ "importance": 4,
+ "importance_reason": "매출 대비 5.12%로 5~10% 구간의 대형 계약입니다.",
+ "importance_score": 58,
+ "report_version": 3,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "disclosure_date": "2026-09-10",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800109"
+}

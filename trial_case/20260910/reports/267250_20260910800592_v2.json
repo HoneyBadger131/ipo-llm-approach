@@ -1,0 +1,95 @@
+{
+ "corp_name": "HD현대",
+ "stock_code": "267250",
+ "disclosure_date": "2026-09-10",
+ "disclosure_title": "타인에대한채무보증결정(자회사의 주요경영사항)",
+ "tag": "사업 변동",
+ "event_type": "채무보증(자금보충약정)",
+ "themes": [
+  "석유화학 사업재편",
+  "정유·화학"
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "news": [
+  {
+   "outlet": "서울신문",
+   "date": "2026-09-04",
+   "title": "HD현대·롯데 통합 'H&L 어드밴스드' 출범… 석화 사업재편 첫 결실",
+   "url": "https://www.seoul.co.kr/news/economy/industry/2026/09/04/20260904500120"
+  },
+  {
+   "outlet": "CEO스코어데일리",
+   "date": "2026-09-01",
+   "title": "HD현대, 롯데대산석화 흡수 합병…'H&L어드밴스드' 출범, 에틸렌 110만톤 감축",
+   "url": "https://www.ceoscoredaily.com/page/view/2026090112352530034"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP, 뉴스 링크.",
+ "report_version": 3,
+ "rcept_no": "20260910800592",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800592",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "사업재편 지원, 자회사 보증 부담 확대"
+ },
+ "headline": "HD현대오일뱅크, H&L어드밴스드에 9,146억 보증",
+ "impact_summary": "합병법인 이관 채무 보증, 연결 자기자본의 약 3%입니다.",
+ "keywords": [
+  "H&L어드밴스드",
+  "자금보충약정",
+  "HD현대오일뱅크",
+  "롯데대산석화",
+  "기업활력법",
+  "사업재편",
+  "채무보증"
+ ],
+ "related_ids": [
+  "20260910800596"
+ ],
+ "kpis": [
+  {
+   "label": "보증금액",
+   "value": "약 9,146억",
+   "sub": "자금보충약정, 채무 약 1조 8,291억"
+  },
+  {
+   "label": "오일뱅크 자기자본 대비",
+   "value": "14.2%",
+   "sub": "공시 기준"
+  },
+  {
+   "label": "HD현대 자기자본 대비",
+   "value": "약 3.0%",
+   "sub": "2025 연결 약 30.3조"
+  },
+  {
+   "label": "보증기간",
+   "value": "~2029.3",
+   "sub": "시작일은 합병효력일 9/2 소급"
+  }
+ ],
+ "points": [
+  {
+   "type": "unk",
+   "text": "HD현대오일뱅크(비상장 자회사)가 합병법인 H&L어드밴스드의 차입금 절반(약 9,146억)에 자금보충약정을 제공합니다."
+  },
+  {
+   "type": "pos",
+   "text": "롯데케미칼·HD현대케미칼 사업재편(기업활력법)의 금융 지원 패키지로, 합병법인 자금 조달을 뒷받침합니다."
+  },
+  {
+   "type": "neg",
+   "text": "약정 후 H&L어드밴스드 관련 보증 잔액이 늘어납니다. 공시 기준 오일뱅크 자기자본의 14.2%입니다."
+  },
+  {
+   "type": "neg",
+   "text": "채무자는 H&L어드밴스드이나 오일뱅크의 최근 순손실이 이어지고 있습니다(2025 순손실 약 4,831억)."
+  }
+ ],
+ "brief": "자회사 HD현대오일뱅크, H&L어드밴스드에 9,146억 자금보충약정. HD현대 자기자본의 약 3%.",
+ "importance": 3,
+ "importance_reason": "HD현대 연결 자기자본 대비 약 3.0%로 1~5% 구간입니다(오일뱅크 기준 14.2%는 자회사 기준).",
+ "importance_score": 62
+}
