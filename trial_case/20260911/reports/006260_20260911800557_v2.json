@@ -1,0 +1,89 @@
+{
+ "report_version": 3,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "corp_name": "LS",
+ "stock_code": "006260",
+ "disclosure_date": "2026-09-11",
+ "disclosure_title": "교환사채권발행결정(자회사의 주요경영사항)",
+ "rcept_no": "20260911800557",
+ "tag": "기타 사항",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "무이자 5,000억 조달, 가온전선 지분 희석 가능"
+ },
+ "headline": "LS전선, 가온전선 교환사채 5,000억 발행",
+ "impact_summary": "자회사 LS전선이 무이자 5,000억 조달, 북미 투자에 씁니다.",
+ "event_type": "교환사채발행",
+ "keywords": [
+  "교환사채",
+  "LS전선",
+  "가온전선",
+  "사모",
+  "무이자",
+  "북미 투자",
+  "자금조달"
+ ],
+ "themes": [
+  "전력 인프라",
+  "자금조달"
+ ],
+ "related_ids": [
+  "20260911000445"
+ ],
+ "kpis": [
+  {
+   "label": "발행총액",
+   "value": "5,000억",
+   "sub": "34회차 사모 교환사채"
+  },
+  {
+   "label": "교환가액",
+   "value": "27만 원",
+   "sub": "가온전선 보통주 1,851,851주"
+  },
+  {
+   "label": "표면이율",
+   "value": "0%",
+   "sub": "만기 2031-11-09"
+  },
+  {
+   "label": "LS전선 자산비중",
+   "value": "23.91%",
+   "sub": "LS 2025년말 자산총액 대비"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "이자 없는 5,000억 조달, 용도는 북미 투자·신규 사업(올해 4,000억, 내년 1,000억)"
+  },
+  {
+   "type": "neg",
+   "text": "교환권 행사 시 LS전선이 가진 가온전선 주식 185만 주가 사채권자에게 넘어감"
+  },
+  {
+   "type": "neg",
+   "text": "사채권자는 2029-11-09부터 조기상환을 청구할 수 있어 만기 전 상환 부담 가능"
+  },
+  {
+   "type": "unk",
+   "text": "비상장 자회사 LS전선이 낸 공시를 LS가 대신 제출, 연결 기준 영향. 가온전선은 같은 날 관련 공시"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "네이트뉴스",
+   "date": "2026-09-11",
+   "title": "LS전선, 5000억원 규모 교환사채 발행…북미 투자",
+   "url": "https://m.news.nate.com/view/20260911n26959"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "자회사 LS전선이 가온전선 주식 교환사채 5,000억 원 발행. 무이자로 북미 투자 재원 확보.",
+ "importance": 3,
+ "importance_reason": "5,000억 규모 자회사 자금조달로 지배 변동은 없어 1~5% 구간의 의미 있는 결정으로 봅니다.",
+ "importance_score": 60,
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800557"
+}
