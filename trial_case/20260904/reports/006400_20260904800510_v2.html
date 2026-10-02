@@ -1,0 +1,73 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>삼성SDI 공시 대시보드</title>
+<style>
+:root{--bg:#f4f6f9;--card:#fff;--ink:#1c2430;--mute:#6a7686;--line:#e3e8ef;--brand:#26457a;
+--pos:#127a4a;--pos-bg:#e3f4eb;--neg:#b3261e;--neg-bg:#fbe7e5;--mix:#8a5a00;--mix-bg:#fdf0d5;--unk:#4f5b6b;--unk-bg:#e8ebf0}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"WenQuanYi Zen Hei","Noto Sans CJK KR","Malgun Gothic",sans-serif;font-size:11.5px;line-height:1.55}
+.page{width:210mm;height:297mm;padding:12mm 12mm 9mm;display:flex;flex-direction:column;gap:11px;overflow:hidden}
+header{background:var(--brand);color:#fff;border-radius:10px;padding:14px 16px}
+header .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+header h1{margin:0;font-size:20px;letter-spacing:-.3px}
+header .sub{opacity:.85;font-size:10.5px;margin-top:2px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.chip{border-radius:999px;padding:3px 10px;font-size:10.5px;font-weight:700;white-space:nowrap}
+.chip.tag{background:rgba(255,255,255,.18);color:#fff}
+.chip.pos{background:var(--pos-bg);color:var(--pos)}.chip.neg{background:var(--neg-bg);color:var(--neg)}
+.chip.mix{background:var(--mix-bg);color:var(--mix)}.chip.unk{background:var(--unk-bg);color:var(--unk)}
+.headline{margin-top:10px;font-size:14px;font-weight:700;line-height:1.45}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.kpi .l{color:var(--mute);font-size:10px}.kpi .v{font-size:20px;font-weight:800;color:var(--brand);letter-spacing:-.5px;margin:1px 0}
+.kpi .s{color:var(--mute);font-size:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+h2{margin:0 0 8px;font-size:12.5px;color:var(--brand)}
+h2 .sub{font-weight:400;color:var(--mute);font-size:10.5px;margin-left:4px}
+.impact{display:flex;gap:10px;align-items:center;border-radius:8px;padding:9px 11px;margin-bottom:9px}
+.impact.pos{background:var(--pos-bg)}.impact.neg{background:var(--neg-bg)}.impact.mix{background:var(--mix-bg)}.impact.unk{background:var(--unk-bg)}
+.impact .chip{background:#fff}
+.impact.pos .chip{color:var(--pos)}.impact.neg .chip{color:var(--neg)}.impact.mix .chip{color:var(--mix)}.impact.unk .chip{color:var(--unk)}
+.impact .t{font-size:12.5px;font-weight:700;line-height:1.45}
+.impact .why{font-size:10.5px;color:var(--mute);font-weight:400;display:block;margin-top:1px}
+.points{display:flex;flex-direction:column;gap:7px;margin:0;padding:0;list-style:none}
+.points li{display:flex;gap:8px;align-items:flex-start}
+.pt{flex:none;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:700}
+.pt.pos{background:var(--pos-bg);color:var(--pos)}.pt.neg{background:var(--neg-bg);color:var(--neg)}.pt.unk{background:var(--unk-bg);color:var(--unk)}
+.row2{display:grid;grid-template-columns:1.1fr 1fr;gap:9px}
+table{width:100%;border-collapse:collapse;font-size:10.5px;table-layout:fixed}
+th,td{padding:3px 4px;border-bottom:1px solid var(--line);text-align:right}th{text-align:left;color:var(--mute);font-weight:400;width:24%}
+thead th{color:var(--ink);font-weight:700;text-align:right}thead th:first-child{text-align:left}
+tr.chart td{vertical-align:bottom;text-align:center;border-bottom:1px solid var(--line);padding-bottom:0;height:88px}
+.bv{font-weight:700;font-size:10.5px;margin-bottom:2px}
+.bar{width:55%;margin:0 auto;background:var(--brand);border-radius:4px 4px 0 0;opacity:.85}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
+.mini div{display:flex;flex-direction:column;border-left:3px solid var(--line);padding-left:7px}
+.mini .k{color:var(--mute);font-size:10px}.mini b{font-size:15px}.mini small{color:var(--mute);font-size:9.5px}
+.note{margin:8px 0 0;color:var(--mute);font-size:9.5px}
+.cons{display:flex;align-items:flex-end;gap:14px}
+.cbars{display:flex;flex:1;gap:8px;align-items:flex-end;justify-content:space-around;border-bottom:1px solid var(--line);padding-bottom:0}
+.cs{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:20%}
+.cbar{width:55%;background:var(--brand);opacity:.7;border-radius:4px 4px 0 0}
+.cl{color:var(--mute);font-size:9.5px;margin:3px 0 -1px;white-space:nowrap}
+.cdelta{flex:none;width:96px;text-align:center;border-radius:8px;padding:8px 6px;background:var(--unk-bg);color:var(--unk)}
+.cdelta.up{background:var(--pos-bg);color:var(--pos)}.cdelta.down{background:var(--neg-bg);color:var(--neg)}
+.cdelta .big{display:block;font-size:16px;font-weight:800}.cdelta .sm{display:block;font-size:9.5px}
+.news{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.news li{display:flex;gap:6px;align-items:baseline}
+.news .o{flex:none;color:var(--mute);font-size:10px;min-width:98px}
+.news a{color:var(--brand);text-decoration:none;border-bottom:1px solid #b8c6e0}
+footer{margin-top:auto;color:var(--mute);font-size:8.5px;line-height:1.45}
+</style></head><body><div class="page">
+<header><div class="top"><div><h1>삼성SDI <span style="font-weight:400;font-size:13px">006400</span></h1>
+<div class="sub">2026-09-04 · 타인에대한채무보증결정 · 접수번호 20260904800510</div></div>
+<div class="chips"><span class="chip tag">기타 사항</span><span class="chip pos">투심 ▲ 긍정적</span></div></div>
+<div class="headline">미국 합작사 보증 약 2.87조 원으로 축소</div></header>
+<div class="kpis"><div class="kpi"><div class="l">채무보증금액</div><div class="v">약 2.87조</div><div class="s">USD 38.5억→21.1억</div></div><div class="kpi"><div class="l">자기자본 대비</div><div class="v">12.16%</div><div class="s">2025 연결 기준</div></div><div class="kpi"><div class="l">보증 총잔액</div><div class="v">약 3.96조</div><div class="s">본 건 제외</div></div><div class="kpi"><div class="l">대출 한도</div><div class="v">약 5.6조</div><div class="s">USD 75.4억→41.3억(-45%)</div></div></div>
+<section class="card"><h2>핵심 포인트</h2>
+<div class="impact pos"><span class="chip">▲ 긍정적</span><span class="t">합작사 대출 축소로 보증 부담이 줄었으나 규모는 여전히 큽니다.<span class="why">보증 규모가 줄어 재무 부담이 낮아짐</span></span></div>
+<ul class="points"><li><span class="pt pos">긍정</span><span>차입 한도 45% 감소로 보증액도 같이 줄었습니다.</span></li><li><span class="pt neg">리스크</span><span>보증 총잔액이 약 3.96조 원으로 여전히 큽니다.</span></li><li><span class="pt neg">리스크</span><span>2025년 영업적자 약 1.7조 원, 3년 연속 잉여현금흐름 적자입니다.</span></li><li><span class="pt unk">미확인</span><span>합작사 2025년 순이익 약 1,231억 원으로 상환 능력은 지켜봐야 합니다.</span></li></ul></section>
+<div class="row2"><section class="card"><h2>최근 3년 실적 <span class="sub">연결, 단위 조원</span></h2><table><thead><tr><th></th><th>2023</th><th>2024</th><th>2025</th></tr></thead><tbody><tr class="chart"><th></th><td><div class="bv">22.7</div><div class="bar" style="height:64px"></div></td><td><div class="bv">16.6</div><div class="bar" style="height:47px"></div></td><td><div class="bv">13.3</div><div class="bar" style="height:37px"></div></td></tr><tr><th>매출</th><td>22.7</td><td>16.6</td><td>13.3</td></tr><tr><th>영업이익</th><td>1.6</td><td>0.4</td><td>-1.7</td></tr><tr><th>순이익</th><td>2.0</td><td>0.6</td><td>-0.6</td></tr></tbody></table></section><section class="card"><h2>가치평가 · 추정치</h2><div class="mini"><div><span class="k">시총(보통주)</span><b>약 44.2조</b><small>2026.9.4 기준</small></div><div><span class="k">PBR (최근 분기)</span><b>1.82배</b><small>2026.9.4 기준</small></div><div><span class="k">PBR (2025 결산)</span><b>2.06배</b><small>2026.9.4 기준</small></div></div></section></div>
+
+<section class="card"><h2>뉴스 근거 <span class="sub">링크</span></h2><ul class="news"><li><span class="o">뉴스핌 · 2026-09-04</span><a href="https://www.newspim.com/news/view/20260904000879">삼성SDI, 美 합작사 스타플러스에너지에 5.6조 조달 담보 제공</a></li><li><span class="o">이투데이 · 2026-09-04</span><a href="https://www.etoday.co.kr/news/view/2622085">[오늘의 주요공시] 현대건설ㆍ삼성SDIㆍ큐리언트 등</a></li></ul></section>
+<footer>출처: DART 공시 원문, OpenProxyMCP(재무·가치평가·컨센서스), 뉴스 링크.<br>DART <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260904800510">https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260904800510</a> · 정보 제공용이며 투자 권유가 아닙니다.</footer>
+</div></body></html>
