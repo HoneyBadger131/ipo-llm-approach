@@ -60,18 +60,16 @@ bodies/<YYYYMMDD>/         review 공시 전체 본문 (git 제외)
 
 ## 4. 실행 절차 (새 날짜 N에 대해)
 
-환경: `DART_API_KEY` 환경변수 필요(§9). 작업 디렉터리는 레포 루트.
+환경: `DART_API_KEY`(§9), 작업 디렉터리는 레포 루트. **주간 단위로 날짜를 순서대로 처리**한다.
 
-1. **준비**: `python dart_prep_day.py N` (예: `20261001`)
-   - 전체 공시 → 종목 리스트 필터 → `dart_rules.classify` → `trial_case/N/prep.json`, `bodies/N/*.txt`, 판단용 digest 출력.
-   - 소요 약 2~4분(공시 목록 11~12페이지 + 본문 수십 건). 도구 타임아웃에 걸리면 백그라운드로 실행.
-2. **판단(Claude가 직접)**: digest를 읽고 `judge_rules.md` 규칙으로 가/부·태그 판단 → `trial_case/N/judgments.json` 작성(스키마는 기존 파일 참고: rcept_no, stock_code, corp_name, report_nm, proceed, tag, rules, reason, borderline?). 긴 본문은 digest만으로 부족할 수 있으니 필요하면 해당 구간을 직접 읽는다.
-3. **에이전트 입력 준비**: 통과 공시 + 같은 날 관련 공시 본문을 `bodies/N/` → `trial_case/N/`로 복사(에이전트 환경에는 DART 키가 없다).
-4. **심화 분석 에이전트**: **회사 단위**로 `Agent`(general-purpose) 1개씩, 6개씩 병렬. 프롬프트는 짧게: "`report_v2/AGENT_SPEC.md`를 읽고 따를 것. 기준일=N, 대상=…, 원문 경로, 판정 경로, 산출 경로, 관련 공시". 같은 회사 여러 공시는 한 에이전트가 MCP를 한 번만 조회해 JSON 여러 개를 쓴다. 에이전트는 JSON 작성 후 `node report_v2/render.js <json>`로 HTML/PDF/MD 생성·검증(1쪽, 한글).
-5. **통합 브리프**: `trial_case/N/summary_meta.json`(funnel, top_order) 작성 후 `node report_v2/render_summary.js trial_case/N/reports YYYY-MM-DD trial_case/N/summary_meta.json` → `trial_case/N/summary_YYYY-MM-DD.pdf`. TOP 5는 `importance` 내림차순, 같은 회사 중복은 한 건만, 수동 순서는 `top_order`.
-6. **커밋·푸시**: 이 환경은 stop-hook이 미커밋 파일을 막는다. 에이전트는 git 금지, 호출자(메인)가 커밋.
+1. **준비**: `python dart_prep_day.py N` (예: `20261001`) — 전체 공시 → 종목 리스트 필터 → `dart_rules.classify` → `trial_case/N/prep.json`, `bodies/N/*.txt`, 판단용 digest 출력. 약 2~4분이라 도구 타임아웃에 걸리면 백그라운드로 실행하고 Monitor로 대기. 휴장일은 전체 0건으로 나오며 그 날은 건너뛴다.
+2. **판단(Claude가 직접)**: digest를 읽고 `judge_rules.md` 규칙으로 가/부·태그 판단 → `trial_case/N/judgments.json`. 스키마는 기존 파일 참고(rcept_no, stock_code, corp_name, report_nm, proceed, tag, rules, reason, borderline?). 에이전트에게 줄 추가 지시는 `agent_note`, 다른 회사의 관련 공시는 `related_with`(접수번호 리스트)로 항목에 적는다. 긴 본문은 digest만으로 부족할 수 있으니 필요하면 해당 구간을 직접 읽는다.
+3. **에이전트 입력 준비**: `python dart_day_pipeline.py stage N` — 통과 공시와 같은 회사의 같은 날 다른 공시 본문을 `trial_case/N/`로 복사하고 `trial_case/N/agent_tasks.json`(회사 단위 작업 정의)을 만든 뒤 회사별 **한 줄 프롬프트**를 출력한다.
+4. **심화 분석 에이전트**: 출력된 한 줄 프롬프트를 회사별로 `Agent`(general-purpose) 1개씩, **6개씩 병렬**. 상세 지침은 모두 `report_v2/AGENT_SPEC.md`에 있어 프롬프트는 짧다(이 덕에 호출자 토큰도 절약). 에이전트는 JSON 작성 후 `node report_v2/render.js <json>`로 HTML/PDF/MD를 만들고 1쪽·한글을 검증한다. 에이전트는 git 금지.
+5. **통합 브리프·점검**: `python dart_day_pipeline.py brief N` — `prep.json`으로 퍼널을 갱신하고 `render_summary.js`를 실행(`trial_case/N/summary_YYYY-MM-DD.pdf`)한 뒤 점검 결과(PDF 쪽수, 금지 문구, 기준일 이후 뉴스, importance/brief 누락, 뉴스·컨센서스 없는 회사)를 출력한다. TOP 5는 `importance` → `importance_score` 내림차순이고 **회사당 1건**. 수동 순서가 필요하면 `summary_meta.json`의 `top_order`(접수번호 리스트)에 적는다(`brief`는 기존 `top_order`를 유지).
+6. **커밋·푸시**: 이 환경은 stop-hook이 미커밋 파일을 막는다. 메인이 날짜별로 커밋하고 푸시 전에 `git pull --rebase`.
 
-참고 사례(9/30): `trial_case/20260930/summary_2026-09-30.pdf`, `reports/`, `judgments.json`.
+참고 사례: `trial_case/20260930/`, `trial_case/20261001/` (summary PDF, reports, judgments.json). `agent_tasks.json`/`stage`는 10/1에 사후 생성해 시험했고, 10/2 이후 날짜부터 정식 사용.
 
 ## 5. 규칙 필터 (`dart_rules.py`) — 확정 사항
 
@@ -118,7 +116,7 @@ bodies/<YYYYMMDD>/         review 공시 전체 본문 (git 제외)
 
 ## 9. 환경·비밀 정보 주의
 
-- **DART API 키**: 환경변수 `DART_API_KEY`로만 사용. 파일·커밋·출력에 넣지 않는다. (대화 중 채팅에 노출된 적이 있으므로 DART 사이트에서 재발급 권장.) **에이전트 환경에는 이 변수가 없을 수 있다** → 본문은 메인이 미리 받아 `trial_case/N/`에 두고 에이전트가 파일로 읽게 한다.
+- **DART API 키**: 환경변수 `DART_API_KEY`(클라우드 환경 설정의 환경 변수/API 자격 증명에 등록 — 세션 제목 줄의 환경 메뉴 → Edit). 코드는 환경변수가 없으면 레포 루트의 `.env`(`DART_API_KEY=...`, **git 제외**)를 읽는다. **레포는 public이므로 키를 파일에 써서 커밋하지 않는다**(현재 이력에 키가 없음을 확인함). 키가 대화에 노출된 적이 있으니 재발급을 권장한다. 에이전트 환경에 변수가 없을 때를 대비해 본문은 메인이 미리 받아 `trial_case/N/`에 두므로 키 없이도 동작한다.
 - 이 클라우드 환경은 네트워크 허용 목록 기반. `opendart.fss.or.kr`이 허용돼 있어야 한다(초기에 403으로 막혀 있었다가 사용자가 개방).
 - `corpCode.xml`(약 3.6MB)은 프록시 경유로 매우 느리다(몇 분) → **쓰지 않는다**. 전체 공시를 날짜로 받아 `stock_code`로 필터하는 방식이 빠르고 충분하다.
 - PDF: Node 전역 playwright(`/opt/node22/lib/node_modules/playwright`) + `/opt/pw-browsers/chromium`, 한글 폰트 WenQuanYi Zen Hei. `playwright install` 실행 금지. 렌더 후 `pdfinfo`(1쪽)·`pdftoppm -png -r 80`으로 눈으로 확인.

@@ -21,9 +21,12 @@ const order = meta.top_order || [];
 items.sort((a, b) => {
   const ia = order.indexOf(a.rcept_no), ib = order.indexOf(b.rcept_no);
   if (ia !== -1 || ib !== -1) return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
-  return (b.importance || 0) - (a.importance || 0) || String(a.corp_name).localeCompare(b.corp_name, "ko");
+  return (b.importance || 0) - (a.importance || 0) || (b.importance_score || 0) - (a.importance_score || 0) || String(a.corp_name).localeCompare(b.corp_name, "ko");
 });
-const top = items.slice(0, 5), rest = items.slice(5);
+// TOP 5는 회사당 1건만(같은 회사의 다른 공시는 아래 표로). 정렬 순서는 유지한다.
+const top = [], seen = new Set();
+for (const d of items) { if (top.length < 5 && !seen.has(d.stock_code)) { top.push(d); seen.add(d.stock_code); } }
+const rest = items.filter((d) => !top.includes(d));
 
 const cnt = (f) => items.filter(f).length;
 const chip = (d) => { const [c, i] = SENT[d.sentiment.label] || SENT["알수 없음"]; return `<span class="chip ${c}">${i} ${esc(d.sentiment.label)}</span>`; };

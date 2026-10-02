@@ -1,5 +1,18 @@
 # V2 대시보드 에이전트 작성 지침 (확정본)
 
+## 0. 작업 정의 읽는 법
+호출 프롬프트는 "작업 정의는 `trial_case/<날짜>/agent_tasks.json` 의 stock_code=<코드> 항목"이라고만 알려 준다. 그 항목을 읽어라.
+- `base_date`: 기준일(= 공시일). §데이터 기준일의 모든 기준은 이 날짜.
+- `filings[]`: 대시보드를 만들 공시. 각각 `body`(원문 text 경로), `reason`(판정 사유), `tag`, `note`(추가 지시), `related_with`(다른 회사의 관련 공시 접수번호), `output`(JSON 저장 경로).
+- `same_day_other_filings[]`: 같은 날 같은 회사의 다른 공시(판정 "부"). 본문(`body`)이 있으면 읽고 맥락·`related_ids`에 활용(자기 자신 제외, 같은 회사 통과 공시끼리는 서로 related_ids로 연결).
+- 같은 회사의 `filings`가 여러 개면 MCP 조회(재무·가치평가·컨센서스)는 한 번만 하고 JSON 여러 개를 쓴다.
+- DART 원문이 더 필요하면 `from dart_body import fetch_body_text`(레포 루트에서, 키는 환경변수 또는 `.env`에서 자동 로드; 값을 출력·저장하지 말 것).
+
+## 필수 조회·검색 (생략 금지)
+- `price_multiple_data`는 `as_of=<기준일 YYYYMMDD>`.
+- `forward_estimates_data(bundle=revision)`는 반드시 호출. 커버리지가 없다는 응답이면 `consensus: null`. 영업이익 변화가 없어 의미가 없으면 EPS 등 다른 지표를 쓰고 `metric`에 명시.
+- 뉴스는 WebSearch를 질의를 바꿔 **최소 2회**. 게재일이 기준일 이하로 확인되는 기사만(URL 날짜·검색 결과 날짜·WebFetch로 확인), 최대 3건. 확인되는 기사가 없으면 빈 배열.
+
 공시 1건당 한 장짜리 대시보드 JSON을 만들고 `report_v2/render.js`로 HTML·PDF·MD를 생성한다.
 형식 예시: `report_v2/sample.json`, `trial_case/20260910/reports/*_v2.json`.
 
@@ -23,7 +36,7 @@
 - 같은 날 같은 회사·관계사의 직접 관련 공시는 `related_ids`에 접수번호 문자열로 넣는다.
 
 ## JSON 필드
-corp_name, stock_code, disclosure_date, disclosure_title, rcept_no, dart_url(`https://dart.fss.or.kr/dsaf001/main.do?rcpNo=<접수번호>`), tag, sentiment{label,reason}, headline(45자 내외), impact_summary, event_type, keywords[5~8], themes[2~3], related_ids[], kpis[3~4]{label,value,sub}, financials{basis,years["2023","2024","2025"],rows[{label,values[{v,d}]}]}(rows[0]은 막대차트 대상이라 양수 지표), valuation{items[2~4],note:""}|null, consensus|null, points[], news[], sources_note, **brief**, **importance**, **importance_reason**.
+corp_name, stock_code, disclosure_date, disclosure_title, rcept_no, dart_url(`https://dart.fss.or.kr/dsaf001/main.do?rcpNo=<접수번호>`), tag, sentiment{label,reason}, headline(45자 내외), impact_summary, event_type, keywords[5~8], themes[2~3], related_ids[], kpis[3~4]{label,value,sub}, financials{basis,years["2023","2024","2025"],rows[{label,values[{v,d}]}]}(rows[0]은 막대차트 대상이라 양수 지표), valuation{items[2~4],note:""}|null, consensus|null, points[], news[], sources_note, **brief**, **importance**, **importance_reason**, **importance_score**.
 
 ### 통합 리포트용 필드
 - `brief`: 통합 리포트에 들어갈 설명. **두 줄 이내(공백 포함 90자 이내)**, 무엇이(핵심 수치) + 투자자에게 의미.
@@ -34,6 +47,7 @@ corp_name, stock_code, disclosure_date, disclosure_title, rcept_no, dart_url(`ht
   - 2: 1% 미만이나 알아둘 만한 이슈
   - 1: 참고
 - `importance_reason`: 한 문장.
+- `importance_score`: 0~100 정수. **같은 importance 안에서의 순서**를 정하는 세부 점수(규모 비율·시장 파급·불확실성·희소성 종합). 통합 브리프의 TOP 5 순서에 쓰인다. 같은 날 다른 종목과 상대 비교한다는 점을 염두에 두고 변별력 있게(예: 3점 안에서 50~85).
 
 ## 실행·검증
 - 파일: `trial_case/<공시일>/reports/<종목코드>_<접수번호>_v2.json` (같은 이름의 html·pdf와 `disclosure_md/<공시일>/…md`가 생성됨)

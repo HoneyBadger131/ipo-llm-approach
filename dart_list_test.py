@@ -19,7 +19,20 @@ import zipfile
 import requests
 
 BASE = "https://opendart.fss.or.kr/api"
-KEY = os.environ["DART_API_KEY"]
+def _load_key():
+    """DART_API_KEY: 환경변수 우선, 없으면 레포 루트의 .env(git 제외)에서 읽는다."""
+    k = os.environ.get("DART_API_KEY")
+    if k:
+        return k
+    env = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    if os.path.exists(env):
+        for line in open(env, encoding="utf-8"):
+            if line.strip().startswith("DART_API_KEY="):
+                return line.split("=", 1)[1].strip().strip("\"'")
+    raise KeyError("DART_API_KEY 환경변수가 없습니다 (환경 설정 또는 .env)")
+
+
+KEY = _load_key()
 
 
 def list_page(**params):
