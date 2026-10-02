@@ -1,0 +1,92 @@
+{
+ "corp_name": "SKC",
+ "stock_code": "011790",
+ "disclosure_title": "타법인주식및출자증권취득결정(종속회사의주요경영사항)",
+ "rcept_no": "20260910800416",
+ "tag": "기타 사항",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "지분 정리 목적이나 3,000억 자금 부담"
+ },
+ "headline": "SK넥실리스, 말레이 법인 우선주 3,000억 취득",
+ "impact_summary": "상장사 아닌 자회사의 지분 정리, 자산 4.45% 규모입니다.",
+ "event_type": "타법인주식취득",
+ "keywords": [
+  "SK넥실리스",
+  "말레이시아",
+  "RCPS",
+  "동박",
+  "지분구조",
+  "종속회사"
+ ],
+ "themes": [
+  "2차전지 소재",
+  "동박"
+ ],
+ "kpis": [
+  {
+   "label": "취득금액",
+   "value": "3,000억",
+   "sub": "현금취득, 예정일 11/16"
+  },
+  {
+   "label": "자산총액 대비",
+   "value": "4.45%",
+   "sub": "SKC 연결 자산 약 6.74조"
+  },
+  {
+   "label": "취득 주식",
+   "value": "약 1,035만주",
+   "sub": "상환전환우선주(RCPS)"
+  },
+  {
+   "label": "취득 후 지분",
+   "value": "100%",
+   "sub": "넥실리스 말레이시아"
+  }
+ ],
+ "points": [
+  {
+   "type": "unk",
+   "text": "비상장 종속회사 SK넥실리스(동박 제조)가 말레이시아 100% 투자법인의 우선주를 기존 투자자에게서 사들이는 건"
+  },
+  {
+   "type": "pos",
+   "text": "우선주 매입으로 보통주와 합쳐 말레이 법인 지분 100% 확보, 목적은 지분구조 관리"
+  },
+  {
+   "type": "neg",
+   "text": "현금 3,000억 지출, 언론 보도: 필요 자금은 외부에서 조달 예정"
+  },
+  {
+   "type": "unk",
+   "text": "신규 사업 투자가 아닌 기존 법인 지분 정리로 실적 영향은 제한적일 수 있음"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "블로터",
+   "date": "2026-09-10",
+   "title": "SK넥실리스, 말레이시아 법인 RCPS 3000억에 취득…외부자금 조달",
+   "url": "https://www.bloter.net/news/articleView.html?idxno=673332"
+  },
+  {
+   "outlet": "굿모닝경제",
+   "date": "2026-09-10",
+   "title": "SK넥실리스, 말레이시아 자회사 지분 매수결정",
+   "url": "https://www.goodkyung.com/news/articleView.html?idxno=291251"
+  }
+ ],
+ "brief": "종속회사 SK넥실리스가 말레이 법인 우선주 3,000억 원 취득(자산 4.45%). 지분 100% 정리.",
+ "importance": 3,
+ "importance_reason": "자산 대비 4.45%로 4점 구간 수치이나 신규 투자가 아닌 기존 법인 지분 정리라 3점으로 낮췄습니다.",
+ "importance_score": 55,
+ "report_version": 3,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "disclosure_date": "2026-09-10",
+ "related_ids": [],
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800416",
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크."
+}

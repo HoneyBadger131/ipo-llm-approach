@@ -1,0 +1,92 @@
+{
+ "corp_name": "대한해운",
+ "stock_code": "005880",
+ "disclosure_title": "단일판매ㆍ공급계약체결",
+ "rcept_no": "20260910800360",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "매출 3.3% 규모 벌크선 장기 대선 확보"
+ },
+ "headline": "벌크선 1척 421억 원 장기대선계약",
+ "impact_summary": "매출 3.3% 규모, 약 3년 장기 계약입니다.",
+ "event_type": "단일판매ㆍ공급계약",
+ "keywords": [
+  "벌크선",
+  "장기대선",
+  "ZHEJIANG SHIPPING",
+  "해운",
+  "용선계약",
+  "선급"
+ ],
+ "themes": [
+  "해운",
+  "벌크선"
+ ],
+ "kpis": [
+  {
+   "label": "계약금액",
+   "value": "약 421억",
+   "sub": "USD 3,138만, 36개월 가정"
+  },
+  {
+   "label": "매출액 대비",
+   "value": "3.30%",
+   "sub": "2025 연결 매출 약 1.28조"
+  },
+  {
+   "label": "계약기간",
+   "value": "33.5~38.5개월",
+   "sub": "시작 2026-10-25(인도 예정)"
+  },
+  {
+   "label": "계약 상대",
+   "value": "ZHEJIANG SHIPPING",
+   "sub": "벌크선 1척"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "최근 매출의 3.3%에 해당하는 벌크선 1척 장기 대선 계약"
+  },
+  {
+   "type": "pos",
+   "text": "계약 상대가 15일분 대금을 선지급해 대금 회수 부담이 작음"
+  },
+  {
+   "type": "unk",
+   "text": "금액은 36개월 가정 추정치로 실제 기간·환율에 따라 달라질 수 있음"
+  },
+  {
+   "type": "pos",
+   "text": "언론 보도: 최근 현대글로비스 PCTC 730억 계약에 이은 수주"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "브릿지경제",
+   "date": "2026-09-10",
+   "title": "대한해운, 中 저장해운과 421억원 벌크선 장기대선계약",
+   "url": "https://www.viva100.com/article/20260910501219"
+  },
+  {
+   "outlet": "네이트뉴스",
+   "date": "2026-09-10",
+   "title": "대한해운, 中 저장해운과 421억원 벌크선 장기대선계약",
+   "url": "https://m.news.nate.com/view/20260910n28606"
+  }
+ ],
+ "brief": "벌크선 1척 421억 원 장기대선계약(매출 3.3%). 약 3년 가동률 확보, 대금 선지급.",
+ "importance": 3,
+ "importance_reason": "최근 매출 대비 3.30%로 1~5% 구간의 의미 있는 계약입니다.",
+ "importance_score": 62,
+ "report_version": 3,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "disclosure_date": "2026-09-10",
+ "related_ids": [],
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800360",
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크."
+}

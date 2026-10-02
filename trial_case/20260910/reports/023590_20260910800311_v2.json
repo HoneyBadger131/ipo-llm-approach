@@ -1,0 +1,86 @@
+{
+ "corp_name": "다우기술",
+ "stock_code": "023590",
+ "disclosure_title": "단일판매ㆍ공급계약체결",
+ "rcept_no": "20260910800311",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "대형 고객과 7년 장기 계약, 금액은 비공개"
+ },
+ "headline": "네이버클라우드와 죽전 데이터센터 7년 계약",
+ "impact_summary": "매출의 2.5% 이상 장기 계약, 금액은 비공개입니다.",
+ "event_type": "단일판매ㆍ공급계약",
+ "keywords": [
+  "죽전 데이터센터",
+  "코로케이션",
+  "네이버클라우드",
+  "장기계약",
+  "공시유보",
+  "AI 인프라"
+ ],
+ "themes": [
+  "데이터센터",
+  "AI 인프라"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "계약 상대",
+   "value": "네이버클라우드",
+   "sub": "코로케이션 서비스"
+  },
+  {
+   "label": "계약기간",
+   "value": "약 7년",
+   "sub": "2027.6.23~2034.6.22"
+  },
+  {
+   "label": "매출 대비",
+   "value": "2.5% 이상",
+   "sub": "2025 연결 매출 약 17.5조"
+  },
+  {
+   "label": "계약금액",
+   "value": "비공개",
+   "sub": "경영상 비밀유지, 2034.6까지 유보"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "네이버클라우드와 약 7년 장기 계약, 1회 최대 3년 연장 가능"
+  },
+  {
+   "type": "pos",
+   "text": "계약금액이 2025 연결 매출의 2.5% 이상이라 공시 대상(약 4,370억 이상)"
+  },
+  {
+   "type": "unk",
+   "text": "계약금액은 경영상 비밀유지로 2034년 6월까지 비공개"
+  },
+  {
+   "type": "unk",
+   "text": "서비스는 2027년 6월부터 시작, 매출 반영은 그 이후"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "네이트뉴스",
+   "date": "2026-09-10",
+   "title": "다우기술 수주공시 - 죽전 데이터센터 코로케이션 서비스 계약",
+   "url": "https://m.news.nate.com/view/20260910n26808"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "네이버클라우드와 죽전 데이터센터 7년 계약(매출 2.5% 이상). 금액은 비공개, 매출은 2027년 6월부터.",
+ "importance": 3,
+ "importance_reason": "금액은 비공개이나 연결 매출 대비 2.5% 이상으로 1~5% 구간의 의미 있는 장기 계약입니다.",
+ "importance_score": 58,
+ "report_version": 3,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800311",
+ "disclosure_date": "2026-09-10",
+ "tag": "사업 변동"
+}
