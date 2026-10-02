@@ -25,12 +25,12 @@
   {
    "label": "영업이익 대비",
    "value": "약 12%",
-   "sub": "2025 연결, 계산"
+   "sub": "2025 연결"
   },
   {
-   "label": "같은 날 엔진공장 합산",
+   "label": "금일 공시 총 투자액",
    "value": "약 1.07조",
-   "sub": "자기자본 약 11.5%, 계산"
+   "sub": "엔진+SMR, 자기자본 대비 약 11.5%"
   }
  ],
  "financials": {
@@ -100,7 +100,7 @@
     "sub": "컨센서스, 9/23 종가"
    }
   ],
-  "note": "가치평가·전망치는 시장 추정이며 공시가 아님."
+  "note": ""
  },
  "points": [
   {
@@ -134,7 +134,7 @@
    "url": "https://biz.heraldcorp.com/article/10870343"
   }
  ],
- "sources_note": "출처: DART 공시 원문, OpenProxyMCP(financial_metrics, price_multiple_data, forward_estimates_data). 매출·이익은 반올림값 기반 근사이며 SMR 수주·증권사 의견은 확인되지 않음. 투자 권유 아님. 컨센서스 이력은 주 1회 스냅샷 기준 약 4주치만 제공되어 3~6개월 추이는 확인되지 않음.",
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP(재무·가치평가·컨센서스), 뉴스 링크.",
  "impact_summary": "SMR 주기기 공장에 2,400억 투자, 원전 신사업 첫걸음",
  "event_type": "신규시설투자(자율공시)",
  "keywords": [
@@ -155,9 +155,9 @@
   "20260910800161"
  ],
  "consensus": {
-  "metric": "2026E 영업이익(조원)",
+  "metric": "2026E 영업이익",
   "window": "최근 4주",
-  "window_label": "4주 전(8/29) 대비",
+  "window_label": "4주 전 대비",
   "series": [
    {
     "label": "4주 전",
@@ -175,6 +175,7 @@
     "d": "4.054조"
    }
   ],
-  "note": "도구 이력이 약 4주뿐(3~6개월 불가). 변화 +0.04%로 사실상 불변, 4주 전 값은 변화율로 역산."
+  "note": "",
+  "meta": "4주 전 값은 도구가 제공한 변화율로 환산한 값(주 1회 스냅샷, 제공 이력 약 4주)."
  }
 }

@@ -48,7 +48,7 @@ function toMarkdown(d) {
     const vs = c.series.map((x) => x.v);
     const pct = vs[0] ? ((vs[vs.length - 1] - vs[0]) / Math.abs(vs[0])) * 100 : null;
     cons = `- 지표: ${c.metric} (${c.window})\n- 추이: ` + c.series.map((x) => `${x.label} ${x.d}`).join(" → ") +
-      (pct === null ? "" : `\n- 변동: ${pct >= 0 ? "+" : ""}${pct.toFixed(1)}%`) + (c.note ? `\n- 비고: ${c.note}` : "");
+      (pct === null ? "" : `\n- 변동: ${pct >= 0 ? "+" : ""}${pct.toFixed(1)}%`) + (c.note ? `\n- 비고: ${c.note}` : "") + (c.meta ? `\n- 산출 메모: ${c.meta}` : "");
   }
   const news = (d.news || []).map((n) => `- ${n.outlet} (${n.date}): [${n.title}](${n.url})`).join("\n");
 
