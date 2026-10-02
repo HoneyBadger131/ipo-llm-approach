@@ -1,0 +1,155 @@
+{
+ "date": "2026-10-01",
+ "total": 647,
+ "watchlist_filings": 79,
+ "watchlist_companies": 45,
+ "excluded": 55,
+ "separate": [
+  {
+   "rcept_no": "20261001000477",
+   "stock_code": "207940",
+   "corp_name": "삼성바이오로직스",
+   "report_nm": "[발행조건확정]증권신고서(지분증권)"
+  }
+ ],
+ "review": [
+  {
+   "rcept_no": "20261001800667",
+   "stock_code": "0126Z0",
+   "corp_name": "삼성에피스홀딩스",
+   "report_nm": "투자판단관련주요경영사항(자회사의 주요경영사항)              (중증 호산구 천식 치료제 SB41(Fasenra 바이오시밀러) 및 유전성 재발열 증후군 치료제 SB44(Ilaris 바이오시밀러) 파트너십 계약 체결)"
+  },
+  {
+   "rcept_no": "20261001000559",
+   "stock_code": "181710",
+   "corp_name": "NHN",
+   "report_nm": "합병등종료보고서(합병)"
+  },
+  {
+   "rcept_no": "20261001800649",
+   "stock_code": "064350",
+   "corp_name": "현대로템",
+   "report_nm": "결산실적공시예고(안내공시)"
+  },
+  {
+   "rcept_no": "20261001800467",
+   "stock_code": "081660",
+   "corp_name": "미스토홀딩스",
+   "report_nm": "현금ㆍ현물배당결정"
+  },
+  {
+   "rcept_no": "20261001800456",
+   "stock_code": "081660",
+   "corp_name": "미스토홀딩스",
+   "report_nm": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정"
+  },
+  {
+   "rcept_no": "20261001700434",
+   "stock_code": "018670",
+   "corp_name": "SK가스",
+   "report_nm": "사채권자집회소집"
+  },
+  {
+   "rcept_no": "20261001800412",
+   "stock_code": "005380",
+   "corp_name": "현대자동차",
+   "report_nm": "영업(잠정)실적(공정공시)"
+  },
+  {
+   "rcept_no": "20261001800355",
+   "stock_code": "032350",
+   "corp_name": "롯데관광개발",
+   "report_nm": "연결재무제표기준영업(잠정)실적(공정공시)"
+  },
+  {
+   "rcept_no": "20261001800379",
+   "stock_code": "395400",
+   "corp_name": "SK리츠",
+   "report_nm": "부동산투자회사자금차입"
+  },
+  {
+   "rcept_no": "20261001800378",
+   "stock_code": "028670",
+   "corp_name": "팬오션",
+   "report_nm": "단일판매ㆍ공급계약체결(자율공시)"
+  },
+  {
+   "rcept_no": "20261001800285",
+   "stock_code": "010950",
+   "corp_name": "S-Oil",
+   "report_nm": "최대주주변경"
+  },
+  {
+   "rcept_no": "20261001800325",
+   "stock_code": "000270",
+   "corp_name": "기아",
+   "report_nm": "영업(잠정)실적(공정공시)"
+  },
+  {
+   "rcept_no": "20261001800318",
+   "stock_code": "207940",
+   "corp_name": "삼성바이오로직스",
+   "report_nm": "유상증자신주발행가액(안내공시)"
+  },
+  {
+   "rcept_no": "20261001000370",
+   "stock_code": "006110",
+   "corp_name": "삼아알미늄",
+   "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서"
+  },
+  {
+   "rcept_no": "20261001000180",
+   "stock_code": "161890",
+   "corp_name": "한국콜마",
+   "report_nm": "특수관계인에대한영업양도"
+  },
+  {
+   "rcept_no": "20261001800185",
+   "stock_code": "161890",
+   "corp_name": "한국콜마",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20261001800104",
+   "stock_code": "017960",
+   "corp_name": "한국카본",
+   "report_nm": "현금ㆍ현물배당결정"
+  },
+  {
+   "rcept_no": "20261001800084",
+   "stock_code": "006260",
+   "corp_name": "LS",
+   "report_nm": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20261001800079",
+   "stock_code": "010120",
+   "corp_name": "엘에스일렉트릭",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20261001800054",
+   "stock_code": "003160",
+   "corp_name": "디아이",
+   "report_nm": "단일판매ㆍ공급계약체결(자율공시)"
+  },
+  {
+   "rcept_no": "20261001800051",
+   "stock_code": "034220",
+   "corp_name": "LG디스플레이",
+   "report_nm": "결산실적공시예고(안내공시)"
+  },
+  {
+   "rcept_no": "20261001800034",
+   "stock_code": "034020",
+   "corp_name": "두산에너빌리티",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20261001800028",
+   "stock_code": "005880",
+   "corp_name": "대한해운",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  }
+ ]
+}
