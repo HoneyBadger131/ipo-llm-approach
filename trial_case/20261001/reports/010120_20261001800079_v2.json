@@ -1,0 +1,68 @@
+{
+ "corp_name": "엘에스일렉트릭",
+ "stock_code": "010120",
+ "disclosure_date": "2026-10-01",
+ "disclosure_title": "단일판매ㆍ공급계약체결(북미 Hyperscale Data Center 전력설비 공급 PJT)",
+ "rcept_no": "20261001800079",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261001800079",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "북미 데이터센터 수주 이어가며 2030년까지 매출 확보"
+ },
+ "headline": "북미 데이터센터용 초고압 변압기 약 1,812억 원 공급계약을 맺었습니다.",
+ "kpis": [
+  {"label": "계약금액", "value": "약 1,812억", "sub": "US$1.33억, 선급금 있음"},
+  {"label": "최근 매출 대비", "value": "3.65%", "sub": "2025 연결 매출 기준"},
+  {"label": "계약기간", "value": "2030.1까지", "sub": "2026.9.30 시작, 납품일정별 청구"},
+  {"label": "올해 공시 수주", "value": "약 1.03조", "sub": "6건, 이번 건 포함"}
+ ],
+ "financials": {
+  "basis": "연결, 단위 억원",
+  "years": ["2023", "2024", "2025"],
+  "rows": [
+   {"label": "매출", "values": [{"v": 42000, "d": "42,000"}, {"v": 45500, "d": "45,500"}, {"v": 49700, "d": "49,700"}]},
+   {"label": "영업이익", "values": [{"v": 3249, "d": "3,250"}, {"v": 3897, "d": "3,900"}, {"v": 4264, "d": "4,260"}]}
+  ]
+ },
+ "valuation": {
+  "items": [
+   {"label": "PER(최근 12개월)", "value": "약 79배", "sub": "10/1 기준"},
+   {"label": "선행 PER(2026E)", "value": "약 57배", "sub": "컨센서스, 9/23 종가"},
+   {"label": "PBR", "value": "약 14.5배", "sub": "10/1 기준"}
+  ],
+  "note": ""
+ },
+ "points": [
+  {"type": "pos", "text": "약 1,812억 원, 매출의 3.65%로 2030년 1월까지 납품"},
+  {"type": "pos", "text": "선급금이 있어 초기 자금 부담을 덜 수 있음"},
+  {"type": "pos", "text": "올해 북미 데이터센터 관련 수주가 계속 이어지는 흐름"},
+  {"type": "unk", "text": "계약 상대가 미국 자회사라 최종 고객 공개 여부는 확인되지 않음"}
+ ],
+ "news": [
+  {"outlet": "파이낸셜뉴스", "date": "2026-10-01", "title": "LS일렉트릭, 美 AI 데이터센터에 초고압 변압기 공급…1812억 규모", "url": "https://www.fnnews.com/news/202610011036118585"},
+  {"outlet": "The Korea Times", "date": "2026-10-01", "title": "LS Electric wins $133 mil. transformer deal in US", "url": "https://www.koreatimes.co.kr/business/companies/20261001/ls-electric-wins-133-mil-transformer-deal-in-us"},
+  {"outlet": "서울경제(영문)", "date": "2026-10-01", "title": "LS Electric Wins $133 Million Transformer Deal for North American AI Data Centers", "url": "https://en.sedaily.com/finance/2026/10/01/ls-electric-wins-133-million-transformer-deal-for-us-ai"}
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP(재무·가치평가·컨센서스), 뉴스 링크. 계약 상대는 미국 자회사(LS ELECTRIC AMERICA)로, 이 회사가 데이터센터 사업자로부터 받은 일감에 들어갈 변압기를 모회사가 납품하는 구조.",
+ "impact_summary": "북미 데이터센터 변압기 1,812억, 매출 3.65%",
+ "event_type": "단일판매ㆍ공급계약체결",
+ "keywords": ["초고압 변압기", "북미 데이터센터", "하이퍼스케일", "LS ELECTRIC AMERICA", "자회사 거래", "선급금", "345kV", "전력설비"],
+ "themes": ["AI 데이터센터 전력", "북미 전력기기"],
+ "related_ids": ["20261001800084"],
+ "consensus": {
+  "metric": "2026E 영업이익",
+  "window": "최근 4주",
+  "window_label": "4주 전 대비",
+  "series": [
+   {"label": "4주 전", "v": 7143, "d": "약 7,143억"},
+   {"label": "1주 전", "v": 7200, "d": "약 7,200억"},
+   {"label": "현재", "v": 7200, "d": "약 7,200억"}
+  ],
+  "note": "",
+  "meta": "4주 전 값은 도구가 제공한 변화율로 환산한 값(주 1회 스냅샷, 제공 이력 약 4주)."
+ },
+ "brief": "북미 데이터센터용 초고압 변압기 약 1,812억(매출 3.65%) 계약, 2030년까지 매출 가시성 확대.",
+ "importance": 3,
+ "importance_reason": "매출 대비 3.65%로 1~5% 구간의 의미 있는 대형 수주이며 자회사 대상 거래임."
+}
