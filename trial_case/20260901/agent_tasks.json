@@ -1,0 +1,236 @@
+[
+ {
+  "stock_code": "475150",
+  "corp_name": "SK이터닉스",
+  "base_date": "2026-09-01",
+  "filings": [
+   {
+    "rcept_no": "20260901800782",
+    "report_nm": "금전대여결정",
+    "tag": "사업 변동",
+    "reason": "태양광 사업자 솔라닉스오호에 289억 원 대여(자기자본 대비 10.6%), 2052년까지. 상대 자본잠식, 이율 7.7~7.8%.",
+    "body": "trial_case/20260901/475150_20260901800782.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260901/reports/475150_20260901800782_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "192820",
+  "corp_name": "코스맥스",
+  "base_date": "2026-09-01",
+  "filings": [
+   {
+    "rcept_no": "20260901800717",
+    "report_nm": "금전대여결정",
+    "tag": "사업 변동",
+    "reason": "계열사 코스맥스이스트에 1,100억 원 대여(자기자본 대비 18.0%), 2029년까지, 전환사채 상환 지원.",
+    "body": "trial_case/20260901/192820_20260901800717.txt",
+    "note": "코스맥스 같은 날 4건(금전대여·단기차입·채무보증 2건)은 계열사(코스맥스이스트) 전환사채 상환 지원의 한 묶음. 단기차입 1,000억은 대여 재원으로 보이는지 공시 근거로만 확인.",
+    "related_with": [
+     "20260901800710",
+     "20260901800706",
+     "20260901800689"
+    ],
+    "output": "trial_case/20260901/reports/192820_20260901800717_v2.json"
+   },
+   {
+    "rcept_no": "20260901800710",
+    "report_nm": "단기차입금증가결정",
+    "tag": "사업 변동",
+    "reason": "단기차입 1,000억 원 증가(자기자본 대비 16.3%), 관계사 전환사채 상환 자금 지원 목적. 금융기관 차입.",
+    "body": "trial_case/20260901/192820_20260901800710.txt",
+    "note": "",
+    "related_with": [
+     "20260901800717"
+    ],
+    "output": "trial_case/20260901/reports/192820_20260901800710_v2.json"
+   },
+   {
+    "rcept_no": "20260901800706",
+    "report_nm": "타인에대한채무보증결정",
+    "tag": "기타 사항",
+    "reason": "중국 법인 COSMAX CHINA 채무보증 225억 원(CNY 1.1억, 자기자본 대비 3.7%). 2026-10~2027-10.",
+    "body": "trial_case/20260901/192820_20260901800706.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260901/reports/192820_20260901800706_v2.json"
+   },
+   {
+    "rcept_no": "20260901800689",
+    "report_nm": "타인에대한채무보증결정",
+    "tag": "기타 사항",
+    "reason": "미국 법인 COSMAX WEST 채무보증 687억 원(USD 5,000만, 자기자본 대비 11.2%). 기간 미확정(대출 체결일로부터 5년).",
+    "body": "trial_case/20260901/192820_20260901800689.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260901/reports/192820_20260901800689_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "005880",
+  "corp_name": "대한해운",
+  "base_date": "2026-09-01",
+  "filings": [
+   {
+    "rcept_no": "20260901800667",
+    "report_nm": "단일판매ㆍ공급계약체결",
+    "tag": "사업 변동",
+    "reason": "자동차선(PCTC) 1척 장기대선계약 729억 원, 최근 매출 대비 5.71%. 상대 현대글로비스, 약 5년 4개월.",
+    "body": "trial_case/20260901/005880_20260901800667.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260901/reports/005880_20260901800667_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "279570",
+  "corp_name": "케이뱅크",
+  "base_date": "2026-09-01",
+  "filings": [
+   {
+    "rcept_no": "20260901800471",
+    "report_nm": "기타안내사항(안내공시)",
+    "tag": "기타 사항",
+    "reason": "케이뱅크 상장 6개월 보호예수 해제(9/5), 83,775,566주(우리은행 37.4백만 주 등). 물량 출회 가능성.",
+    "body": "trial_case/20260901/279570_20260901800471.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260901/reports/279570_20260901800471_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "000100",
+  "corp_name": "유한양행",
+  "base_date": "2026-09-01",
+  "filings": [
+   {
+    "rcept_no": "20260901800500",
+    "report_nm": "단일판매ㆍ공급계약체결",
+    "tag": "사업 변동",
+    "reason": "API 공급계약 1,311억 원(약 USD 9,542만), 최근 매출 대비 6.0%. 계약 상대 비공개, 계약기간 2028-05까지.",
+    "body": "trial_case/20260901/000100_20260901800500.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260901/reports/000100_20260901800500_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "089860",
+  "corp_name": "롯데렌탈",
+  "base_date": "2026-09-01",
+  "filings": [
+   {
+    "rcept_no": "20260901800431",
+    "report_nm": "대표이사(대표집행임원)변경(안내공시)",
+    "tag": "기타 사항",
+    "reason": "대표이사 최진환→이장섭(現 기획부문장, 최대주주 특수관계인) 교체. 경영진 변경.",
+    "body": "trial_case/20260901/089860_20260901800431.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260901/reports/089860_20260901800431_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "034020",
+  "corp_name": "두산에너빌리티",
+  "base_date": "2026-09-01",
+  "filings": [
+   {
+    "rcept_no": "20260901800387",
+    "report_nm": "단일판매ㆍ공급계약체결",
+    "tag": "사업 변동",
+    "reason": "하동복합발전소 설치조건부 구매 6,659억 원, 최근 매출 대비 3.9%. 상대 한국남부발전, 2027~2029년.",
+    "body": "trial_case/20260901/034020_20260901800387.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260901/reports/034020_20260901800387_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "005380",
+  "corp_name": "현대자동차",
+  "base_date": "2026-09-01",
+  "filings": [
+   {
+    "rcept_no": "20260901800400",
+    "report_nm": "영업(잠정)실적(공정공시)",
+    "tag": "기타 사항",
+    "reason": "8월 글로벌 판매 288,574대, 전년 동월 -14.2%(국내 -41.1%). 월간 실적 중 변동폭 큰 사례.",
+    "body": "trial_case/20260901/005380_20260901800400.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260901/reports/005380_20260901800400_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "047040",
+  "corp_name": "대우건설",
+  "base_date": "2026-09-01",
+  "filings": [
+   {
+    "rcept_no": "20260901800137",
+    "report_nm": "단일판매ㆍ공급계약체결",
+    "tag": "사업 변동",
+    "reason": "천호A1-1구역 공공재개발 3,720억 원, 최근 매출 대비 4.62%. 상대 LH, 착공 후 56개월.",
+    "body": "trial_case/20260901/047040_20260901800137.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260901/reports/047040_20260901800137_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "042660",
+  "corp_name": "한화오션",
+  "base_date": "2026-09-01",
+  "filings": [
+   {
+    "rcept_no": "20260901800108",
+    "report_nm": "단일판매ㆍ공급계약체결",
+    "tag": "사업 변동",
+    "reason": "VLGC 3척 4,778억 원, 최근 매출 대비 3.7%. 오세아니아 선주, 2030-12 인도.",
+    "body": "trial_case/20260901/042660_20260901800108.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260901/reports/042660_20260901800108_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "009150",
+  "corp_name": "삼성전기",
+  "base_date": "2026-09-01",
+  "filings": [
+   {
+    "rcept_no": "20260901800106",
+    "report_nm": "단일판매ㆍ공급계약체결",
+    "tag": "사업 변동",
+    "reason": "MLCC 공급계약 1조 722억 원(USD 7.8억), 최근 매출 대비 9.5%. 2027년 1년간, 상대 비공개(공시유보).",
+    "body": "trial_case/20260901/009150_20260901800106.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260901/reports/009150_20260901800106_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ }
+]
