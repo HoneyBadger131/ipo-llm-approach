@@ -1,0 +1,51 @@
+{
+ "corp_name": "한국앤컴퍼니",
+ "stock_code": "000240",
+ "disclosure_date": "2026-09-04",
+ "disclosure_title": "생산재개(자율공시)",
+ "rcept_no": "20260904800247",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260904800247",
+ "tag": "기타 사항",
+ "sentiment": {"label": "긍정적", "reason": "화재 중단 11일 만에 전 라인 정상 가동"},
+ "headline": "대전공장 배터리 생산 11일 만에 전면 재개",
+ "impact_summary": "화재 불확실성이 해소돼 매출 31% 사업이 정상화됩니다.",
+ "event_type": "생산재개",
+ "keywords": ["대전공장", "화재", "생산재개", "납축전지", "자동차 배터리", "자율공시"],
+ "themes": ["자동차 부품", "배터리"],
+ "related_ids": [],
+ "kpis": [
+  {"label": "해당 분야 매출", "value": "약 4,578억", "sub": "2025 연결 기준"},
+  {"label": "매출 대비", "value": "31.4%", "sub": "최근 매출 약 1.46조"},
+  {"label": "생산 중단 기간", "value": "약 11일", "sub": "8/25~9/4"}
+ ],
+ "financials": {
+  "basis": "연결, 단위 조원",
+  "years": ["2023", "2024", "2025"],
+  "rows": [
+   {"label": "매출", "values": [{"v": 1.09, "d": "1.09"}, {"v": 1.39, "d": "1.39"}, {"v": 1.46, "d": "1.46"}]},
+   {"label": "영업이익", "values": [{"v": 0.26, "d": "0.26"}, {"v": 0.42, "d": "0.42"}, {"v": 0.41, "d": "0.41"}]}
+  ]
+ },
+ "valuation": {
+  "items": [
+   {"label": "PER (최근 12개월)", "value": "5.9배", "sub": "9/4 기준"},
+   {"label": "PBR", "value": "0.45배", "sub": "9/4 기준, 최근 분기"}
+  ],
+  "note": ""
+ },
+ "consensus": null,
+ "points": [
+  {"type": "pos", "text": "화재 후 11일 만에 전체 라인 정상 가동"},
+  {"type": "pos", "text": "매출 31%를 차지하는 사업의 중단 위험 해소"},
+  {"type": "unk", "text": "중단 기간 출하 차질과 화재 피해 규모는 공시에 없음"}
+ ],
+ "news": [
+  {"outlet": "딜사이트", "date": "2026-09-04", "title": "한국앤컴퍼니, 대전공장 배터리 생산 재개", "url": "https://dealsite.co.kr/articles/168468"},
+  {"outlet": "머니투데이", "date": "2026-08-25", "title": "한국앤컴퍼니, 대전공장 화재로 배터리 생산 중단", "url": "https://www.mt.co.kr/industry/2026/08/25/2026082516524359828"}
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP(재무·가치평가·컨센서스), 뉴스 링크.",
+ "brief": "대전공장 배터리 생산 재개, 해당 매출 31%(약 4,578억). 화재 중단 11일 만에 정상화.",
+ "importance": 3,
+ "importance_reason": "매출 31% 사업이나 중단이 11일로 짧아 영향은 제한적입니다.",
+ "importance_score": 62
+}
