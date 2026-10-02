@@ -1,0 +1,88 @@
+{
+ "disclosure_date": "2026-09-07",
+ "disclosure_title": "풍문또는보도에대한해명(미확정)",
+ "tag": "사업 변동",
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3,
+ "corp_name": "한국카본",
+ "stock_code": "017960",
+ "rcept_no": "20260907800338",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "케이조선 인수 거론, 확정 없고 자금 부담"
+ },
+ "headline": "케이조선 매각 보도에 '결정된 사실 없다'",
+ "impact_summary": "케이조선 인수설 해명, 확정 전이나 규모는 큽니다.",
+ "event_type": "풍문 해명(미확정)",
+ "keywords": [
+  "케이조선",
+  "인수설",
+  "풍문 해명",
+  "전략적투자자",
+  "조선",
+  "재공시"
+ ],
+ "themes": [
+  "조선",
+  "M&A"
+ ],
+ "related_ids": [
+  "20260907800332"
+ ],
+ "kpis": [
+  {
+   "label": "해명 내용",
+   "value": "결정된 사실 없음",
+   "sub": "다양한 방안 검토 중"
+  },
+  {
+   "label": "재공시 예정일",
+   "value": "2026-10-06",
+   "sub": "확정 시 또는 1개월 이내"
+  },
+  {
+   "label": "거래 규모(언론 보도)",
+   "value": "최대 약 9,000억",
+   "sub": "증자·회사채 포함, 서울파이낸스"
+  },
+  {
+   "label": "자기자본",
+   "value": "약 5,802억",
+   "sub": "2025 연결"
+  }
+ ],
+ "points": [
+  {
+   "type": "unk",
+   "text": "서울파이낸스가 9/6 '케이조선 매각 재시동, 한국카본이 전략적투자자(SI)로 거론'이라 보도, 회사는 결정된 바 없다고 해명"
+  },
+  {
+   "type": "unk",
+   "text": "회사는 경쟁력 강화를 위해 '다양한 방안'을 검토 중이라고만 밝혀 인수 검토 여부는 부인하지 않음"
+  },
+  {
+   "type": "neg",
+   "text": "보도된 거래 규모 최대 약 9,000억은 자기자본(약 5,802억)보다 커 자금 부담 우려"
+  },
+  {
+   "type": "pos",
+   "text": "2025년 영업이익 약 1,310억, 영업이익률 14%로 실적 기반은 양호"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "서울파이낸스",
+   "date": "2026-09-06",
+   "title": "케이조선 매각 다시 시동…이번엔 '확실한 SI' 찾는다",
+   "url": "https://www.seoulfn.com/news/articleView.html?idxno=637337"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP, 뉴스 링크.",
+ "brief": "케이조선 인수설에 '결정된 사실 없다' 해명. 보도 규모 최대 9,000억으로 자기자본 초과, 10/6 재공시.",
+ "importance": 4,
+ "importance_reason": "확정 전 풍문이나 보도된 거래 규모(최대 약 9,000억)가 자기자본(약 5,802억)을 넘는 신사업 진출 건입니다.",
+ "importance_score": 55,
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260907800338"
+}

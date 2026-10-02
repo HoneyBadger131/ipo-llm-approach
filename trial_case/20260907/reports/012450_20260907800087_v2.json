@@ -1,0 +1,41 @@
+{
+ "report_version": 3,
+ "corp_name": "한화에어로스페이스",
+ "stock_code": "012450",
+ "disclosure_date": "2026-09-07",
+ "disclosure_title": "풍문또는보도에대한해명(미확정)",
+ "rcept_no": "20260907800087",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260907800087",
+ "tag": "사업 변동",
+ "sentiment": {"label": "알수 없음", "reason": "고객과 협의 중, 계약 확정 여부 미정"},
+ "headline": "천무 크로아티아 수출 보도, 협의 중이며 미확정",
+ "impact_summary": "계약은 확정된 바 없고 10월 6일 재공시 예정입니다.",
+ "event_type": "풍문 또는 보도 해명",
+ "keywords": ["천무", "크로아티아", "다연장로켓", "수출", "해명공시", "재공시", "방산"],
+ "themes": ["방산", "무기 수출"],
+ "related_ids": [],
+ "kpis": [
+  {"label": "보도 매체", "value": "매일경제", "sub": "2026.9.5 보도"},
+  {"label": "회사 입장", "value": "협의 중", "sub": "계약 확정된 바 없음"},
+  {"label": "재공시 예정일", "value": "2026.10.6", "sub": "결정 시점 또는 1개월 이내"},
+  {"label": "보도 규모", "value": "약 6,800억", "sub": "언론 보도, 공시에는 없음"}
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {"type": "unk", "text": "크로아티아에 천무 다연장로켓을 공급하는 계약은 고객과 협의 중이며 확정되지 않음"},
+  {"type": "pos", "text": "협의가 진행 중이라 수출 계약이 성사될 여지가 있음"},
+  {"type": "pos", "text": "언론 보도 규모(약 6,800억)가 맞다면 2025년 연결 매출 26.7조의 약 2.5%"},
+  {"type": "neg", "text": "공시된 계약 금액·물량이 없고, 확정 전까지 변동 가능성이 있음"}
+ ],
+ "news": [
+  {"outlet": "파이낸셜뉴스", "date": "2026-09-07", "title": "한화에어로, 크로아티아 '천무' 수출설에 \"확정된 바 없다\"", "url": "https://www.fnnews.com/news/202609071513215284"},
+  {"outlet": "네이트뉴스", "date": "2026-09-04", "title": "한화에어로, 크로아티아에 '천무' 수출 임박…6800억원 규모", "url": "https://m.news.nate.com/view/20260904n22607"}
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP, 뉴스 링크.",
+ "brief": "천무 크로아티아 수출 보도에 협의 중, 확정 없음 해명. 10월 6일 재공시 예정.",
+ "importance": 3,
+ "importance_reason": "미확정 해명이라 기준표(1~5%)의 하단으로 보고, 보도 규모는 매출의 약 2.5%입니다.",
+ "importance_score": 45
+}

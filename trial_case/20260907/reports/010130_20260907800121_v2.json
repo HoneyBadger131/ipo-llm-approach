@@ -1,0 +1,41 @@
+{
+ "report_version": 3,
+ "corp_name": "고려아연",
+ "stock_code": "010130",
+ "disclosure_date": "2026-09-07",
+ "disclosure_title": "소송등의판결ㆍ결정",
+ "rcept_no": "20260907800121",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260907800121",
+ "tag": "기타 사항",
+ "sentiment": {"label": "긍정적", "reason": "경영권 분쟁 가처분 전부 기각, 회사 측 유리"},
+ "headline": "영풍 등 의결권 행사금지 가처분 전부 기각",
+ "impact_summary": "경영권 분쟁에서 현 경영진 측 의결권이 유지됩니다.",
+ "event_type": "소송 판결ㆍ결정",
+ "keywords": ["경영권 분쟁", "의결권행사금지", "가처분", "영풍", "한국기업투자홀딩스", "피23파트너스", "임시주총"],
+ "themes": ["경영권 분쟁", "지배구조"],
+ "related_ids": [],
+ "kpis": [
+  {"label": "결정 내용", "value": "전부 기각", "sub": "소송비용은 신청인 부담"},
+  {"label": "결정일", "value": "2026.9.4", "sub": "회사 확인일 9.7"},
+  {"label": "신청인", "value": "영풍 외 1", "sub": "한국기업투자홀딩스"},
+  {"label": "관할법원", "value": "서울중앙지법", "sub": "사건 2026카합21561"}
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {"type": "pos", "text": "법원이 영풍 측 신청을 모두 기각해 최윤범 회장 측 주주의 의결권 행사가 가능해짐"},
+  {"type": "pos", "text": "법원은 보고서의 차입처 기재가 중요한 사항이라고 단정하기 어렵고, 고의나 중대한 과실로 거짓 기재했다고 보기도 어렵다고 판단"},
+  {"type": "neg", "text": "가처분 단계의 판단일 뿐이며, 본안 소송과 경영권 분쟁은 계속될 수 있음"},
+  {"type": "unk", "text": "언론 보도에 따르면 회사는 9월 9일 임시주주총회를 예정대로 진행할 계획"}
+ ],
+ "news": [
+  {"outlet": "헤럴드경제", "date": "2026-09-07", "title": "法, MBK·영풍 의결권 금지 가처분 신청 전부 기각", "url": "https://biz.heraldcorp.com/article/10865184"},
+  {"outlet": "네이트뉴스", "date": "2026-09-07", "title": "법원, 영풍 측 고려아연 의결권 금지 가처분 기각", "url": "https://news.nate.com/view/20260907n26048"}
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "영풍·한국기업투자홀딩스의 의결권행사금지 가처분 전부 기각. 경영권 분쟁에서 회사 측에 유리하나 분쟁은 지속.",
+ "importance": 4,
+ "importance_reason": "수치 비교 대상은 아니나 임시주총을 앞둔 경영권 분쟁의 향방을 좌우하는 결정입니다.",
+ "importance_score": 72
+}
