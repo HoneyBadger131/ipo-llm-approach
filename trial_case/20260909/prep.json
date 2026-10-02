@@ -1,0 +1,118 @@
+{
+ "date": "2026-09-09",
+ "total": 611,
+ "watchlist_filings": 126,
+ "watchlist_companies": 60,
+ "excluded": 108,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260909000291",
+   "stock_code": "001570",
+   "corp_name": "금양",
+   "report_nm": "[첨부추가]주요사항보고서(회사분할결정)"
+  },
+  {
+   "rcept_no": "20260909000516",
+   "stock_code": "005930",
+   "corp_name": "삼성전자",
+   "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서"
+  },
+  {
+   "rcept_no": "20260909000450",
+   "stock_code": "010130",
+   "corp_name": "고려아연",
+   "report_nm": "독립이사의선임ㆍ해임또는중도퇴임에관한신고"
+  },
+  {
+   "rcept_no": "20260909800559",
+   "stock_code": "000660",
+   "corp_name": "SK하이닉스",
+   "report_nm": "조회공시요구(풍문또는보도)에대한답변(미확정)"
+  },
+  {
+   "rcept_no": "20260909800482",
+   "stock_code": "001570",
+   "corp_name": "금양",
+   "report_nm": "주주명부폐쇄기간또는기준일설정"
+  },
+  {
+   "rcept_no": "20260909800404",
+   "stock_code": "004170",
+   "corp_name": "신세계",
+   "report_nm": "영업(잠정)실적(공정공시)"
+  },
+  {
+   "rcept_no": "20260909000373",
+   "stock_code": "069620",
+   "corp_name": "대웅제약",
+   "report_nm": "독립이사의선임ㆍ해임또는중도퇴임에관한신고"
+  },
+  {
+   "rcept_no": "20260909000349",
+   "stock_code": "030200",
+   "corp_name": "케이티",
+   "report_nm": "주요사항보고서(자기주식취득신탁계약해지결정)"
+  },
+  {
+   "rcept_no": "20260909800221",
+   "stock_code": "000080",
+   "corp_name": "하이트진로",
+   "report_nm": "생산중단(자율공시)"
+  },
+  {
+   "rcept_no": "20260909800206",
+   "stock_code": "036460",
+   "corp_name": "한국가스공사",
+   "report_nm": "영업(잠정)실적(공정공시)"
+  },
+  {
+   "rcept_no": "20260909800178",
+   "stock_code": "006400",
+   "corp_name": "삼성SDI",
+   "report_nm": "금전대여결정"
+  },
+  {
+   "rcept_no": "20260909800135",
+   "stock_code": "088350",
+   "corp_name": "한화생명",
+   "report_nm": "기타경영사항(자율공시)"
+  },
+  {
+   "rcept_no": "20260909800116",
+   "stock_code": "278470",
+   "corp_name": "에이피알",
+   "report_nm": "주주명부폐쇄기간또는기준일설정"
+  },
+  {
+   "rcept_no": "20260909800113",
+   "stock_code": "278470",
+   "corp_name": "에이피알",
+   "report_nm": "회사합병결정(종속회사의주요경영사항)"
+  },
+  {
+   "rcept_no": "20260909000058",
+   "stock_code": "042700",
+   "corp_name": "한미반도체",
+   "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서"
+  },
+  {
+   "rcept_no": "20260909000045",
+   "stock_code": "278470",
+   "corp_name": "에이피알",
+   "report_nm": "주요사항보고서(회사합병결정)"
+  },
+  {
+   "rcept_no": "20260909800091",
+   "stock_code": "047040",
+   "corp_name": "대우건설",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260909800003",
+   "stock_code": "042660",
+   "corp_name": "한화오션",
+   "report_nm": "투자판단관련주요경영사항"
+  }
+ ]
+}

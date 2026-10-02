@@ -9,7 +9,7 @@ find_listed_twin(): 같은 날 전체 공시(allrows)에서 제목이 같고 상
 """
 import re
 
-SUFFIX = re.compile(r"\s*\(자회사의주요경영사항\)\s*$")
+SUFFIX = re.compile(r"\s*\((자|종속)회사의주요경영사항\)\s*$")
 LISTED = {"Y", "K", "N"}  # 유가증권·코스닥·코넥스
 
 
@@ -27,7 +27,7 @@ def base_title(report_nm):
 
 def sub_name(text):
     """본문에서 자회사 이름('자회사인 / X / 의 주요경영사항신고')."""
-    m = re.search(r"자회사인\s*[/\n]*\s*(.+?)\s*[/\n]*\s*의\s*주요경영사항", text or "", re.S)
+    m = re.search(r"(?:자|종속)회사인\s*[/\n]*\s*(.+?)\s*[/\n]*\s*의\s*주요경영사항", text or "", re.S)
     return re.sub(r"\s+", " ", m.group(1)).strip() if m else ""
 
 
