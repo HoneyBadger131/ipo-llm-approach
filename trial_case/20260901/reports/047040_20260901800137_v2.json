@@ -1,0 +1,36 @@
+{
+"corp_name":"대우건설","stock_code":"047040","disclosure_date":"2026-09-01","disclosure_title":"단일판매ㆍ공급계약체결","rcept_no":"20260901800137",
+"dart_url":"https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260901800137","tag":"사업 변동",
+"sentiment":{"label":"긍정적","reason":"매출 4.6%에 해당하는 공공 발주 수주 확정"},
+"headline":"천호A1-1 공공재개발 3,720억 수주 계약",
+"impact_summary":"작년 매출의 4.6%, 착공 후 56개월에 나눠 반영됩니다.",
+"event_type":"단일판매ㆍ공급계약",
+"keywords":["천호A1-1","공공재개발","LH","써밋","747세대","공사수주"],
+"themes":["건설","주택 정비사업"],
+"related_ids":[],
+"kpis":[
+{"label":"계약금액","value":"약 3,720억","sub":"부가세 제외"},
+{"label":"매출 대비","value":"4.62%","sub":"2025 연결 매출 약 8.05조"},
+{"label":"공사기간","value":"착공 후 56개월","sub":"계약일 2026.8.31"},
+{"label":"규모","value":"747세대","sub":"지하5~지상40층 8개동"}],
+"financials":{"basis":"연결, 단위 조원","years":["2023","2024","2025"],"rows":[
+{"label":"매출","values":[{"v":11.6,"d":"11.6"},{"v":10.5,"d":"10.5"},{"v":8.05,"d":"8.1"}]},
+{"label":"영업이익","values":[{"v":0.66,"d":"0.7"},{"v":0.40,"d":"0.4"},{"v":-0.82,"d":"-0.8"}]}]},
+"valuation":{"items":[
+{"label":"PBR (최근 분기)","value":"2.1배","sub":"2026.8.28 스냅샷"},
+{"label":"시가총액","value":"약 8.1조","sub":"보통주, 2026.8.28 스냅샷"}],"note":""},
+"consensus":null,
+"points":[
+{"type":"pos","text":"공공(LH) 상대 계약이라 대금 회수 위험이 낮음"},
+{"type":"pos","text":"공공재개발에 처음 '써밋' 브랜드 적용, 수주 풀 확대"},
+{"type":"neg","text":"2025년 영업적자 약 8,150억, 수주 효과가 실적에 나오려면 시간이 필요"},
+{"type":"unk","text":"분양수입금 내 기성불 방식이라 분양 성과에 따라 현금 유입 시기 변동 가능"}],
+"news":[
+{"outlet":"딜사이트","date":"2026-09-01","title":"대우건설, 3720억 규모 천호동 공공재개발 수주","url":"https://dealsite.co.kr/articles/168209"},
+{"outlet":"하우징헤럴드","date":"2026-09-01","title":"LH·대우건설, 천호A1-1구역 공동사업시행 협약 체결","url":"https://www.housingherald.co.kr/news/articleView.html?idxno=62759"}],
+"sources_note":"출처: DART 공시 원문, OpenProxyMCP(재무·가치평가), 뉴스 링크.",
+"brief":"천호A1-1 공공재개발 3,720억 수주(매출의 4.6%). 56개월에 걸쳐 반영, 수주잔고 보강.",
+"importance":3,
+"importance_reason":"계약금액이 최근 매출의 4.62%로 1~5% 구간의 의미 있는 수주입니다.",
+"importance_score":62
+}

@@ -1,0 +1,153 @@
+{
+ "corp_name": "한화오션",
+ "stock_code": "042660",
+ "disclosure_date": "2026-09-01",
+ "disclosure_title": "단일판매ㆍ공급계약체결",
+ "rcept_no": "20260901800108",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260901800108",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "매출 3.7% 규모 수주로 2030년까지 일감 추가"
+ },
+ "headline": "VLGC 3척 약 4,780억 원 수주",
+ "impact_summary": "매출 3.7% 규모 VLGC 수주로 일감이 늘었습니다.",
+ "event_type": "단일판매ㆍ공급계약",
+ "keywords": [
+  "VLGC",
+  "LPG운반선",
+  "수주",
+  "공사수주",
+  "오세아니아 선주",
+  "2030년 인도"
+ ],
+ "themes": [
+  "조선",
+  "LPG·가스운반선"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "계약금액",
+   "value": "약 4,780억",
+   "sub": "VLGC 3척"
+  },
+  {
+   "label": "매출 대비",
+   "value": "3.7%",
+   "sub": "2025 연결 매출 기준"
+  },
+  {
+   "label": "계약 상대",
+   "value": "오세아니아 선주",
+   "sub": "외부 선주"
+  },
+  {
+   "label": "계약 기간",
+   "value": "~2030.12",
+   "sub": "2026.8.31 체결, 진척도별 수금"
+  }
+ ],
+ "financials": {
+  "basis": "연결, 단위 조원",
+  "years": [
+   "2023",
+   "2024",
+   "2025"
+  ],
+  "rows": [
+   {
+    "label": "매출",
+    "values": [
+     {
+      "v": 7.4,
+      "d": "7.4"
+     },
+     {
+      "v": 10.8,
+      "d": "10.8"
+     },
+     {
+      "v": 12.8,
+      "d": "12.8"
+     }
+    ]
+   },
+   {
+    "label": "영업이익",
+    "values": [
+     {
+      "v": -0.2,
+      "d": "-0.2"
+     },
+     {
+      "v": 0.24,
+      "d": "0.2"
+     },
+     {
+      "v": 1.2,
+      "d": "1.2"
+     }
+    ]
+   }
+  ]
+ },
+ "valuation": {
+  "items": [
+   {
+    "label": "PER (최근 12개월)",
+    "value": "13.1배",
+    "sub": "2026.8.28 스냅샷"
+   },
+   {
+    "label": "PBR",
+    "value": "3.6배",
+    "sub": "최근 분기 기준"
+   },
+   {
+    "label": "시가총액",
+    "value": "약 27.1조",
+    "sub": "보통주, 2026.8.28"
+   }
+  ],
+  "note": ""
+ },
+ "consensus": null,
+ "points": [
+  {
+   "type": "pos",
+   "text": "계약금액은 매출의 3.7%, 2030년 말까지 일감 확보"
+  },
+  {
+   "type": "pos",
+   "text": "2025년 영업이익 1.2조 원, 흑자 전환 후 수주 이어짐"
+  },
+  {
+   "type": "neg",
+   "text": "인도까지 4년 이상 걸려 매출 반영이 늦음"
+  },
+  {
+   "type": "unk",
+   "text": "건조 기간 중 환율·원가 변동은 변수"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "아시아경제",
+   "date": "2026-09-01",
+   "title": "한화오션, VLGC 3척 4778억원에 수주…2030년까지 인도",
+   "url": "https://view.asiae.co.kr/article/2026090115511307885"
+  },
+  {
+   "outlet": "베타뉴스",
+   "date": "2026-09-01",
+   "title": "한화오션, VLGC 3척 수주…올해 수주 59.4억달러",
+   "url": "https://www.betanews.net/article/view/beta202609010088"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP(재무·가치평가·컨센서스), 뉴스 링크.",
+ "brief": "VLGC 3척, 약 4,780억 원(매출 3.7%) 수주. 2030년까지 일감이 늘었으나 영향은 제한적.",
+ "importance": 3,
+ "importance_reason": "계약금액이 최근 매출의 3.7%로 1~5% 구간의 의미 있는 수주입니다.",
+ "importance_score": 55
+}
