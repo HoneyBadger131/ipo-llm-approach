@@ -1,0 +1,80 @@
+{
+ "corp_name": "기업은행",
+ "stock_code": "024110",
+ "disclosure_title": "주요사항보고서(상각형조건부자본증권발행결정)",
+ "rcept_no": "20261002000464",
+ "tag": "기타 사항",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "자본비율 보강, 발행 부담은 제한적"
+ },
+ "headline": "신종자본증권 4,000억 발행 결정(최대 5,000억)",
+ "impact_summary": "BIS비율 보강용 영구채 4,000억, 자기자본 1.1%입니다.",
+ "event_type": "상각형 조건부자본증권 발행",
+ "keywords": [
+  "신종자본증권",
+  "영구채",
+  "기타기본자본",
+  "BIS비율",
+  "상각형",
+  "5년 콜옵션",
+  "공모"
+ ],
+ "themes": [
+  "은행",
+  "자본확충"
+ ],
+ "kpis": [
+  {
+   "label": "발행 예정액",
+   "value": "4,000억",
+   "sub": "이사회 한도 5,000억 이내"
+  },
+  {
+   "label": "자기자본 대비",
+   "value": "1.1%",
+   "sub": "2025 연결 자본 36.9조"
+  },
+  {
+   "label": "중도상환",
+   "value": "5년 후",
+   "sub": "이후 3개월마다 가능"
+  },
+  {
+   "label": "발행 방식",
+   "value": "공모",
+   "sub": "금리·만기·납입일 미정"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "기타기본자본 확충으로 BIS비율 제고, 조달금은 대출·유가증권 운용에 사용"
+  },
+  {
+   "type": "unk",
+   "text": "수요예측에 따라 최종 금액은 5,000억 이내에서 확정"
+  },
+  {
+   "type": "neg",
+   "text": "영구채로 이자 지급이 정지될 수 있고, 부실금융기관 지정 시 전액 상각"
+  },
+  {
+   "type": "unk",
+   "text": "표면금리·청약일·납입일은 미정, 추후 재공시 예정"
+  }
+ ],
+ "news": [],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP.",
+ "brief": "BIS비율 제고용 신종자본증권(영구채) 4,000억 발행 결정, 최대 5,000억. 자기자본의 약 1.1%입니다.",
+ "importance": 3,
+ "importance_reason": "4,000억은 연결 자본총계 대비 약 1.1%로 1~5% 구간의 자본확충입니다.",
+ "importance_score": 45,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3,
+ "disclosure_date": "2026-10-02",
+ "related_ids": [],
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002000464"
+}

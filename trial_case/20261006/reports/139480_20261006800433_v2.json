@@ -1,0 +1,80 @@
+{
+ "corp_name": "이마트",
+ "stock_code": "139480",
+ "disclosure_date": "2026-10-06",
+ "disclosure_title": "타법인주식및출자증권취득결정(종속회사의주요경영사항)",
+ "rcept_no": "20261006800433",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800433",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "대형 미디어 투자, 본업과 거리·수익 구조 불명확"
+ },
+ "headline": "종속회사 STARFIELD, 1.36조 원 미국 미디어 합병 투자",
+ "impact_summary": "PSKY·WBD 합병 신주에 간접 투자, 자산 4.1% 규모입니다.",
+ "event_type": "타법인주식취득",
+ "keywords": [
+  "Starfield Properties",
+  "PSKY",
+  "WBD",
+  "간접투자",
+  "현금취득",
+  "해외투자",
+  "종속회사"
+ ],
+ "themes": [
+  "미디어 M&A",
+  "해외 투자"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "취득금액",
+   "value": "약 1.36조",
+   "sub": "미화 약 10억 달러, 현금"
+  },
+  {
+   "label": "자산총액 대비",
+   "value": "4.06%",
+   "sub": "이마트 연결, 공시 기준"
+  },
+  {
+   "label": "자본총계 대비",
+   "value": "약 9.9%",
+   "sub": "2025 연결 13.7조 기준"
+  },
+  {
+   "label": "취득 후 지분",
+   "value": "100%",
+   "sub": "RB Tentpole Co-Invest (P) Offshore, LP"
+  }
+ ],
+ "points": [
+  {
+   "type": "unk",
+   "text": "비상장 종속회사 STARFIELD PROPERTIES가 투자 펀드(케이맨 LP) 지분 100%를 현금 취득"
+  },
+  {
+   "type": "unk",
+   "text": "펀드는 PSKY(파라마운트 스카이댄스)·WBD 합병 때 발행되는 신주에 간접 투자하는 구조"
+  },
+  {
+   "type": "neg",
+   "text": "투자액이 2025년 영업이익(약 3,225억)의 4배 이상, 이자보상배율 0.63배로 재무 부담"
+  },
+  {
+   "type": "neg",
+   "text": "투자 수익 구조·보유 기간 등 세부는 공시에 없음, 펀드는 9월 25일 신규 설립"
+  }
+ ],
+ "news": [],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP.",
+ "brief": "종속회사가 PSKY·WBD 합병 신주에 1.36조 원 간접투자(자산 4.1%). 본업과 거리 있어 수익성 불확실.",
+ "importance": 4,
+ "importance_reason": "취득금액이 자본총계의 약 9.9%로 5~10% 구간인 대규모 해외 투자입니다.",
+ "importance_score": 68,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3
+}
