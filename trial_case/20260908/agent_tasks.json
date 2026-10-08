@@ -1,0 +1,106 @@
+[
+ {
+  "stock_code": "066970",
+  "corp_name": "엘앤에프",
+  "base_date": "2026-09-08",
+  "filings": [
+   {
+    "rcept_no": "20260908800619",
+    "report_nm": "풍문또는보도에대한해명(미확정)",
+    "tag": "사업 변동",
+    "reason": "녹색경제신문 보도 \"대규모 CB 카드 만지작 엘앤에프\" 관련, LFP 양산 대비 원재료 확보 등을 위해 CB 발행 포함 자금조달을 검토 중이나 확정된 사항은 없다고 해명. 10/7 재공시 예정.",
+    "body": "trial_case/20260908/066970_20260908800619.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260908/reports/066970_20260908800619_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "079160",
+  "corp_name": "CJ CGV",
+  "base_date": "2026-09-08",
+  "filings": [
+   {
+    "rcept_no": "20260908800599",
+    "report_nm": "타인에대한채무보증결정",
+    "tag": "기타 사항",
+    "reason": "홍콩 계열사 CGI Holdings 차입(수출입은행·우리은행 USD 5,575만)에 채무보증 748억 원(자기자본 대비 11.51%), 기존 보증 연장. 보증 총잔액 4,081억 원.",
+    "body": "trial_case/20260908/079160_20260908800599.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260908/reports/079160_20260908800599_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "009830",
+  "corp_name": "한화솔루션",
+  "base_date": "2026-09-08",
+  "filings": [
+   {
+    "rcept_no": "20260908800378",
+    "report_nm": "타법인주식및출자증권처분결정(자율공시)",
+    "tag": "사업 변동",
+    "reason": "한화호텔앤드리조트 지분 2,545,624주(20.5%) 2,998억 원 처분(자기자본 대비 2.43%), 처분 후 지분 28.97%. 양수인과 주가수익스왑(PRS) 계약 체결 예정. 목적은 유동성 확보와 재무구조 개선.",
+    "body": "trial_case/20260908/009830_20260908800378.txt",
+    "note": "공시 본문의 PRS(주가수익스왑) 계약 조건을 읽고 처분의 실질(수익·손실 귀속, 지분 유지 효과)을 공시 근거 범위에서만 정리한다.",
+    "related_with": [
+     "20260908800375"
+    ],
+    "output": "trial_case/20260908/reports/009830_20260908800378_v2.json"
+   },
+   {
+    "rcept_no": "20260908800375",
+    "report_nm": "타인에대한채무보증결정",
+    "tag": "기타 사항",
+    "reason": "미국 자회사 Hanwha Q Cells Americas Holdings의 그린본드(USD 3억) 발행에 대한 채무보증 4,028억 원(자기자본 대비 3.26%), 2029년까지. 보증 총잔액 8.3조 원.",
+    "body": "trial_case/20260908/009830_20260908800375.txt",
+    "note": "",
+    "related_with": [
+     "20260908800378"
+    ],
+    "output": "trial_case/20260908/reports/009830_20260908800375_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "047040",
+  "corp_name": "대우건설",
+  "base_date": "2026-09-08",
+  "filings": [
+   {
+    "rcept_no": "20260908800452",
+    "report_nm": "타인에대한채무보증결정",
+    "tag": "기타 사항",
+    "reason": "오피스텔(그랑르피에드) 수분양자 중도금대출(SBI저축은행 1,000억)에 대우건설 연대보증 1,300억 원(자기자본 대비 3.74%), 2028-12까지. 보증 총잔액 12.2조 원.",
+    "body": "trial_case/20260908/047040_20260908800452.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260908/reports/047040_20260908800452_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "011200",
+  "corp_name": "HMM",
+  "base_date": "2026-09-08",
+  "filings": [
+   {
+    "rcept_no": "20260908800128",
+    "report_nm": "단일판매ㆍ공급계약체결",
+    "tag": "사업 변동",
+    "reason": "Vale와 장기화물운송계약 4조 6,972억 원, 최근 매출 대비 43.13%. 2030-04~2056-10, 최대 5년 연장 옵션. 7/9·8/7 풍문 해명 공시의 확정공시.",
+    "body": "trial_case/20260908/011200_20260908800128.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260908/reports/011200_20260908800128_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ }
+]

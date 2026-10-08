@@ -1,0 +1,92 @@
+{
+ "corp_name": "대우건설",
+ "disclosure_title": "단일판매ㆍ공급계약체결",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "매출 5%대 재개발 공사 본계약 확정"
+ },
+ "headline": "상계2구역 재개발 4,134억 원 공사 계약",
+ "impact_summary": "최근 매출의 5.1%, 2,200세대 재개발 수주입니다.",
+ "event_type": "단일판매ㆍ공급계약(공사수주)",
+ "keywords": [
+  "상계2구역",
+  "주택재개발",
+  "공사수주",
+  "2,200세대",
+  "지분 60%",
+  "노원구"
+ ],
+ "themes": [
+  "건설",
+  "주택 재개발"
+ ],
+ "kpis": [
+  {
+   "label": "계약금액",
+   "value": "약 4,134억",
+   "sub": "총 6,890억 중 당사 60%, 부가세 제외"
+  },
+  {
+   "label": "매출 대비",
+   "value": "5.13%",
+   "sub": "2025 연결 기준"
+  },
+  {
+   "label": "규모",
+   "value": "2,200세대",
+   "sub": "지하8~지상25층, 22개동"
+  },
+  {
+   "label": "공사기간",
+   "value": "착공 후 42개월",
+   "sub": "대금은 분양수입금 내 기성불"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "총 공사비 6,890억 원 중 60%인 약 4,134억 원 확보"
+  },
+  {
+   "type": "pos",
+   "text": "2021년 시공사 선정 후 본계약 체결로 수주 확정"
+  },
+  {
+   "type": "neg",
+   "text": "대금은 분양수입금 내 기성 지급, 계약금·선급금 없음"
+  },
+  {
+   "type": "unk",
+   "text": "계약금액·기간은 도급계약 조건에 따라 변동 가능, 나머지 40%는 동부건설(언론 보도)"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "아시아투데이",
+   "date": "2026-09-09",
+   "title": "대우건설, 4134억 규모 상계2구역 주택재개발 공사 수주",
+   "url": "https://www.asiatoday.co.kr/kn/view.php?key=20260909010003553"
+  },
+  {
+   "outlet": "네이트뉴스",
+   "date": "2026-09-09",
+   "title": "대우건설, 상계2구역 재개발 4134억원 수주…2200가구 조성",
+   "url": "https://m.news.nate.com/view/20260909n32041"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "상계2구역 재개발 공사 4,134억 원(매출 5.1%) 본계약. 2,200세대, 착공 후 42개월 공사.",
+ "importance": 4,
+ "importance_reason": "최근 매출 대비 5.13%로 5~10% 구간의 대형 공사 계약입니다.",
+ "importance_score": 58,
+ "stock_code": "047040",
+ "disclosure_date": "2026-09-09",
+ "rcept_no": "20260909800091",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260909800091",
+ "related_ids": [],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3
+}

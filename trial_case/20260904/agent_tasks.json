@@ -1,0 +1,146 @@
+[
+ {
+  "stock_code": "361610",
+  "corp_name": "SK아이이테크놀로지",
+  "base_date": "2026-09-04",
+  "filings": [
+   {
+    "rcept_no": "20260904100017",
+    "report_nm": "정정명령부과( 2026.08.26. 제출 주요사항보고서(회사합병 결정) )",
+    "tag": "사업 변동",
+    "reason": "금융위가 SK아이이테크놀로지의 합병 주요사항보고서(8/26 제출)에 정정명령 부과. 합병 일정 지연 가능성. 본문 없음(DART 본문 조회 실패).",
+    "body": "trial_case/20260904/361610_20260904100017.txt",
+    "note": "본문 txt가 비어 있다. 8/26 제출된 회사합병 결정 주요사항보고서(SK이노베이션–SK아이이테크놀로지)와 정정 사유는 DART 원문(dart_body.fetch_body_text)·MCP(corporate_restructuring, filing_section)로 확인하되 확인된 것만 쓴다. 정정명령 사유는 공시에 없으면 \"미확인\".",
+    "related_with": [
+     "20260904100016"
+    ],
+    "output": "trial_case/20260904/reports/361610_20260904100017_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "096770",
+  "corp_name": "SK이노베이션",
+  "base_date": "2026-09-04",
+  "filings": [
+   {
+    "rcept_no": "20260904100016",
+    "report_nm": "정정신고서제출요구( 2026.08.26. 제출 증권신고서(합병) )",
+    "tag": "사업 변동",
+    "reason": "금융위가 SK이노베이션의 합병 증권신고서(8/26 제출)에 정정신고서 제출 요구. 합병 일정 지연 가능성. 본문 없음.",
+    "body": "trial_case/20260904/096770_20260904100016.txt",
+    "note": "본문 txt가 비어 있다. 8/26 제출 합병 증권신고서·합병 결정 공시와 정정 요구 사유는 DART 원문·MCP(corporate_restructuring, filing_section)로 확인하되 확인된 것만 쓴다. 합병 조건은 합병 결정 공시 기준 사실만.",
+    "related_with": [
+     "20260904100017"
+    ],
+    "output": "trial_case/20260904/reports/096770_20260904100016_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "298050",
+  "corp_name": "HS효성첨단소재",
+  "base_date": "2026-09-04",
+  "filings": [
+   {
+    "rcept_no": "20260904800679",
+    "report_nm": "타인에대한채무보증결정",
+    "tag": "기타 사항",
+    "reason": "인도 법인 HS Hyosung India 시설대 약정에 채무보증 326억 원(USD 2,400만, 자기자본 대비 3.95%). 2026-09~2029-09. 보증 총잔액 1.6조 원.",
+    "body": "trial_case/20260904/298050_20260904800679.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260904/reports/298050_20260904800679_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "069620",
+  "corp_name": "대웅제약",
+  "base_date": "2026-09-04",
+  "filings": [
+   {
+    "rcept_no": "20260904800640",
+    "report_nm": "타인에대한채무보증결정",
+    "tag": "기타 사항",
+    "reason": "인도네시아 법인 PT Daewoong에 EUR 4,500만(711억 원, 자기자본 대비 6.27%) 채무보증, 2036-09까지. 보증 총잔액 1,451억 원.",
+    "body": "trial_case/20260904/069620_20260904800640.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260904/reports/069620_20260904800640_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "006400",
+  "corp_name": "삼성SDI",
+  "base_date": "2026-09-04",
+  "filings": [
+   {
+    "rcept_no": "20260904800542",
+    "report_nm": "타인에대한담보제공결정",
+    "tag": "기타 사항",
+    "reason": "미국 합작법인 StarPlus Energy 차입(미 에너지부 대출)금 변경에 따라 지분 51% 담보제공: 담보설정 1조 1,489억 원(자기자본 4.87%), 차입금 USD 75.4억→41.3억으로 감소. 2024-12 기존 공시 변경.",
+    "body": "trial_case/20260904/006400_20260904800542.txt",
+    "note": "",
+    "related_with": [
+     "20260904800510"
+    ],
+    "output": "trial_case/20260904/reports/006400_20260904800542_v2.json"
+   },
+   {
+    "rcept_no": "20260904800510",
+    "report_nm": "타인에대한채무보증결정",
+    "tag": "기타 사항",
+    "reason": "StarPlus Energy 미 에너지부 대출 차입금 USD 75.4억→41.3억 변경에 따라 채무보증 USD 38.5억→21.1억(2조 8,651억 원, 자기자본 12.16%)으로 변경, 보증 총잔액 3.96조 원. 2024-12 기존 공시 변경.",
+    "body": "trial_case/20260904/006400_20260904800510.txt",
+    "note": "",
+    "related_with": [
+     "20260904800542"
+    ],
+    "output": "trial_case/20260904/reports/006400_20260904800510_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "011790",
+  "corp_name": "SKC",
+  "base_date": "2026-09-04",
+  "filings": [
+   {
+    "rcept_no": "20260904800462",
+    "report_nm": "타법인주식및출자증권취득결정",
+    "tag": "사업 변동",
+    "reason": "미국 자회사 Absolics(반도체 글라스기판)에 현금출자 2,810억 원(자기자본 대비 8.76%), 지분 70.05%. 취득예정일 11/24.",
+    "body": "trial_case/20260904/011790_20260904800462.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260904/reports/011790_20260904800462_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "000240",
+  "corp_name": "한국앤컴퍼니",
+  "base_date": "2026-09-04",
+  "filings": [
+   {
+    "rcept_no": "20260904800247",
+    "report_nm": "생산재개(자율공시)",
+    "tag": "기타 사항",
+    "reason": "대전공장 화재 후 납축전지 전체 라인 생산 재개(8/25~9/4 중단). 해당 분야 매출 4,578억, 최근 매출 대비 31.41%.",
+    "body": "trial_case/20260904/000240_20260904800247.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260904/reports/000240_20260904800247_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ }
+]

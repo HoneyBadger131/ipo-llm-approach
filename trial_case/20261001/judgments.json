@@ -1,0 +1,285 @@
+[
+ {
+  "rcept_no": "20261001800412",
+  "stock_code": "005380",
+  "corp_name": "현대자동차",
+  "report_nm": "영업(잠정)실적(공정공시)",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   2
+  ],
+  "reason": "9월 글로벌 판매 307,998대, 전년 동월 대비 -16.0%(국내 -25.7%). 월간 실적 중 변동폭이 큰 사례."
+ },
+ {
+  "rcept_no": "20261001800054",
+  "stock_code": "003160",
+  "corp_name": "디아이",
+  "report_nm": "단일판매ㆍ공급계약체결(자율공시)",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   1
+  ],
+  "reason": "삼성전자 반도체 검사장비 공급 약 153억 원, 매출 대비 3.5%."
+ },
+ {
+  "rcept_no": "20261001800028",
+  "stock_code": "005880",
+  "corp_name": "대한해운",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   1
+  ],
+  "reason": "포스코플로우 장기화물운송 약 719억 원, 매출 대비 5.63%."
+ },
+ {
+  "rcept_no": "20261001800378",
+  "stock_code": "028670",
+  "corp_name": "팬오션",
+  "report_nm": "단일판매ㆍ공급계약체결(자율공시)",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   1
+  ],
+  "reason": "포스코플로우 장기화물운송 약 958억 원, 매출 대비 1.8%."
+ },
+ {
+  "rcept_no": "20261001000370",
+  "stock_code": "006110",
+  "corp_name": "삼아알미늄",
+  "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   1
+  ],
+  "reason": "10% 이상 주주(도요알미늄) 보유주식 750,000주(약 5%) 처분 계획, 약 458억 원."
+ },
+ {
+  "rcept_no": "20261001800079",
+  "stock_code": "010120",
+  "corp_name": "엘에스일렉트릭",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   1
+  ],
+  "reason": "북미 하이퍼스케일 데이터센터 초고압 변압기 약 1,812억 원, 매출 대비 3.65%."
+ },
+ {
+  "rcept_no": "20261001800667",
+  "stock_code": "0126Z0",
+  "corp_name": "삼성에피스홀딩스",
+  "report_nm": "투자판단관련주요경영사항(자회사의 주요경영사항)              (중증 호산구 천식 치료제 SB41(Fasenra 바이오시밀러) 및 유전성 재발열 증후군 치료제 SB44(Ilaris 바이오시밀러) 파트너십 계약 체결)",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   2
+  ],
+  "reason": "삼성바이오에피스의 Teva 파트너십(SB41·SB44 바이오시밀러). 금액 비공개, 미국·유럽·캐나다 판매 협력."
+ },
+ {
+  "rcept_no": "20261001800355",
+  "stock_code": "032350",
+  "corp_name": "롯데관광개발",
+  "report_nm": "연결재무제표기준영업(잠정)실적(공정공시)",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   2
+  ],
+  "reason": "9월 카지노 매출 전년 동월 대비 -45.1%, 전월 대비 -37.7%. 월간 실적 중 변동폭이 큰 사례."
+ },
+ {
+  "rcept_no": "20261001800034",
+  "stock_code": "034020",
+  "corp_name": "두산에너빌리티",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   1
+  ],
+  "reason": "베트남 오몬 III 복합화력 EPC 약 8,380억 원, 매출 대비 4.91%."
+ },
+ {
+  "rcept_no": "20261001000180",
+  "stock_code": "161890",
+  "corp_name": "한국콜마",
+  "report_nm": "특수관계인에대한영업양도",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   1,
+   2
+  ],
+  "reason": "치약사업 부문 계열사(콜마오랄스) 양도 약 141억 원. 화장품 집중 전략."
+ },
+ {
+  "rcept_no": "20261001800185",
+  "stock_code": "161890",
+  "corp_name": "한국콜마",
+  "report_nm": "타인에대한채무보증결정",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   1
+  ],
+  "reason": "미국 자회사 채무보증 약 678억 원, 자기자본 대비 4.1%."
+ },
+ {
+  "rcept_no": "20261001800318",
+  "stock_code": "207940",
+  "corp_name": "삼성바이오로직스",
+  "report_nm": "유상증자신주발행가액(안내공시)",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   1,
+   2
+  ],
+  "reason": "유상증자 1차 발행가액 1,174,000원 안내(확정은 11/5). 증자 진행의 핵심 가격 정보."
+ },
+ {
+  "rcept_no": "20261001800325",
+  "stock_code": "000270",
+  "corp_name": "기아",
+  "report_nm": "영업(잠정)실적(공정공시)",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "9월 글로벌 판매 281,984대(+5.1%). 정례 월간 실적, 특이 변동 없음."
+ },
+ {
+  "rcept_no": "20261001800084",
+  "stock_code": "006260",
+  "corp_name": "LS",
+  "report_nm": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "자회사 엘에스일렉트릭 공시와 동일 건(중복)."
+ },
+ {
+  "rcept_no": "20261001800285",
+  "stock_code": "010950",
+  "corp_name": "S-Oil",
+  "report_nm": "최대주주변경",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "Aramco 계열 간 지분 이전. 지분율 변동 없음.",
+  "borderline": true
+ },
+ {
+  "rcept_no": "20261001800104",
+  "stock_code": "017960",
+  "corp_name": "한국카본",
+  "report_nm": "현금ㆍ현물배당결정",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "분기배당 약 52억 원(시가배당률 0.5%). 정례 배당.",
+  "borderline": true
+ },
+ {
+  "rcept_no": "20261001700434",
+  "stock_code": "018670",
+  "corp_name": "SK가스",
+  "report_nm": "사채권자집회소집",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "합병 관련 사채권자집회 소집(절차). 합병 자체는 8/26 공시.",
+  "borderline": true
+ },
+ {
+  "rcept_no": "20261001800051",
+  "stock_code": "034220",
+  "corp_name": "LG디스플레이",
+  "report_nm": "결산실적공시예고(안내공시)",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "결산실적 공시 예고(안내)."
+ },
+ {
+  "rcept_no": "20261001800649",
+  "stock_code": "064350",
+  "corp_name": "현대로템",
+  "report_nm": "결산실적공시예고(안내공시)",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "결산실적 공시 예고(안내)."
+ },
+ {
+  "rcept_no": "20261001800467",
+  "stock_code": "081660",
+  "corp_name": "미스토홀딩스",
+  "report_nm": "현금ㆍ현물배당결정",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "분기배당 약 502억 원(시가배당률 2.53%). 정례 배당.",
+  "borderline": true
+ },
+ {
+  "rcept_no": "20261001800456",
+  "stock_code": "081660",
+  "corp_name": "미스토홀딩스",
+  "report_nm": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "분기배당 권리주주 기준일 설정(정례)."
+ },
+ {
+  "rcept_no": "20261001000559",
+  "stock_code": "181710",
+  "corp_name": "NHN",
+  "report_nm": "합병등종료보고서(합병)",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "100% 자회사 소규모합병 종료보고. 신주 없음, 지분 변동 없음."
+ },
+ {
+  "rcept_no": "20261001800379",
+  "stock_code": "395400",
+  "corp_name": "SK리츠",
+  "report_nm": "부동산투자회사자금차입",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "전자단기사채 차환 차입 850억 원(자기자본 4.16%). 정례 차환.",
+  "borderline": true
+ }
+]

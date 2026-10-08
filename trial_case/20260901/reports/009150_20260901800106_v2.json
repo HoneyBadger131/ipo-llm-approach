@@ -1,0 +1,54 @@
+{
+ "corp_name": "삼성전기",
+ "stock_code": "009150",
+ "disclosure_date": "2026-09-01",
+ "disclosure_title": "단일판매ㆍ공급계약체결",
+ "rcept_no": "20260901800106",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260901800106",
+ "tag": "사업 변동",
+ "sentiment": {"label": "긍정적", "reason": "역대급 MLCC 대형 계약, 상대는 비공개"},
+ "headline": "글로벌 대형기업에 MLCC 1.07조 원 공급",
+ "impact_summary": "매출 9.5% 규모 MLCC 1년 공급 확정, 상대는 미공개.",
+ "event_type": "단일판매ㆍ공급계약",
+ "keywords": ["MLCC", "공급계약", "AI서버", "공시유보", "2027년 납품", "USD 계약"],
+ "themes": ["MLCC", "AI 서버 부품"],
+ "related_ids": [],
+ "kpis": [
+  {"label": "계약금액", "value": "약 1.07조", "sub": "USD 7.8억, 환율 1,376.5원"},
+  {"label": "매출 대비", "value": "9.5%", "sub": "2025 연결 매출 약 11.3조"},
+  {"label": "계약기간", "value": "2027년 1년", "sub": "2027.1.1~12.31"},
+  {"label": "영업이익 대비", "value": "약 117%", "sub": "2025 영업이익 약 9,100억"}
+ ],
+ "financials": {
+  "basis": "연결, 단위 조원",
+  "years": ["2023", "2024", "2025"],
+  "rows": [
+   {"label": "매출", "values": [{"v": 8.9, "d": "8.9"}, {"v": 10.3, "d": "10.3"}, {"v": 11.3, "d": "11.3"}]},
+   {"label": "영업이익", "values": [{"v": 0.64, "d": "0.64"}, {"v": 0.74, "d": "0.74"}, {"v": 0.91, "d": "0.91"}]}
+  ]
+ },
+ "valuation": {
+  "items": [
+   {"label": "PER (최근 12개월)", "value": "약 105배", "sub": "2026.8.28 기준"},
+   {"label": "PBR", "value": "약 10.4배", "sub": "최근 분기 기준, 2026.8.28"}
+  ],
+  "note": ""
+ },
+ "consensus": null,
+ "points": [
+  {"type": "pos", "text": "연 매출의 9.5%에 해당하는 대형 계약 확보"},
+  {"type": "pos", "text": "2027년 물량을 미리 확정해 실적 가시성 개선"},
+  {"type": "neg", "text": "선급금 없고 변동·해지 가능성을 공시에서 경고"},
+  {"type": "unk", "text": "계약 상대·세부 조건은 2027년 말 이후 공개"}
+ ],
+ "news": [
+  {"outlet": "한국경제", "date": "2026-09-01", "title": "삼성전기, 글로벌 대형기업에 1조722억 규모 MLCC 공급 계약", "url": "https://www.hankyung.com/article/2026090157997"},
+  {"outlet": "아시아경제", "date": "2026-09-01", "title": "삼성전기, 글로벌 대형사와 1조원 규모 MLCC 공급 계약", "url": "https://view.asiae.co.kr/article/2026090113424425474"},
+  {"outlet": "글로벌이코노믹", "date": "2026-09-01", "title": "삼성전기, 글로벌 대형기업과 1조722억원 MLCC 공급계약", "url": "https://www.g-enews.com/article/Securities/2026/09/20260901100523486044093b5d4e_1"}
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP(재무·가치평가·컨센서스), 뉴스 링크.",
+ "brief": "MLCC 1.07조 원 1년 공급계약, 매출 9.5%. 2027년 매출 가시성을 높이는 호재.",
+ "importance": 4,
+ "importance_reason": "최근 매출의 9.5%에 해당하는 대형 공급계약이다.",
+ "importance_score": 82
+}

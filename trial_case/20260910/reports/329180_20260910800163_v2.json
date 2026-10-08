@@ -1,0 +1,88 @@
+{
+ "corp_name": "HD현대중공업",
+ "stock_code": "329180",
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "disclosure_title": "신규시설투자등(자율공시)",
+ "rcept_no": "20260910800163",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "신사업 진입은 긍정, 수주 근거는 미확인"
+ },
+ "headline": "SMR 주기기 전용 공장에 약 2,400억 투자",
+ "impact_summary": "SMR 제작 공장 구축, 자기자본 2.6% 규모입니다.",
+ "event_type": "신규시설투자",
+ "keywords": [
+  "SMR",
+  "주기기",
+  "전용 공장",
+  "설비 투자",
+  "울산조선소",
+  "신사업"
+ ],
+ "themes": [
+  "SMR",
+  "원전 기자재"
+ ],
+ "related_ids": [
+  "20260910800161"
+ ],
+ "kpis": [
+  {
+   "label": "투자금액",
+   "value": "약 2,390억",
+   "sub": "2,386억 원"
+  },
+  {
+   "label": "자기자본 대비",
+   "value": "2.55%",
+   "sub": "공시 기준, 2025 연결"
+  },
+  {
+   "label": "투자기간",
+   "value": "2026.10~2029.4",
+   "sub": "착공예정일 기준"
+  },
+  {
+   "label": "이사회 결의",
+   "value": "2026.9.10",
+   "sub": "사외이사 3명 참석"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "SMR 주기기 제작사업 진입을 위한 전용 공장·설비 구축"
+  },
+  {
+   "type": "pos",
+   "text": "자기자본의 2.55%로 재무 부담은 크지 않음"
+  },
+  {
+   "type": "unk",
+   "text": "공시에 'SMR 수주 물량 증가 대응'이라 적었으나 구체 수주는 미확인"
+  },
+  {
+   "type": "unk",
+   "text": "같은 날 발전엔진 공장에 8,336억 원 추가 투자 공시(언론 보도 합산 약 1조 원)"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "서울신문",
+   "date": "2026-09-10",
+   "title": "HD현대중, 1조 투자해 발전엔진·SMR 전용 공장 짓는다",
+   "url": "https://www.seoul.co.kr/news/economy/industry/2026/09/10/20260910500309"
+  }
+ ],
+ "brief": "SMR 주기기 전용 공장에 2,386억 원 투자(자기자본 2.6%). 신사업 진입, 수주 가시화는 미확인.",
+ "importance": 3,
+ "importance_reason": "자기자본 대비 2.55%로 1~5% 구간이나 SMR 신사업 진입 투자입니다.",
+ "importance_score": 68,
+ "report_version": 3,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800163",
+ "disclosure_date": "2026-09-10",
+ "tag": "사업 변동"
+}

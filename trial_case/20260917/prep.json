@@ -1,0 +1,186 @@
+{
+ "date": "2026-09-17",
+ "total": 493,
+ "watchlist_filings": 86,
+ "watchlist_companies": 39,
+ "excluded": 63,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260917800658",
+   "stock_code": "066970",
+   "corp_name": "엘앤에프",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260917800656",
+   "stock_code": "011170",
+   "corp_name": "롯데케미칼",
+   "report_nm": "타법인주식및출자증권취득결정"
+  },
+  {
+   "rcept_no": "20260917800646",
+   "stock_code": "375500",
+   "corp_name": "DL이앤씨",
+   "report_nm": "중대재해발생(종속회사의주요경영사항)"
+  },
+  {
+   "rcept_no": "20260917800618",
+   "stock_code": "034020",
+   "corp_name": "두산에너빌리티",
+   "report_nm": "풍문또는보도에대한해명"
+  },
+  {
+   "rcept_no": "20260917800578",
+   "stock_code": "011170",
+   "corp_name": "롯데케미칼",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260917000308",
+   "stock_code": "011170",
+   "corp_name": "롯데케미칼",
+   "report_nm": "특수관계인에대한출자"
+  },
+  {
+   "rcept_no": "20260917800493",
+   "stock_code": "006800",
+   "corp_name": "미래에셋증권",
+   "report_nm": "풍문또는보도에대한해명"
+  },
+  {
+   "rcept_no": "20260917800428",
+   "stock_code": "272210",
+   "corp_name": "한화시스템",
+   "report_nm": "조회공시요구(풍문또는보도)에대한답변(미확정)"
+  },
+  {
+   "rcept_no": "20260917800420",
+   "stock_code": "079160",
+   "corp_name": "CJ CGV",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260917800408",
+   "stock_code": "079160",
+   "corp_name": "CJ CGV",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260917800398",
+   "stock_code": "009540",
+   "corp_name": "HD한국조선해양",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260917000235",
+   "stock_code": "120110",
+   "corp_name": "코오롱인더",
+   "report_nm": "주요사항보고서(자본으로인정되는채무증권발행결정)"
+  },
+  {
+   "rcept_no": "20260917800315",
+   "stock_code": "035420",
+   "corp_name": "NAVER",
+   "report_nm": "풍문또는보도에대한해명"
+  },
+  {
+   "rcept_no": "20260917800260",
+   "stock_code": "000150",
+   "corp_name": "두산",
+   "report_nm": "투자판단관련주요경영사항              (채무보증 제공의 건)"
+  },
+  {
+   "rcept_no": "20260917800240",
+   "stock_code": "000150",
+   "corp_name": "두산",
+   "report_nm": "투자판단관련주요경영사항              (증설 투자의 건)"
+  },
+  {
+   "rcept_no": "20260917800227",
+   "stock_code": "326030",
+   "corp_name": "에스케이바이오팜",
+   "report_nm": "투자판단관련주요경영사항"
+  },
+  {
+   "rcept_no": "20260917000136",
+   "stock_code": "002380",
+   "corp_name": "케이씨씨",
+   "report_nm": "특수관계인에대한자산양도"
+  },
+  {
+   "rcept_no": "20260917000118",
+   "stock_code": "000150",
+   "corp_name": "두산",
+   "report_nm": "특수관계인에대한담보제공"
+  },
+  {
+   "rcept_no": "20260917800184",
+   "stock_code": "272210",
+   "corp_name": "한화시스템",
+   "report_nm": "조회공시요구(풍문또는보도)"
+  },
+  {
+   "rcept_no": "20260917800163",
+   "stock_code": "000150",
+   "corp_name": "두산",
+   "report_nm": "주식소각결정"
+  },
+  {
+   "rcept_no": "20260917800165",
+   "stock_code": "000150",
+   "corp_name": "두산",
+   "report_nm": "매매거래정지및정지해제(중요내용공시)"
+  },
+  {
+   "rcept_no": "20260917800057",
+   "stock_code": "047040",
+   "corp_name": "대우건설",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260917800001",
+   "stock_code": "010130",
+   "corp_name": "고려아연",
+   "report_nm": "중대재해발생"
+  }
+ ],
+ "subsidiary_dup": [
+  {
+   "rcept_no": "20260917800659",
+   "stock_code": "004990",
+   "corp_name": "롯데지주",
+   "report_nm": "타법인주식및출자증권취득결정(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260917800656",
+   "twin_corp": "롯데케미칼",
+   "sub_name": "롯데케미칼(주)"
+  },
+  {
+   "rcept_no": "20260917800579",
+   "stock_code": "004990",
+   "corp_name": "롯데지주",
+   "report_nm": "타인에대한채무보증결정(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260917800578",
+   "twin_corp": "롯데케미칼",
+   "sub_name": "롯데케미칼(주)"
+  },
+  {
+   "rcept_no": "20260917800421",
+   "stock_code": "001040",
+   "corp_name": "CJ",
+   "report_nm": "타인에대한채무보증결정(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260917800420",
+   "twin_corp": "CJ CGV",
+   "sub_name": "씨제이씨지브이(주)"
+  },
+  {
+   "rcept_no": "20260917800409",
+   "stock_code": "001040",
+   "corp_name": "CJ",
+   "report_nm": "타인에대한채무보증결정(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260917800420",
+   "twin_corp": "CJ CGV",
+   "sub_name": "씨제이씨지브이(주)"
+  }
+ ]
+}

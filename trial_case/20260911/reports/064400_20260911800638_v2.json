@@ -1,0 +1,93 @@
+{
+ "report_version": 3,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "corp_name": "LG씨엔에스",
+ "stock_code": "064400",
+ "disclosure_date": "2026-09-11",
+ "disclosure_title": "유형자산취득결정",
+ "rcept_no": "20260911800638",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "AI 인프라 사업 확장 투자, 부담은 자산의 7%"
+ },
+ "headline": "AI Factory용 GPU 설비 3,814억 취득",
+ "impact_summary": "엔비디아 신형 GPU 확보, 자산총액 7.2% 규모입니다.",
+ "event_type": "유형자산취득",
+ "keywords": [
+  "AI Factory",
+  "GPU",
+  "베라 루빈",
+  "엔비디아",
+  "한국HPE",
+  "유형자산",
+  "AI 인프라"
+ ],
+ "themes": [
+  "AI 인프라",
+  "데이터센터"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "취득가액",
+   "value": "약 3,814억",
+   "sub": "GPU 및 인프라 설비"
+  },
+  {
+   "label": "자산총액 대비",
+   "value": "7.2%",
+   "sub": "2025 연결 기준"
+  },
+  {
+   "label": "취득예정일",
+   "value": "2027-06-30",
+   "sub": "세부사항 변경 가능"
+  },
+  {
+   "label": "거래상대",
+   "value": "한국HPE 등",
+   "sub": "한국휴렛팩커드 유한회사 등"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "엔비디아 베라 루빈 등 신형 GPU를 확보해 AI Factory 구축 본격화"
+  },
+  {
+   "type": "pos",
+   "text": "언론 보도: 자체 GPU 구독 서비스 XPUWorks에 적용, 그룹 계열사를 첫 고객으로 확보 후 외부 확대 계획"
+  },
+  {
+   "type": "neg",
+   "text": "자산총액의 7.2%를 단일 설비에 투입, 가동·수요 확보 전까지 투자 부담"
+  },
+  {
+   "type": "unk",
+   "text": "취득은 2027년 6월 말 예정이며 거래상대방과 협의에 따라 가액·일정이 바뀔 수 있음"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "네이트뉴스",
+   "date": "2026-09-11",
+   "title": "LG CNS, 엔비디아 '베라 루빈' 확보에 3814억원 투입",
+   "url": "https://m.news.nate.com/view/20260911n28256"
+  },
+  {
+   "outlet": "데이터투자",
+   "date": "2026-09-11",
+   "title": "LG씨엔에스, AI 팩토리 구축에 3814억원 투자해 GPU 설비 취득",
+   "url": "https://www.datatooza.com/article/20260911172340584952ef3f1eb6_80"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "AI Factory용 GPU 설비 3,814억 원 취득(자산 7.2%). AI 인프라 사업 확대, 투자 부담도 큼.",
+ "importance": 4,
+ "importance_reason": "자산총액 대비 7.2%로 5~10% 구간인 대형 설비 투자이며 신사업 성격입니다.",
+ "importance_score": 70,
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800638"
+}

@@ -1,0 +1,39 @@
+{
+ "report_version": 3,
+ "corp_name": "CJ제일제당",
+ "stock_code": "097950",
+ "disclosure_date": "2026-10-02",
+ "disclosure_title": "투자판단관련주요경영사항",
+ "rcept_no": "20261002800947",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002800947",
+ "tag": "사업 변동",
+ "sentiment": {"label": "혼재됨", "reason": "원가 경쟁력 기대, 지분 37% 양보와 금액 미확인"},
+ "headline": "ADM과 사료용 아미노산 합작법인 설립 계약",
+ "impact_summary": "미국 ADM과 사료용 아미노산 합작, 지분 63:37입니다.",
+ "event_type": "합작법인 설립",
+ "keywords": ["ADM", "합작법인", "사료용 아미노산", "CJ Bio America", "현물출자", "원재료 조달", "라이신"],
+ "themes": ["바이오", "사료용 아미노산"],
+ "related_ids": [],
+ "kpis": [
+  {"label": "합작 지분", "value": "63 : 37", "sub": "CJ Bio America : ADM"},
+  {"label": "출자 대상", "value": "미·멕시코·브라질", "sub": "사료용 아미노산 영업 일체 현물출자"},
+  {"label": "계약 체결일", "value": "2026-10-02", "sub": "출자계약(CA), 인허가 후 설립"}
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {"type": "pos", "text": "ADM과 협업으로 사료용 아미노산 경쟁력 강화, 원재료 안정 조달 추진"},
+  {"type": "pos", "text": "CJ 쪽이 63%로 과반 유지(언론 보도: 미국 아이오와·브라질 공장에 ADM 일리노이 공장 합류)"},
+  {"type": "neg", "text": "합작법인에 영업 일체를 넘기고 지분 37%를 ADM에 내줌"},
+  {"type": "unk", "text": "거래 금액·재무 영향 미공개, 기업결합 승인 등 절차에 따라 내용이 바뀔 수 있음"}
+ ],
+ "news": [
+  {"outlet": "비즈니스와이어(핀비즈)", "date": "2026-10-02", "title": "CJ CheilJedang and ADM to Form New Joint Venture to Strengthen Amino Acid Production and Supply Chains", "url": "https://finviz.com/news/398312/cj-cheiljedang-and-adm-to-form-new-joint-venture-to-strengthen-amino-acid-production-and-supply-chains"}
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP, 뉴스 링크.",
+ "brief": "미국 ADM과 사료용 아미노산 합작법인을 63:37로 설립. 원가·조달 경쟁력 기대, 금액은 미공개.",
+ "importance": 3,
+ "importance_reason": "거래금액이 공개되지 않아 규모 비교는 어렵지만 사업 일부를 합작으로 재편하는 의미 있는 결정으로 3점을 줍니다.",
+ "importance_score": 68
+}

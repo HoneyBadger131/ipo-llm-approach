@@ -1,0 +1,152 @@
+[
+ {
+  "rcept_no": "20260904100017",
+  "stock_code": "361610",
+  "corp_name": "SK아이이테크놀로지",
+  "report_nm": "정정명령부과( 2026.08.26. 제출 주요사항보고서(회사합병 결정) )",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   2
+  ],
+  "reason": "금융위가 SK아이이테크놀로지의 합병 주요사항보고서(8/26 제출)에 정정명령 부과. 합병 일정 지연 가능성. 본문 없음(DART 본문 조회 실패).",
+  "borderline": true,
+  "related_with": [
+   "20260904100016"
+  ],
+  "agent_note": "본문 txt가 비어 있다. 8/26 제출된 회사합병 결정 주요사항보고서(SK이노베이션–SK아이이테크놀로지)와 정정 사유는 DART 원문(dart_body.fetch_body_text)·MCP(corporate_restructuring, filing_section)로 확인하되 확인된 것만 쓴다. 정정명령 사유는 공시에 없으면 \"미확인\"."
+ },
+ {
+  "rcept_no": "20260904100016",
+  "stock_code": "096770",
+  "corp_name": "SK이노베이션",
+  "report_nm": "정정신고서제출요구( 2026.08.26. 제출 증권신고서(합병) )",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   2
+  ],
+  "reason": "금융위가 SK이노베이션의 합병 증권신고서(8/26 제출)에 정정신고서 제출 요구. 합병 일정 지연 가능성. 본문 없음.",
+  "borderline": true,
+  "related_with": [
+   "20260904100017"
+  ],
+  "agent_note": "본문 txt가 비어 있다. 8/26 제출 합병 증권신고서·합병 결정 공시와 정정 요구 사유는 DART 원문·MCP(corporate_restructuring, filing_section)로 확인하되 확인된 것만 쓴다. 합병 조건은 합병 결정 공시 기준 사실만."
+ },
+ {
+  "rcept_no": "20260904800679",
+  "stock_code": "298050",
+  "corp_name": "HS효성첨단소재",
+  "report_nm": "타인에대한채무보증결정",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   1
+  ],
+  "reason": "인도 법인 HS Hyosung India 시설대 약정에 채무보증 326억 원(USD 2,400만, 자기자본 대비 3.95%). 2026-09~2029-09. 보증 총잔액 1.6조 원."
+ },
+ {
+  "rcept_no": "20260904800642",
+  "stock_code": "000660",
+  "corp_name": "SK하이닉스",
+  "report_nm": "풍문또는보도에대한해명(미확정)",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "솔리다임 5조 프리IPO 추진 보도(8/5)에 대한 미확정 해명 재공시. 확정 사항 없음, 12/3까지 재공시.",
+  "borderline": true
+ },
+ {
+  "rcept_no": "20260904800648",
+  "stock_code": "003090",
+  "corp_name": "대웅",
+  "report_nm": "타인에대한채무보증결정(자회사의 주요경영사항)",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "자회사 대웅제약의 인도네시아 법인 채무보증 공시와 중복(자회사만 통과)."
+ },
+ {
+  "rcept_no": "20260904800640",
+  "stock_code": "069620",
+  "corp_name": "대웅제약",
+  "report_nm": "타인에대한채무보증결정",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   1
+  ],
+  "reason": "인도네시아 법인 PT Daewoong에 EUR 4,500만(711억 원, 자기자본 대비 6.27%) 채무보증, 2036-09까지. 보증 총잔액 1,451억 원."
+ },
+ {
+  "rcept_no": "20260904800542",
+  "stock_code": "006400",
+  "corp_name": "삼성SDI",
+  "report_nm": "타인에대한담보제공결정",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   1
+  ],
+  "reason": "미국 합작법인 StarPlus Energy 차입(미 에너지부 대출)금 변경에 따라 지분 51% 담보제공: 담보설정 1조 1,489억 원(자기자본 4.87%), 차입금 USD 75.4억→41.3억으로 감소. 2024-12 기존 공시 변경.",
+  "related_with": [
+   "20260904800510"
+  ]
+ },
+ {
+  "rcept_no": "20260904800510",
+  "stock_code": "006400",
+  "corp_name": "삼성SDI",
+  "report_nm": "타인에대한채무보증결정",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   1
+  ],
+  "reason": "StarPlus Energy 미 에너지부 대출 차입금 USD 75.4억→41.3억 변경에 따라 채무보증 USD 38.5억→21.1억(2조 8,651억 원, 자기자본 12.16%)으로 변경, 보증 총잔액 3.96조 원. 2024-12 기존 공시 변경.",
+  "related_with": [
+   "20260904800542"
+  ]
+ },
+ {
+  "rcept_no": "20260904800462",
+  "stock_code": "011790",
+  "corp_name": "SKC",
+  "report_nm": "타법인주식및출자증권취득결정",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   1
+  ],
+  "reason": "미국 자회사 Absolics(반도체 글라스기판)에 현금출자 2,810억 원(자기자본 대비 8.76%), 지분 70.05%. 취득예정일 11/24."
+ },
+ {
+  "rcept_no": "20260904800247",
+  "stock_code": "000240",
+  "corp_name": "한국앤컴퍼니",
+  "report_nm": "생산재개(자율공시)",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   1
+  ],
+  "reason": "대전공장 화재 후 납축전지 전체 라인 생산 재개(8/25~9/4 중단). 해당 분야 매출 4,578억, 최근 매출 대비 31.41%."
+ },
+ {
+  "rcept_no": "20260904800020",
+  "stock_code": "000720",
+  "corp_name": "현대건설",
+  "report_nm": "중대재해발생",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   3
+  ],
+  "reason": "샤힌 에틸렌 건설현장 추락 사망 1명, 부분 작업중지 명령. 사망 1명 경계 사례(과거 사례와 동일 처리).",
+  "borderline": true
+ }
+]

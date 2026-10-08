@@ -1,0 +1,70 @@
+{
+ "date": "2026-09-03",
+ "total": 490,
+ "watchlist_filings": 80,
+ "watchlist_companies": 43,
+ "excluded": 70,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260903800675",
+   "stock_code": "003490",
+   "corp_name": "대한항공",
+   "report_nm": "소송등의제기ㆍ신청(자율공시:일정금액미만의청구)"
+  },
+  {
+   "rcept_no": "20260903800582",
+   "stock_code": "015760",
+   "corp_name": "한국전력공사",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260903800537",
+   "stock_code": "138930",
+   "corp_name": "BNK금융지주",
+   "report_nm": "기업가치제고계획(자율공시)"
+  },
+  {
+   "rcept_no": "20260903000300",
+   "stock_code": "023530",
+   "corp_name": "롯데쇼핑",
+   "report_nm": "독립이사의선임ㆍ해임또는중도퇴임에관한신고"
+  },
+  {
+   "rcept_no": "20260903800521",
+   "stock_code": "036460",
+   "corp_name": "한국가스공사",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260903800388",
+   "stock_code": "051600",
+   "corp_name": "한전KPS",
+   "report_nm": "지속가능경영보고서등관련사항(자율공시)"
+  },
+  {
+   "rcept_no": "20260903800106",
+   "stock_code": "000810",
+   "corp_name": "삼성화재해상보험",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260903800096",
+   "stock_code": "032830",
+   "corp_name": "삼성생명",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260903800002",
+   "stock_code": "042660",
+   "corp_name": "한화오션",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260903800001",
+   "stock_code": "042660",
+   "corp_name": "한화오션",
+   "report_nm": "소송등의제기ㆍ신청(일정금액이상의청구)"
+  }
+ ]
+}

@@ -1,0 +1,88 @@
+{
+ "corp_name": "HD현대중공업",
+ "stock_code": "329180",
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "disclosure_title": "신규시설투자등",
+ "rcept_no": "20260910800161",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "전력 수요 확대에 맞춘 대규모 생산 증설"
+ },
+ "headline": "대출력 발전엔진 공장에 약 8,340억 투자",
+ "impact_summary": "발전엔진 증설, 자기자본 8.9% 규모입니다.",
+ "event_type": "신규시설투자",
+ "keywords": [
+  "발전엔진",
+  "대출력엔진",
+  "공장 신설",
+  "토지 취득",
+  "엔진발전",
+  "생산능력"
+ ],
+ "themes": [
+  "발전엔진",
+  "전력 인프라"
+ ],
+ "related_ids": [
+  "20260910800163"
+ ],
+ "kpis": [
+  {
+   "label": "투자금액",
+   "value": "약 8,340억",
+   "sub": "8,336억 원"
+  },
+  {
+   "label": "자기자본 대비",
+   "value": "8.92%",
+   "sub": "공시 기준, 2025 연결"
+  },
+  {
+   "label": "투자기간",
+   "value": "2026.9~2028.5",
+   "sub": "설계·인허가·건설 일정 기준"
+  },
+  {
+   "label": "투자 대상",
+   "value": "토지·공장·설비",
+   "sub": "대출력 발전엔진 전용"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "글로벌 전력 수요 증가에 대응해 대출력 발전엔진 생산능력 확충"
+  },
+  {
+   "type": "pos",
+   "text": "토지 취득부터 공장·설비까지 전용 생산기지 구축"
+  },
+  {
+   "type": "neg",
+   "text": "자기자본의 8.92%로 큰 투자, 완공은 2028년 5월 예정"
+  },
+  {
+   "type": "unk",
+   "text": "언론 보도는 울산 온산 3GW 규모 생산기지로 전함(공시엔 위치 미기재)"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "서울신문",
+   "date": "2026-09-10",
+   "title": "HD현대중, 1조 투자해 발전엔진·SMR 전용 공장 짓는다",
+   "url": "https://www.seoul.co.kr/news/economy/industry/2026/09/10/20260910500309"
+  }
+ ],
+ "brief": "대출력 발전엔진 전용 공장에 8,336억 원 투자(자기자본 8.9%). 전력 수요 대응 증설, 완공 2028년 5월.",
+ "importance": 4,
+ "importance_reason": "자기자본 대비 8.92%로 5~10% 구간의 대규모 시설투자입니다.",
+ "importance_score": 72,
+ "report_version": 3,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800161",
+ "disclosure_date": "2026-09-10",
+ "tag": "사업 변동"
+}

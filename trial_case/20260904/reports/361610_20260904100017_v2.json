@@ -1,0 +1,54 @@
+{
+ "corp_name": "SK아이이테크놀로지",
+ "stock_code": "361610",
+ "disclosure_date": "2026-09-04",
+ "disclosure_title": "정정명령부과(2026.08.26. 제출 주요사항보고서(회사합병 결정))",
+ "rcept_no": "20260904100017",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260904100017",
+ "tag": "사업 변동",
+ "sentiment": {"label": "혼재됨", "reason": "합병 일정 지연은 부담, 주주보호 보완은 긍정"},
+ "headline": "SK이노 흡수합병 보고서에 금융당국 정정명령",
+ "impact_summary": "합병 절차가 보완을 거치며 일정이 늦어질 수 있습니다.",
+ "event_type": "합병 정정명령",
+ "keywords": ["합병", "정정명령", "SK이노베이션", "흡수합병", "합병비율", "분리막", "적자"],
+ "themes": ["2차전지 소재", "지배구조 재편"],
+ "related_ids": ["20260904100016"],
+ "kpis": [
+  {"label": "합병비율", "value": "1 : 0.1174540", "sub": "SK이노베이션 : SKIET"},
+  {"label": "주식매수청구가", "value": "14,620원", "sub": "합병 결정 공시 기준"},
+  {"label": "정정 제출 기한", "value": "12/4", "sub": "뉴스 보도 기준"},
+  {"label": "합병 예정일", "value": "2027.1.1", "sub": "뉴스 보도 기준"}
+ ],
+ "financials": {
+  "basis": "연결, 단위 억원",
+  "years": ["2023", "2024", "2025"],
+  "rows": [
+   {"label": "매출", "values": [{"v": 6496, "d": "6,496"}, {"v": 2179, "d": "2,179"}, {"v": 2619, "d": "2,619"}]},
+   {"label": "영업이익", "values": [{"v": 320, "d": "320"}, {"v": -2910, "d": "-2,910"}, {"v": -2464, "d": "-2,464"}]}
+  ]
+ },
+ "valuation": {
+  "items": [
+   {"label": "시가총액", "value": "약 1.3조", "sub": "9/4 기준, 보통주"},
+   {"label": "PBR", "value": "1.03배", "sub": "2026 2분기 자본 기준"},
+   {"label": "PBR", "value": "0.51배", "sub": "2025년 말 자본 기준"}
+  ],
+  "note": ""
+ },
+ "consensus": null,
+ "points": [
+  {"type": "neg", "text": "금융당국이 합병 결정 보고서에 정정을 명령, 일정 지연 가능"},
+  {"type": "neg", "text": "2024~2025년 연속 영업적자(각 약 -2,900억, -2,500억)"},
+  {"type": "pos", "text": "SK이노베이션이 흡수, 합병 목적은 재무안정성 확보"},
+  {"type": "unk", "text": "정정 사유는 공시에 없어 미확인(뉴스는 중요사항 누락·불명확 지적)"}
+ ],
+ "news": [
+  {"outlet": "아시아투데이", "date": "2026-08-27", "title": "금감원, SK이노-SKIET 합병에 제동 예고", "url": "https://www.asiatoday.co.kr/kn/view.php?key=20260827010009612"},
+  {"outlet": "이포커스", "date": "2026-09-04", "title": "금감원, SK이노 합병 신고서 고치라 했다…SKIET엔 정정명령", "url": "https://www.e-focus.co.kr/news/articleView.html?idxno=3002821"}
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP(재무·가치평가·컨센서스), 뉴스 링크. 본 공시 본문은 조회되지 않아 정정 사유는 확인되지 않음.",
+ "brief": "합병 결정 보고서에 정정명령. 합병비율 1:0.117, 일정 지연 가능성이 있어 진행 상황 확인이 필요합니다.",
+ "importance": 4,
+ "importance_reason": "소멸 합병이라는 근본적 사안의 일정에 영향을 주는 규제 조치입니다.",
+ "importance_score": 78
+}

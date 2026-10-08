@@ -1,0 +1,93 @@
+{
+ "disclosure_date": "2026-09-07",
+ "disclosure_title": "풍문또는보도에대한해명(미확정)",
+ "tag": "사업 변동",
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3,
+ "corp_name": "LG전자",
+ "stock_code": "066570",
+ "rcept_no": "20260907800165",
+ "sentiment": {
+  "label": "알수 없음",
+  "reason": "상장 결정 부인, 추진 여부 불확실"
+ },
+ "headline": "베어로보틱스 해외 상장 '결정된 바 없다'",
+ "impact_summary": "자회사 나스닥 상장설 부인, 규모는 작습니다.",
+ "event_type": "풍문 해명(미확정)",
+ "keywords": [
+  "베어로보틱스",
+  "나스닥",
+  "프리IPO",
+  "로봇",
+  "자회사",
+  "풍문 해명",
+  "재공시"
+ ],
+ "themes": [
+  "로봇",
+  "자회사 상장"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "해명 내용",
+   "value": "결정된 바 없음",
+   "sub": "해외 상장 관련"
+  },
+  {
+   "label": "재공시 예정일",
+   "value": "2026-10-06",
+   "sub": "확정 시 또는 1개월 이내"
+  },
+  {
+   "label": "목표 기업가치(언론 보도)",
+   "value": "약 2조",
+   "sub": "조달 3,000억~4,000억, 한국경제"
+  },
+  {
+   "label": "LG전자 지분(언론 보도)",
+   "value": "56.9%",
+   "sub": "2026 상반기 말"
+  }
+ ],
+ "points": [
+  {
+   "type": "unk",
+   "text": "한국경제가 9/6 '베어로보틱스, 뱅크오브아메리카 선정·프리IPO 타진, 나스닥 상장 도전'이라 보도, 회사는 결정된 바 없다고 해명"
+  },
+  {
+   "type": "pos",
+   "text": "상장이 현실화하면 로봇 사업 가치 재평가와 투자금 회수 기회가 될 수 있음"
+  },
+  {
+   "type": "unk",
+   "text": "보도된 조달액 3,000억~4,000억은 LG전자 자본총계(약 28.6조)의 1.0~1.4% 수준"
+  },
+  {
+   "type": "neg",
+   "text": "상장 시 지분 희석으로 LG전자 지분율은 56.9%에서 낮아질 수 있음"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "한국경제",
+   "date": "2026-09-06",
+   "title": "LG전자 美자회사 베어로보틱스, 나스닥 상장 도전",
+   "url": "https://www.hankyung.com/article/2026090668751"
+  },
+  {
+   "outlet": "파이낸셜뉴스",
+   "date": "2026-09-07",
+   "title": "베어로보틱스 나스닥 상장 추진?...LG전자 \"결정된 바 없다\"",
+   "url": "https://www.fnnews.com/news/202609071519489193"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP, 뉴스 링크.",
+ "brief": "베어로보틱스 나스닥 상장설에 '결정된 바 없다' 해명. 보도 조달액 3~4천억은 자본의 1% 안팎.",
+ "importance": 2,
+ "importance_reason": "확정 전 풍문이며 보도된 조달액(3,000억~4,000억)이 자본총계의 1~1.4% 수준입니다.",
+ "importance_score": 55,
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260907800165"
+}

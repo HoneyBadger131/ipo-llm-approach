@@ -1,0 +1,171 @@
+[
+ {
+  "stock_code": "006120",
+  "corp_name": "SK디스커버리",
+  "base_date": "2026-09-07",
+  "filings": [
+   {
+    "rcept_no": "20260907000315",
+    "report_nm": "주요사항보고서(자기주식취득신탁계약해지결정)",
+    "tag": "기타 사항",
+    "reason": "자사주 취득 신탁계약(200억) 기간 종료 해지. 신탁 취득분 포함 자사주 보유 3.37%(629,096주), 신탁분 전량 소각 예정(소각은 추후 이사회 결의).",
+    "body": "trial_case/20260907/006120_20260907000315.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260907/reports/006120_20260907000315_v2.json"
+   }
+  ],
+  "same_day_other_filings": [
+   {
+    "rcept_no": "20260907000308",
+    "report_nm": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
+    "reason": "임시주총에서 독립이사 1명 신규 선임(독립이사 비율 50→57.1%). 정례 지배구조 공시.",
+    "body": "trial_case/20260907/006120_20260907000308.txt"
+   }
+  ]
+ },
+ {
+  "stock_code": "298050",
+  "corp_name": "HS효성첨단소재",
+  "base_date": "2026-09-07",
+  "filings": [
+   {
+    "rcept_no": "20260907800498",
+    "report_nm": "타인에대한채무보증결정",
+    "tag": "기타 사항",
+    "reason": "베트남 법인 HS Hyosung Vina Core Materials의 시설대 대환(USD 3,000만)에 KDB 싱가포르지점 채무보증 488억 원(USD 3,600만, 자기자본 대비 5.90%). 2026-10~2029-10.",
+    "body": "trial_case/20260907/298050_20260907800498.txt",
+    "note": "",
+    "related_with": [
+     "20260907800491"
+    ],
+    "output": "trial_case/20260907/reports/298050_20260907800498_v2.json"
+   },
+   {
+    "rcept_no": "20260907800491",
+    "report_nm": "타인에대한채무보증결정",
+    "tag": "기타 사항",
+    "reason": "같은 베트남 법인 시설대 대환의 Land Bank of Taiwan 대주단 채무보증 447억 원(USD 3,300만, 자기자본 대비 5.41%). 2026-10~2029-10. 보증 총잔액 1.61조 원.",
+    "body": "trial_case/20260907/298050_20260907800491.txt",
+    "note": "",
+    "related_with": [
+     "20260907800498"
+    ],
+    "output": "trial_case/20260907/reports/298050_20260907800491_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "017960",
+  "corp_name": "한국카본",
+  "base_date": "2026-09-07",
+  "filings": [
+   {
+    "rcept_no": "20260907800338",
+    "report_nm": "풍문또는보도에대한해명(미확정)",
+    "tag": "사업 변동",
+    "reason": "서울파이낸스 보도 \"케이조선 매각 다시 시동\" 관련 해명. 다양한 방안을 검토 중이나 결정된 사실 없음. 10/6 재공시 예정.",
+    "body": "trial_case/20260907/017960_20260907800338.txt",
+    "note": "",
+    "related_with": [
+     "20260907800332"
+    ],
+    "output": "trial_case/20260907/reports/017960_20260907800338_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "003240",
+  "corp_name": "태광산업",
+  "base_date": "2026-09-07",
+  "filings": [
+   {
+    "rcept_no": "20260907800332",
+    "report_nm": "풍문또는보도에대한해명(미확정)",
+    "tag": "사업 변동",
+    "reason": "더벨 보도 \"케이조선 노리는 한국카본\" 관련, 태광산업이 6/ 입찰 종료 후 재입찰 인수를 검토 중이라고 인정하되 결정된 사실은 없다고 해명. 10/6 재공시 예정.",
+    "body": "trial_case/20260907/003240_20260907800332.txt",
+    "note": "",
+    "related_with": [
+     "20260907800338"
+    ],
+    "output": "trial_case/20260907/reports/003240_20260907800332_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "066570",
+  "corp_name": "LG전자",
+  "base_date": "2026-09-07",
+  "filings": [
+   {
+    "rcept_no": "20260907800165",
+    "report_nm": "풍문또는보도에대한해명(미확정)",
+    "tag": "사업 변동",
+    "reason": "한국경제 단독 보도 \"미국 자회사 베어로보틱스 나스닥 상장 도전\"에 대해 해외 상장 결정된 바 없다고 해명. 10/6 재공시 예정.",
+    "body": "trial_case/20260907/066570_20260907800165.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260907/reports/066570_20260907800165_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "112610",
+  "corp_name": "씨에스윈드",
+  "base_date": "2026-09-07",
+  "filings": [
+   {
+    "rcept_no": "20260907800138",
+    "report_nm": "단일판매ㆍ공급계약체결",
+    "tag": "사업 변동",
+    "reason": "미국 Vestas에 풍력타워 공급 1,510억 원(USD 1.11억), 최근 매출 대비 5.2%. 2027-07까지.",
+    "body": "trial_case/20260907/112610_20260907800138.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260907/reports/112610_20260907800138_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "010130",
+  "corp_name": "고려아연",
+  "base_date": "2026-09-07",
+  "filings": [
+   {
+    "rcept_no": "20260907800121",
+    "report_nm": "소송등의판결ㆍ결정",
+    "tag": "기타 사항",
+    "reason": "영풍·한국기업투자홀딩스의 의결권행사금지 가처분 신청 전부 기각(9/4 결정). 경영권 분쟁 소송의 중요 결정.",
+    "body": "trial_case/20260907/010130_20260907800121.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260907/reports/010130_20260907800121_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "012450",
+  "corp_name": "한화에어로스페이스",
+  "base_date": "2026-09-07",
+  "filings": [
+   {
+    "rcept_no": "20260907800087",
+    "report_nm": "풍문또는보도에대한해명(미확정)",
+    "tag": "사업 변동",
+    "reason": "매일경제 보도 \"천무 크로아티아 수출\"에 대해 고객과 협의 중이나 계약 확정된 바 없다고 해명. 10/6 재공시 예정.",
+    "body": "trial_case/20260907/012450_20260907800087.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20260907/reports/012450_20260907800087_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ }
+]

@@ -1,0 +1,40 @@
+{
+ "report_version": 3,
+ "corp_name": "씨에스윈드",
+ "stock_code": "112610",
+ "disclosure_date": "2026-09-07",
+ "disclosure_title": "단일판매ㆍ공급계약체결",
+ "rcept_no": "20260907800138",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260907800138",
+ "tag": "사업 변동",
+ "sentiment": {"label": "긍정적", "reason": "매출 5.2% 규모 풍력타워 수주 추가"},
+ "headline": "미국 Vestas에 풍력타워 1,510억 원 공급",
+ "impact_summary": "최근 매출의 5.2%, 2027년 7월까지 납품합니다.",
+ "event_type": "단일판매ㆍ공급계약",
+ "keywords": ["풍력타워", "Vestas", "미국", "수주", "WIND TOWER", "풍력발전"],
+ "themes": ["풍력", "신재생에너지"],
+ "related_ids": [],
+ "kpis": [
+  {"label": "계약금액", "value": "약 1,510억", "sub": "USD 1.11억, 환율 1,355.2원 적용"},
+  {"label": "매출액 대비", "value": "5.2%", "sub": "2025 연결 매출 약 2.93조"},
+  {"label": "계약상대", "value": "Vestas", "sub": "미국 법인, 미국 공급"},
+  {"label": "계약기간", "value": "~2027.7.2", "sub": "최종 인도일 기준"}
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {"type": "pos", "text": "최근 매출의 5.2%에 해당하는 대형 계약으로 향후 매출 가시성 확대"},
+  {"type": "pos", "text": "Vestas 미국 법인 수주가 이어짐: 7월 1,902억 원, 올해 2월 1,353억 원에 이은 추가 계약"},
+  {"type": "neg", "text": "선급금 없이 납품 후 약 60일+월말 기준으로 대금을 받아 운전자금 부담 가능"},
+  {"type": "unk", "text": "계약금액은 달러 계약을 환산한 값이며, 기간·금액은 협의나 진행에 따라 바뀔 수 있음"}
+ ],
+ "news": [
+  {"outlet": "글로벌이코노믹", "date": "2026-09-07", "title": "씨에스윈드, 1510억원 美 WIND TOWER 공급계약", "url": "https://www.g-enews.com/article/Securities/2026/09/20260907110010724844093b5d4e_1"}
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP, 뉴스 링크.",
+ "brief": "미국 Vestas에 풍력타워 1,510억 원 공급(매출 5.2%). 2027년 7월까지 납품, 수주 흐름 지속.",
+ "importance": 4,
+ "importance_reason": "최근 매출 대비 5.2%로 5~10% 구간의 대형 계약입니다.",
+ "importance_score": 55
+}

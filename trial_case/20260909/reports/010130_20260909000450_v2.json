@@ -1,0 +1,44 @@
+{
+ "report_version": 3,
+ "corp_name": "고려아연",
+ "stock_code": "010130",
+ "disclosure_date": "2026-09-09",
+ "disclosure_title": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
+ "rcept_no": "20260909000450",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260909000450",
+ "tag": "기타 사항",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "이사회 확대, 경영권 분쟁 속 구도 불확실"
+ },
+ "headline": "독립이사 5명 선임, 이사회 19명으로 확대",
+ "impact_summary": "독립이사 비율 57.1%에서 68.4%로 높아집니다.",
+ "event_type": "독립이사 선임",
+ "keywords": ["독립이사", "이사회 확대", "임시주총", "경영권 분쟁", "감사위원", "영풍·MBK", "지배구조"],
+ "themes": ["지배구조", "경영권 분쟁"],
+ "related_ids": [],
+ "kpis": [
+  {"label": "등기이사", "value": "14 → 19명", "sub": "독립이사 5명 신규·재선임"},
+  {"label": "독립이사", "value": "8 → 13명", "sub": "해임·퇴임 없음"},
+  {"label": "독립이사 비율", "value": "57.1 → 68.4%", "sub": "변경일 9/9, 임기 2년"},
+  {"label": "신규 선임", "value": "4명", "sub": "이형규 1명은 재선임"}
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {"type": "pos", "text": "독립이사 비율이 10%p 이상 올라 이사회 독립성 강화"},
+  {"type": "pos", "text": "회계·재무(백인규)와 법률(심혜섭 등) 전문가가 이사회에 합류"},
+  {"type": "unk", "text": "언론 보도: 독립이사 4명은 회사 측 2명·영풍/MBK 측 2명 선임"},
+  {"type": "unk", "text": "언론 보도: 감사위원은 회사 측 백인규 선임, 이사회는 12대 7 구도로 전해짐"}
+ ],
+ "news": [
+  {"outlet": "한국면세뉴스", "date": "2026-09-09", "title": "고려아연 임시주총, 감사위원에 백인규 선임…영풍·MBK 박유경은 부결", "url": "https://www.kdfnews.com/news/articleView.html?idxno=187744"},
+  {"outlet": "서울경제", "date": "2026-09-09", "title": "고려아연 이사회 12대 7 재편…감사위원은 최윤범 회장 측 선임", "url": "https://m.news.nate.com/view/20260909n31889"}
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "독립이사 5명 선임으로 이사회 19명, 독립이사 비율 68.4%. 경영권 분쟁 중 이사회 구도가 정리됩니다.",
+ "importance": 3,
+ "importance_reason": "경영권 분쟁 중 이사회가 14명에서 19명으로 커지는 의미 있는 지배구조 결정이나 재무 영향은 없습니다.",
+ "importance_score": 66
+}

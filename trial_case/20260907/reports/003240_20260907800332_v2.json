@@ -1,0 +1,94 @@
+{
+ "disclosure_date": "2026-09-07",
+ "disclosure_title": "풍문또는보도에대한해명(미확정)",
+ "tag": "사업 변동",
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3,
+ "corp_name": "태광산업",
+ "stock_code": "003240",
+ "rcept_no": "20260907800332",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "재입찰 인수 검토 인정, 확정 전"
+ },
+ "headline": "케이조선 재입찰 인수 검토 인정, 결정은 아직",
+ "impact_summary": "케이조선 재입찰 인수를 검토 중이나 확정은 없습니다.",
+ "event_type": "풍문 해명(미확정)",
+ "keywords": [
+  "케이조선",
+  "재입찰",
+  "인수 검토",
+  "풍문 해명",
+  "조선업 진출",
+  "재공시"
+ ],
+ "themes": [
+  "조선",
+  "M&A"
+ ],
+ "related_ids": [
+  "20260907800338"
+ ],
+ "kpis": [
+  {
+   "label": "해명 내용",
+   "value": "인수 검토 중",
+   "sub": "결정된 사실은 없음"
+  },
+  {
+   "label": "재공시 예정일",
+   "value": "2026-10-06",
+   "sub": "확정 시 또는 1개월 이내"
+  },
+  {
+   "label": "거래 규모(언론 보도)",
+   "value": "최대 약 9,000억",
+   "sub": "증자·회사채 포함, 서울파이낸스"
+  },
+  {
+   "label": "순현금",
+   "value": "약 4,256억",
+   "sub": "2025 연결"
+  }
+ ],
+ "points": [
+  {
+   "type": "unk",
+   "text": "더벨이 9/7 한국카본의 케이조선 인수 추진을 보도, 태광산업은 재입찰 인수를 '검토 중'이라고 인정하되 결정된 사실은 없다고 해명"
+  },
+  {
+   "type": "neg",
+   "text": "2026년 6월 매도인 측과 거래구조·조건 이견으로 공개경쟁입찰이 종료된 바 있음"
+  },
+  {
+   "type": "unk",
+   "text": "서울파이낸스는 한국카본이 전략적투자자(SI), 태광산업이 재무적투자자(FI)로 거론된다고 보도"
+  },
+  {
+   "type": "pos",
+   "text": "자본총계 약 4.0조, 부채비율 13%, 순현금 약 4,256억으로 인수 여력 보유"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "서울파이낸스",
+   "date": "2026-09-06",
+   "title": "케이조선 매각 다시 시동…이번엔 '확실한 SI' 찾는다",
+   "url": "https://www.seoulfn.com/news/articleView.html?idxno=637337"
+  },
+  {
+   "outlet": "아시아경제",
+   "date": "2026-06-22",
+   "title": "태광산업, 케이조선 인수 무산…매각 측과 조건 이견",
+   "url": "https://view.asiae.co.kr/article/2026062216465482644"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP, 뉴스 링크.",
+ "brief": "케이조선 재입찰 인수를 검토 중이나 결정은 없다고 해명. 6월 무산 후 재도전, 10/6 재공시.",
+ "importance": 3,
+ "importance_reason": "확정 전이고 태광 부담 비중이 미확인이라, 보도 규모(최대 약 9,000억, 자본총계의 약 22%)보다 낮은 3점으로 둡니다.",
+ "importance_score": 65,
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260907800332"
+}

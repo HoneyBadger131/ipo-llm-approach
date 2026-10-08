@@ -1,0 +1,184 @@
+[
+ {
+  "rcept_no": "20261006800696",
+  "stock_code": "006650",
+  "corp_name": "대한유화",
+  "report_nm": "생산중단",
+  "proceed": false,
+  "tag": "사업 변동",
+  "rules": [
+   "J-other",
+   "DROP"
+  ],
+  "reason": "Noul 0.26 · Choice DROP · other",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261006000337",
+  "stock_code": "111770",
+  "corp_name": "영원무역",
+  "report_nm": "주요사항보고서(자기주식취득신탁계약체결결정)",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   "J-other",
+   "PASS"
+  ],
+  "reason": "Noul 0.93 · Choice PASS · other",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261006800472",
+  "stock_code": "017960",
+  "corp_name": "한국카본",
+  "report_nm": "풍문또는보도에대한해명(미확정)",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   "R-RUMOR",
+   "DROP"
+  ],
+  "reason": "풍문·조회공시 답변은 무시",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261006800460",
+  "stock_code": "003240",
+  "corp_name": "태광산업",
+  "report_nm": "풍문또는보도에대한해명(미확정)",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   "R-RUMOR",
+   "DROP"
+  ],
+  "reason": "풍문·조회공시 답변은 무시",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261006800433",
+  "stock_code": "139480",
+  "corp_name": "이마트",
+  "report_nm": "타법인주식및출자증권취득결정(종속회사의주요경영사항)",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   "J-other",
+   "PASS_CHECK"
+  ],
+  "reason": "Noul 0.88 · Choice PASS_CHECK · other",
+  "borderline": true
+ },
+ {
+  "rcept_no": "20261006800320",
+  "stock_code": "062040",
+  "corp_name": "산일전기",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   "J-other",
+   "PASS"
+  ],
+  "reason": "Noul 0.94 · Choice PASS · other",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261006800220",
+  "stock_code": "066570",
+  "corp_name": "LG전자",
+  "report_nm": "풍문또는보도에대한해명(미확정)",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   "R-RUMOR",
+   "DROP"
+  ],
+  "reason": "풍문·조회공시 답변은 무시",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261006800215",
+  "stock_code": "018260",
+  "corp_name": "삼성에스디에스",
+  "report_nm": "결산실적공시예고(안내공시)",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   "J-other",
+   "DROP"
+  ],
+  "reason": "Noul 0.12 · Choice DROP · other",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261006000097",
+  "stock_code": "006260",
+  "corp_name": "LS",
+  "report_nm": "계열금융회사를거래상대방으로한단기금융상품거래의분기별공시",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   "J-large",
+   "DROP"
+  ],
+  "reason": "Noul 0.07 · Choice DROP · large",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261006800172",
+  "stock_code": "012630",
+  "corp_name": "HDC",
+  "report_nm": "투자판단관련주요경영사항(자회사의 주요경영사항)",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   "J-other",
+   "PASS"
+  ],
+  "reason": "Noul 0.65 · Choice PASS · other",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261006800170",
+  "stock_code": "294870",
+  "corp_name": "IPARK현대산업개발",
+  "report_nm": "투자판단관련주요경영사항",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   "J-other",
+   "PASS"
+  ],
+  "reason": "Noul 0.83 · Choice PASS · other",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261006800130",
+  "stock_code": "009150",
+  "corp_name": "삼성전기",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   "J-large",
+   "PASS"
+  ],
+  "reason": "Noul 0.84 · Choice PASS · large",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261006800023",
+  "stock_code": "042700",
+  "corp_name": "한미반도체",
+  "report_nm": "단일판매ㆍ공급계약체결(자율공시)",
+  "proceed": true,
+  "tag": "사업 변동",
+  "rules": [
+   "J-large",
+   "PASS"
+  ],
+  "reason": "Noul 0.84 · Choice PASS · large",
+  "borderline": false
+ }
+]

@@ -1,0 +1,41 @@
+{
+ "report_version": 3,
+ "corp_name": "신한지주",
+ "stock_code": "055550",
+ "disclosure_date": "2026-10-02",
+ "disclosure_title": "해외증권거래소등에신고한주요공시사항의국내신고(자회사의 주요경영사항)",
+ "rcept_no": "20261002800005",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002800005",
+ "tag": "기타 사항",
+ "sentiment": {"label": "부정적", "reason": "신한은행 고객정보 유출, 재무 영향은 산정 불가"},
+ "headline": "신한은행 고객정보 유출, 뉴욕거래소에 6-K 신고",
+ "impact_summary": "신한은행 정보유출 확인, 재무 영향은 아직 불명입니다.",
+ "event_type": "해외공시 국내신고(자회사 정보유출)",
+ "keywords": ["신한은행", "고객정보 유출", "6-K", "뉴욕증권거래소", "보안사고", "금융당국 조사", "평판 리스크"],
+ "themes": ["금융 보안사고", "은행 리스크"],
+ "related_ids": [],
+ "kpis": [
+  {"label": "대상 자회사", "value": "신한은행", "sub": "모회사 신한지주가 대신 제출"},
+  {"label": "자산총액 비중", "value": "36.0%", "sub": "공시 기준"},
+  {"label": "해외 신고", "value": "NYSE 6-K", "sub": "2026-10-01"},
+  {"label": "유출 규모", "value": "약 2.5만 명", "sub": "언론 보도"}
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {"type": "neg", "text": "신한은행이 외부의 비정상 접근으로 고객 정보가 유출된 사실을 확인, 원인·범위 조사 중"},
+  {"type": "unk", "text": "재무·영업·경영 성과에 미치는 영향은 현재 합리적으로 산정하기 어렵다고 밝힘"},
+  {"type": "neg", "text": "언론 보도: 약 2.5만 명 정보 유출(연소득·대출한도 등), 금융거래 정보 유출은 없다고 알려짐"},
+  {"type": "unk", "text": "보안체계 재점검과 재발방지책을 시행한다고 밝힘, 중대사항 확인 시 추가 공시 예정"}
+ ],
+ "news": [
+  {"outlet": "MTN", "date": "2026-10-01", "title": "신한은행, 2만5000명 정보 유출…대출 간편조회 뚫렸다", "url": "https://news.mtn.co.kr/news-detail/2026100115465611895"},
+  {"outlet": "YTN", "date": "2026-10-01", "title": "신한은행, 2만여 명 정보 유출…연 소득·한도 포함", "url": "https://www.ytn.co.kr/_ln/0102_202610011819316198"}
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "자회사 신한은행 고객정보 유출을 NYSE에 6-K 신고. 재무 영향은 산정 불가, 조사·제재 불확실성.",
+ "importance": 3,
+ "importance_reason": "자산 36% 비중 자회사의 보안사고이나 금전 영향이 아직 산정되지 않아 3점으로 둡니다.",
+ "importance_score": 58
+}

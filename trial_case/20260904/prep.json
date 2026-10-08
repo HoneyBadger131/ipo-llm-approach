@@ -1,0 +1,76 @@
+{
+ "date": "2026-09-04",
+ "total": 693,
+ "watchlist_filings": 122,
+ "watchlist_companies": 49,
+ "excluded": 111,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260904100017",
+   "stock_code": "361610",
+   "corp_name": "SK아이이테크놀로지",
+   "report_nm": "정정명령부과( 2026.08.26. 제출 주요사항보고서(회사합병 결정) )"
+  },
+  {
+   "rcept_no": "20260904100016",
+   "stock_code": "096770",
+   "corp_name": "SK이노베이션",
+   "report_nm": "정정신고서제출요구( 2026.08.26. 제출 증권신고서(합병) )"
+  },
+  {
+   "rcept_no": "20260904800679",
+   "stock_code": "298050",
+   "corp_name": "HS효성첨단소재",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260904800642",
+   "stock_code": "000660",
+   "corp_name": "SK하이닉스",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260904800648",
+   "stock_code": "003090",
+   "corp_name": "대웅",
+   "report_nm": "타인에대한채무보증결정(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260904800640",
+   "stock_code": "069620",
+   "corp_name": "대웅제약",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260904800542",
+   "stock_code": "006400",
+   "corp_name": "삼성SDI",
+   "report_nm": "타인에대한담보제공결정"
+  },
+  {
+   "rcept_no": "20260904800510",
+   "stock_code": "006400",
+   "corp_name": "삼성SDI",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260904800462",
+   "stock_code": "011790",
+   "corp_name": "SKC",
+   "report_nm": "타법인주식및출자증권취득결정"
+  },
+  {
+   "rcept_no": "20260904800247",
+   "stock_code": "000240",
+   "corp_name": "한국앤컴퍼니",
+   "report_nm": "생산재개(자율공시)"
+  },
+  {
+   "rcept_no": "20260904800020",
+   "stock_code": "000720",
+   "corp_name": "현대건설",
+   "report_nm": "중대재해발생"
+  }
+ ]
+}

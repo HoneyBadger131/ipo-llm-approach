@@ -1,0 +1,112 @@
+{
+ "date": "2026-09-07",
+ "total": 462,
+ "watchlist_filings": 94,
+ "watchlist_companies": 53,
+ "excluded": 77,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260907800650",
+   "stock_code": "294870",
+   "corp_name": "IPARK현대산업개발",
+   "report_nm": "불성실공시법인지정"
+  },
+  {
+   "rcept_no": "20260907800647",
+   "stock_code": "012630",
+   "corp_name": "HDC",
+   "report_nm": "불성실공시법인지정"
+  },
+  {
+   "rcept_no": "20260907000315",
+   "stock_code": "006120",
+   "corp_name": "SK디스커버리",
+   "report_nm": "주요사항보고서(자기주식취득신탁계약해지결정)"
+  },
+  {
+   "rcept_no": "20260907000308",
+   "stock_code": "006120",
+   "corp_name": "SK디스커버리",
+   "report_nm": "독립이사의선임ㆍ해임또는중도퇴임에관한신고"
+  },
+  {
+   "rcept_no": "20260907800498",
+   "stock_code": "298050",
+   "corp_name": "HS효성첨단소재",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260907800491",
+   "stock_code": "298050",
+   "corp_name": "HS효성첨단소재",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260907800369",
+   "stock_code": "395400",
+   "corp_name": "SK리츠",
+   "report_nm": "부동산투자회사자금차입"
+  },
+  {
+   "rcept_no": "20260907800338",
+   "stock_code": "017960",
+   "corp_name": "한국카본",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260907800332",
+   "stock_code": "003240",
+   "corp_name": "태광산업",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260907800211",
+   "stock_code": "089860",
+   "corp_name": "롯데렌탈",
+   "report_nm": "주주명부폐쇄기간또는기준일설정"
+  },
+  {
+   "rcept_no": "20260907800165",
+   "stock_code": "066570",
+   "corp_name": "LG전자",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260907800138",
+   "stock_code": "112610",
+   "corp_name": "씨에스윈드",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260907800121",
+   "stock_code": "010130",
+   "corp_name": "고려아연",
+   "report_nm": "소송등의판결ㆍ결정"
+  },
+  {
+   "rcept_no": "20260907800087",
+   "stock_code": "012450",
+   "corp_name": "한화에어로스페이스",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260907800002",
+   "stock_code": "068270",
+   "corp_name": "셀트리온",
+   "report_nm": "투자판단관련주요경영사항              (CTP44(다잘렉스 바이오시밀러) 한국 임상 3상 시험계획 변경신청 승인)"
+  },
+  {
+   "rcept_no": "20260907800004",
+   "stock_code": "068270",
+   "corp_name": "셀트리온",
+   "report_nm": "투자판단관련주요경영사항              (CTP51(키트루다 바이오시밀러) 미국 임상 3상 시험계획 변경신청 승인)"
+  },
+  {
+   "rcept_no": "20260828100004",
+   "stock_code": "139130",
+   "corp_name": "iM금융지주",
+   "report_nm": "효력발생안내( 2026.8.28. 제출 일괄신고서 )"
+  }
+ ]
+}

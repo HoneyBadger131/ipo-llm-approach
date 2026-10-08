@@ -1,0 +1,117 @@
+[
+ {
+  "stock_code": "008930",
+  "corp_name": "한미사이언스",
+  "base_date": "2026-10-07",
+  "filings": [
+   {
+    "rcept_no": "20261007000516",
+    "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서",
+    "tag": "기타 사항",
+    "reason": "Noul 0.77 · Choice PASS · large",
+    "body": "trial_case/20261007/008930_20261007000516.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_full/20261007/reports/008930_20261007000516_v2.json"
+   }
+  ],
+  "same_day_other_filings": [
+   {
+    "rcept_no": "20261007800680",
+    "report_nm": "투자판단관련주요경영사항(자회사의 주요경영사항)              (에페오토인젝터주(에페글레나타이드) 식품의약품안전처 품목허가 승인)",
+    "reason": "상장 자회사(한미약품(주)) 공시의 사본",
+    "body": "trial_case/20261007/008930_20261007800680.txt"
+   }
+  ]
+ },
+ {
+  "stock_code": "128940",
+  "corp_name": "한미약품",
+  "base_date": "2026-10-07",
+  "filings": [
+   {
+    "rcept_no": "20261007800667",
+    "report_nm": "투자판단관련주요경영사항              (에페오토인젝터주(에페글레나타이드) 식품의약품안전처 품목허가 승인)",
+    "tag": "사업 변동",
+    "reason": "Noul 0.94 · Choice PASS · large",
+    "body": "trial_case/20261007/128940_20261007800667.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_full/20261007/reports/128940_20261007800667_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "005090",
+  "corp_name": "SGC에너지",
+  "base_date": "2026-10-07",
+  "filings": [
+   {
+    "rcept_no": "20261007800460",
+    "report_nm": "감자결정(종속회사의주요경영사항)",
+    "tag": "기타 사항",
+    "reason": "Noul 0.49 · Choice PASS · other",
+    "body": "trial_case/20261007/005090_20261007800460.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_full/20261007/reports/005090_20261007800460_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "016380",
+  "corp_name": "KG스틸",
+  "base_date": "2026-10-07",
+  "filings": [
+   {
+    "rcept_no": "20261007000282",
+    "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서",
+    "tag": "기타 사항",
+    "reason": "Noul 0.84 · Choice DROP · other",
+    "body": "trial_case/20261007/016380_20261007000282.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_full/20261007/reports/016380_20261007000282_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "267270",
+  "corp_name": "HD건설기계",
+  "base_date": "2026-10-07",
+  "filings": [
+   {
+    "rcept_no": "20261007800221",
+    "report_nm": "단일판매ㆍ공급계약체결",
+    "tag": "사업 변동",
+    "reason": "Noul 0.95 · Choice PASS · other",
+    "body": "trial_case/20261007/267270_20261007800221.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_full/20261007/reports/267270_20261007800221_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "066570",
+  "corp_name": "LG전자",
+  "base_date": "2026-10-07",
+  "filings": [
+   {
+    "rcept_no": "20261007800145",
+    "report_nm": "연결재무제표기준영업(잠정)실적(공정공시)",
+    "tag": "기타 사항",
+    "reason": "Noul 0.49 · Choice PASS_CHECK · large",
+    "body": "trial_case/20261007/066570_20261007800145.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_full/20261007/reports/066570_20261007800145_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ }
+]

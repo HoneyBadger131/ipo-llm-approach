@@ -1,0 +1,92 @@
+{
+ "date": "2026-10-06",
+ "window": [
+  "2026-10-03",
+  "2026-10-06"
+ ],
+ "total": 540,
+ "watchlist_filings": 118,
+ "watchlist_companies": 72,
+ "excluded": 105,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20261006800696",
+   "stock_code": "006650",
+   "corp_name": "대한유화",
+   "report_nm": "생산중단"
+  },
+  {
+   "rcept_no": "20261006000337",
+   "stock_code": "111770",
+   "corp_name": "영원무역",
+   "report_nm": "주요사항보고서(자기주식취득신탁계약체결결정)"
+  },
+  {
+   "rcept_no": "20261006800472",
+   "stock_code": "017960",
+   "corp_name": "한국카본",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20261006800460",
+   "stock_code": "003240",
+   "corp_name": "태광산업",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20261006800433",
+   "stock_code": "139480",
+   "corp_name": "이마트",
+   "report_nm": "타법인주식및출자증권취득결정(종속회사의주요경영사항)"
+  },
+  {
+   "rcept_no": "20261006800320",
+   "stock_code": "062040",
+   "corp_name": "산일전기",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20261006800220",
+   "stock_code": "066570",
+   "corp_name": "LG전자",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20261006800215",
+   "stock_code": "018260",
+   "corp_name": "삼성에스디에스",
+   "report_nm": "결산실적공시예고(안내공시)"
+  },
+  {
+   "rcept_no": "20261006000097",
+   "stock_code": "006260",
+   "corp_name": "LS",
+   "report_nm": "계열금융회사를거래상대방으로한단기금융상품거래의분기별공시"
+  },
+  {
+   "rcept_no": "20261006800172",
+   "stock_code": "012630",
+   "corp_name": "HDC",
+   "report_nm": "투자판단관련주요경영사항(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20261006800170",
+   "stock_code": "294870",
+   "corp_name": "IPARK현대산업개발",
+   "report_nm": "투자판단관련주요경영사항"
+  },
+  {
+   "rcept_no": "20261006800130",
+   "stock_code": "009150",
+   "corp_name": "삼성전기",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20261006800023",
+   "stock_code": "042700",
+   "corp_name": "한미반도체",
+   "report_nm": "단일판매ㆍ공급계약체결(자율공시)"
+  }
+ ]
+}

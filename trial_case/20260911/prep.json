@@ -1,0 +1,124 @@
+{
+ "date": "2026-09-11",
+ "total": 757,
+ "watchlist_filings": 112,
+ "watchlist_companies": 50,
+ "excluded": 93,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260911800691",
+   "stock_code": "003240",
+   "corp_name": "태광산업",
+   "report_nm": "풍문또는보도에대한해명"
+  },
+  {
+   "rcept_no": "20260911800638",
+   "stock_code": "064400",
+   "corp_name": "LG씨엔에스",
+   "report_nm": "유형자산취득결정"
+  },
+  {
+   "rcept_no": "20260911800692",
+   "stock_code": "000400",
+   "corp_name": "롯데손해보험",
+   "report_nm": "조회공시요구(풍문또는보도)에대한답변(미확정)"
+  },
+  {
+   "rcept_no": "20260911800557",
+   "stock_code": "006260",
+   "corp_name": "LS",
+   "report_nm": "교환사채권발행결정(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260911800620",
+   "stock_code": "272210",
+   "corp_name": "한화시스템",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260911800524",
+   "stock_code": "298050",
+   "corp_name": "HS효성첨단소재",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260911800519",
+   "stock_code": "298050",
+   "corp_name": "HS효성첨단소재",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260911800548",
+   "stock_code": "006120",
+   "corp_name": "SK디스커버리",
+   "report_nm": "지속가능경영보고서등관련사항(자율공시)"
+  },
+  {
+   "rcept_no": "20260911000445",
+   "stock_code": "000500",
+   "corp_name": "가온전선",
+   "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서"
+  },
+  {
+   "rcept_no": "20260911000423",
+   "stock_code": "003540",
+   "corp_name": "대신증권",
+   "report_nm": "특수관계인과의수익증권거래"
+  },
+  {
+   "rcept_no": "20260911000318",
+   "stock_code": "000270",
+   "corp_name": "기아",
+   "report_nm": "특수관계인으로부터기타유가증권매수"
+  },
+  {
+   "rcept_no": "20260911800322",
+   "stock_code": "000720",
+   "corp_name": "현대건설",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260911800229",
+   "stock_code": "090430",
+   "corp_name": "아모레퍼시픽",
+   "report_nm": "공정거래자율준수프로그램운영현황(안내공시)"
+  },
+  {
+   "rcept_no": "20260911800223",
+   "stock_code": "090430",
+   "corp_name": "아모레퍼시픽",
+   "report_nm": "연결재무제표기준영업실적등에대한전망(공정공시)"
+  },
+  {
+   "rcept_no": "20260911000189",
+   "stock_code": "000720",
+   "corp_name": "현대건설",
+   "report_nm": "특수관계인에대한담보제공"
+  },
+  {
+   "rcept_no": "20260911800199",
+   "stock_code": "005090",
+   "corp_name": "SGC에너지",
+   "report_nm": "타법인주식및출자증권취득결정"
+  },
+  {
+   "rcept_no": "20260911000014",
+   "stock_code": "009830",
+   "corp_name": "한화솔루션",
+   "report_nm": "약관에의한금융거래시계열금융회사의거래상대방의공시"
+  },
+  {
+   "rcept_no": "20260911800004",
+   "stock_code": "012450",
+   "corp_name": "한화에어로스페이스",
+   "report_nm": "단일판매ㆍ공급계약체결(자율공시)"
+  },
+  {
+   "rcept_no": "20260911800002",
+   "stock_code": "028050",
+   "corp_name": "삼성E&A",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  }
+ ]
+}

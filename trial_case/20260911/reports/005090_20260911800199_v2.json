@@ -1,0 +1,93 @@
+{
+ "corp_name": "SGC에너지",
+ "stock_code": "005090",
+ "disclosure_title": "타법인주식및출자증권취득결정",
+ "rcept_no": "20260911800199",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "AI데이터센터 투자 본격화, 자금 부담 동반"
+ },
+ "headline": "군산 AI데이터센터 PEF에 869억 원 출자",
+ "impact_summary": "자기자본 11.5% 규모, 데이터센터 투자 실행입니다.",
+ "event_type": "타법인출자증권취득",
+ "keywords": [
+  "AI데이터센터",
+  "군산",
+  "PEF",
+  "60MW",
+  "현금출자",
+  "SGC-KIS 제1호",
+  "하이퍼스케일"
+ ],
+ "themes": [
+  "AI 데이터센터",
+  "인프라 투자"
+ ],
+ "kpis": [
+  {
+   "label": "출자금액",
+   "value": "약 869억",
+   "sub": "현금출자, 납입 9/28"
+  },
+  {
+   "label": "자기자본 대비",
+   "value": "11.45%",
+   "sub": "공시 기준"
+  },
+  {
+   "label": "자산총액 대비",
+   "value": "2.61%",
+   "sub": "2025 연결"
+  },
+  {
+   "label": "보통주 지분",
+   "value": "99.66%",
+   "sub": "SGC-KIS 제1호 PEF"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "군산 하이퍼스케일 AI데이터센터 1차(60MW) 개발 자금 집행, 신사업 가시화"
+  },
+  {
+   "type": "neg",
+   "text": "자기자본의 11.45%를 출자해 재무 부담이 커짐"
+  },
+  {
+   "type": "unk",
+   "text": "PEF 총자본 1,744억 원 중 우선주 872억, 보통주 872억 원이며 당사는 보통주 869억 원 출자"
+  },
+  {
+   "type": "unk",
+   "text": "PEF 재무 정보는 공시에 없어(신규 설립) 수익성은 미확인"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "뉴스핌",
+   "date": "2026-09-11",
+   "title": "SGC에너지, AI데이터센터 PEF 설립…240MW 확장 본격화",
+   "url": "https://www.newspim.com/news/view/20260911000774"
+  },
+  {
+   "outlet": "네이트뉴스",
+   "date": "2026-09-11",
+   "title": "SGC에너지, 사모투자합자회사 설립…AI데이터센터 자금 조달",
+   "url": "https://m.news.nate.com/view/20260911n20188"
+  }
+ ],
+ "brief": "군산 AI데이터센터 1차(60MW) PEF에 869억 원 출자(자기자본 11.5%). 신사업 투자 본격화, 재무 부담 병행.",
+ "importance": 5,
+ "importance_reason": "자기자본 대비 11.45%로 기준표 10% 이상 구간입니다.",
+ "importance_score": 78,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3,
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800199",
+ "disclosure_date": "2026-09-11",
+ "related_ids": [],
+ "tag": "사업 변동",
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크."
+}

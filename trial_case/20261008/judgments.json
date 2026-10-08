@@ -1,0 +1,100 @@
+[
+ {
+  "rcept_no": "20261008800430",
+  "stock_code": "300720",
+  "corp_name": "한일시멘트",
+  "report_nm": "기업가치제고계획(자율공시)",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   "J-other",
+   "HOLD"
+  ],
+  "reason": "Noul 0.43 · Choice PASS_CHECK · other",
+  "borderline": true
+ },
+ {
+  "rcept_no": "20261008000296",
+  "stock_code": "047040",
+  "corp_name": "대우건설",
+  "report_nm": "특수관계인과의내부거래",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   "J-other",
+   "PASS"
+  ],
+  "reason": "Noul 0.77 · Choice PASS · other",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261008000215",
+  "stock_code": "000500",
+  "corp_name": "가온전선",
+  "report_nm": "계열금융회사를거래상대방으로한단기금융상품거래의분기별공시",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   "J-other",
+   "DROP"
+  ],
+  "reason": "Noul 0.10 · Choice DROP · other",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261008800084",
+  "stock_code": "285130",
+  "corp_name": "SK케미칼",
+  "report_nm": "장래사업ㆍ경영계획(공정공시)",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   "J-other",
+   "HOLD"
+  ],
+  "reason": "Noul 0.45 · Choice PASS_CHECK · other",
+  "borderline": true
+ },
+ {
+  "rcept_no": "20261008000056",
+  "stock_code": "279570",
+  "corp_name": "케이뱅크",
+  "report_nm": "계열금융회사의약관에의한금융거래-[예ㆍ적금]",
+  "proceed": false,
+  "tag": "기타 사항",
+  "rules": [
+   "J-other",
+   "DROP"
+  ],
+  "reason": "Noul 0.10 · Choice DROP · other",
+  "borderline": false
+ },
+ {
+  "rcept_no": "20261008800055",
+  "stock_code": "373220",
+  "corp_name": "LG에너지솔루션",
+  "report_nm": "연결재무제표기준영업(잠정)실적(공정공시)",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   "J-large",
+   "PASS_CHECK"
+  ],
+  "reason": "Noul 0.47 · Choice PASS_CHECK · large",
+  "borderline": true
+ },
+ {
+  "rcept_no": "20261008800004",
+  "stock_code": "005930",
+  "corp_name": "삼성전자",
+  "report_nm": "연결재무제표기준영업(잠정)실적(공정공시)",
+  "proceed": true,
+  "tag": "기타 사항",
+  "rules": [
+   "J-large",
+   "PASS_CHECK"
+  ],
+  "reason": "Noul 0.53 · Choice PASS_CHECK · large",
+  "borderline": true
+ }
+]

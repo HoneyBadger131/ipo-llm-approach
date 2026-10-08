@@ -1,0 +1,202 @@
+{
+ "date": "2026-09-30",
+ "total": 1096,
+ "watchlist_filings": 165,
+ "watchlist_companies": 70,
+ "excluded": 133,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260930801254",
+   "stock_code": "006260",
+   "corp_name": "LS",
+   "report_nm": "풍문또는보도에대한해명(미확정)(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260930801176",
+   "stock_code": "006260",
+   "corp_name": "LS",
+   "report_nm": "타법인주식및출자증권취득결정(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260930801200",
+   "stock_code": "009830",
+   "corp_name": "한화솔루션",
+   "report_nm": "유상증자결정(종속회사의주요경영사항)"
+  },
+  {
+   "rcept_no": "20260930801139",
+   "stock_code": "011170",
+   "corp_name": "롯데케미칼",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260930000834",
+   "stock_code": "003530",
+   "corp_name": "한화투자증권",
+   "report_nm": "특수관계인의유상증자참여"
+  },
+  {
+   "rcept_no": "20260930000832",
+   "stock_code": "088350",
+   "corp_name": "한화생명",
+   "report_nm": "특수관계인에대한출자"
+  },
+  {
+   "rcept_no": "20260930801232",
+   "stock_code": "088350",
+   "corp_name": "한화생명",
+   "report_nm": "유상증자결정(종속회사의주요경영사항)"
+  },
+  {
+   "rcept_no": "20260930000830",
+   "stock_code": "003530",
+   "corp_name": "한화투자증권",
+   "report_nm": "특수관계인의유상증자참여"
+  },
+  {
+   "rcept_no": "20260930000770",
+   "stock_code": "003530",
+   "corp_name": "한화투자증권",
+   "report_nm": "주요사항보고서(유상증자결정)"
+  },
+  {
+   "rcept_no": "20260930801108",
+   "stock_code": "008930",
+   "corp_name": "한미사이언스",
+   "report_nm": "지주회사의자회사탈퇴"
+  },
+  {
+   "rcept_no": "20260930801006",
+   "stock_code": "088350",
+   "corp_name": "한화생명",
+   "report_nm": "타법인주식및출자증권취득결정"
+  },
+  {
+   "rcept_no": "20260930000722",
+   "stock_code": "003530",
+   "corp_name": "한화투자증권",
+   "report_nm": "주요사항보고서(자본으로인정되는채무증권발행결정)"
+  },
+  {
+   "rcept_no": "20260930800797",
+   "stock_code": "454910",
+   "corp_name": "두산로보틱스",
+   "report_nm": "대표이사(대표집행임원)변경(안내공시)"
+  },
+  {
+   "rcept_no": "20260930800878",
+   "stock_code": "259960",
+   "corp_name": "크래프톤",
+   "report_nm": "주식소각결정"
+  },
+  {
+   "rcept_no": "20260930800697",
+   "stock_code": "012330",
+   "corp_name": "현대모비스",
+   "report_nm": "주주명부폐쇄기간또는기준일설정"
+  },
+  {
+   "rcept_no": "20260930800666",
+   "stock_code": "000720",
+   "corp_name": "현대건설",
+   "report_nm": "기타경영사항(자율공시)"
+  },
+  {
+   "rcept_no": "20260930800644",
+   "stock_code": "064350",
+   "corp_name": "현대로템",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260930000515",
+   "stock_code": "093050",
+   "corp_name": "LF",
+   "report_nm": "주요사항보고서(자기주식취득결정)"
+  },
+  {
+   "rcept_no": "20260930000478",
+   "stock_code": "012330",
+   "corp_name": "현대모비스",
+   "report_nm": "주요사항보고서(회사분할결정)"
+  },
+  {
+   "rcept_no": "20260930800456",
+   "stock_code": "035250",
+   "corp_name": "강원랜드",
+   "report_nm": "주주명부폐쇄기간또는기준일설정"
+  },
+  {
+   "rcept_no": "20260930000237",
+   "stock_code": "002350",
+   "corp_name": "넥센타이어",
+   "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서"
+  },
+  {
+   "rcept_no": "20260930800269",
+   "stock_code": "006040",
+   "corp_name": "동원산업",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260930800232",
+   "stock_code": "161890",
+   "corp_name": "한국콜마",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260930800220",
+   "stock_code": "005490",
+   "corp_name": "POSCO홀딩스",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260930000142",
+   "stock_code": "036530",
+   "corp_name": "SNT홀딩스",
+   "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서"
+  },
+  {
+   "rcept_no": "20260930800068",
+   "stock_code": "229640",
+   "corp_name": "LS에코에너지",
+   "report_nm": "타법인주식및출자증권취득결정"
+  },
+  {
+   "rcept_no": "20260930800054",
+   "stock_code": "010140",
+   "corp_name": "삼성중공업",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260930800031",
+   "stock_code": "030000",
+   "corp_name": "제일기획",
+   "report_nm": "수시공시의무관련사항(공정공시)"
+  },
+  {
+   "rcept_no": "20260930000006",
+   "stock_code": "030000",
+   "corp_name": "제일기획",
+   "report_nm": "주요사항보고서(자기주식취득결정)"
+  },
+  {
+   "rcept_no": "20260930800003",
+   "stock_code": "030000",
+   "corp_name": "제일기획",
+   "report_nm": "주식소각결정"
+  },
+  {
+   "rcept_no": "20260930800004",
+   "stock_code": "030000",
+   "corp_name": "제일기획",
+   "report_nm": "매매거래정지및정지해제(중요내용공시)"
+  },
+  {
+   "rcept_no": "20260930800001",
+   "stock_code": "000720",
+   "corp_name": "현대건설",
+   "report_nm": "중대재해발생"
+  }
+ ]
+}

@@ -1,0 +1,180 @@
+{
+ "date": "2026-09-28",
+ "total": 538,
+ "watchlist_filings": 73,
+ "watchlist_companies": 35,
+ "excluded": 51,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260928800821",
+   "stock_code": "009150",
+   "corp_name": "삼성전기",
+   "report_nm": "유형자산취득결정(종속회사의주요경영사항)"
+  },
+  {
+   "rcept_no": "20260928800723",
+   "stock_code": "047040",
+   "corp_name": "대우건설",
+   "report_nm": "투자판단관련주요경영사항"
+  },
+  {
+   "rcept_no": "20260928800810",
+   "stock_code": "009150",
+   "corp_name": "삼성전기",
+   "report_nm": "신규시설투자등"
+  },
+  {
+   "rcept_no": "20260928000345",
+   "stock_code": "004990",
+   "corp_name": "롯데지주",
+   "report_nm": "주요사항보고서(자본으로인정되는채무증권발행결정)"
+  },
+  {
+   "rcept_no": "20260928000342",
+   "stock_code": "004990",
+   "corp_name": "롯데지주",
+   "report_nm": "주요사항보고서(자본으로인정되는채무증권발행결정)"
+  },
+  {
+   "rcept_no": "20260928800613",
+   "stock_code": "000400",
+   "corp_name": "롯데손해보험",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260928800487",
+   "stock_code": "294870",
+   "corp_name": "IPARK현대산업개발",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260928800479",
+   "stock_code": "294870",
+   "corp_name": "IPARK현대산업개발",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260928800496",
+   "stock_code": "042660",
+   "corp_name": "한화오션",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260928800431",
+   "stock_code": "034730",
+   "corp_name": "SK",
+   "report_nm": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260928800380",
+   "stock_code": "096770",
+   "corp_name": "SK이노베이션",
+   "report_nm": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260928000252",
+   "stock_code": "042660",
+   "corp_name": "한화오션",
+   "report_nm": "주요사항보고서(자기주식취득결정)"
+  },
+  {
+   "rcept_no": "20260928800375",
+   "stock_code": "069260",
+   "corp_name": "티케이지휴켐스",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260928000243",
+   "stock_code": "042660",
+   "corp_name": "한화오션",
+   "report_nm": "약관에의한금융거래시계열금융회사의거래상대방의공시"
+  },
+  {
+   "rcept_no": "20260928000146",
+   "stock_code": "483650",
+   "corp_name": "달바글로벌",
+   "report_nm": "주요사항보고서(자기주식취득신탁계약체결결정)"
+  },
+  {
+   "rcept_no": "20260928800233",
+   "stock_code": "071320",
+   "corp_name": "지역난방공사",
+   "report_nm": "영업(잠정)실적(공정공시)"
+  },
+  {
+   "rcept_no": "20260928800241",
+   "stock_code": "007310",
+   "corp_name": "오뚜기",
+   "report_nm": "중대재해발생(종속회사의주요경영사항)"
+  },
+  {
+   "rcept_no": "20260928800208",
+   "stock_code": "105560",
+   "corp_name": "KB금융",
+   "report_nm": "기타안내사항(안내공시)"
+  },
+  {
+   "rcept_no": "20260928800164",
+   "stock_code": "064960",
+   "corp_name": "SNT모티브",
+   "report_nm": "주식소각결정"
+  },
+  {
+   "rcept_no": "20260928800166",
+   "stock_code": "064960",
+   "corp_name": "SNT모티브",
+   "report_nm": "매매거래정지및정지해제(중요내용공시)"
+  },
+  {
+   "rcept_no": "20260928800163",
+   "stock_code": "036530",
+   "corp_name": "SNT홀딩스",
+   "report_nm": "주식소각결정"
+  },
+  {
+   "rcept_no": "20260928800130",
+   "stock_code": "028670",
+   "corp_name": "팬오션",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  }
+ ],
+ "subsidiary_dup": [
+  {
+   "rcept_no": "20260928800547",
+   "stock_code": "012630",
+   "corp_name": "HDC",
+   "report_nm": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260928800487",
+   "twin_corp": "IPARK현대산업개발",
+   "sub_name": "아이파크현대산업개발(주)"
+  },
+  {
+   "rcept_no": "20260928800525",
+   "stock_code": "012630",
+   "corp_name": "HDC",
+   "report_nm": "타인에대한채무보증결정(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260928800479",
+   "twin_corp": "IPARK현대산업개발",
+   "sub_name": "아이파크현대산업개발(주)"
+  },
+  {
+   "rcept_no": "20260928800390",
+   "stock_code": "011790",
+   "corp_name": "SKC",
+   "report_nm": "타법인주식및출자증권취득결정(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260928900382",
+   "twin_corp": "ISC",
+   "sub_name": "(주)아이에스시"
+  },
+  {
+   "rcept_no": "20260928800167",
+   "stock_code": "036530",
+   "corp_name": "SNT홀딩스",
+   "report_nm": "주식소각결정(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260928800164",
+   "twin_corp": "SNT모티브",
+   "sub_name": "SNT모티브(주)"
+  }
+ ]
+}

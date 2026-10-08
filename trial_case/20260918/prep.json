@@ -1,0 +1,183 @@
+{
+ "date": "2026-09-18",
+ "total": 734,
+ "watchlist_filings": 118,
+ "watchlist_companies": 49,
+ "excluded": 94,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260918800776",
+   "stock_code": "272210",
+   "corp_name": "한화시스템",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260918800703",
+   "stock_code": "272210",
+   "corp_name": "한화시스템",
+   "report_nm": "타법인주식및출자증권처분결정(종속회사의주요경영사항)"
+  },
+  {
+   "rcept_no": "20260918800717",
+   "stock_code": "012450",
+   "corp_name": "한화에어로스페이스",
+   "report_nm": "대표이사(대표집행임원)변경(안내공시)"
+  },
+  {
+   "rcept_no": "20260918800709",
+   "stock_code": "033780",
+   "corp_name": "케이티앤지",
+   "report_nm": "소송등의판결ㆍ결정(자율공시:일정금액미만의청구)"
+  },
+  {
+   "rcept_no": "20260918800689",
+   "stock_code": "272210",
+   "corp_name": "한화시스템",
+   "report_nm": "대표이사(대표집행임원)변경(안내공시)"
+  },
+  {
+   "rcept_no": "20260918800546",
+   "stock_code": "195870",
+   "corp_name": "해성디에스",
+   "report_nm": "신규시설투자등"
+  },
+  {
+   "rcept_no": "20260918800583",
+   "stock_code": "000660",
+   "corp_name": "SK하이닉스",
+   "report_nm": "조회공시요구(풍문또는보도)에대한답변(미확정)"
+  },
+  {
+   "rcept_no": "20260918800436",
+   "stock_code": "298040",
+   "corp_name": "효성중공업",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260918800537",
+   "stock_code": "195870",
+   "corp_name": "해성디에스",
+   "report_nm": "유형자산취득결정"
+  },
+  {
+   "rcept_no": "20260918800534",
+   "stock_code": "079160",
+   "corp_name": "CJ CGV",
+   "report_nm": "감자결정(종속회사의주요경영사항)"
+  },
+  {
+   "rcept_no": "20260918800497",
+   "stock_code": "023590",
+   "corp_name": "다우기술",
+   "report_nm": "기타경영사항(종속회사의주요경영사항)"
+  },
+  {
+   "rcept_no": "20260918800395",
+   "stock_code": "294870",
+   "corp_name": "IPARK현대산업개발",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260918000311",
+   "stock_code": "016360",
+   "corp_name": "삼성증권",
+   "report_nm": "특수관계인에대한출자"
+  },
+  {
+   "rcept_no": "20260918800403",
+   "stock_code": "035720",
+   "corp_name": "카카오",
+   "report_nm": "조회공시요구(풍문또는보도)에대한답변(미확정)"
+  },
+  {
+   "rcept_no": "20260918000296",
+   "stock_code": "039490",
+   "corp_name": "키움증권",
+   "report_nm": "주요사항보고서(자본으로인정되는채무증권발행결정)"
+  },
+  {
+   "rcept_no": "20260918800290",
+   "stock_code": "036460",
+   "corp_name": "한국가스공사",
+   "report_nm": "투자판단관련주요경영사항"
+  },
+  {
+   "rcept_no": "20260918800259",
+   "stock_code": "329180",
+   "corp_name": "HD현대중공업",
+   "report_nm": "조회공시요구(풍문또는보도)에대한답변(미확정)"
+  },
+  {
+   "rcept_no": "20260918800250",
+   "stock_code": "329180",
+   "corp_name": "HD현대중공업",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260918000180",
+   "stock_code": "000810",
+   "corp_name": "삼성화재해상보험",
+   "report_nm": "특수관계인에대한출자"
+  },
+  {
+   "rcept_no": "20260918000179",
+   "stock_code": "000810",
+   "corp_name": "삼성화재해상보험",
+   "report_nm": "특수관계인에대한출자"
+  },
+  {
+   "rcept_no": "20260918800222",
+   "stock_code": "293940",
+   "corp_name": "신한알파리츠",
+   "report_nm": "부동산투자회사자금차입"
+  },
+  {
+   "rcept_no": "20260918000177",
+   "stock_code": "000810",
+   "corp_name": "삼성화재해상보험",
+   "report_nm": "특수관계인과의수익증권거래"
+  },
+  {
+   "rcept_no": "20260918800184",
+   "stock_code": "294870",
+   "corp_name": "IPARK현대산업개발",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260918800075",
+   "stock_code": "047040",
+   "corp_name": "대우건설",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  }
+ ],
+ "subsidiary_dup": [
+  {
+   "rcept_no": "20260918800442",
+   "stock_code": "012630",
+   "corp_name": "HDC",
+   "report_nm": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260918800395",
+   "twin_corp": "IPARK현대산업개발",
+   "sub_name": "아이파크현대산업개발(주)"
+  },
+  {
+   "rcept_no": "20260918800252",
+   "stock_code": "000640",
+   "corp_name": "동아쏘시오홀딩스",
+   "report_nm": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260918900224",
+   "twin_corp": "에스티팜",
+   "sub_name": "에스티팜(주)"
+  },
+  {
+   "rcept_no": "20260918800197",
+   "stock_code": "012630",
+   "corp_name": "HDC",
+   "report_nm": "타인에대한채무보증결정(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260918800184",
+   "twin_corp": "IPARK현대산업개발",
+   "sub_name": "아이파크현대산업개발(주)"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "report_version": 3,
+ "corp_name": "엘앤에프",
+ "stock_code": "066970",
+ "disclosure_date": "2026-09-08",
+ "disclosure_title": "풍문또는보도에대한해명(미확정)",
+ "rcept_no": "20260908800619",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260908800619",
+ "tag": "사업 변동",
+ "sentiment": {"label": "혼재됨", "reason": "LFP 성장 자금 확보, 희석·재무 부담 우려"},
+ "headline": "CB 발행 포함 자금조달 검토, 확정 사항 없음",
+ "impact_summary": "CB 등 자금조달 검토 인정, 확정 없고 10/7 재공시.",
+ "event_type": "풍문·보도 해명(미확정)",
+ "keywords": ["전환사채", "자금조달", "LFP 양극재", "원재료 확보", "재공시", "46파이", "희석"],
+ "themes": ["2차전지 소재", "LFP 양극재"],
+ "related_ids": [],
+ "kpis": [
+  {"label": "검토 중인 조달", "value": "CB 포함", "sub": "규모·조건 미확정"},
+  {"label": "재공시 예정일", "value": "2026-10-07", "sub": "확정 시 또는 1개월 내"},
+  {"label": "부채비율", "value": "363%", "sub": "2025 연결"},
+  {"label": "전환사채류 잔액", "value": "약 4,100억", "sub": "2025 연결, 자본총계 약 6,770억"}
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {"type": "unk", "text": "녹색경제신문의 'CB 발행 검토' 보도에 대해 검토 중이나 확정된 것은 없다고 해명"},
+  {"type": "pos", "text": "출하량 증가와 LFP 양산에 필요한 핵심 원재료 확보가 자금 사용 목적"},
+  {"type": "neg", "text": "CB가 발행되면 주식 전환에 따른 지분 희석 가능성"},
+  {"type": "neg", "text": "2025년 영업손실 약 1,570억, 부채비율 363%로 재무 부담 큼"}
+ ],
+ "news": [
+  {"outlet": "네이트뉴스", "date": "2026-09-08", "title": "엘앤에프, 전환사채(CB) 발행 검토 사실 인정…\"LFP·ESS 사업 본격화 선제 대응\"", "url": "https://m.news.nate.com/view/20260908n32618"},
+  {"outlet": "네이트뉴스", "date": "2026-09-08", "title": "엘앤에프, CB 발행 검토…\"46파이·LFP 확대 대응 차원\"", "url": "https://m.news.nate.com/view/20260908n34196"}
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP, 뉴스 링크.",
+ "brief": "CB 포함 자금조달을 검토 중이나 확정 없음(10/7 재공시). LFP 원재료 확보용, 희석 가능성.",
+ "importance": 3,
+ "importance_reason": "금액·조건이 정해지지 않은 검토 단계라 기준표 상단 대신 3점으로 두되, 자본 대비 규모가 클 수 있어 주시할 사안입니다.",
+ "importance_score": 58
+}

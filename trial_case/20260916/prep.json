@@ -1,0 +1,22 @@
+{
+ "date": "2026-09-16",
+ "total": 724,
+ "watchlist_filings": 105,
+ "watchlist_companies": 35,
+ "excluded": 103,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260916000486",
+   "stock_code": "017940",
+   "corp_name": "E1",
+   "report_nm": "약관에의한금융거래시계열금융회사의거래상대방의공시"
+  },
+  {
+   "rcept_no": "20260916800015",
+   "stock_code": "068270",
+   "corp_name": "셀트리온",
+   "report_nm": "주식소각결정"
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+{
+ "corp_name": "영원무역",
+ "stock_code": "111770",
+ "disclosure_date": "2026-10-06",
+ "disclosure_title": "주요사항보고서(자기주식취득신탁계약체결결정)",
+ "rcept_no": "20261006000337",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006000337",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "자사주 500억 매입, 소각 여부는 미정"
+ },
+ "headline": "자사주 500억 신탁 매입, 약 6개월간 진행",
+ "impact_summary": "순자산 2.3% 규모 자사주 매입, 소각은 별도 결의 예정.",
+ "event_type": "자기주식취득신탁계약",
+ "keywords": [
+  "자사주",
+  "신탁계약",
+  "신한투자증권",
+  "기업가치 제고",
+  "주주환원",
+  "소각"
+ ],
+ "themes": [
+  "주주환원",
+  "기업가치 제고"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "계약금액",
+   "value": "500억",
+   "sub": "신한투자증권, 신탁 방식"
+  },
+  {
+   "label": "취득 예정 주식",
+   "value": "약 75만주",
+   "sub": "발행주식의 약 1.7%"
+  },
+  {
+   "label": "계약기간",
+   "value": "6개월",
+   "sub": "2026.10.06~2027.04.06"
+  },
+  {
+   "label": "기존 자사주",
+   "value": "3.95%",
+   "sub": "계약 전 보유, 약 175만주"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "500억 원 자사주 매입, 직전 사업연도 말 순자산(별도)의 약 2.3%"
+  },
+  {
+   "type": "pos",
+   "text": "취득 완료 시 자사주는 기존 3.95%에서 약 5.6%로 증가(예정 수량 기준)"
+  },
+  {
+   "type": "unk",
+   "text": "취득주식은 소각 등에 활용 예정이나 구체 결정은 별도 이사회에서 공시 예정"
+  },
+  {
+   "type": "unk",
+   "text": "언론 보도: 8월 수정 계획은 자사주 매입만 있고 소각 계획은 없어 효과 제한 지적"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "더팩트",
+   "date": "2026-08-13",
+   "title": "영원무역, 기업가치 제고계획 수정…배당성향 30%·자사주 500억 매입",
+   "url": "https://news.tf.co.kr/read/ogmeta/2353634.htm"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "자사주 500억 원 신탁 매입(순자산 2.3%). 소각은 별도 결의 예정, 주주환원 기대.",
+ "importance": 3,
+ "importance_reason": "순자산 대비 약 2.3%로 1~5% 구간의 주주환원 결정입니다.",
+ "importance_score": 66,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3
+}

@@ -1,0 +1,80 @@
+{
+ "corp_name": "HDC",
+ "stock_code": "012630",
+ "disclosure_title": "투자판단관련주요경영사항(자회사의 주요경영사항)",
+ "rcept_no": "20261006800172",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800172",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "자회사 재개발 수주, 연결 매출 4% 규모"
+ },
+ "headline": "자회사 현산, 부산 연산13구역 시공사 선정",
+ "impact_summary": "자회사 수주 약 2,812억, 연결 매출의 4.3%입니다.",
+ "event_type": "시공사 선정",
+ "keywords": [
+  "연산13구역",
+  "재개발",
+  "시공사 선정",
+  "IPARK현대산업개발",
+  "자회사",
+  "부산",
+  "공동주택"
+ ],
+ "themes": [
+  "건설",
+  "도시정비사업"
+ ],
+ "kpis": [
+  {
+   "label": "공사예정금액",
+   "value": "약 2,812억",
+   "sub": "부가세 제외, 계약 시 확정"
+  },
+  {
+   "label": "HDC 연결 매출 대비",
+   "value": "약 4.3%",
+   "sub": "2025 연결 매출 약 6.6조"
+  },
+  {
+   "label": "자회사 매출 대비",
+   "value": "6.8%",
+   "sub": "공시 기준"
+  },
+  {
+   "label": "규모",
+   "value": "720세대",
+   "sub": "지하3~지상34층 5개동"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "자회사 아이파크현대산업개발이 부산 연산13구역 재개발 시공사로 선정됨"
+  },
+  {
+   "type": "pos",
+   "text": "공사예정금액 약 2,812억, HDC 연결 매출의 약 4%"
+  },
+  {
+   "type": "neg",
+   "text": "선정일 10/3, 본계약 전이라 금액·조건이 바뀔 수 있음"
+  },
+  {
+   "type": "unk",
+   "text": "착공·매출 반영 시점은 공시에 없음(미확인)"
+  }
+ ],
+ "news": [],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP.",
+ "brief": "자회사 현산이 연산13구역 재개발 수주(약 2,812억, HDC 연결 매출 약 4%). 본계약 전 단계.",
+ "importance": 1,
+ "importance_reason": "자회사의 국내 재개발 시공사 선정 건이고 IPARK현대산업개발 공시와 같은 내용이라 기준표(3)보다 2단계 낮췄습니다.",
+ "importance_score": 15,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3,
+ "disclosure_date": "2026-10-06",
+ "related_ids": [],
+ "tag": "사업 변동"
+}

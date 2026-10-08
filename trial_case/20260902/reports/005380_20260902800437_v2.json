@@ -1,0 +1,54 @@
+{
+ "corp_name": "현대자동차",
+ "stock_code": "005380",
+ "disclosure_date": "2026-09-02",
+ "disclosure_title": "생산재개(자율공시)",
+ "rcept_no": "20260902800437",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260902800437",
+ "tag": "기타 사항",
+ "sentiment": {"label": "긍정적", "reason": "임금협상 타결로 파업 종료, 생산 정상화"},
+ "headline": "임금협상 타결, 전 사업장 생산 재개",
+ "impact_summary": "파업 리스크가 해소돼 하반기 생산 정상화가 기대됩니다.",
+ "event_type": "생산재개",
+ "keywords": ["임금협상", "파업 종료", "생산재개", "울산공장", "노사합의", "생산차질"],
+ "themes": ["자동차", "노사관계"],
+ "related_ids": [],
+ "kpis": [
+  {"label": "생산재개 분야 매출", "value": "약 78.8조", "sub": "2025 별도"},
+  {"label": "연결매출 대비", "value": "42.3%", "sub": "공시 기준"},
+  {"label": "생산중단 기간", "value": "7~8월 4일", "sub": "7/13~15 부분, 8/21 전일"},
+  {"label": "조합원 찬성률", "value": "61.55%", "sub": "잠정합의안 투표"}
+ ],
+ "financials": {
+  "basis": "연결, 단위 조원",
+  "years": ["2023", "2024", "2025"],
+  "rows": [
+   {"label": "매출", "values": [{"v": 163, "d": "163"}, {"v": 175, "d": "175"}, {"v": 186, "d": "186"}]},
+   {"label": "영업이익", "values": [{"v": 15.1, "d": "15.1"}, {"v": 14.2, "d": "14.2"}, {"v": 11.5, "d": "11.5"}]}
+  ]
+ },
+ "valuation": {
+  "items": [
+   {"label": "PER (최근 12개월)", "value": "10.0배", "sub": "8/28 스냅샷"},
+   {"label": "PBR", "value": "0.67배", "sub": "최근 분기 기준, 8/28"}
+  ],
+  "note": ""
+ },
+ "consensus": null,
+ "points": [
+  {"type": "pos", "text": "노사 최종 타결로 파업 리스크 해소"},
+  {"type": "pos", "text": "생산중단은 7~8월 부분·1일 전일에 그침"},
+  {"type": "neg", "text": "2025 영업이익 19.5% 감소, 수익성 하락세"},
+  {"type": "unk", "text": "생산 차질 손실액과 합의 비용은 미공개"}
+ ],
+ "news": [
+  {"outlet": "스포츠경향", "date": "2026-09-01", "title": "현대차 노조, 임금교섭 잠정합의안 최종 가결", "url": "https://sports.khan.co.kr/article/202609010907003/"},
+  {"outlet": "뉴스핌", "date": "2026-09-01", "title": "현대차, 임협 118일 만에 타결…61.55% 찬성", "url": "https://www.newspim.com/news/view/20260901000023"},
+  {"outlet": "스타뉴스", "date": "2026-09-01", "title": "임금 10만원 인상·성과금 400%…임금교섭 가결", "url": "https://www.starnewskorea.com/business-life/2026/09/01/2026090110165726837"}
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP(재무·가치평가·컨센서스), 뉴스 링크. 생산재개 분야 매출은 2025년 별도, 연결매출 대비 비율은 공시 기준.",
+ "brief": "임금협상 최종 타결로 전 사업장 생산 재개. 파업 리스크는 해소, 손실 규모는 미공개.",
+ "importance": 2,
+ "importance_reason": "파업 종료로 불확실성은 줄지만 실제 생산중단은 7~8월 일부에 그쳐 규모가 작다.",
+ "importance_score": 60
+}

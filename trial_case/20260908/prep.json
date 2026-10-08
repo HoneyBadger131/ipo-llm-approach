@@ -1,0 +1,82 @@
+{
+ "date": "2026-09-08",
+ "total": 559,
+ "watchlist_filings": 63,
+ "watchlist_companies": 37,
+ "excluded": 53,
+ "separate": [
+  {
+   "rcept_no": "20260908000397",
+   "stock_code": "395400",
+   "corp_name": "SK리츠",
+   "report_nm": "사업보고서 (2026.06)"
+  },
+  {
+   "rcept_no": "20260908800524",
+   "stock_code": "395400",
+   "corp_name": "SK리츠",
+   "report_nm": "감사보고서제출"
+  }
+ ],
+ "review": [
+  {
+   "rcept_no": "20260908800619",
+   "stock_code": "066970",
+   "corp_name": "엘앤에프",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260908000407",
+   "stock_code": "003530",
+   "corp_name": "한화투자증권",
+   "report_nm": "독립이사의선임ㆍ해임또는중도퇴임에관한신고"
+  },
+  {
+   "rcept_no": "20260908800599",
+   "stock_code": "079160",
+   "corp_name": "CJ CGV",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260908000386",
+   "stock_code": "267260",
+   "corp_name": "HD현대일렉트릭",
+   "report_nm": "독립이사의선임ㆍ해임또는중도퇴임에관한신고"
+  },
+  {
+   "rcept_no": "20260908800378",
+   "stock_code": "009830",
+   "corp_name": "한화솔루션",
+   "report_nm": "타법인주식및출자증권처분결정(자율공시)"
+  },
+  {
+   "rcept_no": "20260908800375",
+   "stock_code": "009830",
+   "corp_name": "한화솔루션",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260908800452",
+   "stock_code": "047040",
+   "corp_name": "대우건설",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260908800128",
+   "stock_code": "011200",
+   "corp_name": "HMM",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  }
+ ],
+ "subsidiary_dup": [
+  {
+   "rcept_no": "20260908800600",
+   "stock_code": "001040",
+   "corp_name": "CJ",
+   "report_nm": "타인에대한채무보증결정(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260908800599",
+   "twin_corp": "CJ CGV",
+   "sub_name": "씨제이씨지브이(주)"
+  }
+ ]
+}
