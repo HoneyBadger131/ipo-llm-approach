@@ -1,0 +1,80 @@
+{
+ "corp_name": "HD건설기계",
+ "stock_code": "267270",
+ "disclosure_title": "단일판매ㆍ공급계약체결",
+ "rcept_no": "20261007800221",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "매출 10% 규모 미국 엔진 공급 수주"
+ },
+ "headline": "미국 Enchanted Rock과 3,879억 엔진 공급 계약",
+ "impact_summary": "가스 발전용 엔진 롱블럭 공급, 최근 매출의 10.3% 규모입니다.",
+ "event_type": "단일판매ㆍ공급계약",
+ "keywords": [
+  "가스 발전용 엔진",
+  "롱블럭",
+  "Enchanted Rock",
+  "미국",
+  "수출",
+  "대규모 수주",
+  "선수금"
+ ],
+ "themes": [
+  "발전용 엔진",
+  "수주"
+ ],
+ "kpis": [
+  {
+   "label": "계약금액",
+   "value": "약 3,879억",
+   "sub": "USD 약 2.86억 환산"
+  },
+  {
+   "label": "매출액 대비",
+   "value": "10.27%",
+   "sub": "2025 연결(합병 전)"
+  },
+  {
+   "label": "계약기간",
+   "value": "2027.1~2028.12",
+   "sub": "생산·수출 일정에 따라 변동"
+  },
+  {
+   "label": "선수금",
+   "value": "10%",
+   "sub": "나머지 90%는 진행에 따라 청구"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "최근 매출의 10%를 넘는 대형 수주로 향후 2년 매출 가시성 확대"
+  },
+  {
+   "type": "pos",
+   "text": "선수금 10%를 받아 초기 자금 부담이 작습니다"
+  },
+  {
+   "type": "unk",
+   "text": "매출액 비교 기준은 합병 전 2025년 HD건설기계 단독 연결이라, 합병 후 매출 대비로는 비율이 더 낮아질 수 있습니다"
+  },
+  {
+   "type": "unk",
+   "text": "환율 1,358.50원 적용 환산액이며, 계약기간은 일정에 따라 바뀔 수 있습니다"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문.",
+ "brief": "미국 Enchanted Rock에 가스 발전용 엔진 롱블럭 3,879억 공급(매출 10.3%). 2027~28년 매출 확대 기대.",
+ "importance": 5,
+ "importance_reason": "계약금액이 최근 매출의 10.27%로 기준표 5점(10% 이상)에 해당합니다.",
+ "importance_score": 72,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3,
+ "related_ids": [],
+ "news": [],
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261007800221",
+ "disclosure_date": "2026-10-07"
+}
