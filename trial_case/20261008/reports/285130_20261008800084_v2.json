@@ -1,0 +1,81 @@
+{
+ "disclosure_date": "2026-10-08",
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3,
+ "corp_name": "SK케미칼",
+ "disclosure_title": "장래사업ㆍ경영계획(공정공시)",
+ "tag": "기타 사항",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "2030 목표 제시와 주주환원 30% 이상 약속"
+ },
+ "headline": "2030 매출 2.8조·영업이익 3,200억 목표 제시",
+ "impact_summary": "2030 영업이익률 11% 목표, 총주주환원율 30% 이상.",
+ "event_type": "중장기 경영계획",
+ "keywords": [
+  "중장기 목표",
+  "2030",
+  "주주환원",
+  "Recycle",
+  "Copoly",
+  "Pharma",
+  "기능소재",
+  "CEO 인베스터데이"
+ ],
+ "themes": [
+  "화학소재",
+  "주주환원"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "2030 매출 목표",
+   "value": "2.8조",
+   "sub": "SK바이오사이언스 제외"
+  },
+  {
+   "label": "2030 영업이익 목표",
+   "value": "3,200억",
+   "sub": "영업이익률 11%"
+  },
+  {
+   "label": "ROIC·ROE 목표",
+   "value": "10+α%",
+   "sub": "2030"
+  },
+  {
+   "label": "총주주환원율",
+   "value": "30% 이상",
+   "sub": "2026~2028 목표"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "2030년 매출 2.8조, 영업이익 3,200억(이익률 11%) 중장기 목표 제시"
+  },
+  {
+   "type": "pos",
+   "text": "2026~2028년 총주주환원율 30% 이상 목표"
+  },
+  {
+   "type": "pos",
+   "text": "Recycle 사업 흑자 전환과 Raas 수익모델, 글로벌 생산거점 확대 추진"
+  },
+  {
+   "type": "unk",
+   "text": "목표는 상장 자회사 SK바이오사이언스 제외 기준, 향후 변경 가능"
+  }
+ ],
+ "news": [],
+ "sources_note": "출처: DART 공시 원문.",
+ "brief": "2030 매출 2.8조·영업이익 3,200억 목표, 2026~28 총주주환원율 30% 이상 제시.",
+ "importance": 3,
+ "importance_reason": "중장기 재무목표와 주주환원 정책을 처음 수치로 제시한 의미 있는 공시이나 계획 단계입니다.",
+ "importance_score": 58,
+ "stock_code": "285130",
+ "rcept_no": "20261008800084",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261008800084"
+}
