@@ -37,9 +37,9 @@ h2 .sub{font-weight:400;color:var(--mute);font-size:10.5px;margin-left:4px}
 table{width:100%;border-collapse:collapse;font-size:10.5px;table-layout:fixed}
 th,td{padding:3px 4px;border-bottom:1px solid var(--line);text-align:right}th{text-align:left;color:var(--mute);font-weight:400;width:24%}
 thead th{color:var(--ink);font-weight:700;text-align:right}thead th:first-child{text-align:left}
-tr.chart td{vertical-align:bottom;text-align:center;border-bottom:1px solid var(--line);padding-bottom:0;height:88px}
+tr.chart td{vertical-align:bottom;text-align:center;border-bottom:1px solid var(--line);padding-bottom:0;height:70px}tr.chart th{vertical-align:bottom;font-size:9.5px;color:var(--mute)}
 .bv{font-weight:700;font-size:10.5px;margin-bottom:2px}
-.bar{width:55%;margin:0 auto;background:var(--brand);border-radius:4px 4px 0 0;opacity:.85}
+.bar{width:55%;margin:0 auto;background:var(--brand);border-radius:4px 4px 0 0;opacity:.85}tr.c1 .bar{background:#1f9d8a}.bar.neg{background:#c2281f !important}.bv.neg{color:#c2281f}
 .mini{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
 .mini div{display:flex;flex-direction:column;border-left:3px solid var(--line);padding-left:7px}
 .mini .k{color:var(--mute);font-size:10px}.mini b{font-size:15px}.mini small{color:var(--mute);font-size:9.5px}
@@ -61,13 +61,16 @@ footer{margin-top:auto;color:var(--mute);font-size:8.5px;line-height:1.45}
 <header><div class="top"><div><h1>LG전자 <span style="font-weight:400;font-size:13px">066570</span></h1>
 <div class="sub">2026-10-07 · 연결재무제표기준영업(잠정)실적(공정공시) · 접수번호 20261007800145</div></div>
 <div class="chips"><span class="chip tag">기타 사항</span><span class="chip mix">투심 ◆ 혼재됨</span></div></div>
-<div class="headline">3분기 영업이익 7,818억, 전년比 13.5% 증가</div></header>
-<div class="kpis"><div class="kpi"><div class="l">3분기 매출</div><div class="v">약 23.8조</div><div class="s">전년比 +8.9%</div></div><div class="kpi"><div class="l">3분기 영업이익</div><div class="v">약 7,818억</div><div class="s">전년比 +13.5%, 전분기比 -50.5%</div></div><div class="kpi"><div class="l">누계 매출</div><div class="v">약 71.4조</div><div class="s">전년比 +9.2%</div></div><div class="kpi"><div class="l">누계 영업이익</div><div class="v">약 4.03조</div><div class="s">전년比 +55.9%</div></div></div>
+<div class="headline">3분기 영업이익 7,818억, 전기 대비 50% 감소</div></header>
+<div class="kpis"><div class="kpi"><div class="l">3분기 매출</div><div class="v">23.8조</div><div class="s">전년비 +8.9%, 전기 보합</div></div><div class="kpi"><div class="l">3분기 영업이익</div><div class="v">7,818억</div><div class="s">전년비 +13.5%, 전기비 -50.5%</div></div><div class="kpi"><div class="l">1~3분기 영업이익</div><div class="v">4.03조</div><div class="s">전년 누계 대비 +55.9%</div></div><div class="kpi"><div class="l">2026E 대비</div><div class="v">약 87%</div><div class="s">누계 ÷ 컨센서스 4.66조, 계산</div></div></div>
 <section class="card"><h2>핵심 포인트</h2>
-<div class="impact mix"><span class="chip">◆ 혼재됨</span><span class="t">매출 23.8조(+8.9%), 영업이익은 2분기보다 절반 수준입니다.<span class="why">전년比 증가, 직전 분기 대비 반토막</span></span></div>
-<ul class="points"><li><span class="pt pos">긍정</span><span>3분기 매출과 영업이익 모두 전년 같은 기간보다 늘었습니다</span></li><li><span class="pt pos">긍정</span><span>1~3분기 누적 영업이익 4.03조로 전년보다 56% 증가</span></li><li><span class="pt neg">리스크</span><span>3분기 영업이익은 2분기(약 1.58조)의 절반 수준으로 급감</span></li><li><span class="pt unk">미확인</span><span>영업이익률은 약 3.3%로 2분기(약 6.6%)보다 낮아졌고, 외부감사인 검토 전 잠정치입니다</span></li></ul></section>
+<div class="impact mix"><span class="chip">◆ 혼재됨</span><span class="t">3분기 영업이익 7,818억, 전년비 13.5% 증가·전분기비 50.5% 감소.<span class="why">전년 대비 증가, 직전 분기 대비 절반</span></span></div>
+<ul class="points"><li><span class="pt pos">긍정</span><span>1~3분기 영업이익 4.03조로 전년 누계보다 55.9% 늘었고, 컨센서스 연간 4.66조의 약 87%를 채웠습니다</span></li><li><span class="pt neg">리스크</span><span>3분기 영업이익은 2분기 1.58조의 절반으로 줄었고, 매출은 거의 같아 이익률이 떨어졌습니다</span></li><li><span class="pt unk">미확인</span><span>감소 원인과 사업부별 내역은 이번 공시에 없고, 3분기 IR 때 재공시 예정입니다</span></li><li><span class="pt unk">미확인</span><span>순이익은 공시되지 않았고, 외부감사인 검토 전 잠정치라 확정치와 다를 수 있습니다</span></li></ul></section>
+<div class="row2"><section class="card"><h2>최근 3년 실적 <span class="sub">연결, 단위 조원</span></h2><table><thead><tr><th></th><th>2023</th><th>2024</th><th>2025</th></tr></thead><tbody><tr class="chart c0"><th>매출</th><td><div class="bv">84.2</div><div class="bar" style="height:43px"></div></td><td><div class="bv">87.7</div><div class="bar" style="height:45px"></div></td><td><div class="bv">89.2</div><div class="bar" style="height:46px"></div></td></tr><tr class="chart c1"><th>영업이익</th><td><div class="bv">3.5</div><div class="bar" style="height:46px"></div></td><td><div class="bv">3.4</div><div class="bar" style="height:45px"></div></td><td><div class="bv">2.5</div><div class="bar" style="height:33px"></div></td></tr></tbody></table></section><section class="card"><h2>가치평가 · 추정치</h2><div class="mini"><div><span class="k">PER (최근 12개월)</span><b>32.6배</b><small>10/7 기준</small></div><div><span class="k">PBR</span><b>1.26배</b><small>최근 분기 기준</small></div><div><span class="k">2026E 영업이익</span><b>약 4.66조</b><small>컨센서스, 2025 대비 약 1.9배</small></div><div><span class="k">2026E PER</span><b>약 15.4배</b><small>컨센서스, 10/2 종가</small></div></div></section></div>
+<section class="card"><h2>컨센서스 추이 <span class="sub">2026E 영업이익 · 최근 4주</span></h2>
+<div class="cons"><div class="cbars"><div class="cs"><div class="bv">4.64조</div><div class="cbar" style="height:46px"></div><div class="cl">4주 전</div></div><div class="cs"><div class="bv">4.64조</div><div class="cbar" style="height:46px"></div><div class="cl">1주 전</div></div><div class="cs"><div class="bv">4.66조</div><div class="cbar" style="height:46px"></div><div class="cl">현재</div></div></div>
+<div class="cdelta flat"><span class="big">▬ +0.4%</span><span class="sm">4주 전 대비</span></div></div>
+<p class="note">최근 4주 스냅샷 2회, 추정치 변경 1회(+0.4%). 4주·1주 전 값은 변화율로 환산</p></section>
 
-
-
-<footer>출처: DART 공시 원문.<br>DART <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261007800145">https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261007800145</a> · 정보 제공용이며 투자 권유가 아닙니다.</footer>
+<footer>출처: DART 공시 원문, OpenProxyMCP(재무·가치평가·컨센서스), 뉴스 링크.<br>DART <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261007800145">https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261007800145</a> · 정보 제공용이며 투자 권유가 아닙니다.</footer>
 </div></body></html>
