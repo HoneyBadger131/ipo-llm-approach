@@ -48,6 +48,25 @@ def composite(a, hi=0.5, uncertain=None):
     return "DROP"
 
 
+def composite_v2(a, hi=0.5):
+    """v2 원자 Noul(정책 v0.3) -> 4단계 라벨."""
+    g = lambda k: a[k]["noul"] if k in a else 0.0
+    if "material_change" in a:                       # 정정 공시: 계약 해지 또는 200억 원 이상 변동만
+        return "PASS_CHECK" if g("material_change") >= hi else "DROP"
+    strong = max(g("business_shift"), g("bio_clinical"), g("legal_event"))
+    if g("monthly_results") >= hi:
+        return "PASS" if g("yoy_big") >= hi else ("PASS_CHECK" if g("needs_comparison") >= hi else "DROP")
+    if strong >= hi:
+        return "PASS"
+    if max(g("rumor_response"), g("repeat_known"), g("financial_routine"), g("routine_admin")) >= hi:
+        return "DROP"
+    if g("new_big_amount") >= hi:
+        return "PASS"
+    if max(g("lockup_release"), g("fatal_accident"), g("undisclosed_amount"), g("needs_comparison")) >= hi:
+        return "PASS_CHECK"
+    return "DROP"
+
+
 def predict(ans):
     """한 응답에서 방식별 예측을 뽑는다."""
     out = {}
@@ -58,8 +77,8 @@ def predict(ans):
         out["triage_conf"] = ans["triage"].get("confidence")
     if "importance" in ans:
         out["imp"] = ans["importance"]["score"]
-    out["comp"] = composite(ans)
-    out["comp_u"] = composite(ans, uncertain=0.15)
+    out["comp"] = composite_v2(ans) if "rumor_response" in ans else composite(ans)
+    out["comp_u"] = out["comp"] if "rumor_response" in ans else composite(ans, uncertain=0.15)
     out["atomic"] = {k: round(v["noul"], 2) for k, v in ans.items() if v["type"] == "noul" and k not in ("proceed",)}
     return out
 

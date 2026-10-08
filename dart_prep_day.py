@@ -51,9 +51,9 @@ def main():
         watch = load_watchlist(wl_path)
         allrows = fetch_all(day, day)
         rows = [r for r in allrows if r.get("stock_code") in watch]
-        cls = Counter(classify(r["report_nm"]) for r in rows)
+        cls = Counter(classify(r["report_nm"], r["corp_name"]) for r in rows)
         pick = lambda k: [dict(rcept_no=r["rcept_no"], stock_code=r["stock_code"], corp_name=r["corp_name"],
-                               report_nm=r["report_nm"].strip()) for r in rows if classify(r["report_nm"]) == k]
+                               report_nm=r["report_nm"].strip()) for r in rows if classify(r["report_nm"], r["corp_name"]) == k]
         prep = dict(date=date, total=len(allrows), watchlist_filings=len(rows),
                     watchlist_companies=len({r["stock_code"] for r in rows}),
                     excluded=cls["exclude"], separate=pick("separate"), review=pick("review"))

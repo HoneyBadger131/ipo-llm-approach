@@ -81,9 +81,28 @@ def correction_section(text, cap=1200):
     return re.sub(r"\n+", " / ", text[:cap])
 
 
+_FIN = re.compile(r"증권|은행|금융|보험|생명|화재|캐피탈|카드|자산운용|손해")
+_DISPUTE = None
+
+
+def dispute_names():
+    """watchlists/dispute_watchlist.json 의 회사명 집합 (없으면 빈 집합)."""
+    global _DISPUTE
+    if _DISPUTE is None:
+        p = os.path.join(ROOT, "watchlists", "dispute_watchlist.json")
+        _DISPUTE = {c["name"] for c in json.load(open(p, encoding="utf-8"))["companies"]} if os.path.exists(p) else set()
+    return _DISPUTE
+
+
 def build_state(case, mode, ver="v0"):
     """mode 'T' = 제목만, 'TD' = 제목 + 본문 요약(정정이면 정정 구간 포함)."""
     st = {"title": case["report_nm"], "company": case["corp_name"]}
+    if ver.startswith("v2"):   # 정책 v0.3: 분쟁 리스트·금융회사 맥락을 코드가 알려 준다
+        if case["corp_name"] in dispute_names():
+            st["company_context"] = ("On the shareholder-rights / ESG proxy-fight and activist watchlist: AGM results, director appointments, "
+                                     "and ownership or governance changes are material for this company.")
+        if _FIN.search(case["corp_name"]):
+            st["sector_note"] = "Financial company: guarantees, loans, beneficiary certificates and borrowings are everyday business."
     if mode == "TD":
         body = read_body(case)
         corr = correction_section(body) if case.get("is_correction") else ""
@@ -94,7 +113,7 @@ def build_state(case, mode, ver="v0"):
                 st["correction_delta"] = d if d else "숫자 항목의 증감 없음(일정·문구 정정)"
         rest = body[1200:] if corr else body   # 정정이면 앞 1,200자는 correction에 이미 담았다
         if rest.strip():
-            st["body"] = annotate_won(digest(rest)) if ver != "v0" else digest(rest)
+            st["body"] = annotate_won(digest(rest, 6000 if ver.startswith("v2") else 1500)) if ver != "v0" else digest(rest)
     return st
 
 
@@ -122,13 +141,18 @@ def load_cases():
     out = []
     for p in sorted(glob.glob(os.path.join(ROOT, "jev_test", "cases", "cases_*.json"))):
         out += json.load(open(p, encoding="utf-8"))
-    hp = os.path.join(ROOT, "jev_test", "cases", "labels_human.json")   # 사람 검수 라벨이 있으면 덮어쓴다
-    if os.path.exists(hp):
-        human = json.load(open(hp, encoding="utf-8"))
+    layers = (("labels_policy.json", "policy"), ("labels_human.json", "human"))   # 우선순위: Claude 기본 < 정책 < 사람 명시 판정
+    for fname, src in layers:
+        lp = os.path.join(ROOT, "jev_test", "cases", fname)
+        if not os.path.exists(lp):
+            continue
+        over = json.load(open(lp, encoding="utf-8"))
         for c in out:
-            h = human.get(c["rcept_no"])
+            h = over.get(c["rcept_no"])
             if h:
-                c["label_ai"], c["label"], c["label_source"] = c["label"], h["label"], "human"
-                if h.get("memo"):
-                    c["label_reason"] = "[사람] " + h["memo"] + " | " + c["label_reason"]
+                c.setdefault("label_ai", c["label"])
+                c["label"], c["label_source"] = h["label"], src
+                note = h.get("memo") or h.get("why") or ""
+                if note:
+                    c["label_reason"] = f"[{src}] {note} | " + c["label_reason"]
     return out

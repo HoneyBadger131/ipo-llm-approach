@@ -150,3 +150,25 @@ def _v1(base, lang):
 
 
 QUESTIONS = {"v0": {"ko": KO, "en": EN}, "v1": {"ko": _v1(KO, "ko"), "en": _v1(EN, "en")}}
+
+
+from questions_v2 import QUESTIONS_V2  # noqa: E402
+QUESTIONS["v2"] = QUESTIONS_V2
+
+
+# v2b = v2 + Q1 예외: 정례 자금운용·배당·금융회사 일상 거래라도 금액이 매우 크면(가정: 1,000억 원 이상) 통과·확인
+import copy as _copy
+
+
+def _v2b(base, lang):
+    q = _copy.deepcopy(base)
+    if lang == "en":
+        q["proceed"]["criteria"]["true"] += "; routine treasury management, a dividend or everyday financial-company business, ONLY when the amount is extremely large (KRW 100 billion or more)"
+        q["triage"]["criteria"]["PASS_CHECK"] += " Also routine treasury management, a dividend or everyday financial-company business whose amount is extremely large (KRW 100 billion or more)."
+    else:
+        q["proceed"]["criteria"]["true"] += "; 여유자금 운용·배당·금융회사 일상 영업이라도 금액이 매우 큰 경우(1,000억 원 이상)에 한해"
+        q["triage"]["criteria"]["PASS_CHECK"] += " 또한 여유자금 운용·배당·금융회사 일상 영업이라도 금액이 매우 큰 경우(1,000억 원 이상)."
+    return q
+
+
+QUESTIONS["v2b"] = {"en": _v2b(QUESTIONS_V2["en"], "en"), "ko": _v2b(QUESTIONS_V2["ko"], "ko")}

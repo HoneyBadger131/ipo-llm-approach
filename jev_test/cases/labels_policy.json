@@ -1,0 +1,164 @@
+{
+ "20260907800650": {
+  "label": "PASS",
+  "was": "DROP",
+  "rule": "Q8",
+  "why": "불성실공시법인 지정은 통과",
+  "company": "IPARK현대산업개발",
+  "title": "불성실공시법인지정",
+  "overrides_default_row": true
+ },
+ "20260907800647": {
+  "label": "PASS",
+  "was": "DROP",
+  "rule": "Q8",
+  "why": "불성실공시법인 지정은 통과",
+  "company": "HDC",
+  "title": "불성실공시법인지정",
+  "overrides_default_row": true
+ },
+ "20260907800498": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q2",
+  "why": "연장·대환·차환은 무시",
+  "company": "HS효성첨단소재",
+  "title": "타인에대한채무보증결정",
+  "overrides_default_row": false
+ },
+ "20260907800491": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q2",
+  "why": "연장·대환·차환은 무시",
+  "company": "HS효성첨단소재",
+  "title": "타인에대한채무보증결정",
+  "overrides_default_row": false
+ },
+ "20260907800338": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q3",
+  "why": "풍문 해명·조회공시 답변은 무시",
+  "company": "한국카본",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "overrides_default_row": true
+ },
+ "20260907800332": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q3",
+  "why": "풍문 해명·조회공시 답변은 무시",
+  "company": "태광산업",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "overrides_default_row": true
+ },
+ "20260907800165": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q3",
+  "why": "풍문 해명·조회공시 답변은 무시",
+  "company": "LG전자",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "overrides_default_row": true
+ },
+ "20260907800087": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q3",
+  "why": "풍문 해명·조회공시 답변은 무시",
+  "company": "한화에어로스페이스",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "overrides_default_row": true
+ },
+ "20260908800619": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q3",
+  "why": "풍문 해명·조회공시 답변은 무시",
+  "company": "엘앤에프",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "overrides_default_row": true
+ },
+ "20260908800599": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q2",
+  "why": "연장·대환·차환은 무시",
+  "company": "CJ CGV",
+  "title": "타인에대한채무보증결정",
+  "overrides_default_row": false
+ },
+ "20260909800178": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q2",
+  "why": "연장·대환·차환은 무시",
+  "company": "삼성SDI",
+  "title": "금전대여결정",
+  "overrides_default_row": false
+ },
+ "20260908000275": {
+  "label": "PASS_CHECK",
+  "was": "PASS",
+  "rule": "Q6",
+  "why": "금액 변동 1,300억 원(+48.1%)",
+  "company": "신한지주",
+  "title": "[기재정정]주요사항보고서(상각형조건부자본증권발행결정)",
+  "overrides_default_row": false
+ },
+ "20260911800500": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q6",
+  "why": "금액 변동 48억 원 — 큰 규모 아님 또는 기간·일정·명칭 정정",
+  "company": "SK디스커버리",
+  "title": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+  "overrides_default_row": false
+ },
+ "20260903800582": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q3",
+  "why": "풍문 해명·조회공시 답변은 무시",
+  "company": "한국전력공사",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "overrides_default_row": false
+ },
+ "20260903800521": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q3",
+  "why": "풍문 해명·조회공시 답변은 무시",
+  "company": "한국가스공사",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "overrides_default_row": true
+ },
+ "20260903800106": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q3",
+  "why": "풍문 해명·조회공시 답변은 무시",
+  "company": "삼성화재해상보험",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "overrides_default_row": true
+ },
+ "20260903800096": {
+  "label": "DROP",
+  "was": "PASS",
+  "rule": "Q3",
+  "why": "풍문 해명·조회공시 답변은 무시",
+  "company": "삼성생명",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "overrides_default_row": true
+ },
+ "20260930800001": {
+  "label": "PASS_CHECK",
+  "was": "DROP",
+  "rule": "Q8",
+  "why": "중대재해는 중요도 판단을 위해 통과·확인",
+  "company": "현대건설",
+  "title": "중대재해발생",
+  "overrides_default_row": true
+ }
+}

@@ -1,0 +1,380 @@
+{
+ "20260901800471": {
+  "label": "PASS_CHECK",
+  "memo": "보호예수 해제는 중요 이벤트임(규모도 큼)",
+  "company": "케이뱅크",
+  "title": "기타안내사항(안내공시)",
+  "claude_label": "PASS"
+ },
+ "20260902800513": {
+  "label": "PASS_CHECK",
+  "memo": "보호예수 해제는 중요 이벤트임(규모도 큼)",
+  "company": "SK이노베이션",
+  "title": "기타안내사항(안내공시)",
+  "claude_label": "PASS"
+ },
+ "20260902800001": {
+  "label": "HOLD",
+  "memo": "NOTABLE 한 이벤트이긴 한데… 추가 분석은 필요없을듯. 알리는건 좋음.",
+  "company": "강원랜드",
+  "title": "대표이사(대표집행임원)변경(안내공시)",
+  "claude_label": "PASS"
+ },
+ "20260902800386": {
+  "label": "PASS_CHECK",
+  "memo": "규모가 작음. 다음 단게에서 드롭",
+  "company": "파라다이스",
+  "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+  "claude_label": "PASS"
+ },
+ "20260907800162": {
+  "label": "PASS_CHECK",
+  "memo": "다만, 이전(정정전) 대비 증가폭이 1% 이상이라는 조건을 넣으면 좋을듯. 너무 자주 알리는건 문제",
+  "company": "DL이앤씨",
+  "title": "[기재정정]단일판매ㆍ공급계약체결",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260907800369": {
+  "label": "HOLD",
+  "memo": "리츠는 정말 중요한게 아니면 무시",
+  "company": "SK리츠",
+  "title": "부동산투자회사자금차입",
+  "claude_label": "HOLD"
+ },
+ "20260909800105": {
+  "label": "DROP",
+  "memo": "변동금액 미미",
+  "company": "IPARK현대산업개발",
+  "title": "[기재정정]단일판매ㆍ공급계약체결",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260909800203": {
+  "label": "PASS_CHECK",
+  "memo": "변동금액 미미해서 DROP 했으면 하지만…",
+  "company": "현대건설",
+  "title": "[기재정정]단일판매ㆍ공급계약체결",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260910800520": {
+  "label": "DROP",
+  "memo": "정정공시, 변경사항 미미",
+  "company": "SK아이이테크놀로지",
+  "title": "[기재정정]타법인주식및출자증권처분결정",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260910800311": {
+  "label": "PASS_CHECK",
+  "memo": "이 경우 공시의무사항에 해당함. 경영상 비밀 유지의 경우 중요한 것으로 판정.(방산 기업 등)",
+  "company": "다우기술",
+  "title": "단일판매ㆍ공급계약체결",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260910800393": {
+  "label": "DROP",
+  "memo": "기간 변동의 경우 큰 여파 없으므로 무시",
+  "company": "삼성바이오로직스",
+  "title": "[기재정정]단일판매ㆍ공급계약체결",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260910000386": {
+  "label": "DROP",
+  "memo": "소각/신규 취득이 아닌 단순 기간 만료에 의한 해재. 무시",
+  "company": "시프트업",
+  "title": "주요사항보고서(자기주식취득신탁계약해지결정)",
+  "claude_label": "HOLD"
+ },
+ "20260910800130": {
+  "label": "DROP",
+  "memo": "큰 영향 없으므로 무시",
+  "company": "오리온",
+  "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260910800538": {
+  "label": "PASS",
+  "memo": "법원 판결은 중요",
+  "company": "효성",
+  "title": "회계처리기준위반에따른검찰고발등조치결과",
+  "claude_label": "HOLD"
+ },
+ "20260911800490": {
+  "label": "DROP",
+  "memo": "신규 소 제기는 큰 일이 아님(정정 사유가 큰게 아님. 벌금 부과는 중요한게 맞지만)",
+  "company": "HD현대",
+  "title": "[기재정정]벌금등의부과(자회사의 주요경영사항)",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260911800204": {
+  "label": "DROP",
+  "memo": "단순 기간 변동이므로 무시",
+  "company": "HJ중공업",
+  "title": "[기재정정]단일판매ㆍ공급계약체결",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260911000318": {
+  "label": "DROP",
+  "memo": "단순 여유자금 운용",
+  "company": "기아",
+  "title": "특수관계인으로부터기타유가증권매수",
+  "claude_label": "HOLD"
+ },
+ "20260911000423": {
+  "label": "DROP",
+  "memo": "증권사/보험사/은행 등은 수익증권 거래 및 보고가 일상 업무이므로 중요도 낮음",
+  "company": "대신증권",
+  "title": "특수관계인과의수익증권거래",
+  "claude_label": "HOLD"
+ },
+ "20260911000480": {
+  "label": "DROP",
+  "memo": "이미 다른 공시로 유상증자 관련 일정 파악했으므로 무시. 발행조건 확정의 경우는 PASS이나 단순 기재 정정은 무시",
+  "company": "삼성바이오로직스",
+  "title": "[기재정정]증권신고서(지분증권)",
+  "claude_label": "HOLD"
+ },
+ "20260911800485": {
+  "label": "DROP",
+  "memo": "단순 기재정정은 무시",
+  "company": "삼성중공업",
+  "title": "[기재정정]단일판매ㆍ공급계약체결",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260911800223": {
+  "label": "PASS_CHECK",
+  "memo": "단순 정보 전달성의 경우 최종장에는 DROP 선호(특히 Forward Year 건에 대한건 더더욱)",
+  "company": "아모레퍼시픽",
+  "title": "연결재무제표기준영업실적등에대한전망(공정공시)",
+  "claude_label": "PASS"
+ },
+ "20260911800620": {
+  "label": "PASS_CHECK",
+  "memo": "이 경우 공시의무사항에 해당함. 경영상 비밀 유지의 경우 중요한 것으로 판정.(방산 기업 등)",
+  "company": "한화시스템",
+  "title": "단일판매ㆍ공급계약체결",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260901000225": {
+  "label": "DROP",
+  "memo": "증권사/보험사/은행 등은 수익증권 거래 및 보고가 일상 업무이므로 중요도 낮음",
+  "company": "DB손해보험",
+  "title": "특수관계인과의수익증권거래",
+  "claude_label": "DROP"
+ },
+ "20260901000221": {
+  "label": "DROP",
+  "memo": "증권사/보험사/은행 등은 수익증권 거래 및 보고가 일상 업무이므로 중요도 낮음",
+  "company": "DB손해보험",
+  "title": "특수관계인과의수익증권거래",
+  "claude_label": "DROP"
+ },
+ "20260901000217": {
+  "label": "DROP",
+  "memo": "증권사/보험사/은행 등은 수익증권 거래 및 보고가 일상 업무이므로 중요도 낮음",
+  "company": "DB손해보험",
+  "title": "특수관계인에대한자금대여",
+  "claude_label": "DROP"
+ },
+ "20260901800380": {
+  "label": "PASS_CHECK",
+  "memo": "정보가 존재하므로 다음 단계로 넘김",
+  "company": "롯데관광개발",
+  "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+  "claude_label": "DROP"
+ },
+ "20260904100016": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "SK이노베이션",
+  "title": "정정신고서제출요구( 2026.08.26. 제출 증권신고서(합병) )",
+  "claude_label": "PASS"
+ },
+ "20260904800642": {
+  "label": "PASS",
+  "memo": "",
+  "company": "SK하이닉스",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260904800020": {
+  "label": "PASS",
+  "memo": "",
+  "company": "현대건설",
+  "title": "중대재해발생",
+  "claude_label": "DROP"
+ },
+ "20260907000315": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SK디스커버리",
+  "title": "주요사항보고서(자기주식취득신탁계약해지결정)",
+  "claude_label": "PASS"
+ },
+ "20260908000346": {
+  "label": "DROP",
+  "memo": "증권사/보험사/은행 등은 수익증권 거래 및 보고가 일상 업무이므로 중요도 낮음",
+  "company": "신한지주",
+  "title": "[기재정정]증권신고서(채무증권)",
+  "claude_label": "DROP"
+ },
+ "20260909000440": {
+  "label": "DROP",
+  "memo": "증권사/보험사/은행 등은 수익증권 거래 및 보고가 일상 업무이므로 중요도 낮음",
+  "company": "NH투자증권",
+  "title": "[기재정정]증권신고서(채무증권)",
+  "claude_label": "DROP"
+ },
+ "20260909800559": {
+  "label": "PASS_CHECK",
+  "memo": "그러나 이미 공시된 사항이고 변동 없으면 굳이 강조할 필요 없어보임. DROP도 가능",
+  "company": "SK하이닉스",
+  "title": "조회공시요구(풍문또는보도)에대한답변(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260909000450": {
+  "label": "DROP",
+  "memo": "",
+  "company": "고려아연",
+  "title": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
+  "claude_label": "PASS"
+ },
+ "20260909000466": {
+  "label": "DROP",
+  "memo": "증권사/보험사/은행 등은 수익증권 거래 및 보고가 일상 업무이므로 중요도 낮음",
+  "company": "교보증권",
+  "title": "[기재정정]증권발행실적보고서",
+  "claude_label": "DROP"
+ },
+ "20260909800404": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "신세계",
+  "title": "영업(잠정)실적(공정공시)",
+  "claude_label": "PASS"
+ },
+ "20260909000058": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "한미반도체",
+  "title": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "claude_label": "DROP"
+ },
+ "20260910800713": {
+  "label": "PASS",
+  "memo": "",
+  "company": "기아",
+  "title": "중대재해발생",
+  "claude_label": "DROP"
+ },
+ "20260910000414": {
+  "label": "DROP",
+  "memo": "정형 서류",
+  "company": "대한항공",
+  "title": "[기재정정]증권신고서(채무증권)",
+  "claude_label": "DROP"
+ },
+ "20260911800773": {
+  "label": "DROP",
+  "memo": "단순 정정",
+  "company": "LS",
+  "title": "[기재정정]교환사채권발행결정",
+  "claude_label": "DROP"
+ },
+ "20260911000277": {
+  "label": "DROP",
+  "memo": "증권사/보험사/은행 등은 수익증권 거래 및 보고가 일상 업무이므로 중요도 낮음",
+  "company": "대신증권",
+  "title": "[기재정정]증권발행실적보고서",
+  "claude_label": "DROP"
+ },
+ "20260930801254": {
+  "label": "DROP",
+  "memo": "상장 자회사의 건",
+  "company": "LS",
+  "title": "풍문또는보도에대한해명(미확정)(자회사의 주요경영사항)",
+  "claude_label": "DROP"
+ },
+ "20260930800220": {
+  "label": "DROP",
+  "memo": "기공시사항",
+  "company": "POSCO홀딩스",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260930800797": {
+  "label": "PASS",
+  "memo": "",
+  "company": "두산로보틱스",
+  "title": "대표이사(대표집행임원)변경(안내공시)",
+  "claude_label": "DROP"
+ },
+ "20260930800004": {
+  "label": "PASS",
+  "memo": "",
+  "company": "제일기획",
+  "title": "매매거래정지및정지해제(중요내용공시)",
+  "claude_label": "DROP"
+ },
+ "20260930800232": {
+  "label": "DROP",
+  "memo": "기공지사항, 변동 없음",
+  "company": "한국콜마",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20261001800467": {
+  "label": "DROP",
+  "memo": "정기공시",
+  "company": "미스토홀딩스",
+  "title": "현금ㆍ현물배당결정",
+  "claude_label": "DROP"
+ },
+ "20261001800104": {
+  "label": "DROP",
+  "memo": "정기공시",
+  "company": "한국카본",
+  "title": "현금ㆍ현물배당결정",
+  "claude_label": "DROP"
+ },
+ "20260903800537": {
+  "label": "PASS_CHECK",
+  "memo": "기업가치제고계획도 변화율이 크지 않으면 무시",
+  "company": "BNK금융지주",
+  "title": "기업가치제고계획(자율공시)",
+  "claude_label": "PASS"
+ },
+ "20260907800167": {
+  "label": "DROP",
+  "memo": "자회사",
+  "company": "DL",
+  "title": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+  "claude_label": "DROP"
+ },
+ "20260909800563": {
+  "label": "PASS",
+  "memo": "",
+  "company": "고려아연",
+  "title": "임시주주총회결과",
+  "claude_label": "DROP"
+ },
+ "20260910800468": {
+  "label": "DROP",
+  "memo": "금액이 아주미미",
+  "company": "대우건설",
+  "title": "주식소각결정",
+  "claude_label": "DROP"
+ },
+ "20260911800524": {
+  "label": "DROP",
+  "memo": "",
+  "company": "HS효성첨단소재",
+  "title": "타인에대한채무보증결정",
+  "claude_label": "PASS"
+ },
+ "20260911800519": {
+  "label": "DROP",
+  "memo": "",
+  "company": "HS효성첨단소재",
+  "title": "타인에대한채무보증결정",
+  "claude_label": "PASS"
+ }
+}

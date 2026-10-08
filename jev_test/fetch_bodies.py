@@ -29,7 +29,7 @@ def main():
                 continue
             nm = re.sub(r"\s+", " ", r["report_nm"]).strip()
             uni.append(dict(day=day, rcept_no=r["rcept_no"], stock_code=r["stock_code"], corp_name=r["corp_name"],
-                            report_nm=nm, rule=classify(nm), is_correction=bool(_CORRECTION.match(nm))))
+                            report_nm=nm, rule=classify(nm, r["corp_name"]), is_correction=bool(_CORRECTION.match(nm))))
     json.dump(uni, open(os.path.join(DATA, "universe.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     need = [u for u in uni if u["rule"] in ("review", "separate") or u["is_correction"]]
     print(f"universe {len(uni)} / 본문 필요 {len(need)}", flush=True)
