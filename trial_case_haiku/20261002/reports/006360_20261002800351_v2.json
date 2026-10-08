@@ -1,0 +1,87 @@
+{
+ "corp_name": "GS건설",
+ "stock_code": "006360",
+ "disclosure_date": "2026-10-02",
+ "disclosure_title": "기타경영사항(자율공시)",
+ "rcept_no": "20261002800351",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002800351",
+ "tag": "기타 사항",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "대형 재건축 수주 기대, 시공사 확정 전이라 신중"
+ },
+ "headline": "목동12단지 재건축 우선협상자 선정, 공사비 1조 7,888억",
+ "impact_summary": "매출 대비 약 14% 규모 수주 기대, 시공사 확정은 총회 후",
+ "event_type": "기타 경영사항",
+ "keywords": [
+  "목동12단지",
+  "재건축",
+  "우선협상대상자",
+  "수의계약",
+  "시공사 선정",
+  "공사비"
+ ],
+ "themes": [
+  "도시정비 수주",
+  "주택 재건축"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "공사비",
+   "value": "약 1조 7,888억",
+   "sub": "당사분 100%, VAT 제외"
+  },
+  {
+   "label": "매출 대비",
+   "value": "약 14%",
+   "sub": "2025 연결 매출 12.5조 기준"
+  },
+  {
+   "label": "사업 규모",
+   "value": "2,810가구",
+   "sub": "최고 43층, 기존 1,860가구"
+  }
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {
+   "type": "pos",
+   "text": "단독 응찰로 1차 유찰 후 수의계약 전환, 수주 가능성 높음"
+  },
+  {
+   "type": "pos",
+   "text": "공사비 약 1조 8천억, 매출 대비 약 14%로 실적 기여 큼"
+  },
+  {
+   "type": "neg",
+   "text": "우선협상대상자 지정일 뿐, 조합원 총회 시공사 선정 절차 남음"
+  },
+  {
+   "type": "unk",
+   "text": "공사비는 사업 진행에 따라 변동 가능, 본계약 시 재공시 예정"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "MTN",
+   "date": "2026-08-31",
+   "title": "'1.8조' 목동12단지, GS건설 단독 응찰로 유찰…수의계약 수순",
+   "url": "https://news.mtn.co.kr/news-detail/2026083113230427301"
+  },
+  {
+   "outlet": "MTN",
+   "date": "2026-09-01",
+   "title": "‘신축 귀한’ 목동 파고든 GS건설…윤슬자이 이어 재건축도 공략",
+   "url": "https://news.mtn.co.kr/news-detail/2026090113461988951"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP, 뉴스 링크.",
+ "brief": "목동12단지 재건축 공사비 1조 7,888억 우선협상자 선정. 매출 대비 약 14%, 총회 후 시공사 확정.",
+ "importance": 5,
+ "importance_reason": "매출 대비 약 14%로 10% 이상 규모지만 우선협상자 단계라 확정 전입니다.",
+ "importance_score": 78,
+ "report_version": 3
+}

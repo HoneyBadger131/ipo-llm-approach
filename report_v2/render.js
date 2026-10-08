@@ -133,14 +133,14 @@ ${d.news && d.news.length ? `<section class="card"><h2>뉴스 근거 <span class
 </div></body></html>`;
 }
 
-(async () => {
+if (require.main === module) (async () => {
   const src = process.argv[2];
   if (!src) throw new Error("usage: node render.js data.json [outBase]");
   const base = process.argv[3] || src.replace(/\.json$/, "");
   const data = JSON.parse(fs.readFileSync(src, "utf-8"));
   fs.writeFileSync(base + ".html", html(data), "utf-8");
   // 인덱싱용 MD (disclosure_md/<공시일>/<종목코드>_<접수번호>.md)
-  const mdDir = path.join(__dirname, "..", "disclosure_md", data.disclosure_date);
+  const mdDir = path.join(process.env.MD_DIR ? path.resolve(process.env.MD_DIR) : path.join(__dirname, "..", "disclosure_md"), data.disclosure_date);   // MD_DIR: 비교 실험 등에서 MD 출력 위치 분리
   fs.mkdirSync(mdDir, { recursive: true });
   const mdPath = path.join(mdDir, `${data.stock_code}_${data.rcept_no}.md`);
   fs.writeFileSync(mdPath, toMarkdown(data), "utf-8");
@@ -153,3 +153,4 @@ ${d.news && d.news.length ? `<section class="card"><h2>뉴스 근거 <span class
   await browser.close();
   console.log("wrote", base + ".html", base + ".pdf", mdPath);
 })();
+module.exports = { html };

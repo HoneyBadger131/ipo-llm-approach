@@ -1,0 +1,81 @@
+{
+ "corp_name": "삼성중공업",
+ "stock_code": "010140",
+ "disclosure_date": "2026-10-02",
+ "disclosure_title": "단일판매ㆍ공급계약체결",
+ "rcept_no": "20261002800245",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002800245",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "LNG선 수주 확대 흐름, 인도까지 장기 공사"
+ },
+ "headline": "LNG운반선 2척 6,722억 수주, 매출 대비 6.3%",
+ "impact_summary": "매출 대비 6.3% 규모 LNG선 수주, 2029년 5월 인도",
+ "event_type": "단일판매·공급계약",
+ "keywords": [
+  "LNG운반선",
+  "단일판매",
+  "공급계약",
+  "아시아 선주",
+  "조선",
+  "수주"
+ ],
+ "themes": [
+  "LNG 운반선",
+  "조선 수주"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "계약금액",
+   "value": "약 6,722억",
+   "sub": "LNG운반선 2척, 아시아 선주"
+  },
+  {
+   "label": "매출 대비",
+   "value": "6.3%",
+   "sub": "최근매출 10.65조 기준"
+  },
+  {
+   "label": "인도 기한",
+   "value": "2029년 5월",
+   "sub": "계약 종료일 기준"
+  }
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {
+   "type": "pos",
+   "text": "매출 대비 6.3%의 대형 수주, 계약금·선급금 유입"
+  },
+  {
+   "type": "pos",
+   "text": "올해 LNG운반선 수주 20척, 상선 수주는 연간 목표의 140%"
+  },
+  {
+   "type": "neg",
+   "text": "인도가 2029년 5월로 길어 실적 반영까지 시간이 걸림"
+  },
+  {
+   "type": "unk",
+   "text": "계약 종료일은 공사 진행에 따라 변동 가능"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "SBS Biz",
+   "date": "2026-10-02",
+   "title": "삼성중공업, LNG선 2척 6천722억원에 수주…올해 20척 달성",
+   "url": "https://biz.sbs.co.kr/amp/article/20000338093"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "LNG운반선 2척 6,722억 수주, 매출 대비 6.3%. 올해 LNG선 수주 20척, 2029년 5월 인도.",
+ "importance": 4,
+ "importance_reason": "매출 대비 6.3%로 5~10% 구간의 대형 수주입니다.",
+ "importance_score": 70,
+ "report_version": 3
+}

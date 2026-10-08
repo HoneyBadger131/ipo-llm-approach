@@ -1,0 +1,92 @@
+{
+ "corp_name": "일진전기",
+ "stock_code": "103590",
+ "disclosure_date": "2026-10-02",
+ "disclosure_title": "단일판매ㆍ공급계약체결",
+ "rcept_no": "20261002800002",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002800002",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "영국 송전 케이블 대형 수주, 매출의 9% 규모"
+ },
+ "headline": "영국 J. Murphy와 1,872억 원 초고압 케이블 계약",
+ "impact_summary": "2025년 연결 매출 대비 9.15% 규모의 영국 송전 케이블 수주",
+ "event_type": "단일판매·공급계약",
+ "keywords": [
+  "초고압 케이블",
+  "400kV",
+  "송전망",
+  "영국 수주",
+  "지중송전",
+  "J. Murphy"
+ ],
+ "themes": [
+  "전력 인프라",
+  "해외 수주"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "계약금액",
+   "value": "약 1,872억",
+   "sub": "GBP 1.04억, 계약일 10/01"
+  },
+  {
+   "label": "매출 대비",
+   "value": "9.15%",
+   "sub": "2025 연결 매출 기준"
+  },
+  {
+   "label": "계약 상대",
+   "value": "J. Murphy & Sons",
+   "sub": "영국 소재"
+  },
+  {
+   "label": "계약 종료일",
+   "value": "미정",
+   "sub": "발주자 착수통지 이후 확정"
+  }
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {
+   "type": "pos",
+   "text": "영국 400kV 송전망 케이블 공급·설치로 해외 전력망 수주 확대"
+  },
+  {
+   "type": "pos",
+   "text": "계약금액이 2025년 연결 매출의 9% 규모로 외형 기여가 큼"
+  },
+  {
+   "type": "neg",
+   "text": "종료일 미정, 전체 공사 일정은 발주자 착수통지 이후 확정"
+  },
+  {
+   "type": "unk",
+   "text": "계약금·선급금 없음, 대금은 공사 진행에 따라 청구·지급"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "아시아경제",
+   "date": "2026-10-02",
+   "title": "일진전기, 英서 1871억 추가 수주…단일 전선사업 최대 '잭폿'",
+   "url": "https://core.asiae.co.kr/article/2026100207515623113"
+  },
+  {
+   "outlet": "뉴데일리",
+   "date": "2026-07-10",
+   "title": "일진전기, 英서 845억 초고압 케이블 수주 … 유럽 전력망 시장 뚫었다",
+   "url": "https://biz.newdaily.co.kr/site/data/html/2026/07/10/2026071000056.html"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "영국 J. Murphy와 1,872억 원 초고압 케이블 계약(2025년 매출의 9.15%). 해외 송전 수주 확대, 종료일은 미정.",
+ "importance": 4,
+ "importance_reason": "2025년 연결 매출 대비 9.15%로 5~10% 구간의 대규모 공급계약입니다.",
+ "importance_score": 68,
+ "report_version": 3
+}
