@@ -1,4 +1,6 @@
 """Jev 시험 공용 함수: state 구성, API 호출(재시도), 정정 구간 추출."""
+import glob
+import json
 import os
 import re
 import sys
@@ -113,3 +115,20 @@ def call_jev(state, questions, key, retries=5):
             continue
         return {"error": f"{r.status_code} {r.text[:300]}"}
     return {"error": f"retries exhausted: {err}"}
+
+
+def load_cases():
+    """cases/cases_*.json 을 모두 합쳐 반환한다 (개발 주간 + 검증 주간)."""
+    out = []
+    for p in sorted(glob.glob(os.path.join(ROOT, "jev_test", "cases", "cases_*.json"))):
+        out += json.load(open(p, encoding="utf-8"))
+    hp = os.path.join(ROOT, "jev_test", "cases", "labels_human.json")   # 사람 검수 라벨이 있으면 덮어쓴다
+    if os.path.exists(hp):
+        human = json.load(open(hp, encoding="utf-8"))
+        for c in out:
+            h = human.get(c["rcept_no"])
+            if h:
+                c["label_ai"], c["label"], c["label_source"] = c["label"], h["label"], "human"
+                if h.get("memo"):
+                    c["label_reason"] = "[사람] " + h["memo"] + " | " + c["label_reason"]
+    return out

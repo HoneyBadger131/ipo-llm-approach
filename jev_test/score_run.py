@@ -16,6 +16,7 @@ from collections import Counter, defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, ".."))
+from lib import load_cases  # noqa: E402
 from dart_rules import EXCLUDE_PATTERNS, SEPARATE_PATTERNS, normalize  # noqa: E402
 ADV = {"PASS", "PASS_CHECK"}
 
@@ -96,7 +97,7 @@ def fmt(m):
 
 def main():
     exp = sys.argv[1]
-    cases = {c["rcept_no"]: c for c in json.load(open(os.path.join(HERE, "cases", "cases_v0.json"), encoding="utf-8"))}
+    cases = {c["rcept_no"]: c for c in load_cases()}
     runs = {}
     for p in sorted(glob.glob(os.path.join(HERE, "runs", exp, "raw_*.jsonl"))):
         cfg = os.path.basename(p)[4:-6]

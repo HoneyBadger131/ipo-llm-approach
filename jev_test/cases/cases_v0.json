@@ -11,7 +11,8 @@
   "label_reason": "중대재해 지연공시로 불성실공시법인 지정. 벌점 0, 제재금 800만 원.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800647",
@@ -25,7 +26,8 @@
   "label_reason": "자회사 중대재해 지연공시로 불성실공시법인 지정. 벌점 0, 제재금 800만 원.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000315",
@@ -39,7 +41,8 @@
   "label_reason": "자사주 취득 신탁계약(200억) 기간 종료 해지. 신탁 취득분 포함 자사주 보유 3.37%(629,096주), 신탁분 전량 소각 예정(소각은 추후 이사회 결의).",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000308",
@@ -53,7 +56,8 @@
   "label_reason": "임시주총에서 독립이사 1명 신규 선임(독립이사 비율 50→57.1%). 정례 지배구조 공시.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800498",
@@ -67,7 +71,8 @@
   "label_reason": "베트남 법인 HS Hyosung Vina Core Materials의 시설대 대환(USD 3,000만)에 KDB 싱가포르지점 채무보증 488억 원(USD 3,600만, 자기자본 대비 5.90%). 2026-10~2029-10.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800491",
@@ -81,7 +86,8 @@
   "label_reason": "같은 베트남 법인 시설대 대환의 Land Bank of Taiwan 대주단 채무보증 447억 원(USD 3,300만, 자기자본 대비 5.41%). 2026-10~2029-10. 보증 총잔액 1.61조 원.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800369",
@@ -95,7 +101,8 @@
   "label_reason": "규칙1(1,000억)과 규칙3(만기 차환 정례) 충돌 — 보증 연장·대환은 통과시킨 선례와 불일치 | 기존 판정: 전자단기사채 1,000억 원 차환(자기자본 4.94%), 금리 3.73%. 만기 차환 정례 조달.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800338",
@@ -109,7 +116,8 @@
   "label_reason": "서울파이낸스 보도 \"케이조선 매각 다시 시동\" 관련 해명. 다양한 방안을 검토 중이나 결정된 사실 없음. 10/6 재공시 예정.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800332",
@@ -123,7 +131,8 @@
   "label_reason": "더벨 보도 \"케이조선 노리는 한국카본\" 관련, 태광산업이 6/ 입찰 종료 후 재입찰 인수를 검토 중이라고 인정하되 결정된 사실은 없다고 해명. 10/6 재공시 예정.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800211",
@@ -137,7 +146,8 @@
   "label_reason": "임시주총 개최를 위한 기준일(9/22) 설정. 안건 미기재.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800165",
@@ -151,7 +161,8 @@
   "label_reason": "한국경제 단독 보도 \"미국 자회사 베어로보틱스 나스닥 상장 도전\"에 대해 해외 상장 결정된 바 없다고 해명. 10/6 재공시 예정.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800138",
@@ -165,7 +176,8 @@
   "label_reason": "미국 Vestas에 풍력타워 공급 1,510억 원(USD 1.11억), 최근 매출 대비 5.2%. 2027-07까지.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800121",
@@ -179,7 +191,8 @@
   "label_reason": "영풍·한국기업투자홀딩스의 의결권행사금지 가처분 신청 전부 기각(9/4 결정). 경영권 분쟁 소송의 중요 결정.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800087",
@@ -193,7 +206,8 @@
   "label_reason": "매일경제 보도 \"천무 크로아티아 수출\"에 대해 고객과 협의 중이나 계약 확정된 바 없다고 해명. 10/6 재공시 예정.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800002",
@@ -207,7 +221,8 @@
   "label_reason": "사용자 결정: 임상은 계획 변경 승인이라도 통과(바이오 영향 큼) | 기존 판정: CT-P44(다잘렉스 바이오시밀러) 한국 임상 3상 시험계획 변경신청 승인. 기존 임상 진행 중 계획 변경 승인.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800004",
@@ -221,7 +236,8 @@
   "label_reason": "사용자 결정: 임상은 계획 변경 승인이라도 통과(바이오 영향 큼) | 기존 판정: CT-P51(키트루다 바이오시밀러) 미국 임상 3상 시험계획 변경신청 승인(FDA 60일 경과 기준). 기존 임상의 계획 변경 승인.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260828100004",
@@ -235,7 +251,8 @@
   "label_reason": "iM금융지주 일괄신고서 효력발생 안내. 정례.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800619",
@@ -249,7 +266,8 @@
   "label_reason": "녹색경제신문 보도 \"대규모 CB 카드 만지작 엘앤에프\" 관련, LFP 양산 대비 원재료 확보 등을 위해 CB 발행 포함 자금조달을 검토 중이나 확정된 사항은 없다고 해명. 10/7 재공시 예정.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000407",
@@ -263,7 +281,8 @@
   "label_reason": "독립이사 1명 사임 후 감사위원 분리선출 위한 재선임. 정례 지배구조 공시.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800599",
@@ -277,7 +296,8 @@
   "label_reason": "홍콩 계열사 CGI Holdings 차입(수출입은행·우리은행 USD 5,575만)에 채무보증 748억 원(자기자본 대비 11.51%), 기존 보증 연장. 보증 총잔액 4,081억 원.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000386",
@@ -291,7 +311,8 @@
   "label_reason": "독립이사 1명 신규 선임(독립이사 비율 50→60%). 정례 지배구조 공시.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800378",
@@ -305,7 +326,8 @@
   "label_reason": "한화호텔앤드리조트 지분 2,545,624주(20.5%) 2,998억 원 처분(자기자본 대비 2.43%), 처분 후 지분 28.97%. 양수인과 주가수익스왑(PRS) 계약 체결 예정. 목적은 유동성 확보와 재무구조 개선.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800375",
@@ -319,7 +341,8 @@
   "label_reason": "미국 자회사 Hanwha Q Cells Americas Holdings의 그린본드(USD 3억) 발행에 대한 채무보증 4,028억 원(자기자본 대비 3.26%), 2029년까지. 보증 총잔액 8.3조 원.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800452",
@@ -333,7 +356,8 @@
   "label_reason": "오피스텔(그랑르피에드) 수분양자 중도금대출(SBI저축은행 1,000억)에 대우건설 연대보증 1,300억 원(자기자본 대비 3.74%), 2028-12까지. 보증 총잔액 12.2조 원.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800128",
@@ -347,7 +371,8 @@
   "label_reason": "Vale와 장기화물운송계약 4조 6,972억 원, 최근 매출 대비 43.13%. 2030-04~2056-10, 최대 5년 연장 옵션. 7/9·8/7 풍문 해명 공시의 확정공시.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000291",
@@ -361,7 +386,8 @@
   "label_reason": "단순·물적분할: 사업 대부분(금속소재, 비철금속, 환경, 폐전지 재활용)을 신설회사 케이와이디씨로 이전, 존속 금양은 이차전지·자원개발(광산)·발포제 유지. 분할기일 12/5, 신설 지분 100% 금양 보유. 상장폐지 결정(가처분 계류) 중인 종목.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000516",
@@ -375,7 +401,8 @@
   "label_reason": "이재용 회장이 홍라희 씨로부터 보통주 7,188,793주를 장외 매수(약 1조 9,374억 원, 주당 269,500원, 10/12). 지분 1.47%(97,551,953주)에서 상승. 특수관계자 양수.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000450",
@@ -389,7 +416,8 @@
   "label_reason": "독립이사 5명 신규·재선임으로 등기이사 14→19명, 독립이사 8→13명(57.1→68.4%). 경영권 분쟁 중인 회사의 이사회 확대.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800559",
@@ -403,7 +431,8 @@
   "label_reason": "충칭 패키지 공장 지분매각 보도에 대한 조회공시 답변(미확정) 재공시. 확정 사항 없음, 12/8 재공시. 8/10 최초 답변과 동일 취지.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800482",
@@ -417,7 +446,8 @@
   "label_reason": "임시주총(10/19) 개최를 위한 기준일(9/28) 설정. 분할 승인 주총 관련.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800404",
@@ -431,7 +461,8 @@
   "label_reason": "8월 별도 매출 1,599억(전년 동월 +10.62%, 전기 대비 -3.08%), 누계 +15.43%. 백화점 총매출액은 +4.9%. 월간 실적 ±10% 이상 기준 통과.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000373",
@@ -445,7 +476,8 @@
   "label_reason": "개정 상법 시행(9/10) 대비 독립이사 분리선출 재선임. 정례.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000349",
@@ -459,7 +491,8 @@
   "label_reason": "자사주 취득 신탁계약(2,500억) 기간 만료 해지. 보유 자사주 10,815,473주(4.29%) 전량 소각 예정(\"기업가치 제고 계획\" 이행).",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800221",
@@ -473,7 +506,8 @@
   "label_reason": "익산공장 생산 종료(10/16) 결정, 물량은 전주공장으로 이전. 해당 공장 매출 421억 원(최근 매출 대비 1.68%), 공급 영향 없을 것으로 예상.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800206",
@@ -487,7 +521,8 @@
   "label_reason": "8월 천연가스 판매물량 2,116천톤(전년 동월 -7.4%). 월간 실적 ±10% 미만.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800178",
@@ -501,7 +536,8 @@
   "label_reason": "미국 합작법인 StarPlus Energy 대여 한도 1.43조 원(USD 10.66억, 자기자본 대비 6.06%) 종료일 연장(→2028-12-31), 금리 5.01% 변동. 2024-04 최초 공시의 연장.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800135",
@@ -515,7 +551,8 @@
   "label_reason": "3분기 ESG위원회 개최 결과 자율공시. 정례.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800116",
@@ -529,7 +566,8 @@
   "label_reason": "100% 자회사 소규모합병 반대의사 주주 확정 기준일(9/28). 합병 본건에 종속.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800113",
@@ -543,7 +581,8 @@
   "label_reason": "종속회사 에이피알팩토리(100%) 소규모합병 공시 사본. 에이피알 본공시와 중복.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000058",
@@ -557,7 +596,8 @@
   "label_reason": "곽동신 회장 자사주 장내매수 2,870주(약 7억 원) 거래계획. 소액 정례 보고서.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000045",
@@ -571,7 +611,8 @@
   "label_reason": "100% 자회사 에이피알팩토리 소규모 흡수합병(신주 없음, 합병비율 1:0). 경영·재무 영향 미미.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800091",
@@ -585,7 +626,8 @@
   "label_reason": "상계2구역 주택재개발 4,134억 원(당사 지분 60%, 총 6,890억), 최근 매출 대비 5.13%. 착공 후 42개월, 2,200세대.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800003",
@@ -599,7 +641,8 @@
   "label_reason": "태국 해군 차세대 호위함 1척 건조·통합군수지원 우선협상대상자 선정 통보(9/8), 계약금액 6,833억 원, 최근 매출 대비 5.3%. 본계약 체결 시 확정 공시 예정.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800713",
@@ -613,7 +656,8 @@
   "label_reason": "업무상 질병 승인(2023) 후 입원 치료 중 사망 1명. 해당 작업장은 폐쇄 상태. 사망 1명 경계 사례(과거 사례와 동일 처리).",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800675",
@@ -627,7 +671,8 @@
   "label_reason": "라이선스 인 계약(Biohaven, Deal-Closing 전) 대상 Opakalim(BHV-7000)의 미국 FDA 임상 2/3상 부분 임상 보류(Partial Clinical Hold) 통보 수령.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800596",
@@ -641,7 +686,8 @@
   "label_reason": "비상장 자회사 HD현대오일뱅크의 에이치앤엘어드밴스드(롯데케미칼-HD현대케미칼 합병법인)에 대한 자금보충약정 4,974억 원(자기자본 대비 7.7%), 합병 후 신규 지원 자금. 2026-09~2029-09.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800592",
@@ -655,7 +701,8 @@
   "label_reason": "비상장 자회사 HD현대오일뱅크의 에이치앤엘어드밴스드에 대한 자금보충약정 9,146억 원(자기자본 대비 14.2%), 롯데대산석화에서 이관되는 채무 관련. 합병효력일(9/2) 소급.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800538",
@@ -669,7 +716,8 @@
   "label_reason": "대법원 유죄 확정이나 재무 영향은 이미 반영 — 평판·지배구조 영향 해석이 갈림 | 기존 판정: 2008~2012년 가공 감가상각비 계상 건의 대법원 유죄 확정(상고 기각). 재무제표에는 2013년 3분기 이미 반영, 향후 영향 없음.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800468",
@@ -683,7 +731,8 @@
   "label_reason": "2007년 유상감자 단수주 21,918주(약 4억 원) 기취득 자기주식 소각. 정례·소규모.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000386",
@@ -697,7 +746,8 @@
   "label_reason": "규칙1(200억 ≥30억)과 규칙3(기간 만료 정례 해지) 충돌 | 기존 판정: 자사주 신탁계약(200억) 기간 만료 해지, 신탁 취득분 620,836주를 증권계좌로 입고 예정(소각 언급 없음). 정례.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800388",
@@ -711,7 +761,8 @@
   "label_reason": "유럽 제약사와 위탁생산계약 3,508억 원(USD 2.62억), 최근 매출 대비 7.70%. 2026-07~2033-12, 상대 비공개.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800416",
@@ -725,7 +776,8 @@
   "label_reason": "비상장 종속회사 SK넥실리스가 말레이시아 100% 투자법인에 3,000억 원 현금 출자(SKC 자산총액 대비 4.45%). 목적은 효율적 지분구조 관리. 취득예정일 11/16.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800360",
@@ -739,7 +791,8 @@
   "label_reason": "벌크선 1척 장기대선계약 421억 원(USD 3,138만), 최근 매출 대비 3.30%. 33.5~38.5개월, 상대 ZHEJIANG SHIPPING.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800366",
@@ -753,7 +806,8 @@
   "label_reason": "8/11 오스탈 미국 사업부 인수(최대 1.7조) 보도 해명의 재공시. 검토 중이나 확정 사항 없음, 12/9 재공시.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800311",
@@ -767,7 +821,8 @@
   "label_reason": "금액 비공개(최근 매출 2.5% 이상이라 공시) — 실제 규모는 다음 단계에서 확인 | 기존 판정: 네이버클라우드 죽전 데이터센터 코로케이션 서비스 계약. 금액은 비공개(최근 매출의 2.5% 이상이라 공시), 2027-06~2034-06, 최대 3년 연장 가능.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800163",
@@ -781,7 +836,8 @@
   "label_reason": "SMR 주기기 제작사업용 전용 공장·설비 구축에 2,386억 원(자기자본 대비 2.55%). 2026-10~2029-04.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800161",
@@ -795,7 +851,8 @@
   "label_reason": "대출력 발전엔진 전용 공장 신설·토지 취득에 8,336억 원(자기자본 대비 8.92%). 2026-09~2028-05.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800150",
@@ -809,7 +866,8 @@
   "label_reason": "8월 별도 매출 1조 5,738억 원(전년 동월 +12.6%, 전기 대비 +3.2%), 누계 +5.3%. 월간 실적 ±10% 이상 기준 통과.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800149",
@@ -823,7 +881,8 @@
   "label_reason": "수지삼성4차 재건축정비사업 5,043억 원, 최근 매출 대비 4.05%. 착공 후 47개월, 1,210세대.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800130",
@@ -837,7 +896,8 @@
   "label_reason": "국가별 실적 합산 계산이 필요(전년 동월 ±10% 판단) — 다음 단계 에이전트가 계산 | 기존 판정: 8월 국가별 실적 중 한국 매출 +5.2%, 중국 +13.3%, 베트남 -5.4%, 러시아 +21.2%. 국가별 순매출 단순합 전년 동월 대비 약 +8.7%, 영업이익 합 약 +5%로 ±10% 미만.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800120",
@@ -851,7 +911,8 @@
   "label_reason": "농협경제지주 석유류 공급계약 4조 1,152억 원(VAT 포함, 최대 물량 기준), 최근 매출 대비 12.0%. 2026-10-01~2027-09-30. 2023-08 최초 계약의 추가약정.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800109",
@@ -865,7 +926,8 @@
   "label_reason": "수영1구역 재개발정비사업 6,374억 원, 최근 매출 대비 5.12%. 착공 후 46개월, 1,533세대, 분양불.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800063",
@@ -879,7 +941,8 @@
   "label_reason": "월간보고서 게시 안내. 정례.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800691",
@@ -893,7 +956,8 @@
   "label_reason": "넥스플렉스 인수 검토 보도 해명의 확정공시: 입찰에 참여하지 않기로 결정. 미실행 종결.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800638",
@@ -907,7 +971,8 @@
   "label_reason": "AI Factory 구축용 GPU 및 인프라 설비(NVIDIA Vera Rubin 등) 3,814억 원 취득(자산총액 대비 7.2%), 취득예정 2027-06-30.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800692",
@@ -921,7 +986,8 @@
   "label_reason": "1,000억 원 유상증자 검토 보도에 대한 조회공시 답변 재공시. 경영개선계획 조건부 승인(5/27) 후 이행 중, 확정 사항 없음.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800557",
@@ -935,7 +1001,8 @@
   "label_reason": "비상장 자회사 LS전선이 가온전선 주식을 교환대상으로 5,000억 원 사모 교환사채 발행(표면이율 0%, 만기 2031-11-09, 교환가액 27만원). 조달자금 용도는 기타자금(운영·투자).",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800620",
@@ -949,7 +1016,8 @@
   "label_reason": "금액 비공개(최근 매출 2.5% 이상이라 공시) — 실제 규모는 다음 단계에서 확인 | 기존 판정: 현대로템과 계약(상세·금액 비공개, 최근 매출의 2.5% 이상이라 공시), 2026-09~2029-09, 선급금 있음. 공시유보 2029-09-30.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800524",
@@ -963,7 +1031,8 @@
   "label_reason": "베트남 법인 HS Hyosung Quang Nam 기존 무역금융한도(Vietinbank, USD 4,000만) 만기연장에 보증 267억 원(USD 2,000만, 자기자본 대비 3.24%), 2026-09~2027-09.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800519",
@@ -977,7 +1046,8 @@
   "label_reason": "루마니아 법인 GST Safety Textiles RO 기존 일반대(Shinhan Bank Europe, EUR 2,000만) 만기연장에 보증 342억 원(EUR 2,200만, 자기자본 대비 4.14%), 2026-09~2027-09.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800548",
@@ -991,7 +1061,8 @@
   "label_reason": "지속가능경영보고서 발간 자율공시. 정례.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000445",
@@ -1005,7 +1076,8 @@
   "label_reason": "10%↑ 주주 LS전선(지분 81.62%)이 보유 가온전선 보통주 1,851,851주(약 6.2%)를 대상으로 5,000억 원 사모 교환사채 발행 예정(교환가 27만원, 교환청구 2026-11-10~2031-10-09). 발행만으로 지분 변동은 없으며 교환 행사 시 최대 1,851,851주 변동.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000423",
@@ -1019,7 +1091,8 @@
   "label_reason": "규칙1(799억)과 규칙3(계열 운용사 정례 자금운용) 충돌 | 기존 판정: 계열 운용사(대신자산운용) 사모펀드 수익증권 799억 원 취득. 자산운용상 정례 거래.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000318",
@@ -1033,7 +1106,8 @@
   "label_reason": "규칙1(500억, 누계 3,850억)과 규칙3(정례 자금운용) 충돌 | 기존 판정: 계열 증권사(현대차증권) MMT 500억 원 매수(누계 3,850억), 만기 1개월. 자금운용 정례 거래.",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800322",
@@ -1047,7 +1121,8 @@
   "label_reason": "흑석9 재정비촉진구역 재개발조합 대출(신한은행 3,000억)에 채무보증 3,600억 원(자기자본 대비 3.56%), 기표일부터 36개월. 보증 총잔액 13.4조 원.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800229",
@@ -1061,7 +1136,8 @@
   "label_reason": "공정거래 자율준수프로그램 운영현황 안내. 정례.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800223",
@@ -1075,7 +1151,8 @@
   "label_reason": "BY27(2026-07~2027-06) 연결 매출 전망 4조 9,500억 원, 영업이익률 목표 11~12%. 직전 기간 전망 4.40조 대비 실적 4.49조(+2.1%).",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000189",
@@ -1089,7 +1166,8 @@
   "label_reason": "계열 지티엑스씨(GTX-C)의 금융약정 대주단에 보유 주식 14,404,264주 근질권 설정(담보금액 720억 원, 채권최고액 기준 담보한도 4조 8,840억 원).",
   "label_source": "claude_v0",
   "was_borderline": true,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800199",
@@ -1103,7 +1181,8 @@
   "label_reason": "군산 하이퍼스케일 AI데이터센터 1차(60MW) 개발용 PEF(SGC-KIS 제1호)에 869억 원 출자(자기자본 대비 11.45%), 보통주 지분 99.66%. 납입 9/28.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000014",
@@ -1117,7 +1196,8 @@
   "label_reason": "분기 정례 계열금융회사 거래상대방 공시(4분기 거래 한도 합계 약 1,800억).",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "기타 사항"
+  "tag": "기타 사항",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800004",
@@ -1131,7 +1211,8 @@
   "label_reason": "크로아티아 국방부와 천무 다연장로켓 수출 6,411억 원(EUR 기준), 최근 매출 대비 2.40%, 2030-09까지. 선급금 25%+35%. 9/7 풍문 해명의 확정공시.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800002",
@@ -1145,7 +1226,8 @@
   "label_reason": "사우디 SABIC Agri-Nutrients SAN 7 Complex(암모니아 3,500MTPD·요소 7,700MTPD) 2조 4,866억 원(본사 계약분), 최근 매출 대비 27.54%. 사우디 법인 분 포함 전체 약 USD 35억(4.7조). 2026-10~2030-12.",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": "사업 변동"
+  "tag": "사업 변동",
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800640",
@@ -1159,7 +1241,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000322",
@@ -1173,7 +1256,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800593",
@@ -1187,7 +1271,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000307",
@@ -1201,7 +1286,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800590",
@@ -1215,7 +1301,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800562",
@@ -1229,7 +1316,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000290",
@@ -1243,7 +1331,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000288",
@@ -1257,7 +1346,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000284",
@@ -1271,7 +1361,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000274",
@@ -1285,7 +1376,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800490",
@@ -1299,7 +1391,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800485",
@@ -1313,7 +1406,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800463",
@@ -1327,7 +1421,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800462",
@@ -1341,7 +1436,8 @@
   "label_reason": "지속가능경영보고서 자율공시 첨부정정(본문 없음)",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000251",
@@ -1355,7 +1451,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000249",
@@ -1369,7 +1466,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000243",
@@ -1383,7 +1481,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800449",
@@ -1397,7 +1496,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000238",
@@ -1411,7 +1511,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000237",
@@ -1425,7 +1526,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000235",
@@ -1439,7 +1541,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000228",
@@ -1453,7 +1556,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000226",
@@ -1467,7 +1571,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800411",
@@ -1481,7 +1586,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800409",
@@ -1495,7 +1601,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000209",
@@ -1509,7 +1616,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000200",
@@ -1523,7 +1631,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800372",
@@ -1537,7 +1646,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800348",
@@ -1551,7 +1661,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000196",
@@ -1565,7 +1676,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000194",
@@ -1579,7 +1691,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000191",
@@ -1593,7 +1706,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000189",
@@ -1607,7 +1721,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000188",
@@ -1621,7 +1736,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000187",
@@ -1635,7 +1751,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000186",
@@ -1649,7 +1766,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000185",
@@ -1663,7 +1781,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000181",
@@ -1677,7 +1796,8 @@
   "label_reason": "발행조건 확정(표면이자율 5.08% 기재)이며 금액 변경 없음",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000184",
@@ -1691,7 +1811,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000183",
@@ -1705,7 +1826,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000182",
@@ -1719,7 +1841,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800340",
@@ -1733,7 +1856,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000180",
@@ -1747,7 +1871,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000179",
@@ -1761,7 +1886,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000177",
@@ -1775,7 +1901,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000176",
@@ -1789,7 +1916,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000165",
@@ -1803,7 +1931,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000163",
@@ -1817,7 +1946,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000160",
@@ -1831,7 +1961,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000157",
@@ -1845,7 +1976,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000148",
@@ -1859,7 +1991,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000143",
@@ -1873,7 +2006,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000138",
@@ -1887,7 +2021,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000136",
@@ -1901,7 +2036,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000135",
@@ -1915,7 +2051,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000121",
@@ -1929,7 +2066,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800230",
@@ -1943,7 +2081,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000110",
@@ -1957,7 +2096,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800201",
@@ -1971,7 +2111,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000104",
@@ -1985,7 +2126,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800195",
@@ -1999,7 +2141,8 @@
   "label_reason": "기재 오류 정정(배당금지급 예정일 연도)",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800183",
@@ -2013,7 +2156,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800182",
@@ -2027,7 +2171,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000097",
@@ -2041,7 +2186,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000096",
@@ -2055,7 +2201,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000090",
@@ -2069,7 +2216,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800167",
@@ -2083,7 +2231,8 @@
   "label_reason": "DL이앤씨 정정의 자회사 사본(중복)",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800162",
@@ -2097,7 +2246,8 @@
   "label_reason": "변동분 30억 원 이상(<10%): 계약금액 4,891억→5,243억(+7.2%, +352억), 종료일 3개월 연장 — 정정 전후 대조 필요",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800158",
@@ -2111,7 +2261,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000078",
@@ -2125,7 +2276,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000076",
@@ -2139,7 +2291,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800143",
@@ -2153,7 +2306,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000074",
@@ -2167,7 +2321,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907000069",
@@ -2181,7 +2336,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800108",
@@ -2195,7 +2351,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260907800091",
@@ -2209,7 +2366,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260904000546",
@@ -2223,7 +2381,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800624",
@@ -2237,7 +2396,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800596",
@@ -2251,7 +2411,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800579",
@@ -2265,7 +2426,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000395",
@@ -2279,7 +2441,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800578",
@@ -2293,7 +2456,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800531",
@@ -2307,7 +2471,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800550",
@@ -2321,7 +2486,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000370",
@@ -2335,7 +2501,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000356",
@@ -2349,7 +2516,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000346",
@@ -2363,7 +2531,8 @@
   "label_reason": "정형 서류(채무증권 신고서) 정정",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800453",
@@ -2377,7 +2546,8 @@
   "label_reason": "계약금액 3,329억→3,330억(+0.03%), 자회사 사본",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000325",
@@ -2391,7 +2561,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000321",
@@ -2405,7 +2576,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800447",
@@ -2419,7 +2591,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000275",
@@ -2433,7 +2606,8 @@
   "label_reason": "금액 ±10% 이상 변경: 권면총액 2,700억→4,000억(+48%), 자금조달 목적 변경",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800414",
@@ -2447,7 +2621,8 @@
   "label_reason": "계약금액 3,329억→3,330억(+0.03%), 자회사 사본",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800440",
@@ -2461,7 +2636,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000302",
@@ -2475,7 +2651,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800424",
@@ -2489,7 +2666,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800423",
@@ -2503,7 +2681,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800422",
@@ -2517,7 +2696,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800421",
@@ -2531,7 +2711,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000294",
@@ -2545,7 +2726,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000288",
@@ -2559,7 +2741,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000257",
@@ -2573,7 +2756,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000236",
@@ -2587,7 +2771,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800310",
@@ -2601,7 +2786,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000225",
@@ -2615,7 +2801,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000224",
@@ -2629,7 +2816,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000220",
@@ -2643,7 +2831,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000216",
@@ -2657,7 +2846,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000211",
@@ -2671,7 +2861,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000209",
@@ -2685,7 +2876,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000207",
@@ -2699,7 +2891,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000196",
@@ -2713,7 +2906,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000189",
@@ -2727,7 +2921,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800264",
@@ -2741,7 +2936,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800252",
@@ -2755,7 +2951,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000174",
@@ -2769,7 +2966,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000167",
@@ -2783,7 +2981,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000155",
@@ -2797,7 +2996,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000153",
@@ -2811,7 +3011,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000149",
@@ -2825,7 +3026,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800208",
@@ -2839,7 +3041,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000137",
@@ -2853,7 +3056,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908000131",
@@ -2867,7 +3071,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800194",
@@ -2881,7 +3086,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800151",
@@ -2895,7 +3101,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800147",
@@ -2909,7 +3116,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800142",
@@ -2923,7 +3131,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800125",
@@ -2937,7 +3146,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260908800099",
@@ -2951,7 +3161,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000535",
@@ -2965,7 +3176,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800686",
@@ -2979,7 +3191,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800662",
@@ -2993,7 +3206,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800664",
@@ -3007,7 +3221,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000490",
@@ -3021,7 +3236,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000470",
@@ -3035,7 +3251,8 @@
   "label_reason": "단순 기재 정정(주주확정기준일 일정)",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800631",
@@ -3049,7 +3266,8 @@
   "label_reason": "고용노동부 조사 결과 반영 — 조사대상재해 아님으로 종결",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000473",
@@ -3063,7 +3281,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000471",
@@ -3077,7 +3296,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800610",
@@ -3091,7 +3311,8 @@
   "label_reason": "고용노동부 조사 결과 반영 — 조사대상재해 아님으로 종결",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000466",
@@ -3105,7 +3326,8 @@
   "label_reason": "정형 서류(증권발행실적보고서) 정정",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000460",
@@ -3119,7 +3341,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000459",
@@ -3133,7 +3356,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000458",
@@ -3147,7 +3371,8 @@
   "label_reason": "정형 서류(채무증권 신고서) 정정",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000444",
@@ -3161,7 +3386,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800577",
@@ -3175,7 +3401,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000440",
@@ -3189,7 +3416,8 @@
   "label_reason": "정형 서류(채무증권 신고서) 정정",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000439",
@@ -3203,7 +3431,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000438",
@@ -3217,7 +3446,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800563",
@@ -3231,7 +3461,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000433",
@@ -3245,7 +3476,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000423",
@@ -3259,7 +3491,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000421",
@@ -3273,7 +3506,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800537",
@@ -3287,7 +3521,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800536",
@@ -3301,7 +3536,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800530",
@@ -3315,7 +3551,8 @@
   "label_reason": "정형 안내공시(IR 개최) 정정",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000417",
@@ -3329,7 +3566,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000416",
@@ -3343,7 +3581,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000413",
@@ -3357,7 +3596,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000411",
@@ -3371,7 +3611,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000410",
@@ -3385,7 +3626,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800523",
@@ -3399,7 +3641,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800519",
@@ -3413,7 +3656,8 @@
   "label_reason": "정형 안내공시(IR 개최) 정정",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000407",
@@ -3427,7 +3671,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000401",
@@ -3441,7 +3686,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800447",
@@ -3455,7 +3701,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000400",
@@ -3469,7 +3716,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000397",
@@ -3483,7 +3731,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000395",
@@ -3497,7 +3746,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000394",
@@ -3511,7 +3761,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000391",
@@ -3525,7 +3776,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800462",
@@ -3539,7 +3791,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000385",
@@ -3553,7 +3806,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000380",
@@ -3567,7 +3821,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800450",
@@ -3581,7 +3836,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800444",
@@ -3595,7 +3851,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000377",
@@ -3609,7 +3866,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000375",
@@ -3623,7 +3881,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000372",
@@ -3637,7 +3896,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800396",
@@ -3651,7 +3911,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000370",
@@ -3665,7 +3926,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000365",
@@ -3679,7 +3941,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800410",
@@ -3693,7 +3956,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000361",
@@ -3707,7 +3971,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000360",
@@ -3721,7 +3986,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000359",
@@ -3735,7 +4001,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000355",
@@ -3749,7 +4016,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000353",
@@ -3763,7 +4031,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000351",
@@ -3777,7 +4046,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800381",
@@ -3791,7 +4061,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000342",
@@ -3805,7 +4076,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000340",
@@ -3819,7 +4091,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000339",
@@ -3833,7 +4106,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000338",
@@ -3847,7 +4121,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000332",
@@ -3861,7 +4136,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000321",
@@ -3875,7 +4151,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000312",
@@ -3889,7 +4166,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000303",
@@ -3903,7 +4181,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000287",
@@ -3917,7 +4196,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000282",
@@ -3931,7 +4211,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800306",
@@ -3945,7 +4226,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000281",
@@ -3959,7 +4241,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000280",
@@ -3973,7 +4256,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000279",
@@ -3987,7 +4271,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000274",
@@ -4001,7 +4286,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000269",
@@ -4015,7 +4301,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000258",
@@ -4029,7 +4316,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000257",
@@ -4043,7 +4331,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000255",
@@ -4057,7 +4346,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000253",
@@ -4071,7 +4361,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000247",
@@ -4085,7 +4376,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000243",
@@ -4099,7 +4391,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800253",
@@ -4113,7 +4406,8 @@
   "label_reason": "계약기간 종료일을 미정으로 변경(금액 불변, 발주처와 협의 중)",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000237",
@@ -4127,7 +4421,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000232",
@@ -4141,7 +4436,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000231",
@@ -4155,7 +4451,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000229",
@@ -4169,7 +4466,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000218",
@@ -4183,7 +4481,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000215",
@@ -4197,7 +4496,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000214",
@@ -4211,7 +4511,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000209",
@@ -4225,7 +4526,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000204",
@@ -4239,7 +4541,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000202",
@@ -4253,7 +4556,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000201",
@@ -4267,7 +4571,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000199",
@@ -4281,7 +4586,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000197",
@@ -4295,7 +4601,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000196",
@@ -4309,7 +4616,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800230",
@@ -4323,7 +4631,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800205",
@@ -4337,7 +4646,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800203",
@@ -4351,7 +4661,8 @@
   "label_reason": "변동분 30억 원 이상(<10%): 9,208억→9,597억(+4.2%, +389억), 계약기간 신규 기재",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800210",
@@ -4365,7 +4676,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800165",
@@ -4379,7 +4691,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000122",
@@ -4393,7 +4706,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000113",
@@ -4407,7 +4721,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909000075",
@@ -4421,7 +4736,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800115",
@@ -4435,7 +4751,8 @@
   "label_reason": "HDC는 IPARK현대산업개발 정정의 자회사 사본(중복)",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800105",
@@ -4449,7 +4766,8 @@
   "label_reason": "변동분 30억 원 이상(<10%): 3,946억→3,993억(+1.2%, +47억), 계약기간 신규 기재",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260909800108",
@@ -4463,7 +4781,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800702",
@@ -4477,7 +4796,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000571",
@@ -4491,7 +4811,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000563",
@@ -4505,7 +4826,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000550",
@@ -4519,7 +4841,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000531",
@@ -4533,7 +4856,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000528",
@@ -4547,7 +4871,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000525",
@@ -4561,7 +4886,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000518",
@@ -4575,7 +4901,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800635",
@@ -4589,7 +4916,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800632",
@@ -4603,7 +4931,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000507",
@@ -4617,7 +4946,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000506",
@@ -4631,7 +4961,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800604",
@@ -4645,7 +4976,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800555",
@@ -4659,7 +4991,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800563",
@@ -4673,7 +5006,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800549",
@@ -4687,7 +5021,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800520",
@@ -4701,7 +5036,8 @@
   "label_reason": "중국 자회사 지분 100% 처분(4억 위안) 거래종결 반영 — 원 공시 후속, 대조 필요",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000442",
@@ -4715,7 +5051,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000432",
@@ -4729,7 +5066,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000431",
@@ -4743,7 +5081,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800450",
@@ -4757,7 +5096,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000425",
@@ -4771,7 +5111,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000415",
@@ -4785,7 +5126,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800476",
@@ -4799,7 +5141,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000414",
@@ -4813,7 +5156,8 @@
   "label_reason": "정형 서류(채무증권 신고서) 정정",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000403",
@@ -4827,7 +5171,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800458",
@@ -4841,7 +5186,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000396",
@@ -4855,7 +5201,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000393",
@@ -4869,7 +5216,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800393",
@@ -4883,7 +5231,8 @@
   "label_reason": "고객 요청 수주물량 증가(USD 770만≈80억 원), 계약기간 1년 연장 — 정정 전후 대조 필요",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000367",
@@ -4897,7 +5246,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000351",
@@ -4911,7 +5261,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000344",
@@ -4925,7 +5276,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000329",
@@ -4939,7 +5291,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000327",
@@ -4953,7 +5306,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000324",
@@ -4967,7 +5321,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000321",
@@ -4981,7 +5336,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800374",
@@ -4995,7 +5351,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000316",
@@ -5009,7 +5366,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000313",
@@ -5023,7 +5381,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800347",
@@ -5037,7 +5396,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000308",
@@ -5051,7 +5411,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800354",
@@ -5065,7 +5426,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000304",
@@ -5079,7 +5441,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000300",
@@ -5093,7 +5456,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000298",
@@ -5107,7 +5471,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800341",
@@ -5121,7 +5486,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000287",
@@ -5135,7 +5501,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000286",
@@ -5149,7 +5516,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000285",
@@ -5163,7 +5531,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800303",
@@ -5177,7 +5546,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800279",
@@ -5191,7 +5561,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000269",
@@ -5205,7 +5576,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000267",
@@ -5219,7 +5591,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000262",
@@ -5233,7 +5606,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000249",
@@ -5247,7 +5621,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000239",
@@ -5261,7 +5636,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000236",
@@ -5275,7 +5651,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000231",
@@ -5289,7 +5666,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000224",
@@ -5303,7 +5681,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000221",
@@ -5317,7 +5696,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000217",
@@ -5331,7 +5711,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000208",
@@ -5345,7 +5726,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000201",
@@ -5359,7 +5741,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000193",
@@ -5373,7 +5756,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000191",
@@ -5387,7 +5771,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000167",
@@ -5401,7 +5786,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000164",
@@ -5415,7 +5801,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000159",
@@ -5429,7 +5816,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000157",
@@ -5443,7 +5831,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000148",
@@ -5457,7 +5846,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000141",
@@ -5471,7 +5861,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000134",
@@ -5485,7 +5876,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000132",
@@ -5499,7 +5891,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000121",
@@ -5513,7 +5906,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000117",
@@ -5527,7 +5921,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000101",
@@ -5541,7 +5936,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000100",
@@ -5555,7 +5951,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000087",
@@ -5569,7 +5966,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000078",
@@ -5583,7 +5981,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000076",
@@ -5597,7 +5996,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000074",
@@ -5611,7 +6011,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800086",
@@ -5625,7 +6026,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000042",
@@ -5639,7 +6041,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910800060",
@@ -5653,7 +6056,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000029",
@@ -5667,7 +6071,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260910000013",
@@ -5681,7 +6086,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800773",
@@ -5695,7 +6101,8 @@
   "label_reason": "오류 정정(연도별 사용 예정 금액 단위 오기)",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800699",
@@ -5709,7 +6116,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000576",
@@ -5723,7 +6131,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800684",
@@ -5737,7 +6146,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000568",
@@ -5751,7 +6161,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000562",
@@ -5765,7 +6176,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000549",
@@ -5779,7 +6191,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800653",
@@ -5793,7 +6206,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000544",
@@ -5807,7 +6221,8 @@
   "label_reason": "정형 서류(증권발행실적보고서) 정정",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000541",
@@ -5821,7 +6236,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800635",
@@ -5835,7 +6251,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000537",
@@ -5849,7 +6266,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000536",
@@ -5863,7 +6281,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000532",
@@ -5877,7 +6296,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000531",
@@ -5891,7 +6311,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000529",
@@ -5905,7 +6326,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000518",
@@ -5919,7 +6341,8 @@
   "label_reason": "정형 서류(증권발행실적보고서) 정정",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000517",
@@ -5933,7 +6356,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000512",
@@ -5947,7 +6371,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000507",
@@ -5961,7 +6386,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000500",
@@ -5975,7 +6401,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000498",
@@ -5989,7 +6416,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000495",
@@ -6003,7 +6431,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000487",
@@ -6017,7 +6446,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000485",
@@ -6031,7 +6461,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800490",
@@ -6045,7 +6476,8 @@
   "label_reason": "과징금 취소 행정심판 기각 후 행정소송 제기 — 원 공시의 후속, 금액은 원 공시에서 확인 필요",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000480",
@@ -6059,7 +6491,8 @@
   "label_reason": "증권신고서(지분증권) 자진정정 — 투자위험요소 등 다수 항목 보완, 본문 68만 자라 변경 중요도를 판단하기 어려움",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800500",
@@ -6073,7 +6506,8 @@
   "label_reason": "금액 ±10% 이상 변경: 계약금액 183.5억→231.1억(+26%), 매출대비 17.13→21.57%, 기간 1년 연장",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000467",
@@ -6087,7 +6521,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000465",
@@ -6101,7 +6536,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800513",
@@ -6115,7 +6551,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000461",
@@ -6129,7 +6566,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800485",
@@ -6143,7 +6581,8 @@
   "label_reason": "계약상대·판매지역 변경(라이베리아 → 라이베리아 및 아시아 선주), 금액 변동 없음 — 대조 필요",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000451",
@@ -6157,7 +6596,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000440",
@@ -6171,7 +6611,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000434",
@@ -6185,7 +6626,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000426",
@@ -6199,7 +6641,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000424",
@@ -6213,7 +6656,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000415",
@@ -6227,7 +6671,8 @@
   "label_reason": "정형 서류(반기보고서) 정정, 본문이 방대한 정기보고서",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000408",
@@ -6241,7 +6686,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000385",
@@ -6255,7 +6701,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000383",
@@ -6269,7 +6716,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000382",
@@ -6283,7 +6731,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000358",
@@ -6297,7 +6746,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000355",
@@ -6311,7 +6761,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000352",
@@ -6325,7 +6776,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000340",
@@ -6339,7 +6791,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000331",
@@ -6353,7 +6806,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000327",
@@ -6367,7 +6821,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000321",
@@ -6381,7 +6836,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000315",
@@ -6395,7 +6851,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000309",
@@ -6409,7 +6866,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800327",
@@ -6423,7 +6881,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000303",
@@ -6437,7 +6896,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800311",
@@ -6451,7 +6911,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000290",
@@ -6465,7 +6926,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000277",
@@ -6479,7 +6941,8 @@
   "label_reason": "정형 서류(증권발행실적보고서) 정정",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000259",
@@ -6493,7 +6956,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000256",
@@ -6507,7 +6971,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000213",
@@ -6521,7 +6986,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000207",
@@ -6535,7 +7001,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000203",
@@ -6549,7 +7016,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000201",
@@ -6563,7 +7031,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800204",
@@ -6577,7 +7046,8 @@
   "label_reason": "변동분 30억 원 이상(<10%): 2,412억→2,516억(+4.3%, +104억), 매출대비 13.50→14.07%",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000198",
@@ -6591,7 +7061,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000197",
@@ -6605,7 +7076,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000195",
@@ -6619,7 +7091,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000185",
@@ -6633,7 +7106,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800200",
@@ -6647,7 +7121,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000174",
@@ -6661,7 +7136,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000173",
@@ -6675,7 +7151,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000164",
@@ -6689,7 +7166,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000158",
@@ -6703,7 +7181,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000146",
@@ -6717,7 +7196,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000145",
@@ -6731,7 +7211,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000142",
@@ -6745,7 +7226,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000140",
@@ -6759,7 +7241,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000138",
@@ -6773,7 +7256,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000135",
@@ -6787,7 +7271,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000133",
@@ -6801,7 +7286,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000113",
@@ -6815,7 +7301,8 @@
   "label_reason": "분할반대의사통지 접수기간 일정 오류 정정, 분할 조건 변경 없음",
   "label_source": "claude_v0",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000083",
@@ -6829,7 +7316,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000076",
@@ -6843,7 +7331,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000071",
@@ -6857,7 +7346,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800103",
@@ -6871,7 +7361,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000062",
@@ -6885,7 +7376,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000059",
@@ -6899,7 +7391,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000048",
@@ -6913,7 +7406,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911800091",
@@ -6927,7 +7421,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000044",
@@ -6941,7 +7436,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000034",
@@ -6955,7 +7451,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000024",
@@ -6969,7 +7466,8 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  },
  {
   "rcept_no": "20260911000010",
@@ -6983,6 +7481,7 @@
   "label_reason": "공시명 규칙 필터 제외 유형(검증 전 가정)",
   "label_source": "rule_presumed",
   "was_borderline": false,
-  "tag": null
+  "tag": null,
+  "period": "w0907"
  }
 ]

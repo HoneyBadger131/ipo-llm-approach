@@ -10,6 +10,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+from lib import load_cases  # noqa: E402
 from score_run import ADV, EXCLUDE_PATTERNS, SEPARATE_PATTERNS, metrics, normalize, predict  # noqa: E402
 
 METHODS = [
@@ -34,7 +35,7 @@ def load(exp, cfg):
 
 def main():
     exps = sys.argv[1:]
-    cases = {c["rcept_no"]: c for c in json.load(open(os.path.join(HERE, "cases", "cases_v0.json"), encoding="utf-8"))}
+    cases = {c["rcept_no"]: c for c in load_cases()}
     L = ["# 실험 비교 (재현율 / 정밀도, HOLD는 진행으로 간주)\n",
          "표기: `재현율% / 정밀도%`. 재현율 = 진행해야 할 공시를 놓치지 않은 비율(가장 중요), 정밀도 = 진행시킨 것 중 맞는 비율.\n"]
     for scope, kinds, rule_first in (("A. 판정 82건", {"judged"}, False), ("B. 정정 공시 23건 (정형 서류 정정은 유형 규칙으로 선행 제외)", {"correction"}, True)):

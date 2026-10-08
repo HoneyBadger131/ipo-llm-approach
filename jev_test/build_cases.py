@@ -54,7 +54,7 @@ def main():
         for suf, (lb, note) in OVERRIDE.items():
             if j["rcept_no"].endswith(suf):
                 label, why = lb, note + " | 기존 판정: " + j["reason"]
-        cases.append(dict(rcept_no=j["rcept_no"], day=j["day"], stock_code=u["stock_code"], corp_name=u["corp_name"],
+        cases.append(dict(rcept_no=j["rcept_no"], day=j["day"], period="w0907", stock_code=u["stock_code"], corp_name=u["corp_name"],
                           report_nm=u["report_nm"], is_correction=False, kind="judged", label=label, label_reason=why[:300],
                           label_source="claude_v0", was_borderline=bool(j.get("borderline")), tag=j.get("tag")))
     cl_path = os.path.join(CASES, "corrections_labels.json")
@@ -62,14 +62,14 @@ def main():
     for u in uni.values():
         if u["is_correction"]:
             lb = cl.get(u["rcept_no"])
-            cases.append(dict(rcept_no=u["rcept_no"], day=u["day"], stock_code=u["stock_code"], corp_name=u["corp_name"],
+            cases.append(dict(rcept_no=u["rcept_no"], day=u["day"], period="w0907", stock_code=u["stock_code"], corp_name=u["corp_name"],
                               report_nm=u["report_nm"], is_correction=True, kind="correction",
                               label=lb["label"] if lb else None, label_reason=lb["why"] if lb else "미라벨",
                               label_source="claude_v0", was_borderline=False, tag=None))
         elif u["rule"] == "exclude":
             n = normalize(u["report_nm"])
             if any(re.search(p, n) for p in EXCLUDE_PATTERNS):
-                cases.append(dict(rcept_no=u["rcept_no"], day=u["day"], stock_code=u["stock_code"], corp_name=u["corp_name"],
+                cases.append(dict(rcept_no=u["rcept_no"], day=u["day"], period="w0907", stock_code=u["stock_code"], corp_name=u["corp_name"],
                                   report_nm=u["report_nm"], is_correction=False, kind="rule_exclude", label="DROP",
                                   label_reason="공시명 규칙 필터 제외 유형(검증 전 가정)", label_source="rule_presumed",
                                   was_borderline=False, tag=None))
