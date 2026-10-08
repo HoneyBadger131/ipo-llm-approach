@@ -19,8 +19,14 @@ const reportsDir = path.resolve(process.argv[3] || path.join(root, "trial_case",
 const outDir = path.resolve(process.argv[4] || path.join(root, "trial_case", day));
 const metaPath = path.join(outDir, "summary_meta.json");
 const meta = fs.existsSync(metaPath) ? JSON.parse(fs.readFileSync(metaPath, "utf-8")) : {};
+// 알림(NOTIFY): trial_case/<날짜>/triage.json 의 NOTIFY 라벨을 브리프 맨 위에 한 줄씩 표시(분석 없음)
+const triPath = path.join(root, "trial_case", day, "triage.json");
+if (fs.existsSync(triPath)) {
+  meta.notify = JSON.parse(fs.readFileSync(triPath, "utf-8")).filter((r) => r.label === "NOTIFY")
+    .map((r) => ({ corp_name: r.corp_name, stock_code: r.stock_code, report_nm: r.report_nm, note: r.rule === "R-CEO" ? "대표이사 변경" : r.reason }));
+}
 const { items, top, rest } = loadItems(reportsDir, date, meta);
-const ordered = [...top, ...rest];                    // 브리프 표시 순서 = 상세 페이지 순서 (TOP 먼저, 그다음 중요도순)
+const ordered = items;                                // 상세 페이지 순서 = 전체 중요도순(중요도 → 점수). 브리프 카드에 '상세 p.N'으로 표시
 const shortTitle = (d) => `${d.corp_name} · ${String(d.disclosure_title).replace(/\s+/g, " ").slice(0, 28)}`;
 const PW = 794, PH = 1123;                            // A4 @96dpi (CSS px)
 

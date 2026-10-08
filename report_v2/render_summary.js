@@ -50,6 +50,8 @@ const card = (d, i) => wrap(d, `<div class="card"><div class="rank">${i + 1}</di
 const rw = (d, s) => (link(d) ? `<a class="lk" href="${esc(link(d))}">${s}</a>` : s);
 const row = (d) => `<tr><td class="n">${rw(d, `<b>${esc(d.corp_name)}</b><span class="code">${esc(d.stock_code)}</span>`)}</td><td class="t">${rw(d, esc(shortTitle(d.disclosure_title)))}</td><td class="c">${rw(d, `<span class="chip tag">${esc(d.tag)}</span> ${chip(d)}`)}</td><td class="b">${rw(d, `${esc(d.brief || d.impact_summary)}${go(d)}`)}</td></tr>`;
 
+const notes = (meta.notify || []);
+const notifyBlock = notes.length ? `<div class="notify"><div class="nh">알림 <span>${notes.length}건 · 분석 없이 알려드리는 공시</span></div>${notes.map((n) => `<div class="ni"><b>${esc(n.corp_name)}</b><span class="code">${esc(n.stock_code || "")}</span><span class="nt">${esc(shortTitle(n.report_nm))}</span><span class="nr">${esc(n.note || "")}</span></div>`).join("")}</div>` : "";
 const funnel = (meta.funnel || []).map(([k, v]) => `<span class="f"><b>${esc(v)}</b>${esc(k)}</span>`).join('<span class="ar">›</span>');
 const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>공시 브리프 ${esc(date)}</title><style>
 :root{--bg:#f4f6f9;--card:#fff;--ink:#1c2430;--mute:#6a7686;--line:#e3e8ef;--brand:#26457a;
@@ -74,6 +76,8 @@ table{width:100%;border-collapse:collapse;background:var(--card);border:1px soli
 td{padding:3.5px 7px;border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border-bottom:0}
 td.n{width:21%}td.n b{display:block;font-size:11px}td.t{width:21%;color:var(--mute)}td.c{width:17%}td.c .chip{margin-bottom:2px}td.b{width:41%}
 footer{margin-top:auto;color:var(--mute);font-size:8.5px}
+.notify{background:#fff8e6;border:1px solid #f0d58a;border-radius:10px;padding:6px 12px}.notify .nh{font-weight:800;color:#8a5a00;font-size:11.5px}.notify .nh span{font-weight:500;font-size:10px;margin-left:6px}
+.notify .ni{display:flex;gap:8px;align-items:baseline;font-size:11px;padding:2px 0}.notify .nt{color:var(--mute)}.notify .nr{margin-left:auto}
 a.lk{color:inherit;text-decoration:none;display:block}.go{flex:none;align-self:center;color:var(--brand);font-weight:700;font-size:10px;white-space:nowrap;margin-left:4px}td.b .go{display:block;text-align:right}
 ${web ? `.page{width:auto;max-width:920px;margin:0 auto;min-height:0}a.lk:hover .card,a.lk:hover{background:#eef3fb}.card{cursor:pointer}@media(max-width:640px){.l1{flex-wrap:wrap}.ttl{margin-left:0}td.t{display:none}}` : ""}
 </style></head><body><div class="page">
@@ -81,7 +85,7 @@ ${web ? `.page{width:auto;max-width:920px;margin:0 auto;min-height:0}a.lk:hover 
 <div class="stats"><span class="s">사업 변동 ${cnt((d) => d.tag === "사업 변동")}</span><span class="s">기타 사항 ${cnt((d) => d.tag !== "사업 변동")}</span>
 <span class="s">▲ 긍정 ${cnt((d) => d.sentiment.label === "긍정적")}</span><span class="s">▼ 부정 ${cnt((d) => d.sentiment.label === "부정적")}</span><span class="s">◆ 혼재 ${cnt((d) => d.sentiment.label === "혼재됨")}</span><span class="s">? 미확인 ${cnt((d) => d.sentiment.label === "알수 없음")}</span></div>
 ${funnel ? `<div class="funnel">${funnel}</div>` : ""}</header>
-<h2>TOP ${top.length}</h2>${top.map(card).join("")}
+${notifyBlock}<h2>TOP ${top.length}</h2>${top.map(card).join("")}
 ${rest.length ? `<h2>그 외 공시</h2><table><tbody>${rest.map(row).join("")}</tbody></table>` : ""}
 <footer>${esc(opts.footer || "세부 내용은 공시별 대시보드(PDF)·MD 참조. 정보 제공용이며 투자 권유가 아닙니다.")}</footer></div></body></html>`;
 
