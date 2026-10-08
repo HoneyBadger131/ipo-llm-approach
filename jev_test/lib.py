@@ -65,7 +65,13 @@ def correction_delta(sec):
 
 
 def body_path(case):
-    return os.path.join(DATA, "bodies", case["day"], f"{case['stock_code']}_{case['rcept_no']}.txt")
+    """본문 파일 위치: 시험용(jev_test/data/bodies) → 운영 준비 단계(bodies/<날짜>) → 에이전트 입력(trial_case/<날짜>) 순으로 찾는다."""
+    name = f"{case['stock_code']}_{case['rcept_no']}.txt"
+    for base in (os.path.join(DATA, "bodies"), os.path.join(ROOT, "bodies"), os.path.join(ROOT, "trial_case")):
+        p = os.path.join(base, case["day"], name)
+        if os.path.exists(p):
+            return p
+    return os.path.join(DATA, "bodies", case["day"], name)
 
 
 def read_body(case):

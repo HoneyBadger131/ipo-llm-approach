@@ -31,7 +31,8 @@ def main():
     exp = sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith("--") else "w_all_v3"
     periods = set(sys.argv[sys.argv.index("--cases-period") + 1].split(",")) if "--cases-period" in sys.argv else None
     resp = load_resp(exp)
-    cases = [c for c in load_cases() if c["kind"] == "judged" and not is_dup(c) and c["rcept_no"] in resp and (periods is None or c["period"] in periods)]
+    incl = "--include-dups" in sys.argv     # 실제 파이프라인 기준: 자회사 중복 단계가 놓친 사본도 Jev에 들어간다
+    cases = [c for c in load_cases() if c["kind"] == "judged" and (incl or not is_dup(c)) and c["rcept_no"] in resp and (periods is None or c["period"] in periods)]
     out = []
     for c in cases:
         t = triage_case(c, read_body(c), resp=resp[c["rcept_no"]])
@@ -51,7 +52,7 @@ def main():
 
     L.append("## 1. 지표 (노출 = PASS·PASS_CHECK·NOTIFY·HOLD, 분석 = PASS·PASS_CHECK·HOLD)\n\n| 구분 | 건수 | 노출 재현율 | 노출 정밀도 | 노출 건수 | 분석 재현율 | 분석 정밀도 |\n|---|---:|---|---|---:|---|---|")
     block("전체", out)
-    for per, nm in (("w0907", "개발 9/7~9/11"), ("w0901", "검증 9/1~9/4"), ("w0930", "검증 9/30~10/1")):
+    for per, nm in (("w0907", "개발 9/7~9/11"), ("w0901", "검증 9/1~9/4"), ("w0930", "검증 9/30~10/1"), ("w0914", "새 구간 9/14~9/29(블라인드)")):
         block(nm, [(c, t) for c, t in out if c["period"] == per])
     for tr in ("large", "other"):
         block(f"시총 구간 {tr}", [(c, t) for c, t in out if t["tier"] == tr])
@@ -75,7 +76,7 @@ def main():
     L.append(f"\n## 4. 불필요 노출 {len(fpos)}건 (정답 DROP → 하이브리드 노출)\n")
     for c, t in sorted(fpos, key=lambda x: x[0]["day"]):
         L.append(f"- [{c['day'][4:]}] {c['corp_name']} | {c['report_nm'][:30]} | 하이브리드 {t['label']} ({t['source']}:{t['rule']}) | {t['reason']} | {c['label_reason'][:50]}")
-    open(os.path.join(HERE, "runs", f"eval_hybrid_{exp}.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
+    open(os.path.join(HERE, "runs", f"eval_hybrid_{exp}{'_incl' if incl else ''}.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
     print("\n".join(L))
 
 

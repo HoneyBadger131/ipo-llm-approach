@@ -30,7 +30,7 @@ def main():
     default = json.load(open(os.path.join(HERE, "cases", "labels_human_default.json"), encoding="utf-8"))
     out = {}
     for c in base:
-        if c["rcept_no"] in human or c["kind"] == "rule_exclude":
+        if c["rcept_no"] in human or c["kind"] == "rule_exclude" or c.get("label_source") == "claude_blind_v3":   # 블라인드 검증 라벨은 건드리지 않는다
             continue
         res = hard_rule(c, read_body(c))
         if res is None:

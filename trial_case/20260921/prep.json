@@ -1,0 +1,95 @@
+{
+ "date": "2026-09-21",
+ "total": 534,
+ "watchlist_filings": 68,
+ "watchlist_companies": 36,
+ "excluded": 54,
+ "separate": [
+  {
+   "rcept_no": "20260921000222",
+   "stock_code": "330590",
+   "corp_name": "롯데리츠",
+   "report_nm": "사업보고서 (2026.06)"
+  },
+  {
+   "rcept_no": "20260921800292",
+   "stock_code": "330590",
+   "corp_name": "롯데리츠",
+   "report_nm": "감사보고서제출"
+  }
+ ],
+ "review": [
+  {
+   "rcept_no": "20260921000379",
+   "stock_code": "138040",
+   "corp_name": "메리츠금융지주",
+   "report_nm": "주요사항보고서(자본으로인정되는채무증권발행결정)"
+  },
+  {
+   "rcept_no": "20260921800510",
+   "stock_code": "006040",
+   "corp_name": "동원산업",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260921000365",
+   "stock_code": "032830",
+   "corp_name": "삼성생명",
+   "report_nm": "특수관계인과의보험거래"
+  },
+  {
+   "rcept_no": "20260921000359",
+   "stock_code": "032830",
+   "corp_name": "삼성생명",
+   "report_nm": "특수관계인에대한출자"
+  },
+  {
+   "rcept_no": "20260921000351",
+   "stock_code": "032830",
+   "corp_name": "삼성생명",
+   "report_nm": "특수관계인과의수익증권거래"
+  },
+  {
+   "rcept_no": "20260921000219",
+   "stock_code": "006400",
+   "corp_name": "삼성SDI",
+   "report_nm": "특수관계인에대한출자"
+  },
+  {
+   "rcept_no": "20260921800259",
+   "stock_code": "047040",
+   "corp_name": "대우건설",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260921800180",
+   "stock_code": "097230",
+   "corp_name": "HJ중공업",
+   "report_nm": "투자판단관련주요경영사항"
+  },
+  {
+   "rcept_no": "20260921800165",
+   "stock_code": "068270",
+   "corp_name": "셀트리온",
+   "report_nm": "투자판단관련주요경영사항              (CTP44(다잘렉스 바이오시밀러) 유럽 임상 3상 시험계획 변경신청 승인(Part1&2))"
+  },
+  {
+   "rcept_no": "20260921800130",
+   "stock_code": "192650",
+   "corp_name": "드림텍",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260921800102",
+   "stock_code": "005490",
+   "corp_name": "POSCO홀딩스",
+   "report_nm": "해외증권거래소등에신고한주요공시사항의국내신고"
+  },
+  {
+   "rcept_no": "20260921800004",
+   "stock_code": "028260",
+   "corp_name": "삼성물산",
+   "report_nm": "투자판단관련주요경영사항"
+  }
+ ]
+}

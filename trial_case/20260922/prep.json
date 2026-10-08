@@ -1,0 +1,111 @@
+{
+ "date": "2026-09-22",
+ "total": 586,
+ "watchlist_filings": 68,
+ "watchlist_companies": 44,
+ "excluded": 53,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260922800642",
+   "stock_code": "011790",
+   "corp_name": "SKC",
+   "report_nm": "투자판단관련주요경영사항"
+  },
+  {
+   "rcept_no": "20260922800641",
+   "stock_code": "011790",
+   "corp_name": "SKC",
+   "report_nm": "기타경영사항(종속회사의주요경영사항)"
+  },
+  {
+   "rcept_no": "20260922800610",
+   "stock_code": "035720",
+   "corp_name": "카카오",
+   "report_nm": "조회공시요구(풍문또는보도)에대한답변(미확정)"
+  },
+  {
+   "rcept_no": "20260922000520",
+   "stock_code": "012450",
+   "corp_name": "한화에어로스페이스",
+   "report_nm": "특수관계인과의수익증권거래"
+  },
+  {
+   "rcept_no": "20260922800581",
+   "stock_code": "003670",
+   "corp_name": "포스코퓨처엠",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260922800514",
+   "stock_code": "011790",
+   "corp_name": "SKC",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260922000347",
+   "stock_code": "018670",
+   "corp_name": "SK가스",
+   "report_nm": "특수관계인과의내부거래"
+  },
+  {
+   "rcept_no": "20260922800320",
+   "stock_code": "064400",
+   "corp_name": "LG씨엔에스",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260922800292",
+   "stock_code": "033780",
+   "corp_name": "케이티앤지",
+   "report_nm": "주식소각결정"
+  },
+  {
+   "rcept_no": "20260922000256",
+   "stock_code": "033780",
+   "corp_name": "케이티앤지",
+   "report_nm": "주요사항보고서(자기주식취득결정)"
+  },
+  {
+   "rcept_no": "20260922800219",
+   "stock_code": "329180",
+   "corp_name": "HD현대중공업",
+   "report_nm": "단일판매ㆍ공급계약체결(자율공시)"
+  },
+  {
+   "rcept_no": "20260922800127",
+   "stock_code": "010120",
+   "corp_name": "엘에스일렉트릭",
+   "report_nm": "유무상증자결정(종속회사의주요경영사항)"
+  },
+  {
+   "rcept_no": "20260922800103",
+   "stock_code": "003850",
+   "corp_name": "보령",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260922800081",
+   "stock_code": "294870",
+   "corp_name": "IPARK현대산업개발",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260922800008",
+   "stock_code": "097230",
+   "corp_name": "HJ중공업",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  }
+ ],
+ "subsidiary_dup": [
+  {
+   "rcept_no": "20260922800089",
+   "stock_code": "012630",
+   "corp_name": "HDC",
+   "report_nm": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260922800081",
+   "twin_corp": "IPARK현대산업개발",
+   "sub_name": "아이파크현대산업개발(주)"
+  }
+ ]
+}

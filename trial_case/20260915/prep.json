@@ -1,0 +1,99 @@
+{
+ "date": "2026-09-15",
+ "total": 598,
+ "watchlist_filings": 58,
+ "watchlist_companies": 31,
+ "excluded": 48,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260915800798",
+   "stock_code": "294870",
+   "corp_name": "IPARK현대산업개발",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260915800684",
+   "stock_code": "052690",
+   "corp_name": "한전기술",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260915800586",
+   "stock_code": "011780",
+   "corp_name": "금호석유화학",
+   "report_nm": "주식소각결정"
+  },
+  {
+   "rcept_no": "20260915800321",
+   "stock_code": "000100",
+   "corp_name": "유한양행",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260915000070",
+   "stock_code": "003850",
+   "corp_name": "보령",
+   "report_nm": "주요사항보고서(회사분할결정)"
+  },
+  {
+   "rcept_no": "20260915800271",
+   "stock_code": "336260",
+   "corp_name": "두산퓨얼셀",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260915800241",
+   "stock_code": "017960",
+   "corp_name": "한국카본",
+   "report_nm": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정"
+  },
+  {
+   "rcept_no": "20260915000068",
+   "stock_code": "011780",
+   "corp_name": "금호석유화학",
+   "report_nm": "주요사항보고서(자기주식취득신탁계약해지결정)"
+  },
+  {
+   "rcept_no": "20260915800149",
+   "stock_code": "298040",
+   "corp_name": "효성중공업",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260915800147",
+   "stock_code": "298040",
+   "corp_name": "효성중공업",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  }
+ ],
+ "subsidiary_dup": [
+  {
+   "rcept_no": "20260915800811",
+   "stock_code": "012630",
+   "corp_name": "HDC",
+   "report_nm": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260915800798",
+   "twin_corp": "IPARK현대산업개발",
+   "sub_name": "아이파크현대산업개발(주)"
+  },
+  {
+   "rcept_no": "20260915800153",
+   "stock_code": "004800",
+   "corp_name": "효성",
+   "report_nm": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260915800149",
+   "twin_corp": "효성중공업",
+   "sub_name": "효성중공업(주)"
+  },
+  {
+   "rcept_no": "20260915800152",
+   "stock_code": "004800",
+   "corp_name": "효성",
+   "report_nm": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260915800149",
+   "twin_corp": "효성중공업",
+   "sub_name": "효성중공업(주)"
+  }
+ ]
+}

@@ -13,6 +13,8 @@ DART 공시를 수집하고 LLM으로 중요도를 판단·심화 분석해, 종
 5. `report_v2/render_summary.js` — 통합 브리프 PDF(중요도 상위 5건 + 표)
 
 ## Jev 분류자 시험 (`jev_test/`)
+**인수인계 가이드: [`docs/DISCLOSURE_TRIAGE.md`](docs/DISCLOSURE_TRIAGE.md)** · 코드 지도: [`jev_test/README.md`](jev_test/README.md)
+
 공시가 "다음 단계로 넘길 만큼 중요한가"를 TypeSafe Jev로 분류하는 시험. 기준: [`jev_test/공시판단_기본원칙.md`](jev_test/공시판단_기본원칙.md), 실험 설계·결과: [`jev_test/실험설계.md`](jev_test/실험설계.md).
 
 ## 메모

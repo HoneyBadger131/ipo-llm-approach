@@ -60,6 +60,30 @@ class TestHardRules(unittest.TestCase):
         self.assertIsNone(r.hard_rule(case("타법인주식및출자증권취득결정", "한화생명")))          # 금융회사 인수·출자는 일상 영업이 아님
         self.assertIsNone(r.hard_rule(case("타인에대한채무보증결정", "현대건설")))               # 일반 기업은 Jev 판단
 
+    def test_unit_parsing(self):
+        self.assertEqual(r.max_won("(단위 : 백만 원)\n3. 거래금액\n1,495,000"), 1_495_000 * 10**6)
+        self.assertEqual(r.max_won("(단위 : 억 원, %)\n소 계 / 3,000"), 3000 * 10**8)
+        self.assertEqual(r.max_won("다. 거래금액 / 300억원 / 누계 5,500억원"), 5500 * 10**8)
+        self.assertGreaterEqual(r.max_won("거래금액 US$75백만에 상응하는"), 1000 * 10**8)
+        self.assertEqual(r.max_won("금액 20,000,000,000원"), 20_000_000_000)
+
+    def test_structural_echoes(self):
+        self.assertEqual(r.hard_rule(case("매매거래정지및정지해제(중요내용공시)"))[0], "DROP")
+        self.assertEqual(r.hard_rule(case("효력발생안내( 2026.8.28. 제출 증권신고서(지분증권) )"))[0], "DROP")
+        sk = "단일판매ㆍ공급계약 체결\n자회사인\nSK이노베이션(주)\n의 주요경영사항신고\n자회사인\nSK에너지(주)\n의 주요경영사항신고"
+        self.assertEqual(r.hard_rule(case("단일판매ㆍ공급계약체결(자회사의 주요경영사항)", "SK", "034730"), sk)[1], "R-SUB-COPY")
+        unlisted = "자회사인\nHD현대오일뱅크(주)\n의 주요경영사항신고"
+        self.assertIsNone(r.hard_rule(case("타인에대한채무보증결정(자회사의 주요경영사항)", "HD현대", "267250"), unlisted))
+        self.assertEqual(r.hard_rule(case("특수관계인에대한출자", "삼성화재", "000810"), "(단위 : 백만 원)\n출자금액\n20,000")[0], "DROP")
+        self.assertEqual(r.hard_rule(case("약관에의한금융거래시계열금융회사의거래상대방의공시", "현대로템"), "(단위 : 억 원, %)\n총 계 / 1,300")[0], "PASS_CHECK")
+
+    def test_rumor_repeat(self):
+        rep = "일자 풍문 또는 보도에 대한 해명(미확정)의 재공시 사항임 / 구체적으로 결정한 사실 없음"
+        done = "일자 풍문 또는 보도에 대한 해명(미확정)의 재공시 사항임 / 해명공시의 확정(부인)공시입니다"
+        self.assertEqual(r.hard_rule(case("풍문또는보도에대한해명(미확정)", "효성중공업", "298040"), rep)[0], "DROP")
+        self.assertEqual(r.hard_rule(case("풍문또는보도에대한해명(미확정)", "NAVER", "035420"), done)[0], "PASS_CHECK")
+        self.assertEqual(r.hard_rule(case("풍문또는보도에대한해명(미확정)", "NAVER", "035420"), "최초 해명")[0], "PASS_CHECK")
+
     def test_correction(self):
         body_big = ("정정신고(보고) / 정정사항 / 정정항목 / 정정전 / 정정후 / 2. 계약내역 - 계약금액(원) / 489,059,755,158 / 524,323,051,232 / 끝")
         body_small = ("정정신고(보고) / 정정사항 / 정정항목 / 정정전 / 정정후 / 2. 계약내역 - 계약금액(원) / 332,900,000,000 / 333,000,000,000 / 끝")
