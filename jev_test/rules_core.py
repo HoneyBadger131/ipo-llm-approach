@@ -11,13 +11,13 @@ hard_rule(case, body) -> (label, rule_id, why) | None      None 이면 Jev가 �
   R-UNFAITHFUL  불성실공시법인 지정 → PASS
   R-ACCIDENT    중대재해 → PASS_CHECK
   R-CEO         대표이사 변경(안내공시) → NOTIFY
-  R-RUMOR       풍문 해명·조회공시: 시총 상위 30 또는 분쟁 리스트 → PASS_CHECK, 그 외 → DROP
+  R-RUMOR       풍문 해명·조회공시: 삼성전자·SK하이닉스·LG에너지솔루션만 PASS_CHECK, 그 외 → DROP
   R-MERGER-PROC 소규모(100% 자회사) 합병·합병 종료 보고·사채권자집회 소집 → DROP
   R-LOCKUP      보호예수 해제 → PASS_CHECK
   R-HALT        매매거래정지 안내 → DROP (다른 공시의 연동 공지)
   R-EFFECT      증권신고서 효력발생 안내 → DROP
   R-SUB-COPY    상장 자회사(종목 리스트) 공시의 사본 → DROP
-  R-FINTRANS    약관에 의한 금융거래(계열금융사 거래상대방) 공시 → 1,000억 원 이상 PASS_CHECK, 그 외 DROP
+  R-FINTRANS    약관에 의한 금융거래(계열금융사 거래상대방) 공시 → 금액 무관 DROP
   R-REIT        리츠의 사채·단기사채 차입(차환 등) → DROP (사용자: 리츠는 정말 중요한 것이 아니면 무시)
   R-TRUST       자기주식 신탁계약 해지 → 1,000억 원 이상 PASS_CHECK, 그 외 DROP
   R-FIN         금융회사의 보증·대여·수익증권·차입 등 일상 거래 → 1,000억 원 이상 PASS_CHECK, 그 외 DROP
@@ -36,6 +36,7 @@ from dart_rules import normalize  # noqa: E402
 BIG_WON = 1000 * 10**8      # "금액이 매우 크다" (Q1, 승인)
 CORR_WON = 200 * 10**8      # 정정 "큰 규모" (Q6, 승인)
 CORR_PCT = 1.0
+RUMOR_SENSITIVE = {"005930", "000660", "373220"}   # 풍문·조회공시를 PASS_CHECK로 보는 종목: 삼성전자·SK하이닉스·LG에너지솔루션 (2026-10-08)
 LARGE_CAP_N = 30            # 시총 상위 N (N4, kospi_list_clean.md 의 순번 = 시총 순위)
 
 _FIN_NAME = re.compile(r"증권|은행|금융|보험|생명|화재|캐피탈|카드|자산운용|손해")
@@ -156,7 +157,7 @@ def hard_rule(case, body=""):
         if d >= CORR_WON and abs(pct) >= CORR_PCT:
             return "PASS_CHECK", "R-CORR-BIG", f"금액 변동 {d / 1e8:,.0f}억 원({pct:+.1f}%)"
         return "DROP", "R-CORR-SMALL", f"금액 변동 {d / 1e8:,.0f}억 원 — 큰 규모 아님 또는 기간·일정·명칭 정정"
-    if name.startswith("매매거래정지및정지해제"):
+    if name.startswith("매매거래정지및정지해제") and not re.search(r"주식\s*소각|감자|병합|분할|합병", body[:1200]):   # 소각·감자 등 기업행위 연동 정지는 사람 판정(제일기획 PASS) 존중 → Jev
         return "DROP", "R-HALT", "매매거래정지 안내는 소각·영업정지 등 다른 공시의 연동 공지"
     if name.startswith("효력발생안내"):
         return "DROP", "R-EFFECT", "증권신고서 효력발생 안내(정례)"
@@ -171,7 +172,7 @@ def hard_rule(case, body=""):
     if re.match(r"대표이사.*변경", normalize(t)):   # 제목에 괄호가 있어(대표집행임원) 전체 제목으로 본다
         return "NOTIFY", "R-CEO", "대표이사 변경은 알림만"
     if re.match(r"(풍문또는보도에대한해명|조회공시요구)", name):
-        if is_large_cap(code) or corp in dispute_names():
+        if code in RUMOR_SENSITIVE:
             resolved = re.search(r"확정\s*\(부인\)|부인\)\s*공시|확정공시", body)       # 결과가 확정(부인)된 공시는 새 정보
             if ("재공시 사항임" in body or "(재공시)" in t + body[:400]) and not resolved:
                 return "DROP", "R-RUMOR", "시총 상위 30이나 확정 없는 기공시 재공시"
@@ -182,7 +183,7 @@ def hard_rule(case, body=""):
     if "보호예수" in t + body[:600] and name.startswith("기타안내사항"):
         return "PASS_CHECK", "R-LOCKUP", "보호예수 해제는 중요(규모 확인)"
     if "약관에의한금융거래시계열금융회사의거래상대방" in full:
-        return ("PASS_CHECK", "R-FINTRANS", "계열금융사 자금운용 거래 합계가 매우 큼(Q1)") if max_won(body) >= BIG_WON else ("DROP", "R-FINTRANS", "정례 계열금융사 거래상대방 공시")
+        return "DROP", "R-FINTRANS", "정례 계열금융사 거래상대방 공시(금액 무관, 2026-10-08 결정)"
     if corp.endswith("리츠") and "자금차입" in full:
         return "DROP", "R-REIT", "리츠의 정례 차입·차환"
     if "자기주식취득신탁계약해지" in full:

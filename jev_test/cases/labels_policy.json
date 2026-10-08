@@ -36,19 +36,19 @@
   "overrides_default_row": true
  },
  "20260907800165": {
-  "label": "PASS_CHECK",
+  "label": "DROP",
   "was": "PASS",
   "rule": "R-RUMOR",
-  "why": "시총 상위 30·분쟁 리스트: 풍문 해명도 민감하게(기공시 여부는 다음 단계 확인)",
+  "why": "풍문·조회공시 답변은 무시",
   "company": "LG전자",
   "title": "풍문또는보도에대한해명(미확정)",
   "overrides_default_row": true
  },
  "20260907800087": {
-  "label": "PASS_CHECK",
+  "label": "DROP",
   "was": "PASS",
   "rule": "R-RUMOR",
-  "why": "시총 상위 30·분쟁 리스트: 풍문 해명도 민감하게(기공시 여부는 다음 단계 확인)",
+  "why": "풍문·조회공시 답변은 무시",
   "company": "한화에어로스페이스",
   "title": "풍문또는보도에대한해명(미확정)",
   "overrides_default_row": true
@@ -89,15 +89,6 @@
   "title": "금전대여결정",
   "overrides_default_row": true
  },
- "20260911000014": {
-  "label": "PASS_CHECK",
-  "was": "DROP",
-  "rule": "R-FINTRANS",
-  "why": "계열금융사 자금운용 거래 합계가 매우 큼(Q1)",
-  "company": "한화솔루션",
-  "title": "약관에의한금융거래시계열금융회사의거래상대방의공시",
-  "overrides_default_row": true
- },
  "20260908000275": {
   "label": "PASS_CHECK",
   "was": "PASS",
@@ -135,19 +126,19 @@
   "overrides_default_row": true
  },
  "20260903800106": {
-  "label": "PASS_CHECK",
+  "label": "DROP",
   "was": "PASS",
   "rule": "R-RUMOR",
-  "why": "시총 상위 30·분쟁 리스트: 풍문 해명도 민감하게(기공시 여부는 다음 단계 확인)",
+  "why": "풍문·조회공시 답변은 무시",
   "company": "삼성화재해상보험",
   "title": "풍문또는보도에대한해명(미확정)",
   "overrides_default_row": true
  },
  "20260903800096": {
-  "label": "PASS_CHECK",
+  "label": "DROP",
   "was": "PASS",
   "rule": "R-RUMOR",
-  "why": "시총 상위 30·분쟁 리스트: 풍문 해명도 민감하게(기공시 여부는 다음 단계 확인)",
+  "why": "풍문·조회공시 답변은 무시",
   "company": "삼성생명",
   "title": "풍문또는보도에대한해명(미확정)",
   "overrides_default_row": true

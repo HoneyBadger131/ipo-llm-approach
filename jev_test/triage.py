@@ -10,7 +10,7 @@ CLI(1건):    python jev_test/triage.py <접수번호> <YYYYMMDD> <종목코드>
 Jev 경로의 라벨 결정 (Noul p, 시총 구간별 임계값 (pass, gray))
   large(시총 상위 30 또는 분쟁 리스트): (0.3, 0.1)   other: (0.5, 0.2)
   p ≥ pass : Choice 가 PASS/PASS_CHECK/NOTIFY 면 그대로, 아니면 PASS_CHECK(둘이 어긋나면 확인)
-  gray ≤ p < pass : Choice 가 NOTIFY 면 NOTIFY, 아니면 HOLD (진행 + 검수 표시)
+  gray ≤ p < pass : Choice 가 NOTIFY 면 NOTIFY, DROP 이면 DROP, 아니면 HOLD (진행 + 검수 표시)
   p < gray : Choice 가 NOTIFY 면 NOTIFY, 아니면 DROP
 """
 import os
@@ -37,7 +37,7 @@ def decide(noul, choice, tr):
     if noul >= hi:
         return choice if choice in ("PASS", "PASS_CHECK", "NOTIFY") else "PASS_CHECK"
     if noul >= lo:
-        return "NOTIFY" if choice == "NOTIFY" else "HOLD"
+        return "NOTIFY" if choice == "NOTIFY" else ("DROP" if choice == "DROP" else "HOLD")   # 회색 & Choice=DROP → DROP (연장·대환 등, 2026-10-08)
     return "NOTIFY" if choice == "NOTIFY" else "DROP"
 
 

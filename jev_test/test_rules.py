@@ -37,7 +37,8 @@ class TestHardRules(unittest.TestCase):
     def test_rumor_by_tier(self):
         self.assertEqual(r.hard_rule(case("풍문또는보도에대한해명(미확정)", "SK하이닉스", "000660"))[0], "PASS_CHECK")
         self.assertEqual(r.hard_rule(case("풍문또는보도에대한해명(미확정)", "태광산업", "003240"))[0], "DROP")
-        self.assertEqual(r.hard_rule(case("조회공시요구(풍문또는보도)에대한답변(미확정)", "고려아연", "010130"))[0], "PASS_CHECK")  # 분쟁 리스트
+        self.assertEqual(r.hard_rule(case("조회공시요구(풍문또는보도)에대한답변(미확정)", "고려아연", "010130"))[0], "DROP")   # 2026-10-08: 삼성전자·SK하이닉스·LG에너지솔루션만
+        self.assertEqual(r.hard_rule(case("풍문또는보도에대한해명(미확정)", "삼성전자", "005930"))[0], "PASS_CHECK")
 
     def test_simple_types(self):
         self.assertEqual(r.hard_rule(case("불성실공시법인지정"))[0], "PASS")
@@ -75,14 +76,16 @@ class TestHardRules(unittest.TestCase):
         unlisted = "자회사인\nHD현대오일뱅크(주)\n의 주요경영사항신고"
         self.assertIsNone(r.hard_rule(case("타인에대한채무보증결정(자회사의 주요경영사항)", "HD현대", "267250"), unlisted))
         self.assertEqual(r.hard_rule(case("특수관계인에대한출자", "삼성화재", "000810"), "(단위 : 백만 원)\n출자금액\n20,000")[0], "DROP")
-        self.assertEqual(r.hard_rule(case("약관에의한금융거래시계열금융회사의거래상대방의공시", "현대로템"), "(단위 : 억 원, %)\n총 계 / 1,300")[0], "PASS_CHECK")
+        self.assertEqual(r.hard_rule(case("약관에의한금융거래시계열금융회사의거래상대방의공시", "현대로템"), "(단위 : 억 원, %)\n총 계 / 1,300")[0], "DROP")   # 금액 무관 DROP
+        self.assertEqual(r.hard_rule(case("매매거래정지및정지해제(중요내용공시)", "아무개"), "단순 안내")[0], "DROP")
+        self.assertIsNone(r.hard_rule(case("매매거래정지및정지해제(중요내용공시)", "제일기획"), "주식 소각에 따른 매매거래정지"))
 
     def test_rumor_repeat(self):
         rep = "일자 풍문 또는 보도에 대한 해명(미확정)의 재공시 사항임 / 구체적으로 결정한 사실 없음"
         done = "일자 풍문 또는 보도에 대한 해명(미확정)의 재공시 사항임 / 해명공시의 확정(부인)공시입니다"
-        self.assertEqual(r.hard_rule(case("풍문또는보도에대한해명(미확정)", "효성중공업", "298040"), rep)[0], "DROP")
-        self.assertEqual(r.hard_rule(case("풍문또는보도에대한해명(미확정)", "NAVER", "035420"), done)[0], "PASS_CHECK")
-        self.assertEqual(r.hard_rule(case("풍문또는보도에대한해명(미확정)", "NAVER", "035420"), "최초 해명")[0], "PASS_CHECK")
+        self.assertEqual(r.hard_rule(case("풍문또는보도에대한해명(미확정)", "삼성전자", "005930"), rep)[0], "DROP")
+        self.assertEqual(r.hard_rule(case("풍문또는보도에대한해명(미확정)", "삼성전자", "005930"), done)[0], "PASS_CHECK")
+        self.assertEqual(r.hard_rule(case("풍문또는보도에대한해명(미확정)", "삼성전자", "005930"), "최초 해명")[0], "PASS_CHECK")
 
     def test_correction(self):
         body_big = ("정정신고(보고) / 정정사항 / 정정항목 / 정정전 / 정정후 / 2. 계약내역 - 계약금액(원) / 489,059,755,158 / 524,323,051,232 / 끝")
