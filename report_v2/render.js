@@ -48,7 +48,7 @@ function consensusCard(c) {
   return `<section class="card"><h2>컨센서스 추이 <span class="sub">${esc(c.metric)} · ${esc(c.window)}</span></h2>
 <div class="cons"><div class="cbars">${cols}</div>
 <div class="cdelta ${cls}"><span class="big">${arrow} ${esc(chg)}</span><span class="sm">${esc(c.window_label || "기간 변동")}</span></div></div>
-${c.note ? `<p class="note">${esc(c.note)}</p>` : ""}</section>`;
+${c.note || c.meta ? `<p class="note">${esc([c.note, c.meta].filter(Boolean).join(" "))}</p>` : ""}</section>`;
 }
 
 function html(d) {
