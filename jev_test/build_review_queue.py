@@ -15,6 +15,7 @@ from compare_runs import METHODS, load  # noqa: E402
 from lib import load_cases  # noqa: E402
 
 ADV = {"PASS", "PASS_CHECK"}
+SURF = ADV | {"HOLD", "NOTIFY"}
 ENS = METHODS[4][1]
 RUNS = [("w0907_v1", "TD-en", "v1 TD-en"), ("val_v1", "TD-en", "v1 TD-en")]
 PERIOD_NAME = {"w0907": "개발 9/7~9/11", "w0901": "검증 9/1~9/4", "w0930": "검증 9/30~10/1"}
@@ -66,7 +67,7 @@ def main():
                 why.append("라벨 통과·확인(PASS_CHECK)")
             if c["was_borderline"]:
                 why.append("Claude 경계 표시")
-            adv_label = c["label"] in ADV | {"HOLD"}
+            adv_label = c["label"] in SURF
             adv_jev = p["proceed_p"] >= 0.5
             if adv_label and not adv_jev and c["label"] != "HOLD":
                 why.append("Jev 놓침(정답 진행인데 Noul<0.5)")

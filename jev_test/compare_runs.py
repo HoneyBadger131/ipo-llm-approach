@@ -11,15 +11,15 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from lib import load_cases  # noqa: E402
-from score_run import ADV, EXCLUDE_PATTERNS, SEPARATE_PATTERNS, metrics, normalize, predict  # noqa: E402
+from score_run import ADV, SURF, EXCLUDE_PATTERNS, SEPARATE_PATTERNS, metrics, normalize, predict  # noqa: E402
 
 METHODS = [
     ("Noul ≥0.5", lambda p: p.get("proceed_p", 0) >= 0.5),
     ("Noul ≥0.3", lambda p: p.get("proceed_p", 0) >= 0.3),
-    ("Choice (HOLD 포함)", lambda p: p.get("triage") in ADV | {"HOLD"}),
+    ("Choice (HOLD 포함)", lambda p: p.get("triage") in SURF),
     ("Score ≥2.0", lambda p: p.get("imp", 0) >= 2.0),
-    ("앙상블 OR(Noul≥0.5·Choice·Score≥2.0)", lambda p: p.get("proceed_p", 0) >= 0.5 or p.get("triage") in ADV | {"HOLD"} or p.get("imp", 0) >= 2.0),
-    ("원자 Noul 조합(HOLD 포함)", lambda p: p["comp"] in ADV | {"HOLD"}),
+    ("앙상블 OR(Noul≥0.5·Choice·Score≥2.0)", lambda p: p.get("proceed_p", 0) >= 0.5 or p.get("triage") in SURF or p.get("imp", 0) >= 2.0),
+    ("원자 Noul 조합(HOLD 포함)", lambda p: p["comp"] in SURF),
 ]
 
 

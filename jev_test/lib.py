@@ -94,13 +94,20 @@ def dispute_names():
     return _DISPUTE
 
 
+def _is_large(stock_code):
+    from rules_core import is_large_cap
+    return is_large_cap(stock_code)
+
+
 def build_state(case, mode, ver="v0"):
     """mode 'T' = 제목만, 'TD' = 제목 + 본문 요약(정정이면 정정 구간 포함)."""
     st = {"title": case["report_nm"], "company": case["corp_name"]}
-    if ver.startswith("v2"):   # 정책 v0.3: 분쟁 리스트·금융회사 맥락을 코드가 알려 준다
+    if ver >= "v2":   # 정책 v0.3: 분쟁 리스트·금융회사 맥락을 코드가 알려 준다
         if case["corp_name"] in dispute_names():
             st["company_context"] = ("On the shareholder-rights / ESG proxy-fight and activist watchlist: AGM results, director appointments, "
                                      "and ownership or governance changes are material for this company.")
+        if ver >= "v3" and _is_large(case["stock_code"]):
+            st["cap_note"] = "Large cap (market-cap top 30): be sensitive; borderline items matter more for this company."
         if _FIN.search(case["corp_name"]):
             st["sector_note"] = "Financial company: guarantees, loans, beneficiary certificates and borrowings are everyday business."
     if mode == "TD":
@@ -113,7 +120,7 @@ def build_state(case, mode, ver="v0"):
                 st["correction_delta"] = d if d else "숫자 항목의 증감 없음(일정·문구 정정)"
         rest = body[1200:] if corr else body   # 정정이면 앞 1,200자는 correction에 이미 담았다
         if rest.strip():
-            st["body"] = annotate_won(digest(rest, 6000 if ver.startswith("v2") else 1500)) if ver != "v0" else digest(rest)
+            st["body"] = annotate_won(digest(rest, 6000 if ver >= "v2" else 1500)) if ver != "v0" else digest(rest)
     return st
 
 

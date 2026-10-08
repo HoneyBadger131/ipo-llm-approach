@@ -172,3 +172,7 @@ def _v2b(base, lang):
 
 
 QUESTIONS["v2b"] = {"en": _v2b(QUESTIONS_V2["en"], "en"), "ko": _v2b(QUESTIONS_V2["ko"], "ko")}
+
+
+from questions_v3 import QUESTIONS_V3  # noqa: E402
+QUESTIONS["v3"] = {"en": QUESTIONS_V3}

@@ -1,6 +1,6 @@
 """사람이 채운 검토 CSV를 정답셋에 반영한다.
 
-사용법: python jev_test/apply_review.py <채워진.csv> [원본큐.csv]
+사용법: python jev_test/apply_review.py <채워진.csv|.xlsx> [원본큐.csv]  (--hold-as-notify: 사람의 HOLD를 NOTIFY로 바꿔 저장)
   - 인코딩(UTF-8/CP949/UTF-16)과 구분자(콤마/탭)를 자동 감지한다. 엑셀이 '텍스트(탭으로 분리)'로 저장한 파일도 읽는다.
   - 엑셀이 접수번호를 과학 표기(2.02609E+13)로 망가뜨린 경우, 원본 큐(기본 review/human_review_queue.csv)와
     행 순서로 맞춰 복구한다. 회사·공시명·날짜가 한 행이라도 다르면 중단한다.
@@ -17,10 +17,20 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-VALID = {"PASS", "PASS_CHECK", "HOLD", "DROP"}
+VALID = {"PASS", "PASS_CHECK", "NOTIFY", "HOLD", "DROP"}
 
 
 def read_table(path):
+    if path.lower().endswith(".xlsx"):       # 엑셀 원본 직접 읽기 (숫자 셀은 문자열로 되돌린다)
+        import openpyxl
+        ws = openpyxl.load_workbook(path, data_only=True).worksheets[0]
+        head = [str(c.value) if c.value is not None else "" for c in ws[1]]
+        out = []
+        for r in ws.iter_rows(min_row=2, values_only=True):
+            if all(v is None for v in r):
+                continue
+            out.append({h: ("" if v is None else (str(int(v)) if isinstance(v, float) and v == int(v) and h in ("접수번호", "종목코드", "날짜") else str(v))) for h, v in zip(head, r)})
+        return out
     raw = open(path, "rb").read()
     for enc in ("utf-8-sig", "cp949", "utf-16"):
         try:
@@ -59,6 +69,8 @@ def main():
             skipped += 1
             print("무시(허용 값 아님):", rid, a["회사"], repr(v))
             continue
+        if "--hold-as-notify" in sys.argv and v == "HOLD":    # 사용자 결정(N3): 사람이 쓴 HOLD는 '알림만'의 뜻이었다
+            v = "NOTIFY"
         rec = {"label": v, "memo": memo, "company": a["회사"], "title": a["공시명"], "claude_label": b[labcol]}
         (explicit if (v != b[labcol] or memo) else default)[rid] = rec
     for name, d in (("labels_human.json", explicit), ("labels_human_default.json", default)):

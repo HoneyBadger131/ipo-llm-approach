@@ -12,7 +12,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from compare_runs import METHODS, load  # noqa: E402
 from lib import load_cases  # noqa: E402
-from score_run import ADV, metrics  # noqa: E402
+from score_run import ADV, SURF, metrics  # noqa: E402
 
 CFGS = ("TD-en", "TD-ko", "T-en")
 PERIODS = [("w0907", "개발 주간 9/7~9/11"), ("w0901", "검증 9/1~9/4"), ("w0930", "검증 9/30~10/1")]
@@ -36,7 +36,7 @@ def main():
     L.append("## 1. 표본 규모\n\n| 구간 | 판정 건수 | 정답 진행(PASS 계열) | 진행 비율 | 경계(borderline) |\n|---|---:|---:|---:|---:|")
     for per, name in PERIODS:
         cs = [c for c in cases.values() if c["period"] == per and c["kind"] == "judged"]
-        adv = [c for c in cs if c["label"] in ADV | {"HOLD"}]
+        adv = [c for c in cs if c["label"] in SURF]
         L.append(f"| {name} | {len(cs)} | {len(adv)} | {len(adv) / len(cs) * 100:.0f}% | {sum(c['was_borderline'] for c in cs)} |")
     for cfg in CFGS:
         L.append(f"\n## 2. 설정 {cfg} — 방식별 재현율 / 정밀도\n")

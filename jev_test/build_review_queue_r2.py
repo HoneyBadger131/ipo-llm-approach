@@ -21,7 +21,7 @@ from eval_final import is_dup  # noqa: E402
 from eval_v2 import pooled  # noqa: E402
 from lib import load_cases  # noqa: E402
 from policy_relabel import policy_label  # noqa: E402
-from score_run import ADV  # noqa: E402
+from score_run import ADV, SURF  # noqa: E402
 
 PER = {"w0907": "개발 9/7~9/11", "w0901": "검증 9/1~9/4", "w0930": "검증 9/30~10/1"}
 
@@ -36,7 +36,7 @@ def main():
             continue
         p = P[i]
         n = p["proceed_p"]
-        adv = c["label"] in ADV | {"HOLD"}
+        adv = c["label"] in SURF
         why = []
         if c["label_source"] == "human":
             lab, rule, _ = policy_label(dict(c, label=c.get("label_ai", c["label"])))

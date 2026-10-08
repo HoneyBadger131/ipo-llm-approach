@@ -14,17 +14,17 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from compare_runs import load  # noqa: E402
 from lib import load_cases  # noqa: E402
-from score_run import ADV, EXCLUDE_PATTERNS, SEPARATE_PATTERNS, metrics, normalize  # noqa: E402
+from score_run import ADV, SURF, EXCLUDE_PATTERNS, SEPARATE_PATTERNS, metrics, normalize  # noqa: E402
 
 PER = [("w0907", "개발 9/7~9/11"), ("w0901", "검증 9/1~9/4"), ("w0930", "검증 9/30~10/1")]
 METH = [
     ("Noul ≥0.5", lambda p: p.get("proceed_p", 0) >= 0.5),
     ("Noul ≥0.3", lambda p: p.get("proceed_p", 0) >= 0.3),
-    ("Choice (PASS·PASS_CHECK·HOLD)", lambda p: p.get("triage") in ADV | {"HOLD"}),
+    ("Choice (PASS·PASS_CHECK·HOLD)", lambda p: p.get("triage") in SURF),
     ("Score ≥2.0", lambda p: p.get("imp", 0) >= 2.0),
-    ("앙상블 OR(Noul≥0.5·Choice·Score≥2.0)", lambda p: p.get("proceed_p", 0) >= 0.5 or p.get("triage") in ADV | {"HOLD"} or p.get("imp", 0) >= 2.0),
-    ("앙상블 OR(Noul≥0.3·Choice)", lambda p: p.get("proceed_p", 0) >= 0.3 or p.get("triage") in ADV | {"HOLD"}),
-    ("원자 Noul 조합", lambda p: p["comp"] in ADV | {"HOLD"}),
+    ("앙상블 OR(Noul≥0.5·Choice·Score≥2.0)", lambda p: p.get("proceed_p", 0) >= 0.5 or p.get("triage") in SURF or p.get("imp", 0) >= 2.0),
+    ("앙상블 OR(Noul≥0.3·Choice)", lambda p: p.get("proceed_p", 0) >= 0.3 or p.get("triage") in SURF),
+    ("원자 Noul 조합", lambda p: p["comp"] in SURF),
 ]
 
 
@@ -111,7 +111,7 @@ def main():
     L.append("\n## 5. v2 TD-en 오류 목록 (앙상블 OR Noul≥0.3·Choice 기준)\n")
     fn = METH[5][1]
     rows = sel(P, cases, fn)
-    miss = [c for c, a in rows if c["label"] in ADV | {"HOLD"} and not a]
+    miss = [c for c, a in rows if c["label"] in SURF and not a]
     fp = [c for c, a in rows if c["label"] == "DROP" and a]
     L.append(f"\n**놓친 건 {len(miss)}건**\n")
     for c in sorted(miss, key=lambda c: c["day"]):

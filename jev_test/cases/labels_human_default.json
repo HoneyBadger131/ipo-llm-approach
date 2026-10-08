@@ -49,18 +49,18 @@
   "claude_label": "DROP"
  },
  "20260907800647": {
-  "label": "DROP",
+  "label": "PASS",
   "memo": "",
   "company": "HDC",
   "title": "불성실공시법인지정",
-  "claude_label": "DROP"
+  "claude_label": "PASS"
  },
  "20260907800650": {
-  "label": "DROP",
+  "label": "PASS",
   "memo": "",
   "company": "IPARK현대산업개발",
   "title": "불성실공시법인지정",
-  "claude_label": "DROP"
+  "claude_label": "PASS"
  },
  "20260909000045": {
   "label": "DROP",
@@ -189,25 +189,25 @@
   "claude_label": "PASS"
  },
  "20260903800096": {
-  "label": "PASS",
+  "label": "DROP",
   "memo": "",
   "company": "삼성생명",
   "title": "풍문또는보도에대한해명(미확정)",
-  "claude_label": "PASS"
+  "claude_label": "DROP"
  },
  "20260903800106": {
-  "label": "PASS",
+  "label": "DROP",
   "memo": "",
   "company": "삼성화재해상보험",
   "title": "풍문또는보도에대한해명(미확정)",
-  "claude_label": "PASS"
+  "claude_label": "DROP"
  },
  "20260903800521": {
-  "label": "PASS",
+  "label": "DROP",
   "memo": "",
   "company": "한국가스공사",
   "title": "풍문또는보도에대한해명(미확정)",
-  "claude_label": "PASS"
+  "claude_label": "DROP"
  },
  "20260904100017": {
   "label": "PASS",
@@ -231,11 +231,11 @@
   "claude_label": "PASS"
  },
  "20260907800165": {
-  "label": "PASS",
+  "label": "DROP",
   "memo": "",
   "company": "LG전자",
   "title": "풍문또는보도에대한해명(미확정)",
-  "claude_label": "PASS"
+  "claude_label": "DROP"
  },
  "20260907000308": {
   "label": "DROP",
@@ -266,25 +266,25 @@
   "claude_label": "PASS"
  },
  "20260907800332": {
-  "label": "PASS",
+  "label": "DROP",
   "memo": "",
   "company": "태광산업",
   "title": "풍문또는보도에대한해명(미확정)",
-  "claude_label": "PASS"
+  "claude_label": "DROP"
  },
  "20260907800338": {
-  "label": "PASS",
+  "label": "DROP",
   "memo": "",
   "company": "한국카본",
   "title": "풍문또는보도에대한해명(미확정)",
-  "claude_label": "PASS"
+  "claude_label": "DROP"
  },
  "20260907800087": {
-  "label": "PASS",
+  "label": "DROP",
   "memo": "",
   "company": "한화에어로스페이스",
   "title": "풍문또는보도에대한해명(미확정)",
-  "claude_label": "PASS"
+  "claude_label": "DROP"
  },
  "20260908000386": {
   "label": "DROP",
@@ -301,11 +301,11 @@
   "claude_label": "DROP"
  },
  "20260908800619": {
-  "label": "PASS",
+  "label": "DROP",
   "memo": "",
   "company": "엘앤에프",
   "title": "풍문또는보도에대한해명(미확정)",
-  "claude_label": "PASS"
+  "claude_label": "DROP"
  },
  "20260909000291": {
   "label": "PASS",
@@ -469,11 +469,11 @@
   "claude_label": "DROP"
  },
  "20260930800001": {
-  "label": "DROP",
+  "label": "PASS_CHECK",
   "memo": "",
   "company": "현대건설",
   "title": "중대재해발생",
-  "claude_label": "DROP"
+  "claude_label": "PASS_CHECK"
  },
  "20261001800084": {
   "label": "DROP",
@@ -502,5 +502,180 @@
   "company": "삼아알미늄",
   "title": "임원ㆍ주요주주특정증권등거래계획보고서",
   "claude_label": "PASS"
+ },
+ "20260903800582": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한국전력공사",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260907800498": {
+  "label": "DROP",
+  "memo": "",
+  "company": "HS효성첨단소재",
+  "title": "타인에대한채무보증결정",
+  "claude_label": "DROP"
+ },
+ "20260907800491": {
+  "label": "DROP",
+  "memo": "",
+  "company": "HS효성첨단소재",
+  "title": "타인에대한채무보증결정",
+  "claude_label": "DROP"
+ },
+ "20260908800599": {
+  "label": "DROP",
+  "memo": "",
+  "company": "CJ CGV",
+  "title": "타인에대한채무보증결정",
+  "claude_label": "DROP"
+ },
+ "20260908000275": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "신한지주",
+  "title": "[기재정정]주요사항보고서(상각형조건부자본증권발행결정)",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260909800178": {
+  "label": "DROP",
+  "memo": "",
+  "company": "삼성SDI",
+  "title": "금전대여결정",
+  "claude_label": "DROP"
+ },
+ "20260901000217": {
+  "label": "DROP",
+  "memo": "",
+  "company": "DB손해보험",
+  "title": "특수관계인에대한자금대여",
+  "claude_label": "DROP"
+ },
+ "20260901800082": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SNT모티브",
+  "title": "주주명부폐쇄기간또는기준일설정",
+  "claude_label": "DROP"
+ },
+ "20260903800537": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "BNK금융지주",
+  "title": "기업가치제고계획(자율공시)",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260907000315": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SK디스커버리",
+  "title": "주요사항보고서(자기주식취득신탁계약해지결정)",
+  "claude_label": "DROP"
+ },
+ "20260907000181": {
+  "label": "DROP",
+  "memo": "",
+  "company": "iM금융지주",
+  "title": "[기재정정]주요사항보고서(상각형조건부자본증권발행결정)",
+  "claude_label": "DROP"
+ },
+ "20260909000440": {
+  "label": "DROP",
+  "memo": "",
+  "company": "NH투자증권",
+  "title": "[기재정정]증권신고서(채무증권)",
+  "claude_label": "DROP"
+ },
+ "20260909000470": {
+  "label": "DROP",
+  "memo": "",
+  "company": "금양",
+  "title": "[기재정정]주요사항보고서(회사분할결정)",
+  "claude_label": "DROP"
+ },
+ "20260909800116": {
+  "label": "DROP",
+  "memo": "",
+  "company": "에이피알",
+  "title": "주주명부폐쇄기간또는기준일설정",
+  "claude_label": "DROP"
+ },
+ "20260909800221": {
+  "label": "PASS",
+  "memo": "",
+  "company": "하이트진로",
+  "title": "생산중단(자율공시)",
+  "claude_label": "PASS"
+ },
+ "20260909800206": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한국가스공사",
+  "title": "영업(잠정)실적(공정공시)",
+  "claude_label": "DROP"
+ },
+ "20260909000058": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "한미반도체",
+  "title": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260909800610": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한화솔루션",
+  "title": "[기재정정]중대재해발생",
+  "claude_label": "DROP"
+ },
+ "20260910800520": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SK아이이테크놀로지",
+  "title": "[기재정정]타법인주식및출자증권처분결정",
+  "claude_label": "DROP"
+ },
+ "20260910800468": {
+  "label": "DROP",
+  "memo": "",
+  "company": "대우건설",
+  "title": "주식소각결정",
+  "claude_label": "DROP"
+ },
+ "20260910000386": {
+  "label": "DROP",
+  "memo": "",
+  "company": "시프트업",
+  "title": "주요사항보고서(자기주식취득신탁계약해지결정)",
+  "claude_label": "DROP"
+ },
+ "20260910800130": {
+  "label": "DROP",
+  "memo": "",
+  "company": "오리온",
+  "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+  "claude_label": "DROP"
+ },
+ "20260911800524": {
+  "label": "DROP",
+  "memo": "",
+  "company": "HS효성첨단소재",
+  "title": "타인에대한채무보증결정",
+  "claude_label": "DROP"
+ },
+ "20260911800519": {
+  "label": "DROP",
+  "memo": "",
+  "company": "HS효성첨단소재",
+  "title": "타인에대한채무보증결정",
+  "claude_label": "DROP"
+ },
+ "20261001800325": {
+  "label": "DROP",
+  "memo": "",
+  "company": "기아",
+  "title": "영업(잠정)실적(공정공시)",
+  "claude_label": "DROP"
  }
 }

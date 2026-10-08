@@ -18,7 +18,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, ".."))
 from lib import load_cases  # noqa: E402
 from dart_rules import EXCLUDE_PATTERNS, SEPARATE_PATTERNS, normalize  # noqa: E402
-ADV = {"PASS", "PASS_CHECK"}
+ADV = {"PASS", "PASS_CHECK"}                     # 다음 단계(심화 분석)로 가는 라벨
+SURF = ADV | {"HOLD", "NOTIFY"}                  # 사람에게 노출되는 라벨(분석·알림·검수) — 재현율 계산의 "진행"
 
 
 def composite(a, hi=0.5, uncertain=None):
@@ -144,15 +145,15 @@ def main():
                     ("Noul proceed ≥0.5", lambda p: p.get("proceed_p", 0) >= 0.5),
                     ("Noul proceed ≥0.3", lambda p: p.get("proceed_p", 0) >= 0.3),
                     ("Choice triage(PASS·PASS_CHECK)", lambda p: p.get("triage") in ADV),
-                    ("Choice triage(HOLD도 진행)", lambda p: p.get("triage") in ADV | {"HOLD"}),
+                    ("Choice triage(HOLD도 진행)", lambda p: p.get("triage") in SURF),
                     ("Score importance ≥2.5", lambda p: p.get("imp", 0) >= 2.5),
                     ("Score importance ≥2.0", lambda p: p.get("imp", 0) >= 2.0),
-                    ("앙상블 OR(Noul≥0.5 | Choice | Score≥2.0)", lambda p: p.get("proceed_p", 0) >= 0.5 or p.get("triage") in ADV | {"HOLD"} or p.get("imp", 0) >= 2.0),
-                    ("앙상블 2-of-3(Noul≥0.5, Choice, Score≥2.0)", lambda p: (p.get("proceed_p", 0) >= 0.5) + (p.get("triage") in ADV | {"HOLD"}) + (p.get("imp", 0) >= 2.0) >= 2),
-                    ("앙상블 OR(Noul≥0.3 | Choice)", lambda p: p.get("proceed_p", 0) >= 0.3 or p.get("triage") in ADV | {"HOLD"}),
+                    ("앙상블 OR(Noul≥0.5 | Choice | Score≥2.0)", lambda p: p.get("proceed_p", 0) >= 0.5 or p.get("triage") in SURF or p.get("imp", 0) >= 2.0),
+                    ("앙상블 2-of-3(Noul≥0.5, Choice, Score≥2.0)", lambda p: (p.get("proceed_p", 0) >= 0.5) + (p.get("triage") in SURF) + (p.get("imp", 0) >= 2.0) >= 2),
+                    ("앙상블 OR(Noul≥0.3 | Choice)", lambda p: p.get("proceed_p", 0) >= 0.3 or p.get("triage") in SURF),
                     ("조합 composite", lambda p: p["comp"] in ADV),
-                    ("조합 composite(HOLD도 진행)", lambda p: p["comp"] in ADV | {"HOLD"}),
-                    ("조합 composite_u(불확실→HOLD, HOLD도 진행)", lambda p: p["comp_u"] in ADV | {"HOLD"}),
+                    ("조합 composite(HOLD도 진행)", lambda p: p["comp"] in SURF),
+                    ("조합 composite_u(불확실→HOLD, HOLD도 진행)", lambda p: p["comp_u"] in SURF),
                 ):
                     m = metrics([(c, fn_(p)) for c, p in rows], None, hold_adv)
                     L.append(f"| {meth} | {fmt(m)} |")
@@ -166,7 +167,7 @@ def main():
                     if cm[lab]:
                         L.append(f"| {lab} | " + " | ".join(str(cm[lab].get(x, 0)) for x in ("PASS", "PASS_CHECK", "HOLD", "DROP")) + " |")
             # 놓친 건 (정답=진행인데 Choice·Noul 둘 다 놓친 건)
-            both = [c for c, p in rows if c["label"] in ADV and p.get("triage") not in ADV | {"HOLD"} and p.get("proceed_p", 0) < 0.5]
+            both = [c for c, p in rows if c["label"] in ADV and p.get("triage") not in SURF and p.get("proceed_p", 0) < 0.5]
             if both:
                 L.append("\n**Noul·Choice가 모두 놓친 진행 대상**\n")
                 for c in both:

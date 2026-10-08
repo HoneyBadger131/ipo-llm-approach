@@ -14,11 +14,11 @@
   "claude_label": "PASS"
  },
  "20260902800001": {
-  "label": "HOLD",
-  "memo": "NOTABLE 한 이벤트이긴 한데… 추가 분석은 필요없을듯. 알리는건 좋음.",
+  "label": "NOTIFY",
+  "memo": "",
   "company": "강원랜드",
   "title": "대표이사(대표집행임원)변경(안내공시)",
-  "claude_label": "PASS"
+  "claude_label": "HOLD"
  },
  "20260902800386": {
   "label": "PASS_CHECK",
@@ -35,8 +35,8 @@
   "claude_label": "PASS_CHECK"
  },
  "20260907800369": {
-  "label": "HOLD",
-  "memo": "리츠는 정말 중요한게 아니면 무시",
+  "label": "DROP",
+  "memo": "",
   "company": "SK리츠",
   "title": "부동산투자회사자금차입",
   "claude_label": "HOLD"
@@ -105,11 +105,11 @@
   "claude_label": "PASS_CHECK"
  },
  "20260911800204": {
-  "label": "DROP",
-  "memo": "단순 기간 변동이므로 무시",
+  "label": "PASS_CHECK",
+  "memo": "",
   "company": "HJ중공업",
   "title": "[기재정정]단일판매ㆍ공급계약체결",
-  "claude_label": "PASS_CHECK"
+  "claude_label": "DROP"
  },
  "20260911000318": {
   "label": "DROP",
@@ -190,17 +190,17 @@
  },
  "20260904800642": {
   "label": "PASS",
-  "memo": "",
+  "memo": "시총 상위종목의 건",
   "company": "SK하이닉스",
   "title": "풍문또는보도에대한해명(미확정)",
-  "claude_label": "DROP"
+  "claude_label": "PASS"
  },
  "20260904800020": {
-  "label": "PASS",
+  "label": "PASS_CHECK",
   "memo": "",
   "company": "현대건설",
   "title": "중대재해발생",
-  "claude_label": "DROP"
+  "claude_label": "PASS"
  },
  "20260907000315": {
   "label": "DROP",
@@ -224,18 +224,18 @@
   "claude_label": "DROP"
  },
  "20260909800559": {
-  "label": "PASS_CHECK",
-  "memo": "그러나 이미 공시된 사항이고 변동 없으면 굳이 강조할 필요 없어보임. DROP도 가능",
+  "label": "DROP",
+  "memo": "",
   "company": "SK하이닉스",
   "title": "조회공시요구(풍문또는보도)에대한답변(미확정)",
-  "claude_label": "DROP"
+  "claude_label": "PASS_CHECK"
  },
  "20260909000450": {
-  "label": "DROP",
+  "label": "NOTIFY",
   "memo": "",
   "company": "고려아연",
   "title": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
-  "claude_label": "PASS"
+  "claude_label": "DROP"
  },
  "20260909000466": {
   "label": "DROP",
@@ -259,11 +259,11 @@
   "claude_label": "DROP"
  },
  "20260910800713": {
-  "label": "PASS",
+  "label": "PASS_CHECK",
   "memo": "",
   "company": "기아",
   "title": "중대재해발생",
-  "claude_label": "DROP"
+  "claude_label": "PASS"
  },
  "20260910000414": {
   "label": "DROP",
@@ -301,11 +301,11 @@
   "claude_label": "DROP"
  },
  "20260930800797": {
-  "label": "PASS",
+  "label": "NOTIFY",
   "memo": "",
   "company": "두산로보틱스",
   "title": "대표이사(대표집행임원)변경(안내공시)",
-  "claude_label": "DROP"
+  "claude_label": "PASS"
  },
  "20260930800004": {
   "label": "PASS",
@@ -375,6 +375,34 @@
   "memo": "",
   "company": "HS효성첨단소재",
   "title": "타인에대한채무보증결정",
+  "claude_label": "PASS"
+ },
+ "20260901800418": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "기아",
+  "title": "영업(잠정)실적(공정공시)",
+  "claude_label": "DROP"
+ },
+ "20260901800431": {
+  "label": "NOTIFY",
+  "memo": "",
+  "company": "롯데렌탈",
+  "title": "대표이사(대표집행임원)변경(안내공시)",
+  "claude_label": "PASS"
+ },
+ "20260902800437": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "현대자동차",
+  "title": "생산재개(자율공시)",
+  "claude_label": "PASS"
+ },
+ "20260904800247": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "한국앤컴퍼니",
+  "title": "생산재개(자율공시)",
   "claude_label": "PASS"
  }
 }
