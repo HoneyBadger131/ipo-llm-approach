@@ -42,7 +42,7 @@ td.k{white-space:nowrap;font-weight:800}
 .note{font-size:10.5px;color:var(--mute);margin-top:8px}
 footer{margin-top:16px;font-size:10px;color:var(--mute);border-top:1px solid var(--line);padding-top:8px}
 .pb{break-before:page}
-@media print{body{background:#fff}.wrap{padding:16px 22px 10px}}
+@media print{body{background:#fff}.wrap{padding:12px 22px 6px}h2{margin-top:14px}.card li,.card p{font-size:11px}th,td{padding:4px 10px}}
 @media(max-width:700px){.flow{flex-direction:column}.arrow{transform:rotate(90deg);width:auto;height:16px}.src{width:auto;flex-direction:row;margin:0 0 6px}.tools{margin-left:0}.grid{grid-template-columns:1fr}.nums{flex-wrap:wrap}}
 </style></head><body><div class="wrap">
 
@@ -62,7 +62,7 @@ footer{margin-top:16px;font-size:10px;color:var(--mute);border-top:1px solid var
  <div class="arrow">›</div>
  <div class="step"><span class="no">2</span><h3>Jev 중요도 판정</h3><p>TypeSafe AI의 Jev가 공시 내용을 읽고 다음 단계로 보낼지 판정합니다. 비용이 낮은 판정 전용 도구이며 분석은 하지 않습니다.</p><span class="tag ok">운영 중</span></div>
  <div class="arrow">›</div>
- <div class="step"><span class="no">3</span><h3>Claude의 공시 확인</h3><p>통과한 공시의 본문을 읽고 필요한 경우 재무 자료와 뉴스를 조회하여 규모를 확인합니다. 현재 기본 모델은 Sonnet입니다.</p><span class="tag ok">운영 중</span></div>
+ <div class="step"><span class="no">3</span><h3>Claude의 공시 확인</h3><p>통과한 공시의 본문을 읽고, 최근 3년 실적·가치평가·컨센서스 추이와 최근 한 달 이내 뉴스를 조회하여 맥락을 확인합니다. 현재 기본 모델은 Sonnet입니다.</p><span class="tag ok">운영 중</span></div>
  <div class="arrow">›</div>
  <div class="step"><span class="no">4</span><h3>보고서 작성</h3><p>요약 브리프와 종목별 상세 리포트를 하나의 파일로 묶어 만듭니다. 기본은 PDF이고 필요하면 HTML로도 전달합니다.</p><span class="tag ok">운영 중</span></div>
  <div class="arrow">›</div>
@@ -88,7 +88,7 @@ footer{margin-top:16px;font-size:10px;color:var(--mute);border-top:1px solid var
 </div>
 <div class="grid" style="margin-top:10px">
 <div class="card"><h3>중요도 ●○ 다섯 단계</h3><p>같은 날 올라온 공시끼리 비교하는 척도입니다.</p><ul><li><b>5</b> 매출·자기자본의 10% 이상이거나 사업 구조의 근본적 변화</li><li><b>4</b> 5~10%이거나 신사업·대형 계약·대규모 주주환원</li><li><b>3</b> 1~5%의 의미 있는 결정</li><li><b>2</b> 1% 미만이지만 알아둘 이슈 · <b>1</b> 참고</li></ul><p class="note">건설·조선사의 국내 수주는 일상적인 영업이므로 한두 단계 낮춰 평가합니다(국내 재건축·재개발은 두 단계). 해외 수주는 낮추지 않습니다.</p></div>
-<div class="card"><h3>투자심리(투심) 표시</h3><ul><li>▲ 긍정적 · ▼ 부정적 · ◆ 혼재됨 · ? 알 수 없음</li><li>색뿐 아니라 기호와 글자로도 구분하여 인쇄물에서도 읽을 수 있습니다.</li></ul><h3 style="margin-top:8px">출처 표기</h3><ul><li>수치는 공시 본문에서 가져오고, 직접 계산한 값은 계산했다고 표시합니다.</li><li>뉴스는 기준일 이전에 게재된 기사만 사용합니다.</li></ul></div>
+<div class="card"><h3>투자심리(투심) 표시</h3><ul><li>▲ 긍정적 · ▼ 부정적 · ◆ 혼재됨 · ? 알 수 없음</li><li>색뿐 아니라 기호와 글자로도 구분하여 인쇄물에서도 읽을 수 있습니다.</li></ul><h3 style="margin-top:8px">출처 표기</h3><ul><li>수치는 공시 본문에서 가져오고, 직접 계산한 값은 계산했다고 표시합니다.</li><li>뉴스는 기준일 이전 30일 이내에 게재된 기사만 사용합니다.</li><li>최근 3년 실적은 매출과 영업이익 막대로 보여 줍니다. 매출 5조원 이하 종목은 억원, 그 이상은 조원 단위입니다.</li><li>컨센서스 추이 아래에 최근 4주 동안의 업데이트 횟수를 적습니다.</li><li>장래사업·경영계획 공시는 회사의 목표를 그대로 옮기지 않고, 최근 실적과 컨센서스에 비춰 달성 가능성을 비판적으로 적습니다.</li></ul></div>
 </div>
 
 <h2>4. 현재 수준과 한계</h2>
