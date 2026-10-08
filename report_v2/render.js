@@ -28,8 +28,8 @@ function finTable(fin) {
       .map((x) => `<td><div class="bv${x.v < 0 ? " neg" : ""}">${esc(x.d)}</div><div class="bar${x.v < 0 ? " neg" : ""}" style="height:${Math.max(3, Math.round((Math.abs(x.v) / max) * 46))}px"></div></td>`)
       .join("")}</tr>`;
   }).join("");
-  const rows = fin.rows.map((r) => `<tr><th>${esc(r.label)}</th>${r.values.map((x) => `<td>${esc(x.d)}</td>`).join("")}</tr>`).join("");
-  return `<table><thead><tr><th></th>${fin.years.map((y) => `<th>${esc(y)}</th>`).join("")}</tr></thead><tbody>${chartRows}${rows}</tbody></table>`;
+  // 막대 위에 값이 표시되므로 별도 숫자 표는 두지 않는다(2026-10-08).
+  return `<table><thead><tr><th></th>${fin.years.map((y) => `<th>${esc(y)}</th>`).join("")}</tr></thead><tbody>${chartRows}</tbody></table>`;
 }
 
 // 컨센서스 추이: series(과거->현재)를 막대 + 첫 시점 대비 변동률로 표시
