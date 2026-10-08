@@ -1,0 +1,92 @@
+[
+ {
+  "stock_code": "300720",
+  "corp_name": "한일시멘트",
+  "base_date": "2026-10-08",
+  "filings": [
+   {
+    "rcept_no": "20261008800430",
+    "report_nm": "기업가치제고계획(자율공시)",
+    "tag": "기타 사항",
+    "reason": "Noul 0.43 · Choice PASS_CHECK · other",
+    "body": "trial_case/20261008/300720_20261008800430.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20261008/reports/300720_20261008800430_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "047040",
+  "corp_name": "대우건설",
+  "base_date": "2026-10-08",
+  "filings": [
+   {
+    "rcept_no": "20261008000296",
+    "report_nm": "특수관계인과의내부거래",
+    "tag": "기타 사항",
+    "reason": "Noul 0.77 · Choice PASS · other",
+    "body": "trial_case/20261008/047040_20261008000296.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20261008/reports/047040_20261008000296_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "285130",
+  "corp_name": "SK케미칼",
+  "base_date": "2026-10-08",
+  "filings": [
+   {
+    "rcept_no": "20261008800084",
+    "report_nm": "장래사업ㆍ경영계획(공정공시)",
+    "tag": "기타 사항",
+    "reason": "Noul 0.45 · Choice PASS_CHECK · other",
+    "body": "trial_case/20261008/285130_20261008800084.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20261008/reports/285130_20261008800084_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "373220",
+  "corp_name": "LG에너지솔루션",
+  "base_date": "2026-10-08",
+  "filings": [
+   {
+    "rcept_no": "20261008800055",
+    "report_nm": "연결재무제표기준영업(잠정)실적(공정공시)",
+    "tag": "기타 사항",
+    "reason": "Noul 0.47 · Choice PASS_CHECK · large",
+    "body": "trial_case/20261008/373220_20261008800055.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20261008/reports/373220_20261008800055_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "005930",
+  "corp_name": "삼성전자",
+  "base_date": "2026-10-08",
+  "filings": [
+   {
+    "rcept_no": "20261008800004",
+    "report_nm": "연결재무제표기준영업(잠정)실적(공정공시)",
+    "tag": "기타 사항",
+    "reason": "Noul 0.53 · Choice PASS_CHECK · large",
+    "body": "trial_case/20261008/005930_20261008800004.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case/20261008/reports/005930_20261008800004_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ }
+]
