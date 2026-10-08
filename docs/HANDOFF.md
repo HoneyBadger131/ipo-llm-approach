@@ -199,3 +199,5 @@ Jev 하이브리드 분류 단계의 현황·규칙·결정 기록은 `docs/DISC
 ## 통합 리포트(기본 산출물, 2026-10-08)
 `node report_v2/render_bundle.js <YYYYMMDD>` → `trial_case/<날짜>/bundle_<YYYY-MM-DD>.pdf`(브리프 1~2쪽 + 공시별 1쪽 리포트, 카드 클릭·"↑ 브리프" 버튼·북마크) 와 `bundle_<YYYY-MM-DD>.html`(오프라인 단일 파일: 요약 → 상세 → TOP). 선행: `dart_day_pipeline.py brief` 까지 완료. 구현: `report_v2/render_bundle.js`, `merge_pdf.py`(pypdf), `render_summary.js`(모듈화), `render.js`(html 내보내기, `MD_DIR` 환경변수로 MD 출력 위치 변경).
 기준일 구간: `dart_calendar.py` (직전 영업일 다음 날~기준일, 주말·휴일 공시 포함).
+
+안내 페이지(전체 흐름 소개): `docs/guide/front_page.html`·`.pdf`. 금융용 레이아웃 시안: `docs/design/finance_layout_sample.*` (`report_v2/render_fin_sample.js`). 심화 분석 기본 모델 Sonnet. 번들의 상세 페이지 순서는 전체 중요도순, NOTIFY는 브리프 상단 알림 띠(`triage.json` 기준).
