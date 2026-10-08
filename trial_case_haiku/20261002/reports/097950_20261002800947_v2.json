@@ -1,0 +1,88 @@
+{
+ "corp_name": "CJ제일제당",
+ "stock_code": "097950",
+ "disclosure_date": "2026-10-02",
+ "disclosure_title": "투자판단관련주요경영사항",
+ "rcept_no": "20261002800947",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002800947",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "경쟁력 강화 기대, 출자 규모·조건은 미공개"
+ },
+ "headline": "사료용 아미노산 사업 ADM과 합작…CJ 측 63% 과반 지분",
+ "impact_summary": "사료용 아미노산 영업을 ADM과 합작법인으로 출자, 금액 미공개",
+ "event_type": "합작법인 출자계약",
+ "keywords": [
+  "사료용 아미노산",
+  "ADM",
+  "합작법인",
+  "현물출자",
+  "출자계약",
+  "CJ Bio America",
+  "라이신"
+ ],
+ "themes": [
+  "사료 아미노산",
+  "사업 재편",
+  "글로벌 공급망"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "CJ 측 지분",
+   "value": "63%",
+   "sub": "CJ Bio America 보유"
+  },
+  {
+   "label": "ADM 지분",
+   "value": "37%",
+   "sub": "합작법인"
+  },
+  {
+   "label": "출자 대상",
+   "value": "영업 일체",
+   "sub": "사료용 아미노산, 멕시코·브라질 지분"
+  },
+  {
+   "label": "출자 금액",
+   "value": "미공개",
+   "sub": "공시 기준"
+  }
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {
+   "type": "pos",
+   "text": "CJ Bio America가 63%로 과반을 보유하는 합작 구조"
+  },
+  {
+   "type": "pos",
+   "text": "사료용 아미노산 경쟁력 강화와 원재료 안정 조달이 목적"
+  },
+  {
+   "type": "neg",
+   "text": "CJ Bio America가 손실을 배상하지 못하면 CJ제일제당이 30일 후 대신 배상"
+  },
+  {
+   "type": "unk",
+   "text": "출자 자산 규모와 재무 영향은 미공개, 세부 내용은 추후 추가 공시 예정"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "Business Wire(finviz)",
+   "date": "2026-10-02",
+   "title": "CJ CheilJedang and ADM to Form New Joint Venture to Strengthen Amino Acid Production and Supply Chains",
+   "url": "https://finviz.com/news/398312/cj-cheiljedang-and-adm-to-form-new-joint-venture-to-strengthen-amino-acid-production-and-supply-chains"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "사료용 아미노산 영업을 ADM과 합작법인으로 출자(CJ 측 63%). 금액·재무 조건은 미공개.",
+ "importance": 4,
+ "importance_reason": "출자 금액은 미공개지만 사료용 아미노산 사업 구조를 재편하는 거래라 4점으로 봤습니다.",
+ "importance_score": 58,
+ "report_version": 3
+}

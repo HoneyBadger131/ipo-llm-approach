@@ -1,0 +1,81 @@
+{
+ "corp_name": "HDC",
+ "stock_code": "012630",
+ "disclosure_date": "2026-10-06",
+ "disclosure_title": "투자판단관련주요경영사항(자회사의 주요경영사항)",
+ "rcept_no": "20261006800172",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800172",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "자회사 대형 정비사업 수주로 외형 확대 기대"
+ },
+ "headline": "자회사 IPARK현산, 연산 13구역 재개발 시공사 선정",
+ "impact_summary": "자회사 공사예정금액 약 2,812억 수주, 모회사 매출 대비 약 4%",
+ "event_type": "시공사 선정",
+ "keywords": [
+  "재개발",
+  "시공사 선정",
+  "IPARK현산",
+  "연산 13구역",
+  "도시정비",
+  "공사예정금액"
+ ],
+ "themes": [
+  "도시정비 수주",
+  "주택 시공"
+ ],
+ "related_ids": [
+  "20261006800170"
+ ],
+ "kpis": [
+  {
+   "label": "공사예정금액",
+   "value": "약 2,812억",
+   "sub": "부가세 제외, 계약 시 확정"
+  },
+  {
+   "label": "자회사 매출 대비",
+   "value": "6.8%",
+   "sub": "2025 연결 매출 약 4.1조"
+  },
+  {
+   "label": "모회사 매출 대비",
+   "value": "약 4.3%",
+   "sub": "HDC 2025 연결 매출 약 6.6조"
+  },
+  {
+   "label": "공사 규모",
+   "value": "720세대",
+   "sub": "지하3층~지상34층 5개동"
+  }
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {
+   "type": "pos",
+   "text": "자회사 IPARK현산이 연산 13구역 재개발 시공사로 선정(선정일 10/3)"
+  },
+  {
+   "type": "pos",
+   "text": "공사예정금액 약 2,812억, 모회사 연결 매출의 약 4% 규모"
+  },
+  {
+   "type": "neg",
+   "text": "금액은 도급계약 체결 시 확정 예정, 사업 진행에 따라 변동 가능"
+  },
+  {
+   "type": "unk",
+   "text": "도급계약 체결 시기와 세부 조건은 미공시"
+  }
+ ],
+ "news": [],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "자회사 IPARK현산, 연산 13구역 재개발 시공사 선정. 공사예정금액 약 2,812억으로 모회사 매출의 약 4% 규모.",
+ "importance": 3,
+ "importance_reason": "모회사 연결 매출 약 6.6조 대비 공사예정금액 약 4.3%로 1~5% 구간(공시상 6.8%는 자회사 매출 기준).",
+ "importance_score": 45,
+ "report_version": 3
+}
