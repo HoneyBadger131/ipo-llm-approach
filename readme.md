@@ -12,6 +12,9 @@ DART 공시를 수집하고 LLM으로 중요도를 판단·심화 분석해, 종
 4. `report_v2/render.js` — 대시보드 JSON → HTML/PDF(A4 1쪽) + 인덱싱용 MD(`disclosure_md/`)
 5. `report_v2/render_summary.js` — 통합 브리프 PDF(중요도 상위 5건 + 표)
 
+## Jev 분류자 시험 (`jev_test/`)
+공시가 "다음 단계로 넘길 만큼 중요한가"를 TypeSafe Jev로 분류하는 시험. 기준: [`jev_test/공시판단_기본원칙.md`](jev_test/공시판단_기본원칙.md), 실험 설계·결과: [`jev_test/실험설계.md`](jev_test/실험설계.md).
+
 ## 메모
 - 주식수 변동은 DART가 아니라 KIND 크롤링으로 별도 처리 필요(미구현, TODO). 공시 간 유사·연결 모듈도 후속 작업.
 - API 키는 환경 변수 `DART_API_KEY`(없으면 git 제외된 `.env`)로 사용. 레포가 public이라 키를 커밋하지 않는다.
