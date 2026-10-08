@@ -1,0 +1,93 @@
+{
+ "corp_name": "한미약품",
+ "disclosure_title": "투자판단관련주요경영사항(에페오토인젝터주(에페글레나타이드) 식품의약품안전처 품목허가 승인)",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "국산 비만 신약 허가, 연내 발매 추진"
+ },
+ "headline": "비만 신약 에페글레나타이드 국내 허가 승인",
+ "impact_summary": "국내 개발 45호 신약, 연내 국내 발매를 목표로 합니다.",
+ "event_type": "신약 품목허가",
+ "keywords": [
+  "에페글레나타이드",
+  "GLP-1",
+  "비만치료제",
+  "식약처 허가",
+  "LAPSCOVERY",
+  "GIFT",
+  "신약 45호"
+ ],
+ "themes": [
+  "비만치료제",
+  "제약·바이오"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "품목명",
+   "value": "에페오토인젝터주",
+   "sub": "2~10mg, 5개 함량"
+  },
+  {
+   "label": "허가일",
+   "value": "2026-10-07",
+   "sub": "식약처, 신청 2025-12-17"
+  },
+  {
+   "label": "발매 목표",
+   "value": "연내",
+   "sub": "국내 시장 공급"
+  },
+  {
+   "label": "체중 감소",
+   "value": "9.75%",
+   "sub": "3상 40주 중간, 언론 보도"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "국내 개발 45호 신약, 한미 장기지속형 기술(랩스커버리) 적용"
+  },
+  {
+   "type": "pos",
+   "text": "비만(BMI 30 이상 등) 성인 대상, 신속심사(GIFT) 지정 후 약 10개월 만에 허가"
+  },
+  {
+   "type": "pos",
+   "text": "연내 발매 목표, 4주분 공급가 10만 원대 거론(언론 보도, 미확정)"
+  },
+  {
+   "type": "unk",
+   "text": "발매 가격과 매출 규모는 공시에 없음"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "데일리팜",
+   "date": "2026-09-14",
+   "title": "한미, 비만약 연내 출격…가격경쟁력·한국임상·영업력 승부수",
+   "url": "https://dailypharm.com/user/news/342441"
+  },
+  {
+   "outlet": "더팩트",
+   "date": "2026-09-16",
+   "title": "한미약품 '에페', 국산 첫 GLP-1 비만 신약 출격",
+   "url": "https://news.tf.co.kr/read/economy/2366472.htm"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "비만 신약 에페글레나타이드 국내 허가. 연내 발매 목표, 국산 첫 GLP-1 비만약 상업화 단계 진입.",
+ "importance": 4,
+ "importance_reason": "매출 대비 비율은 공시에 없으나 핵심 신약의 국내 첫 허가로 4점을 줍니다.",
+ "importance_score": 78,
+ "disclosure_date": "2026-10-07",
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3,
+ "stock_code": "128940",
+ "rcept_no": "20261007800667",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261007800667"
+}
