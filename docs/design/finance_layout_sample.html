@@ -1,0 +1,83 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>금융 레이아웃 시안</title><style>:root{--navy:#14264d;--royal:#2f5fd0;--ink:#142033;--mute:#5a6678;--line:#d8dfeb;--bg:#eef1f6;--pos:#0b7a46;--neg:#c2281f;--mix:#9a6200;--unk:#55606f}
+@page{size:A4;margin:0}*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font-family:"WenQuanYi Zen Hei","Noto Sans CJK KR","Malgun Gothic",sans-serif;font-size:11px;line-height:1.5}
+.pg{width:210mm;height:297mm;padding:0;page-break-after:always;overflow:hidden;position:relative}.pg:last-child{page-break-after:auto}
+.top{background:var(--navy);color:#fff;padding:12px 16px 10px;display:flex;align-items:flex-end;justify-content:space-between}
+.top h1{margin:0;font-size:20px}.top .sub{font-size:10.5px;opacity:.8}.top .dt{font-size:22px;font-weight:800;letter-spacing:.02em}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-bottom:1px solid var(--line)}
+.tile{padding:9px 14px;border-right:1px solid var(--line)}.tile:last-child{border-right:0}.tile b{display:block;font-size:23px;line-height:1.1}.tile span{font-size:10px;color:var(--mute)}
+.tile.pos b{color:var(--pos)}.tile.neg b{color:var(--neg)}.tile.mix b{color:var(--mix)}
+.sec{padding:8px 16px 4px;font-weight:800;color:var(--navy);font-size:12px}
+table{width:calc(100% - 32px);margin:0 16px;border-collapse:collapse;font-size:10.5px}
+th{background:#e8edf6;color:var(--navy);font-size:9.5px;text-align:left;padding:4px 6px;border-bottom:2px solid var(--navy)}
+td{padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:middle}td small{display:block;color:var(--mute);font-size:9px}
+tr.pos td:first-child{box-shadow:inset 4px 0 var(--pos)}tr.neg td:first-child{box-shadow:inset 4px 0 var(--neg)}tr.mix td:first-child{box-shadow:inset 4px 0 var(--mix)}tr.unk td:first-child{box-shadow:inset 4px 0 var(--unk)}
+td.r{width:22px;color:var(--mute);font-weight:700;text-align:center}td.im{width:58px}td.co{width:82px}td.co b{font-size:11.5px}td.ty{width:86px}td.num{width:76px}td.num b{font-size:12.5px;color:var(--navy)}td.se{width:70px}td.sm{font-size:10.5px}
+.imp{display:inline-flex;gap:2px}.imp i{display:block;width:8px;height:14px;background:#d3dae6;border-radius:1px}.imp i.on{background:var(--royal)}
+.chip{font-weight:800;font-size:10px;white-space:nowrap}.chip.pos{color:var(--pos)}.chip.neg{color:var(--neg)}.chip.mix{color:var(--mix)}.chip.unk{color:var(--unk)}
+.legend{padding:8px 16px;color:var(--mute);font-size:9.5px}
+.bar2{background:var(--navy);color:#fff;padding:10px 16px;display:flex;justify-content:space-between;align-items:center}
+.bar2 .co{font-size:19px;font-weight:800}.bar2 .co small{font-weight:400;opacity:.75;margin-left:8px;font-size:12px}.bar2 .ti{font-size:10.5px;opacity:.85}
+.head{padding:12px 16px 8px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center}.head h2{margin:0;font-size:17px;flex:1}
+.head .chip{border:1.5px solid currentColor;border-radius:4px;padding:2px 8px;font-size:11px}
+.kp{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}.kp div{padding:10px 14px;border-right:1px solid var(--line)}.kp div:last-child{border-right:0}
+.kp span{font-size:10px;color:var(--mute)}.kp b{display:block;font-size:22px;color:var(--navy);line-height:1.2}.kp small{color:var(--mute);font-size:9.5px}
+.two{display:grid;grid-template-columns:1.25fr 1fr;gap:14px;padding:12px 16px}
+.box h3{margin:0 0 5px;font-size:12px;color:var(--navy);border-bottom:2px solid var(--navy);padding-bottom:3px}
+.pt{display:flex;gap:7px;padding:4px 0;border-bottom:1px solid var(--line);font-size:11px}.pt em{flex:none;font-style:normal;font-weight:800;font-size:10px;width:34px}.pt .pos{color:var(--pos)}.pt .neg{color:var(--neg)}.pt .unk{color:var(--unk)}
+.news a{color:var(--royal);text-decoration:none}.news li{margin:4px 0;font-size:10.5px}.news ul{margin:0;padding-left:14px}
+.why{margin:0 16px;padding:8px 12px;background:var(--bg);border-left:4px solid var(--royal);font-size:11px}
+.foot{position:absolute;bottom:8mm;left:16px;right:16px;font-size:9px;color:var(--mute)}</style></head><body>
+<section class="pg"><div class="top"><div><h1>공시 브리프</h1><div class="sub">핵심 공시 14건 · 중요도 높은 순</div></div><div class="dt">2026-10-02</div></div>
+<div class="tiles"><div class="tile"><b>14</b><span>리포트 대상</span></div><div class="tile"><b>3</b><span>중요도 4 이상</span></div><div class="tile pos"><b>8</b><span>▲ 긍정</span></div><div class="tile neg"><b>1</b><span>▼ 부정</span></div><div class="tile mix"><b>5</b><span>◆ 혼재 · ? 미확인</span></div></div>
+<div class="sec">오늘의 공시</div>
+<table><thead><tr><th>#</th><th>중요도</th><th>종목</th><th>공시</th><th>핵심 수치 ①</th><th>핵심 수치 ②</th><th>투심</th><th>요약</th></tr></thead><tbody><tr class="pos"><td class="r">1</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></td><td class="co"><b>일진전기</b><small>103590</small></td>
+<td class="ty">단일판매ㆍ공급계약체결<small>사업 변동</small></td>
+<td class="num"><b>약 1,872억</b><small>계약금액</small></td><td class="num"><b>9.15%</b><small>매출액 대비</small></td>
+<td class="se"><span class="chip pos">▲ 긍정적</span></td><td class="sm">영국 400kV 송전망 케이블 공급·설치 1,872억 수주(매출 9.15%). 실적 가시성 커지나 종료일은 미정.</td></tr><tr class="pos"><td class="r">2</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></td><td class="co"><b>영원무역홀딩스</b><small>009970</small></td>
+<td class="ty">주식소각결정<small>기타 사항</small></td>
+<td class="num"><b>712,460주</b><small>소각 주식수</small></td><td class="num"><b>약 1,153억</b><small>소각 예정금액</small></td>
+<td class="se"><span class="chip pos">▲ 긍정적</span></td><td class="sm">발행주식 5.5%(712,460주, 약 1,150억) 자사주를 10/14 소각. 주주환원 강화이며 같은 날 중간배당도 결정.</td></tr><tr class="pos"><td class="r">3</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></td><td class="co"><b>삼성중공업</b><small>010140</small></td>
+<td class="ty">단일판매ㆍ공급계약체결<small>사업 변동</small></td>
+<td class="num"><b>약 6,722억</b><small>계약금액</small></td><td class="num"><b>6.3%</b><small>매출 대비</small></td>
+<td class="se"><span class="chip pos">▲ 긍정적</span></td><td class="sm">LNG운반선 2척 6,722억 수주(매출 6.3%). 2029년 5월까지 인도, 수주 잔고 확대.</td></tr><tr class="mix"><td class="r">4</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></td><td class="co"><b>SK</b><small>034730</small></td>
+<td class="ty">임원ㆍ주요주주특정증권등거래계획<small>기타 사항</small></td>
+<td class="num"><b>약 9,440억</b><small>매각 규모</small></td><td class="num"><b>17.76→15.49%</b><small>지분율 변화</small></td>
+<td class="se"><span class="chip mix">◆ 혼재됨</span></td><td class="sm">최태원 회장이 SK 주식 165만 주(약 9,440억, 2.26%) 매각 계획. 지분율 17.76→15.49%, 개인 자금용입니다.</td></tr><tr class="mix"><td class="r">5</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></td><td class="co"><b>CJ제일제당</b><small>097950</small></td>
+<td class="ty">투자판단관련주요경영사항<small>사업 변동</small></td>
+<td class="num"><b>63 : 37</b><small>합작 지분</small></td><td class="num"><b>미·멕시코·브라질</b><small>출자 대상</small></td>
+<td class="se"><span class="chip mix">◆ 혼재됨</span></td><td class="sm">미국 ADM과 사료용 아미노산 합작법인을 63:37로 설립. 원가·조달 경쟁력 기대, 금액은 미공개.</td></tr><tr class="pos"><td class="r">6</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></td><td class="co"><b>동아쏘시오홀딩스</b><small>000640</small></td>
+<td class="ty">지주회사의자회사탈퇴<small>기타 사항</small></td>
+<td class="num"><b>100%</b><small>탈퇴 자회사 지분</small></td><td class="num"><b>4.1%</b><small>자산총액 비중</small></td>
+<td class="se"><span class="chip pos">▲ 긍정적</span></td><td class="sm">100% 자회사 동아제약 흡수합병 완료(무증자). 사업지주사 전환으로 현금창출력을 직접 확보.</td></tr><tr class="neg"><td class="r">7</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></td><td class="co"><b>신한지주</b><small>055550</small></td>
+<td class="ty">해외증권거래소등에신고한주요공시<small>기타 사항</small></td>
+<td class="num"><b>신한은행</b><small>대상 자회사</small></td><td class="num"><b>36.0%</b><small>자산총액 비중</small></td>
+<td class="se"><span class="chip neg">▼ 부정적</span></td><td class="sm">자회사 신한은행 고객정보 유출을 NYSE에 6-K 신고. 재무 영향은 산정 불가, 조사·제재 불확실성.</td></tr><tr class="pos"><td class="r">8</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></td><td class="co"><b>삼성바이오로직스</b><small>207940</small></td>
+<td class="ty">단일판매ㆍ공급계약체결<small>사업 변동</small></td>
+<td class="num"><b>약 935억</b><small>계약금액</small></td><td class="num"><b>2.05%</b><small>매출액 대비</small></td>
+<td class="se"><span class="chip pos">▲ 긍정적</span></td><td class="sm">유럽 제약사와 935억 원 CMO 계약(매출 2.05%). 2031년까지 매출 가시성 추가 확보.</td></tr><tr class="mix"><td class="r">9</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></td><td class="co"><b>한국금융지주</b><small>071050</small></td>
+<td class="ty">타법인주식및출자증권취득결정<small>사업 변동</small></td>
+<td class="num"><b>약 4,000억</b><small>취득금액</small></td><td class="num"><b>0.93%</b><small>취득 후 지분</small></td>
+<td class="se"><span class="chip mix">◆ 혼재됨</span></td><td class="sm">자회사 한투증권이 SK㈜ 0.93%를 4,000억에 PRS로 취득. 연결 자본 대비 약 3%로 부담은 제한적.</td></tr><tr class="pos"><td class="r">10</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></td><td class="co"><b>기업은행</b><small>024110</small></td>
+<td class="ty">주요사항보고서<small>기타 사항</small></td>
+<td class="num"><b>4,000억</b><small>발행 예정액</small></td><td class="num"><b>1.1%</b><small>자기자본 대비</small></td>
+<td class="se"><span class="chip pos">▲ 긍정적</span></td><td class="sm">BIS비율 제고용 신종자본증권(영구채) 4,000억 발행 결정, 최대 5,000억. 자기자본의 약 1.1%입니다.</td></tr><tr class="unk"><td class="r">11</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></td><td class="co"><b>유안타증권</b><small>003470</small></td>
+<td class="ty">단기차입금증가결정<small>기타 사항</small></td>
+<td class="num"><b>1,000억</b><small>차입 약정액</small></td><td class="num"><b>5.25%</b><small>자기자본 대비</small></td>
+<td class="se"><span class="chip unk">? 알수 없음</span></td><td class="sm">운영자금 목적 1,000억 원 단기차입 약정(자기자본 5.25%). 증권사 통상 자금조달로 영향은 제한적.</td></tr><tr class="pos"><td class="r">12</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></td><td class="co"><b>자화전자</b><small>033240</small></td>
+<td class="ty">주요사항보고서<small>사업 변동</small></td>
+<td class="num"><b>50억</b><small>계약금액</small></td><td class="num"><b>6개월</b><small>계약기간</small></td>
+<td class="se"><span class="chip pos">▲ 긍정적</span></td><td class="sm">자사주 50억 신탁계약 체결(약 18만 주). 취득 후 전량 소각 예정이나 규모는 작은 편입니다.</td></tr><tr class="mix"><td class="r">13</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></td><td class="co"><b>파라다이스</b><small>034230</small></td>
+<td class="ty">연결재무제표기준영업<small>기타 사항</small></td>
+<td class="num"><b>약 867억</b><small>9월 카지노 매출</small></td><td class="num"><b>약 6,051억</b><small>9월 테이블 드랍액</small></td>
+<td class="se"><span class="chip mix">◆ 혼재됨</span></td><td class="sm">9월 카지노 매출 867억(전년비 +38%, 전월비 -17%). 누적 7,446억으로 전년보다 11% 증가.</td></tr><tr class="pos"><td class="r">14</td><td class="im"><span class="imp"><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></td><td class="co"><b>GS건설</b><small>006360</small></td>
+<td class="ty">기타경영사항<small>기타 사항</small></td>
+<td class="num"><b>약 1.79조</b><small>공고금액</small></td><td class="num"><b>약 14%</b><small>2025 매출 대비</small></td>
+<td class="se"><span class="chip pos">▲ 긍정적</span></td><td class="sm">목동12단지 재건축 우선협상대상자 선정(약 1.79조, 매출 14%). 시공사 확정은 총회 후.</td></tr></tbody></table>
+<div class="legend">왼쪽 색 띠 = 투심(초록 긍정 · 빨강 부정 · 갈색 혼재 · 회색 미확인) / 중요도 막대 5칸 / 핵심 수치는 공시의 첫 두 지표를 그대로 올립니다.</div></section>
+<section class="pg"><div class="bar2"><div class="co">일진전기<small>103590</small></div><div class="ti">단일판매ㆍ공급계약체결 · 2026-10-02</div></div>
+<div class="head"><h2>영국 400kV 송전망 케이블 1,872억 수주</h2><span class="imp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span><span class="chip pos">▲ 긍정적</span></div>
+<div class="kp"><div><span>계약금액</span><b>약 1,872억</b><small>GBP 1.04억, 선급금 없음</small></div><div><span>매출액 대비</span><b>9.15%</b><small>2025 연결 매출 약 2.04조</small></div><div><span>계약상대</span><b>J. Murphy &amp; Sons</b><small>영국, 계열 아님</small></div><div><span>계약기간</span><b>2026-10-01~</b><small>종료일 미확정</small></div></div>
+<div class="two"><div class="box"><h3>핵심 포인트</h3><div class="pt"><em class="pos">긍정</em><span>단일 계약이 2025년 연결 매출의 9.15%로, 올해 공시된 외부 수주 중 상위권</span></div><div class="pt"><em class="pos">긍정</em><span>영국 400kV 송전망 자재 공급부터 설치까지 맡는 프로젝트, 유럽 전력망 시장 확대 발판</span></div><div class="pt"><em class="pos">긍정</em><span>언론 보도: 7월에도 영국 동부~남동부 400kV 송전선로 일부 구간을 약 845억 원에 수주</span></div><div class="pt"><em class="neg">리스크</em><span>발주처 착수통지 후 일정이 정해져 종료일 미확정, 금액·기간 변동 가능(확정 시 정정공시 예정)</span></div></div>
+<div class="box"><h3>뉴스</h3><div class="news"><ul><li><a href="https://dealsite.co.kr/articles/170066">일진전기, 1872억원 규모 영국 송전망 케이블 공급 계약 外</a><br><small style="color:#5a6678">딜사이트 · 2026-10-02</small></li><li><a href="https://biz.newdaily.co.kr/site/data/html/2026/07/10/2026071000056.html">일진전기, 英서 845억 초고압 케이블 수주</a><br><small style="color:#5a6678">뉴데일리 · 2026-07-10</small></li></ul></div></div></div>
+<div class="why"><b>중요도 4</b> · 계약금액이 매출의 9.15%로 5~10% 구간인 대형 계약입니다.</div>
+<div class="foot">출처: DART 공시 원문, OpenProxyMCP, 뉴스 링크. · DART https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002800002 · 정보 제공용이며 투자 권유가 아닙니다.</div></section></body></html>

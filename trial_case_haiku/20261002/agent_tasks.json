@@ -1,0 +1,280 @@
+[
+ {
+  "stock_code": "071050",
+  "corp_name": "한국금융지주",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002800955",
+    "report_nm": "타법인주식및출자증권취득결정(자회사의 주요경영사항)",
+    "tag": "사업 변동",
+    "reason": "Noul 0.73 · Choice PASS_CHECK · other",
+    "body": "trial_case/20261002/071050_20261002800955.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/071050_20261002800955_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "009970",
+  "corp_name": "영원무역홀딩스",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002800927",
+    "report_nm": "주식소각결정",
+    "tag": "기타 사항",
+    "reason": "Noul 0.70 · Choice PASS_CHECK · other",
+    "body": "trial_case/20261002/009970_20261002800927.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/009970_20261002800927_v2.json"
+   }
+  ],
+  "same_day_other_filings": [
+   {
+    "rcept_no": "20261002800965",
+    "report_nm": "현금ㆍ현물배당결정",
+    "reason": "Noul 0.11 · Choice DROP · other",
+    "body": "trial_case/20261002/009970_20261002800965.txt"
+   },
+   {
+    "rcept_no": "20261002800913",
+    "report_nm": "현금ㆍ현물배당을위한주주명부폐쇄(기준일)결정",
+    "reason": "Noul 0.08 · Choice DROP · other",
+    "body": "trial_case/20261002/009970_20261002800913.txt"
+   }
+  ]
+ },
+ {
+  "stock_code": "097950",
+  "corp_name": "CJ제일제당",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002800947",
+    "report_nm": "투자판단관련주요경영사항",
+    "tag": "사업 변동",
+    "reason": "Noul 0.80 · Choice PASS · other",
+    "body": "trial_case/20261002/097950_20261002800947.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/097950_20261002800947_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002800834",
+    "report_nm": "단기차입금증가결정",
+    "tag": "기타 사항",
+    "reason": "Noul 0.62 · Choice DROP · other",
+    "body": "trial_case/20261002/003470_20261002800834.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/003470_20261002800834_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "000640",
+  "corp_name": "동아쏘시오홀딩스",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002800598",
+    "report_nm": "지주회사의자회사탈퇴",
+    "tag": "기타 사항",
+    "reason": "Noul 0.76 · Choice PASS · other",
+    "body": "trial_case/20261002/000640_20261002800598.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/000640_20261002800598_v2.json"
+   }
+  ],
+  "same_day_other_filings": [
+   {
+    "rcept_no": "20261002800881",
+    "report_nm": "지주회사의자회사편입",
+    "reason": "Noul 0.33 · Choice DROP · other",
+    "body": "trial_case/20261002/000640_20261002800881.txt"
+   },
+   {
+    "rcept_no": "20261002000364",
+    "report_nm": "합병등종료보고서(합병)",
+    "reason": "소규모(100% 자회사) 합병·종료·사채권자집회 등 절차성 합병 공시",
+    "body": "trial_case/20261002/000640_20261002000364.txt"
+   }
+  ]
+ },
+ {
+  "stock_code": "207940",
+  "corp_name": "삼성바이오로직스",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002800830",
+    "report_nm": "단일판매ㆍ공급계약체결(자율공시)",
+    "tag": "사업 변동",
+    "reason": "Noul 0.82 · Choice PASS · large",
+    "body": "trial_case/20261002/207940_20261002800830.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/207940_20261002800830_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "034730",
+  "corp_name": "SK",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002000508",
+    "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서",
+    "tag": "기타 사항",
+    "reason": "Noul 0.58 · Choice PASS_CHECK · large",
+    "body": "trial_case/20261002/034730_20261002000508.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/034730_20261002000508_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "024110",
+  "corp_name": "기업은행",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002000464",
+    "report_nm": "주요사항보고서(상각형조건부자본증권발행결정)",
+    "tag": "기타 사항",
+    "reason": "Noul 0.70 · Choice PASS_CHECK · other",
+    "body": "trial_case/20261002/024110_20261002000464.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/024110_20261002000464_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "033240",
+  "corp_name": "자화전자",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002000288",
+    "report_nm": "주요사항보고서(자기주식취득신탁계약체결결정)",
+    "tag": "사업 변동",
+    "reason": "Noul 0.91 · Choice PASS · other",
+    "body": "trial_case/20261002/033240_20261002000288.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/033240_20261002000288_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "006360",
+  "corp_name": "GS건설",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002800351",
+    "report_nm": "기타경영사항(자율공시)",
+    "tag": "기타 사항",
+    "reason": "Noul 0.81 · Choice PASS · other",
+    "body": "trial_case/20261002/006360_20261002800351.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/006360_20261002800351_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "034230",
+  "corp_name": "파라다이스",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002800293",
+    "report_nm": "연결재무제표기준영업(잠정)실적(공정공시)",
+    "tag": "기타 사항",
+    "reason": "Noul 0.79 · Choice PASS · other",
+    "body": "trial_case/20261002/034230_20261002800293.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/034230_20261002800293_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "010140",
+  "corp_name": "삼성중공업",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002800245",
+    "report_nm": "단일판매ㆍ공급계약체결",
+    "tag": "사업 변동",
+    "reason": "Noul 0.94 · Choice PASS · other",
+    "body": "trial_case/20261002/010140_20261002800245.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/010140_20261002800245_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "103590",
+  "corp_name": "일진전기",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002800002",
+    "report_nm": "단일판매ㆍ공급계약체결",
+    "tag": "사업 변동",
+    "reason": "Noul 0.93 · Choice PASS · other",
+    "body": "trial_case/20261002/103590_20261002800002.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/103590_20261002800002_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ },
+ {
+  "stock_code": "055550",
+  "corp_name": "신한지주",
+  "base_date": "2026-10-02",
+  "filings": [
+   {
+    "rcept_no": "20261002800005",
+    "report_nm": "해외증권거래소등에신고한주요공시사항의국내신고(자회사의 주요경영사항)",
+    "tag": "기타 사항",
+    "reason": "Noul 0.57 · Choice PASS_CHECK · large",
+    "body": "trial_case/20261002/055550_20261002800005.txt",
+    "note": "",
+    "related_with": [],
+    "output": "trial_case_haiku/20261002/reports/055550_20261002800005_v2.json"
+   }
+  ],
+  "same_day_other_filings": []
+ }
+]

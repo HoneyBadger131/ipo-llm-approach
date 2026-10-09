@@ -1,0 +1,76 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>한미약품 공시 대시보드</title>
+<style>
+:root{--bg:#f4f6f9;--card:#fff;--ink:#1c2430;--mute:#6a7686;--line:#e3e8ef;--brand:#26457a;
+--pos:#127a4a;--pos-bg:#e3f4eb;--neg:#b3261e;--neg-bg:#fbe7e5;--mix:#8a5a00;--mix-bg:#fdf0d5;--unk:#4f5b6b;--unk-bg:#e8ebf0}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"WenQuanYi Zen Hei","Noto Sans CJK KR","Malgun Gothic",sans-serif;font-size:11.5px;line-height:1.55}
+.page{width:210mm;height:297mm;padding:12mm 12mm 9mm;display:flex;flex-direction:column;gap:11px;overflow:hidden}
+header{background:var(--brand);color:#fff;border-radius:10px;padding:14px 16px}
+header .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+header h1{margin:0;font-size:20px;letter-spacing:-.3px}
+header .sub{opacity:.85;font-size:10.5px;margin-top:2px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.chip{border-radius:999px;padding:3px 10px;font-size:10.5px;font-weight:700;white-space:nowrap}
+.chip.tag{background:rgba(255,255,255,.18);color:#fff}
+.chip.pos{background:var(--pos-bg);color:var(--pos)}.chip.neg{background:var(--neg-bg);color:var(--neg)}
+.chip.mix{background:var(--mix-bg);color:var(--mix)}.chip.unk{background:var(--unk-bg);color:var(--unk)}
+.headline{margin-top:10px;font-size:14px;font-weight:700;line-height:1.45}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.kpi .l{color:var(--mute);font-size:10px}.kpi .v{font-size:20px;font-weight:800;color:var(--brand);letter-spacing:-.5px;margin:1px 0}
+.kpi .s{color:var(--mute);font-size:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+h2{margin:0 0 8px;font-size:12.5px;color:var(--brand)}
+h2 .sub{font-weight:400;color:var(--mute);font-size:10.5px;margin-left:4px}
+.impact{display:flex;gap:10px;align-items:center;border-radius:8px;padding:9px 11px;margin-bottom:9px}
+.impact.pos{background:var(--pos-bg)}.impact.neg{background:var(--neg-bg)}.impact.mix{background:var(--mix-bg)}.impact.unk{background:var(--unk-bg)}
+.impact .chip{background:#fff}
+.impact.pos .chip{color:var(--pos)}.impact.neg .chip{color:var(--neg)}.impact.mix .chip{color:var(--mix)}.impact.unk .chip{color:var(--unk)}
+.impact .t{font-size:12.5px;font-weight:700;line-height:1.45}
+.impact .why{font-size:10.5px;color:var(--mute);font-weight:400;display:block;margin-top:1px}
+.points{display:flex;flex-direction:column;gap:7px;margin:0;padding:0;list-style:none}
+.points li{display:flex;gap:8px;align-items:flex-start}
+.pt{flex:none;border-radius:6px;padding:1px 7px;font-size:10px;font-weight:700}
+.pt.pos{background:var(--pos-bg);color:var(--pos)}.pt.neg{background:var(--neg-bg);color:var(--neg)}.pt.unk{background:var(--unk-bg);color:var(--unk)}
+.row2{display:grid;grid-template-columns:1.1fr 1fr;gap:9px}
+table{width:100%;border-collapse:collapse;font-size:10.5px;table-layout:fixed}
+th,td{padding:3px 4px;border-bottom:1px solid var(--line);text-align:right}th{text-align:left;color:var(--mute);font-weight:400;width:24%}
+thead th{color:var(--ink);font-weight:700;text-align:right}thead th:first-child{text-align:left}
+tr.chart td{vertical-align:bottom;text-align:center;border-bottom:1px solid var(--line);padding-bottom:0;height:70px}tr.chart th{vertical-align:bottom;font-size:9.5px;color:var(--mute)}
+.bv{font-weight:700;font-size:10.5px;margin-bottom:2px}
+.bar{width:55%;margin:0 auto;background:var(--brand);border-radius:4px 4px 0 0;opacity:.85}tr.c1 .bar{background:#1f9d8a}.bar.neg{background:#c2281f !important}.bv.neg{color:#c2281f}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
+.mini div{display:flex;flex-direction:column;border-left:3px solid var(--line);padding-left:7px}
+.mini .k{color:var(--mute);font-size:10px}.mini b{font-size:15px}.mini small{color:var(--mute);font-size:9.5px}
+.note{margin:8px 0 0;color:var(--mute);font-size:9.5px}
+.cons{display:flex;align-items:flex-end;gap:14px}
+.cbars{display:flex;flex:1;gap:8px;align-items:flex-end;justify-content:space-around;border-bottom:1px solid var(--line);padding-bottom:0}
+.cs{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:20%}
+.cbar{width:55%;background:var(--brand);opacity:.7;border-radius:4px 4px 0 0}
+.cl{color:var(--mute);font-size:9.5px;margin:3px 0 -1px;white-space:nowrap}
+.cdelta{flex:none;width:96px;text-align:center;border-radius:8px;padding:8px 6px;background:var(--unk-bg);color:var(--unk)}
+.cdelta.up{background:var(--pos-bg);color:var(--pos)}.cdelta.down{background:var(--neg-bg);color:var(--neg)}
+.cdelta .big{display:block;font-size:16px;font-weight:800}.cdelta .sm{display:block;font-size:9.5px}
+.news{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.news li{display:flex;gap:6px;align-items:baseline}
+.news .o{flex:none;color:var(--mute);font-size:10px;min-width:98px}
+.news a{color:var(--brand);text-decoration:none;border-bottom:1px solid #b8c6e0}
+footer{margin-top:auto;color:var(--mute);font-size:8.5px;line-height:1.45}
+</style></head><body><div class="page">
+<header><div class="top"><div><h1>한미약품 <span style="font-weight:400;font-size:13px">128940</span></h1>
+<div class="sub">2026-10-07 · 투자판단관련주요경영사항(에페오토인젝터주(에페글레나타이드) 식품의약품안전처 품목허가 승인) · 접수번호 20261007800667</div></div>
+<div class="chips"><span class="chip tag">사업 변동</span><span class="chip pos">투심 ▲ 긍정적</span></div></div>
+<div class="headline">비만 신약 에페글레나타이드 국내 품목허가 승인</div></header>
+<div class="kpis"><div class="kpi"><div class="l">허가일</div><div class="v">2026.10.7</div><div class="s">식약처, 신청 2025.12.17</div></div><div class="kpi"><div class="l">국내개발 신약</div><div class="v">45호</div><div class="s">GIFT 신속심사 대상(62호)</div></div><div class="kpi"><div class="l">허가 함량</div><div class="v">5종</div><div class="s">2~10mg, 0.5mL</div></div><div class="kpi"><div class="l">출시 목표</div><div class="v">연내</div><div class="s">국내 시장 공급</div></div></div>
+<section class="card"><h2>핵심 포인트</h2>
+<div class="impact pos"><span class="chip">▲ 긍정적</span><span class="t">국산 GLP-1 비만 신약이 허가돼 연내 출시를 준비합니다.<span class="why">국산 첫 GLP-1 비만 신약 허가, 연내 출시 목표</span></span></div>
+<ul class="points"><li><span class="pt pos">긍정</span><span>국산 첫 GLP-1 계열 비만 신약, 장기지속형 기술(랩스커버리) 적용</span></li><li><span class="pt pos">긍정</span><span>식약처 신속심사 지정 후 허가, 연내 국내 공급 목표</span></li><li><span class="pt neg">리스크</span><span>위고비·마운자로 등 선발 제품과 경쟁해야 하고, 현재 PER 31.5배로 기대가 이미 반영됨</span></li><li><span class="pt unk">미확인</span><span>출시 가격과 판매 목표는 공시에 없음</span></li></ul></section>
+<div class="row2"><section class="card"><h2>최근 3년 실적 <span class="sub">연결, 단위 조원</span></h2><table><thead><tr><th></th><th>2023</th><th>2024</th><th>2025</th></tr></thead><tbody><tr class="chart c0"><th>매출</th><td><div class="bv">1.5</div><div class="bar" style="height:45px"></div></td><td><div class="bv">1.50</div><div class="bar" style="height:45px"></div></td><td><div class="bv">1.55</div><div class="bar" style="height:46px"></div></td></tr><tr class="chart c1"><th>영업이익</th><td><div class="bv">0.22</div><div class="bar" style="height:39px"></div></td><td><div class="bv">0.22</div><div class="bar" style="height:39px"></div></td><td><div class="bv">0.26</div><div class="bar" style="height:46px"></div></td></tr><tr><th>매출</th><td>1.5</td><td>1.50</td><td>1.55</td></tr><tr><th>영업이익</th><td>0.22</td><td>0.22</td><td>0.26</td></tr></tbody></table></section><section class="card"><h2>가치평가 · 추정치</h2><div class="mini"><div><span class="k">PER (최근 12개월)</span><b>31.5배</b><small>10/7 스냅샷 기준</small></div><div><span class="k">PBR</span><b>4.87배</b><small>최근 분기 기준</small></div><div><span class="k">2026E 영업이익</span><b>약 3,665억</b><small>컨센서스, 2025 대비 약 42% 증가</small></div><div><span class="k">2026E 예상 PER</span><b>24.7배</b><small>컨센서스, 10/2 종가 기준</small></div></div></section></div>
+<section class="card"><h2>컨센서스 추이 <span class="sub">2026E EPS · 최근 4주</span></h2>
+<div class="cons"><div class="cbars"><div class="cs"><div class="bv">20,079원</div><div class="cbar" style="height:45px"></div><div class="cl">4주 전</div></div><div class="cs"><div class="bv">20,521원</div><div class="cbar" style="height:46px"></div><div class="cl">1주 전</div></div><div class="cs"><div class="bv">20,521원</div><div class="cbar" style="height:46px"></div><div class="cl">현재</div></div></div>
+<div class="cdelta up"><span class="big">▲ +2.2%</span><span class="sm">4주 전 대비</span></div></div>
+<p class="note">4주 전 값은 도구가 제공한 변화율로 환산한 값(주 1회 스냅샷, 제공 이력 약 4주).</p></section>
+<section class="card"><h2>뉴스 근거 <span class="sub">링크</span></h2><ul class="news"><li><span class="o">데일리팜 · 2026-09-14</span><a href="https://dailypharm.com/user/news/342441">한미, 비만약 연내 출격…가격경쟁력·한국임상·영업력 승부수</a></li><li><span class="o">더팩트 · 2026-09-16</span><a href="https://news.tf.co.kr/read/economy/2366472.htm">한미약품 &#39;에페&#39;, 국산 첫 GLP-1 비만 신약 출격…&#39;신약 45호&#39; 가시화</a></li></ul></section>
+<footer>출처: DART 공시 원문, OpenProxyMCP(재무·가치평가·컨센서스), 뉴스 링크.<br>DART <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261007800667">https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261007800667</a> · 정보 제공용이며 투자 권유가 아닙니다.</footer>
+</div></body></html>

@@ -1,0 +1,681 @@
+{
+ "20260901000212": {
+  "label": "DROP",
+  "memo": "",
+  "company": "GS",
+  "title": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "claude_label": "DROP"
+ },
+ "20260901000005": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SNT모티브",
+  "title": "주요사항보고서(회사합병결정)",
+  "claude_label": "DROP"
+ },
+ "20260901000347": {
+  "label": "DROP",
+  "memo": "",
+  "company": "동서",
+  "title": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "claude_label": "DROP"
+ },
+ "20260901800431": {
+  "label": "PASS",
+  "memo": "",
+  "company": "롯데렌탈",
+  "title": "대표이사(대표집행임원)변경(안내공시)",
+  "claude_label": "PASS"
+ },
+ "20260901800368": {
+  "label": "DROP",
+  "memo": "",
+  "company": "태광산업",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260902800355": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SK리츠",
+  "title": "부동산투자회사자금차입",
+  "claude_label": "DROP"
+ },
+ "20260903000300": {
+  "label": "DROP",
+  "memo": "",
+  "company": "롯데쇼핑",
+  "title": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
+  "claude_label": "DROP"
+ },
+ "20260907800647": {
+  "label": "PASS",
+  "memo": "",
+  "company": "HDC",
+  "title": "불성실공시법인지정",
+  "claude_label": "PASS"
+ },
+ "20260907800650": {
+  "label": "PASS",
+  "memo": "",
+  "company": "IPARK현대산업개발",
+  "title": "불성실공시법인지정",
+  "claude_label": "PASS"
+ },
+ "20260909000045": {
+  "label": "DROP",
+  "memo": "",
+  "company": "에이피알",
+  "title": "주요사항보고서(회사합병결정)",
+  "claude_label": "DROP"
+ },
+ "20260910800366": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한화에어로스페이스",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260911800692": {
+  "label": "DROP",
+  "memo": "",
+  "company": "롯데손해보험",
+  "title": "조회공시요구(풍문또는보도)에대한답변(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260911800691": {
+  "label": "DROP",
+  "memo": "",
+  "company": "태광산업",
+  "title": "풍문또는보도에대한해명",
+  "claude_label": "DROP"
+ },
+ "20260930000142": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SNT홀딩스",
+  "title": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "claude_label": "DROP"
+ },
+ "20260930000237": {
+  "label": "DROP",
+  "memo": "",
+  "company": "넥센타이어",
+  "title": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "claude_label": "DROP"
+ },
+ "20260930801108": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한미사이언스",
+  "title": "지주회사의자회사탈퇴",
+  "claude_label": "DROP"
+ },
+ "20261001700434": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SK가스",
+  "title": "사채권자집회소집",
+  "claude_label": "DROP"
+ },
+ "20261001800379": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SK리츠",
+  "title": "부동산투자회사자금차입",
+  "claude_label": "DROP"
+ },
+ "20260901800078": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SNT홀딩스",
+  "title": "주요사항보고서(회사합병결정)(자회사의 주요경영사항)",
+  "claude_label": "DROP"
+ },
+ "20260901800661": {
+  "label": "DROP",
+  "memo": "",
+  "company": "STX엔진",
+  "title": "주주명부폐쇄기간또는기준일설정",
+  "claude_label": "DROP"
+ },
+ "20260902800586": {
+  "label": "DROP",
+  "memo": "",
+  "company": "CJ",
+  "title": "소송등의제기ㆍ신청(일정금액이상의청구)(자회사의 주요경영사항)",
+  "claude_label": "DROP"
+ },
+ "20260902800184": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SNT홀딩스",
+  "title": "주식소각결정(자회사의 주요경영사항)",
+  "claude_label": "DROP"
+ },
+ "20260902800054": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SNT홀딩스",
+  "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+  "claude_label": "DROP"
+ },
+ "20260902800655": {
+  "label": "DROP",
+  "memo": "",
+  "company": "금양",
+  "title": "기타시장안내 (회계처리기준 위반행위 관련 상장적격성 실질심사 절차 미진행 안내)",
+  "claude_label": "DROP"
+ },
+ "20260902800639": {
+  "label": "PASS",
+  "memo": "",
+  "company": "금양",
+  "title": "회계처리기준위반에따른검찰고발등조치",
+  "claude_label": "PASS"
+ },
+ "20260902800520": {
+  "label": "DROP",
+  "memo": "",
+  "company": "대웅",
+  "title": "소송등의제기ㆍ신청(일정금액이상의청구)(자회사의 주요경영사항)",
+  "claude_label": "DROP"
+ },
+ "20260902800437": {
+  "label": "PASS",
+  "memo": "",
+  "company": "현대자동차",
+  "title": "생산재개(자율공시)",
+  "claude_label": "PASS"
+ },
+ "20260903800096": {
+  "label": "DROP",
+  "memo": "",
+  "company": "삼성생명",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260903800106": {
+  "label": "DROP",
+  "memo": "",
+  "company": "삼성화재해상보험",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260903800521": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한국가스공사",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260904100017": {
+  "label": "PASS",
+  "memo": "",
+  "company": "SK아이이테크놀로지",
+  "title": "정정명령부과( 2026.08.26. 제출 주요사항보고서(회사합병 결정) )",
+  "claude_label": "PASS"
+ },
+ "20260904800648": {
+  "label": "DROP",
+  "memo": "",
+  "company": "대웅",
+  "title": "타인에대한채무보증결정(자회사의 주요경영사항)",
+  "claude_label": "DROP"
+ },
+ "20260904800247": {
+  "label": "PASS",
+  "memo": "",
+  "company": "한국앤컴퍼니",
+  "title": "생산재개(자율공시)",
+  "claude_label": "PASS"
+ },
+ "20260907800165": {
+  "label": "DROP",
+  "memo": "",
+  "company": "LG전자",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260907000308": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SK디스커버리",
+  "title": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
+  "claude_label": "DROP"
+ },
+ "20260907800593": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SK디스커버리",
+  "title": "임시주주총회결과",
+  "claude_label": "DROP"
+ },
+ "20260907800002": {
+  "label": "PASS",
+  "memo": "",
+  "company": "셀트리온",
+  "title": "투자판단관련주요경영사항 (CTP44(다잘렉스 바이오시밀러) 한국 임상 3상 시험계획 변경신청 승인)",
+  "claude_label": "PASS"
+ },
+ "20260907800004": {
+  "label": "PASS",
+  "memo": "",
+  "company": "셀트리온",
+  "title": "투자판단관련주요경영사항 (CTP51(키트루다 바이오시밀러) 미국 임상 3상 시험계획 변경신청 승인)",
+  "claude_label": "PASS"
+ },
+ "20260907800332": {
+  "label": "DROP",
+  "memo": "",
+  "company": "태광산업",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260907800338": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한국카본",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260907800087": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한화에어로스페이스",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260908000386": {
+  "label": "DROP",
+  "memo": "",
+  "company": "HD현대일렉트릭",
+  "title": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
+  "claude_label": "DROP"
+ },
+ "20260908800531": {
+  "label": "DROP",
+  "memo": "",
+  "company": "HD현대일렉트릭",
+  "title": "임시주주총회결과",
+  "claude_label": "DROP"
+ },
+ "20260908800619": {
+  "label": "DROP",
+  "memo": "",
+  "company": "엘앤에프",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260909000291": {
+  "label": "PASS",
+  "memo": "",
+  "company": "금양",
+  "title": "[첨부추가]주요사항보고서(회사분할결정)",
+  "claude_label": "PASS"
+ },
+ "20260909000373": {
+  "label": "DROP",
+  "memo": "",
+  "company": "대웅제약",
+  "title": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
+  "claude_label": "DROP"
+ },
+ "20260909800396": {
+  "label": "DROP",
+  "memo": "",
+  "company": "대웅제약",
+  "title": "임시주주총회결과",
+  "claude_label": "DROP"
+ },
+ "20260909000516": {
+  "label": "PASS",
+  "memo": "",
+  "company": "삼성전자",
+  "title": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "claude_label": "PASS"
+ },
+ "20260909800113": {
+  "label": "DROP",
+  "memo": "",
+  "company": "에이피알",
+  "title": "회사합병결정(종속회사의주요경영사항)",
+  "claude_label": "DROP"
+ },
+ "20260909000349": {
+  "label": "PASS",
+  "memo": "",
+  "company": "케이티",
+  "title": "주요사항보고서(자기주식취득신탁계약해지결정)",
+  "claude_label": "PASS"
+ },
+ "20260909000359": {
+  "label": "DROP",
+  "memo": "",
+  "company": "크래프톤",
+  "title": "자기주식취득결과보고서",
+  "claude_label": "DROP"
+ },
+ "20260910800120": {
+  "label": "PASS",
+  "memo": "",
+  "company": "S-Oil",
+  "title": "단일판매ㆍ공급계약체결",
+  "claude_label": "PASS"
+ },
+ "20260910000298": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SK이노베이션",
+  "title": "동일인등출자계열회사와의상품ㆍ용역거래",
+  "claude_label": "DROP"
+ },
+ "20260910000167": {
+  "label": "DROP",
+  "memo": "",
+  "company": "대한전선",
+  "title": "동일인등출자계열회사와의상품ㆍ용역거래",
+  "claude_label": "DROP"
+ },
+ "20260910800150": {
+  "label": "PASS",
+  "memo": "",
+  "company": "이마트",
+  "title": "영업(잠정)실적(공정공시)",
+  "claude_label": "PASS"
+ },
+ "20260911000445": {
+  "label": "PASS",
+  "memo": "",
+  "company": "가온전선",
+  "title": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "claude_label": "PASS"
+ },
+ "20260911000415": {
+  "label": "DROP",
+  "memo": "",
+  "company": "대상",
+  "title": "[기재정정]반기보고서 (2026.06)",
+  "claude_label": "DROP"
+ },
+ "20260911000201": {
+  "label": "DROP",
+  "memo": "",
+  "company": "보령",
+  "title": "자기주식취득결과보고서",
+  "claude_label": "DROP"
+ },
+ "20260911000358": {
+  "label": "DROP",
+  "memo": "",
+  "company": "케이티",
+  "title": "자기주식취득결과보고서",
+  "claude_label": "DROP"
+ },
+ "20260911000014": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한화솔루션",
+  "title": "약관에의한금융거래시계열금융회사의거래상대방의공시",
+  "claude_label": "DROP"
+ },
+ "20260911000189": {
+  "label": "PASS",
+  "memo": "",
+  "company": "현대건설",
+  "title": "특수관계인에대한담보제공",
+  "claude_label": "PASS"
+ },
+ "20260930000515": {
+  "label": "PASS",
+  "memo": "",
+  "company": "LF",
+  "title": "주요사항보고서(자기주식취득결정)",
+  "claude_label": "PASS"
+ },
+ "20260930800031": {
+  "label": "DROP",
+  "memo": "",
+  "company": "제일기획",
+  "title": "수시공시의무관련사항(공정공시)",
+  "claude_label": "DROP"
+ },
+ "20260930000832": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한화생명",
+  "title": "특수관계인에대한출자",
+  "claude_label": "DROP"
+ },
+ "20260930801232": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한화생명",
+  "title": "유상증자결정(종속회사의주요경영사항)",
+  "claude_label": "DROP"
+ },
+ "20260930000834": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한화투자증권",
+  "title": "특수관계인의유상증자참여",
+  "claude_label": "DROP"
+ },
+ "20260930000830": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한화투자증권",
+  "title": "특수관계인의유상증자참여",
+  "claude_label": "DROP"
+ },
+ "20260930800001": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "현대건설",
+  "title": "중대재해발생",
+  "claude_label": "PASS_CHECK"
+ },
+ "20261001800084": {
+  "label": "DROP",
+  "memo": "",
+  "company": "LS",
+  "title": "단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+  "claude_label": "DROP"
+ },
+ "20261001000559": {
+  "label": "DROP",
+  "memo": "",
+  "company": "NHN",
+  "title": "합병등종료보고서(합병)",
+  "claude_label": "DROP"
+ },
+ "20261001800285": {
+  "label": "DROP",
+  "memo": "",
+  "company": "S-Oil",
+  "title": "최대주주변경",
+  "claude_label": "DROP"
+ },
+ "20261001000370": {
+  "label": "PASS",
+  "memo": "",
+  "company": "삼아알미늄",
+  "title": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "claude_label": "PASS"
+ },
+ "20260903800582": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한국전력공사",
+  "title": "풍문또는보도에대한해명(미확정)",
+  "claude_label": "DROP"
+ },
+ "20260907800498": {
+  "label": "DROP",
+  "memo": "",
+  "company": "HS효성첨단소재",
+  "title": "타인에대한채무보증결정",
+  "claude_label": "DROP"
+ },
+ "20260907800491": {
+  "label": "DROP",
+  "memo": "",
+  "company": "HS효성첨단소재",
+  "title": "타인에대한채무보증결정",
+  "claude_label": "DROP"
+ },
+ "20260908800599": {
+  "label": "DROP",
+  "memo": "",
+  "company": "CJ CGV",
+  "title": "타인에대한채무보증결정",
+  "claude_label": "DROP"
+ },
+ "20260908000275": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "신한지주",
+  "title": "[기재정정]주요사항보고서(상각형조건부자본증권발행결정)",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260909800178": {
+  "label": "DROP",
+  "memo": "",
+  "company": "삼성SDI",
+  "title": "금전대여결정",
+  "claude_label": "DROP"
+ },
+ "20260901000217": {
+  "label": "DROP",
+  "memo": "",
+  "company": "DB손해보험",
+  "title": "특수관계인에대한자금대여",
+  "claude_label": "DROP"
+ },
+ "20260901800082": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SNT모티브",
+  "title": "주주명부폐쇄기간또는기준일설정",
+  "claude_label": "DROP"
+ },
+ "20260903800537": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "BNK금융지주",
+  "title": "기업가치제고계획(자율공시)",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260907000315": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SK디스커버리",
+  "title": "주요사항보고서(자기주식취득신탁계약해지결정)",
+  "claude_label": "DROP"
+ },
+ "20260907000181": {
+  "label": "DROP",
+  "memo": "",
+  "company": "iM금융지주",
+  "title": "[기재정정]주요사항보고서(상각형조건부자본증권발행결정)",
+  "claude_label": "DROP"
+ },
+ "20260909000440": {
+  "label": "DROP",
+  "memo": "",
+  "company": "NH투자증권",
+  "title": "[기재정정]증권신고서(채무증권)",
+  "claude_label": "DROP"
+ },
+ "20260909000470": {
+  "label": "DROP",
+  "memo": "",
+  "company": "금양",
+  "title": "[기재정정]주요사항보고서(회사분할결정)",
+  "claude_label": "DROP"
+ },
+ "20260909800116": {
+  "label": "DROP",
+  "memo": "",
+  "company": "에이피알",
+  "title": "주주명부폐쇄기간또는기준일설정",
+  "claude_label": "DROP"
+ },
+ "20260909800221": {
+  "label": "PASS",
+  "memo": "",
+  "company": "하이트진로",
+  "title": "생산중단(자율공시)",
+  "claude_label": "PASS"
+ },
+ "20260909800206": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한국가스공사",
+  "title": "영업(잠정)실적(공정공시)",
+  "claude_label": "DROP"
+ },
+ "20260909000058": {
+  "label": "PASS_CHECK",
+  "memo": "",
+  "company": "한미반도체",
+  "title": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "claude_label": "PASS_CHECK"
+ },
+ "20260909800610": {
+  "label": "DROP",
+  "memo": "",
+  "company": "한화솔루션",
+  "title": "[기재정정]중대재해발생",
+  "claude_label": "DROP"
+ },
+ "20260910800520": {
+  "label": "DROP",
+  "memo": "",
+  "company": "SK아이이테크놀로지",
+  "title": "[기재정정]타법인주식및출자증권처분결정",
+  "claude_label": "DROP"
+ },
+ "20260910800468": {
+  "label": "DROP",
+  "memo": "",
+  "company": "대우건설",
+  "title": "주식소각결정",
+  "claude_label": "DROP"
+ },
+ "20260910000386": {
+  "label": "DROP",
+  "memo": "",
+  "company": "시프트업",
+  "title": "주요사항보고서(자기주식취득신탁계약해지결정)",
+  "claude_label": "DROP"
+ },
+ "20260910800130": {
+  "label": "DROP",
+  "memo": "",
+  "company": "오리온",
+  "title": "연결재무제표기준영업(잠정)실적(공정공시)",
+  "claude_label": "DROP"
+ },
+ "20260911800524": {
+  "label": "DROP",
+  "memo": "",
+  "company": "HS효성첨단소재",
+  "title": "타인에대한채무보증결정",
+  "claude_label": "DROP"
+ },
+ "20260911800519": {
+  "label": "DROP",
+  "memo": "",
+  "company": "HS효성첨단소재",
+  "title": "타인에대한채무보증결정",
+  "claude_label": "DROP"
+ },
+ "20261001800325": {
+  "label": "DROP",
+  "memo": "",
+  "company": "기아",
+  "title": "영업(잠정)실적(공정공시)",
+  "claude_label": "DROP"
+ }
+}

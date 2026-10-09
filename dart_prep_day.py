@@ -2,7 +2,7 @@
 
 사용법:
   export DART_API_KEY=발급키
-  python dart_prep_day.py 20261001            # 조회·분류·본문 저장·digest 출력
+  python dart_prep_day.py 20261001            # (기준일 B는 영업일. 구간 = 직전 영업일 다음 날~B, dart_calendar.py) 조회·분류·본문 저장·digest 출력
   python dart_prep_day.py 20261001 --no-bodies   # 건수만 확인(본문 다운로드 생략)
   python dart_prep_day.py 20261001 --digest-only # 저장된 bodies/<YYYYMMDD>/ 로 digest만 다시 출력
 
@@ -16,6 +16,7 @@ import re
 import sys
 from collections import Counter
 
+from dart_calendar import window as cal_window
 from dart_list_test import fetch_all
 from dart_rules import classify, normalize
 from dart_watchlist_filings import load_watchlist
@@ -49,12 +50,13 @@ def main():
         prep = json.load(open(f"{out_dir}/prep.json", encoding="utf-8"))
     else:
         watch = load_watchlist(wl_path)
-        allrows = fetch_all(day, day)
+        bgn, end = cal_window(day)      # 기준일 B의 구간: 직전 영업일 다음 날 ~ B (주말·휴일 공시 포함). 휴장일이면 ValueError
+        allrows = fetch_all(bgn.strftime("%Y%m%d"), end.strftime("%Y%m%d"))
         rows = [r for r in allrows if r.get("stock_code") in watch]
-        cls = Counter(classify(r["report_nm"]) for r in rows)
+        cls = Counter(classify(r["report_nm"], r["corp_name"]) for r in rows)
         pick = lambda k: [dict(rcept_no=r["rcept_no"], stock_code=r["stock_code"], corp_name=r["corp_name"],
-                               report_nm=r["report_nm"].strip()) for r in rows if classify(r["report_nm"]) == k]
-        prep = dict(date=date, total=len(allrows), watchlist_filings=len(rows),
+                               report_nm=r["report_nm"].strip()) for r in rows if classify(r["report_nm"], r["corp_name"]) == k]
+        prep = dict(date=date, window=[str(bgn), str(end)], total=len(allrows), watchlist_filings=len(rows),
                     watchlist_companies=len({r["stock_code"] for r in rows}),
                     excluded=cls["exclude"], separate=pick("separate"), review=pick("review"))
         json.dump(prep, open(f"{out_dir}/prep.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)

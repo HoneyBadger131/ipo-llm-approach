@@ -1,0 +1,94 @@
+{
+  "corp_name": "한미사이언스",
+  "stock_code": "008930",
+  "disclosure_date": "2026-10-07",
+  "disclosure_title": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "rcept_no": "20261007000516",
+  "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261007000516",
+  "tag": "기타 사항",
+  "sentiment": {
+    "label": "혼재됨",
+    "reason": "지분 확대로 경영권 안정 기대, 대금 부담과 분쟁 변수"
+  },
+  "headline": "신동국 측 장외 추가 매수 약 693억 원, 지분 30.18%로",
+  "impact_summary": "신동국 측 지분 30.18%로 확대, 약 693억 원 장외매수 계획",
+  "event_type": "임원·주요주주 거래계획",
+  "keywords": [
+    "장외매수",
+    "임원·주요주주",
+    "지분 확대",
+    "경영권",
+    "거래계획 보고",
+    "한미사이언스 지분"
+  ],
+  "themes": [
+    "지배구조",
+    "지분 경쟁"
+  ],
+  "related_ids": [
+    "20261007800680"
+  ],
+  "kpis": [
+    {
+      "label": "거래금액",
+      "value": "약 693억",
+      "sub": "장외매수 138만여 주, 11/9~11/13"
+    },
+    {
+      "label": "거래 후 지분",
+      "value": "30.18%",
+      "sub": "현재 28.15%"
+    },
+    {
+      "label": "자기자본 대비",
+      "value": "약 7.2%",
+      "sub": "2025 연결 자본 약 9,592억"
+    },
+    {
+      "label": "직전 6개월 매수",
+      "value": "약 1,727억",
+      "sub": "2026.08.07 장외매수 360만 주"
+    }
+  ],
+  "financials": null,
+  "valuation": null,
+  "consensus": null,
+  "points": [
+    {
+      "type": "pos",
+      "text": "거래 완료 시 신동국 측 지분 28.15%에서 30.18%로 확대"
+    },
+    {
+      "type": "neg",
+      "text": "약 693억 원 현금 부담, 직전 6개월에도 약 1,727억 원 매수"
+    },
+    {
+      "type": "unk",
+      "text": "거래 종결은 11/9~11/13 예정, 합의해제·채무불이행 해제 가능"
+    },
+    {
+      "type": "unk",
+      "text": "모녀 측과 신동국 측 간 분쟁 지속 여부가 지배구조 변수"
+    }
+  ],
+  "news": [
+    {
+      "outlet": "SBS Biz",
+      "date": "2026-07-08",
+      "title": "신동국 1700억 한미 주식 취득…경영권 분쟁 다시?",
+      "url": "https://biz.sbs.co.kr/amp/article/20000321359"
+    },
+    {
+      "outlet": "MTN",
+      "date": "2026-07-09",
+      "title": "신동국 회장, 한미그룹 1대주주 자리 유지 어려워지나",
+      "url": "https://news.mtn.co.kr/news-detail/2026070915200832720"
+    }
+  ],
+  "sources_note": "출처: DART 공시 원문, OpenProxyMCP, 뉴스 링크.",
+  "brief": "신동국 측 장외매수 약 693억 원(138만여 주), 거래 후 지분 30.18%. 경영권 경쟁 구도에 주목.",
+  "importance": 4,
+  "importance_reason": "자기자본 약 9,592억 원 대비 거래금액이 약 7.2%로 5~10% 구간입니다.",
+  "importance_score": 72,
+  "report_version": 3
+}

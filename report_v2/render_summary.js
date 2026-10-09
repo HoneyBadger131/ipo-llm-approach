@@ -1,6 +1,7 @@
 // 통합 리포트 렌더러: 날짜별 *_v2.json 전체 -> 간결한 대시보드(HTML/PDF)
 // 사용법: node report_v2/render_summary.js <reports 디렉터리> <공시일 YYYY-MM-DD> [meta.json] [outBase]
 //  - 중요도(importance) 내림차순으로 정렬, TOP 카드(최대 10건, 회사당 1건)는 중요도 3 이상만(5건 미만이면 5건까지 채움), 나머지는 한 줄 표.
+//  - 모듈로도 쓴다: const { buildSummary, loadItems } = require('./render_summary')  (render_bundle.js 가 통합 PDF/HTML에 사용)
 //  - meta.json(선택): {"funnel":[["전체 공시",1096],...], "top_order":["접수번호",...]}  top_order는 동점 정렬/수동 순서.
 const fs = require("fs");
 const path = require("path");
@@ -13,41 +14,48 @@ const launchOpts = { args: ["--no-sandbox"], ...(fs.existsSync(CLOUD_CHROMIUM) ?
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const SENT = { "긍정적": ["pos", "▲"], "부정적": ["neg", "▼"], "혼재됨": ["mix", "◆"], "알수 없음": ["unk", "?"] };
 
-const dir = process.argv[2], date = process.argv[3];
-const metaPath = process.argv[4] && process.argv[4] !== "-" ? process.argv[4] : null;
-const outBase = process.argv[5] || path.join(path.dirname(path.resolve(dir)), `summary_${date}`);
-const meta = metaPath ? JSON.parse(fs.readFileSync(metaPath, "utf-8")) : {};
 
-let items = fs.readdirSync(dir).filter((f) => f.endsWith("_v2.json"))
-  .map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf-8")))
-  .filter((d) => d.disclosure_date === date);
-const order = meta.top_order || [];
-items.sort((a, b) => {
-  const ia = order.indexOf(a.rcept_no), ib = order.indexOf(b.rcept_no);
-  if (ia !== -1 || ib !== -1) return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
-  return (b.importance || 0) - (a.importance || 0) || (b.importance_score || 0) - (a.importance_score || 0) || String(a.corp_name).localeCompare(b.corp_name, "ko");
-});
-// TOP은 최대 10건·회사당 1건(같은 회사의 다른 공시는 아래 표로). 중요도 3 미만은 TOP에서 뺀다(단 최소 5건은 채운다).
-const TOP_MAX = 10, TOP_MIN = 5, TOP_IMP = 3;
-const top = [], seen = new Set();
-for (const d of items) {
-  if (top.length >= TOP_MAX || seen.has(d.stock_code)) continue;
-  if ((d.importance || 0) < TOP_IMP && top.length >= TOP_MIN) continue;
-  top.push(d); seen.add(d.stock_code);
+function loadItems(dir, date, meta) {
+  let items = fs.readdirSync(dir).filter((f) => f.endsWith("_v2.json"))
+    .map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf-8")))
+    .filter((d) => d.disclosure_date === date);
+  const order = (meta && meta.top_order) || [];
+  items.sort((a, b) => {
+    const ia = order.indexOf(a.rcept_no), ib = order.indexOf(b.rcept_no);
+    if (ia !== -1 || ib !== -1) return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+    return (b.importance || 0) - (a.importance || 0) || (b.importance_score || 0) - (a.importance_score || 0) || String(a.corp_name).localeCompare(b.corp_name, "ko");
+  });
+  // TOP은 최대 10건·회사당 1건(같은 회사의 다른 공시는 아래 표로). 중요도 3 미만은 TOP에서 뺀다(단 최소 5건은 채운다).
+  const TOP_MAX = 10, TOP_MIN = 5, TOP_IMP = 3;
+  const top = [], seen = new Set();
+  for (const d of items) {
+    if (top.length >= TOP_MAX || seen.has(d.stock_code)) continue;
+    if ((d.importance || 0) < TOP_IMP && top.length >= TOP_MIN) continue;
+    top.push(d); seen.add(d.stock_code);
+  }
+  const rest = items.filter((d) => !top.includes(d));
+  return { items, top, rest };
 }
-const rest = items.filter((d) => !top.includes(d));
 
+// opts: { link(d) -> href|null (카드·행 전체를 링크로), goLabel(d) -> "상세 p.7 ›" 같은 안내 문구, web: true면 화면용(반응형) }
+function buildSummary(date, meta, items, top, rest, opts = {}) {
+  const { link = () => null, goLabel = () => "", web = false } = opts;
 const cnt = (f) => items.filter(f).length;
 const chip = (d) => { const [c, i] = SENT[d.sentiment.label] || SENT["알수 없음"]; return `<span class="chip ${c}">${i} ${esc(d.sentiment.label)}</span>`; };
 const dots = (n) => `<span class="dots" title="중요도 ${n}/5">${"●".repeat(n)}${"○".repeat(Math.max(0, 5 - n))}</span>`;
 const shortTitle = (s) => { s = String(s).replace(/\s+/g, " "); return s.length > 26 ? s.slice(0, 25) + "…" : s; };
 
-const card = (d, i) => `<div class="card"><div class="rank">${i + 1}</div><div class="cb">
+const wrap = (d, inner) => { const h = link(d); return h ? `<a class="lk" href="${esc(h)}">${inner}</a>` : inner; };
+const go = (d) => { const g = goLabel(d); return g ? `<span class="go">${esc(g)}</span>` : ""; };
+const card = (d, i) => wrap(d, `<div class="card"><div class="rank">${i + 1}</div><div class="cb">
 <div class="l1"><b>${esc(d.corp_name)}</b> <span class="code">${esc(d.stock_code)}</span><span class="ttl">${esc(shortTitle(d.disclosure_title))}</span></div>
 <div class="l2"><span class="chip tag">${esc(d.tag)}</span>${chip(d)}${dots(d.importance || 0)}</div>
-<div class="brief">${esc(d.brief || d.impact_summary)}</div></div></div>`;
-const row = (d) => `<tr><td class="n"><b>${esc(d.corp_name)}</b><span class="code">${esc(d.stock_code)}</span></td><td class="t">${esc(shortTitle(d.disclosure_title))}</td><td class="c"><span class="chip tag">${esc(d.tag)}</span> ${chip(d)}</td><td class="b">${esc(d.brief || d.impact_summary)}</td></tr>`;
+<div class="brief">${esc(d.brief || d.impact_summary)}</div></div>${go(d)}</div>`);
+const rw = (d, s) => (link(d) ? `<a class="lk" href="${esc(link(d))}">${s}</a>` : s);
+const row = (d) => `<tr><td class="n">${rw(d, `<b>${esc(d.corp_name)}</b><span class="code">${esc(d.stock_code)}</span>`)}</td><td class="t">${rw(d, esc(shortTitle(d.disclosure_title)))}</td><td class="c">${rw(d, `<span class="chip tag">${esc(d.tag)}</span> ${chip(d)}`)}</td><td class="b">${rw(d, `${esc(d.brief || d.impact_summary)}${go(d)}`)}</td></tr>`;
 
+const notes = (meta.notify || []);
+const notifyBlock = notes.length ? `<div class="notify"><div class="nh">알림 <span>${notes.length}건 · 분석 없이 알려드리는 공시</span></div>${notes.map((n) => `<div class="ni"><b>${esc(n.corp_name)}</b><span class="code">${esc(n.stock_code || "")}</span><span class="nt">${esc(shortTitle(n.report_nm))}</span><span class="nr">${esc(n.note || "")}</span></div>`).join("")}</div>` : "";
 const funnel = (meta.funnel || []).map(([k, v]) => `<span class="f"><b>${esc(v)}</b>${esc(k)}</span>`).join('<span class="ar">›</span>');
 const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>공시 브리프 ${esc(date)}</title><style>
 :root{--bg:#f4f6f9;--card:#fff;--ink:#1c2430;--mute:#6a7686;--line:#e3e8ef;--brand:#26457a;
@@ -72,16 +80,31 @@ table{width:100%;border-collapse:collapse;background:var(--card);border:1px soli
 td{padding:3.5px 7px;border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border-bottom:0}
 td.n{width:21%}td.n b{display:block;font-size:11px}td.t{width:21%;color:var(--mute)}td.c{width:17%}td.c .chip{margin-bottom:2px}td.b{width:41%}
 footer{margin-top:auto;color:var(--mute);font-size:8.5px}
+.notify{background:#fff8e6;border:1px solid #f0d58a;border-radius:10px;padding:6px 12px}.notify .nh{font-weight:800;color:#8a5a00;font-size:11.5px}.notify .nh span{font-weight:500;font-size:10px;margin-left:6px}
+.notify .ni{display:flex;gap:8px;align-items:baseline;font-size:11px;padding:2px 0}.notify .nt{color:var(--mute)}.notify .nr{margin-left:auto}
+a.lk{color:inherit;text-decoration:none;display:block}.go{flex:none;align-self:center;color:var(--brand);font-weight:700;font-size:10px;white-space:nowrap;margin-left:4px}td.b .go{display:block;text-align:right}
+${web ? `.page{width:auto;max-width:920px;margin:0 auto;min-height:0}a.lk:hover .card,a.lk:hover{background:#eef3fb}.card{cursor:pointer}@media(max-width:640px){.l1{flex-wrap:wrap}.ttl{margin-left:0}td.t{display:none}}` : ""}
 </style></head><body><div class="page">
 <header><h1>공시 브리프 · ${esc(date)}</h1><div class="sub">핵심 공시 ${items.length}건 · 중요도 상위 ${top.length}건을 먼저 보여줍니다</div>
 <div class="stats"><span class="s">사업 변동 ${cnt((d) => d.tag === "사업 변동")}</span><span class="s">기타 사항 ${cnt((d) => d.tag !== "사업 변동")}</span>
 <span class="s">▲ 긍정 ${cnt((d) => d.sentiment.label === "긍정적")}</span><span class="s">▼ 부정 ${cnt((d) => d.sentiment.label === "부정적")}</span><span class="s">◆ 혼재 ${cnt((d) => d.sentiment.label === "혼재됨")}</span><span class="s">? 미확인 ${cnt((d) => d.sentiment.label === "알수 없음")}</span></div>
 ${funnel ? `<div class="funnel">${funnel}</div>` : ""}</header>
-<h2>TOP ${top.length}</h2>${top.map(card).join("")}
+${notifyBlock}<h2>TOP ${top.length}</h2>${top.map(card).join("")}
 ${rest.length ? `<h2>그 외 공시</h2><table><tbody>${rest.map(row).join("")}</tbody></table>` : ""}
-<footer>세부 내용은 공시별 대시보드(PDF)·MD 참조. 정보 제공용이며 투자 권유가 아닙니다.</footer></div></body></html>`;
+<footer>${esc(opts.footer || "세부 내용은 공시별 대시보드(PDF)·MD 참조. 정보 제공용이며 투자 권유가 아닙니다.")}</footer></div></body></html>`;
 
-(async () => {
+  return html;
+}
+
+module.exports = { buildSummary, loadItems };
+
+if (require.main === module) (async () => {
+  const dir = process.argv[2], date = process.argv[3];
+  const metaPath = process.argv[4] && process.argv[4] !== "-" ? process.argv[4] : null;
+  const outBase = process.argv[5] || path.join(path.dirname(path.resolve(dir)), `summary_${date}`);
+  const meta = metaPath ? JSON.parse(fs.readFileSync(metaPath, "utf-8")) : {};
+  const { items, top, rest } = loadItems(dir, date, meta);
+  const html = buildSummary(date, meta, items, top, rest);
   fs.writeFileSync(outBase + ".html", html, "utf-8");
   const browser = await chromium.launch(launchOpts);
   const page = await browser.newPage();

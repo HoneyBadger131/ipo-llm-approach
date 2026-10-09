@@ -1,0 +1,79 @@
+{
+ "corp_name": "자화전자",
+ "stock_code": "033240",
+ "disclosure_title": "주요사항보고서(자기주식취득신탁계약체결결정)",
+ "rcept_no": "20261002000288",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "자사주 매입 후 전량 소각 계획"
+ },
+ "headline": "자사주 50억 신탁계약 체결, 취득분 소각 예정",
+ "impact_summary": "주가안정용 50억 규모, 취득 후 전량 소각 계획입니다.",
+ "event_type": "자기주식취득 신탁계약",
+ "keywords": [
+  "자기주식",
+  "신탁계약",
+  "한국투자증권",
+  "주주가치",
+  "소각",
+  "주가안정"
+ ],
+ "themes": [
+  "주주환원",
+  "자사주 소각"
+ ],
+ "kpis": [
+  {
+   "label": "계약금액",
+   "value": "50억",
+   "sub": "한국투자증권"
+  },
+  {
+   "label": "계약기간",
+   "value": "6개월",
+   "sub": "2026.10.2~2027.4.2"
+  },
+  {
+   "label": "취득 예정",
+   "value": "18.2만 주",
+   "sub": "주당 27,500원 가정"
+  },
+  {
+   "label": "현 자사주",
+   "value": "35.9만 주",
+   "sub": "발행주식의 1.66%"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "주가안정과 주주가치 제고 목적으로 50억 규모 자사주 신탁 매입"
+  },
+  {
+   "type": "pos",
+   "text": "취득분은 전량 소각 예정. 규모와 시기는 추후 이사회 결의 후 공시"
+  },
+  {
+   "type": "unk",
+   "text": "수량은 전일 종가 27,500원 기준 추정이라 주가에 따라 달라짐"
+  },
+  {
+   "type": "unk",
+   "text": "규모는 배당가능 한도 약 2,732억의 2% 이내로 크지 않음"
+  }
+ ],
+ "news": [],
+ "sources_note": "출처: DART 공시 원문.",
+ "brief": "자사주 50억 신탁계약 체결(약 18만 주). 취득 후 전량 소각 예정이나 규모는 작은 편입니다.",
+ "importance": 2,
+ "importance_reason": "취득 예정 주식이 발행주식의 1% 미만으로 소규모 주주환원입니다.",
+ "importance_score": 45,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3,
+ "disclosure_date": "2026-10-02",
+ "related_ids": [],
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002000288"
+}

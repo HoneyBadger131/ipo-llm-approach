@@ -1,0 +1,4538 @@
+[
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800650",
+  "stock_code": "294870",
+  "corp_name": "IPARK현대산업개발",
+  "report_nm": "불성실공시법인지정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800647",
+  "stock_code": "012630",
+  "corp_name": "HDC",
+  "report_nm": "불성실공시법인지정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800640",
+  "stock_code": "294870",
+  "corp_name": "IPARK현대산업개발",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000322",
+  "stock_code": "006120",
+  "corp_name": "SK디스커버리",
+  "report_nm": "신탁계약해지결과보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000315",
+  "stock_code": "006120",
+  "corp_name": "SK디스커버리",
+  "report_nm": "주요사항보고서(자기주식취득신탁계약해지결정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800593",
+  "stock_code": "006120",
+  "corp_name": "SK디스커버리",
+  "report_nm": "임시주주총회결과",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000308",
+  "stock_code": "006120",
+  "corp_name": "SK디스커버리",
+  "report_nm": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000307",
+  "stock_code": "120110",
+  "corp_name": "코오롱인더",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800590",
+  "stock_code": "005300",
+  "corp_name": "롯데칠성음료",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800562",
+  "stock_code": "078930",
+  "corp_name": "GS",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000290",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000288",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800498",
+  "stock_code": "298050",
+  "corp_name": "HS효성첨단소재",
+  "report_nm": "타인에대한채무보증결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000284",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800491",
+  "stock_code": "298050",
+  "corp_name": "HS효성첨단소재",
+  "report_nm": "타인에대한채무보증결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000274",
+  "stock_code": "003670",
+  "corp_name": "포스코퓨처엠",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800490",
+  "stock_code": "0126Z0",
+  "corp_name": "삼성에피스홀딩스",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800485",
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800463",
+  "stock_code": "007660",
+  "corp_name": "이수페타시스",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800462",
+  "stock_code": "028050",
+  "corp_name": "삼성E&A",
+  "report_nm": "[첨부정정]지속가능경영보고서등관련사항(자율공시)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000251",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000249",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000243",
+  "stock_code": "003160",
+  "corp_name": "디아이",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800449",
+  "stock_code": "022100",
+  "corp_name": "포스코DX",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000238",
+  "stock_code": "139130",
+  "corp_name": "iM금융지주",
+  "report_nm": "[발행조건확정]증권신고서(채무증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000237",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000235",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000228",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000226",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800411",
+  "stock_code": "081660",
+  "corp_name": "미스토홀딩스",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800409",
+  "stock_code": "071050",
+  "corp_name": "한국금융지주",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800369",
+  "stock_code": "395400",
+  "corp_name": "SK리츠",
+  "report_nm": "부동산투자회사자금차입",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000209",
+  "stock_code": "029780",
+  "corp_name": "삼성카드",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000200",
+  "stock_code": "022100",
+  "corp_name": "포스코DX",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800372",
+  "stock_code": "207940",
+  "corp_name": "삼성바이오로직스",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800348",
+  "stock_code": "192820",
+  "corp_name": "코스맥스",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000196",
+  "stock_code": "047050",
+  "corp_name": "포스코인터내셔널",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000194",
+  "stock_code": "022100",
+  "corp_name": "포스코DX",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000191",
+  "stock_code": "004710",
+  "corp_name": "한솔테크닉스",
+  "report_nm": "주식등의대량보유상황보고서(약식)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000189",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000188",
+  "stock_code": "000640",
+  "corp_name": "동아쏘시오홀딩스",
+  "report_nm": "의결권대리행사권유참고서류",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000187",
+  "stock_code": "000640",
+  "corp_name": "동아쏘시오홀딩스",
+  "report_nm": "주주총회소집공고",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000186",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000185",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000181",
+  "stock_code": "139130",
+  "corp_name": "iM금융지주",
+  "report_nm": "[기재정정]주요사항보고서(상각형조건부자본증권발행결정)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000184",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000183",
+  "stock_code": "047050",
+  "corp_name": "포스코인터내셔널",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000182",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800340",
+  "stock_code": "066970",
+  "corp_name": "엘앤에프",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800338",
+  "stock_code": "017960",
+  "corp_name": "한국카본",
+  "report_nm": "풍문또는보도에대한해명(미확정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000180",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800332",
+  "stock_code": "003240",
+  "corp_name": "태광산업",
+  "report_nm": "풍문또는보도에대한해명(미확정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000179",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000177",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000176",
+  "stock_code": "033780",
+  "corp_name": "케이티앤지",
+  "report_nm": "주식등의대량보유상황보고서(약식)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000165",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000163",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000160",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000157",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000148",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000143",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000138",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000136",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000135",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주식워런트증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000121",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800230",
+  "stock_code": "009150",
+  "corp_name": "삼성전기",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000110",
+  "stock_code": "032830",
+  "corp_name": "삼성생명",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800211",
+  "stock_code": "089860",
+  "corp_name": "롯데렌탈",
+  "report_nm": "주주명부폐쇄기간또는기준일설정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800201",
+  "stock_code": "032640",
+  "corp_name": "LG유플러스",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000104",
+  "stock_code": "052690",
+  "corp_name": "한전기술",
+  "report_nm": "주주총회소집공고",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800195",
+  "stock_code": "006040",
+  "corp_name": "동원산업",
+  "report_nm": "[기재정정]현금ㆍ현물배당결정",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800183",
+  "stock_code": "089860",
+  "corp_name": "롯데렌탈",
+  "report_nm": "주주총회소집결의",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800182",
+  "stock_code": "006360",
+  "corp_name": "GS건설",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000097",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000096",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000090",
+  "stock_code": "034220",
+  "corp_name": "LG디스플레이",
+  "report_nm": "주식등의대량보유상황보고서(약식)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800167",
+  "stock_code": "000210",
+  "corp_name": "DL",
+  "report_nm": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800162",
+  "stock_code": "375500",
+  "corp_name": "DL이앤씨",
+  "report_nm": "[기재정정]단일판매ㆍ공급계약체결",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800165",
+  "stock_code": "066570",
+  "corp_name": "LG전자",
+  "report_nm": "풍문또는보도에대한해명(미확정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800158",
+  "stock_code": "268280",
+  "corp_name": "미원에스씨",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000078",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000076",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800143",
+  "stock_code": "112610",
+  "corp_name": "씨에스윈드",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800138",
+  "stock_code": "112610",
+  "corp_name": "씨에스윈드",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000074",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907000069",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800121",
+  "stock_code": "010130",
+  "corp_name": "고려아연",
+  "report_nm": "소송등의판결ㆍ결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800108",
+  "stock_code": "161890",
+  "corp_name": "한국콜마",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800091",
+  "stock_code": "004020",
+  "corp_name": "현대제철",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800087",
+  "stock_code": "012450",
+  "corp_name": "한화에어로스페이스",
+  "report_nm": "풍문또는보도에대한해명(미확정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800002",
+  "stock_code": "068270",
+  "corp_name": "셀트리온",
+  "report_nm": "투자판단관련주요경영사항 (CTP44(다잘렉스 바이오시밀러) 한국 임상 3상 시험계획 변경신청 승인)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260907800004",
+  "stock_code": "068270",
+  "corp_name": "셀트리온",
+  "report_nm": "투자판단관련주요경영사항 (CTP51(키트루다 바이오시밀러) 미국 임상 3상 시험계획 변경신청 승인)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260828100004",
+  "stock_code": "139130",
+  "corp_name": "iM금융지주",
+  "report_nm": "효력발생안내( 2026.8.28. 제출 일괄신고서 )",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260907",
+  "rcept_no": "20260904000546",
+  "stock_code": "100090",
+  "corp_name": "SK오션플랜트",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800624",
+  "stock_code": "005930",
+  "corp_name": "삼성전자",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800619",
+  "stock_code": "066970",
+  "corp_name": "엘앤에프",
+  "report_nm": "풍문또는보도에대한해명(미확정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800600",
+  "stock_code": "001040",
+  "corp_name": "CJ",
+  "report_nm": "타인에대한채무보증결정(자회사의 주요경영사항)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000407",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800596",
+  "stock_code": "128940",
+  "corp_name": "한미약품",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800579",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "임시주주총회결과",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800599",
+  "stock_code": "079160",
+  "corp_name": "CJ CGV",
+  "report_nm": "타인에대한채무보증결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000397",
+  "stock_code": "395400",
+  "corp_name": "SK리츠",
+  "report_nm": "사업보고서 (2026.06)",
+  "rule": "separate",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000395",
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800578",
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000386",
+  "stock_code": "267260",
+  "corp_name": "HD현대일렉트릭",
+  "report_nm": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800524",
+  "stock_code": "395400",
+  "corp_name": "SK리츠",
+  "report_nm": "감사보고서제출",
+  "rule": "separate",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800531",
+  "stock_code": "267260",
+  "corp_name": "HD현대일렉트릭",
+  "report_nm": "임시주주총회결과",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800550",
+  "stock_code": "128940",
+  "corp_name": "한미약품",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000370",
+  "stock_code": "128940",
+  "corp_name": "한미약품",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000356",
+  "stock_code": "055550",
+  "corp_name": "신한지주",
+  "report_nm": "[발행조건확정]증권신고서(채무증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000346",
+  "stock_code": "055550",
+  "corp_name": "신한지주",
+  "report_nm": "[기재정정]증권신고서(채무증권)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800453",
+  "stock_code": "267250",
+  "corp_name": "HD현대",
+  "report_nm": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000325",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000321",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800447",
+  "stock_code": "028050",
+  "corp_name": "삼성E&A",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000275",
+  "stock_code": "055550",
+  "corp_name": "신한지주",
+  "report_nm": "[기재정정]주요사항보고서(상각형조건부자본증권발행결정)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800378",
+  "stock_code": "009830",
+  "corp_name": "한화솔루션",
+  "report_nm": "타법인주식및출자증권처분결정(자율공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800414",
+  "stock_code": "009540",
+  "corp_name": "HD한국조선해양",
+  "report_nm": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800375",
+  "stock_code": "009830",
+  "corp_name": "한화솔루션",
+  "report_nm": "타인에대한채무보증결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800452",
+  "stock_code": "047040",
+  "corp_name": "대우건설",
+  "report_nm": "타인에대한채무보증결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800440",
+  "stock_code": "000720",
+  "corp_name": "현대건설",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000302",
+  "stock_code": "329180",
+  "corp_name": "HD현대중공업",
+  "report_nm": "주식등의대량보유상황보고서(약식)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800424",
+  "stock_code": "021240",
+  "corp_name": "코웨이",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800423",
+  "stock_code": "000720",
+  "corp_name": "현대건설",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800422",
+  "stock_code": "034020",
+  "corp_name": "두산에너빌리티",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800421",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000294",
+  "stock_code": "001720",
+  "corp_name": "신영증권",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000288",
+  "stock_code": "001720",
+  "corp_name": "신영증권",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000257",
+  "stock_code": "021240",
+  "corp_name": "코웨이",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000236",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800310",
+  "stock_code": "181710",
+  "corp_name": "NHN",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000225",
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000224",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000220",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000216",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000211",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000209",
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000207",
+  "stock_code": "002380",
+  "corp_name": "케이씨씨",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000196",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000189",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800264",
+  "stock_code": "000100",
+  "corp_name": "유한양행",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800252",
+  "stock_code": "086280",
+  "corp_name": "현대글로비스",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000174",
+  "stock_code": "020560",
+  "corp_name": "아시아나항공",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000167",
+  "stock_code": "008770",
+  "corp_name": "호텔신라",
+  "report_nm": "주식등의대량보유상황보고서(약식)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000155",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주식워런트증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000153",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000149",
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800208",
+  "stock_code": "011780",
+  "corp_name": "금호석유화학",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000137",
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908000131",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주식워런트증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800194",
+  "stock_code": "001440",
+  "corp_name": "대한전선",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800151",
+  "stock_code": "268280",
+  "corp_name": "미원에스씨",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800147",
+  "stock_code": "047050",
+  "corp_name": "포스코인터내셔널",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800142",
+  "stock_code": "336260",
+  "corp_name": "두산퓨얼셀",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800128",
+  "stock_code": "011200",
+  "corp_name": "HMM",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800125",
+  "stock_code": "161890",
+  "corp_name": "한국콜마",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260908",
+  "rcept_no": "20260908800099",
+  "stock_code": "006400",
+  "corp_name": "삼성SDI",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000291",
+  "stock_code": "001570",
+  "corp_name": "금양",
+  "report_nm": "[첨부추가]주요사항보고서(회사분할결정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000535",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "[발행조건확정]증권신고서(채무증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800686",
+  "stock_code": "139130",
+  "corp_name": "iM금융지주",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000516",
+  "stock_code": "005930",
+  "corp_name": "삼성전자",
+  "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800662",
+  "stock_code": "028260",
+  "corp_name": "삼성물산",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800664",
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000490",
+  "stock_code": "021240",
+  "corp_name": "코웨이",
+  "report_nm": "[발행조건확정]증권신고서(채무증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000470",
+  "stock_code": "001570",
+  "corp_name": "금양",
+  "report_nm": "[기재정정]주요사항보고서(회사분할결정)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800631",
+  "stock_code": "000880",
+  "corp_name": "한화",
+  "report_nm": "[기재정정]중대재해발생(종속회사의주요경영사항)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000473",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000471",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800610",
+  "stock_code": "009830",
+  "corp_name": "한화솔루션",
+  "report_nm": "[기재정정]중대재해발생",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000466",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "[기재정정]증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000460",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000459",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000458",
+  "stock_code": "021240",
+  "corp_name": "코웨이",
+  "report_nm": "[기재정정]증권신고서(채무증권)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000450",
+  "stock_code": "010130",
+  "corp_name": "고려아연",
+  "report_nm": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000444",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "[발행조건확정]증권신고서(채무증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800577",
+  "stock_code": "090430",
+  "corp_name": "아모레퍼시픽",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000440",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "[기재정정]증권신고서(채무증권)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000439",
+  "stock_code": "029780",
+  "corp_name": "삼성카드",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000438",
+  "stock_code": "090430",
+  "corp_name": "아모레퍼시픽",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800563",
+  "stock_code": "010130",
+  "corp_name": "고려아연",
+  "report_nm": "임시주주총회결과",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800559",
+  "stock_code": "000660",
+  "corp_name": "SK하이닉스",
+  "report_nm": "조회공시요구(풍문또는보도)에대한답변(미확정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000433",
+  "stock_code": "029780",
+  "corp_name": "삼성카드",
+  "report_nm": "일괄신고추가서류",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000423",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000421",
+  "stock_code": "090430",
+  "corp_name": "아모레퍼시픽",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800537",
+  "stock_code": "192820",
+  "corp_name": "코스맥스",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800536",
+  "stock_code": "361610",
+  "corp_name": "SK아이이테크놀로지",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800530",
+  "stock_code": "361610",
+  "corp_name": "SK아이이테크놀로지",
+  "report_nm": "[기재정정]기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000417",
+  "stock_code": "090430",
+  "corp_name": "아모레퍼시픽",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000416",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000413",
+  "stock_code": "014680",
+  "corp_name": "한솔케미칼",
+  "report_nm": "주식등의대량보유상황보고서(약식)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000411",
+  "stock_code": "090430",
+  "corp_name": "아모레퍼시픽",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000410",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800523",
+  "stock_code": "096770",
+  "corp_name": "SK이노베이션",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800519",
+  "stock_code": "096770",
+  "corp_name": "SK이노베이션",
+  "report_nm": "[기재정정]기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000407",
+  "stock_code": "090430",
+  "corp_name": "아모레퍼시픽",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800482",
+  "stock_code": "001570",
+  "corp_name": "금양",
+  "report_nm": "주주명부폐쇄기간또는기준일설정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000401",
+  "stock_code": "214320",
+  "corp_name": "이노션",
+  "report_nm": "주식등의대량보유상황보고서(약식)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800447",
+  "stock_code": "001570",
+  "corp_name": "금양",
+  "report_nm": "주주총회소집결의",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000400",
+  "stock_code": "090430",
+  "corp_name": "아모레퍼시픽",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000397",
+  "stock_code": "016360",
+  "corp_name": "삼성증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000395",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000394",
+  "stock_code": "085620",
+  "corp_name": "미래에셋생명",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000391",
+  "stock_code": "030200",
+  "corp_name": "케이티",
+  "report_nm": "신탁계약해지결과보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800462",
+  "stock_code": "035720",
+  "corp_name": "카카오",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000385",
+  "stock_code": "016360",
+  "corp_name": "삼성증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000380",
+  "stock_code": "016360",
+  "corp_name": "삼성증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800450",
+  "stock_code": "016380",
+  "corp_name": "KG스틸",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800444",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000377",
+  "stock_code": "090430",
+  "corp_name": "아모레퍼시픽",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000375",
+  "stock_code": "483650",
+  "corp_name": "달바글로벌",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800404",
+  "stock_code": "004170",
+  "corp_name": "신세계",
+  "report_nm": "영업(잠정)실적(공정공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000373",
+  "stock_code": "069620",
+  "corp_name": "대웅제약",
+  "report_nm": "독립이사의선임ㆍ해임또는중도퇴임에관한신고",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000372",
+  "stock_code": "090430",
+  "corp_name": "아모레퍼시픽",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800396",
+  "stock_code": "069620",
+  "corp_name": "대웅제약",
+  "report_nm": "임시주주총회결과",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000370",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000349",
+  "stock_code": "030200",
+  "corp_name": "케이티",
+  "report_nm": "주요사항보고서(자기주식취득신탁계약해지결정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000365",
+  "stock_code": "483650",
+  "corp_name": "달바글로벌",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800410",
+  "stock_code": "002790",
+  "corp_name": "아모레퍼시픽홀딩스",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000361",
+  "stock_code": "002790",
+  "corp_name": "아모레퍼시픽홀딩스",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000360",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000359",
+  "stock_code": "259960",
+  "corp_name": "크래프톤",
+  "report_nm": "자기주식취득결과보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000355",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000353",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000351",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800381",
+  "stock_code": "012330",
+  "corp_name": "현대모비스",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000342",
+  "stock_code": "293940",
+  "corp_name": "신한알파리츠",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000340",
+  "stock_code": "330590",
+  "corp_name": "롯데리츠",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000339",
+  "stock_code": "365550",
+  "corp_name": "ESR켄달스퀘어리츠",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000338",
+  "stock_code": "451800",
+  "corp_name": "한화리츠",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000332",
+  "stock_code": "395400",
+  "corp_name": "SK리츠",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000321",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000312",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000303",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000287",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000282",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800306",
+  "stock_code": "003550",
+  "corp_name": "LG",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000281",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000280",
+  "stock_code": "138930",
+  "corp_name": "BNK금융지주",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000279",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000274",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000269",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000258",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000257",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000255",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000253",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000247",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000243",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800253",
+  "stock_code": "047040",
+  "corp_name": "대우건설",
+  "report_nm": "[기재정정]단일판매ㆍ공급계약체결",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000237",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000232",
+  "stock_code": "000240",
+  "corp_name": "한국앤컴퍼니",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000231",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000229",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000218",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-상장지수증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000215",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000214",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000209",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000204",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000202",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000201",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000199",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000197",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000196",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800230",
+  "stock_code": "161890",
+  "corp_name": "한국콜마",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800221",
+  "stock_code": "000080",
+  "corp_name": "하이트진로",
+  "report_nm": "생산중단(자율공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800206",
+  "stock_code": "036460",
+  "corp_name": "한국가스공사",
+  "report_nm": "영업(잠정)실적(공정공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800205",
+  "stock_code": "489790",
+  "corp_name": "한화비전",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800203",
+  "stock_code": "000720",
+  "corp_name": "현대건설",
+  "report_nm": "[기재정정]단일판매ㆍ공급계약체결",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800210",
+  "stock_code": "055550",
+  "corp_name": "신한지주",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800178",
+  "stock_code": "006400",
+  "corp_name": "삼성SDI",
+  "report_nm": "금전대여결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800165",
+  "stock_code": "005090",
+  "corp_name": "SGC에너지",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000122",
+  "stock_code": "000100",
+  "corp_name": "유한양행",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000113",
+  "stock_code": "005930",
+  "corp_name": "삼성전자",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800135",
+  "stock_code": "088350",
+  "corp_name": "한화생명",
+  "report_nm": "기타경영사항(자율공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000075",
+  "stock_code": "450080",
+  "corp_name": "에코프로머티",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800116",
+  "stock_code": "278470",
+  "corp_name": "에이피알",
+  "report_nm": "주주명부폐쇄기간또는기준일설정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800113",
+  "stock_code": "278470",
+  "corp_name": "에이피알",
+  "report_nm": "회사합병결정(종속회사의주요경영사항)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000058",
+  "stock_code": "042700",
+  "corp_name": "한미반도체",
+  "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800115",
+  "stock_code": "012630",
+  "corp_name": "HDC",
+  "report_nm": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800105",
+  "stock_code": "294870",
+  "corp_name": "IPARK현대산업개발",
+  "report_nm": "[기재정정]단일판매ㆍ공급계약체결",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909000045",
+  "stock_code": "278470",
+  "corp_name": "에이피알",
+  "report_nm": "주요사항보고서(회사합병결정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800108",
+  "stock_code": "268280",
+  "corp_name": "미원에스씨",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800091",
+  "stock_code": "047040",
+  "corp_name": "대우건설",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260909",
+  "rcept_no": "20260909800003",
+  "stock_code": "042660",
+  "corp_name": "한화오션",
+  "report_nm": "투자판단관련주요경영사항",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800713",
+  "stock_code": "000270",
+  "corp_name": "기아",
+  "report_nm": "중대재해발생",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800702",
+  "stock_code": "326030",
+  "corp_name": "에스케이바이오팜",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800675",
+  "stock_code": "326030",
+  "corp_name": "에스케이바이오팜",
+  "report_nm": "투자판단관련주요경영사항 (뇌전증 신약 후보 물질 Opakalim의 미국 FDA 임상 2/3상 Partial Clinical Hold 통보 수령)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000571",
+  "stock_code": "047040",
+  "corp_name": "대우건설",
+  "report_nm": "의결권대리행사권유참고서류",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000563",
+  "stock_code": "047040",
+  "corp_name": "대우건설",
+  "report_nm": "주주총회소집공고",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000550",
+  "stock_code": "395400",
+  "corp_name": "SK리츠",
+  "report_nm": "증권신고서(채무증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800627",
+  "stock_code": "267250",
+  "corp_name": "HD현대",
+  "report_nm": "타법인주식및출자증권취득결정(자회사의 주요경영사항)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000531",
+  "stock_code": "103140",
+  "corp_name": "풍산",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000528",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000525",
+  "stock_code": "001720",
+  "corp_name": "신영증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800596",
+  "stock_code": "267250",
+  "corp_name": "HD현대",
+  "report_nm": "타인에대한채무보증결정(자회사의 주요경영사항)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000518",
+  "stock_code": "001720",
+  "corp_name": "신영증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800592",
+  "stock_code": "267250",
+  "corp_name": "HD현대",
+  "report_nm": "타인에대한채무보증결정(자회사의 주요경영사항)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800635",
+  "stock_code": "282330",
+  "corp_name": "BGF리테일",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800632",
+  "stock_code": "103140",
+  "corp_name": "풍산",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000507",
+  "stock_code": "282330",
+  "corp_name": "BGF리테일",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000506",
+  "stock_code": "001440",
+  "corp_name": "대한전선",
+  "report_nm": "증권신고서(채무증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800604",
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800555",
+  "stock_code": "047040",
+  "corp_name": "대우건설",
+  "report_nm": "주주총회소집결의",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800563",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800538",
+  "stock_code": "004800",
+  "corp_name": "효성",
+  "report_nm": "회계처리기준위반에따른검찰고발등조치결과",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800549",
+  "stock_code": "042660",
+  "corp_name": "한화오션",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800520",
+  "stock_code": "361610",
+  "corp_name": "SK아이이테크놀로지",
+  "report_nm": "[기재정정]타법인주식및출자증권처분결정",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000442",
+  "stock_code": "003490",
+  "corp_name": "대한항공",
+  "report_nm": "[발행조건확정]증권신고서(채무증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800468",
+  "stock_code": "047040",
+  "corp_name": "대우건설",
+  "report_nm": "주식소각결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000432",
+  "stock_code": "086790",
+  "corp_name": "하나금융지주",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000431",
+  "stock_code": "009240",
+  "corp_name": "한샘",
+  "report_nm": "신탁계약에의한취득상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800450",
+  "stock_code": "071320",
+  "corp_name": "지역난방공사",
+  "report_nm": "주주총회소집결의",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000425",
+  "stock_code": "086790",
+  "corp_name": "하나금융지주",
+  "report_nm": "일괄신고추가서류",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000415",
+  "stock_code": "009240",
+  "corp_name": "한샘",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800476",
+  "stock_code": "009240",
+  "corp_name": "한샘",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000414",
+  "stock_code": "003490",
+  "corp_name": "대한항공",
+  "report_nm": "[기재정정]증권신고서(채무증권)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000403",
+  "stock_code": "462870",
+  "corp_name": "시프트업",
+  "report_nm": "신탁계약해지결과보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800458",
+  "stock_code": "088350",
+  "corp_name": "한화생명",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000386",
+  "stock_code": "462870",
+  "corp_name": "시프트업",
+  "report_nm": "주요사항보고서(자기주식취득신탁계약해지결정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000396",
+  "stock_code": "016360",
+  "corp_name": "삼성증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000393",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800393",
+  "stock_code": "207940",
+  "corp_name": "삼성바이오로직스",
+  "report_nm": "[기재정정]단일판매ㆍ공급계약체결",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800388",
+  "stock_code": "207940",
+  "corp_name": "삼성바이오로직스",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000367",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800416",
+  "stock_code": "011790",
+  "corp_name": "SKC",
+  "report_nm": "타법인주식및출자증권취득결정(종속회사의주요경영사항)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000351",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000344",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800360",
+  "stock_code": "005880",
+  "corp_name": "대한해운",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800366",
+  "stock_code": "012450",
+  "corp_name": "한화에어로스페이스",
+  "report_nm": "풍문또는보도에대한해명(미확정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000329",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000327",
+  "stock_code": "029780",
+  "corp_name": "삼성카드",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000324",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000321",
+  "stock_code": "016360",
+  "corp_name": "삼성증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800374",
+  "stock_code": "012450",
+  "corp_name": "한화에어로스페이스",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000316",
+  "stock_code": "001720",
+  "corp_name": "신영증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000313",
+  "stock_code": "001720",
+  "corp_name": "신영증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800347",
+  "stock_code": "009830",
+  "corp_name": "한화솔루션",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000308",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800354",
+  "stock_code": "010140",
+  "corp_name": "삼성중공업",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000304",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000300",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000298",
+  "stock_code": "096770",
+  "corp_name": "SK이노베이션",
+  "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800341",
+  "stock_code": "000370",
+  "corp_name": "한화손해보험",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800311",
+  "stock_code": "023590",
+  "corp_name": "다우기술",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000287",
+  "stock_code": "021240",
+  "corp_name": "코웨이",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000286",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000285",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "일괄신고추가서류(기타파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800303",
+  "stock_code": "272210",
+  "corp_name": "한화시스템",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800279",
+  "stock_code": "000880",
+  "corp_name": "한화",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000269",
+  "stock_code": "016360",
+  "corp_name": "삼성증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-상장지수증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000267",
+  "stock_code": "047810",
+  "corp_name": "한국항공우주",
+  "report_nm": "주식등의대량보유상황보고서(약식)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000262",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000249",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000239",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000236",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000231",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000224",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000221",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000217",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000208",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "일괄신고추가서류(기타파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000201",
+  "stock_code": "016360",
+  "corp_name": "삼성증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000193",
+  "stock_code": "016360",
+  "corp_name": "삼성증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000191",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000167",
+  "stock_code": "001440",
+  "corp_name": "대한전선",
+  "report_nm": "동일인등출자계열회사와의상품ㆍ용역거래",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000164",
+  "stock_code": "016360",
+  "corp_name": "삼성증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000159",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000157",
+  "stock_code": "002840",
+  "corp_name": "미원상사",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000148",
+  "stock_code": "016360",
+  "corp_name": "삼성증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000141",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800164",
+  "stock_code": "009540",
+  "corp_name": "HD한국조선해양",
+  "report_nm": "신규시설투자등(자회사의 주요경영사항)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800163",
+  "stock_code": "329180",
+  "corp_name": "HD현대중공업",
+  "report_nm": "신규시설투자등(자율공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800161",
+  "stock_code": "329180",
+  "corp_name": "HD현대중공업",
+  "report_nm": "신규시설투자등",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000134",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000132",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800150",
+  "stock_code": "139480",
+  "corp_name": "이마트",
+  "report_nm": "영업(잠정)실적(공정공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800149",
+  "stock_code": "006360",
+  "corp_name": "GS건설",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800130",
+  "stock_code": "271560",
+  "corp_name": "오리온",
+  "report_nm": "연결재무제표기준영업(잠정)실적(공정공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000121",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "일괄신고추가서류(기타파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800120",
+  "stock_code": "010950",
+  "corp_name": "S-Oil",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000117",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-상장지수증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800109",
+  "stock_code": "006360",
+  "corp_name": "GS건설",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000101",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000100",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000087",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000078",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000076",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000074",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800086",
+  "stock_code": "280360",
+  "corp_name": "롯데웰푸드",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800063",
+  "stock_code": "293940",
+  "corp_name": "신한알파리츠",
+  "report_nm": "기타경영사항(자율공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000042",
+  "stock_code": "000810",
+  "corp_name": "삼성화재해상보험",
+  "report_nm": "주식등의대량보유상황보고서(약식)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910800060",
+  "stock_code": "161890",
+  "corp_name": "한국콜마",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000029",
+  "stock_code": "021240",
+  "corp_name": "코웨이",
+  "report_nm": "투자설명서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260910",
+  "rcept_no": "20260910000013",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "투자설명서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800773",
+  "stock_code": "006260",
+  "corp_name": "LS",
+  "report_nm": "[기재정정]교환사채권발행결정",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800691",
+  "stock_code": "003240",
+  "corp_name": "태광산업",
+  "report_nm": "풍문또는보도에대한해명",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800638",
+  "stock_code": "064400",
+  "corp_name": "LG씨엔에스",
+  "report_nm": "유형자산취득결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800699",
+  "stock_code": "259960",
+  "corp_name": "크래프톤",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800692",
+  "stock_code": "000400",
+  "corp_name": "롯데손해보험",
+  "report_nm": "조회공시요구(풍문또는보도)에대한답변(미확정)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000576",
+  "stock_code": "259960",
+  "corp_name": "크래프톤",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800684",
+  "stock_code": "383800",
+  "corp_name": "LX홀딩스",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000568",
+  "stock_code": "259960",
+  "corp_name": "크래프톤",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800557",
+  "stock_code": "006260",
+  "corp_name": "LS",
+  "report_nm": "교환사채권발행결정(자회사의 주요경영사항)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000562",
+  "stock_code": "383800",
+  "corp_name": "LX홀딩스",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800620",
+  "stock_code": "272210",
+  "corp_name": "한화시스템",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000549",
+  "stock_code": "383800",
+  "corp_name": "LX홀딩스",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800653",
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000544",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "[기재정정]증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000541",
+  "stock_code": "383800",
+  "corp_name": "LX홀딩스",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800635",
+  "stock_code": "023530",
+  "corp_name": "롯데쇼핑",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000537",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000536",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000532",
+  "stock_code": "001720",
+  "corp_name": "신영증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000531",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000529",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800524",
+  "stock_code": "298050",
+  "corp_name": "HS효성첨단소재",
+  "report_nm": "타인에대한채무보증결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800519",
+  "stock_code": "298050",
+  "corp_name": "HS효성첨단소재",
+  "report_nm": "타인에대한채무보증결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000518",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "[기재정정]증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000517",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000512",
+  "stock_code": "023530",
+  "corp_name": "롯데쇼핑",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000507",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000500",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000498",
+  "stock_code": "001720",
+  "corp_name": "신영증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000495",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800548",
+  "stock_code": "006120",
+  "corp_name": "SK디스커버리",
+  "report_nm": "지속가능경영보고서등관련사항(자율공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000487",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000485",
+  "stock_code": "267250",
+  "corp_name": "HD현대",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800490",
+  "stock_code": "267250",
+  "corp_name": "HD현대",
+  "report_nm": "[기재정정]벌금등의부과(자회사의 주요경영사항)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000480",
+  "stock_code": "207940",
+  "corp_name": "삼성바이오로직스",
+  "report_nm": "[기재정정]증권신고서(지분증권)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800500",
+  "stock_code": "006120",
+  "corp_name": "SK디스커버리",
+  "report_nm": "[기재정정]단일판매ㆍ공급계약체결(자회사의 주요경영사항)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000467",
+  "stock_code": "139130",
+  "corp_name": "iM금융지주",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000465",
+  "stock_code": "248070",
+  "corp_name": "솔루엠",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800513",
+  "stock_code": "004800",
+  "corp_name": "효성",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000461",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800485",
+  "stock_code": "010140",
+  "corp_name": "삼성중공업",
+  "report_nm": "[기재정정]단일판매ㆍ공급계약체결",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000451",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000445",
+  "stock_code": "000500",
+  "corp_name": "가온전선",
+  "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000440",
+  "stock_code": "004800",
+  "corp_name": "효성",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000434",
+  "stock_code": "105560",
+  "corp_name": "KB금융",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000426",
+  "stock_code": "004800",
+  "corp_name": "효성",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000424",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000423",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "특수관계인과의수익증권거래",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000415",
+  "stock_code": "001680",
+  "corp_name": "대상",
+  "report_nm": "[기재정정]반기보고서 (2026.06)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000408",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000385",
+  "stock_code": "105560",
+  "corp_name": "KB금융",
+  "report_nm": "일괄신고추가서류",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000383",
+  "stock_code": "035420",
+  "corp_name": "NAVER",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000382",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000358",
+  "stock_code": "030200",
+  "corp_name": "케이티",
+  "report_nm": "자기주식취득결과보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000355",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000352",
+  "stock_code": "086790",
+  "corp_name": "하나금융지주",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000340",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000331",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000327",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000321",
+  "stock_code": "161390",
+  "corp_name": "한국타이어앤테크놀로지",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000318",
+  "stock_code": "000270",
+  "corp_name": "기아",
+  "report_nm": "특수관계인으로부터기타유가증권매수",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000315",
+  "stock_code": "006800",
+  "corp_name": "미래에셋증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000309",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800327",
+  "stock_code": "175330",
+  "corp_name": "JB금융지주",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800322",
+  "stock_code": "000720",
+  "corp_name": "현대건설",
+  "report_nm": "타인에대한채무보증결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000303",
+  "stock_code": "006340",
+  "corp_name": "대원전선",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800311",
+  "stock_code": "006340",
+  "corp_name": "대원전선",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000290",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000277",
+  "stock_code": "003540",
+  "corp_name": "대신증권",
+  "report_nm": "[기재정정]증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000259",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000256",
+  "stock_code": "008930",
+  "corp_name": "한미사이언스",
+  "report_nm": "임원ㆍ주요주주특정증권등소유상황보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000213",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000207",
+  "stock_code": "016360",
+  "corp_name": "삼성증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800229",
+  "stock_code": "090430",
+  "corp_name": "아모레퍼시픽",
+  "report_nm": "공정거래자율준수프로그램운영현황(안내공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800223",
+  "stock_code": "090430",
+  "corp_name": "아모레퍼시픽",
+  "report_nm": "연결재무제표기준영업실적등에대한전망(공정공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000203",
+  "stock_code": "016360",
+  "corp_name": "삼성증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000201",
+  "stock_code": "003850",
+  "corp_name": "보령",
+  "report_nm": "자기주식취득결과보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800204",
+  "stock_code": "097230",
+  "corp_name": "HJ중공업",
+  "report_nm": "[기재정정]단일판매ㆍ공급계약체결",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000198",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000197",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000195",
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000189",
+  "stock_code": "000720",
+  "corp_name": "현대건설",
+  "report_nm": "특수관계인에대한담보제공",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000185",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800199",
+  "stock_code": "005090",
+  "corp_name": "SGC에너지",
+  "report_nm": "타법인주식및출자증권취득결정",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800200",
+  "stock_code": "268280",
+  "corp_name": "미원에스씨",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000174",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000173",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000164",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000158",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000146",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000145",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "투자설명서(일괄신고)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000142",
+  "stock_code": "005880",
+  "corp_name": "대한해운",
+  "report_nm": "주식등의대량보유상황보고서(일반)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000140",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000138",
+  "stock_code": "003530",
+  "corp_name": "한화투자증권",
+  "report_nm": "일괄신고추가서류(기타파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000135",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "일괄신고추가서류(파생결합사채-주가연계파생결합사채)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000133",
+  "stock_code": "030610",
+  "corp_name": "교보증권",
+  "report_nm": "일괄신고추가서류(파생결합증권-주가연계증권)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000113",
+  "stock_code": "001570",
+  "corp_name": "금양",
+  "report_nm": "[기재정정]주요사항보고서(회사분할결정)",
+  "rule": "exclude",
+  "is_correction": true
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000083",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000076",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000071",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800103",
+  "stock_code": "006650",
+  "corp_name": "대한유화",
+  "report_nm": "최대주주등소유주식변동신고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000062",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000059",
+  "stock_code": "005940",
+  "corp_name": "NH투자증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000048",
+  "stock_code": "039490",
+  "corp_name": "키움증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800091",
+  "stock_code": "008770",
+  "corp_name": "호텔신라",
+  "report_nm": "기업설명회(IR)개최(안내공시)",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000044",
+  "stock_code": "071320",
+  "corp_name": "지역난방공사",
+  "report_nm": "의결권대리행사권유참고서류",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000034",
+  "stock_code": "071320",
+  "corp_name": "지역난방공사",
+  "report_nm": "주주총회소집공고",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000024",
+  "stock_code": "003470",
+  "corp_name": "유안타증권",
+  "report_nm": "증권발행실적보고서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000014",
+  "stock_code": "009830",
+  "corp_name": "한화솔루션",
+  "report_nm": "약관에의한금융거래시계열금융회사의거래상대방의공시",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911000010",
+  "stock_code": "139130",
+  "corp_name": "iM금융지주",
+  "report_nm": "투자설명서",
+  "rule": "exclude",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800004",
+  "stock_code": "012450",
+  "corp_name": "한화에어로스페이스",
+  "report_nm": "단일판매ㆍ공급계약체결(자율공시)",
+  "rule": "review",
+  "is_correction": false
+ },
+ {
+  "day": "20260911",
+  "rcept_no": "20260911800002",
+  "stock_code": "028050",
+  "corp_name": "삼성E&A",
+  "report_nm": "단일판매ㆍ공급계약체결",
+  "rule": "review",
+  "is_correction": false
+ }
+]

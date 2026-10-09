@@ -1,0 +1,80 @@
+{
+ "corp_name": "이마트",
+ "stock_code": "139480",
+ "disclosure_date": "2026-10-06",
+ "disclosure_title": "타법인주식및출자증권취득결정",
+ "rcept_no": "20261006800433",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800433",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "대형 해외 투자 부담과 합병 신주 투자 기대 공존"
+ },
+ "headline": "종속회사, 미국 투자법인 지분 100% 취득에 1.36조 원 투입",
+ "impact_summary": "종속회사 통한 1.36조 해외 투자, 자기자본 약 9.9% 규모",
+ "event_type": "타법인주식취득",
+ "keywords": [
+  "해외투자",
+  "파라마운트",
+  "워너브러더스",
+  "합병",
+  "간접투자",
+  "종속회사",
+  "현금취득"
+ ],
+ "themes": [
+  "해외 투자",
+  "미디어 M&A"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "취득금액",
+   "value": "약 1.36조 원",
+   "sub": "현금취득, 이사회 2026.10.02"
+  },
+  {
+   "label": "자기자본 대비",
+   "value": "약 9.9%",
+   "sub": "2025 연결 자본총계 13.7조 기준 직접 계산"
+  },
+  {
+   "label": "자산총액 대비",
+   "value": "4.06%",
+   "sub": "2025 연결 자산총액 기준"
+  },
+  {
+   "label": "취득 지분",
+   "value": "100%",
+   "sub": "RB Tentpole Co-Invest (P) Offshore, LP"
+  }
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {
+   "type": "neg",
+   "text": "자기자본의 약 10%에 가까운 대규모 현금 투입, 재무 부담 큼"
+  },
+  {
+   "type": "unk",
+   "text": "파라마운트스카이댄스·WBD 합병 신주에 간접 투자, 합병 완료 여부가 성과를 좌우"
+  },
+  {
+   "type": "unk",
+   "text": "종속회사(STARFIELD PROPERTIES, INC.)의 결정이며 대금지급일은 2026.10.03"
+  },
+  {
+   "type": "unk",
+   "text": "미달러 취득 금액은 1,359.60원 환율 기준으로 환산, 추후 변동 가능"
+  }
+ ],
+ "news": [],
+ "sources_note": "출처: DART 공시 원문.",
+ "brief": "종속회사를 통해 미국 RB Tentpole 지분 100%를 1.36조 원에 취득. 파라마운트·WBD 합병 신주에 간접 투자.",
+ "importance": 4,
+ "importance_reason": "자기자본 대비 약 9.9%(직접 계산)로 5~10% 구간인 대형 해외 투자입니다.",
+ "importance_score": 80,
+ "report_version": 3
+}

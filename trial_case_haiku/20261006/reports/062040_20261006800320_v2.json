@@ -1,0 +1,79 @@
+{
+ "corp_name": "산일전기",
+ "stock_code": "062040",
+ "disclosure_date": "2026-10-06",
+ "disclosure_title": "단일판매·공급계약 체결",
+ "rcept_no": "20261006800320",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800320",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "미국향 대형 수주, 최근 매출 대비 약 7% 규모"
+ },
+ "headline": "산일전기, 미국 BESS용 변압기 350억 원 수주",
+ "impact_summary": "미국 BESS 프로젝트 변압기 수주, 매출 대비 6.99%",
+ "event_type": "단일판매·공급계약",
+ "keywords": [
+  "변압기",
+  "BESS",
+  "미국",
+  "패드마운트",
+  "공급계약",
+  "에너지저장장치"
+ ],
+ "themes": [
+  "전력기기",
+  "미국 에너지저장장치"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "계약금액",
+   "value": "약 350억 원",
+   "sub": "USD 약 2,579만 달러"
+  },
+  {
+   "label": "최근 매출액 대비",
+   "value": "6.99%",
+   "sub": "최근 매출액 약 5,019억 원"
+  },
+  {
+   "label": "계약기간",
+   "value": "2026.09~2032.09",
+   "sub": "PO 발행일부터 보증계약 종료까지"
+  },
+  {
+   "label": "계약일",
+   "value": "2026.10.02",
+   "sub": "PO 수령일 기준"
+  }
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {
+   "type": "pos",
+   "text": "미국 BESS 프로젝트용 패드마운트 변압기 대형 수주"
+  },
+  {
+   "type": "pos",
+   "text": "최근 매출액의 약 7%에 해당하는 규모의 장기 공급 계약"
+  },
+  {
+   "type": "unk",
+   "text": "계약상대방 비공개, 공시유보 기한 2032.09.13까지"
+  },
+  {
+   "type": "unk",
+   "text": "계약금·선급금 없음, 운송조건 DAP, 원화 금액은 환율 따라 변동 가능"
+  }
+ ],
+ "news": [],
+ "sources_note": "출처: DART 공시 원문.",
+ "brief": "미국 BESS 프로젝트용 패드마운트 변압기 350억 원 공급 계약(2032년까지). 최근 매출의 약 7% 규모.",
+ "importance": 4,
+ "importance_reason": "최근 매출액 대비 6.99%로 5~10% 구간인 대형 계약입니다.",
+ "importance_score": 58,
+ "report_version": 3
+}

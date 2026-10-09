@@ -24,14 +24,16 @@ const SENTIMENT = {
 const POINT_LABEL = { pos: "긍정", neg: "리스크", unk: "미확인" };
 
 // 막대가 표의 연도 열과 정확히 맞도록 표 안의 한 행으로 그린다.
+// rows[0](매출 등)과 rows[1](영업이익 등)을 각각 자기 스케일의 막대로 그린다. 음수는 빨간 막대 + 부호 표기.
 function finTable(fin) {
-  const bars = fin.rows[0];
-  const max = Math.max(...bars.values.map((x) => Math.abs(x.v)), 1);
-  const chartRow = `<tr class="chart"><th></th>${bars.values
-    .map((x) => `<td><div class="bv">${esc(x.d)}</div><div class="bar" style="height:${Math.max(4, Math.round((Math.abs(x.v) / max) * 64))}px"></div></td>`)
-    .join("")}</tr>`;
-  const rows = fin.rows.map((r) => `<tr><th>${esc(r.label)}</th>${r.values.map((x) => `<td>${esc(x.d)}</td>`).join("")}</tr>`).join("");
-  return `<table><thead><tr><th></th>${fin.years.map((y) => `<th>${esc(y)}</th>`).join("")}</tr></thead><tbody>${chartRow}${rows}</tbody></table>`;
+  const chartRows = fin.rows.slice(0, 2).map((r, i) => {
+    const max = Math.max(...r.values.map((x) => Math.abs(x.v)), 1e-9);
+    return `<tr class="chart c${i}"><th>${esc(r.label)}</th>${r.values
+      .map((x) => `<td><div class="bv${x.v < 0 ? " neg" : ""}">${esc(x.d)}</div><div class="bar${x.v < 0 ? " neg" : ""}" style="height:${Math.max(3, Math.round((Math.abs(x.v) / max) * 46))}px"></div></td>`)
+      .join("")}</tr>`;
+  }).join("");
+  // 막대 위에 값이 표시되므로 별도 숫자 표는 두지 않는다(2026-10-08).
+  return `<table><thead><tr><th></th>${fin.years.map((y) => `<th>${esc(y)}</th>`).join("")}</tr></thead><tbody>${chartRows}</tbody></table>`;
 }
 
 // 컨센서스 추이: series(과거->현재)를 막대 + 첫 시점 대비 변동률로 표시
@@ -50,7 +52,7 @@ function consensusCard(c) {
   return `<section class="card"><h2>컨센서스 추이 <span class="sub">${esc(c.metric)} · ${esc(c.window)}</span></h2>
 <div class="cons"><div class="cbars">${cols}</div>
 <div class="cdelta ${cls}"><span class="big">${arrow} ${esc(chg)}</span><span class="sm">${esc(c.window_label || "기간 변동")}</span></div></div>
-${c.note ? `<p class="note">${esc(c.note)}</p>` : ""}</section>`;
+${c.note || c.meta ? `<p class="note">${esc([c.note, c.meta].filter(Boolean).join(" "))}</p>` : ""}</section>`;
 }
 
 function html(d) {
@@ -101,9 +103,9 @@ h2 .sub{font-weight:400;color:var(--mute);font-size:10.5px;margin-left:4px}
 table{width:100%;border-collapse:collapse;font-size:10.5px;table-layout:fixed}
 th,td{padding:3px 4px;border-bottom:1px solid var(--line);text-align:right}th{text-align:left;color:var(--mute);font-weight:400;width:24%}
 thead th{color:var(--ink);font-weight:700;text-align:right}thead th:first-child{text-align:left}
-tr.chart td{vertical-align:bottom;text-align:center;border-bottom:1px solid var(--line);padding-bottom:0;height:88px}
+tr.chart td{vertical-align:bottom;text-align:center;border-bottom:1px solid var(--line);padding-bottom:0;height:70px}tr.chart th{vertical-align:bottom;font-size:9.5px;color:var(--mute)}
 .bv{font-weight:700;font-size:10.5px;margin-bottom:2px}
-.bar{width:55%;margin:0 auto;background:var(--brand);border-radius:4px 4px 0 0;opacity:.85}
+.bar{width:55%;margin:0 auto;background:var(--brand);border-radius:4px 4px 0 0;opacity:.85}tr.c1 .bar{background:#1f9d8a}.bar.neg{background:#c2281f !important}.bv.neg{color:#c2281f}
 .mini{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
 .mini div{display:flex;flex-direction:column;border-left:3px solid var(--line);padding-left:7px}
 .mini .k{color:var(--mute);font-size:10px}.mini b{font-size:15px}.mini small{color:var(--mute);font-size:9.5px}
@@ -137,14 +139,14 @@ ${d.news && d.news.length ? `<section class="card"><h2>뉴스 근거 <span class
 </div></body></html>`;
 }
 
-(async () => {
+if (require.main === module) (async () => {
   const src = process.argv[2];
   if (!src) throw new Error("usage: node render.js data.json [outBase]");
   const base = process.argv[3] || src.replace(/\.json$/, "");
   const data = JSON.parse(fs.readFileSync(src, "utf-8"));
   fs.writeFileSync(base + ".html", html(data), "utf-8");
   // 인덱싱용 MD (disclosure_md/<공시일>/<종목코드>_<접수번호>.md)
-  const mdDir = path.join(__dirname, "..", "disclosure_md", data.disclosure_date);
+  const mdDir = path.join(process.env.MD_DIR ? path.resolve(process.env.MD_DIR) : path.join(__dirname, "..", "disclosure_md"), data.disclosure_date);   // MD_DIR: 비교 실험 등에서 MD 출력 위치 분리
   fs.mkdirSync(mdDir, { recursive: true });
   const mdPath = path.join(mdDir, `${data.stock_code}_${data.rcept_no}.md`);
   fs.writeFileSync(mdPath, toMarkdown(data), "utf-8");
@@ -155,3 +157,4 @@ ${d.news && d.news.length ? `<section class="card"><h2>뉴스 근거 <span class
   await browser.close();
   console.log("wrote", base + ".html", base + ".pdf", mdPath);
 })();
+module.exports = { html };

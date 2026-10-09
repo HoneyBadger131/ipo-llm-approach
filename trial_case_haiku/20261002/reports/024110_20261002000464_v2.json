@@ -1,0 +1,79 @@
+{
+ "corp_name": "기업은행",
+ "stock_code": "024110",
+ "disclosure_date": "2026-10-02",
+ "disclosure_title": "주요사항보고서(상각형조건부자본증권발행결정)",
+ "rcept_no": "20261002000464",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002000464",
+ "tag": "기타 사항",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "BIS 자본 확충은 긍정, 부실 시 전액 상각 조건은 부담"
+ },
+ "headline": "기업은행, 4,000억 원 상각형 신종자본증권 발행 결정",
+ "impact_summary": "자본 확충 4,000억 원, 자본총계 대비 약 1.1% 규모",
+ "event_type": "신종자본증권 발행",
+ "keywords": [
+  "상각형 조건부자본증권",
+  "신종자본증권",
+  "BIS비율",
+  "기타기본자본",
+  "영구채",
+  "자본 확충"
+ ],
+ "themes": [
+  "은행 자본 확충",
+  "BIS 비율"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "권면 총액",
+   "value": "4,000억",
+   "sub": "이사회 결의 한도 5,000억"
+  },
+  {
+   "label": "자본총계 대비",
+   "value": "약 1.1%",
+   "sub": "2025 연결 자본총계 36.9조"
+  },
+  {
+   "label": "자금 용도",
+   "value": "BIS 제고",
+   "sub": "기타기본자본 확충"
+  },
+  {
+   "label": "중도상환",
+   "value": "발행 5년 후",
+   "sub": "매 이자기일 가능, 감독원 승인"
+  }
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {
+   "type": "pos",
+   "text": "기타기본자본 확충으로 BIS 자기자본비율 제고 목적"
+  },
+  {
+   "type": "neg",
+   "text": "부실금융기관 지정 시 원리금 전액 영구 상각되는 구조"
+  },
+  {
+   "type": "unk",
+   "text": "이자 지급이 정지될 수 있는 조건 포함, 금리·만기는 발행 시 확정"
+  },
+  {
+   "type": "unk",
+   "text": "조달 자금은 대출금 및 유가증권 운용에 사용 예정"
+  }
+ ],
+ "news": [],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP.",
+ "brief": "기업은행 4,000억 원 상각형 신종자본증권 발행 결정, BIS 자본 확충. 부실 지정 시 전액 상각.",
+ "importance": 3,
+ "importance_reason": "자본총계 대비 약 1.1%의 자본 확충 결정이라 1~5% 구간인 3으로 매김.",
+ "importance_score": 44,
+ "report_version": 3
+}

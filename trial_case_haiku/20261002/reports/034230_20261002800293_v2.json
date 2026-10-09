@@ -1,0 +1,87 @@
+{
+ "corp_name": "파라다이스",
+ "stock_code": "034230",
+ "disclosure_date": "2026-10-02",
+ "disclosure_title": "연결재무제표기준영업(잠정)실적(공정공시)",
+ "rcept_no": "20261002800293",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002800293",
+ "tag": "기타 사항",
+ "sentiment": {
+  "label": "혼재됨",
+  "reason": "전년 대비 큰 폭 증가, 전월 대비로는 감소"
+ },
+ "headline": "9월 카지노 매출 867억, 전년 동월 대비 38% 증가 (잠정)",
+ "impact_summary": "9월 카지노 매출 전년비 38% 증가, 전월 대비 17% 감소",
+ "event_type": "영업실적 잠정",
+ "keywords": [
+  "카지노",
+  "잠정실적",
+  "9월 실적",
+  "드롭액",
+  "워커힐",
+  "파라다이스시티"
+ ],
+ "themes": [
+  "카지노 실적",
+  "외국인 카지노"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "9월 카지노 매출",
+   "value": "약 867억",
+   "sub": "전년 동월 대비 +38.2%"
+  },
+  {
+   "label": "1~9월 누계",
+   "value": "약 7,446억",
+   "sub": "전년 동기 대비 +10.8%"
+  },
+  {
+   "label": "전월 대비",
+   "value": "-16.8%",
+   "sub": "8월 약 1,043억"
+  }
+ ],
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "points": [
+  {
+   "type": "pos",
+   "text": "9월 카지노 매출 전년 동월 대비 38.2% 증가"
+  },
+  {
+   "type": "pos",
+   "text": "1~9월 누계 카지노 매출 약 7,446억, 전년 대비 10.8% 증가"
+  },
+  {
+   "type": "neg",
+   "text": "전월(8월) 대비 16.8% 감소, 월별 매출 변동 큼"
+  },
+  {
+   "type": "unk",
+   "text": "연결 매출·영업이익 수치는 공시에 없어 전체 실적은 미확인"
+  }
+ ],
+ "news": [
+  {
+   "outlet": "스포츠경향",
+   "date": "2026-02-11",
+   "title": "파라다이스, 2025년 매출·영업이익 역대 최대 실적 달성",
+   "url": "https://sports.khan.co.kr/article/202602110211003"
+  },
+  {
+   "outlet": "헤럴드경제",
+   "date": "2026-02-10",
+   "title": "파라다이스, 2025년 매출·영업이익 역대 최대 실적",
+   "url": "https://www.heraldk.com/article/2026021013561918828"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, OpenProxyMCP, 뉴스 링크.",
+ "brief": "9월 카지노 매출 약 867억, 전년 동월 대비 38.2% 증가. 1~9월 누계 10.8% 증가, 잠정치.",
+ "importance": 3,
+ "importance_reason": "정기 월간 잠정 실적이라 금액 기준보다 낮게 보고, 전년비 증가폭만 반영했습니다.",
+ "importance_score": 50,
+ "report_version": 3
+}

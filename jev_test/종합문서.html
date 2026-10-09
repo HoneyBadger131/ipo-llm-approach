@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>공시 판단 종합 문서 — 원칙·설계·결과·사람 판단 사항 (v0.4)</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">:root{color-scheme:light dark}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.65;max-width:980px;margin:0 auto;padding:24px 16px 64px;color:#1b1f24;background:#fff}
+h1.title{font-size:1.7rem;margin:.2em 0 .6em}h2{margin-top:2.2em;border-bottom:2px solid #d0d7de;padding-bottom:.25em}h3{margin-top:1.6em}
+blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid #bf8700;background:#fff8e1;color:#4a3b00}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem;display:block;overflow-x:auto}
+th,td{border:1px solid #d0d7de;padding:6px 9px;vertical-align:top}th{background:#f3f5f7;text-align:left}
+code{background:#eef1f4;padding:1px 5px;border-radius:4px;font-size:.88em}pre{background:#f3f5f7;padding:12px;border-radius:6px;overflow-x:auto}pre code{background:none;padding:0}
+@media (prefers-color-scheme:dark){body{background:#0f1318;color:#e6edf3}h2{border-color:#30363d}blockquote{background:#2a2300;color:#f0e0a0;border-color:#d4a72c}th{background:#1c2128}th,td{border-color:#30363d}code,pre{background:#1c2128}}
+@media print{body{max-width:none}}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">공시 판단 종합 문서 — 원칙·설계·결과·사람 판단 사항
+(v0.4)</h1>
+</header>
+<blockquote>
+<p>작성 기준: 2026-10-08 · 대상: 코스피 290 종목 DART 공시 · 모델:
+TypeSafe <code>jev-1.13.0</code> 이번 판은 <strong>사용자 1차
+검토(126행)와 정책 답변 12개를 반영한 2차 판</strong>이다. 정답 라벨은
+<em>사람 명시 판정 + 정책 계층 + Claude 판정</em>이며, 점수는 “라벨과의
+일치도”이지 실제 정확도의 증명이 아니다.</p>
+</blockquote>
+<h2 id="한눈에-보기">0. 한눈에 보기</h2>
+<ol type="1">
+<li><strong>Jev는 분류자 하나다.</strong> 공시를 읽고
+<code>PASS / PASS_CHECK / HOLD / DROP</code>으로 보낸다. 요약·분석은
+기존 에이전트 단계가 한다.</li>
+<li><strong>정책 답변을 질문 v2b로 옮겼더니 정밀도가 크게
+올랐다.</strong> 자회사 사본을 제외한 운영 시나리오(181건, 정답 진행
+106건)에서 Noul ≥0.5의 정밀도가 v1 72% → v2b 86%, 재현율은 93% →
+89%.</li>
+<li><strong>재현율 우선 운영점도 안정적이다.</strong> Noul ≥0.2에서
+재현율 98%(2건 놓침), 정밀도 74%. 구간별(개발·검증 둘)로 97~100%. 놓친
+2건은 모두 사람이 <code>PASS</code>로 둔 SK하이닉스 풍문·조회공시인데,
+이는 사용자 정책 Q3(풍문은 <code>DROP</code>)과 사람 라벨이 충돌하는
+건이다.</li>
+<li><strong>제안 운영 구성</strong>: 규칙 필터 → 자회사 중복 제거 → Jev.
+Noul ≥0.5는 진행, <strong>0.2~0.5는 <code>HOLD</code>(진행 + 검수 표시,
+하루 약 2.8건)</strong>, 0.2 미만은 <code>DROP</code>.</li>
+<li><strong>규칙 필터를 조정했다</strong>(Q12). 분쟁 리스트 10개 회사는
+주총·의결권 권유·기준일·독립이사 공시를 제외하지 않고, 사람이 일관되게
+<code>DROP</code>한 3개 유형을 제외에 추가했다. 기존 정답셋에서 진행
+라벨 공시를 잃은 것은 0건이다.</li>
+<li><strong>남은 일</strong>: 2차 검토 CSV(60행)와 정책 질문 9개. 사용자
+판정이 들어오면 <code>apply_review.py</code>로 반영해 바로
+재채점한다.</li>
+</ol>
+<h2 id="역할과-라벨">1. 역할과 라벨</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>라벨</th>
+<th>한글</th>
+<th>의미</th>
+<th>운영 동작</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>PASS</code></td>
+<td>통과</td>
+<td>본문만으로 중요 판단이 선다</td>
+<td>다음 단계로</td>
+</tr>
+<tr class="even">
+<td><code>PASS_CHECK</code></td>
+<td>통과·확인</td>
+<td>진행 쪽이나 계산(비율·전년 동월비)·대조·규모 확인이 필요</td>
+<td>다음 단계로 + 확인 사항 표시 — 계산은 에이전트가 한다</td>
+</tr>
+<tr class="odd">
+<td><code>HOLD</code></td>
+<td>보류</td>
+<td>규칙이 충돌하거나 판단이 갈림. 알릴 가치는 있으나 심화 분석은
+불필요한 사건도 사용자가 이 라벨로 표시함</td>
+<td><strong>진행시키되 검수 표시</strong>(놓침 비용 우선). Jev의
+회색지대(0.2~0.5)가 여기에 해당</td>
+</tr>
+<tr class="even">
+<td><code>DROP</code></td>
+<td>탈락</td>
+<td>중요하지 않음</td>
+<td>종료</td>
+</tr>
+</tbody>
+</table>
+<p>“진행” =
+<code>PASS</code>·<code>PASS_CHECK</code>·<code>HOLD</code>.</p>
+<h2 id="공시-중요도-판단-원칙-정책-v0.3">2. 공시 중요도 판단 원칙 (정책
+v0.3)</h2>
+<h3 id="사용자-정책-답변2026-10-08과-적용">2-1. 사용자 정책
+답변(2026-10-08)과 적용</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>사용자 답변</th>
+<th>적용</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Q1</td>
+<td>정례 규칙 우선, 금액이 매우 크면 <code>PASS_CHECK</code></td>
+<td>정례 자금운용·배당 → <code>DROP</code>, 매우 큰 금액이면
+<code>PASS_CHECK</code>. <strong>기준 1,000억 원은 가정</strong></td>
+</tr>
+<tr class="even">
+<td>Q2</td>
+<td>연장·대환은 무시, 신규 발생만. 증권·은행·보험은 일상 업무라
+<code>DROP</code></td>
+<td>연장·대환·차환 → <code>DROP</code>. 금융회사의
+보증·대여·수익증권·차입 → <code>DROP</code>. 출자·인수·자본확충은 일상
+업무가 아니라 제외</td>
+</tr>
+<tr class="odd">
+<td>Q3</td>
+<td>풍문은 무시, “확인된 바 없다”류는 <code>DROP</code></td>
+<td>풍문 해명·조회공시 답변 → <code>DROP</code></td>
+</tr>
+<tr class="even">
+<td>Q4</td>
+<td>보호예수 해제는 중요</td>
+<td>사람이 <code>PASS_CHECK</code>(규모 확인)로 명시</td>
+</tr>
+<tr class="odd">
+<td>Q5</td>
+<td>애매하면 <code>DROP</code>, 모르겠으면 <code>PASS_CHECK</code></td>
+<td><code>PASS_CHECK</code> 정의에 반영</td>
+</tr>
+<tr class="even">
+<td>Q6</td>
+<td>정정: 기간·상대방 변동은 무시, 해지 또는 큰 금액 변동만
+<code>PASS_CHECK</code></td>
+<td>증감액 <strong>200억 원 이상 &amp; 1% 이상</strong> 또는 해지만
+<code>PASS_CHECK</code> (<strong>200억은 가정</strong>)</td>
+</tr>
+<tr class="odd">
+<td>Q7</td>
+<td>바이오 임상은 <code>PASS</code>, 애매하면
+<code>PASS_CHECK</code></td>
+<td>반영</td>
+</tr>
+<tr class="even">
+<td>Q8</td>
+<td>중대재해 <code>PASS_CHECK</code>, 불성실공시 <code>PASS</code></td>
+<td>반영</td>
+</tr>
+<tr class="odd">
+<td>Q9·Q10</td>
+<td><code>HOLD</code>와 운영점은 위임</td>
+<td><code>HOLD</code> = 진행 + 검수 표시. 운영점은 §6</td>
+</tr>
+<tr class="even">
+<td>Q11</td>
+<td>분쟁 리스트 제공</td>
+<td><code>watchlists/dispute_watchlist.json</code> —
+한미약품·한미사이언스·한진칼·고려아연·LS·대한전선·오리온홀딩스·현대엘리베이터·삼성전자·현대모비스</td>
+</tr>
+<tr class="odd">
+<td>Q12</td>
+<td>규칙 필터 조정</td>
+<td>§5-5</td>
+</tr>
+<tr class="even">
+<td>추가</td>
+<td>금액 계산이 필요한 거래계획 보고서는 <code>PASS</code></td>
+<td>반영(삼성전자·가온전선)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="기본-원칙-v0.2에서-유지">2-2. 기본 원칙 (v0.2에서 유지)</h3>
+<ul>
+<li><strong>영향의 크기</strong>(금액 30억 원 또는 자기자본·매출 1%,
+사업·지배·자본구조 변화), <strong>새로움</strong>(재공시·종결·사본은
+탈락), <strong>정례성</strong>(행정·거버넌스는 탈락), <strong>방향
+전환</strong>(결정·계약·소송 결과는 통과 쪽), <strong>정보
+가치</strong>(월간 실적은 ±10%), <strong>놓침 비용 우선</strong>,
+<strong>계산은 다음 단계의 몫</strong>.</li>
+<li>현재 시스템의 규칙: 공시명 규칙 필터(<code>dart_rules.py</code>) →
+본문 기반 판단(<code>judge_rules.md</code>: 30억 원·1%·정례성·주식수
+변동은 KIND).</li>
+</ul>
+<h3 id="사용자-판정에서-읽은-선호-1차-검토-메모">2-3. 사용자 판정에서
+읽은 선호 (1차 검토 메모)</h3>
+<ul>
+<li>금액이 비공개인 <strong>의무 공시 계약</strong>(경영상 비밀유지,
+방산 등)은 중요 → <code>PASS_CHECK</code>.</li>
+<li><strong>법원 판결은 중요</strong>(효성 대법원 판결 →
+<code>PASS</code>).</li>
+<li><strong>전망(Forward Year)·기업가치제고계획 같은 정보 전달성
+공시</strong>는 변화가 크지 않으면 <code>DROP</code> 선호 — 아직
+규칙화하지 않았다.</li>
+<li><strong>리츠는 정말 중요한 것이 아니면 무시</strong>, <strong>단순
+기간 만료 신탁 해지</strong>는 무시.</li>
+<li>정정 공시는 <strong>너무 자주 알리면 문제</strong> → 증감률 1% 이상
+조건을 추가.</li>
+</ul>
+<h2 id="파이프라인과-jev의-위치">3. 파이프라인과 Jev의 위치</h2>
+<pre><code>OpenDART 전체 공시 (하루 약 620건)
+  └ 종목 리스트(코스피 290)                     약 100건/일
+      └ 공시명 규칙 필터 (분쟁 리스트 예외 적용)     약 83% 종료
+          └ review 약 15~17건/일
+              └ 자회사 중복 제거(dart_subsidiary)
+                  └ ★ Jev 분류자 (질문 v2b, 본문 포함, 영어) ★
+                        Noul ≥0.5 → 진행 (PASS / PASS_CHECK)  → 에이전트 심화 분석
+                        0.2 ≤ Noul &lt; 0.5 → HOLD (진행 + 검수 표시, 하루 약 2.8건)
+                        Noul &lt; 0.2 → DROP</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>단계</th>
+<th>담당</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>억 원 환산, 정정 증감 계산, 분쟁 리스트·금융회사 맥락 입력</td>
+<td>코드</td>
+</tr>
+<tr class="even">
+<td>의미 판단 (질문 묶음에 대한 확률)</td>
+<td>Jev</td>
+</tr>
+<tr class="odd">
+<td>임계값, 라벨 결정, 검수 표시</td>
+<td>코드</td>
+</tr>
+</tbody>
+</table>
+<h2 id="실험-설계-요약">4. 실험 설계 요약</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>요인</th>
+<th>수준</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>질문 유형</td>
+<td>Noul · Choice · Score · 원자 Noul 조합 · 앙상블</td>
+</tr>
+<tr class="even">
+<td>입력</td>
+<td>T(제목) · TD(+본문 요약, 정정이면 정정 전후 표와 증감)</td>
+</tr>
+<tr class="odd">
+<td>언어</td>
+<td>한국어 · 영어</td>
+</tr>
+<tr class="even">
+<td>질문 버전</td>
+<td>v0(1차) → v1(월간 실적·연장 예외·억 환산·정정 증감) →
+<strong>v2(정책 v0.3)</strong> → <strong>v2b(v2 + Q1 예외)</strong></td>
+</tr>
+<tr class="odd">
+<td>규칙 필터</td>
+<td>선행(기본값)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>정답셋</strong>: 개발 9/7~9/11, 검증 9/1~9/4·9/30~10/1. 판정
+202건 + 정정 35건. 라벨 분포 — 판정: <code>PASS</code> 98 ·
+<code>PASS_CHECK</code> 13 · <code>HOLD</code> 2 · <code>DROP</code> 89
+/ 정정: <code>PASS_CHECK</code> 3 · <code>DROP</code> 32.</li>
+<li><strong>라벨 계층(우선순위)</strong>: Claude 기본 &lt; 정책 &lt;
+사람 명시 판정. 사람이 기본값 그대로 둔 72행은 확정으로 보지
+않는다(정책과 충돌하면 정책이 이긴다).</li>
+<li><strong>지표</strong>: 재현율(1순위)·정밀도·놓친 건 목록. 자회사
+사본·부속 공시 21건은 운영의 자회사 중복 단계가 먼저 처리하므로 운영
+시나리오에서 제외(181건).</li>
+<li><strong>순환성 주의</strong>: 정책 계층 라벨(18건)과 v2의 질문이
+같은 정책에서 나왔다. 순환성이 없는 신호는 <strong>사람이 직접 판정한
+건</strong>(36건)만 따로 본 표다.</li>
+</ul>
+<h2 id="결과">5. 결과</h2>
+<h3 id="차-검증-요약-v1을-새-주간에-그대로-적용-이전-라벨-기준">5-1. 1차
+검증 요약 (v1을 새 주간에 그대로 적용, 이전 라벨 기준)</h3>
+<p>재현율은 유지되고(Noul ≥0.5: 개발 96% → 검증 94%) 정밀도는 90% →
+65%로 떨어졌다. 떨어진 원인은 자회사 사본·부속 공시(11건), 정례 성격
+공시(11건), 풍문 재공시(5건) 등 <strong>규칙 해석·맥락
+문제</strong>였고, 이것이 이번 정책 질문의 근거가 되었다.</p>
+<h3 id="사람-판정-반영-결과">5-2. 사람 판정 반영 결과</h3>
+<ul>
+<li>126행 모두 판정이 있었다. <strong>명시적 판정 54건</strong>(Claude
+라벨을 바꾼 33건 + 메모를 단 21건)을 정답에 확정했고, 값과 메모가 모두
+기본값 그대로인 72건은 확정으로 보지 않았다.</li>
+<li>바뀐 33건의 전환: <code>PASS→PASS_CHECK</code> 7,
+<code>PASS_CHECK→DROP</code> 7, <code>DROP→PASS</code> 6,
+<code>HOLD→DROP</code> 4, <code>PASS→DROP</code> 4,
+<code>DROP→PASS_CHECK</code> 3, <code>PASS→HOLD</code> 1,
+<code>HOLD→PASS</code> 1. <strong><code>HOLD</code> 6건 중 4건이
+<code>DROP</code>, 1건이 <code>PASS</code>로 정리</strong>됐고,
+<code>PASS_CHECK</code> 7건이 <code>DROP</code>으로 내려갔다(정정 공시
+6건 + 오리온 월간 실적 1건).</li>
+<li>정책 계층이 18건을 바꿨다(Q3 풍문 9, Q2 연장·금융 4, Q8 3, Q6 2).
+그중 11건은 사람이 기본값으로 둔 행과 충돌해 정책이 이겼다.</li>
+<li>파일 형식 문제가 있었다: 엑셀이 접수번호를 과학 표기로 바꿔
+놓았고(원본과 행 대조로 복구), 인코딩은 CP949·구분자는 탭이었다. 2차
+큐에는 문자형 <code>행ID</code>를 넣어 복구가 확실하도록 했다.</li>
+</ul>
+<h3 id="v1-vs-v2-vs-v2b-운영-시나리오-181건-정답-진행-106건">5-3. v1 vs
+v2 vs v2b (운영 시나리오, 181건, 정답 진행 106건)</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>설정</th>
+<th>Noul ≥0.2</th>
+<th>Noul ≥0.3</th>
+<th>Noul ≥0.5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>v1 TD-en</td>
+<td>100% (0/106) / 65% / 163건</td>
+<td>98% (2/106) / 68% / 153건</td>
+<td>93% (7/106) / 72% / 137건</td>
+</tr>
+<tr class="even">
+<td>v2 TD-en</td>
+<td>97% (3/106) / 75% / 138건</td>
+<td>90% (11/106) / 80% / 119건</td>
+<td>84% (17/106) / 88% / 101건</td>
+</tr>
+<tr class="odd">
+<td><strong>v2b TD-en</strong></td>
+<td><strong>98% (2/106) / 74% / 140건</strong></td>
+<td>93% (7/106) / 79% / 126건</td>
+<td><strong>89% (12/106) / 86% / 109건</strong></td>
+</tr>
+<tr class="even">
+<td>v2b TD-ko</td>
+<td>94% (6/106) / 78% / 129건</td>
+<td>91% (10/106) / 83% / 115건</td>
+<td>81% (20/106) / 91% / 95건</td>
+</tr>
+</tbody>
+</table>
+<p>표기: 재현율 (놓침/정답 진행) / 정밀도 / 진행시킨 건수.</p>
+<ul>
+<li>v2b가 가장 균형이 좋다. v2의 약점(Q1 예외 누락)을 보완하자 Noul ≥0.5
+재현율이 84% → 89%로 올랐다.</li>
+<li><strong>영어 질문이 한국어보다 낫다</strong>(≥0.5 재현율 89 vs 81,
+≥0.2에서 98 vs 94).</li>
+<li>구간별 재현율(v2b TD-en, Noul ≥0.2): 개발 98% (1/41) · 검증 9/1~9/4
+97% (1/39) · 검증 9/30~10/1 100% (0/26).</li>
+</ul>
+<h3 id="제안-운영-구성의-분포-v2b-td-en-11거래일">5-4. 제안 운영 구성의
+분포 (v2b TD-en, 11거래일)</h3>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>구간</th>
+<th style="text-align: right;">건수</th>
+<th style="text-align: right;">그중 정답 진행</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Noul ≥0.5 → 진행</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">94</td>
+<td>정밀도 86%</td>
+</tr>
+<tr class="even">
+<td>0.2~0.5 → <code>HOLD</code></td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">10</td>
+<td>하루 약 2.8건 — 사람이 검수할 분량</td>
+</tr>
+<tr class="odd">
+<td>&lt;0.2 → <code>DROP</code></td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">2</td>
+<td>놓친 2건은 SK하이닉스 풍문·조회공시(정책 Q3과 사람 라벨의 충돌)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>사람이 직접 판정한 36건만</strong> 보면(순환성 없음, 어려운
+건 위주): Noul ≥0.2에서 재현율 90% (2/20) / 정밀도 60%, Noul ≥0.5에서
+60% (8/20) / 80%.</p>
+<h3 id="규칙-필터-조정-q12">5-5. 규칙 필터 조정 (Q12)</h3>
+<ul>
+<li><strong>분쟁 리스트 예외</strong>: 주주총회 관련·의결권 대리행사
+권유·기준일 설정·독립이사 공시를 분쟁 리스트 회사에서는 제외하지 않는다.
+근거: 규칙 필터가 닫은 382건 중 진행 라벨이 붙은 것은 <strong>고려아연
+임시주총 결과 1건뿐</strong>이었다.</li>
+<li><strong>제외 유형 추가</strong>: 주주명부폐쇄·기준일(사람 판정 7/7
+<code>DROP</code>), 독립이사 선임·퇴임(6/6), 지속가능경영보고서(3/3).
+앞의 두 유형은 분쟁 리스트 예외.</li>
+<li>시뮬레이션: 새로 제외되는 판정 대상 14건, <strong>진행 라벨
+0건</strong>. 개발 주간 review 85 → 78건. 풍문·조회공시는 제외로 올리지
+않았다(비용 이점이 없고 Jev가 정책을 따른다).</li>
+<li>구현: <code>dart_rules.classify(report_nm, corp_name=None)</code> —
+기존 호출은 그대로 동작. 12개 단위 시험 통과.</li>
+</ul>
+<h3 id="남은-오류-v2b-td-en-noul-0.5의-불필요-통과-15건">5-6. 남은 오류
+(v2b TD-en, Noul ≥0.5의 불필요 통과 15건)</h3>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 40%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>유형</th>
+<th style="text-align: right;">건수</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>100% 자회사 소규모 합병·합병 종료·사채권자집회(절차성 합병
+공시)</td>
+<td style="text-align: right;">4</td>
+<td>Jev가 <code>business_shift</code>로 읽는다 → 질문 보강 후보</td>
+</tr>
+<tr class="even">
+<td>임원·주요주주 거래계획</td>
+<td style="text-align: right;">4</td>
+<td>금액이 커 보이나 정례(사람 라벨 <code>DROP</code>)</td>
+</tr>
+<tr class="odd">
+<td>수익증권·차환·여유자금 운용(DB손해보험 2, SK리츠 1, 기아 1)</td>
+<td style="text-align: right;">4</td>
+<td>정례 자금운용인데 Jev가 새 약정으로 읽는다</td>
+</tr>
+<tr class="even">
+<td>연장·대환 보증(HS효성첨단소재)</td>
+<td style="text-align: right;">2</td>
+<td>질문이 연장을 제외하라고 했으나 통과시킴</td>
+</tr>
+<tr class="odd">
+<td>지주회사의 자회사 탈퇴(이미 처분 완료)</td>
+<td style="text-align: right;">1</td>
+<td>신규 정보 아님을 판단하지 못함</td>
+</tr>
+</tbody>
+</table>
+<h2 id="잠정-운영안">6. 잠정 운영안</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>항목</th>
+<th>안</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>순서</td>
+<td>규칙 필터(분쟁 리스트 예외) → 자회사 중복 제거 → Jev</td>
+</tr>
+<tr class="even">
+<td>질문·입력</td>
+<td><strong>v2b</strong>, 본문 포함(요약 6,000자), 영어 질문, 원 단위 억
+환산, 분쟁 리스트·금융회사 맥락 전달</td>
+</tr>
+<tr class="odd">
+<td>진행 판정</td>
+<td>Noul ≥0.5 → 진행, 0.2~0.5 → <code>HOLD</code>(진행 + 검수 표시),
+&lt;0.2 → <code>DROP</code></td>
+</tr>
+<tr class="even">
+<td>4단계 라벨</td>
+<td>Choice의 선택을 <code>PASS</code>/<code>PASS_CHECK</code> 구분에
+사용(<code>HOLD</code>는 확률로 결정)</td>
+</tr>
+<tr class="odd">
+<td>단독 사용 금지</td>
+<td>Score 단독, 원자 Noul 조합 단독</td>
+</tr>
+</tbody>
+</table>
+<p>이 운영안은 <strong>개발·검증 3개 구간에서의 일치도</strong>일
+뿐이며, 사람 라벨 확정과 새 주간 검증 전에는 잠정이다.</p>
+<h2 id="한계">7. 한계</h2>
+<ul>
+<li><strong>라벨이 독립적이지 않다</strong>: 정책 계층(18건)은 v2와 같은
+정책에서 나왔고, 사람 판정은 어려운 건 위주(36건)다.</li>
+<li><strong>사람이 기본값을 그대로 둔 72행</strong>이 사람 확정인지 알
+수 없어 확정으로 보지 않았다. 이 중 풍문 해명 <code>PASS</code> 등은
+Q3과 충돌한다.</li>
+<li><strong>가정값 두 개</strong>: 1,000억 원(Q1), 200억 원·1%(Q6).</li>
+<li><strong>표본이 작다</strong>: 진행 106건, 놓침 2건. 새
+구간(9/14~9/29)은 정답이 없다.</li>
+<li><strong>정정 공시</strong>: 정책 변경 후 정정
+<code>PASS_CHECK</code>가 3건뿐이라 평가 표본이 사실상 없다.</li>
+<li>요약(6,000자)이 매우 긴 표를 완전히 담지는 못한다.</li>
+</ul>
+<h2 id="사람이-판단해야-할-내용-2차">8. 사람이 판단해야 할 내용
+(2차)</h2>
+<h3 id="정책-질문-9개">8-1. 정책 질문 (9개)</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>질문</th>
+<th>권고</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>N1</td>
+<td><strong>‘금액이 매우 크다’ 기준</strong>을 1,000억 원 이상으로 해도
+될까</td>
+<td>확인 요망 (가정)</td>
+</tr>
+<tr class="even">
+<td>N2</td>
+<td><strong>정정 ‘큰 규모’ 기준</strong>을 증감액 200억 원 이상 &amp; 1%
+이상으로 해도 될까</td>
+<td>확인 요망 (가정)</td>
+</tr>
+<tr class="odd">
+<td>N3</td>
+<td><strong><code>HOLD</code> 의미를 둘로 나눌까</strong>: ① 사람 검토
+필요(규칙 충돌) ② 알릴 가치는 있으나 심화 분석은 불필요(알림만, 예:
+공기업 대표이사 교체). 후자를 새 라벨(<code>NOTIFY</code>)로 만들까</td>
+<td>분리 권고</td>
+</tr>
+<tr class="even">
+<td>N4</td>
+<td><strong>정책과 사람 라벨이 충돌한 건</strong>(2차 CSV 우선순위 1):
+SK하이닉스 풍문(사람 <code>PASS</code>)·조회공시(사람
+<code>PASS_CHECK</code>)는 Q3 정책(<code>DROP</code>)과 충돌,
+기아·현대건설 중대재해(사람 <code>PASS</code>)는
+Q8(<code>PASS_CHECK</code>)과 충돌, SK리츠(사람 <code>HOLD</code>)는
+Q2(<code>DROP</code>)와 충돌</td>
+<td>어느 쪽이 맞는지 확정</td>
+</tr>
+<tr class="odd">
+<td>N5</td>
+<td><strong>전망(guidance)·기업가치제고계획</strong>은 변화가 작으면
+<code>DROP</code>으로 규칙화할까</td>
+<td>규칙화 권고(변화율 기준 필요)</td>
+</tr>
+<tr class="even">
+<td>N6</td>
+<td><strong>100% 자회사 소규모 합병·합병 종료 보고·사채권자집회
+소집</strong> 같은 절차성 합병 공시는 <code>DROP</code> 원칙으로 할까
+(Jev가 계속 통과시킴)</td>
+<td><code>DROP</code> 권고</td>
+</tr>
+<tr class="odd">
+<td>N7</td>
+<td><strong>임원·주요주주 거래계획</strong> 기준: 금액이 커도
+<code>DROP</code>(정례), 단 지배구조 영향이 있으면(삼성전자 1.9조)
+<code>PASS</code>인가</td>
+<td>기준 필요</td>
+</tr>
+<tr class="even">
+<td>N8</td>
+<td><strong>금융회사의 신종자본증권 발행·타법인
+인수</strong>(한화투자증권 4,000억, 한화생명 애큐온캐피탈 4,400억)는
+일상 업무가 아니라 <code>PASS</code> 유지가 맞나</td>
+<td>유지 권고</td>
+</tr>
+<tr class="odd">
+<td>N9</td>
+<td><strong>새 정답 구간 승인</strong>: 9/14~9/29는 기존 판정이 없다. 새
+정책(v0.3)을 적용한 Claude 판정으로 정답을 만들어 검증해도 될까 (사용자
+검수는 이후)</td>
+<td>승인 요망</td>
+</tr>
+</tbody>
+</table>
+<h3 id="항목별-검토-파일-human_review_queue_r2.csv-60행">8-2. 항목별
+검토 파일 (<code>human_review_queue_r2.csv</code>, 60행)</h3>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 40%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>우선순위</th>
+<th style="text-align: right;">건수</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td style="text-align: right;">8</td>
+<td>정책과 사람 라벨의 충돌(A), 라벨 의심(D: Jev가 강하게 불일치)</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td style="text-align: right;">17</td>
+<td>정책 계층이 바꾼 라벨의 확인(B)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td style="text-align: right;">35</td>
+<td>Jev 회색지대(C, 0.2~0.5)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>채울 열</strong>:
+<code>사람 판정(PASS/PASS_CHECK/HOLD/DROP)</code>,
+<code>사람 메모</code>(선택). <strong>바꾸거나 확정할 행만 채우고
+나머지는 비워 두면</strong> 현재 라벨이 유지된다.</li>
+<li><strong>저장 형식</strong>: 엑셀에서 “CSV UTF-8(쉼표로 분리)”로
+저장해 주세요. (CP949·탭 형식도 읽을 수 있고, 접수번호가 과학 표기로
+망가져도 <code>행ID</code>로 복구된다. 행 순서를 바꿔도 된다.)</li>
+<li><strong>반영</strong>:
+<code>python jev_test/apply_review.py &lt;파일.csv&gt; jev_test/review/human_review_queue_r2.csv</code></li>
+</ul>
+<h2 id="다음-단계">9. 다음 단계</h2>
+<ol type="1">
+<li>2차 검토 반영 → 가정값·정책 확정 → 질문 v3.</li>
+<li>새 정답 구간(N9 승인 시) 확보 후 <strong>v2b를 고정한 채
+재검증</strong>.</li>
+<li>절차성 합병 공시·임원 거래계획·전망 공시 질문 보강.</li>
+<li>Jev 입력에 직전 공시 이력(재공시 판별) 추가 검토.</li>
+<li>분쟁 리스트의 운영 방식(갱신 주기, 사유 기록)과
+<code>PASS_CHECK</code>의 후속 에이전트 연결.</li>
+</ol>
+<h2 id="부록.-파일">부록. 파일</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>파일</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>jev_test/공시판단_기본원칙.md</code></td>
+<td>원칙 (v0.3, §10에 정책 답변)</td>
+</tr>
+<tr class="even">
+<td><code>jev_test/실험설계.md</code></td>
+<td>1차 설계와 개발 주간 결과</td>
+</tr>
+<tr class="odd">
+<td><code>jev_test/종합문서.md</code></td>
+<td>이 문서</td>
+</tr>
+<tr class="even">
+<td><code>jev_test/runs/eval_final.md</code> ·
+<code>eval_v2.md</code></td>
+<td>이번 판의 평가 (운영 시나리오 · v1/v2 비교)</td>
+</tr>
+<tr class="odd">
+<td><code>jev_test/runs/validation_report.md</code></td>
+<td>1차 검증 보고서</td>
+</tr>
+<tr class="even">
+<td><code>jev_test/review/human_review_queue_r2.csv</code></td>
+<td>2차 검토 큐</td>
+</tr>
+<tr class="odd">
+<td><code>jev_test/cases/</code></td>
+<td>정답셋과 라벨 계층(<code>labels_policy.json</code>,
+<code>labels_human.json</code>)</td>
+</tr>
+<tr class="even">
+<td><code>watchlists/dispute_watchlist.json</code></td>
+<td>분쟁 리스트</td>
+</tr>
+<tr class="odd">
+<td><code>dart_rules.py</code></td>
+<td>조정된 규칙 필터</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> jev_test/apply_review.py <span class="op">&lt;</span>1차_채워진.csv<span class="op">&gt;</span>        # 1차 반영<span class="er">(</span><span class="ex">완료</span><span class="kw">)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> jev_test/policy_relabel.py                       <span class="co"># 정책 계층 생성</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> jev_test/run_jev.py w_all_v2b TD-en,TD-ko <span class="at">--kinds</span> judged,correction <span class="at">--ver</span> v2b</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> jev_test/eval_final.py                           <span class="co"># 운영 시나리오 평가</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> jev_test/build_review_queue_r2.py                <span class="co"># 2차 검토 큐</span></span></code></pre></div>
+</body>
+</html>

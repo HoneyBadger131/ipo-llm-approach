@@ -1,0 +1,225 @@
+{
+ "date": "2026-09-29",
+ "total": 873,
+ "watchlist_filings": 79,
+ "watchlist_companies": 49,
+ "excluded": 48,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260929000678",
+   "stock_code": "004800",
+   "corp_name": "효성",
+   "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서"
+  },
+  {
+   "rcept_no": "20260929800978",
+   "stock_code": "128940",
+   "corp_name": "한미약품",
+   "report_nm": "투자판단관련주요경영사항"
+  },
+  {
+   "rcept_no": "20260929800923",
+   "stock_code": "330590",
+   "corp_name": "롯데리츠",
+   "report_nm": "부동산투자회사자금차입"
+  },
+  {
+   "rcept_no": "20260929800907",
+   "stock_code": "330590",
+   "corp_name": "롯데리츠",
+   "report_nm": "부동산투자회사자금차입"
+  },
+  {
+   "rcept_no": "20260929000635",
+   "stock_code": "298020",
+   "corp_name": "효성티앤씨",
+   "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서"
+  },
+  {
+   "rcept_no": "20260929800834",
+   "stock_code": "036460",
+   "corp_name": "한국가스공사",
+   "report_nm": "금전대여결정"
+  },
+  {
+   "rcept_no": "20260929800819",
+   "stock_code": "036460",
+   "corp_name": "한국가스공사",
+   "report_nm": "타법인주식및출자증권취득결정"
+  },
+  {
+   "rcept_no": "20260929000575",
+   "stock_code": "377300",
+   "corp_name": "카카오페이",
+   "report_nm": "특수관계인에대한자금대여"
+  },
+  {
+   "rcept_no": "20260929000574",
+   "stock_code": "377300",
+   "corp_name": "카카오페이",
+   "report_nm": "특수관계인에대한출자"
+  },
+  {
+   "rcept_no": "20260929800821",
+   "stock_code": "336370",
+   "corp_name": "솔루스첨단소재",
+   "report_nm": "타인에대한채무보증결정"
+  },
+  {
+   "rcept_no": "20260929800726",
+   "stock_code": "001060",
+   "corp_name": "JW중외제약",
+   "report_nm": "타법인주식및출자증권취득결정"
+  },
+  {
+   "rcept_no": "20260929800713",
+   "stock_code": "034730",
+   "corp_name": "SK",
+   "report_nm": "금전대여결정(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260929800708",
+   "stock_code": "034730",
+   "corp_name": "SK",
+   "report_nm": "금전대여결정(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260929800640",
+   "stock_code": "096770",
+   "corp_name": "SK이노베이션",
+   "report_nm": "금전대여결정(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260929800635",
+   "stock_code": "096770",
+   "corp_name": "SK이노베이션",
+   "report_nm": "금전대여결정(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260929800628",
+   "stock_code": "069260",
+   "corp_name": "티케이지휴켐스",
+   "report_nm": "단일판매ㆍ공급계약해지"
+  },
+  {
+   "rcept_no": "20260929800626",
+   "stock_code": "034730",
+   "corp_name": "SK",
+   "report_nm": "채무인수결정(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260929800625",
+   "stock_code": "096770",
+   "corp_name": "SK이노베이션",
+   "report_nm": "채무인수결정(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260929800544",
+   "stock_code": "012750",
+   "corp_name": "에스원",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260929800468",
+   "stock_code": "079550",
+   "corp_name": "LIG디펜스앤에어로스페이스",
+   "report_nm": "선급금지급결정"
+  },
+  {
+   "rcept_no": "20260929800423",
+   "stock_code": "307950",
+   "corp_name": "현대오토에버",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260929000321",
+   "stock_code": "029780",
+   "corp_name": "삼성카드",
+   "report_nm": "특수관계인과의수익증권거래"
+  },
+  {
+   "rcept_no": "20260929000302",
+   "stock_code": "042660",
+   "corp_name": "한화오션",
+   "report_nm": "특수관계인과의내부거래"
+  },
+  {
+   "rcept_no": "20260929800281",
+   "stock_code": "009150",
+   "corp_name": "삼성전기",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260929000153",
+   "stock_code": "068270",
+   "corp_name": "셀트리온",
+   "report_nm": "주요사항보고서(자기주식취득결정)"
+  },
+  {
+   "rcept_no": "20260929000097",
+   "stock_code": "456040",
+   "corp_name": "OCI",
+   "report_nm": "주요사항보고서(영업정지)"
+  },
+  {
+   "rcept_no": "20260929800185",
+   "stock_code": "456040",
+   "corp_name": "OCI",
+   "report_nm": "매매거래정지및정지해제(중요내용공시)              (영업정지)"
+  },
+  {
+   "rcept_no": "20260929800152",
+   "stock_code": "375500",
+   "corp_name": "DL이앤씨",
+   "report_nm": "기타경영사항(자율공시)"
+  },
+  {
+   "rcept_no": "20260929800131",
+   "stock_code": "003570",
+   "corp_name": "SNT다이내믹스",
+   "report_nm": "주식소각결정"
+  },
+  {
+   "rcept_no": "20260929800141",
+   "stock_code": "003570",
+   "corp_name": "SNT다이내믹스",
+   "report_nm": "매매거래정지및정지해제(중요내용공시)"
+  },
+  {
+   "rcept_no": "20260929800083",
+   "stock_code": "042700",
+   "corp_name": "한미반도체",
+   "report_nm": "단일판매ㆍ공급계약체결(자율공시)"
+  }
+ ],
+ "subsidiary_dup": [
+  {
+   "rcept_no": "20260929800995",
+   "stock_code": "008930",
+   "corp_name": "한미사이언스",
+   "report_nm": "투자판단관련주요경영사항(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260929800978",
+   "twin_corp": "한미약품",
+   "sub_name": "한미약품(주)"
+  },
+  {
+   "rcept_no": "20260929800197",
+   "stock_code": "010060",
+   "corp_name": "OCI홀딩스",
+   "report_nm": "주요사항보고서(영업정지)(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260929000097",
+   "twin_corp": "OCI",
+   "sub_name": "OCI(주)"
+  },
+  {
+   "rcept_no": "20260929800155",
+   "stock_code": "036530",
+   "corp_name": "SNT홀딩스",
+   "report_nm": "주식소각결정(자회사의 주요경영사항)",
+   "twin_rcept_no": "20260929800131",
+   "twin_corp": "SNT다이내믹스",
+   "sub_name": "SNT다이내믹스(주)"
+  }
+ ]
+}

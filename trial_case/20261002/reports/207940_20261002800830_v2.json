@@ -1,0 +1,86 @@
+{
+ "corp_name": "삼성바이오로직스",
+ "stock_code": "207940",
+ "disclosure_date": "2026-10-02",
+ "disclosure_title": "단일판매ㆍ공급계약체결(자율공시)",
+ "rcept_no": "20261002800830",
+ "dart_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002800830",
+ "tag": "사업 변동",
+ "sentiment": {
+  "label": "긍정적",
+  "reason": "수주 추가로 중장기 매출 가시성 확대"
+ },
+ "headline": "유럽 제약사와 935억 원 위탁생산 계약",
+ "impact_summary": "매출 2.05% 규모 CMO 수주, 2031년까지 이어집니다.",
+ "event_type": "단일판매·공급계약",
+ "keywords": [
+  "위탁생산",
+  "CMO",
+  "유럽 제약사",
+  "의약품",
+  "수주",
+  "2031년"
+ ],
+ "themes": [
+  "바이오 CDMO",
+  "수주"
+ ],
+ "related_ids": [],
+ "kpis": [
+  {
+   "label": "계약금액",
+   "value": "약 935억",
+   "sub": "USD 6,875만, 환율 1,359.60 적용"
+  },
+  {
+   "label": "매출액 대비",
+   "value": "2.05%",
+   "sub": "2025 연결 매출 약 4.56조"
+  },
+  {
+   "label": "계약기간",
+   "value": "~2031.12.31",
+   "sub": "2026.10.02 시작, 합의로 변경 가능"
+  },
+  {
+   "label": "계약 상대",
+   "value": "유럽 제약사",
+   "sub": "2031.12.31 공개 예정"
+  }
+ ],
+ "points": [
+  {
+   "type": "pos",
+   "text": "의약품 위탁생산(CMO) 계약으로 약 5년 3개월간 매출이 확보됩니다."
+  },
+  {
+   "type": "pos",
+   "text": "금액은 직전 연도 매출의 2.05%로 의미 있는 규모입니다."
+  },
+  {
+   "type": "unk",
+   "text": "계약금·선급금은 없고, 계약상대는 비밀유지로 2031년 말 공개 예정입니다."
+  },
+  {
+   "type": "unk",
+   "text": "계약기간은 양사 합의로 바뀔 수 있고, 금액은 환율에 따라 달라집니다."
+  }
+ ],
+ "news": [
+  {
+   "outlet": "딜사이트",
+   "date": "2026-10-02",
+   "title": "삼성바이오로직스, 유럽 제약사와 935억 규모 CMO 계약",
+   "url": "https://dealsite.co.kr/articles/170105"
+  }
+ ],
+ "sources_note": "출처: DART 공시 원문, 뉴스 링크.",
+ "brief": "유럽 제약사와 935억 원 CMO 계약(매출 2.05%). 2031년까지 매출 가시성 추가 확보.",
+ "importance": 3,
+ "importance_reason": "매출 대비 2.05%로 1~5% 구간의 의미 있는 계약입니다.",
+ "importance_score": 55,
+ "financials": null,
+ "valuation": null,
+ "consensus": null,
+ "report_version": 3
+}

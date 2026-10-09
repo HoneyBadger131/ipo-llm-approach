@@ -1,0 +1,70 @@
+{
+ "date": "2026-09-23",
+ "total": 783,
+ "watchlist_filings": 115,
+ "watchlist_companies": 34,
+ "excluded": 105,
+ "separate": [],
+ "review": [
+  {
+   "rcept_no": "20260923000626",
+   "stock_code": "008930",
+   "corp_name": "한미사이언스",
+   "report_nm": "임원ㆍ주요주주특정증권등거래계획보고서"
+  },
+  {
+   "rcept_no": "20260923800547",
+   "stock_code": "006800",
+   "corp_name": "미래에셋증권",
+   "report_nm": "풍문또는보도에대한해명(미확정)"
+  },
+  {
+   "rcept_no": "20260923000481",
+   "stock_code": "001450",
+   "corp_name": "현대해상",
+   "report_nm": "특수관계인에대한출자"
+  },
+  {
+   "rcept_no": "20260923800386",
+   "stock_code": "064350",
+   "corp_name": "현대로템",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260923800359",
+   "stock_code": "068270",
+   "corp_name": "셀트리온",
+   "report_nm": "투자판단관련주요경영사항              (CTP13 SC(짐펜트라) 미국 임상 3상 시험계획 승인)"
+  },
+  {
+   "rcept_no": "20260923800342",
+   "stock_code": "326030",
+   "corp_name": "에스케이바이오팜",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260923800244",
+   "stock_code": "006260",
+   "corp_name": "LS",
+   "report_nm": "풍문또는보도에대한해명(미확정)(자회사의 주요경영사항)"
+  },
+  {
+   "rcept_no": "20260923800239",
+   "stock_code": "272210",
+   "corp_name": "한화시스템",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260923800033",
+   "stock_code": "000720",
+   "corp_name": "현대건설",
+   "report_nm": "단일판매ㆍ공급계약체결"
+  },
+  {
+   "rcept_no": "20260923000001",
+   "stock_code": "064350",
+   "corp_name": "현대로템",
+   "report_nm": "약관에의한금융거래시계열금융회사의거래상대방의공시"
+  }
+ ]
+}
