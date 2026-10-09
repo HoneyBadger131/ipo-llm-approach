@@ -4,7 +4,11 @@
 // 예) node report_v2/render.js trial_case/20260910/reports/329180_20260910800161_v2.json
 const fs = require("fs");
 const path = require("path");
-const { chromium } = require("/opt/node22/lib/node_modules/playwright");
+const { chromium } = (() => {
+  try { return require("playwright"); } catch (e) { return require("/opt/node22/lib/node_modules/playwright"); } // 로컬: npm i playwright / 클라우드: 전역 경로
+})();
+const CLOUD_CHROMIUM = "/opt/pw-browsers/chromium";
+const launchOpts = { args: ["--no-sandbox"], ...(fs.existsSync(CLOUD_CHROMIUM) ? { executablePath: CLOUD_CHROMIUM } : {}) };
 const { toMarkdown } = require("./to_md");
 
 const esc = (s) =>
@@ -64,7 +68,7 @@ function html(d) {
 --pos:#127a4a;--pos-bg:#e3f4eb;--neg:#b3261e;--neg-bg:#fbe7e5;--mix:#8a5a00;--mix-bg:#fdf0d5;--unk:#4f5b6b;--unk-bg:#e8ebf0}
 @page{size:A4;margin:0}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"WenQuanYi Zen Hei","Noto Sans CJK KR","Malgun Gothic",sans-serif;font-size:11.5px;line-height:1.55}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"WenQuanYi Zen Hei","Apple SD Gothic Neo","Noto Sans CJK KR","Malgun Gothic",sans-serif;font-size:11.5px;line-height:1.55}
 .page{width:210mm;height:297mm;padding:12mm 12mm 9mm;display:flex;flex-direction:column;gap:11px;overflow:hidden}
 header{background:var(--brand);color:#fff;border-radius:10px;padding:14px 16px}
 header .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
@@ -144,9 +148,7 @@ ${d.news && d.news.length ? `<section class="card"><h2>뉴스 근거 <span class
   fs.mkdirSync(mdDir, { recursive: true });
   const mdPath = path.join(mdDir, `${data.stock_code}_${data.rcept_no}.md`);
   fs.writeFileSync(mdPath, toMarkdown(data), "utf-8");
-  const browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium", args: ["--no-sandbox"] }).catch(() =>
-    chromium.launch({ args: ["--no-sandbox"] })
-  );
+  const browser = await chromium.launch(launchOpts);
   const page = await browser.newPage();
   await page.goto("file://" + path.resolve(base + ".html"));
   await page.pdf({ path: base + ".pdf", format: "A4", printBackground: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } });

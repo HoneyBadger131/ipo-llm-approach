@@ -4,7 +4,11 @@
 //  - meta.json(선택): {"funnel":[["전체 공시",1096],...], "top_order":["접수번호",...]}  top_order는 동점 정렬/수동 순서.
 const fs = require("fs");
 const path = require("path");
-const { chromium } = require("/opt/node22/lib/node_modules/playwright");
+const { chromium } = (() => {
+  try { return require("playwright"); } catch (e) { return require("/opt/node22/lib/node_modules/playwright"); } // 로컬: npm i playwright / 클라우드: 전역 경로
+})();
+const CLOUD_CHROMIUM = "/opt/pw-browsers/chromium";
+const launchOpts = { args: ["--no-sandbox"], ...(fs.existsSync(CLOUD_CHROMIUM) ? { executablePath: CLOUD_CHROMIUM } : {}) };
 
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const SENT = { "긍정적": ["pos", "▲"], "부정적": ["neg", "▼"], "혼재됨": ["mix", "◆"], "알수 없음": ["unk", "?"] };
@@ -49,7 +53,7 @@ const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>
 :root{--bg:#f4f6f9;--card:#fff;--ink:#1c2430;--mute:#6a7686;--line:#e3e8ef;--brand:#26457a;
 --pos:#127a4a;--pos-bg:#e3f4eb;--neg:#b3261e;--neg-bg:#fbe7e5;--mix:#8a5a00;--mix-bg:#fdf0d5;--unk:#4f5b6b;--unk-bg:#e8ebf0}
 @page{size:A4;margin:0}*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"WenQuanYi Zen Hei","Noto Sans CJK KR","Malgun Gothic",sans-serif;font-size:11px;line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"WenQuanYi Zen Hei","Apple SD Gothic Neo","Noto Sans CJK KR","Malgun Gothic",sans-serif;font-size:11px;line-height:1.5}
 .page{width:210mm;min-height:297mm;padding:9mm 11mm 6mm;display:flex;flex-direction:column;gap:7px}
 header{background:var(--brand);color:#fff;border-radius:10px;padding:10px 15px}
 header h1{margin:0;font-size:19px}header .sub{opacity:.85;font-size:10.5px;margin-top:2px}
@@ -79,7 +83,7 @@ ${rest.length ? `<h2>그 외 공시</h2><table><tbody>${rest.map(row).join("")}<
 
 (async () => {
   fs.writeFileSync(outBase + ".html", html, "utf-8");
-  const browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium", args: ["--no-sandbox"] }).catch(() => chromium.launch({ args: ["--no-sandbox"] }));
+  const browser = await chromium.launch(launchOpts);
   const page = await browser.newPage();
   await page.goto("file://" + path.resolve(outBase + ".html"));
   await page.pdf({ path: outBase + ".pdf", format: "A4", printBackground: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } });

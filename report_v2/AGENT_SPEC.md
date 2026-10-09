@@ -53,7 +53,7 @@ v3 = 개별 종목 보고서에서 **최근 3년 실적·가치평가/추정치�
 
 ## 실행·검증
 - 파일: `trial_case/<공시일>/reports/<종목코드>_<접수번호>_v2.json` (같은 이름의 html·pdf와 `disclosure_md/<공시일>/…md`가 생성됨. 파일명의 `_v2`는 유지)
-- `cd /home/user/ipo-llm-approach && node report_v2/render.js <json 경로>` (render.js, to_md.js는 수정 금지. 결함은 보고)
+- `cd <레포 루트(프롬프트에 명시된 경로)> && node report_v2/render.js <json 경로>` (render.js, to_md.js는 수정 금지. 결함은 보고)
 - `pdfinfo`로 1쪽 확인. 이미지 확인(`pdftoppm -png -r 80`, Read로 한글·겹침·넘침)은 **종목당 첫 1건만**(스크래치패드 사용, 파일명에 종목·접수번호). 다음 건은 쪽수만 확인해도 된다(레이아웃 동일).
 - 원문 본문은 레포의 `trial_case/<공시일>/<종목코드>_<접수번호>.txt`에 있다. 긴 본문은 한 줄이 매우 길 수 있으니 python으로 구간을 잘라 읽는다.
 - git 명령은 쓰지 않는다(커밋은 호출자가 한다). `DART_API_KEY`는 값을 출력·저장하지 않는다.

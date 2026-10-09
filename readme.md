@@ -15,3 +15,6 @@ DART 공시를 수집하고 LLM으로 중요도를 판단·심화 분석해, 종
 ## 메모
 - 주식수 변동은 DART가 아니라 KIND 크롤링으로 별도 처리 필요(미구현, TODO). 공시 간 유사·연결 모듈도 후속 작업.
 - API 키는 환경 변수 `DART_API_KEY`(없으면 git 제외된 `.env`)로 사용. 레포가 public이라 키를 커밋하지 않는다.
+
+## 로컬(맥) 실행
+`npm i playwright && npx playwright install chromium`, `python3 -m venv .venv && pip install requests`, `.env`에 `DART_API_KEY` 작성. 렌더러는 로컬 playwright를 우선 쓰고 없으면 클라우드 전역 경로로 폴백한다. 한글 폰트는 Apple SD Gothic Neo 포함.
