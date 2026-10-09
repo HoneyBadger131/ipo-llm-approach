@@ -8,3 +8,7 @@ jev_test/data/bodies/
 !jev_test/review/*.csv
 logs/
 state/
+
+# KIND 축 산출물(재생성 가능)
+kind/data/kind.db*
+kind/data/raw/

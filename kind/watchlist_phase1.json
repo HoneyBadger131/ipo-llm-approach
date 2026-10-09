@@ -1,0 +1,9 @@
+{
+ "name": "KIND 축 1단계 대상 종목",
+ "status": "v0 — 3종목 시범. 이후 DART 축과 같은 ~300종목(kospi_list_clean.md)으로 확장",
+ "companies": [
+  {"name": "삼성전자", "stock_code": "005930", "isu_cd": "A005930", "pref_stock_code": "005935"},
+  {"name": "SK하이닉스", "stock_code": "000660", "isu_cd": "A000660"},
+  {"name": "삼성바이오로직스", "stock_code": "207940", "isu_cd": "A207940"}
+ ]
+}
