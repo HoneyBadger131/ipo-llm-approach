@@ -6,7 +6,10 @@
 const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
-const { chromium } = require("/opt/node22/lib/node_modules/playwright");
+const { chromium } = (() => {
+  try { return require("playwright"); } catch (e) { return require("/opt/node22/lib/node_modules/playwright"); } // 로컬: npm i playwright / 클라우드: 전역 경로
+})();
+const launchOpts = { args: ["--no-sandbox"], ...(require("fs").existsSync("/opt/pw-browsers/chromium") ? { executablePath: "/opt/pw-browsers/chromium" } : {}) };
 const { buildSummary, loadItems } = require("./render_summary");
 const { html: reportHtml } = require("./render");
 
@@ -40,7 +43,7 @@ async function pdfOf(browser, htmlText, tmp) {
 }
 
 (async () => {
-  const browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium", args: ["--no-sandbox"] }).catch(() => chromium.launch({ args: ["--no-sandbox"] }));
+  const browser = await chromium.launch(launchOpts);
   const tmp = fs.mkdtempSync(path.join(require("os").tmpdir(), "bundle-"));
   const idx = new Map(ordered.map((d, i) => [d.rcept_no, i]));
 
@@ -59,7 +62,7 @@ async function pdfOf(browser, htmlText, tmp) {
   }
   // 각 공시 페이지 하단 우측 '↑ 브리프' 버튼(오버레이). 위치(pt) = CSS px × 0.75
   const pill = { r: 26, b: 14, w: 118, h: 24 };
-  const ovHtml = `<!doctype html><meta charset="utf-8"><style>@page{size:A4;margin:0}*{box-sizing:border-box}body{margin:0;background:transparent;font-family:"WenQuanYi Zen Hei","Noto Sans CJK KR","Malgun Gothic",sans-serif}
+  const ovHtml = `<!doctype html><meta charset="utf-8"><style>@page{size:A4;margin:0}*{box-sizing:border-box}body{margin:0;background:transparent;font-family:"WenQuanYi Zen Hei","Apple SD Gothic Neo","Noto Sans CJK KR","Malgun Gothic",sans-serif}
 .pg{width:${PW}px;height:${PH}px;position:relative;overflow:hidden;page-break-after:always}.pg:last-child{page-break-after:auto}
 .pill{position:absolute;right:${pill.r}px;bottom:${pill.b}px;width:${pill.w}px;height:${pill.h}px;border-radius:12px;background:#26457a;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;opacity:.92}</style>
 ${ordered.map((d, i) => `<div class="pg"><div class="pill">↑ 브리프 · ${i + 1}/${ordered.length}</div></div>`).join("")}`;

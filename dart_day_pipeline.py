@@ -71,7 +71,7 @@ def stage(day, batch=3):
     for g in groups:
         names = ", ".join(f"{t['stock_code']} {t['corp_name']}" for t in g)
         codes = ", ".join(t["stock_code"] for t in g)
-        print(f"[{names}] 레포 /home/user/ipo-llm-approach 에서 공시 대시보드를 만든다. "
+        print(f"[{names}] 레포 {os.path.dirname(os.path.abspath(__file__))} 에서 공시 대시보드를 만든다. "
               f"먼저 report_v2/AGENT_SPEC.md 를 읽고 그대로 따른다. 작업 정의는 {d}/agent_tasks.json 의 "
               f"stock_code={codes} 항목(기준일 {g[0]['base_date']}). "
               + ("종목이 여럿이면 종목별로 차례로(MCP·검색은 종목마다) 처리한다." if len(g) > 1 else ""))

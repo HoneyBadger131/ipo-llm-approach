@@ -6,3 +6,5 @@ trial_case/20260910/003490_20260910000414.txt
 jev_test/data/bodies/
 
 !jev_test/review/*.csv
+logs/
+state/

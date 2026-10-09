@@ -2,7 +2,10 @@
 // 사용법: node report_v2/render_fin_sample.js [YYYYMMDD=20261002] [출력 디렉터리=docs/design]
 const fs = require("fs");
 const path = require("path");
-const { chromium } = require("/opt/node22/lib/node_modules/playwright");
+const { chromium } = (() => {
+  try { return require("playwright"); } catch (e) { return require("/opt/node22/lib/node_modules/playwright"); } // 로컬: npm i playwright / 클라우드: 전역 경로
+})();
+const launchOpts = { args: ["--no-sandbox"], ...(require("fs").existsSync("/opt/pw-browsers/chromium") ? { executablePath: "/opt/pw-browsers/chromium" } : {}) };
 const { loadItems } = require("./render_summary");
 const day = process.argv[2] || "20261002";
 const date = `${day.slice(0, 4)}-${day.slice(4, 6)}-${day.slice(6)}`;
@@ -24,7 +27,7 @@ const rows = items.map((d, i) => {
 const d0 = items[0];
 const [c0, ic0] = S[d0.sentiment.label] || S["알수 없음"];
 const css = `:root{--navy:#14264d;--royal:#2f5fd0;--ink:#142033;--mute:#5a6678;--line:#d8dfeb;--bg:#eef1f6;--pos:#0b7a46;--neg:#c2281f;--mix:#9a6200;--unk:#55606f}
-@page{size:A4;margin:0}*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font-family:"WenQuanYi Zen Hei","Noto Sans CJK KR","Malgun Gothic",sans-serif;font-size:11px;line-height:1.5}
+@page{size:A4;margin:0}*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font-family:"WenQuanYi Zen Hei","Apple SD Gothic Neo","Noto Sans CJK KR","Malgun Gothic",sans-serif;font-size:11px;line-height:1.5}
 .pg{width:210mm;height:297mm;padding:0;page-break-after:always;overflow:hidden;position:relative}.pg:last-child{page-break-after:auto}
 .top{background:var(--navy);color:#fff;padding:12px 16px 10px;display:flex;align-items:flex-end;justify-content:space-between}
 .top h1{margin:0;font-size:20px}.top .sub{font-size:10.5px;opacity:.8}.top .dt{font-size:22px;font-weight:800;letter-spacing:.02em}
@@ -68,7 +71,7 @@ const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>
 (async () => {
   const f = path.join(out, "finance_layout_sample.html");
   fs.writeFileSync(f, html, "utf-8");
-  const b = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium", args: ["--no-sandbox"] }).catch(() => chromium.launch({ args: ["--no-sandbox"] }));
+  const b = await chromium.launch(launchOpts);
   const p = await b.newPage(); await p.goto("file://" + f);
   await p.pdf({ path: path.join(out, "finance_layout_sample.pdf"), format: "A4", printBackground: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } });
   await b.close(); console.log("wrote", f);
