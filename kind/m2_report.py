@@ -302,7 +302,7 @@ def corp_card(con, e, asof):
         if dc.get("halt_start"):
             L.append(f"- **거래정지**: {(d.get('halt') or {}).get('start') or dc['halt_start']} ~ 변경상장일 전일 (결정 공시상 종료 {dc.get('halt_end') or '-'}); 해제 = 변경상장일")
     else:
-        L.append(f"- **구조**: {dc.get('survivor')}{'(' + dc['survivor_mkt'] + ')' if dc.get('survivor_mkt') else ''} 존속 ← {dc.get('extinct')}{'(' + dc['extinct_mkt'] + ')' if dc.get('extinct_mkt') else '(상장 여부 서식에 미표기)'} 소멸" + (f" · {dc['form']}" if dc.get("form") else "") + (f" · 합병비율 1 : **{dc['ratio']}**" if dc.get("ratio") else " · 합병비율 없음(신주 미발행)"))
+        L.append(f"- **구조**: {dc.get('survivor')}{'(' + dc['survivor_mkt'] + ')' if dc.get('survivor_mkt') else ''} 존속 ← {dc.get('extinct')}{'(' + dc['extinct_mkt'] + ')' if dc.get('extinct_mkt') else ('(KIND 상장종목 확인)' if d.get('extinct_track') else '(상장 여부 서식에 미표기)')} 소멸" + (f" · {dc['form']}" if dc.get("form") else "") + (f" · 합병비율 1 : **{dc['ratio']}**" if dc.get("ratio") else " · 합병비율 없음(신주 미발행)"))
         if plan:
             L.append(f"- **합병신주**: 결정 {f_(plan)}주" + (f" → 실제 상장 **{f_(act)}주** ({act - plan:+,}; 소멸회사 자기주식·단주·주식매수청구 확정 등 반영)" if act is not None and act != plan else (" → 실제 동일" if act == plan else " (실제 상장 전 — 예정치)")))
     et = d.get("extinct_track")

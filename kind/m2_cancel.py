@@ -219,8 +219,8 @@ def finalize(con, t, eid, S, asof):
            "sources": S["sources"], "issuer": iss_row[0]}
     lst = cur.get("CHANGE_LISTING")
     out["no_listing_expected"] = False
-    if S["estimate"] and not S["listing"] and asof > nth_trading(con, S["estimate"]["hi"], 5):
-        # 추정 범위(+5영업일)를 한참 넘겼는데 변경상장 공시가 없다 → 비상장 종류주식(예: 상장폐지된 제1우선주) 소각으로 보고 지수 영향 없음 처리
+    if S["estimate"] and not S["listing"] and asof > nth_trading(con, S["estimate"]["mid"], 10):
+        # 추정 중앙값(+10영업일)을 한참 넘겼는데 변경상장 공시가 없다 → 비상장 종류주식(예: 상장폐지된 제1우선주) 소각으로 보고 지수 영향 없음 처리
         out["no_listing_expected"] = True
         set_slot(con, eid, "CHANGE_LISTING", None, 0, S["sources"][0]["filing"])
         S["estimate"] = None

@@ -33,3 +33,4 @@ $PY kind/m2_cbbw.py
 $PY kind/m2_split.py
 $PY kind/m2_corp_actions.py
 $PY kind/daily_report.py
+$PY kind/html_report.py
