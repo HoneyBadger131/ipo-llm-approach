@@ -171,11 +171,13 @@ function renderTab(){
       const head = b.exhausted ? `<span class="done">소진 완료</span>` : `남은 ${esc(b.remain_txt)}`;
       const l2 = act ? `취득 <b>${(b.frac*100).toFixed(0)}%</b>(체결 실적 ${esc(b.through.slice(5))} 기준) · 누적 ${esc(b.acquired_txt)} / 총 ${esc(b.amount_txt)}` : `취득 <b>${(b.frac*100).toFixed(0)}%</b>(기간 경과 비례 추정) · 총 ${esc(b.amount_txt)}`;
       const pace = b.stalled ? `최근 체결 없음 — 마지막 체결 ${esc(b.through)} (중단·종료 여부 확인 필요)` : act && !b.exhausted && b.pace_shares ? `최근 10거래일 일평균 약 ${b.pace_shares.toLocaleString("ko-KR")}주 · <b>예상 소진 ${esc(b.proj_end||"-")}</b>${b.proj_end && b.proj_end<b.plan_end?` (계획 종료 ${esc(b.plan_end)}보다 빠름)`:""}` : (b.exhausted ? `계획 금액 소진 — 마지막 체결 ${esc(b.through)}${b.acq_shares?` · 누적 ${b.acq_shares.toLocaleString("ko-KR")}주`:""}` : "");
+      const c = b.ctx;
+      const cx = c ? `<div class="pleg"><span>시총 대비 계획 <b>${c.plan_pct.toFixed(2)}%</b>${b.exhausted?'':` · 남은 <b>${c.remain_pct.toFixed(2)}%</b>`} · 최근 ${c.n}거래일 일평균 거래대금 ${(c.avg_value/1e12).toFixed(2)}조원 중 매입 비중 <b>${c.buy_value_share==null?'-':c.buy_value_share.toFixed(1)+'%'}</b>(수량 ${c.buy_volume_share==null?'-':c.buy_volume_share.toFixed(1)+'%'})${b.exhausted||!c.remain_days_of_value?'':` · 남은 금액 = 일 거래대금 ${c.remain_days_of_value.toFixed(1)}일치`} <span class="q" title="시세: ${esc(c.through)} 기준 최근 ${c.n}거래일(KRX 일별매매정보). 매입 비중 = 같은 날짜의 체결금액(자기주식매매 체결내역) ÷ 거래대금.">?</span></span></div>` : "";
       const note = b.note ? `<div class="pleg"><span>${esc(b.note)}${(b.news||[]).map(n=>` <a href="${esc(n.url)}" target="_blank" rel="noopener">[${esc(n.outlet)} ${esc(n.date.slice(5))} ↗]</a>`).join("")}</span></div>` : "";
       return `<div class="row plain"><div class="l1"><div class="nm">${esc(b.issuer)}<small>${esc(b.code)}</small>${badge(b)}<span class="tag">${esc(b.kind)}</span>${b.burn?'<span class="burn">소각 목적</span>':'<span class="tag">소각 아님</span>'}</div><div class="mc big">${head}</div></div>
       <div class="pbar" style="width:${w}%"><i class="got" style="width:${(b.frac*100).toFixed(1)}%"></i><i class="rem" style="width:${((1-b.frac)*100).toFixed(1)}%"></i></div>
       <div class="pleg"><span>${l2}</span><span>${esc(b.period)} · <a href="${esc(b.link.url)}" target="_blank" rel="noopener">KIND ↗</a></span></div>
-      ${pace?`<div class="pleg"><span>${pace}</span></div>`:""}
+      ${pace?`<div class="pleg"><span>${pace}</span></div>`:""}${cx}
       <div class="pleg"><span>${esc(b.purpose||'')}</span></div>${note}</div>`;}).join("")||'<div class="empty">조건에 맞는 자기주식 취득이 없습니다.</div>'}</div>`;
   } else {
     html = `<div class="list">${DATA.closed.map(e=>`<div class="row plain"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small>${badge(e)}<span class="tag">${esc(e.type)}</span></div><div class="mc" style="font-weight:600">종결 ${esc(e.date)}</div></div></div>`).join("")||'<div class="empty">최근 7일 안에 종결된 이벤트가 없습니다.</div>'}</div>`;

@@ -32,7 +32,7 @@
 - 환경: 레포 `.venv`(requests, exchange_calendars, holidays, pypdf), 항상 `.venv/bin/python`. Playwright 는 `node_modules`(리포트 렌더 확인용).
 
 **일일 운영 루틴**
-1. (주 1회) 종가 갱신: MCP `trading_data(scope=universe, universe='코스피 시총 상위 300', format=md)` → 결과를 `kind/universe/save_prices.py` 에 표준입력으로 → `prices_<기준일>.csv` 누적(기록 겸용).
+1. (주 1회) 종가 갱신(+ 삼성전자·SK하이닉스 일별 시세 `kind/universe/bb_quotes.json` 최근 10거래일 — MCP `trading_data(scope=quote, company=…, as_of=YYYYMMDD)`): MCP `trading_data(scope=universe, universe='코스피 시총 상위 300', format=md)` → 결과를 `kind/universe/save_prices.py` 에 표준입력으로 → `prices_<기준일>.csv` 누적(기록 겸용).
 2. `scan_range.py --from <마지막 스캔일+1> --to <어제>` (하루 ~5콜, 거래일 1일 ≈ 5~10초) → `buyback_exec.py --from <마지막+1> --to <어제>`(자기주식 체결내역, 하루 1건 ≈ 1콜).
 3. `backfill_orphans.py` → `status_flags.py --to <어제>`
 4. `m1_parser.py` → `m2_*` 5개 → (온라인) `m2_cbbw.py` → `html_report.py <날짜>`

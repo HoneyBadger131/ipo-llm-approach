@@ -52,7 +52,7 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh 2025-01-01 2026-10-10   # 캐시만으로 �
 | `html_report.py`, `html_report_template.html` | HTML 4탭 리포트(데이터 구성 + 화면) |
 | `daily_report.py`, `m2_report.py` | 마크다운 리포트·카드(이전 형식, `reports/*.md`) |
 | `news.json` | 스레드 키별 '왜'·리스크·메모·태그·뉴스(사람이 추가) |
-| `universe/` | `prices_<날짜>.csv`(주간 종가), `save_prices.py`, `exclude.txt`, `kospi_list_clean.md` |
+| `universe/` | `prices_<날짜>.csv`(주간 종가), `save_prices.py`, `bb_quotes.json`(삼성전자·SK하이닉스 일별 시세 — 취득 맥락), `exclude.txt`, `kospi_list_clean.md` |
 | `watchlist_phase1.json` | 1단계 3종목 시범 설명(실제 소스는 `seed_master.py`) |
 
 ## 명령 모음

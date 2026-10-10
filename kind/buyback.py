@@ -5,6 +5,7 @@
 소각 목적 여부: 취득목적에 '소각'이 있거나, 같은 취득 시작일의 소각 스레드(CXL:…:A<시작일>)가 있으면 소각 목적.
 """
 import datetime as dt
+import json
 import os
 import re
 import sys
@@ -48,6 +49,31 @@ def parse(title, text):
     return {"kind": "신탁 취득", "shares": num(_after(g("취득예정주식"), "보통주식")), "amount": num((g("계약금액") or [None])[0]),
             "start": kdate(_after(p, "시작일")) if _after(p, "시작일") not in (None, "-") else None, "end": kdate(_after(p, "종료일")) if _after(p, "종료일") not in (None, "-") else None,
             "purpose": (g("계약목적") or [None])[0], "method": "신탁계약"}
+
+
+def _quotes():
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "universe", "bb_quotes.json")
+    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+
+
+def market_context(con, code, d, prog):
+    """삼성전자·SK하이닉스 등 시세 파일(universe/bb_quotes.json)이 있는 종목: 시총·거래대금 대비 취득 규모(수급 영향도).
+    최근 10거래일 일평균 거래대금 대비 같은 날짜의 매입 금액·수량 비중, 남은 금액이 일 거래대금의 며칠치인지."""
+    q = _quotes().get(code)
+    if not q or not q.get("days"):
+        return None
+    days = sorted(q["days"])[-10:]
+    kind = "직접" if d["kind"].startswith("직접") else "신탁"
+    ex = {r["day"]: r for r in con.execute("SELECT day, exec_shares, exec_amount FROM buyback_exec WHERE code=? AND kind=? AND day BETWEEN ? AND ?", (code, kind, days[0], days[-1]))}
+    val = sum(q["days"][x]["value"] for x in days)
+    vol = sum(q["days"][x]["volume"] for x in days)
+    buy_amt = sum((ex[x]["exec_amount"] or 0) for x in days if x in ex)
+    buy_sh = sum((ex[x]["exec_shares"] or 0) for x in days if x in ex)
+    mc = q["days"][days[-1]]["mktcap"]
+    plan = d["amount"] or 0
+    return {"through": days[-1], "n": len(days), "mktcap": mc, "plan_pct": plan / mc * 100, "remain_pct": prog["remaining"] / mc * 100,
+            "avg_value": val / len(days), "buy_value_share": buy_amt / val * 100 if val else None, "buy_volume_share": buy_sh / vol * 100 if vol else None,
+            "remain_days_of_value": prog["remaining"] / (val / len(days)) if val else None, "avg_buy": buy_amt / len(days)}
 
 
 def progress(con, d, asof):
@@ -127,6 +153,8 @@ def active(con, asof, window_days=0):
         d["burn"] = bool(cxl) or "소각" in (d["purpose"] or "")
         d["name"] = con.execute("SELECT name FROM issuer WHERE issuer_id=?", (iss,)).fetchone()[0]
         d["prog"] = progress(con, d, asof)
+        code_ = (con.execute("SELECT code FROM security_code WHERE security_id=? AND code_type='SHORT'", (d["security_id"],)).fetchone() or [None])[0]
+        d["prog"]["ctx"] = market_context(con, code_, d, d["prog"]) if code_ else None
         out.append(d)
     out.sort(key=lambda x: -(x["prog"]["remaining"] or 0))
     return out

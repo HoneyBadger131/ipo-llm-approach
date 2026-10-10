@@ -310,7 +310,7 @@ def build(con, asof):
         bb.append({"frac": round(pr["frac"], 3), "acquired": pr["acquired"], "remain": pr["remaining"], "remain_txt": won(pr["remaining"])[1:] if amt else "-",
                    "acquired_txt": won(pr["acquired"])[1:] if amt else "-", "basis": pr["basis"], "through": pr.get("data_through"), "exhausted": bool(pr.get("exhausted")), "stalled": bool(pr.get("stalled")),
                    "proj_end": pr.get("proj_end"), "pace_shares": pr.get("pace_shares"), "acq_shares": pr.get("acq_shares"), "plan_shares_notice": pr.get("plan_shares"),
-                   "days_left": (dt.date.fromisoformat(end_eff) - asof_d).days, "plan_end": b["end"], "note": nw.get("note"), "news": nw.get("news", []),
+                   "days_left": (dt.date.fromisoformat(end_eff) - asof_d).days, "plan_end": b["end"], "note": nw.get("note"), "news": nw.get("news", []), "ctx": pr.get("ctx"),
                    "issuer": b["name"], "code": code, "flag": flags.get(b["security_id"]), "kind": b["kind"], "amount": b["amount"], "amount_txt": won(b["amount"])[1:] if b["amount"] else "-",
                    "shares": b["shares"], "period": f"{b['start']} ~ {b['end']}", "burn": b["burn"], "purpose": b["purpose"], "dday_end": R.dday(con, asof, b["end"]),
                    "link": {"url": KIND_URL + b["acpt_no"], "label": f"KIND 공시 원문 — {b['title']} ({b['filed_date']})"}})
