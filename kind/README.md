@@ -31,3 +31,10 @@
 .venv/bin/python kind/daily_report.py [YYYY-MM-DD]  # kind/reports/m1_<기준일>.md
 ./kind/rebuild_all.sh                          # 전체 재생성(캘린더→시드→수집→ETF→M1→리포트)
 ```
+
+## M2 (유상증자 스레드)
+```
+.venv/bin/python kind/m2_rights_issue.py [--asof YYYY-MM-DD] [--no-network]   # 스레드 재구성(멱등). 증서 거래기간이 없을 때만 투자설명서 온디맨드 조회
+.venv/bin/python kind/m2_report.py [YYYY-MM-DD]                               # kind/reports/m2_rights_issue_<기준일>.md
+```
+설명: `docs/KIND_M2_RIGHTS_ISSUE.md`

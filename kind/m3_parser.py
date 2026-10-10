@@ -172,10 +172,13 @@ def derive_halts(con):
         if not s:
             continue
         end, est, state = None, 1, "active"
-        if en and not en["condition_note"]:  # HALT_END = 거래 재개일 → 마지막 정지일은 그 직전 영업일
+        det = json.loads(e["detail_json"] or "{}")
+        if det.get("intraday"):  # 장중 정지: 그날 하루
+            end, est, state = s["the_date"], 0, "ended"
+        elif en and not en["condition_note"]:  # HALT_END = 거래 재개일 → 마지막 정지일은 그 직전 영업일
             end, est, state = prev_trading(con, en["the_date"]), 0, "ended"
         note = {"reason": json.loads(e["detail_json"] or "{}").get("reason"), "resume_date": en["the_date"] if en and not en["condition_note"] else None,
-                "pending_condition": en["condition_note"] if en else None, "event_id": e["event_id"]}
+                "pending_condition": en["condition_note"] if en else None, "event_id": e["event_id"], "intraday": det.get("intraday")}
         con.execute("DELETE FROM designation WHERE security_id=? AND kind='HALT' AND start_date=?", (e["security_id"], s["the_date"]))
         upsert(con, e["security_id"], "HALT", s["the_date"], end, est, state, s["source_filing_id"], note)
         n += 1

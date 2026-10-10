@@ -145,6 +145,7 @@ CREATE TABLE IF NOT EXISTS event (
   title       TEXT,
   review_flag INTEGER NOT NULL DEFAULT 0,                              -- 반자동 검수 대상(체인 매칭 불확실)
   detail_json TEXT,                                                    -- 유형별 부가 값(기준가격, 사유 원문 등)
+  thread_key  TEXT UNIQUE,                                             -- 스레드형 이벤트(유상증자 등)의 안정 키: '<유형>:<issuer_id>:<최초 결정일>'. 재실행 시 같은 event_id 로 재구성
   created_at  TEXT NOT NULL,
   updated_at  TEXT NOT NULL
 ) STRICT;
@@ -169,6 +170,20 @@ CREATE TABLE IF NOT EXISTS event_filing (
   filing_id TEXT NOT NULL REFERENCES filing(filing_id),
   relation TEXT NOT NULL CHECK (relation IN ('initial','amend','follow','reference')),
   PRIMARY KEY (event_id, filing_id)
+) STRICT;
+
+-- 지수(패시브) 관점의 주식수 반영. 거래소 지수 방법론: 유상증자(주주배정)는 권리락일, 제3자배정은 신주 상장일에 주식수가 늘어난다.
+-- share_ledger(상장주식수 = 시장에 상장된 수량)와 별개의 축이며, 신주 상장일이 오면 두 값이 같아진다.
+CREATE TABLE IF NOT EXISTS index_share_adj (
+  event_id       INTEGER NOT NULL REFERENCES event(event_id),
+  security_id    INTEGER NOT NULL REFERENCES security(security_id),
+  effective_date TEXT REFERENCES calendar_day(cal_date),                -- 지수 주식수 증가 적용일(권리락일 / 신주 상장일). 미정이면 NULL
+  delta_shares   INTEGER NOT NULL,
+  basis          TEXT NOT NULL CHECK (basis IN ('PLANNED','AS_OF_EFFECTIVE','ACTUAL')),  -- PLANNED=공시 예정수량, AS_OF_EFFECTIVE=적용일 시점의 공시 수량, ACTUAL=발행결과 수량
+  is_estimated   INTEGER NOT NULL,                                      -- 적용일이 파생(기준일로부터 계산)이면 1
+  source_filing_id TEXT REFERENCES filing(filing_id),
+  note           TEXT,
+  PRIMARY KEY (event_id, security_id)
 ) STRICT;
 
 -- ───────────── 5. 주식수 변동 원장 — KIND 축의 핵심 산출물 ─────────────

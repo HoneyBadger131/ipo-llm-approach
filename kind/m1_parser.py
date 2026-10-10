@@ -173,12 +173,20 @@ def parse_halt(con, f, text):
     start = kdate(st.group(1)) if st else None
     end_raw = en.group(1).strip() if en else None
     end = kdate(end_raw) if end_raw else None
+    intraday = None
+    if not start:  # 장중 정지 서식(중요내용공시 등): '3. 매매거래정지 일시 | 2025-05-22 | 07:45' / '4. 매매거래정지 해제일시 | … | 09:30'
+        a_ = re.search(r"매매거래정지 일시\s*\|?\s*(\d{4}-\d{2}-\d{2})\s*\|?\s*(\d{2}:\d{2})", flat)
+        b_ = re.search(r"매매거래정지 해제일시\s*\|?\s*(\d{4}-\d{2}-\d{2})\s*\|?\s*(\d{2}:\d{2})", flat)
+        if a_ and b_ and a_.group(1) == b_.group(1):
+            start, end, end_raw = a_.group(1), b_.group(1), None
+            intraday = f"{a_.group(2)}~{b_.group(2)}"
+            why = re.search(r"매매거래정지 사유\s*\|?\s*(.*?)\s*6\.", flat)
     if not start:
         return "review", "halt_start_missing"
     if con.execute("SELECT 1 FROM event_filing WHERE filing_id=?", (f["filing_id"],)).fetchone():
         return "parsed", None
     iss = con.execute("SELECT issuer_id FROM security WHERE security_id=?", (f["security_id"],)).fetchone()[0]
-    detail = json.dumps({"reason": why.group(1).strip(" -|") if why else None, "end_raw": end_raw}, ensure_ascii=False)
+    detail = json.dumps({"reason": why.group(1).strip(" -|") if why else None, "end_raw": end_raw, "intraday": intraday}, ensure_ascii=False)
     eid = con.execute("""INSERT INTO event(issuer_id,security_id,event_type,status,title,detail_json,created_at,updated_at) VALUES (?,?,'HALT',?,?,?,?,?)""",
                       (iss, f["security_id"], "done" if (end and end <= TODAY) else "confirmed", f["title"], detail, NOW(), NOW())).lastrowid
     con.execute("INSERT INTO event_date(event_id,role,the_date,is_estimated,source_filing_id) VALUES (?,?,?,0,?)", (eid, "HALT_START", start, f["filing_id"]))
@@ -220,6 +228,21 @@ def fill_chain(con):
             if (before, after, comp) != (r["shares_before"], r["shares_after"], r["is_computed"]):
                 con.execute("UPDATE share_ledger SET shares_before=?, shares_after=?, is_computed=? WHERE ledger_id=?", (before, after, comp, r["ledger_id"]))
             bal = after if after is not None else bal
+        # 역방향 보완: 시드(또는 뒤쪽 행) 잔고가 알려진 경우, 앞쪽의 잔고 미상 행을 증감에서 거꾸로 계산 (예: 시드 이전의 추가상장)
+        rows = con.execute("SELECT * FROM share_ledger WHERE security_id=? AND superseded_by IS NULL ORDER BY effective_date, ledger_id", (sid,)).fetchall()
+        nxt = None
+        for r in reversed(rows):
+            if r["reason"].startswith("SEED:"):
+                nxt = r["shares_after"]
+                continue
+            after, before, comp = r["shares_after"], r["shares_before"], r["is_computed"]
+            if after is None and nxt is not None and r["delta_shares"] is not None:
+                after, comp = nxt, 1
+            if before is None and after is not None and r["delta_shares"] is not None:
+                before, comp = after - r["delta_shares"], 1
+            if (before, after, comp) != (r["shares_before"], r["shares_after"], r["is_computed"]):
+                con.execute("UPDATE share_ledger SET shares_before=?, shares_after=?, is_computed=? WHERE ledger_id=?", (before, after, comp, r["ledger_id"]))
+            nxt = before if before is not None else nxt
     return problems
 
 

@@ -1,4 +1,4 @@
-"""KIND 일일 리포트(마크다운): 기준일 영업일 기준 ① 주식수 원장 ② 변동 이력 ③ 이벤트 캘린더(M1) ④ 시장경보·거래정지 현황(M3) ⑤ 처리 현황.
+"""KIND 일일 리포트(마크다운): 기준일 영업일 기준 ① 주식수 원장 ② 변동 이력 ③ 이벤트 캘린더(M1) ④ 시장경보·거래정지 현황(M3) ⑤ 유상증자 스레드(M2) ⑥ 처리 현황.
   .venv/bin/python kind/daily_report.py [YYYY-MM-DD]     # 기본: 오늘 이전(포함) 마지막 영업일
 출력: 콘솔 + kind/reports/kind_<기준일>.md
 """
@@ -8,6 +8,8 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
+import index_shares
+import m2_report
 
 ROLE = {"EX_DATE": "기준가/락", "HALT_START": "거래정지 시작", "HALT_END": "거래정지 해제"}
 TYPE = {"RIGHTS_EX": "권리락", "DIVIDEND_EX": "배당락", "HALT": "거래정지", "SPLIT_RELIST_PRICE": "분할 변경상장 기준가", "PAR_VALUE_CHANGE": "액면 변경"}
@@ -23,14 +25,16 @@ def main():
     back = con.execute("SELECT min(cal_date) FROM calendar_day WHERE is_trading=1 AND tseq>=?", (t0 - 60,)).fetchone()[0]
     L = [f"# KIND 리포트 — 기준일 {asof} (다음 영업일 {nxt})", "",
          "## 1. 상장주식수 원장 현황 (워치리스트 종목)", "",
-         "| 종목 | 최신 상장주식수 | 최근 변동 | 변동 주식수 | 근거 |", "|---|---:|---|---:|---|"]
+         "| 종목 | 최신 상장주식수 | 지수 반영 주식수 | 최근 변동 | 변동 주식수 | 근거 |", "|---|---:|---:|---|---:|---|"]
     for s in con.execute("""SELECT s.security_id, s.name FROM watchlist w JOIN security s USING(security_id) WHERE w.watch_name='phase1' ORDER BY s.security_id"""):
         r = con.execute("""SELECT * FROM share_ledger WHERE security_id=? AND superseded_by IS NULL AND effective_date<=? ORDER BY effective_date DESC, ledger_id DESC LIMIT 1""",
                         (s["security_id"], asof)).fetchone()
         c = con.execute("""SELECT * FROM share_ledger WHERE security_id=? AND superseded_by IS NULL AND delta_shares IS NOT NULL AND effective_date<=? ORDER BY effective_date DESC LIMIT 1""",
                         (s["security_id"], asof)).fetchone()
-        L.append(f"| {s['name']} | {r['shares_after']:,} | {c['effective_date'] + ' ' + c['reason'] if c else '-'} | {(format(c['delta_shares'], '+,') if c else '-')} | `{c['source_filing_id'] if c else r['source_filing_id']}` |")
-    L += ["", f"_기준: {{시드}} DART 반기보고서 2026-06-30 발행주식총수 + KIND 변경·추가상장 반영. `계산` = 공시에 없는 잔고를 직전 잔고+증감으로 산출한 행._", ""]
+        ix, _lst, pend, _it = index_shares.index_shares(con, s["security_id"], asof)
+        ixs = f"{ix:,}" + (f" (+{pend:,} 선반영)" if pend else "") if ix else "-"
+        L.append(f"| {s['name']} | {r['shares_after']:,} | {ixs} | {c['effective_date'] + ' ' + c['reason'] if c else '-'} | {(format(c['delta_shares'], '+,') if c else '-')} | `{c['source_filing_id'] if c else r['source_filing_id']}` |")
+    L += ["", "_상장주식수 = DART 반기(2026-06-30) 시드 + KIND 변경·추가상장(변경상장일 기준). 지수 반영 주식수 = 상장주식수 + 주주배정 유상증자의 권리락일~신주 상장 전 선반영분 (지수 3원칙: 신규상장일·변경상장일 기준, 주주배정만 권리락일). `계산` = 공시에 없는 잔고를 앞/뒤 잔고에서 산출한 행._", ""]
     L += ["## 2. 원장 변동 이력", "", "| 종목 | 변경상장일 | 발행/소각일 | 전 | 증감 | 후 | 사유 | 계산 |", "|---|---|---|---:|---:|---:|---|---|"]
     for r in con.execute("""SELECT s.name, l.* FROM share_ledger l JOIN security s USING(security_id) WHERE l.reason NOT LIKE 'SEED:%' ORDER BY l.effective_date DESC"""):
         f = lambda v: "-" if v is None else format(v, ",")
@@ -72,7 +76,8 @@ def main():
         if n.get("pending_condition"):
             memo += f" / 해제 조건: {n['pending_condition']}"
         L.append(f"| {d['name']} | {KIND_KR.get(d['kind'], d['kind'])} | {d['start_date']} ~ {d['end_date'] or '미정'}{'(추정)' if d['end_is_estimated'] and d['end_date'] else ''} | {d['nd']} | {d['state']} | {memo[:90]} |")
-    L += ["", "## 5. 처리 현황", ""]
+    L += ["", "## 5. 유상증자 이벤트 스레드 (M2)", "", "★ = 지수·참여 핵심일 · D-day는 영업일 기준(`*`=휴장일) · ✅ 완료 / ⏳ 예정 / 추정 = 기준일에서 계산한 값", ""] + m2_report.render(con, asof)
+    L += ["", "## 6. 처리 현황", ""]
     for r in con.execute("""SELECT cat_major, parse_status, count(*) n FROM filing WHERE src='KIND' AND cat_major IN ('시장조치','수시공시') GROUP BY 1,2 ORDER BY 1,2"""):
         L.append(f"- {r['cat_major']} / {r['parse_status']}: {r['n']}건")
     L += ["", "미처리 시장조치(M3 대상):"]
