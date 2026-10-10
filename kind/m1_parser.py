@@ -215,10 +215,15 @@ def parse_halt(con, f, text):
     if not start:  # 장중 정지 서식(중요내용공시 등): '3. 매매거래정지 일시 | 2025-05-22 | 07:45' / '4. 매매거래정지 해제일시 | … | 09:30'
         a_ = re.search(r"매매거래정지 일시\s*\|?\s*(\d{4}-\d{2}-\d{2})\s*\|?\s*(\d{2}:\d{2})", flat)
         b_ = re.search(r"매매거래정지 해제일시\s*\|?\s*(\d{4}-\d{2}-\d{2})\s*\|?\s*(\d{2}:\d{2})", flat)
-        if a_ and b_ and a_.group(1) == b_.group(1):
+        if a_ and b_:  # 공시 시각 ~ 다음 날 장개시(예: 2025-07-01 15:34 ~ 07-02 09:00)도 포함
             start, end, end_raw = a_.group(1), b_.group(1), None
-            intraday = f"{a_.group(2)}~{b_.group(2)}"
+            intraday = f"{a_.group(2)}~{b_.group(2)}" if a_.group(1) == b_.group(1) else f"{a_.group(1)} {a_.group(2)}~{b_.group(1)} {b_.group(2)}"
             why = re.search(r"매매거래정지 사유\s*\|?\s*(.*?)\s*6\.", flat)
+    if not start:  # 코스닥식 서식: '3.정지기간 가.정지일시 | 2023-12-18 | - | 나.만료일시 | -' (사유: '2.정지사유 | …')
+        k_ = re.search(r"정지일시\s*\|?\s*(\d{4}-\d{2}-\d{2})", flat)
+        if k_:
+            start, end, end_raw = k_.group(1), None, "별도 공시(만료일시 미정)"
+            why = re.search(r"정지사유\s*\|?\s*(.*?)\s*3\.", flat)
     if not start:
         return "review", "halt_start_missing"
     if con.execute("SELECT 1 FROM event_filing WHERE filing_id=?", (f["filing_id"],)).fetchone():

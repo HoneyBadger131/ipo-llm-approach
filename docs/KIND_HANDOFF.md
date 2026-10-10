@@ -34,7 +34,7 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh       # 네트워크 없이 캐시만으로
 .venv/bin/python kind/m2_report.py [날짜] [--all]   # 스레드 카드
 .venv/bin/python kind/index_shares.py 2026-10-08    # 지수 반영 주식수
 ```
-**회귀 기준(2026-10-10 시범 추가 후 재생성)**: filing 3,013 · share_ledger 121(활성 120) · event 75(PCI 4, CXL 8, CBW 3, SPL 3, BON 3, DIV 4, PSP 3, MRG 7, 나머지 M1/M3) · event_date 336 · designation 49 · index_share_adj 12 · etf_unit_change 54,454 · review/failed 0 · FK/무결성 OK · 원장 체인 불일치 0. 오프라인 재생성이 온라인과 동일해야 한다.
+**회귀 기준(2026-10-10 시범 추가 후 재생성)**: filing 3,049 · share_ledger 121 · event 80 · event_date 352 · designation 54 · index_share_adj 12(+merger_extinct 워치리스트 3) · etf_unit_change 54,454 · review/failed 0 · FK/무결성 OK · 원장 체인 불일치 0. 오프라인 재생성이 온라인과 동일해야 한다.
 `kind/data/`(DB·캐시·본문)는 git 제외(재생성 가능). 처음 클론한 환경은 온라인 재생성 1회 필요 — **이때 요청이 많으니 천천히**(아래 5절).
 
 ## 4. 설계 대원칙 (몇 번 엎을 각오, 원칙만 지킨다)
@@ -59,7 +59,7 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh       # 네트워크 없이 캐시만으로
 ① 지수 주식수는 **신규상장일** 기준 증가(일반공모·제3자배정·CB/BW 전환·행사·합병신주) ② **주주배정 유상증자·무상증자는 권리락일**(주식배당은 배당락일) ③ **자사주 소각은 변경상장일** 감소 ④ **분할(인적)은 존속법인 변경상장일, 신설법인은 별개 종목(재상장일)** ⑤ 실권은 신주 상장일에 −실권. 2026-11 방법론 개정(현금 처리 폐지 등)은 *근거 문서 수령 후* 반영 — 첫 사례는 카카오(A035720) 분할 건 예상. 표: [`KIND_INDEX_METHOD.md`](KIND_INDEX_METHOD.md), 코드 `kind/index_rules.py`.
 
 ## 7. 다음 세션 시작 지점 — 시범 결과 검토 후 확장 (사용자 지침 대기)
-분할(2026-10-10)에 이어 **무상증자·주식배당·액면분할·합병**을 K200 시범 8건으로 구현했다([`KIND_M2_CORP_ACTIONS.md`](KIND_M2_CORP_ACTIONS.md)). 사용자 확인이 필요한 것(같은 문서 7절): ① 합병 소멸회사(상장사)를 별개 종목으로 등록·상장폐지일 추적할지 ② 권리락/배당락 시점 수량(as-of) 보존 여부 ③ 300종목 확장 유니버스·일정.
+분할(2026-10-10)에 이어 **무상증자·주식배당·액면분할·합병**을 K200 시범 8건으로 구현했다([`KIND_M2_CORP_ACTIONS.md`](KIND_M2_CORP_ACTIONS.md)). 합병 소멸회사(상장사)는 `--register-extinct` 로 등록·상장폐지까지 추적(7절). 권리락/배당락 as-of 수량 보존은 하지 않기로(복잡해지면). **다음: [`KIND_REPORT_OUTLINE.md`](KIND_REPORT_OUTLINE.md) 아웃라인 초안을 사용자가 검토 → 큰 문제 없으면 300종목 확장.**
 - 남은 이벤트: 유상/무상 감자 · 물적분할 · 합병 소멸회사 · 주식병합 · M4 대량매매 · 300종목 확장(날짜 단위 전 종목 조회 + sleep). 카카오(A035720) 분할은 개정 방법론(2026-11) 첫 사례 예상 — 공시가 나오면 개정 근거 문서와 함께.
 - 템플릿: `m2_corp_actions.py`(유형별 결정 파서 + 공통 replay: 정정 연결·상장 매칭·`index_share_adj` 예측→원장 대체)가 가장 일반적. 새 유형은 `CFG`/`parse_decision`/`FIELDS` 에 추가하고 카드는 `m2_report.corp_card`. 신설 법인이 생기는 이벤트는 `m2_split.register` 패턴(이름 해석 → 워치리스트 → 해당 법인 공시 수집).
 - 시범 종목 수집은 **본문을 관련 제목만**(`collector.py --body-re`) 받는다(종목당 공시 수백 건). 수집 시작일은 결정일보다 2~3개월 앞으로(영풍처럼 최초 결정이 구간 밖이면 정정만 보인다). KIND 등록명이 영문 표기와 다를 수 있다(LS ELECTRIC=엘에스일렉트릭) — 단축코드로 검색.

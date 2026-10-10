@@ -20,6 +20,10 @@ PILOT_RE='합병|주식분할|액면분할|무상증자|주식배당|배당락|�
 for x in "267270 2025-01-01" "096770 2024-01-01" "068270 2022-01-01" "185750 2024-10-01" "010120 2026-01-01" "000670 2024-10-01"; do
   set -- $x; $PY kind/collector.py --from "$2" --to "$TO" --watch k200_pilot --only "$1" --body-re "$PILOT_RE"
 done
+# 합병 소멸회사(상장사, 상장폐지 포함): 결정 공시에서 이름 해석 → 워치리스트(merger_extinct) → 거래정지·상장폐지 공시 수집
+for x in $($PY kind/m2_corp_actions.py --register-extinct | tail -1 | tr ',' ' '); do
+  $PY kind/collector.py --from "${x#*:}" --to "$TO" --watch merger_extinct --only "${x%%:*}" --body-re '합병|상장폐지|매매거래정지'
+done
 $PY kind/etf_parser.py
 $PY kind/m1_parser.py
 $PY kind/m3_parser.py

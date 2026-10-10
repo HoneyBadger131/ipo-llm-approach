@@ -275,7 +275,8 @@ def render_split(con, asof, only_active_days=120):
 
 CORP_TYPES = ("BONUS_ISSUE", "STOCK_DIVIDEND", "PAR_SPLIT", "MERGER")
 CORP_LABEL = {"RESOLUTION": "결정(이사회)", "RECORD": "기준일(배정·배당·주주확정)", "EGM": "주주총회(예정)", "EX_DATE": "권리락/배당락일 = 지수 주식수 증가일", "EFFECTIVE": "효력발생일",
-              "HALT_START": "거래정지 시작", "MERGER_DATE": "합병기일", "REGISTER": "합병등기", "ISSUE": "신주 발행일", "NEW_SHARE_LISTING": "★ 신주 상장일", "CHANGE_LISTING": "★ 변경상장일 = 지수 주식수 증가일"}
+              "HALT_START": "거래정지 시작", "MERGER_DATE": "합병기일", "REGISTER": "합병등기", "ISSUE": "신주 발행일", "NEW_SHARE_LISTING": "★ 신주 상장일", "CHANGE_LISTING": "★ 변경상장일 = 지수 주식수 증가일",
+              "EXT_HALT_START": "소멸회사 거래정지 시작", "EXT_DELIST": "소멸회사 상장폐지"}
 CORP_CHG = {"new_shares": "신주수", "record_date": "기준일", "listing_date": "상장예정일", "ratio": "비율", "shares_after": "분할후 총수", "egm_date": "주총", "effective_date": "효력발생일",
             "halt_start": "거래정지 시작", "halt_end": "거래정지 종료", "merger_date": "합병기일", "register_date": "합병등기", "record": "기준일"}
 
@@ -304,6 +305,19 @@ def corp_card(con, e, asof):
         L.append(f"- **구조**: {dc.get('survivor')}{'(' + dc['survivor_mkt'] + ')' if dc.get('survivor_mkt') else ''} 존속 ← {dc.get('extinct')}{'(' + dc['extinct_mkt'] + ')' if dc.get('extinct_mkt') else '(상장 여부 서식에 미표기)'} 소멸" + (f" · {dc['form']}" if dc.get("form") else "") + (f" · 합병비율 1 : **{dc['ratio']}**" if dc.get("ratio") else " · 합병비율 없음(신주 미발행)"))
         if plan:
             L.append(f"- **합병신주**: 결정 {f_(plan)}주" + (f" → 실제 상장 **{f_(act)}주** ({act - plan:+,}; 소멸회사 자기주식·단주·주식매수청구 확정 등 반영)" if act is not None and act != plan else (" → 실제 동일" if act == plan else " (실제 상장 전 — 예정치)")))
+    et = d.get("extinct_track")
+    if et:
+        h, dl = et.get("halt"), et.get("delist")
+        parts = []
+        if h and h.get("start"):
+            parts.append(f"거래정지 **{h['start']}** (공시 {h['notice_date']}, `{h['filing']}`)")
+        elif et.get("halt_est_range"):
+            parts.append(f"거래정지 시작 추정 {et['halt_est_range'][0]} ~ {et['halt_est_range'][1]} (신주 상장일 −16~18영업일, 관측 2건)")
+        if dl and dl.get("date"):
+            parts.append(f"상장폐지 **{dl['date']}**" + (f" ({f_(dl['shares'])}주)" if dl.get("shares") else "") + f" (공시 {dl['notice_date']}, `{dl['filing']}`)" + (" = 신주 상장일 ✔" if et.get("delist_equals_listing") else (" ≠ 신주 상장일 ⚠" if et.get("delist_equals_listing") is False else "")))
+        elif et.get("delist_est"):
+            parts.append(f"상장폐지 예상 {et['delist_est']} (= 신주 상장일)")
+        L.append(f"- **소멸회사 {et['name']}**: " + " → ".join(parts))
     ix = d["index"]
     if d.get("listing"):
         rows = " · ".join(f"{r['name']} {f_(r['before'])} → **{f_(r['after'])}** ({r['delta']:+,})" for r in d["listing"]["rows"])

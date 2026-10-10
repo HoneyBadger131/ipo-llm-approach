@@ -31,7 +31,7 @@ CFG = {
     "MERGER": dict(prefix="MRG", title="회사합병 결정", etype="MERGER", label="합병", anchor=r"1\.\s*합병방법", ledger="추가상장(합병)", ex=None, ex_reason=None),
 }
 BY_TITLE = {c["title"]: k for k, c in CFG.items()}
-LABEL_KR = {"RESOLUTION": "결정(이사회)", "RECORD": "기준일", "EGM": "주주총회(예정)", "EX_DATE": "권리락/배당락일 = 지수 주식수 증가일", "EFFECTIVE": "효력발생(발행)일",
+LABEL_KR = {"RESOLUTION": "결정(이사회)", "RECORD": "기준일", "EGM": "주주총회(예정)", "EX_DATE": "권리락/배당락일 = 지수 주식수 증가일", "EXT_HALT_START": "소멸회사 거래정지 시작", "EXT_DELIST": "소멸회사 상장폐지", "EFFECTIVE": "효력발생(발행)일",
             "HALT_START": "거래정지 시작", "MERGER_DATE": "합병기일", "REGISTER": "합병등기", "ISSUE": "신주 발행일", "NEW_SHARE_LISTING": "신주 상장일",
             "CHANGE_LISTING": "변경상장일 = 지수 주식수 증가일"}
 
@@ -120,8 +120,8 @@ def parse_decision(kind, text):
         out["survivor"], out["survivor_mkt"] = (clean(sv.group(1)), re.sub(r"\s+", "", sv.group(2))) if sv else (None, None)
         out["extinct"], out["extinct_mkt"] = (clean(ex.group(1)), re.sub(r"\s+", "", ex.group(2))) if ex else (None, None)
         if not out["survivor"]:  # 시장 표기 없는 서식: '존속회사: A- 소멸회사: B'
-            a = re.search(r"존속회사\s*[:：]\s*([^\-|]+)", m1)
-            b = re.search(r"소멸회사\s*[:：]\s*([^\-|]+)", m1)
+            a = re.search(r"존속회사\s*[:：]\s*([^\-|※]+)", m1)
+            b = re.search(r"소멸회사\s*[:：]\s*([^\-|※]+)", m1)
             out["survivor"], out["extinct"] = clean(a.group(1)) if a else None, clean(b.group(1)) if b else None
         mf = re.search(r"합병형태\s*[:|-]?\s*(소규모합병|간이합병|[가-힣]+)", m1)
         out["form"] = dash(mf.group(1)) if mf and mf.group(1) != "해당사항없음" else None
@@ -148,6 +148,50 @@ FIELDS = {"BONUS": ("new_shares", "record_date", "listing_date", "ratio"), "STOC
           "MERGER": ("new_shares", "ratio", "egm_date", "merger_date", "register_date", "listing_date", "record_date")}
 
 
+# ───────────── 합병 소멸회사(상장사) 등록 ─────────────
+ALIAS = [("에이치디현대", "HD현대"), ("에이치디", "HD"), ("에스케이", "SK"), ("엘지", "LG"), ("엘에스", "LS"), ("씨제이", "CJ"), ("지에스", "GS"), ("케이티", "KT")]
+EXTINCT_WATCH = "merger_extinct"
+
+
+def name_variants(n):
+    out = [n]
+    for a, b in ALIAS:
+        if a in n:
+            out.append(n.replace(a, b))
+    return list(dict.fromkeys(out))
+
+
+def register_extinct(con):
+    """합병 소멸회사가 상장사(서식 표기 또는 표기 없음)이면 KIND 에서 해석(상장폐지 종목 포함)해 issuer/security/watchlist(merger_extinct) 에 등록.
+    반환: [(단축코드, 수집 시작일)] — 호출 측이 그 법인의 공시(거래정지·상장폐지)를 수집한다."""
+    import kind_client as kc
+    from seed_master import upsert_issuer, upsert_security
+    out = []
+    for f, d in [(i[2], i[3]) for t in load(con).values() if t["kind"] == "MERGER" for i in t["items"] if i[1] == "DECISION"][::-1]:
+        ex = d.get("extinct")
+        if not ex or "비상장" in (d.get("extinct_mkt") or ""):
+            continue
+        res = None
+        for nm in name_variants(ex):
+            r = [x for x in kc.resolve_name(nm) if x.get("secugrpId") == "ST" and x.get("comabbrv") == nm]
+            if r:
+                res = r[0]
+                break
+        if not res:
+            print(f"  소멸회사 KIND 해석 실패: {ex} ({f['filing_id']})", file=sys.stderr)
+            continue
+        short = res["repisusrtcd"][1:]
+        iss = upsert_issuer(con, res["comabbrv"], res["isurcd"])
+        mkt = "KOSDAQ" if "코스닥" in (d.get("extinct_mkt") or "") else "KOSPI"
+        sid = upsert_security(con, iss, "COMMON", res["comabbrv"], short, res["repisucd"], None, mkt)
+        con.execute("INSERT OR IGNORE INTO watchlist VALUES (?,?,?)", (EXTINCT_WATCH, sid, NOW()))
+        start = (dt.date.fromisoformat(d.get("contract_date") or f["filed_date"]) - dt.timedelta(days=15)).isoformat()
+        if (short, start) not in out and short not in [o[0] for o in out]:
+            out.append((short, start))
+    con.commit()
+    return out
+
+
 # ───────────── 스레드 구성 ─────────────
 def load(con):
     th = {}
@@ -159,6 +203,11 @@ def load(con):
         if d is None:
             con.execute("UPDATE filing SET parse_status='review', skip_reason='corpact_parse' WHERE filing_id=?", (f["filing_id"],))
             continue
+        if kind == "MERGER" and d.get("extinct"):  # 소멸회사가 낸 같은 합병 결정 공시 → 존속회사 스레드 하나로만 본다(소멸회사는 거래정지·상장폐지만 추적)
+            nm = con.execute("SELECT name FROM issuer WHERE issuer_id=?", (f["iss"],)).fetchone()[0]
+            if re.sub(r"\s", "", nm) in name_variants(d["extinct"]):
+                con.execute("UPDATE filing SET parse_status='parsed', skip_reason=NULL WHERE filing_id=? AND parse_status IN ('new','review')", (f["filing_id"],))
+                continue
         prev = last.get((kind, f["iss"]))
         t = None
         gap = lambda p: (dt.date.fromisoformat(f["filed_date"]) - dt.date.fromisoformat(p["items"][-1][0][:10])).days
@@ -234,6 +283,28 @@ def attach(con, th):
                 else:
                     e = con.execute("SELECT e.detail_json, d.the_date FROM event e JOIN event_filing ef USING(event_id) JOIN event_date d ON d.event_id=e.event_id AND d.role='EX_DATE' AND d.superseded_by IS NULL WHERE ef.filing_id=?", (f["filing_id"],)).fetchone()
                     t["items"].append((f["filed_at"], "EXNOTICE", f, {"date": e["the_date"] if e else None, "prices": json.loads(e["detail_json"]).get("prices") if e else None, "reason": "액면분할"}))
+        if t["kind"] == "MERGER":  # 소멸회사(상장사) 거래정지·상장폐지 — register_extinct 로 등록·수집된 경우
+            d0 = decs[-1][3]
+            ex = d0.get("extinct")
+            r = None
+            for nm in (name_variants(ex) if ex and "비상장" not in (d0.get("extinct_mkt") or "") else []):
+                r = con.execute("SELECT security_id FROM security WHERE name=? AND sec_type='COMMON' ORDER BY security_id DESC LIMIT 1", (nm,)).fetchone()
+                if r:
+                    break
+            if r:
+                t["ext_sid"] = r["security_id"]
+                for f in con.execute("""SELECT * FROM filing WHERE src='KIND' AND security_id=? AND body_path IS NOT NULL AND filed_at>=?
+                                        AND (title LIKE '%매매거래정지%' OR title LIKE '상장폐지%') ORDER BY filed_at""", (r["security_id"], t["start"])):
+                    txt = re.sub(r"\s+", " ", text_of(f))
+                    if "합병" not in txt or "중요내용공시" in f["title"]:
+                        continue
+                    if f["title"].startswith("상장폐지"):
+                        m = re.search(r"상장폐지일\s*\|?\s*(\d{4}-\d{2}-\d{2})", txt)
+                        sh = re.search(r"(?:보통주|보통주식)\s*\|\s*([\d,]+)\s*\|", txt)
+                        t["items"].append((f["filed_at"], "EXT_DELIST", f, {"date": m.group(1) if m else None, "shares": num(sh.group(1)) if sh else None}))
+                    else:
+                        m = re.search(r"정지(?:일시|일)\s*\|?\s*([\d년월일\- .]{8,})", txt)
+                        t["items"].append((f["filed_at"], "EXT_HALT", f, {"start": kdate(m.group(1)) if m else None}))
         t["items"].sort(key=lambda x: x[0])
 
 
@@ -278,6 +349,12 @@ def replay(con, t, asof):
         elif k == "HALT":
             S["halt"] = {"filing": fid, "start": p}
             set_slot(con, eid, "HALT_START", p, 0, fid)
+        elif k == "EXT_HALT":
+            S["ext_halt"] = {"filing": fid, "notice_date": f["filed_date"], **p}
+            set_slot(con, eid, "EXT_HALT_START", p["start"], 0, fid)
+        elif k == "EXT_DELIST":
+            S["ext_delist"] = {"filing": fid, "notice_date": f["filed_date"], **p}
+            set_slot(con, eid, "EXT_DELIST", p["date"], 0, fid)
         elif k == "LISTING":
             rows = p
             S["listing"] = {"filing": fid, "notice_date": f["filed_date"], "listing_date": rows[0]["effective_date"], "issue_date": rows[0]["issue_date"],
@@ -313,6 +390,23 @@ def finalize(con, t, eid, S, asof):
            "amendments": S["amendments"], "ex": S["ex"], "halt": S["halt"], "listing": L, "sources": S["sources"]}
     if actual is not None and plan:
         out["plan_vs_actual"] = actual - plan
+    if kind == "MERGER" and t.get("ext_sid") is not None:
+        lst_d = cur["NEW_SHARE_LISTING"]["the_date"] if "NEW_SHARE_LISTING" in cur else None
+        dl, hl = S.get("ext_delist"), S.get("ext_halt")
+        et = {"security_id": t["ext_sid"], "name": d.get("extinct"), "halt": hl, "delist": dl}
+        if lst_d and not (dl and dl.get("date")):
+            set_slot(con, eid, "EXT_DELIST", lst_d, 1, S["sources"][0]["filing"])        # 상장폐지일 = 신주 상장일(관측 2/2)
+            et["delist_est"] = lst_d
+        if lst_d and not (hl and hl.get("start")):
+            b = [r[0] for r in con.execute("SELECT cal_date FROM calendar_day WHERE is_trading=1 AND tseq IN (?,?,?) ORDER BY cal_date", (cal(con, lst_d, "tseq") - 18, cal(con, lst_d, "tseq") - 17, cal(con, lst_d, "tseq") - 16))]
+            if b:
+                et["halt_est_range"] = [b[0], b[-1]]
+                set_slot(con, eid, "EXT_HALT_START", b[len(b) // 2], 1, S["sources"][0]["filing"])
+        real = (dl or {}).get("date")
+        if real and lst_d:
+            et["delist_equals_listing"] = real == lst_d
+        out["extinct_track"] = et
+        cur = {r["role"]: r for r in con.execute("SELECT * FROM event_date WHERE event_id=? AND superseded_by IS NULL", (eid,))}
     # 지수 반영 시점
     eff, est, why = None, 0, None
     lst_role = "CHANGE_LISTING" if kind == "PAR_SPLIT" else "NEW_SHARE_LISTING"
@@ -337,7 +431,7 @@ def finalize(con, t, eid, S, asof):
     else:
         eff = cur[lst_role]["the_date"] if lst_role in cur else None
         est = int(not L)
-        why = "합병: 합병신주 상장일에 존속회사 지수 주식수 증가(소멸회사 상장폐지·편출입은 별도 — 범위 밖)"
+        why = "합병: 합병신주 상장일에 존속회사 지수 주식수 증가(= 소멸회사 상장폐지일, 관측 2/2)"
     sec = t["security_id"]
     if plan and eff and not L:
         con.execute("""INSERT INTO index_share_adj(event_id,security_id,effective_date,delta_shares,basis,is_estimated,source_filing_id,note) VALUES (?,?,?,?,?,?,?,?)""",
@@ -383,6 +477,9 @@ def run(con, asof=None):
 
 if __name__ == "__main__":
     con = db.connect()
+    if "--register-extinct" in sys.argv:
+        print(",".join(f"{c}:{d}" for c, d in register_extinct(con)))
+        sys.exit(0)
     asof = sys.argv[sys.argv.index("--asof") + 1] if "--asof" in sys.argv else None
     for k, (eid, o) in run(con, asof).items():
         print(k, eid, o["issuer"], o["kind"], o["status_text"], "계획", o["planned_shares"], "실제", o["actual_shares"], "지수", o["index"]["effective_date"], "추정" if o["index"]["is_estimated"] else "")
