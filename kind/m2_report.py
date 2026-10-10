@@ -251,8 +251,12 @@ def cbbw_card(con, e, asof):
         if r["role"] in CBW_LABEL:
             L.append(f"| {CBW_LABEL[r['role']]} | {r['the_date']} | {dday(con, asof, r['the_date'])} | {'✅' if r['the_date'] <= asof else '⏳'} |")
     if d["conversions"]:
-        L += ["", f"<details><summary>전환·행사 신주 상장 이력 {len(d['conversions'])}건 (지수 주식수 증가일)</summary>", "", "| 상장일(지수 반영) | 청구(발행)일 | 주식수 | 누계 | 잔여 가능 |", "|---|---|---:|---:|---:|"]
+        # 소량 규칙(사용자 지침 2026-10-10): 1천주 이하는 이력 표에서 생략(누계·잔여에는 반영), 10만주 이하는 가벼운 행으로 유지
+        small = [c for c in d["conversions"] if c["shares"] <= 1000]
+        L += ["", f"<details><summary>전환·행사 신주 상장 이력 {len(d['conversions'])}건 (지수 주식수 증가일)" + (f" — 1천주 이하 {len(small)}건 표에서 생략" if small else "") + "</summary>", "", "| 상장일(지수 반영) | 청구(발행)일 | 주식수 | 누계 | 잔여 가능 |", "|---|---|---:|---:|---:|"]
         for c in d["conversions"]:
+            if c["shares"] <= 1000:
+                continue
             det = c.get("issue_date") or ""
             L.append(f"| {c['list_date']} | {det} | {c['shares']:,} | {c['cum']:,} | {c['remaining']:,} |")
         L += ["", "</details>"]

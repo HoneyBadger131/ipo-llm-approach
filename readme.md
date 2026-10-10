@@ -4,8 +4,10 @@ DART 공시를 수집하고 LLM으로 중요도를 판단·심화 분석해, 종
 
 **다른 대화에서 이어 작업한다면 먼저 [`docs/HANDOFF.md`](docs/HANDOFF.md)를 읽으세요.** (목표, 현재 상태, 실행 절차, 확정된 규칙·편집 기준, 데이터 기준일 정책, 알려진 한계, 토큰 소모 실측, 후속 작업)
 
-## KIND 축 (두 번째 축, 설계 단계)
-거래소 공시(시장조치·주식수 변동·거래정지/경보 추적·ETF 좌수)를 일정/상태 DB로 만드는 축. 목표 설계도: [`docs/KIND_DESIGN.md`](docs/KIND_DESIGN.md), 코드: [`kind/`](kind/). 1단계 대상은 삼성전자·SK하이닉스·삼성바이오로직스.
+## KIND 축 (두 번째 축, 구현 진행 중)
+거래소 공시로 *지수 주식수 변동·일정·경보·ETF 좌수*를 일정/상태 DB와 일일 리포트로 만드는 축. 설계 [`docs/KIND_DESIGN.md`](docs/KIND_DESIGN.md), 인수인계 [`docs/KIND_HANDOFF.md`](docs/KIND_HANDOFF.md), 코드 [`kind/`](kind/). 완료: 캘린더·ETF·시장조치 원장·경보·유상증자/소각/CB·BW 스레드, 다음: 인적분할.
+
+**KIND 축을 이어 작업한다면 [`docs/KIND_HANDOFF.md`](docs/KIND_HANDOFF.md) 먼저.**
 
 ## 파이프라인
 0. `dart_day_pipeline.py stage|brief <YYYYMMDD>` — 에이전트 입력/한 줄 프롬프트 생성, 통합 브리프 생성·점검 (실행 절차는 HANDOFF §4)
