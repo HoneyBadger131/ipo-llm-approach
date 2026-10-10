@@ -57,6 +57,8 @@ def ensure_isin(con, sid, isin):
 
 # ───────────── 변경상장 / 추가상장 ─────────────
 def parse_listing(con, f, text):
+    if f["title"].startswith("변경상장(상호변경"):
+        return "skipped", "name_change_only"  # 주식수 변동 없음
     kind = "추가상장" if (f["title"].startswith("추가상장") or f["title"].startswith("상장안내(보통주 추가상장")) else "변경상장"
     reason = f["title"]
     eff = kdate(re.search(r"(?:변경)?상장일\s*:\s*([^\n]+)", text).group(1)) if re.search(r"(?:변경)?상장일\s*:", text) else None
@@ -81,13 +83,13 @@ def parse_listing(con, f, text):
     codes = re.findall(r"(?:▶\s*([^\n▶]*?)\s*)?표준코드\s*:\s*(KR7\w{9})\s*\(단축코드:A(\w{6})\)", text)
     rows = []
     if kind == "변경상장":
-        for m in re.finditer(r"기명식\s*(\S*주)\s*([\d,]+)주\s*(?:→|->)\s*([\d,]+)주\s*(?:\([^)]*\))?\s*\n\s*▶\s*변경주식수\s*:\s*(-?[\d,]+)주", text):
+        for m in re.finditer(r"기명식\s*(\S*주)\s*:?\s*([\d,]+)주\s*(?:→|->)\s*([\d,]+)주\s*(?:\([^)]*\))?\s*\n\s*[▶-]\s*변경주식수\s*:\s*(-?[\d,]+)주", text):
             rows.append(dict(cls=cls_of(m.group(1)), label=m.group(1), before=num(m.group(2)), after=num(m.group(3)), delta=num(m.group(4))))
     else:
-        for m in re.finditer(r"주식의 종류와 수\s*:\s*기명식\s*(\S*주)\s*(?:총\s*)?([\d,]+)주", text):
-            rows.append(dict(cls=cls_of(m.group(1)), label=m.group(1), before=None, after=None, delta=num(m.group(2))))
+        for m in re.finditer(r"주식의 종류와 수\s*:\s*-?\s*기명식\s*(\S*주)\s*(?:총\s*)?([\d,.]+)주", text):  # '247.221주' 같은 천단위 마침표 오기재도 허용
+            rows.append(dict(cls=cls_of(m.group(1)), label=m.group(1), before=None, after=None, delta=num(m.group(2).replace(".", ""))))
     if kind == "추가상장" and not rows:  # 회차별 여러 줄('-기명식 보통주 6,202주 (제92회)' …, 스톡옵션 행사 등): 종류별 합산
-        mm = re.search(r"주식의 종류와 수\s*\n((?:\s*-\s*기명식[^\n]*\n?)+)", text)
+        mm = re.search(r"주식의 종류와 수[^\n]*\n((?:\s*-\s*기명식[^\n]*\n?)+)", text)
         if mm:
             tot = {}
             for lab, n_ in re.findall(r"기명식\s*(\S*주)\s*([\d,]+)주", mm.group(1)):

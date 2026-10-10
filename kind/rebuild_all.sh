@@ -24,6 +24,9 @@ done
 for x in $($PY kind/m2_corp_actions.py --register-extinct | tail -1 | tr ',' ' '); do
   $PY kind/collector.py --from "${x#*:}" --to "$TO" --watch merger_extinct --only "${x%%:*}" --body-re '합병|상장폐지|매매거래정지'
 done
+# 종목 확장: 시총 상위 300 유니버스 등록 + 날짜 단위 이벤트 스캔(이벤트 유형만 서버 필터, 유가증권시장) → 유니버스 종목 공시 적재
+$PY kind/scan_range.py --register
+$PY kind/scan_range.py --from 2025-07-01 --to "$TO"
 $PY kind/etf_parser.py
 $PY kind/m1_parser.py
 $PY kind/m3_parser.py

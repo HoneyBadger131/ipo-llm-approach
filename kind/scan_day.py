@@ -47,8 +47,10 @@ def scan(day, market="1"):
     rows = []
     for mj, codes in TYPES.items():
         v = "|".join(codes) + "|"
-        rows += kc.list_filings(frm=day, to=day, marketType=market, **{f"disclosureType{mj}": v, f"pDisclosureType{mj}": v}) if market is not None else \
-            kc.list_filings(frm=day, to=day, **{f"disclosureType{mj}": v, f"pDisclosureType{mj}": v})
+        extra = {f"disclosureType{mj}": v, f"pDisclosureType{mj}": v}
+        if market is not None:
+            extra["marketType"] = market
+        rows += [{**r, "major": mj} for r in kc.list_filings(frm=day, to=day, **extra)]
     seen, out = set(), []
     for r in rows:
         if r["acpt_no"] in seen:

@@ -226,8 +226,13 @@ def finalize(con, t, eid, S, asof):
         S["estimate"] = None
         out["estimate"] = None
         lst = None
+    out["unmatched_stale"] = False
+    if d["type"] == "ACQUIRE" and not S["listing"] and d["acq_end"] and d["acq_end"] < (dt.date.fromisoformat(asof) - dt.timedelta(days=45)).isoformat():
+        # 취득이 끝난 지 오래인데 변경상장 공시와 매칭되지 않음 — 여러 소각 결정을 한 번에 변경상장하는 합산 공시 등(예: 분기별 소각 프로그램). 예정 이벤트로 보이지 않게 완료 처리
+        out["unmatched_stale"] = True
+        out["no_listing_expected"] = True
     done = bool(S["listing"]) and lst and lst["the_date"] <= asof
-    out["status_text"] = "소각 완료 · 변경상장 공시 없음(비상장 종류주식 소각으로 추정 — 지수 영향 없음)" if out["no_listing_expected"] else "완료(변경상장)" if done else ("변경상장 공시 후 변경상장일 대기" if S["listing"] else ("취득 중" if d["type"] == "ACQUIRE" and d["acq_start"] and d["acq_start"] <= asof else "소각 대기"))
+    out["status_text"] = "취득 종료 · 변경상장 공시와 매칭 안 됨(합산 소각 공시 추정 — 검토)" if out["unmatched_stale"] else "소각 완료 · 변경상장 공시 없음(비상장 종류주식 소각으로 추정 — 지수 영향 없음)" if out["no_listing_expected"] else "완료(변경상장)" if done else ("변경상장 공시 후 변경상장일 대기" if S["listing"] else ("취득 중" if d["type"] == "ACQUIRE" and d["acq_start"] and d["acq_start"] <= asof else "소각 대기"))
     con.execute("UPDATE event SET status=?, detail_json=?, updated_at=?, title=? WHERE event_id=?",
                 ("done" if (done or out["no_listing_expected"]) else "confirmed", json.dumps(out, ensure_ascii=False, default=str), NOW(), f"자기주식 소각({d['type']})", eid))
     for it in t["items"]:

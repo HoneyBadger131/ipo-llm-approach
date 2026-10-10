@@ -112,7 +112,7 @@ const CHIP = {key:"★ 중요", why:"왜", risk:"리스크", info:"참고"};
 function render(){
   $("#asof").textContent = DATA.asof;
   const n = DATA.events.length, wait = DATA.events.filter(e=>e.applied).length;
-  $("#sub").textContent = `진행 중 ${n}건 · 이 중 지수 반영 완료·신주 상장 대기 ${wait}건 · 시총 기준가: ${DATA.price_date||'-'} 종가`;
+  $("#sub").textContent = `진행 중 ${n}건${DATA.n_small?` (시총 변동 ${Math.round(DATA.min_mc/1e8)}억원 미만 ${DATA.n_small}건 생략)`:''} · 이 중 지수 반영 완료·신주 상장 대기 ${wait}건 · 시총 기준가: ${DATA.price_date||'-'} 종가`;
   $("#list").innerHTML = DATA.events.map(e=>{
     const mc = e.mc_txt ? `<span class="${e.mc>0?'up':'down'}">${esc(e.mc_txt)}</span>` : '<span style="color:var(--muted)">시총 -</span>';
     const sh = e.delta_txt ? `${e.delta_txt}주${e.pct!=null?` (${e.pct>0?'+':''}${e.pct}%)`:''}` : '수량 미정';
@@ -120,7 +120,7 @@ function render(){
     return `<div class="row" data-id="${e.id}"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small><span class="tag">${esc(e.type)}</span></div><div class="mc">${mc}</div></div><div class="l2"><span>${sh}</span><span>${esc(when)}</span></div><div class="bar"><i style="width:${e.bar}%"></i></div></div>`;
   }).join("") || '<div class="hint">진행 중인 이벤트가 없습니다.</div>';
   if(DATA.cbw.length){
-    $("#cbw").innerHTML = `<div class="sec"><h2>장기 대기 — CB/BW 잔여 전환 (감만)</h2><div class="list">${DATA.cbw.map(e=>`<div class="row cb" data-id="${e.id}"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small><span class="tag">${esc(e.type)}</span></div><div class="mc" style="font-weight:600">${esc(e.line)}</div></div><div class="l2"><span></span><span>${esc(e.nextkey)}</span></div></div>`).join("")}</div></div>`;
+    $("#cbw").innerHTML = `<div class="sec"><h2>장기 대기 — CB/BW 잔여 전환 (감만${DATA.n_cbw_more?` · 그 외 ${DATA.n_cbw_more}건 생략`:''})</h2><div class="list">${DATA.cbw.map(e=>`<div class="row cb" data-id="${e.id}"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small><span class="tag">${esc(e.type)}</span></div><div class="mc" style="font-weight:600">${esc(e.line)}</div></div><div class="l2"><span></span><span>${esc(e.nextkey)}</span></div></div>`).join("")}</div></div>`;
   }
   if(DATA.done.length){
     $("#done").innerHTML = `<div class="sec"><h2>최근 종결 (7일 이내)</h2><div class="list">${DATA.done.map(e=>`<div class="row cb"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small><span class="tag">${esc(e.type)}</span></div><div class="mc" style="font-weight:600">종결 ${esc(e.date)}</div></div></div>`).join("")}</div></div>`;

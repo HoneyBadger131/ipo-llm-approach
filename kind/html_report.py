@@ -25,6 +25,8 @@ import m2_report as R
 HERE = os.path.dirname(os.path.abspath(__file__))
 TYPE_KR = {"PAID_CAPITAL_INCREASE": "유상증자", "TREASURY_CANCELLATION": "자기주식 소각", "CONVERTIBLE_ISSUE": "CB/BW", "CORPORATE_SPLIT": "인적분할",
            "BONUS_ISSUE": "무상증자", "STOCK_DIVIDEND": "주식배당", "PAR_SPLIT": "액면분할", "MERGER": "합병"}
+CBW_TOP = 6  # CB/BW 는 잠재 시총 영향 상위 몇 건만(나머지는 개수)
+MIN_MC = 5_000_000_000  # 시총 변동 50억원 미만은 목록에서 생략(개수만 표기)
 KIND_URL = "https://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno="
 
 
@@ -70,7 +72,7 @@ def index_of(e, d):
     if t == "TREASURY_CANCELLATION":
         if d.get("listing"):
             return {"delta": sum(r["delta"] for r in d["listing"]["rows"]), "date": d["listing"]["listing_date"], "est": 0}
-        q = (d.get("qty_common") or 0) + (d.get("qty_pref") or 0)
+        q = d.get("qty_common") or 0  # 우선주는 다루지 않는다
         est = d.get("estimate")
         return {"delta": -q if q else None, "date": est["mid"] if est else None, "est": 1}
     if t == "CORPORATE_SPLIT":
@@ -97,7 +99,7 @@ def facts(con, e, d, asof, slots, ix, news):
             if s(role):
                 sched.append({"label": label, "date": s(role)[0], "est": s(role)[1], "key": key})
     elif t == "TREASURY_CANCELLATION":
-        q = (d.get("qty_common") or 0) + (d.get("qty_pref") or 0)
+        q = d.get("qty_common") or 0
         if d["type"] == "ACQUIRE":
             head = f"자기주식 {q:,}주({d.get('pct_common')}%) 장내 취득 후 전량 소각 — 예정 {d['amount'] / 1e12:.1f}조원"
             kpi4 = {"label": "취득 기간", "value": f"{d['acq_start'][5:]} ~ {d['acq_end'][5:]}", "sub": d["acq_method"]}
@@ -119,7 +121,7 @@ def facts(con, e, d, asof, slots, ix, news):
             if s(role):
                 sched.append({"label": label, "date": s(role)[0], "est": s(role)[1], "key": key})
     elif t == "CONVERTIBLE_ISSUE":
-        head = f"{d['kind']} {d['round']}회 — 잔여 전환·행사 가능 {d['remaining']:,}주(상장주식수의 {d['remaining_pct_of_listed']}%)"
+        head = f"{d['kind']} {d['round']}회 — 잔여 전환·행사 가능 {d['remaining']:,}주" + (f"(상장주식수의 {d['remaining_pct_of_listed']}%)" if d.get("remaining_pct_of_listed") is not None else "")
         pts.append(("info", f"행사가 {d['strike']:,}원 · 만기 {d['maturity']}" + (f" · 조기상환청구 {d['put_first']}" if d.get("put_first") else "")))
     else:  # 무상증자·주식배당·액면분할·인적분할 (현재 진행 건 없음 — 일반형)
         n = d.get("planned_shares") or 0
@@ -177,8 +179,14 @@ def build(con, asof):
     types = ",".join("?" * len(TYPE_KR))
     for e in con.execute(f"SELECT * FROM event WHERE event_type IN ({types}) ORDER BY created_at", tuple(TYPE_KR)).fetchall():
         d = json.loads(e["detail_json"] or "{}")
+        if e["event_type"] == "CONVERTIBLE_ISSUE" and not d.get("kind"):
+            continue  # 전환·행사 현황이 아직 없는 스레드(온라인 m2_cbbw 실행 전)
         if e["event_type"] == "MERGER" and not d.get("planned_shares") and not d.get("actual_shares"):
             continue
+        if e["event_type"] == "TREASURY_CANCELLATION" and (not d.get("qty_common") or d.get("no_listing_expected")):
+            continue  # 우선주만 소각 / 상장 공시가 없을 소각(비상장 종류주식·합산 공시)은 제외
+        if e["event_type"] == "PAID_CAPITAL_INCREASE" and not d.get("new_shares"):
+            continue  # 보통주 신주가 없는 증자(종류주식 등)는 다루지 않는다
         sec = con.execute("SELECT security_id, sec_type FROM security WHERE security_id=?", (e["security_id"],)).fetchone() if e["security_id"] else None
         if sec and sec["sec_type"] == "PREFERRED":
             continue  # 우선주는 다루지 않는다
@@ -194,13 +202,17 @@ def build(con, asof):
             continue
         ix = index_of(e, d)
         listed = index_shares.listed_shares(con, sid, asof)
+        if listed is None:  # 원장 시드가 없는 종목: 결정 공시의 증자 전/소각 전 발행주식수로 대체
+            listed = d.get("pre_shares") or d.get("pre_common") or (d.get("decision") or {}).get("pre_shares")
         f = facts(con, e, d, asof, slots, ix, news)
         f["sched"] = schedule(con, e, slots, asof) if e["event_type"] != "CONVERTIBLE_ISSUE" else []
         base = {"id": e["event_id"], "issuer": iss, "code": code, "type": TYPE_KR[e["event_type"]], **f, "link": kind_link(con, e)}
         if e["event_type"] == "CONVERTIBLE_ISSUE":
             base["type"] = f"{d['kind']} {d['round']}회"
-            base["sort"] = d["remaining_pct_of_listed"]
-            base["line"] = f"잔여 {d['remaining']:,}주 · 상장주식수의 {d['remaining_pct_of_listed']}%"
+            px = prices.get(code)
+            pot = d["remaining"] * px if px else None
+            base["sort"] = pot or 0
+            base["line"] = f"잔여 {d['remaining']:,}주" + (f" · 상장 대비 {d['remaining_pct_of_listed']}%" if d.get("remaining_pct_of_listed") is not None else "") + (f" · 잠재 {won(pot)[1:]}" if pot else "")
             base["nextkey"] = f"만기 {d['maturity']}" + (f" · 조기상환청구 {d['put_first']}" if d.get("put_first") and d["put_first"] > asof else "")
             cbw.append(base)
             continue
@@ -213,12 +225,16 @@ def build(con, asof):
                      "mc_txt": won(mc) if mc is not None else None, "pct": round(delta / listed * 100, 2) if (delta is not None and listed) else None,
                      "delta_txt": sgn(delta) if delta is not None else None, "listed": listed})
         events.append(base)
+    small = [x for x in events if x["mc"] is not None and abs(x["mc"]) < MIN_MC]
+    events = [x for x in events if x["mc"] is None or abs(x["mc"]) >= MIN_MC]
     events.sort(key=lambda x: -abs(x["mc"] or 0))
     mx = max((abs(x["mc"] or 0) for x in events), default=1) or 1
     for x in events:
         x["bar"] = round(abs(x["mc"] or 0) / mx * 100) if x["mc"] else 0
     cbw.sort(key=lambda x: -x["sort"])
-    return {"asof": asof, "price_date": price_date, "events": events, "cbw": cbw, "done": done, "generated": dt.datetime.now().strftime("%Y-%m-%d %H:%M")}
+    n_cbw_more = max(0, len(cbw) - CBW_TOP)
+    cbw = cbw[:CBW_TOP]
+    return {"asof": asof, "price_date": price_date, "n_small": len(small), "n_cbw_more": n_cbw_more, "min_mc": MIN_MC, "events": events, "cbw": cbw, "done": done, "generated": dt.datetime.now().strftime("%Y-%m-%d %H:%M")}
 
 
 TEMPLATE = open(os.path.join(HERE, "html_report_template.html"), encoding="utf-8").read()

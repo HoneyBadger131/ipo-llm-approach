@@ -3,7 +3,7 @@
 원천 우선순위: calendar_override(수동 보정) > exchange_calendars XKRX > (라이브러리 범위 밖) 평일=영업일 가정(unverified).
 교차검증: 기존 DART 축 dart_calendar.HOLIDAYS 와 비교해 불일치를 출력한다.
 
-  .venv/bin/python kind/build_calendar.py [--start 2015-01-01] [--end 2030-12-31]
+  .venv/bin/python kind/build_calendar.py [--start 2015-01-01] [--end 2040-12-31]
 재실행 안전(멱등): calendar_day 는 매번 전체 재생성, calendar_override 는 보존.
 """
 import argparse
@@ -130,7 +130,7 @@ def cross_check(con, cal):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--start", default="2015-01-01")
-    ap.add_argument("--end", default="2030-12-31")
+    ap.add_argument("--end", default="2040-12-31")
     a = ap.parse_args()
     con, cal = build(dt.date.fromisoformat(a.start), dt.date.fromisoformat(a.end))
     q = lambda s: con.execute(s).fetchone()[0]

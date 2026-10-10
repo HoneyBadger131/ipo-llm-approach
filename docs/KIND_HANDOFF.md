@@ -60,11 +60,12 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh       # 네트워크 없이 캐시만으로
 ## 6. 지수 규칙 (사용자 확정 3원칙 + 붙임2)
 ① 지수 주식수는 **신규상장일** 기준 증가(일반공모·제3자배정·CB/BW 전환·행사·합병신주) ② **주주배정 유상증자·무상증자는 권리락일**(주식배당은 배당락일) ③ **자사주 소각은 변경상장일** 감소 ④ **분할(인적)은 존속법인 변경상장일, 신설법인은 별개 종목(재상장일)** ⑤ 실권은 신주 상장일에 −실권. 2026-11 방법론 개정(현금 처리 폐지 등)은 *근거 문서 수령 후* 반영 — 첫 사례는 카카오(A035720) 분할 건 예상. 표: [`KIND_INDEX_METHOD.md`](KIND_INDEX_METHOD.md), 코드 `kind/index_rules.py`.
 
-## 7. 다음 세션 시작 지점 — 종목 확장(시총 상위 300)
-리포트 양식(HTML)은 사용자 승인([`KIND_REPORT_OUTLINE.md`](KIND_REPORT_OUTLINE.md) 확정 사항). **다음 = 종목 확장**: 유니버스 = KOSPI 시총 상위 300(`kind/universe/`), 우선주 제외, 이벤트 상대방 자동 추가(`m2_split.register`·`register_extinct` 패턴). 확장 시 주의: ① KIND 호출 한도 — 종목 지정 조회는 종목당 연 1~2콜+본문, 날짜 단위 전 종목 조회가 효율적이면 그쪽으로(sleep 필수) ② 본문은 관련 제목만(`collector --body-re`) ③ 시드(상장주식수)는 DART 반기 시드를 300종목으로 늘리거나 결정 공시의 증자전/분할전 총수 앵커 사용 ④ 수집 시작일은 결정일보다 2~3개월 앞.
-- 남은 이벤트: 유/무상 감자 · 물적분할 · 주식병합 · M4 대량매매. 카카오(A035720) 분할은 개정 방법론(2026-11) 첫 사례 예상.
-- 템플릿: `m2_corp_actions.py`(유형별 결정 파서 + 공통 replay), 신설·소멸 법인 등록은 `m2_split.register`/`m2_corp_actions.register_extinct`.
-- KIND 등록명이 영문 표기와 다를 수 있다(LS ELECTRIC=엘에스일렉트릭) — 단축코드로 검색.
+## 7. 다음 세션 시작 지점 — 확장 검수·운영
+종목 확장(시총 상위 300, KOSPI) 완료: 날짜 단위 스캔(`kind/scan_range.py`, 결과 [`KIND_SCAN_TEST.md`](KIND_SCAN_TEST.md)). 리포트는 HTML(`kind/html_report.py`, 양식 확정 — [`KIND_REPORT_OUTLINE.md`](KIND_REPORT_OUTLINE.md)). 다음:
+- **일일 운영 루틴**: ① 주 1회 종가 갱신(MCP `trading_data(scope=universe,'코스피 시총 상위 300')` → `kind/universe/save_prices.py`) ② `scan_range.py --from <마지막 스캔일+1> --to <어제>` ③ m1 → m2_* → `html_report.py` ④ 큰 이벤트는 `kind/news.json` 에 '왜'·뉴스 추가. (재생성은 `rebuild_all.sh <FROM> <TO>` — TO 를 고정하지 않으면 날짜가 바뀌면서 캐시 키가 달라져 오프라인 재생성이 실패한다.)
+- **검토 큐**: ① 분기별 취득·소각 반복 법인(KB금융·하나금융 등) 소각 스레드 매칭(`unmatched_stale`) ② 카카오 분할(개정 방법론 첫 사례 예상, 2027-01-27 변경상장 예정) 규칙 확인 ③ CB/BW 상장주식수 시드(300종목) ④ m1 review 1건(키움증권 주식의종류변경).
+- 남은 이벤트: 유/무상 감자 · 물적분할 · 주식병합 · M4 대량매매.
+- 템플릿: `m2_corp_actions.py`(유형별 결정 파서 + 공통 replay), 신설·소멸 법인 등록은 `m2_split.register`/`m2_corp_actions.register_extinct`. KIND 등록명이 영문 표기와 다를 수 있다(LS ELECTRIC=엘에스일렉트릭) — 코드로 검색.
 
 ## 7-1. 추가 확정(2026-10-10)
 - 소량 규칙(1천주 이하 무시·10만주 이하 경미)은 **CB/BW에만** 적용(소각·유상증자에는 적용 안 함).

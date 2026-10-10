@@ -57,6 +57,9 @@ def set_slot(con, eid, role, d, est, src, cond=None):
         return
     if cur and cur["the_date"] == d and cur["is_estimated"] == est and cur["condition_note"] == cond:
         return
+    if con.execute("SELECT 1 FROM calendar_day WHERE cal_date=?", (d,)).fetchone() is None:
+        print(f"  ⚠ 달력 범위 밖/잘못된 날짜 슬롯 생략: event {eid} {role} {d}", file=sys.stderr)  # 예: 만기 2040년 이후, 날짜 파싱 오류
+        return
     new = con.execute("INSERT INTO event_date(event_id,role,the_date,is_estimated,condition_note,source_filing_id) VALUES (?,?,?,?,?,?)",
                       (eid, role + "~", d, est, cond, src)).lastrowid
     if cur:
@@ -216,6 +219,12 @@ def attach_follow(con, th):
             t["items"].append((f["filed_at"], "ISSUE_RESULT", f, p_issue_result(text_of(f))))
         elif title.startswith("추가상장(유상증자"):
             lg = con.execute("SELECT * FROM share_ledger WHERE source_filing_id=? ORDER BY ledger_id", (f["filing_id"],)).fetchall()
+            # 같은 법인에 증자가 여러 건이면 '직전 스레드'가 아니라 계획 신주수가 가장 가까운 미매칭 스레드에 붙인다
+            dl = sum((x["delta_shares"] or 0) for x in lg)
+            plan = lambda c: next(((i[3]["new_shares"] or 0) for i in reversed(c["items"]) if i[1] == "DECISION"), 0)
+            pool = [c for c in cands if not c.get("listed")] or cands
+            t = min(pool, key=lambda c: abs(plan(c) - dl) / (plan(c) or 1)) if dl else cands[-1]
+            t["listed"] = True
             t["items"].append((f["filed_at"], "NEW_LISTING", f, [dict(x) for x in lg]))
         elif title.startswith("권리락 기준가격 안내"):
             r = con.execute("""SELECT e.event_id, e.security_id, e.detail_json, d.the_date FROM event e JOIN event_filing ef USING(event_id)

@@ -71,7 +71,7 @@ def card(con, e, asof):
     px = d.get("price")
     ph = d.get("price_history") or []
     ini = d.get("initial") or {}
-    sz = f"신주 **{d['new_shares']:,}주**" + (f" (증자 전 {pre:,}주 대비 +{d['dilution_pct']}%)" if pre else "")
+    sz = f"신주 **{(d['new_shares'] or 0):,}주**" + (f" (증자 전 {pre:,}주 대비 +{d['dilution_pct']}%)" if pre else "")
     if px:
         sz += f" · 발행가 **{px:,}원** ({d.get('price_kind')}) → 조달 **{won(d.get('amount'))}**"
     if d.get("amount_actual"):
@@ -397,7 +397,7 @@ def cbbw_card(con, e, asof):
     if off and off.get("balance"):
         b = off["balance"]
         L.append(f"  - 공식 행사공시({off['notice_date']}): 미전환 잔액 {won(b['remaining_amount'])} · 전환가능 {b['remaining_shares']:,}주 — 우리 계산 {off.get('computed_remaining_at_notice'):,}주 {'✅ 일치' if off.get('check_ok') else '⚠ 불일치'}; 이후 청구분 {off.get('claimed_after_notice', 0):,}주 반영 시 잔여 {b['remaining_shares'] - off.get('claimed_after_notice', 0):,}주")
-    L.append(f"- **지수 영향**: 전환·행사 신주는 **신주 상장일**마다 지수 주식수 +(청구 후 약 2주 뒤 상장). 남은 최대 증가 가능분 {d['remaining']:,}주 (현재 상장주식수 {d['listed_now']:,}주 대비 {d['remaining_pct_of_listed']}%)" if d.get("remaining") else "- **지수 영향**: 전환·행사 완료")
+    L.append(f"- **지수 영향**: 전환·행사 신주는 **신주 상장일**마다 지수 주식수 +(청구 후 약 2주 뒤 상장). 남은 최대 증가 가능분 {d['remaining']:,}주 ({'현재 상장주식수 ' + format(d['listed_now'], ',') + '주 대비 ' + str(d['remaining_pct_of_listed']) + '%' if d.get('listed_now') else '상장주식수 시드 없음'})" if d.get("remaining") else "- **지수 영향**: 전환·행사 완료")
     if d.get("warrant"):
         w = d["warrant"]
         L.append(f"- **신주인수권증권**: {w['instrument']} 상장 {w['list_date']} · {w['count']:,}증권 · 행사가 {w['strike']:,}원 · 행사기간 {w['ex_start']} ~ {w['ex_end']}")
@@ -429,6 +429,8 @@ def render_cbbw(con, asof, only_active_days=100000):
     L = []
     for e in con.execute("SELECT * FROM event WHERE event_type='CONVERTIBLE_ISSUE' ORDER BY created_at").fetchall():
         d = json.loads(e["detail_json"] or "{}")
+        if not d.get("kind"):
+            continue  # 전환·행사 현황(네트워크 조회)이 아직 없는 스레드 — 온라인 실행 후 채워진다
         if e["status"] == "done" and not only_active_days:
             continue
         L += cbbw_card(con, e, asof)
