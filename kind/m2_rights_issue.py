@@ -239,6 +239,16 @@ def track_of(method):
     return "OTHER"
 
 
+def prune(con, prefix, keep_keys):
+    """이번 실행에서 구성되지 않은(병합·삭제된) 스레드를 정리한다. 스레드 키는 접두 + 최초 결정일이라 규칙 변경 시 옛 키가 남을 수 있다."""
+    for (eid, k) in con.execute("SELECT event_id, thread_key FROM event WHERE thread_key LIKE ?", (prefix + "%",)).fetchall():
+        if k not in keep_keys:
+            for tb in ("index_share_adj", "event_date", "event_filing"):
+                con.execute(f"DELETE FROM {tb} WHERE event_id=?", (eid,))
+            con.execute("UPDATE share_ledger SET event_id=NULL WHERE event_id=?", (eid,))
+            con.execute("DELETE FROM event WHERE event_id=?", (eid,))
+
+
 def replay(con, t, asof, network=True):
     key = t["key"]
     ev = con.execute("SELECT event_id FROM event WHERE thread_key=?", (key,)).fetchone()
@@ -460,6 +470,7 @@ def run(con, asof=None, network=True):
     asof = asof or dt.date.today().isoformat()
     th = load_threads(con)
     attach_follow(con, th)
+    prune(con, "PCI:", set(th))
     res = {}
     for key, t in th.items():
         eid, S = replay(con, t, asof)

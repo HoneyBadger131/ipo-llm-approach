@@ -38,3 +38,10 @@
 .venv/bin/python kind/m2_report.py [YYYY-MM-DD]                               # kind/reports/m2_rights_issue_<기준일>.md
 ```
 설명: `docs/KIND_M2_RIGHTS_ISSUE.md`
+
+## M2 라운드 2 (소각 · CB/BW)
+```
+.venv/bin/python kind/m2_cancel.py [--asof YYYY-MM-DD]     # 자기주식 소각 스레드(변경상장일 = 지수 감소일, 변경상장일 추정)
+.venv/bin/python kind/m2_cbbw.py   [--asof ...] [--no-network]   # 전환사채·신주인수권부사채: 발행 조건 + 전환·행사 상장 이력 + 잔여 희석분
+```
+지수 규칙표 `index_rules.py`, 설명 `docs/KIND_INDEX_METHOD.md`, 라운드 정리 `docs/KIND_M2_ROUND2.md`

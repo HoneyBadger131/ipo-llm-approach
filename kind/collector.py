@@ -34,12 +34,9 @@ def raw_path(acpt):
 
 
 def fetch_body(con, fid, acpt):
+    """본문 수신(캐시는 kind_client.body_html 이 raw 경로에 저장) + 해시/경로 기록"""
+    kc.body_html(acpt)
     p = raw_path(acpt)
-    if not os.path.exists(p):
-        os.makedirs(os.path.dirname(p), exist_ok=True)
-        h = kc.body_html(acpt)
-        with open(p, "w", encoding="utf-8") as f:
-            f.write(h)
     data = open(p, "rb").read()
     con.execute("UPDATE filing SET body_path=?, body_sha1=?, fetched_at=? WHERE filing_id=?",
                 (os.path.relpath(p, db.HERE), hashlib.sha1(data).hexdigest(), dt.datetime.now().isoformat(timespec="seconds"), fid))
@@ -125,6 +122,7 @@ if __name__ == "__main__":
     ap.add_argument("--shard", default="0/1", help="i/n 병렬 분할")
     ap.add_argument("--watch", default="phase1,etf_core")
     ap.add_argument("--no-body", action="store_true")
+    ap.add_argument("--only", default="", help="쉼표로 구분한 6자리 종목코드만 수집")
     a = ap.parse_args()
     con = db.connect()
     if a.bodies_only:
@@ -134,7 +132,10 @@ if __name__ == "__main__":
     if not (a.frm and a.to):
         ap.error("--from/--to 필요")
     for wl in a.watch.split(","):
+        only = set(x for x in a.only.split(",") if x)
         for sec in con.execute("SELECT s.* FROM watchlist w JOIN security s USING(security_id) WHERE w.watch_name=? ORDER BY 1", (wl,)).fetchall():
+            if only and not con.execute("SELECT 1 FROM security_code WHERE security_id=? AND code_type='SHORT' AND code IN (%s)" % ",".join("?" * len(only)), (sec["security_id"], *only)).fetchone():
+                continue
             if sec["sec_type"] == "PREFERRED":
                 continue  # 우선주 공시는 보통주 법인 검색에 같이 나온다
             if sec["sec_type"] == "ETF":

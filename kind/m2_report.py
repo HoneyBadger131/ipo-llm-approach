@@ -134,6 +134,148 @@ def card(con, e, asof):
     return L
 
 
+CXL_LABEL = {"RESOLUTION": "소각 결정(이사회)", "ACQ_START": "자기주식 취득 시작", "ACQ_END": "자기주식 취득 종료(예정)", "CANCEL_DATE": "소각일",
+             "CHANGE_LISTING_NOTICE": "변경상장 공시", "CHANGE_LISTING": "변경상장일 = 지수 주식수 감소일"}
+
+
+def cancel_card(con, e, asof):
+    d = json.loads(e["detail_json"] or "{}")
+    slots = {r["role"]: r for r in con.execute("SELECT * FROM event_date WHERE event_id=? AND superseded_by IS NULL", (e["event_id"],))}
+    L = [f"### {d['issuer']} 자기주식 소각 — {'기취득 자기주식 소각' if d['type'] == 'EXISTING' else '취득 후 소각(진행 중)' if e['status'] != 'done' else '취득 후 소각'}", ""]
+    nxt = sorted((v["the_date"], k) for k, v in slots.items() if v["the_date"] > asof)
+    nx = f" · 다음: **{CXL_LABEL[nxt[0][1]]} {nxt[0][0]}**{' (추정)' if slots[nxt[0][1]]['is_estimated'] else ''} ({dday(con, asof, nxt[0][0])})" if nxt else ""
+    L += [f"**현재 단계**: {d['status_text']}{nx}", ""]
+    parts = []
+    if d.get("qty_common"):
+        parts.append(f"보통주 **{d['qty_common']:,}주**" + (f" (발행 {d['pre_common']:,}주의 {d['pct_common']}%)" if d.get("pct_common") else ""))
+    if d.get("qty_pref"):
+        parts.append(f"우선주 **{d['qty_pref']:,}주**" + (f" (발행 {d['pre_pref']:,}주의 {d['pct_pref']}%)" if d.get("pct_pref") else ""))
+    L.append(f"- **규모**: 소각 " + " · ".join(parts) + (f" · 소각예정금액 {won(d['amount'])}" + (" (장부가 기준)" if d["type"] == "EXISTING" else " (전일 종가 기준 산정 — 실제 수량·금액은 취득 결과로 변동, 정정공시 예정)") if d.get("amount") else ""))
+    if d["type"] == "ACQUIRE":
+        a = d.get("acquire") or {}
+        L.append(f"- **취득 계획**: {d['acq_method']} · 기간 {d['acq_start']} ~ {d['acq_end']} · 위탁 {d.get('broker')}" + (f" · 취득예정 {a['shares']:,}주 / {won(a['amount'])} · 1일 한도 {a['daily_limit']:,}주" if a.get("shares") else "") + " · 취득 완료 후 전량 일괄 소각 (소각예정일 미정)")
+    elif d.get("related"):
+        L.append("- **취득 이력**: " + ", ".join(f"{x[0]} {x[1]}" for x in d["related"]))
+    lst = d.get("listing")
+    est = d.get("estimate")
+    if lst:
+        rows = []
+        for r in lst["rows"]:
+            nm = con.execute("SELECT name FROM security WHERE security_id=?", (r["security_id"],)).fetchone()[0]
+            rows.append(f"{nm} {r['before']:,} → **{r['after']:,}** ({r['delta']:+,})")
+        L.append(f"- **지수 영향**: {'✅ 반영됨' if lst['listing_date'] <= asof else '⏳ 예정'} — **{lst['listing_date']}**(변경상장일)에 감소: " + " · ".join(rows) + f". 소각일({lst['cancel_date']})이 아니라 변경상장일 기준.")
+    elif est:
+        L.append(f"- **지수 영향(예상)**: 변경상장일에 소각 수량만큼 감소 — 추정 **{est['mid']}** (범위 {est['lo']} ~ {est['hi']}; {est['basis']}). 변경상장 공시일 + 3영업일 = 변경상장일(관측 전건 일치)로 공시 후 확정.")
+    else:
+        q = (d.get("qty_common") or 0) + (d.get("qty_pref") or 0)
+        pre = con.execute("SELECT shares_after FROM share_ledger WHERE security_id=? AND superseded_by IS NULL ORDER BY effective_date DESC, ledger_id DESC LIMIT 1", (e["security_id"],)).fetchone()
+        proj = f" · 상장주식수 {pre[0]:,} → 약 {pre[0] - q:,} (−{q:,}주, 수량은 예정치)" if pre and q else ""
+        L.append(f"- **지수 영향(예상)**: 변경상장일에 감소 — **날짜 미정**(취득 완료 후 소각일 확정 → 변경상장 공시 → +3영업일){proj}")
+        if d["type"] == "ACQUIRE" and d.get("acq_end"):
+            import m2_cancel
+            lg = m2_cancel.lag_stats(con)
+            if lg:
+                lo, hi = lg["cancel_to_listing"]["min"], lg["cancel_to_listing"]["max"]
+                L.append(f"  - 참고(가정): 취득이 예정 종료일({d['acq_end']})에 끝나 같은 날 소각한다면 변경상장일은 약 **{m2_cancel.nth_trading(con, d['acq_end'], lo)} ~ {m2_cancel.nth_trading(con, d['acq_end'], hi)}** (소각일 +{lo}~{hi}영업일, 관측 {lg['n']}건). 취득이 일찍 끝나면 그만큼 앞당겨짐.")
+    L += ["", "| 일정 | 일자 | D-day(영업일) | 상태 | 근거 |", "|---|---|---|---|---|"]
+    for r in sorted(slots.values(), key=lambda r: (r["the_date"], list(CXL_LABEL).index(r["role"]) if r["role"] in CXL_LABEL else 99)):
+        if r["role"] not in CXL_LABEL:
+            continue
+        st = ("✅" if r["the_date"] <= asof else "⏳") + (" 추정" if r["is_estimated"] else "")
+        L.append(f"| {'★ ' if r['role'] == 'CHANGE_LISTING' else ''}{CXL_LABEL[r['role']]} | {r['the_date']} | {dday(con, asof, r['the_date'])} | {st} | `{r['source_filing_id']}` |")
+    if d["type"] == "ACQUIRE" and "CANCEL_DATE" not in slots:
+        L.append("| 소각일 | 미정 | - | ⏳ | 취득 완료 후 공시 |")
+        L.append("| ★ 변경상장일 = 지수 주식수 감소일 | 미정 | - | ⏳ | 소각일 확정 후 |")
+    am = d.get("amendments") or []
+    if am:
+        L += ["", f"<details><summary>정정 이력 {len(am)}회</summary>", ""]
+        for x in am:
+            L.append(f"- {x['at'][:10]}: " + "; ".join(f"{k}: {v[0]} → {v[1]}" for k, v in x["changes"].items()))
+        L += ["", "</details>"]
+    L.append("")
+    return L
+
+
+def render_cancel(con, asof, only_active_days=120):
+    L = []
+    cut = (dt.date.fromisoformat(asof) - dt.timedelta(days=only_active_days)).isoformat()
+    n = 0
+    for e in con.execute("SELECT * FROM event WHERE event_type='TREASURY_CANCELLATION' ORDER BY created_at").fetchall():
+        last = con.execute("SELECT max(the_date) FROM event_date WHERE event_id=? AND superseded_by IS NULL", (e["event_id"],)).fetchone()[0]
+        if e["status"] == "done" and last < cut:
+            continue
+        L += cancel_card(con, e, asof)
+        n += 1
+    return L or ["(진행 중이거나 최근 완료된 자기주식 소각 없음)"]
+
+
+CBW_LABEL = {"RESOLUTION": "발행 결정(이사회)", "SUBSCRIPTION": "청약", "PAYMENT": "납입(발행)", "WARRANT_LISTING": "신주인수권증권 상장", "EXERCISE_START": "전환·행사 청구 시작",
+             "EXERCISE_END": "전환·행사 청구 종료", "PUT_FIRST": "조기상환청구(풋) 첫 도래", "MATURITY": "만기"}
+
+
+def cbbw_card(con, e, asof):
+    d = json.loads(e["detail_json"] or "{}")
+    if d.get("error"):
+        return [f"### (오류) {e['thread_key']}: {d['error']}", ""]
+    kind = "전환사채(CB)" if d["kind"] == "CB" else "신주인수권부사채(BW)"
+    slots = {r["role"]: r for r in con.execute("SELECT * FROM event_date WHERE event_id=? AND superseded_by IS NULL", (e["event_id"],))}
+    nm = "전환가액" if d["kind"] == "CB" else "행사가액"
+    L = [f"### {d['issuer']} {kind} 제{d['round']}회 — {d['type_text']}", ""]
+    st = "전환·행사 완료" if e["status"] == "done" else ("전환·행사 가능 기간" if slots.get("EXERCISE_START") and slots["EXERCISE_START"]["the_date"] <= asof else "발행 후 청구 개시 전")
+    L.append(f"**현재 단계**: {st} · 최근 상장: {d['conversions'][-1]['list_date'] + ' +' + format(d['conversions'][-1]['shares'], ',') + '주' if d['conversions'] else '없음'}")
+    L.append("")
+    L.append(f"- **조건**: 권면 {won(d['face_amount'])} · {nm} **{d['strike']:,}원** → 전환·행사 가능 최대 **{d['potential']:,}주**" + (f" (결정 시 총수 대비 {d['pct_of_total']}%)" if d.get("pct_of_total") else "")
+             + f" · 표면 {d['coupon_pct']}% / 만기 {d['ytm_pct']}%" + (f" · 만기상환 {d['maturity_redemption_pct']}%" if d.get("maturity_redemption_pct") else "") + f" · {d['method']}")
+    if d.get("refix_floor"):
+        L.append(f"- **리픽싱**: 시가 하락 시 조정, 최저 조정가액 {d['refix_floor']:,}원")
+    use = d.get("use_of_funds") or {}
+    if use:
+        L.append("- **자금용도**: " + ", ".join(f"{k} {won(v)}" for k, v in use.items()))
+    prog = f"- **전환·행사 현황**: 누적 **{d['converted']:,}주**" + (f" ({d['converted'] / d['potential'] * 100:.1f}%)" if d['potential'] else "") + f" 상장 · 잔여 가능 **{d['remaining']:,}주**"
+    if d.get("remaining_amount"):
+        prog += f" (≈ {won(d['remaining_amount'])}, 상장주식수의 {d['remaining_pct_of_listed']}%)"
+    L.append(prog)
+    ck = d.get("check_warrant")
+    if ck:
+        L.append(f"  - 점검: 최신 신주인수권증권 변경상장 공시의 잔여 {ck['warrant_notice_remaining']:,}증권 = 계산 잔여 {ck['computed_remaining']:,}주 {'✅ 일치' if ck['ok'] else '⚠ 불일치'}")
+    off = d.get("official")
+    if off and off.get("balance"):
+        b = off["balance"]
+        L.append(f"  - 공식 행사공시({off['notice_date']}): 미전환 잔액 {won(b['remaining_amount'])} · 전환가능 {b['remaining_shares']:,}주 — 우리 계산 {off.get('computed_remaining_at_notice'):,}주 {'✅ 일치' if off.get('check_ok') else '⚠ 불일치'}; 이후 청구분 {off.get('claimed_after_notice', 0):,}주 반영 시 잔여 {b['remaining_shares'] - off.get('claimed_after_notice', 0):,}주")
+    L.append(f"- **지수 영향**: 전환·행사 신주는 **신주 상장일**마다 지수 주식수 +(청구 후 약 2주 뒤 상장). 남은 최대 증가 가능분 {d['remaining']:,}주 (현재 상장주식수 {d['listed_now']:,}주 대비 {d['remaining_pct_of_listed']}%)" if d.get("remaining") else "- **지수 영향**: 전환·행사 완료")
+    if d.get("warrant"):
+        w = d["warrant"]
+        L.append(f"- **신주인수권증권**: {w['instrument']} 상장 {w['list_date']} · {w['count']:,}증권 · 행사가 {w['strike']:,}원 · 행사기간 {w['ex_start']} ~ {w['ex_end']}")
+    L += ["", "| 일정 | 일자 | D-day(영업일) | 상태 |", "|---|---|---|---|"]
+    for r in sorted(slots.values(), key=lambda r: (r["the_date"], list(CBW_LABEL).index(r["role"]) if r["role"] in CBW_LABEL else 99)):
+        if r["role"] in CBW_LABEL:
+            L.append(f"| {CBW_LABEL[r['role']]} | {r['the_date']} | {dday(con, asof, r['the_date'])} | {'✅' if r['the_date'] <= asof else '⏳'} |")
+    if d["conversions"]:
+        L += ["", f"<details><summary>전환·행사 신주 상장 이력 {len(d['conversions'])}건 (지수 주식수 증가일)</summary>", "", "| 상장일(지수 반영) | 청구(발행)일 | 주식수 | 누계 | 잔여 가능 |", "|---|---|---:|---:|---:|"]
+        for c in d["conversions"]:
+            det = c.get("issue_date") or ""
+            L.append(f"| {c['list_date']} | {det} | {c['shares']:,} | {c['cum']:,} | {c['remaining']:,} |")
+        L += ["", "</details>"]
+    am = d.get("amendments") or []
+    if am:
+        L += ["", f"<details><summary>정정·재결정 이력 {len(am)}회</summary>", ""]
+        for x in am:
+            L.append(f"- {x['at'][:10]}: " + ("; ".join(f"{k}: {v[0]} → {v[1]}" for k, v in x["changes"].items()) or "(주요 항목 변경 없음)"))
+        L += ["", "</details>"]
+    L.append("")
+    return L
+
+
+def render_cbbw(con, asof, only_active_days=100000):
+    L = []
+    for e in con.execute("SELECT * FROM event WHERE event_type='CONVERTIBLE_ISSUE' ORDER BY created_at").fetchall():
+        d = json.loads(e["detail_json"] or "{}")
+        if e["status"] == "done" and not only_active_days:
+            continue
+        L += cbbw_card(con, e, asof)
+    return L or ["(CB·BW 스레드 없음)"]
+
+
 def render(con, asof, only_active_days=120):
     L = []
     rows = con.execute("SELECT * FROM event WHERE event_type='PAID_CAPITAL_INCREASE' ORDER BY created_at").fetchall()
@@ -155,7 +297,8 @@ if __name__ == "__main__":
     args_ = [a for a in sys.argv[1:] if not a.startswith("--")]
     today = args_[0] if args_ else dt.date.today().isoformat()
     asof = con.execute("SELECT max(cal_date) FROM calendar_day WHERE is_trading=1 AND cal_date<=?", (today,)).fetchone()[0]
-    L = [f"# 유상증자 이벤트 스레드 — 기준일 {asof}", "", "★ = 지수·참여 관점 핵심일. D-day는 영업일 기준(`*`=휴장일), ✅ 완료 / ⏳ 예정 / 추정 = 기준일로부터 계산한 값.", ""] + render(con, asof, only_active_days=100000 if "--all" in sys.argv else 120)
+    ad = 100000 if "--all" in sys.argv else 120
+    L = [f"# 이벤트 스레드 (유상증자 · 자기주식 소각 · CB/BW) — 기준일 {asof}", "", "★ = 지수·참여 핵심일. D-day는 영업일 기준(`*`=휴장일), ✅ 완료 / ⏳ 예정 / 추정 = 기준일로부터 계산한 값.", "", "## 유상증자", ""] + render(con, asof, only_active_days=ad) + ["", "## 자기주식 소각", ""] + render_cancel(con, asof, only_active_days=ad) + ["", "## 전환사채(CB)·신주인수권부사채(BW)", ""] + render_cbbw(con, asof)
     out = os.path.join(db.HERE, "reports", f"m2_rights_issue_{asof}.md")
     open(out, "w", encoding="utf-8").write("\n".join(L) + "\n")
     print("\n".join(L))

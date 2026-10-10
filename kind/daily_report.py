@@ -77,6 +77,8 @@ def main():
             memo += f" / 해제 조건: {n['pending_condition']}"
         L.append(f"| {d['name']} | {KIND_KR.get(d['kind'], d['kind'])} | {d['start_date']} ~ {d['end_date'] or '미정'}{'(추정)' if d['end_is_estimated'] and d['end_date'] else ''} | {d['nd']} | {d['state']} | {memo[:90]} |")
     L += ["", "## 5. 유상증자 이벤트 스레드 (M2)", "", "★ = 지수·참여 핵심일 · D-day는 영업일 기준(`*`=휴장일) · ✅ 완료 / ⏳ 예정 / 추정 = 기준일에서 계산한 값", ""] + m2_report.render(con, asof)
+    L += ["", "## 5-2. 자기주식 소각 스레드 (M2)", ""] + m2_report.render_cancel(con, asof)
+    L += ["", "## 5-3. 전환사채·신주인수권부사채 (M2)", ""] + m2_report.render_cbbw(con, asof)
     L += ["", "## 6. 처리 현황", ""]
     for r in con.execute("""SELECT cat_major, parse_status, count(*) n FROM filing WHERE src='KIND' AND cat_major IN ('시장조치','수시공시') GROUP BY 1,2 ORDER BY 1,2"""):
         L.append(f"- {r['cat_major']} / {r['parse_status']}: {r['n']}건")

@@ -57,38 +57,54 @@ def ensure_isin(con, sid, isin):
 
 # ───────────── 변경상장 / 추가상장 ─────────────
 def parse_listing(con, f, text):
-    kind = "추가상장" if f["title"].startswith("추가상장") else "변경상장"
+    kind = "추가상장" if (f["title"].startswith("추가상장") or f["title"].startswith("상장안내(보통주 추가상장")) else "변경상장"
     reason = f["title"]
     eff = kdate(re.search(r"(?:변경)?상장일\s*:\s*([^\n]+)", text).group(1)) if re.search(r"(?:변경)?상장일\s*:", text) else None
     iss = re.search(r"발행일[^:\n]*:\s*([^\n]+)", text)
     issue = kdate(iss.group(1)) if iss else None
+    if not issue:  # 발행일이 여러 줄('- 2026년08월03일 : 35주' …)로 나열되는 서식(BW 행사 등): 가장 이른 날짜
+        m = re.search(r"발행일[^\n]*\n((?:\s*-\s*\d{4}년\s*\d{1,2}월\s*\d{1,2}일[^\n]*\n?)+)", text)
+        if m:
+            ds = sorted(kdate(x) for x in re.findall(r"(\d{4}년\s*\d{1,2}월\s*\d{1,2}일)", m.group(1)))
+            issue = ds[0] if ds else None
     if not issue:  # '발행일' 아래 ▶ 줄에 날짜가 오는 서식
         m = re.search(r"발행일\s*\n\s*▶[^\n]*?(\d{4}년\s*\d{1,2}월\s*\d{1,2}일)", text)
         issue = kdate(m.group(1)) if m else None
+    detail = None
+    mb = re.search(r"③\s*발행일[^\n]*\n(.*?)(?=\n\s*④)", text, re.S)
+    if mb:  # 발행일별 수량: '- 2026년08월03일 : 35주' 또는 '2025년10월27일(15,595주)'
+        pairs = re.findall(r"(\d{4}년\s*\d{1,2}월\s*\d{1,2}일)\s*(?::\s*|\(\s*)([\d,]+)주", mb.group(1))
+        detail = [[kdate(a_), num(b_)] for a_, b_ in pairs] or None
+        if detail and not issue:
+            issue = min(d_[0] for d_ in detail)
     # 표준코드: '▶ [보통주|1우선주] 표준코드 : KR7... (단축코드:A....)' 또는 단일 '▶ 표준코드 : …'
     codes = re.findall(r"(?:▶\s*([^\n▶]*?)\s*)?표준코드\s*:\s*(KR7\w{9})\s*\(단축코드:A(\w{6})\)", text)
     rows = []
     if kind == "변경상장":
         for m in re.finditer(r"기명식\s*(\S*주)\s*([\d,]+)주\s*(?:→|->)\s*([\d,]+)주\s*(?:\([^)]*\))?\s*\n\s*▶\s*변경주식수\s*:\s*(-?[\d,]+)주", text):
-            rows.append(dict(cls=cls_of(m.group(1)), before=num(m.group(2)), after=num(m.group(3)), delta=num(m.group(4))))
+            rows.append(dict(cls=cls_of(m.group(1)), label=m.group(1), before=num(m.group(2)), after=num(m.group(3)), delta=num(m.group(4))))
     else:
-        for m in re.finditer(r"주식의 종류와 수\s*:\s*기명식\s*(\S*주)\s*([\d,]+)주", text):
-            rows.append(dict(cls=cls_of(m.group(1)), before=None, after=None, delta=num(m.group(2))))
+        for m in re.finditer(r"주식의 종류와 수\s*:\s*기명식\s*(\S*주)\s*(?:총\s*)?([\d,]+)주", text):
+            rows.append(dict(cls=cls_of(m.group(1)), label=m.group(1), before=None, after=None, delta=num(m.group(2))))
     if not (eff and rows):
         return "review", f"listing_fields eff={eff} rows={len(rows)}"
     # 종류별 코드 해석: 코드가 1개면 그 코드, 2개 이상이면 라벨(우선주 여부)로
-    by_cls = {}
+    by_cls, by_label = {}, {}
     for lab, isin, short in codes:
         by_cls[cls_of(lab) if len(codes) > 1 else None] = (isin, short)
+        key = re.sub(r"\s+|표준코드|▶", "", lab or "")
+        if key:
+            by_label[key] = (isin, short)  # '보통주' / '1우선주' / '3우선주' 처럼 우선주 종류가 여러 개인 공시를 구분
     done = 0
     for r in rows:
-        isin, short = by_cls.get(r["cls"]) or by_cls.get(None) or (None, None)
+        lk = re.sub(r"\s+", "", r["label"])
+        isin, short = by_label.get(lk) or by_cls.get(r["cls"]) or by_cls.get(None) or (None, None)
         sid = sec_by_short(con, short) if short else None
         if sid is None:
             continue  # 워치리스트 밖 종목
         ensure_isin(con, sid, isin)
-        con.execute("""INSERT OR IGNORE INTO share_ledger(security_id,effective_date,delta_shares,shares_before,shares_after,issue_date,reason,source_filing_id)
-                       VALUES (?,?,?,?,?,?,?,?)""", (sid, eff, r["delta"], r["before"], r["after"], issue, reason, f["filing_id"]))
+        con.execute("""INSERT OR IGNORE INTO share_ledger(security_id,effective_date,delta_shares,shares_before,shares_after,issue_date,reason,source_filing_id,issue_detail)
+                       VALUES (?,?,?,?,?,?,?,?,?)""", (sid, eff, r["delta"], r["before"], r["after"], issue, reason, f["filing_id"], json.dumps(detail) if detail else None))
         done += 1
         if "매매거래정지가 해제" in text:  # 분할 변경상장일 해제 조건 해소
             close_halts(con, sid, eff, f["filing_id"])
@@ -200,16 +216,38 @@ def parse_halt(con, f, text):
 
 
 HANDLERS = [
-    (re.compile(r"^(변경상장|추가상장)\("), parse_listing),
+    (re.compile(r"^(변경상장|추가상장)\(|^상장안내\(보통주 추가상장"), parse_listing),
     (re.compile(r"기준가격"), parse_ref_price),
     (re.compile(r"^(주권)?매매거래정지"), parse_halt),
 ]
+
+
+def seed_adjust(con, sid):
+    """시드(DART 반기 '발행주식총수')는 *발행일* 기준이라, 시드일까지 발행됐지만 시드일 이후에 상장되는 주식이 이미 포함돼 있다
+    (예: 엘앤에프 BW 행사 7/9·7/20 상장분이 6/30 발행주식총수에 포함). 원장은 *상장일* 기준이므로 그만큼 뺀 값을 시드의 상장주식수로 쓴다."""
+    s = con.execute("SELECT * FROM share_ledger WHERE security_id=? AND reason LIKE 'SEED:%' ORDER BY ledger_id LIMIT 1", (sid,)).fetchone()
+    if not s:
+        return
+    meta = json.loads(s["issue_detail"]) if s["issue_detail"] else {}
+    dart = meta.get("dart", s["shares_after"])
+    adj = 0
+    for r in con.execute("SELECT delta_shares, issue_date, issue_detail FROM share_ledger WHERE security_id=? AND superseded_by IS NULL AND effective_date>? AND reason NOT LIKE 'SEED:%' AND delta_shares>0",
+                         (sid, s["effective_date"])):
+        if r["issue_detail"]:
+            adj += sum(q for d_, q in json.loads(r["issue_detail"]) if d_ <= s["effective_date"])
+        elif r["issue_date"] and r["issue_date"] <= s["effective_date"]:
+            adj += r["delta_shares"]
+    con.execute("UPDATE share_ledger SET shares_after=?, issue_detail=? WHERE ledger_id=?",
+                (dart - adj, json.dumps({"dart": dart, "issued_not_listed": adj}), s["ledger_id"]))
 
 
 def fill_chain(con):
     """원장 체인 완성: 공시에 before/after 가 없는 행(추가상장)은 직전 잔고에서 계산. 반환: 불일치 목록."""
     problems = []
     for (sid,) in con.execute("SELECT DISTINCT security_id FROM share_ledger").fetchall():
+        # 계산으로 채웠던 값은 매번 처음부터 다시 계산(새 공시가 추가돼도 이전 계산값이 남지 않게)
+        con.execute("UPDATE share_ledger SET shares_before=NULL, shares_after=NULL, is_computed=0 WHERE security_id=? AND is_computed=1", (sid,))
+        seed_adjust(con, sid)
         rows = con.execute("SELECT * FROM share_ledger WHERE security_id=? AND superseded_by IS NULL ORDER BY effective_date, ledger_id", (sid,)).fetchall()
         bal = None
         for r in rows:

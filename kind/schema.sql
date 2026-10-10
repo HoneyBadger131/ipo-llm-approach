@@ -196,6 +196,7 @@ CREATE TABLE IF NOT EXISTS share_ledger (
   shares_after   INTEGER,                                               -- 변동 후 상장주식수
   issue_date     TEXT REFERENCES calendar_day(cal_date),                -- 발행일/소각일(상장일과 다름)
   is_computed    INTEGER NOT NULL DEFAULT 0,                            -- 1 = before/after 를 원장 체인으로 계산(공시에 없음)
+  issue_detail   TEXT,                                                  -- JSON. 신주 상장 행: 발행일별 수량 [[date,shares],…](BW 행사처럼 여러 발행일을 묶어 상장). SEED 행: {'dart': DART 발행주식총수 원값}
   reason         TEXT NOT NULL,                                         -- 추가상장(유상증자(DR)), 변경상장(주식소각) …
   event_id       INTEGER REFERENCES event(event_id),
   source_filing_id TEXT NOT NULL REFERENCES filing(filing_id),
