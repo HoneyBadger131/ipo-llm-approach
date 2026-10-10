@@ -1,5 +1,7 @@
 # KIND M2 라운드 2 — 자기주식 소각 · CB/BW 전환·행사 · (분할 준비)
 
+> **2026-10-11 변경**: 취득 후 소각(ACQUIRE)은 `CXL:<issuer_id>:A<취득시작일>` **프로그램 단위 스레드**로 통합된다(계획 결정 → 실제 종료일·수량 재결정 → 소각일 지정 결정이 같은 스레드에서 최신이 덮어씀). 변경상장 한 건이 소각일이 같은 여러 프로그램에 합산 적용되고, 변경상장 *예정일*은 소각일 + 중앙 약 11영업일 또는 취득 종료일 + 과거 간격(법인별 3건 이상이면 법인별, 아니면 전체 중앙 약 36일)로 임시 추정한다. 취득이 끝난 지 45일이 지나도 매칭이 안 되고 추정일도 지났으면 `unmatched_stale`(완료·리포트 제외). 아래 본문은 변경 전 기준. 현재 기준 [`KIND_HANDOFF.md`](KIND_HANDOFF.md) 4·6·8절.
+
 작성 2026-10-10 · 코드 [`m2_cancel.py`](../kind/m2_cancel.py) [`m2_cbbw.py`](../kind/m2_cbbw.py) [`m2_report.py`](../kind/m2_report.py) · 카드 출력 [`kind/reports/m2_rights_issue_2026-10-08.md`](../kind/reports/m2_rights_issue_2026-10-08.md)
 전제: 지수 규칙은 [`KIND_INDEX_METHOD.md`](KIND_INDEX_METHOD.md) (붙임2). 3원칙 = ① 신규상장일 ② 주주배정은 권리락일 ③ 소각은 변경상장일.
 

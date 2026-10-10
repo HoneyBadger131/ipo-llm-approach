@@ -31,6 +31,22 @@ MIN_MC = 5_000_000_000  # 시총 변동 50억원 미만은 목록에서 생략(�
 KIND_URL = "https://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno="
 
 
+def excluded_codes():
+    p = os.path.join(HERE, "universe", "exclude.txt")
+    if not os.path.exists(p):
+        return set()
+    return {ln.split()[0] for ln in open(p, encoding="utf-8") if ln.strip() and not ln.startswith("#")}
+
+
+PCI_TAG = {"RIGHTS": "유상증자(주주배정)", "THIRD_PARTY": "3자배정 유상증자", "PUBLIC": "공모 유상증자"}
+
+
+def type_name(e, d):
+    if e["event_type"] == "PAID_CAPITAL_INCREASE":
+        return PCI_TAG.get(d.get("track"), "유상증자")
+    return TYPE_KR[e["event_type"]]
+
+
 def load_prices(asof):
     best = None
     for f in glob.glob(os.path.join(HERE, "universe", "prices_*.csv")):
@@ -105,12 +121,12 @@ def facts(con, e, d, asof, slots, ix, news):
             head = f"자기주식 {q:,}주({d.get('pct_common')}%) 장내 취득 후 전량 소각 — 예정 {d['amount'] / 1e12:.1f}조원"
             kpi4 = {"label": "취득 기간", "value": f"{d['acq_start'][5:]} ~ {d['acq_end'][5:]}", "sub": d["acq_method"]}
             es = d.get("estimate") or {}
-            pts.append(("key", f"소각 후 변경상장일에 지수 상장주식수 −{q:,}주 — " + (f"변경상장 예정 {es['mid']}(추정): {es['basis']}" if es.get("mid") else "소각일·변경상장일 미정")))
+            pts.append(("key", f"소각 후 변경상장일에 지수 상장주식수 −{q:,}주 — " + (f"변경상장 예정 {es['mid']} (추정)" if es.get("mid") else "소각일·변경상장일 미정"), es.get("basis")))
             pts.append(("info", "수량·금액은 결정 시점 종가 기준 예정치 — 실제 취득 결과에 따라 달라짐"))
             sched.append({"label": "취득 종료(예정)", "date": d["acq_end"], "est": 0, "key": False})
         else:
             head = f"기취득 자기주식 {q:,}주 소각"
-            pts.append(("key", f"변경상장일에 지수 상장주식수 −{q:,}주 — " + (f"변경상장 {d['listing']['listing_date']} 확정(변경상장 공시 완료)" if d.get("listing") else (f"변경상장 예정 {d['estimate']['mid']}(추정): {d['estimate']['basis']}" if (d.get('estimate') or {}).get('mid') else "변경상장일 미정"))))
+            pts.append(("key", f"변경상장일에 지수 상장주식수 −{q:,}주 — " + (f"변경상장 {d['listing']['listing_date']} 확정(변경상장 공시 완료)" if d.get("listing") else (f"변경상장 예정 {d['estimate']['mid']} (추정)" if (d.get('estimate') or {}).get('mid') else "변경상장일 미정")), (d.get("estimate") or {}).get("basis")))
             kpi4 = {"label": "소각일", "value": (s("CANCEL_DATE") or ("미정",))[0], "sub": "변경상장일 기준 반영"}
     elif t == "MERGER":
         dc = d["decision"]
@@ -183,6 +199,7 @@ def build(con, asof):
     news = {k: v for k, v in news.items() if not k.startswith("_")}
     asof_d = dt.date.fromisoformat(asof)
     flags = {r[0]: r[1] for r in con.execute("SELECT security_id, flag FROM status_flag")}
+    excl = excluded_codes()
     t1, t2, closed, cbw = [], [], [], []
     types = ",".join("?" * len(TYPE_KR))
     for e in con.execute(f"SELECT * FROM event WHERE event_type IN ({types}) ORDER BY created_at", tuple(TYPE_KR)).fetchall():
@@ -201,6 +218,8 @@ def build(con, asof):
         sid = sec["security_id"] if sec else con.execute("SELECT security_id FROM security WHERE issuer_id=? AND sec_type='COMMON' ORDER BY security_id LIMIT 1", (e["issuer_id"],)).fetchone()[0]
         code = con.execute("SELECT code FROM security_code WHERE security_id=? AND code_type='SHORT'", (sid,)).fetchone()
         code = code[0] if code else ""
+        if code in excl:
+            continue
         iss = con.execute("SELECT name FROM issuer WHERE issuer_id=?", (e["issuer_id"],)).fetchone()[0]
         slots = {r["role"]: (r["the_date"], r["is_estimated"]) for r in con.execute("SELECT role, the_date, is_estimated FROM event_date WHERE event_id=? AND superseded_by IS NULL", (e["event_id"],))}
         ex = slots.get("EX_DATE", (None, 0))[0] if e["event_type"] in ("PAID_CAPITAL_INCREASE", "BONUS_ISSUE", "STOCK_DIVIDEND") else None
@@ -217,7 +236,7 @@ def build(con, asof):
             days = (asof_d - dt.date.fromisoformat(lst_d)).days
             if days >= 2:
                 if days <= 7:
-                    closed.append({"issuer": iss, "code": code, "type": TYPE_KR[e["event_type"]], "date": lst_d, "flag": flags.get(sid), "link": kind_link(con, e), "anchor": lst_d})
+                    closed.append({"issuer": iss, "code": code, "type": type_name(e, d), "date": lst_d, "flag": flags.get(sid), "link": kind_link(con, e), "anchor": lst_d})
                 continue  # 상장 후 일주일이 지나면 리포트에서 사라진다
         listed = index_shares.listed_shares(con, sid, asof)
         if listed is None:  # 원장 시드가 없는 종목: 결정 공시의 증자 전/소각 전 발행주식수로 대체
@@ -225,7 +244,7 @@ def build(con, asof):
         f = facts(con, e, d, asof, slots, ix, news)
         f["sched"] = schedule(con, e, slots, asof)
         nw = news.get(e["thread_key"] or "", {})
-        base = {"id": e["event_id"], "issuer": iss, "code": code, "flag": flags.get(sid), "type": TYPE_KR[e["event_type"]], **f, "link": kind_link(con, e), "memo": nw.get("memo")}
+        base = {"id": e["event_id"], "issuer": iss, "code": code, "flag": flags.get(sid), "type": type_name(e, d), "tag2": nw.get("tag"), **f, "link": kind_link(con, e), "memo": nw.get("memo")}
         delta = (ix or {}).get("delta")
         price = prices.get(code)
         mc = delta * price if (delta is not None and price) else None
@@ -262,6 +281,8 @@ def build(con, asof):
         sid = sec[0] if sec else con.execute("SELECT security_id FROM security WHERE issuer_id=? AND sec_type='COMMON' ORDER BY security_id LIMIT 1", (e["issuer_id"],)).fetchone()[0]
         code = (con.execute("SELECT code FROM security_code WHERE security_id=? AND code_type='SHORT'", (sid,)).fetchone() or [""])[0]
         iss = con.execute("SELECT name FROM issuer WHERE issuer_id=?", (e["issuer_id"],)).fetchone()[0]
+        if code in excl:
+            continue
         px = prices.get(code)
         pot = d["remaining"] * px if px else None
         f = facts(con, e, d, asof, {}, None, news)
@@ -279,8 +300,15 @@ def build(con, asof):
     # 자기주식 취득 진행(규모순)
     bb = []
     for b in buyback.active(con, asof):
+        if (con.execute("SELECT code FROM security_code WHERE security_id=? AND code_type='SHORT'", (b["security_id"],)).fetchone() or [""])[0] in excl:
+            continue
         code = (con.execute("SELECT code FROM security_code WHERE security_id=? AND code_type='SHORT'", (b["security_id"],)).fetchone() or [""])[0]
-        bb.append({"issuer": b["name"], "code": code, "flag": flags.get(b["security_id"]), "kind": b["kind"], "amount": b["amount"], "amount_txt": won(b["amount"])[1:] if b["amount"] else "-",
+        tot = max(1, (dt.date.fromisoformat(b["end"]) - dt.date.fromisoformat(b["start"])).days + 1)
+        el = min(tot, max(0, (asof_d - dt.date.fromisoformat(b["start"])).days + 1))
+        frac = el / tot
+        amt = b["amount"] or 0
+        bb.append({"frac": round(frac, 3), "acquired": round(amt * frac), "remain": round(amt * (1 - frac)), "remain_txt": won(round(amt * (1 - frac)))[1:] if amt else "-",
+                   "days_left": tot - el, "issuer": b["name"], "code": code, "flag": flags.get(b["security_id"]), "kind": b["kind"], "amount": b["amount"], "amount_txt": won(b["amount"])[1:] if b["amount"] else "-",
                    "shares": b["shares"], "period": f"{b['start']} ~ {b['end']}", "burn": b["burn"], "purpose": b["purpose"], "dday_end": R.dday(con, asof, b["end"]),
                    "link": {"url": KIND_URL + b["acpt_no"], "label": f"KIND 공시 원문 — {b['title']} ({b['filed_date']})"}})
     mx = max((abs(x["mc"] or 0) for x in t1 + t2), default=1) or 1

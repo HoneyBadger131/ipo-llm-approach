@@ -29,7 +29,15 @@ def universe_codes():
     if fs:
         codes += [r["code"] for r in csv.DictReader(open(fs[-1], encoding="utf-8"))]
     codes += list(scan_day.load_universe(os.path.join(UNI, "kospi_list_clean.md")).values())
-    return list(dict.fromkeys(codes))
+    return [c for c in dict.fromkeys(codes) if c not in excluded_codes()]
+
+
+def excluded_codes():
+    """kind/universe/exclude.txt — 제외 종목(단축코드가 줄 첫 토큰, '#' 주석)"""
+    p = os.path.join(UNI, "exclude.txt")
+    if not os.path.exists(p):
+        return set()
+    return {ln.split()[0] for ln in open(p, encoding="utf-8") if ln.strip() and not ln.startswith("#")}
 
 
 def register(con):
@@ -57,6 +65,8 @@ def trading_days(con, frm, to):
 def run(con, frm, to, market="1"):
     uni = {r[0]: r[1] for r in con.execute("""SELECT sc.code, s.security_id FROM watchlist w JOIN security s USING(security_id)
                                               JOIN security_code sc ON sc.security_id=s.security_id AND sc.code_type='SHORT' WHERE w.watch_name=?""", (WATCH,))}
+    for c in excluded_codes():
+        uni.pop(c, None)
     st = {"days": 0, "rows": 0, "event": 0, "universe": 0, "new": 0, "bodies": 0, "unresolved": set()}
     mj_names = {"01": "수시공시", "02": "시장조치"}
     for i, day in enumerate(trading_days(con, frm, to), 1):

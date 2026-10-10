@@ -1,5 +1,7 @@
 # KIND M2 — 유상증자 이벤트 스레드 (삼성바이오로직스 · 한화솔루션 · SK하이닉스 · SKC)
 
+> **2026-10-11 변경**: 스레드 키가 `PCI:<issuer_id>:<최초제출일(접수번호 날짜)>:<R주주배정|T제3자|P공모>` 로 바뀌었다(같은 날 서로 다른 증자가 같은 '최초제출일'로 정정되는 경우 분리, 같은 방식의 후속 공시는 최신이 덮어씀). 상장 공시(`추가상장(유상증자…)`)는 *직전 스레드*가 아니라 계획 신주수가 가장 가까운 미매칭 스레드에 붙는다. 아래 본문의 키 설명은 이 변경 전 기준이다. 현재 기준은 [`KIND_HANDOFF.md`](KIND_HANDOFF.md) 4·6절.
+
 작성 2026-10-10 · 코드 [`kind/m2_decision.py`](../kind/m2_decision.py) [`m2_rights_issue.py`](../kind/m2_rights_issue.py) [`m2_report.py`](../kind/m2_report.py) · 실제 카드 출력: [`kind/reports/m2_rights_issue_2026-10-08.md`](../kind/reports/m2_rights_issue_2026-10-08.md)
 상위 문서: [`KIND_M1_M3.md`](KIND_M1_M3.md) · [`KIND_DESIGN.md`](KIND_DESIGN.md)
 

@@ -127,6 +127,9 @@ def parse_decision(kind, text):
         out["form"] = dash(mf.group(1)) if mf and mf.group(1) != "해당사항없음" else None
         out["form"] = out["form"] or (dash(after(item("합병방법"), "합병형태")) if dash(after(item("합병방법"), "합병형태")) not in ("해당사항없음",) else None)
         mr = re.search(r"=\s*1\s*:\s*([\d.]+)", " ".join(item("합병비율")))
+        if not mr:  # 서식에 따라 '합병비율' 항목이 없고 '주주가치에 미치는 영향'에 '소멸회사 보통주 1주당 존속회사 보통주식 0.2736432주를 발행' 으로 적는다(예: 대한항공·아시아나항공)
+            allv = " ".join(" ".join(v) for v in it.values())
+            mr = re.search(r"보통주식?\s*1주당\s*[^\d]{0,40}?보통주식?\s*([\d.]+)주를?\s*(?:발행|배정)", allv)
         out["ratio"] = float(mr.group(1)) if mr else None
         out["new_shares"] = num(after(item("합병신주의 종류와 수"), "보통주식"))
         out["new_other"] = num(after(item("합병신주의 종류와 수"), "종류주식"))

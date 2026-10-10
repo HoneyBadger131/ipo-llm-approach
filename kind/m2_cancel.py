@@ -206,14 +206,17 @@ def replay(con, t, asof, lag, acq_lag=None):
     dd = S.get("decision") or {}
     if "CHANGE_LISTING" not in cur and not cur.get("CANCEL_DATE") and dd.get("type") == "ACQUIRE" and dd.get("acq_end") and acq_lag:
         # 소각일 미정(취득 중·취득 종료 후 소각 대기): 변경상장 '예정일' = 취득 종료일 + 관측 중앙 간격(임시값 — 변경상장 공시가 나오면 교체)
-        d0 = dt.date.fromisoformat(dd["acq_end"]) + dt.timedelta(days=int(acq_lag["median"]))
+        own = acq_lag["by_issuer"].get(t["issuer_id"])
+        al = own or acq_lag["all"]
+        d0 = dt.date.fromisoformat(dd["acq_end"]) + dt.timedelta(days=int(al["median"]))
         mid = con.execute("SELECT min(cal_date) FROM calendar_day WHERE is_trading=1 AND cal_date>=?", (d0.isoformat(),)).fetchone()[0]
-        S["estimate"] = {"lo": None, "hi": None, "mid": mid, "basis": f"취득 종료일 + 약 {int(acq_lag['median'])}일(관측 {acq_lag['n']}건 중앙값) — 임시 추정, 변경상장 공시 전까지만 사용", "acq_based": True}
+        S["estimate"] = {"lo": None, "hi": None, "mid": mid, "short": "추정", "acq_based": True,
+                         "basis": f"취득 종료일 + 약 {int(al['median'])}일({'이 법인' if own else '전체'} 과거 {al['n']}건 중앙값) — 변경상장 공시 전까지만 쓰는 임시 추정"}
         set_slot(con, eid, "CHANGE_LISTING", mid, 1, S["sources"][0]["filing"])
     elif "CHANGE_LISTING" not in cur and cur.get("CANCEL_DATE") and lag:
         lo, hi, med = lag["cancel_to_listing"]["min"], lag["cancel_to_listing"]["max"], lag["cancel_to_listing"]["median"]
         e_med = nth_trading(con, cur["CANCEL_DATE"], int(round(med)))
-        S["estimate"] = {"lo": nth_trading(con, cur["CANCEL_DATE"], lo), "hi": nth_trading(con, cur["CANCEL_DATE"], hi), "mid": e_med, "basis": f"소각일 + 약 {int(round(med))}영업일(관측 {lag['n']}건 중앙값)"}
+        S["estimate"] = {"lo": nth_trading(con, cur["CANCEL_DATE"], lo), "hi": nth_trading(con, cur["CANCEL_DATE"], hi), "mid": e_med, "short": "추정", "basis": f"소각일 + 약 {int(round(med))}영업일(과거 {lag['n']}건 중앙값) — 변경상장 공시 전까지만 쓰는 임시 추정"}
         set_slot(con, eid, "CHANGE_LISTING", e_med, 1, S["sources"][0]["filing"])
     return eid, S
 
@@ -255,18 +258,21 @@ def finalize(con, t, eid, S, asof):
 
 
 def acq_lag_stats(th):
-    """취득 후 소각 프로그램: 취득 종료일 → 변경상장일 간격(일). 변경상장이 끝난 프로그램의 *최종* 종료일 기준."""
-    vals = []
+    """취득 후 소각 프로그램: 취득 종료일 → 변경상장일 간격(일). 변경상장이 끝난 프로그램의 *최종* 종료일 기준.
+    공통 중앙값 + 법인별 중앙값(관측 3건 이상일 때만 법인별을 쓴다 — 분기마다 반복하는 법인은 자기 간격이 있다)."""
+    allv, by = [], {}
     for t in th.values():
         decs = [i for i in t["items"] if i[1] == "DECISION"]
         lst = [i for i in t["items"] if i[1] == "LISTING"]
         if not decs or not lst or decs[-1][3]["type"] != "ACQUIRE" or not decs[-1][3]["acq_end"]:
             continue
-        vals.append((dt.date.fromisoformat(lst[0][3][0]["effective_date"]) - dt.date.fromisoformat(decs[-1][3]["acq_end"])).days)
-    if not vals:
+        v = (dt.date.fromisoformat(lst[0][3][0]["effective_date"]) - dt.date.fromisoformat(decs[-1][3]["acq_end"])).days
+        allv.append(v)
+        by.setdefault(t["issuer_id"], []).append(v)
+    if not allv:
         return None
-    vals.sort()
-    return {"n": len(vals), "min": vals[0], "max": vals[-1], "median": statistics.median(vals)}
+    st = lambda a: {"n": len(a), "min": min(a), "max": max(a), "median": statistics.median(a)}
+    return {"all": st(allv), "by_issuer": {k: st(v) for k, v in by.items() if len(v) >= 3}}
 
 
 def run(con, asof=None):
@@ -288,6 +294,6 @@ if __name__ == "__main__":
     con = db.connect()
     asof = sys.argv[sys.argv.index("--asof") + 1] if "--asof" in sys.argv else None
     r, lag, acq_lag = run(con, asof)
-    print("lag", lag, "acq_lag", acq_lag)
+    print("lag", lag, "acq_lag", acq_lag and {"all": acq_lag["all"], "issuers": len(acq_lag["by_issuer"])})
     for k, (eid, o) in r.items():
         print(k, eid, o["issuer"], o["type"], o["qty_common"], o["qty_pref"], o["status_text"], (o["estimate"] or {}).get("mid"))

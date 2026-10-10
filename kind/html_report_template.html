@@ -23,12 +23,25 @@ body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 -apple-system
 .band{background:var(--navy);color:var(--navy-ink);border-radius:14px;padding:16px 20px}
 .band h1{margin:0;font-size:19px}
 .band .sub{opacity:.85;font-size:12.5px;margin-top:2px}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 4px}
-.tab{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:700;cursor:pointer}
-.tab b{margin-left:6px;color:var(--ink)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 6px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:12px;padding:12px 24px;font-size:17px;font-weight:800;cursor:pointer;min-width:150px}
+.tab b{margin-left:8px;color:var(--ink);font-size:17px}
 .tab.on{background:var(--navy);border-color:var(--navy);color:#fff}
 .tab.on b{color:#fff}
-.hint2{color:var(--muted);font-size:12.5px;margin:6px 2px 10px}
+.hint2{color:var(--muted);font-size:13px;margin:8px 2px 12px}
+.q{display:inline-block;width:15px;height:15px;border-radius:50%;border:1px solid var(--muted);color:var(--muted);font-size:10px;text-align:center;line-height:13px;margin-left:5px;cursor:help;font-weight:700;vertical-align:middle}
+.tag.risk{color:var(--neg-ink);background:var(--neg);border-color:var(--neg-ink);font-weight:700}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 10px}
+.ctl .grp{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.ctl .lbl{color:var(--muted);font-size:12.5px;font-weight:700;margin-right:2px}
+.fbtn{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:700;cursor:pointer}
+.fbtn.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.pbar{display:flex;height:11px;border-radius:6px;overflow:hidden;background:var(--line);margin-top:8px}
+.pbar i{display:block;height:100%}
+.pbar .got{background:#7f93b8}
+.pbar .rem{background:#f0a43c}
+.pleg{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12.5px;margin-top:4px}
+.pleg b{color:var(--ink)}
 .layout{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:14px;align-items:start}
 @media (max-width:900px){.layout{grid-template-columns:1fr}.detail{position:static!important;max-height:none!important}}
 h2{font-size:13px;color:var(--muted);margin:14px 0 6px 2px;font-weight:700}
@@ -115,22 +128,23 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const CHIP = {key:"★ 중요", why:"왜", risk:"리스크", info:"참고", memo:"메모"};
 const TABS = [
-  ["t1","일정 확정",DATA.t1.length,"지수 반영 앵커(권리락일, 없으면 신주·변경상장일)가 오래된 순 — 신주 상장 2일 후 '최근 종결'로 이동"],
-  ["t2","일정 미확정",DATA.t2.length+DATA.cbw.length,"변경상장 공시 전 — 변경상장 예정일(임시 추정)이 빠른 순. 추정은 변경상장 공시가 나올 때까지만 사용"],
-  ["bb","자기주식 취득 진행",DATA.bb.length,"기준일 현재 취득 중(소각 목적 여부 무관) — 규모순"],
-  ["cl","최근 종결",DATA.closed.length,"신주·변경상장 후 2~7일 이내 종결 건 (일주일이 지나면 사라짐)"]
+  ["t1","일정 확정",DATA.t1.length,"지수 반영 앵커(권리락일, 없으면 신주·변경상장일)가 오래된 순 — 신주 상장 2일 후 '최근 종결'로 이동",null],
+  ["t2","일정 미확정",DATA.t2.length+DATA.cbw.length,"변경상장 공시 전 — 변경상장 예정일(추정)이 빠른 순","소각일이 있으면 소각일 + 중앙값 약 11영업일, 없으면 취득 종료일 + 과거 간격(그 법인의 과거 3건 이상이면 그 법인 중앙값, 아니면 전체 중앙값). 변경상장 공시가 나오면 확정 탭으로 이동하고 추정은 사라진다."],
+  ["bb","자기주식 취득 진행",DATA.bb.length,"기준일 현재 취득 중 — 남은 취득액(추정)이 큰 순","취득 진행률은 취득 기간 경과 비례로 추정한 값이다(실제 취득 수량은 취득 결과보고서가 나오기 전까지 공시되지 않음). 남은 취득액 = 취득 예정금액 × (1 − 기간 경과율)."],
+  ["cl","최근 종결",DATA.closed.length,"신주·변경상장 후 2~7일 이내 종결 건 (일주일이 지나면 사라짐)",null]
 ];
-let cur = "t1";
+let cur = "t1", bbFilter = "all", bbSort = "remain";
 const badge = e => e.flag ? `<span class="mgmt">${esc(e.flag)}</span>` : "";
 
 function rowHtml(e){
   const mc = e.mc_txt ? `<span class="${e.mc>0?'up':'down'}">${esc(e.mc_txt)}</span>` : '<span style="color:var(--muted)">시총 -</span>';
   const sh = e.delta_txt ? `${e.delta_txt}주${e.pct!=null?` (${e.pct>0?'+':''}${e.pct}%)`:''}` : '수량 미정';
-  return `<div class="row" data-id="${e.id}"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small>${badge(e)}<span class="tag">${esc(e.type)}</span></div><div class="mc">${mc}</div></div><div class="l2"><span>${sh}</span><span>${esc(e.right)}${e.dd?` · ${esc(e.dd)}`:''}</span></div><div class="bar"><i style="width:${e.bar}%"></i></div></div>`;
+  return `<div class="row" data-id="${e.id}"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small>${badge(e)}<span class="tag">${esc(e.type)}</span>${e.tag2?`<span class="tag risk">⚠ ${esc(e.tag2)}</span>`:''}</div><div class="mc">${mc}</div></div><div class="l2"><span>${sh}</span><span>${esc(e.right)}${e.dd?` · ${esc(e.dd)}`:''}</span></div><div class="bar"><i style="width:${e.bar}%"></i></div></div>`;
 }
 function renderTab(){
   document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("on", b.dataset.t===cur));
-  $("#hint2").textContent = TABS.find(t=>t[0]===cur)[3];
+  const tb = TABS.find(t=>t[0]===cur);
+  $("#hint2").innerHTML = esc(tb[3]) + (tb[4] ? `<span class="q" title="${esc(tb[4])}">?</span>` : "");
   const main = $("#main"); let html = "";
   const two = (cur==="t1"||cur==="t2");
   main.style.gridTemplateColumns = two ? "" : "1fr";
@@ -141,11 +155,23 @@ function renderTab(){
     html = `<div class="list">${DATA.t2.map(rowHtml).join("")||'<div class="empty">일정 미확정 이벤트가 없습니다.</div>'}</div>`;
     if(DATA.cbw.length) html += `<h2>장기 대기 — CB/BW 잔여 전환 (감만${DATA.n_cbw_more?` · 그 외 ${DATA.n_cbw_more}건 생략`:''})</h2><div class="list">${DATA.cbw.map(e=>`<div class="row" data-id="${e.id}"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small>${badge(e)}<span class="tag">${esc(e.type)}</span></div><div class="mc" style="font-weight:600">${esc(e.line)}</div></div><div class="l2"><span></span><span>${esc(e.nextkey)}</span></div></div>`).join("")}</div>`;
   } else if(cur==="bb"){
-    html = `<div class="list bb">${DATA.bb.map(b=>`<div class="row plain"><div class="l1"><div class="nm">${esc(b.issuer)}<small>${esc(b.code)}</small>${badge(b)}<span class="tag">${esc(b.kind)}</span>${b.burn?'<span class="burn">소각 목적</span>':''}</div><div class="mc big">${esc(b.amount_txt)}</div></div><div class="l2"><span>${esc(b.period)} · 종료 ${esc(b.dday_end)}${b.shares?` · 예정 ${b.shares.toLocaleString('ko-KR')}주`:''}</span><span><a href="${esc(b.link.url)}" target="_blank" rel="noopener">KIND 원문 ↗</a></span></div><div class="l2"><span>${esc(b.purpose||'')}</span></div></div>`).join("")||'<div class="empty">진행 중인 자기주식 취득이 없습니다.</div>'}</div>`;
+    const n_all = DATA.bb.length, n_burn = DATA.bb.filter(b=>b.burn).length;
+    let rows = DATA.bb.filter(b => bbFilter==="all" || (bbFilter==="burn" ? b.burn : !b.burn));
+    rows = rows.slice().sort((a,b)=> bbSort==="remain" ? b.remain-a.remain : bbSort==="amount" ? b.amount-a.amount : a.days_left-b.days_left);
+    const mx = Math.max(1, ...DATA.bb.map(b=>b.amount||0));
+    const fb = (id,lbl,cur_,set) => `<button class="fbtn ${cur_===id?'on':''}" data-set="${set}" data-v="${id}">${lbl}</button>`;
+    const ctl = `<div class="ctl"><div class="grp"><span class="lbl">필터</span>${fb("all",`전체 ${n_all}`,bbFilter,"f")}${fb("burn",`소각 목적 ${n_burn}`,bbFilter,"f")}${fb("other",`그 외 ${n_all-n_burn}`,bbFilter,"f")}</div><div class="grp"><span class="lbl">정렬</span>${fb("remain","남은 취득액(추정) 순",bbSort,"s")}${fb("amount","규모 순",bbSort,"s")}${fb("end","종료 임박 순",bbSort,"s")}</div></div>`;
+    html = ctl + `<div class="list bb">${rows.map(b=>{
+      const w = Math.max(3, Math.round((b.amount||0)/mx*100));
+      return `<div class="row plain"><div class="l1"><div class="nm">${esc(b.issuer)}<small>${esc(b.code)}</small>${badge(b)}<span class="tag">${esc(b.kind)}</span>${b.burn?'<span class="burn">소각 목적</span>':''}</div><div class="mc big">남은 ${esc(b.remain_txt)}</div></div>
+      <div class="pbar" style="width:${w}%"><i class="got" style="width:${(b.frac*100).toFixed(1)}%"></i><i class="rem" style="width:${((1-b.frac)*100).toFixed(1)}%"></i></div>
+      <div class="pleg"><span>취득 <b>${(b.frac*100).toFixed(0)}%</b>(추정) · 총 ${esc(b.amount_txt)}${b.shares?` · ${b.shares.toLocaleString('ko-KR')}주`:''}</span><span>${esc(b.period)} · 종료 ${esc(b.dday_end)} · <a href="${esc(b.link.url)}" target="_blank" rel="noopener">KIND ↗</a></span></div>
+      <div class="pleg"><span>${esc(b.purpose||'')}</span></div></div>`;}).join("")||'<div class="empty">조건에 맞는 자기주식 취득이 없습니다.</div>'}</div>`;
   } else {
     html = `<div class="list">${DATA.closed.map(e=>`<div class="row plain"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small>${badge(e)}<span class="tag">${esc(e.type)}</span></div><div class="mc" style="font-weight:600">종결 ${esc(e.date)}</div></div></div>`).join("")||'<div class="empty">최근 7일 안에 종결된 이벤트가 없습니다.</div>'}</div>`;
   }
   $("#left").innerHTML = html;
+  document.querySelectorAll("#left .fbtn").forEach(b => b.onclick = () => { if(b.dataset.set==="f") bbFilter=b.dataset.v; else bbSort=b.dataset.v; renderTab(); });
   document.querySelectorAll("#left .row[data-id]").forEach(r => r.onclick = () => select(+r.dataset.id, true));
   if(two){
     const list = cur==="t1"?DATA.t1:DATA.t2;
@@ -162,10 +188,10 @@ function select(id, user){
     kpi += `<div class="kpi key"><small><span class="star">★</span> 지수 반영일</small><b>${esc(e.date||'미정')}</b><small>${e.date?(e.applied?'반영 완료':esc((e.dday||'')+(e.est?' · 추정':' · 확정'))):'변경상장 공시 후 확정'}</small></div>`;
   }
   if(e.kpi4) kpi += `<div class="kpi"><small>${esc(e.kpi4.label)}</small><b>${esc(e.kpi4.value)}</b><small>${esc(e.kpi4.sub||'')}</small></div>`;
-  const pts = (e.memo?[["memo",e.memo]]:[]).concat(e.points).map(([k,t])=>`<div class="pt ${k}"><span class="chip ${k}">${CHIP[k]}</span><span class="tx">${esc(t)}</span></div>`).join("");
+  const pts = (e.memo?[["memo",e.memo]]:[]).concat(e.points).map(([k,t,tip])=>`<div class="pt ${k}"><span class="chip ${k}">${CHIP[k]}</span><span class="tx">${esc(t)}${tip?`<span class="q" title="${esc(tip)}">?</span>`:''}</span></div>`).join("");
   const sched = e.sched && e.sched.length ? `<div class="card"><h4>일정</h4><table class="s">${e.sched.map(s=>`<tr class="${s.key?'key':''}${s.past?' past':''}"><td>${s.key?'<span class="star">★</span> ':''}${esc(s.label)}</td><td class="d">${esc(s.date)}</td><td class="d" style="color:var(--muted)">${s.past?'완료':esc(s.dday)}${s.est&&!s.past?' <span class="est">추정</span>':''}</td></tr>`).join("")}</table></div>` : "";
   const news = e.news && e.news.length ? `<div class="card news"><h4>뉴스 근거</h4>${e.news.map(n=>`<div><span>${esc(n.outlet)} · ${esc(n.date)}</span><a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a></div>`).join("")}</div>` : "";
-  $("#detail").innerHTML = `<div class="dh"><div class="t"><h3>${esc(e.issuer)}<small>${esc(e.code)}</small>${badge(e)}</h3><span class="pill">${esc(e.type)}</span></div><div class="hl">${esc(e.headline)}</div></div><div class="kpis">${kpi}</div><div class="card"><h4>핵심 포인트</h4>${pts}</div>${sched}${news}<div class="foot">${e.link?`<a href="${esc(e.link.url)}" target="_blank" rel="noopener">${esc(e.link.label)}</a>`:''} · 정보 제공용이며 투자 권유가 아닙니다.</div>`;
+  $("#detail").innerHTML = `<div class="dh"><div class="t"><h3>${esc(e.issuer)}<small>${esc(e.code)}</small>${badge(e)}</h3><span class="pill">${esc(e.type)}${e.tag2?` · ⚠ ${esc(e.tag2)}`:''}</span></div><div class="hl">${esc(e.headline)}</div></div><div class="kpis">${kpi}</div><div class="card"><h4>핵심 포인트</h4>${pts}</div>${sched}${news}<div class="foot">${e.link?`<a href="${esc(e.link.url)}" target="_blank" rel="noopener">${esc(e.link.label)}</a>`:''} · 정보 제공용이며 투자 권유가 아닙니다.</div>`;
   if(user && window.innerWidth<=900) $("#detail").scrollIntoView({behavior:"smooth",block:"start"});
 }
 function init(){
