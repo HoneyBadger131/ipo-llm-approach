@@ -42,7 +42,8 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh 2025-01-01 2026-10-10   # 캐시만으로 �
 | `m2_cbbw.py` | CB/BW(발행 조건·전환·행사 상장·잔여 희석) |
 | `m2_split.py` | 인적분할(신설법인 등록·재상장 원장·존속 감소) |
 | `m2_corp_actions.py` | 무상증자·주식배당·액면분할·합병(+소멸회사 등록 `--register-extinct`) |
-| `buyback.py` | 기준일 현재 취득 중인 자기주식 취득(직접·신탁) |
+| `buyback.py` | 기준일 현재 취득 중인 자기주식 취득(직접·신탁) + 실적 진행(`progress`)·예상 소진일(`projection`, m2_cancel 이 변경상장 예정 추정에 사용) |
+| `buyback_exec.py` | 자기주식 매매 체결내역(유가증권시장, 시장조치 0326 하루 1건) 적재 → `buyback_exec` 테이블(누적 체결금액·수량) |
 | `index_rules.py`, `index_shares.py` | 지수 규칙표 · 지수 반영 주식수 산출(상장주식수 + 선반영) |
 
 **리포트**
@@ -63,7 +64,9 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh 2025-01-01 2026-10-10   # 캐시만으로 �
 .venv/bin/python kind/status_flags.py --to 2026-10-10                   # 관리종목 갱신
 .venv/bin/python kind/m1_parser.py --all                                # 상장·기준가·정지 파싱
 for m in m2_rights_issue m2_cancel m2_cbbw m2_split m2_corp_actions; do .venv/bin/python kind/$m.py; done
-.venv/bin/python kind/buyback.py 2026-10-08                             # 자기주식 취득 진행 목록
+.venv/bin/python kind/buyback_exec.py --from 2026-06-01 --to 2026-10-09  # 자기주식 체결내역 적재(멱등)
+.venv/bin/python kind/buyback_exec.py --show 000660 --from 2026-09-28    # 종목별 일별 체결
+.venv/bin/python kind/buyback.py 2026-10-08                             # 자기주식 취득 진행 목록(실적·예상 소진일)
 .venv/bin/python kind/index_shares.py 2026-10-08                        # 지수 반영 주식수
 .venv/bin/python kind/universe/save_prices.py < mcp_result.md           # 주간 종가 저장
 ```
