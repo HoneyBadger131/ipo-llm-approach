@@ -133,6 +133,41 @@ def facts(con, e, d, asof, slots, ix, news):
     return {"headline": head, "kpi4": kpi4, "points": pts, "sched": sched, "news": nw.get("news", [])}
 
 
+SCHED_LABEL = {"RESOLUTION": "결정 공시", "PRICE_FIRST_FIXED": "1차 발행가 확정", "EX_DATE": "권리락", "RECORD": "기준일", "PRICE_FINAL_DUE": "최종 발행가 확정(예정)",
+               "PAYMENT": "납입", "NEW_SHARE_LISTING": "신주 상장", "CANCEL_DATE": "소각일", "CHANGE_LISTING": "변경상장", "CHANGE_LISTING_NOTICE": "변경상장 공시",
+               "EGM": "주주총회", "MERGER_DATE": "합병기일", "REGISTER": "합병등기", "EXT_HALT_START": "소멸회사 거래정지 시작", "HALT_START": "거래정지 시작",
+               "EFFECTIVE": "효력발생", "ACQ_START": "자기주식 취득", "SUB_OLD_START": "구주주 청약", "RIGHTS_LIST_START": "신주인수권증서 거래"}
+SCHED_PAIR = {"ACQ_START": "ACQ_END", "SUB_OLD_START": "SUB_OLD_END", "RIGHTS_LIST_START": "RIGHTS_LIST_END"}
+SCHED_DROP = {"SUB_ESOP", "PUBLIC_OFFER_START", "PUBLIC_OFFER_END", "RIGHTS_DELIST", "ISSUE", "EXT_DELIST", "ACQ_END", "SUB_OLD_END", "RIGHTS_LIST_END", "PRICE_FINAL_FIXED"}
+SCHED_KEY = {"EX_DATE", "NEW_SHARE_LISTING", "CHANGE_LISTING"}
+
+
+def schedule(con, e, slots, asof):
+    """일정 전체(우리사주·일반공모·증서 상장폐지·발행일 등 부차 항목만 제외). 시작/종료 쌍은 한 행으로, 지난 일정은 완료 표시."""
+    t, rows = e["event_type"], []
+    for role, (date, est) in slots.items():
+        if role in SCHED_DROP or role not in SCHED_LABEL:
+            continue
+        label, end = SCHED_LABEL[role], None
+        if role in SCHED_PAIR and SCHED_PAIR[role] in slots:
+            end = slots[SCHED_PAIR[role]][0]
+        if role == "RECORD":
+            label = {"MERGER": "주주확정기준일", "PAID_CAPITAL_INCREASE": "신주배정기준일"}.get(t, "기준일")
+        if role == "NEW_SHARE_LISTING" and t == "MERGER":
+            label = "신주 상장 = 소멸회사 상장폐지"
+        if role == "CHANGE_LISTING" and t == "TREASURY_CANCELLATION":
+            label = "변경상장 = 지수 주식수 감소"
+        if role == "HALT_START":
+            continue
+        txt = date[5:].replace("-", "/") + (" ~ " + end[5:].replace("-", "/") if end and end != date else "")
+        rows.append({"label": label, "sort": date, "date": f"{date[:4]}/{txt}" if date[:4] != asof[:4] or True else txt, "est": est, "key": role in SCHED_KEY,
+                     "past": (end or date) <= asof, "dday": R.dday(con, asof, date if date > asof else (end or date)) if (end or date) > asof else ""})
+    if t == "TREASURY_CANCELLATION" and "CHANGE_LISTING" not in slots:
+        rows.append({"label": "소각일 → 변경상장 = 지수 주식수 감소", "sort": "9999", "date": "미정", "est": 0, "key": True, "past": False, "dday": ""})
+    rows.sort(key=lambda r: r["sort"])
+    return rows
+
+
 def build(con, asof):
     prices, price_date = load_prices(asof)
     news = json.load(open(os.path.join(HERE, "news.json"), encoding="utf-8"))
@@ -160,10 +195,8 @@ def build(con, asof):
         ix = index_of(e, d)
         listed = index_shares.listed_shares(con, sid, asof)
         f = facts(con, e, d, asof, slots, ix, news)
+        f["sched"] = schedule(con, e, slots, asof) if e["event_type"] != "CONVERTIBLE_ISSUE" else []
         base = {"id": e["event_id"], "issuer": iss, "code": code, "type": TYPE_KR[e["event_type"]], **f, "link": kind_link(con, e)}
-        for x in base["sched"]:
-            x["dday"] = R.dday(con, asof, x["date"])
-            x["past"] = x["date"] <= asof
         if e["event_type"] == "CONVERTIBLE_ISSUE":
             base["type"] = f"{d['kind']} {d['round']}회"
             base["sort"] = d["remaining_pct_of_listed"]

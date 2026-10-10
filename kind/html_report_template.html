@@ -73,6 +73,8 @@ table.s td{padding:5px 4px;border-top:1px solid var(--line)}
 table.s tr:first-child td{border-top:0}
 table.s td.d{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 table.s tr.key td{background:var(--key);font-weight:700}
+table.s tr.past td{color:var(--muted)}
+table.s tr.key.past td{color:inherit}
 .est{color:#b26b00}
 .news a{color:var(--navy);text-decoration:none;border-bottom:1px solid var(--line)}
 @media (prefers-color-scheme: dark){.news a{color:#9db8f5}}
@@ -137,7 +139,7 @@ function select(id, user){
   }
   if(e.kpi4) kpi += `<div class="kpi"><small>${esc(e.kpi4.label)}</small><b>${esc(e.kpi4.value)}</b><small>${esc(e.kpi4.sub||'')}</small></div>`;
   const pts = e.points.map(([k,t])=>`<div class="pt ${k}"><span class="chip ${k}">${CHIP[k]}</span><span class="tx">${esc(t)}</span></div>`).join("");
-  const sched = e.sched && e.sched.length ? `<div class="card"><h4>일정</h4><table class="s">${e.sched.map(s=>`<tr class="${s.key?'key':''}"><td>${s.key?'<span class="star">★</span> ':''}${esc(s.label)}</td><td class="d">${esc(s.date)}</td><td class="d" style="color:var(--muted)">${s.past?'완료':esc(s.dday)}${s.est&&!s.past?' <span class="est">추정</span>':''}</td></tr>`).join("")}</table></div>` : "";
+  const sched = e.sched && e.sched.length ? `<div class="card"><h4>일정</h4><table class="s">${e.sched.map(s=>`<tr class="${s.key?'key':''}${s.past?' past':''}"><td>${s.key?'<span class="star">★</span> ':''}${esc(s.label)}</td><td class="d">${esc(s.date)}</td><td class="d" style="color:var(--muted)">${s.past?'완료':esc(s.dday)}${s.est&&!s.past?' <span class="est">추정</span>':''}</td></tr>`).join("")}</table></div>` : "";
   const news = e.news && e.news.length ? `<div class="card news"><h4>뉴스 근거</h4>${e.news.map(n=>`<div><span>${esc(n.outlet)} · ${esc(n.date)}</span><a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a></div>`).join("")}</div>` : "";
   $("#detail").innerHTML = `<div class="dh"><div class="t"><h3>${esc(e.issuer)}<small>${esc(e.code)}</small></h3><span class="pill">${esc(e.type)}</span></div><div class="hl">${esc(e.headline)}</div></div><div class="kpis">${kpi}</div><div class="card"><h4>핵심 포인트</h4>${pts}</div>${sched}${news}<div class="foot">${e.link?`<a href="${esc(e.link.url)}" target="_blank" rel="noopener">${esc(e.link.label)}</a>`:''} · 정보 제공용이며 투자 권유가 아닙니다.</div>`;
   history.replaceState(null,"","#e"+id);
