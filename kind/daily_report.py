@@ -26,7 +26,7 @@ def main():
     L = [f"# KIND 리포트 — 기준일 {asof} (다음 영업일 {nxt})", "",
          "## 1. 상장주식수 원장 현황 (워치리스트 종목)", "",
          "| 종목 | 최신 상장주식수 | 지수 반영 주식수 | 최근 변동 | 변동 주식수 | 근거 |", "|---|---:|---:|---|---:|---|"]
-    for s in con.execute("""SELECT s.security_id, s.name FROM watchlist w JOIN security s USING(security_id) WHERE w.watch_name='phase1' ORDER BY s.security_id"""):
+    for s in con.execute("""SELECT s.security_id, s.name FROM watchlist w JOIN security s USING(security_id) WHERE w.watch_name IN ('phase1','k200_pilot') ORDER BY s.security_id"""):
         r = con.execute("""SELECT * FROM share_ledger WHERE security_id=? AND superseded_by IS NULL AND effective_date<=? ORDER BY effective_date DESC, ledger_id DESC LIMIT 1""",
                         (s["security_id"], asof)).fetchone()
         c = con.execute("""SELECT * FROM share_ledger WHERE security_id=? AND superseded_by IS NULL AND delta_shares IS NOT NULL AND effective_date<=? ORDER BY effective_date DESC LIMIT 1""",
@@ -82,6 +82,7 @@ def main():
     L += ["", "## 5-2. 자기주식 소각 스레드 (M2)", ""] + m2_report.render_cancel(con, asof)
     L += ["", "## 5-3. 전환사채·신주인수권부사채 (M2)", ""] + m2_report.render_cbbw(con, asof)
     L += ["", "## 5-4. 회사분할 — 인적분할 (M2)", ""] + m2_report.render_split(con, asof)
+    L += ["", "## 5-5. 무상증자 · 주식배당 · 액면분할 · 합병 (M2)", ""] + m2_report.render_corp(con, asof)
     L += ["", "## 6. 처리 현황", ""]
     for r in con.execute("""SELECT cat_major, parse_status, count(*) n FROM filing WHERE src='KIND' AND cat_major IN ('시장조치','수시공시') GROUP BY 1,2 ORDER BY 1,2"""):
         L.append(f"- {r['cat_major']} / {r['parse_status']}: {r['n']}건")

@@ -273,6 +273,83 @@ def render_split(con, asof, only_active_days=120):
     return L or ["(진행 중이거나 최근 완료된 회사분할 없음)"]
 
 
+CORP_TYPES = ("BONUS_ISSUE", "STOCK_DIVIDEND", "PAR_SPLIT", "MERGER")
+CORP_LABEL = {"RESOLUTION": "결정(이사회)", "RECORD": "기준일(배정·배당·주주확정)", "EGM": "주주총회(예정)", "EX_DATE": "권리락/배당락일 = 지수 주식수 증가일", "EFFECTIVE": "효력발생일",
+              "HALT_START": "거래정지 시작", "MERGER_DATE": "합병기일", "REGISTER": "합병등기", "ISSUE": "신주 발행일", "NEW_SHARE_LISTING": "★ 신주 상장일", "CHANGE_LISTING": "★ 변경상장일 = 지수 주식수 증가일"}
+CORP_CHG = {"new_shares": "신주수", "record_date": "기준일", "listing_date": "상장예정일", "ratio": "비율", "shares_after": "분할후 총수", "egm_date": "주총", "effective_date": "효력발생일",
+            "halt_start": "거래정지 시작", "halt_end": "거래정지 종료", "merger_date": "합병기일", "register_date": "합병등기", "record": "기준일"}
+
+
+def corp_card(con, e, asof):
+    d = json.loads(e["detail_json"] or "{}")
+    k, dc = d["kind"], d["decision"]
+    slots = {r["role"]: r for r in con.execute("SELECT * FROM event_date WHERE event_id=? AND superseded_by IS NULL", (e["event_id"],))}
+    nm = {"BONUS": "무상증자", "STOCK_DIV": "주식배당", "PAR_SPLIT": "액면분할", "MERGER": "합병"}[k]
+    L = [f"### {d['issuer']} {nm}", ""]
+    nxt = sorted((v["the_date"], r) for r, v in slots.items() if v["the_date"] > asof and r in CORP_LABEL)
+    nx = f" · 다음: **{CORP_LABEL[nxt[0][1]]} {nxt[0][0]}**{' (추정)' if slots[nxt[0][1]]['is_estimated'] else ''} ({dday(con, asof, nxt[0][0])})" if nxt else ""
+    L += [f"**현재 단계**: {d['status_text']}{nx}", ""]
+    f_ = lambda v: "-" if v is None else format(v, ",")
+    plan, act = d.get("planned_shares"), d.get("actual_shares")
+    if k in ("BONUS", "STOCK_DIV"):
+        base = f"구주 1주당 **{dc['ratio']}주**" if dc.get("ratio") is not None else ""
+        L.append(f"- **조건**: {base} · 신주 {f_(plan)}주" + (f" (증자전 발행주식 {f_(dc.get('pre_shares'))}주" + (f", 자기주식 {f_(dc['treasury'])}주 제외 배정" if dc.get("treasury") else "") + ")" if dc.get("pre_shares") else "")
+                 + (f" · 재원 {dc['source']}" if dc.get("source") else "") + f" · 기준일 {dc.get('record_date')}")
+    elif k == "PAR_SPLIT":
+        L.append(f"- **조건**: 1주 → **{int(dc['ratio']) if dc.get('ratio') and float(dc['ratio']).is_integer() else dc.get('ratio')}주** · 액면가 {f_(dc.get('par_before'))}원 → {f_(dc.get('par_after'))}원 · 결정 시점 발행주식 {f_(dc.get('shares_before'))} → {f_(dc.get('shares_after'))}주"
+                 + (f" · 목적: {dc['purpose']}" if dc.get("purpose") else ""))
+        if dc.get("halt_start"):
+            L.append(f"- **거래정지**: {(d.get('halt') or {}).get('start') or dc['halt_start']} ~ 변경상장일 전일 (결정 공시상 종료 {dc.get('halt_end') or '-'}); 해제 = 변경상장일")
+    else:
+        L.append(f"- **구조**: {dc.get('survivor')}{'(' + dc['survivor_mkt'] + ')' if dc.get('survivor_mkt') else ''} 존속 ← {dc.get('extinct')}{'(' + dc['extinct_mkt'] + ')' if dc.get('extinct_mkt') else '(상장 여부 서식에 미표기)'} 소멸" + (f" · {dc['form']}" if dc.get("form") else "") + (f" · 합병비율 1 : **{dc['ratio']}**" if dc.get("ratio") else " · 합병비율 없음(신주 미발행)"))
+        if plan:
+            L.append(f"- **합병신주**: 결정 {f_(plan)}주" + (f" → 실제 상장 **{f_(act)}주** ({act - plan:+,}; 소멸회사 자기주식·단주·주식매수청구 확정 등 반영)" if act is not None and act != plan else (" → 실제 동일" if act == plan else " (실제 상장 전 — 예정치)")))
+    ix = d["index"]
+    if d.get("listing"):
+        rows = " · ".join(f"{r['name']} {f_(r['before'])} → **{f_(r['after'])}** ({r['delta']:+,})" for r in d["listing"]["rows"])
+        L.append(f"- **지수 영향**: {'✅ 반영됨' if ix['applied'] else '⏳ 예정'} — **{ix['effective_date']}**{' (추정)' if ix['is_estimated'] else ''}: {ix['why']}. 상장 공시 `{d['listing']['filing']}` · {rows}")
+    else:
+        L.append(f"- **지수 영향(예상)**: {'⏳' if not ix['applied'] else '✅'} **{ix['effective_date'] or '날짜 미정'}**{' (추정)' if ix['is_estimated'] else ''}에 +{f_(ix['delta_shares'])}주 — {ix['why']}")
+    if d.get("ex") and d["ex"].get("prices"):
+        p0 = d["ex"]["prices"][0]
+        L.append(f"- **기준가격 안내**: {d['ex'].get('date')} 적용 · {p0['class']} " + "/".join(format(x, ',') for x in p0["values"]) + f"원 (`{d['ex']['filing']}`)")
+    if d.get("no_ex_date"):
+        L.append("- **참고**: 배당기준일이 결정 공시일보다 앞서 배당락 공시가 없다 — 지수 반영은 신주 상장일(주주총회 후 결정되는 주식배당).")
+    L += ["", "| 일정 | 일자 | D-day(영업일) | 상태 | 근거 |", "|---|---|---|---|---|"]
+    for r in sorted(slots.values(), key=lambda r: (r["the_date"], list(CORP_LABEL).index(r["role"]) if r["role"] in CORP_LABEL else 99)):
+        if r["role"] not in CORP_LABEL:
+            continue
+        st = ("✅" if r["the_date"] <= asof else "⏳") + (" 추정" if r["is_estimated"] else "")
+        L.append(f"| {CORP_LABEL[r['role']]} | {r['the_date']} | {dday(con, asof, r['the_date'])} | {st} | `{r['source_filing_id']}` |")
+    am = d.get("amendments") or []
+    if am:
+        L += ["", f"<details><summary>정정 이력 {len(am)}회</summary>", ""]
+        for x in am:
+            L.append(f"- {x['at'][:10]}: " + ("; ".join(f"{CORP_CHG.get(q, q)}: {v[0]} → {v[1]}" for q, v in x["changes"].items()) or "변경 필드 없음(서술·오기재 정정)"))
+        L += ["", "</details>"]
+    L.append("")
+    return L
+
+
+def render_corp(con, asof, only_active_days=120, watch=None):
+    L = []
+    cut = (dt.date.fromisoformat(asof) - dt.timedelta(days=only_active_days)).isoformat()
+    q = "SELECT e.* FROM event e WHERE e.event_type IN (%s)" % ",".join("?" * len(CORP_TYPES))
+    args = list(CORP_TYPES)
+    if watch:
+        q += " AND e.issuer_id IN (SELECT s.issuer_id FROM watchlist w JOIN security s USING(security_id) WHERE w.watch_name IN (%s))" % ",".join("?" * len(watch))
+        args += list(watch)
+    for e in con.execute(q + " ORDER BY e.created_at", args).fetchall():
+        last = con.execute("SELECT max(the_date) FROM event_date WHERE event_id=? AND superseded_by IS NULL", (e["event_id"],)).fetchone()[0]
+        d = json.loads(e["detail_json"] or "{}")
+        if e["status"] == "done" and (last or "") < cut:
+            continue
+        if not d.get("planned_shares") and not d.get("actual_shares") and d.get("kind") == "MERGER":
+            continue  # 신주 없는 합병(100% 자회사 흡수)은 카드 생략
+        L += corp_card(con, e, asof)
+    return L or ["(진행 중이거나 최근 완료된 무상증자·주식배당·액면분할·합병 없음)"]
+
+
 CBW_LABEL = {"RESOLUTION": "발행 결정(이사회)", "SUBSCRIPTION": "청약", "PAYMENT": "납입(발행)", "WARRANT_LISTING": "신주인수권증권 상장", "EXERCISE_START": "전환·행사 청구 시작",
              "EXERCISE_END": "전환·행사 청구 종료", "PUT_FIRST": "조기상환청구(풋) 첫 도래", "MATURITY": "만기"}
 
@@ -366,7 +443,7 @@ if __name__ == "__main__":
     today = args_[0] if args_ else dt.date.today().isoformat()
     asof = con.execute("SELECT max(cal_date) FROM calendar_day WHERE is_trading=1 AND cal_date<=?", (today,)).fetchone()[0]
     ad = 100000 if "--all" in sys.argv else 120
-    L = [f"# 이벤트 스레드 (유상증자 · 자기주식 소각 · CB/BW · 회사분할) — 기준일 {asof}", "", "★ = 지수·참여 핵심일. D-day는 영업일 기준(`*`=휴장일), ✅ 완료 / ⏳ 예정 / 추정 = 기준일로부터 계산한 값.", "", "## 유상증자", ""] + render(con, asof, only_active_days=ad) + ["", "## 자기주식 소각", ""] + render_cancel(con, asof, only_active_days=ad) + ["", "## 전환사채(CB)·신주인수권부사채(BW)", ""] + render_cbbw(con, asof) + ["", "## 회사분할 (인적분할)", ""] + render_split(con, asof, only_active_days=ad)
+    L = [f"# 이벤트 스레드 (유상증자 · 자기주식 소각 · CB/BW · 회사분할) — 기준일 {asof}", "", "★ = 지수·참여 핵심일. D-day는 영업일 기준(`*`=휴장일), ✅ 완료 / ⏳ 예정 / 추정 = 기준일로부터 계산한 값.", "", "## 유상증자", ""] + render(con, asof, only_active_days=ad) + ["", "## 자기주식 소각", ""] + render_cancel(con, asof, only_active_days=ad) + ["", "## 전환사채(CB)·신주인수권부사채(BW)", ""] + render_cbbw(con, asof) + ["", "## 회사분할 (인적분할)", ""] + render_split(con, asof, only_active_days=ad) + ["", "## 무상증자 · 주식배당 · 액면분할 · 합병", ""] + render_corp(con, asof, only_active_days=ad)
     out = os.path.join(db.HERE, "reports", f"m2_rights_issue_{asof}.md")
     open(out, "w", encoding="utf-8").write("\n".join(L) + "\n")
     print("\n".join(L))

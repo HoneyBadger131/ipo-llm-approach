@@ -31,6 +31,10 @@ STOCKS = [
     ("phase1", "COMMON", "한화", "000880", "00160588", None),
     ("phase1", "PREFERRED", "한화3우B", "00088K", "00160588", None),
 ]
+# K200 시범 케이스(합병·무상증자·주식배당·액면분할, docs/KIND_M2_CORP_ACTIONS.md). 워치리스트 k200_pilot — DART 시드 없음(원장은 KIND 변경·추가상장에서 구성)
+PILOT = [  # LS ELECTRIC 은 KIND 등록명이 '엘에스일렉트릭'(영문 표기로는 검색 안 됨)
+    ("HD건설기계", "267270"), ("SK이노베이션", "096770"), ("셀트리온", "068270"), ("종근당", "185750"), ("엘에스일렉트릭", "010120"), ("영풍", "000670"),
+]
 ETFS = [  # 사용자 확정 대표 8개 (코스피200 계열)
     ("KODEX 200", "069500", "삼성자산운용"), ("TIGER 200", "102110", "미래에셋자산운용"), ("RISE 200", "148020", "KB자산운용"),
     ("ACE 200", "105190", "한국투자신탁운용"), ("SOL 200TR", "295040", "신한자산운용"), ("PLUS 200", "152100", "한화자산운용"),
@@ -123,6 +127,13 @@ def main():
                            VALUES (?,?,?,?,?,?, 'skipped')""", (fid, "DART", rc, "2026-08-14 00:00", "2026-08-14", "반기보고서(2026.06) I.4 주식의 총수 등"))
             con.execute("INSERT OR IGNORE INTO share_ledger(security_id,effective_date,delta_shares,shares_after,reason,source_filing_id) VALUES (?,?,?,?,?,?)",
                         (sid, SEED_DATE, None, n, "SEED:DART반기보고서 발행주식총수(Ⅳ)", fid))
+    for name, short in PILOT:
+        res = pick(kc.resolve_name(name), short)
+        if not res:
+            sys.exit(f"KIND에서 {name}({short}) 해석 실패")
+        iss = upsert_issuer(con, name, res["isurcd"])
+        sid = upsert_security(con, iss, "COMMON", name, short, res["repisucd"], None, "KOSPI")
+        con.execute("INSERT OR IGNORE INTO watchlist VALUES ('k200_pilot',?,?)", (sid, NOW))
     # ETF
     for name, short, mgr in ETFS:
         res = pick(kc.resolve_name(name), short)

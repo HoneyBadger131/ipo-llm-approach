@@ -86,6 +86,13 @@ def parse_listing(con, f, text):
     else:
         for m in re.finditer(r"주식의 종류와 수\s*:\s*기명식\s*(\S*주)\s*(?:총\s*)?([\d,]+)주", text):
             rows.append(dict(cls=cls_of(m.group(1)), label=m.group(1), before=None, after=None, delta=num(m.group(2))))
+    if kind == "추가상장" and not rows:  # 회차별 여러 줄('-기명식 보통주 6,202주 (제92회)' …, 스톡옵션 행사 등): 종류별 합산
+        mm = re.search(r"주식의 종류와 수\s*\n((?:\s*-\s*기명식[^\n]*\n?)+)", text)
+        if mm:
+            tot = {}
+            for lab, n_ in re.findall(r"기명식\s*(\S*주)\s*([\d,]+)주", mm.group(1)):
+                tot[lab] = tot.get(lab, 0) + num(n_)
+            rows = [dict(cls=cls_of(l_), label=l_, before=None, after=None, delta=v_) for l_, v_ in tot.items()]
     if not (eff and rows):
         return "review", f"listing_fields eff={eff} rows={len(rows)}"
     # 종류별 코드 해석: 코드가 1개면 그 코드, 2개 이상이면 라벨(우선주 여부)로
@@ -111,6 +118,21 @@ def parse_listing(con, f, text):
     return ("parsed", None) if done else ("skipped", "not_in_watchlist")
 
 
+def parse_merger_listing(con, f, text):
+    """'상장안내(합병/상호변경)' = 추가상장(합병) + 변경상장(상호변경) 합본 서식 → 추가상장(합병) 행. 합병 후 총수는 변경상장 블록의 '주식의 종류와 수'."""
+    m = re.search(r"추가상장.*?주식의 종류와 수\s*:\s*기명식\s*(\S*주)\s*([\d,]+)주.*?발행일\s*:\s*([^\n]+).*?상장일\s*:\s*([^\n]+).*?단축코드:A(\w{6})", text, re.S)
+    if not m:
+        return "review", "merger_listing_fields"
+    sid = sec_by_short(con, m.group(5))
+    if sid is None:
+        return "skipped", "not_in_watchlist"
+    tot = re.search(r"변경상장.*?주식의 종류와 수\s*\n?\s*-?\s*기명식\s*\S*주\s*([\d,]+)주", text, re.S)
+    delta, aft = num(m.group(2)), (num(tot.group(1)) if tot else None)
+    con.execute("""INSERT OR IGNORE INTO share_ledger(security_id,effective_date,delta_shares,shares_before,shares_after,issue_date,reason,source_filing_id)
+                   VALUES (?,?,?,?,?,?,'추가상장(합병)',?)""", (sid, kdate(m.group(4)), delta, (aft - delta) if aft else None, aft, kdate(m.group(3)), f["filing_id"]))
+    return "parsed", None
+
+
 def close_halts(con, sid, eff, src):
     """조건부 해제일(예: '변경상장일')이 걸린 HALT 의 HALT_END 를 확정일로 대체한다. 기존 값은 superseded_by 로 이력 보존."""
     for (eid,) in con.execute("""SELECT e.event_id FROM event e JOIN event_date d ON d.event_id=e.event_id AND d.role='HALT_END' AND d.superseded_by IS NULL
@@ -124,7 +146,7 @@ def close_halts(con, sid, eff, src):
 
 
 # ───────────── 기준가격 안내 ─────────────
-EVENT_BY_REASON = [("권리락", "RIGHTS_EX"), ("배당락", "DIVIDEND_EX"), ("액면", "PAR_VALUE_CHANGE"), ("분할", "SPLIT_RELIST_PRICE"),
+EVENT_BY_REASON = [("권배락", "RIGHTS_EX"), ("주식배당", "DIVIDEND_EX"), ("권리락", "RIGHTS_EX"), ("배당락", "DIVIDEND_EX"), ("액면", "PAR_VALUE_CHANGE"), ("분할", "SPLIT_RELIST_PRICE"),
                    ("병합", "PAR_VALUE_CHANGE"), ("감자", "CAPITAL_REDUCTION_PRICE"), ("합병", "MERGER_PRICE")]
 
 
@@ -217,6 +239,7 @@ def parse_halt(con, f, text):
 
 HANDLERS = [
     (re.compile(r"^(변경상장|추가상장)\(|^상장안내\(보통주 추가상장"), parse_listing),
+    (re.compile(r"^상장안내\(합병"), parse_merger_listing),
     (re.compile(r"기준가격"), parse_ref_price),
     (re.compile(r"^(주권)?매매거래정지"), parse_halt),
 ]
@@ -247,6 +270,13 @@ def fill_chain(con):
     for (sid,) in con.execute("SELECT DISTINCT security_id FROM share_ledger").fetchall():
         # 계산으로 채웠던 값은 매번 처음부터 다시 계산(새 공시가 추가돼도 이전 계산값이 남지 않게)
         con.execute("UPDATE share_ledger SET shares_before=NULL, shares_after=NULL, is_computed=0 WHERE security_id=? AND is_computed=1", (sid,))
+        # 같은 변경상장(소각 등)을 날짜·수량 그대로 다시 공시한 경우(오기재 재공시) → 앞 건을 뒤 건이 대체
+        con.execute("""UPDATE share_ledger SET superseded_by=(SELECT b.ledger_id FROM share_ledger b WHERE b.security_id=share_ledger.security_id AND b.effective_date=share_ledger.effective_date
+                         AND b.reason=share_ledger.reason AND b.delta_shares=share_ledger.delta_shares AND b.shares_before IS share_ledger.shares_before AND b.shares_after IS share_ledger.shares_after
+                         AND b.source_filing_id<>share_ledger.source_filing_id AND b.ledger_id>share_ledger.ledger_id AND b.superseded_by IS NULL)
+                       WHERE security_id=? AND superseded_by IS NULL AND reason LIKE '변경상장%' AND EXISTS (SELECT 1 FROM share_ledger b WHERE b.security_id=share_ledger.security_id AND b.effective_date=share_ledger.effective_date
+                         AND b.reason=share_ledger.reason AND b.delta_shares=share_ledger.delta_shares AND b.shares_before IS share_ledger.shares_before AND b.shares_after IS share_ledger.shares_after
+                         AND b.source_filing_id<>share_ledger.source_filing_id AND b.ledger_id>share_ledger.ledger_id AND b.superseded_by IS NULL)""", (sid,))
         seed_adjust(con, sid)
         rows = con.execute("SELECT * FROM share_ledger WHERE security_id=? AND superseded_by IS NULL ORDER BY effective_date, ledger_id", (sid,)).fetchall()
         bal = None
