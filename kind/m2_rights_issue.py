@@ -1,7 +1,7 @@
 """M2 — 유상증자 이벤트 스레드.
 
 한 번의 유상증자(결정 → 정정들 → 발행가 확정 → 권리락 → 신주인수권증서 상장 → 청약 → 납입 → 신주 상장)를 하나의 event(thread)로 묶는다.
-스레드 키: 'PCI:<issuer_id>:<최초 결정일>'  (정정공시는 '정정대상 공시서류의 최초제출일'로 원 스레드에 붙는다)
+스레드 키: 'PCI:<issuer_id>:<최초 결정일>:<R|T|P|O 방식>'  (정정공시는 '정정대상 공시서류의 최초제출일'로 원 스레드에 붙는다)
 
 트랙
   RIGHTS       주주배정 / 주주배정후 실권주 일반공모 / 주주우선공모  → 지수 주식수 증가일 = 권리락일 (= 신주배정기준일 직전 영업일, T+2 결제 기준; 권리락 공시로 확정)
@@ -186,9 +186,13 @@ def load_threads(con):
         if d is None:
             con.execute("UPDATE filing SET parse_status='review', skip_reason='decision_parse' WHERE filing_id=?", (f["filing_id"],))
             continue
-        key_date = d["amend_of"] or f["filed_date"]
-        key = f"PCI:{f['iss']}:{key_date}"
-        t = th.setdefault(key, {"key": key, "issuer_id": f["iss"], "security_id": f["security_id"], "start": f["filed_at"], "start_date": key_date, "items": []})
+        acpt_d = f["acpt_no"][:4] + "-" + f["acpt_no"][4:6] + "-" + f["acpt_no"][6:8]  # 접수번호의 날짜 = 최초제출일(시간외 접수는 목록 일시가 다음 영업일이라 filed_date 와 다를 수 있다)
+        key_date = d["amend_of"] or acpt_d
+        tr = track_of(d["method"])
+        # 같은 날 서로 다른 증자(예: 제3자배정 + 주주배정 후 실권주 공모)가 같은 '최초제출일'로 정정되는 경우가 있어 방식을 키에 넣는다.
+        # 같은 방식의 후속(정정) 공시는 같은 스레드에서 시간순으로 앞 값을 덮어쓴다(가장 최근 공시가 현재 값).
+        key = f"PCI:{f['iss']}:{key_date}:{ {'RIGHTS': 'R', 'THIRD_PARTY': 'T', 'PUBLIC': 'P'}.get(tr, 'O') }"
+        t = th.setdefault(key, {"key": key, "issuer_id": f["iss"], "security_id": f["security_id"], "start": f["filed_at"], "start_date": key_date, "track": tr, "items": []})
         t["items"].append((f["filed_at"], "DECISION", f, d))
     return th
 
@@ -207,8 +211,10 @@ def attach_follow(con, th):
         cands = [t for t in by_issuer.get(f["iss"], []) if t["start"] <= f["filed_at"]]
         if not cands:
             continue
-        t = cands[-1]
         title = f["title"]
+        rights_only = title.startswith(("유상증자 신주발행가액", "신주인수권증서 신규상장", "권리락 기준가격 안내")) or "청약결과" in title
+        rc = [c for c in cands if c.get("track") == "RIGHTS"]
+        t = (rc[-1] if rc else cands[-1]) if rights_only else cands[-1]
         if title.startswith("유상증자 신주발행가액"):
             t["items"].append((f["filed_at"], "PRICE_NOTICE", f, p_price_notice(text_of(f))))
         elif title.startswith("신주인수권증서 신규상장"):

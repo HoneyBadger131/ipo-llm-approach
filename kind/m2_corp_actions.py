@@ -216,7 +216,7 @@ def load(con):
         elif prev and f["filed_date"] == prev["items"][-1][0][:10] and not d["amend"]:
             t = prev                                  # 같은 날 재공시(앞 건 오기재 정정) → 뒤 건이 최신
         if t is None:
-            key = f"{CFG[kind]['prefix']}:{f['iss']}:{d['amend_of'] or f['filed_date']}"
+            key = f"{CFG[kind]['prefix']}:{f['iss']}:{d['amend_of'] or (f['acpt_no'][:4] + '-' + f['acpt_no'][4:6] + '-' + f['acpt_no'][6:8])}"
             t = th.setdefault(key, {"key": key, "kind": kind, "issuer_id": f["iss"], "start": f["filed_at"], "start_date": d["amend_of"] or f["filed_date"], "items": [], "security_id": f["security_id"]})
         t["items"].append((f["filed_at"], "DECISION", f, d))
         last[(kind, f["iss"])] = t

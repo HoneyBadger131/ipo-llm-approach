@@ -117,8 +117,10 @@ def load(con):
         if d is None:
             con.execute("UPDATE filing SET parse_status='review', skip_reason='cancel_parse' WHERE filing_id=?", (f["filing_id"],))
             continue
-        kd = d["amend_of"] or f["filed_date"]
-        key = f"CXL:{f['iss']}:{kd}"
+        kd = d["amend_of"] or (f["acpt_no"][:4] + "-" + f["acpt_no"][4:6] + "-" + f["acpt_no"][6:8])
+        # 취득 후 소각(ACQUIRE)은 '취득 프로그램'(취득 시작일) 단위 스레드: 같은 프로그램의 계획 결정 → 실제 종료일·수량 재결정 → 소각일 지정 결정이
+        # 모두 같은 스레드에서 시간순으로 앞 값을 덮어쓴다(가장 최근 공시가 현재 값). 분기마다 반복하는 법인(KB금융·하나금융 등)도 프로그램별로 분리된다.
+        key = f"CXL:{f['iss']}:A{d['acq_start']}" if d["type"] == "ACQUIRE" and d["acq_start"] else f"CXL:{f['iss']}:{kd}"
         t = th.setdefault(key, {"key": key, "issuer_id": f["iss"], "start": f["filed_at"], "start_date": kd, "items": [], "security_id": f["security_id"]})
         t["items"].append((f["filed_at"], "DECISION", f, d))
     return th
@@ -142,10 +144,12 @@ def attach(con, th):
         if not cands:
             continue
         iss_date = rows[0]["issue_date"]
-        pick = next((t for t in cands if any(i[3]["cancel_date"] == iss_date for i in t["items"] if i[1] == "DECISION")), None) or cands[0]
-        matched.add(pick["key"])
+        # 소각일이 변경상장 공시의 발행(소각)일과 같은 프로그램은 모두 이 공시로 한꺼번에 변경상장된다(합산 공시)
+        picks = [t for t in cands if any(i[3]["cancel_date"] == iss_date for i in t["items"] if i[1] == "DECISION")] or [cands[0]]
         f = con.execute("SELECT * FROM filing WHERE filing_id=?", (fid,)).fetchone()
-        pick["items"].append((rows[0]["filed_at"], "LISTING", f, rows))
+        for pick in picks:
+            matched.add(pick["key"])
+            pick["items"].append((rows[0]["filed_at"], "LISTING", f, rows))
     # 취득 후 소각형: 같은 날 취득결정(소각 목적)
     for t in th.values():
         dec = [i for i in t["items"] if i[1] == "DECISION"][0][3]
@@ -157,7 +161,7 @@ def attach(con, th):
         t["items"].sort(key=lambda x: x[0])
 
 
-def replay(con, t, asof, lag):
+def replay(con, t, asof, lag, acq_lag=None):
     key = t["key"]
     ev = con.execute("SELECT event_id FROM event WHERE thread_key=?", (key,)).fetchone()
     if ev:
@@ -199,10 +203,17 @@ def replay(con, t, asof, lag):
     # 변경상장일 추정(공시 전): 소각일 + 관측 간격(범위)
     cur = {r["role"]: r["the_date"] for r in con.execute("SELECT role, the_date FROM event_date WHERE event_id=? AND superseded_by IS NULL", (eid,))}
     S["estimate"] = None
-    if "CHANGE_LISTING" not in cur and cur.get("CANCEL_DATE") and lag:
+    dd = S.get("decision") or {}
+    if "CHANGE_LISTING" not in cur and not cur.get("CANCEL_DATE") and dd.get("type") == "ACQUIRE" and dd.get("acq_end") and acq_lag:
+        # 소각일 미정(취득 중·취득 종료 후 소각 대기): 변경상장 '예정일' = 취득 종료일 + 관측 중앙 간격(임시값 — 변경상장 공시가 나오면 교체)
+        d0 = dt.date.fromisoformat(dd["acq_end"]) + dt.timedelta(days=int(acq_lag["median"]))
+        mid = con.execute("SELECT min(cal_date) FROM calendar_day WHERE is_trading=1 AND cal_date>=?", (d0.isoformat(),)).fetchone()[0]
+        S["estimate"] = {"lo": None, "hi": None, "mid": mid, "basis": f"취득 종료일 + 약 {int(acq_lag['median'])}일(관측 {acq_lag['n']}건 중앙값) — 임시 추정, 변경상장 공시 전까지만 사용", "acq_based": True}
+        set_slot(con, eid, "CHANGE_LISTING", mid, 1, S["sources"][0]["filing"])
+    elif "CHANGE_LISTING" not in cur and cur.get("CANCEL_DATE") and lag:
         lo, hi, med = lag["cancel_to_listing"]["min"], lag["cancel_to_listing"]["max"], lag["cancel_to_listing"]["median"]
         e_med = nth_trading(con, cur["CANCEL_DATE"], int(round(med)))
-        S["estimate"] = {"lo": nth_trading(con, cur["CANCEL_DATE"], lo), "hi": nth_trading(con, cur["CANCEL_DATE"], hi), "mid": e_med, "basis": f"소각일 + {lo}~{hi}영업일(관측 {lag['n']}건, 중앙 {med})"}
+        S["estimate"] = {"lo": nth_trading(con, cur["CANCEL_DATE"], lo), "hi": nth_trading(con, cur["CANCEL_DATE"], hi), "mid": e_med, "basis": f"소각일 + 약 {int(round(med))}영업일(관측 {lag['n']}건 중앙값)"}
         set_slot(con, eid, "CHANGE_LISTING", e_med, 1, S["sources"][0]["filing"])
     return eid, S
 
@@ -227,12 +238,14 @@ def finalize(con, t, eid, S, asof):
         out["estimate"] = None
         lst = None
     out["unmatched_stale"] = False
-    if d["type"] == "ACQUIRE" and not S["listing"] and d["acq_end"] and d["acq_end"] < (dt.date.fromisoformat(asof) - dt.timedelta(days=45)).isoformat():
+    est_mid = (S.get("estimate") or {}).get("mid")
+    if d["type"] == "ACQUIRE" and not S["listing"] and d["acq_end"] and d["acq_end"] < (dt.date.fromisoformat(asof) - dt.timedelta(days=45)).isoformat() \
+            and not (est_mid and est_mid >= (dt.date.fromisoformat(asof) - dt.timedelta(days=20)).isoformat()):
         # 취득이 끝난 지 오래인데 변경상장 공시와 매칭되지 않음 — 여러 소각 결정을 한 번에 변경상장하는 합산 공시 등(예: 분기별 소각 프로그램). 예정 이벤트로 보이지 않게 완료 처리
         out["unmatched_stale"] = True
         out["no_listing_expected"] = True
     done = bool(S["listing"]) and lst and lst["the_date"] <= asof
-    out["status_text"] = "취득 종료 · 변경상장 공시와 매칭 안 됨(합산 소각 공시 추정 — 검토)" if out["unmatched_stale"] else "소각 완료 · 변경상장 공시 없음(비상장 종류주식 소각으로 추정 — 지수 영향 없음)" if out["no_listing_expected"] else "완료(변경상장)" if done else ("변경상장 공시 후 변경상장일 대기" if S["listing"] else ("취득 중" if d["type"] == "ACQUIRE" and d["acq_start"] and d["acq_start"] <= asof else "소각 대기"))
+    out["status_text"] = "취득 종료 · 변경상장 공시와 매칭 안 됨(합산 소각 공시 추정 — 검토)" if out["unmatched_stale"] else "소각 완료 · 변경상장 공시 없음(비상장 종류주식 소각으로 추정 — 지수 영향 없음)" if out["no_listing_expected"] else "완료(변경상장)" if done else ("변경상장 공시 후 변경상장일 대기" if S["listing"] else ("취득 중" if d["type"] == "ACQUIRE" and d["acq_start"] and d["acq_start"] <= asof and (not d["acq_end"] or d["acq_end"] >= asof) else "취득 종료 · 소각·변경상장 대기" if d["type"] == "ACQUIRE" and d["acq_end"] and d["acq_end"] < asof else "소각 대기"))
     con.execute("UPDATE event SET status=?, detail_json=?, updated_at=?, title=? WHERE event_id=?",
                 ("done" if (done or out["no_listing_expected"]) else "confirmed", json.dumps(out, ensure_ascii=False, default=str), NOW(), f"자기주식 소각({d['type']})", eid))
     for it in t["items"]:
@@ -241,24 +254,40 @@ def finalize(con, t, eid, S, asof):
     return out
 
 
+def acq_lag_stats(th):
+    """취득 후 소각 프로그램: 취득 종료일 → 변경상장일 간격(일). 변경상장이 끝난 프로그램의 *최종* 종료일 기준."""
+    vals = []
+    for t in th.values():
+        decs = [i for i in t["items"] if i[1] == "DECISION"]
+        lst = [i for i in t["items"] if i[1] == "LISTING"]
+        if not decs or not lst or decs[-1][3]["type"] != "ACQUIRE" or not decs[-1][3]["acq_end"]:
+            continue
+        vals.append((dt.date.fromisoformat(lst[0][3][0]["effective_date"]) - dt.date.fromisoformat(decs[-1][3]["acq_end"])).days)
+    if not vals:
+        return None
+    vals.sort()
+    return {"n": len(vals), "min": vals[0], "max": vals[-1], "median": statistics.median(vals)}
+
+
 def run(con, asof=None):
     asof = asof or dt.date.today().isoformat()
     th = load(con)
     attach(con, th)
+    acq_lag = acq_lag_stats(th)
     lag = lag_stats(con)
     prune(con, "CXL:", set(th))
     res = {}
     for key, t in th.items():
-        eid, S = replay(con, t, asof, lag)
+        eid, S = replay(con, t, asof, lag, acq_lag)
         res[key] = (eid, finalize(con, t, eid, S, asof))
     con.commit()
-    return res, lag
+    return res, lag, acq_lag
 
 
 if __name__ == "__main__":
     con = db.connect()
     asof = sys.argv[sys.argv.index("--asof") + 1] if "--asof" in sys.argv else None
-    r, lag = run(con, asof)
-    print("lag", lag)
+    r, lag, acq_lag = run(con, asof)
+    print("lag", lag, "acq_lag", acq_lag)
     for k, (eid, o) in r.items():
         print(k, eid, o["issuer"], o["type"], o["qty_common"], o["qty_pref"], o["status_text"], (o["estimate"] or {}).get("mid"))

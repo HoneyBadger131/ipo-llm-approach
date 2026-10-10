@@ -19,6 +19,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
+import buyback
 import index_shares
 import m2_report as R
 
@@ -103,11 +104,13 @@ def facts(con, e, d, asof, slots, ix, news):
         if d["type"] == "ACQUIRE":
             head = f"자기주식 {q:,}주({d.get('pct_common')}%) 장내 취득 후 전량 소각 — 예정 {d['amount'] / 1e12:.1f}조원"
             kpi4 = {"label": "취득 기간", "value": f"{d['acq_start'][5:]} ~ {d['acq_end'][5:]}", "sub": d["acq_method"]}
-            pts.append(("key", f"소각 후 변경상장일에 지수 상장주식수 −{q:,}주 — 소각일·변경상장일 미정(취득 종료 후 소각 → 변경상장 공시 +3영업일)"))
+            es = d.get("estimate") or {}
+            pts.append(("key", f"소각 후 변경상장일에 지수 상장주식수 −{q:,}주 — " + (f"변경상장 예정 {es['mid']}(추정): {es['basis']}" if es.get("mid") else "소각일·변경상장일 미정")))
             pts.append(("info", "수량·금액은 결정 시점 종가 기준 예정치 — 실제 취득 결과에 따라 달라짐"))
             sched.append({"label": "취득 종료(예정)", "date": d["acq_end"], "est": 0, "key": False})
         else:
             head = f"기취득 자기주식 {q:,}주 소각"
+            pts.append(("key", f"변경상장일에 지수 상장주식수 −{q:,}주 — " + (f"변경상장 {d['listing']['listing_date']} 확정(변경상장 공시 완료)" if d.get("listing") else (f"변경상장 예정 {d['estimate']['mid']}(추정): {d['estimate']['basis']}" if (d.get('estimate') or {}).get('mid') else "변경상장일 미정"))))
             kpi4 = {"label": "소각일", "value": (s("CANCEL_DATE") or ("미정",))[0], "sub": "변경상장일 기준 반영"}
     elif t == "MERGER":
         dc = d["decision"]
@@ -170,12 +173,17 @@ def schedule(con, e, slots, asof):
     return rows
 
 
+def md(d):
+    return d[5:].replace("-", "/") if d else "미정"
+
+
 def build(con, asof):
     prices, price_date = load_prices(asof)
     news = json.load(open(os.path.join(HERE, "news.json"), encoding="utf-8"))
     news = {k: v for k, v in news.items() if not k.startswith("_")}
-    week_ago = (dt.date.fromisoformat(asof) - dt.timedelta(days=7)).isoformat()
-    events, cbw, done = [], [], []
+    asof_d = dt.date.fromisoformat(asof)
+    flags = {r[0]: r[1] for r in con.execute("SELECT security_id, flag FROM status_flag")}
+    t1, t2, closed, cbw = [], [], [], []
     types = ",".join("?" * len(TYPE_KR))
     for e in con.execute(f"SELECT * FROM event WHERE event_type IN ({types}) ORDER BY created_at", tuple(TYPE_KR)).fetchall():
         d = json.loads(e["detail_json"] or "{}")
@@ -195,46 +203,92 @@ def build(con, asof):
         code = code[0] if code else ""
         iss = con.execute("SELECT name FROM issuer WHERE issuer_id=?", (e["issuer_id"],)).fetchone()[0]
         slots = {r["role"]: (r["the_date"], r["is_estimated"]) for r in con.execute("SELECT role, the_date, is_estimated FROM event_date WHERE event_id=? AND superseded_by IS NULL", (e["event_id"],))}
-        last = max((v[0] for v in slots.values()), default=None)
-        if e["status"] == "done":
-            if last and last >= week_ago:
-                done.append({"issuer": iss, "code": code, "type": TYPE_KR[e["event_type"]], "date": last, "link": kind_link(con, e)})
-            continue
+        ex = slots.get("EX_DATE", (None, 0))[0] if e["event_type"] in ("PAID_CAPITAL_INCREASE", "BONUS_ISSUE", "STOCK_DIVIDEND") else None
+        lst = (slots.get("NEW_SHARE_LISTING") or slots.get("CHANGE_LISTING") or (None, 0))
+        lst_d = lst[0]
+        listed_actual = bool(d.get("listing") or d.get("listing_actual") or (e["status"] == "done" and lst_d))
         ix = index_of(e, d)
+        if e["event_type"] == "CONVERTIBLE_ISSUE":
+            cbw.append(e)
+            continue
+        # 탭 판정 — 일정 확정: 변경상장/상장 일정이 공시로 나온 건. 소각은 변경상장 공시가 올라온 경우만 확정
+        confirmed = bool(d.get("listing")) if e["event_type"] == "TREASURY_CANCELLATION" else bool(lst_d)
+        if listed_actual and lst_d and lst_d <= asof:
+            days = (asof_d - dt.date.fromisoformat(lst_d)).days
+            if days >= 2:
+                if days <= 7:
+                    closed.append({"issuer": iss, "code": code, "type": TYPE_KR[e["event_type"]], "date": lst_d, "flag": flags.get(sid), "link": kind_link(con, e), "anchor": lst_d})
+                continue  # 상장 후 일주일이 지나면 리포트에서 사라진다
         listed = index_shares.listed_shares(con, sid, asof)
         if listed is None:  # 원장 시드가 없는 종목: 결정 공시의 증자 전/소각 전 발행주식수로 대체
             listed = d.get("pre_shares") or d.get("pre_common") or (d.get("decision") or {}).get("pre_shares")
         f = facts(con, e, d, asof, slots, ix, news)
-        f["sched"] = schedule(con, e, slots, asof) if e["event_type"] != "CONVERTIBLE_ISSUE" else []
-        base = {"id": e["event_id"], "issuer": iss, "code": code, "type": TYPE_KR[e["event_type"]], **f, "link": kind_link(con, e)}
-        if e["event_type"] == "CONVERTIBLE_ISSUE":
-            base["type"] = f"{d['kind']} {d['round']}회"
-            px = prices.get(code)
-            pot = d["remaining"] * px if px else None
-            base["sort"] = pot or 0
-            base["line"] = f"잔여 {d['remaining']:,}주" + (f" · 상장 대비 {d['remaining_pct_of_listed']}%" if d.get("remaining_pct_of_listed") is not None else "") + (f" · 잠재 {won(pot)[1:]}" if pot else "")
-            base["nextkey"] = f"만기 {d['maturity']}" + (f" · 조기상환청구 {d['put_first']}" if d.get("put_first") and d["put_first"] > asof else "")
-            cbw.append(base)
-            continue
+        f["sched"] = schedule(con, e, slots, asof)
+        nw = news.get(e["thread_key"] or "", {})
+        base = {"id": e["event_id"], "issuer": iss, "code": code, "flag": flags.get(sid), "type": TYPE_KR[e["event_type"]], **f, "link": kind_link(con, e), "memo": nw.get("memo")}
         delta = (ix or {}).get("delta")
         price = prices.get(code)
         mc = delta * price if (delta is not None and price) else None
-        applied = bool(ix and ix["date"] and ix["date"] <= asof)
-        base.update({"delta": delta, "date": ix["date"] if ix else None, "est": (ix or {}).get("est"), "applied": applied,
-                     "dday": R.dday(con, asof, ix["date"]) if ix and ix["date"] else None, "price": price, "mc": mc,
-                     "mc_txt": won(mc) if mc is not None else None, "pct": round(delta / listed * 100, 2) if (delta is not None and listed) else None,
-                     "delta_txt": sgn(delta) if delta is not None else None, "listed": listed})
-        events.append(base)
-    small = [x for x in events if x["mc"] is not None and abs(x["mc"]) < MIN_MC]
-    events = [x for x in events if x["mc"] is None or abs(x["mc"]) >= MIN_MC]
-    events.sort(key=lambda x: -abs(x["mc"] or 0))
-    mx = max((abs(x["mc"] or 0) for x in events), default=1) or 1
-    for x in events:
+        idate = (ix or {}).get("date")
+        anchor = ex or lst_d or idate
+        applied = bool(idate and idate <= asof)
+        base.update({"delta": delta, "date": idate, "est": (ix or {}).get("est"), "applied": applied, "price": price, "mc": mc, "mc_txt": won(mc) if mc is not None else None,
+                     "dday": R.dday(con, asof, idate) if idate else None, "pct": round(delta / listed * 100, 2) if (delta is not None and listed) else None,
+                     "delta_txt": sgn(delta) if delta is not None else None, "listed": listed, "anchor": anchor})
+        if confirmed and anchor:
+            parts = []
+            if ex:
+                parts.append(f"권리락 {md(ex)}")
+            if e["event_type"] == "TREASURY_CANCELLATION":
+                parts.append(f"변경상장 {md(lst_d)}")
+            else:
+                parts.append(f"{'변경상장' if e['event_type'] in ('PAR_SPLIT',) else '상장'} {md(lst_d)}{'' if not lst[1] else ' (예정)'}")
+            base["right"] = " · ".join(parts)
+            base["dd"] = R.dday(con, asof, anchor)
+            t1.append(base)
+        else:
+            est = (d.get("estimate") or {}).get("mid") if e["event_type"] == "TREASURY_CANCELLATION" else lst_d
+            base["right"] = f"변경상장 예정 {md(est)} (추정)" if est else "일정 미정"
+            base["dd"] = R.dday(con, asof, est) if est else ""
+            base["anchor"] = est or "9999"
+            t2.append(base)
+    t1.sort(key=lambda x: x["anchor"] or "9999")   # 앵커(권리락일 > 신주 상장일) 가장 오래된 것이 위
+    t2.sort(key=lambda x: x["anchor"])              # 변경상장 예정일이 빠른 것이 위
+    # CB/BW(장기 대기, 감만): 잠재 시총 영향 상위 몇 건만
+    cb_rows = []
+    for e in cbw:
+        d = json.loads(e["detail_json"] or "{}")
+        sec = con.execute("SELECT security_id FROM security WHERE security_id=?", (e["security_id"],)).fetchone() if e["security_id"] else None
+        sid = sec[0] if sec else con.execute("SELECT security_id FROM security WHERE issuer_id=? AND sec_type='COMMON' ORDER BY security_id LIMIT 1", (e["issuer_id"],)).fetchone()[0]
+        code = (con.execute("SELECT code FROM security_code WHERE security_id=? AND code_type='SHORT'", (sid,)).fetchone() or [""])[0]
+        iss = con.execute("SELECT name FROM issuer WHERE issuer_id=?", (e["issuer_id"],)).fetchone()[0]
+        px = prices.get(code)
+        pot = d["remaining"] * px if px else None
+        f = facts(con, e, d, asof, {}, None, news)
+        cb_rows.append({"id": e["event_id"], "issuer": iss, "code": code, "flag": flags.get(sid), "type": f"{d['kind']} {d.get('round')}회", "headline": f["headline"], "points": f["points"], "kpi4": None, "sched": [], "news": [],
+                        "link": kind_link(con, e), "sort": pot or 0,
+                        "line": f"잔여 {d['remaining']:,}주" + (f" · 상장 대비 {d['remaining_pct_of_listed']}%" if d.get("remaining_pct_of_listed") is not None else "") + (f" · 잠재 {won(pot)[1:]}" if pot else ""),
+                        "nextkey": f"만기 {d['maturity']}" + (f" · 조기상환청구 {d['put_first']}" if d.get("put_first") and d["put_first"] > asof else "")})
+    cb_rows.sort(key=lambda x: -x["sort"])
+    n_cbw_more = max(0, len(cb_rows) - CBW_TOP)
+    cb_rows = cb_rows[:CBW_TOP]
+    # 소규모(시총 변동 50억 미만) 생략
+    small = [x for x in t1 + t2 if x["mc"] is not None and abs(x["mc"]) < MIN_MC]
+    t1 = [x for x in t1 if x["mc"] is None or abs(x["mc"]) >= MIN_MC]
+    t2 = [x for x in t2 if x["mc"] is None or abs(x["mc"]) >= MIN_MC]
+    # 자기주식 취득 진행(규모순)
+    bb = []
+    for b in buyback.active(con, asof):
+        code = (con.execute("SELECT code FROM security_code WHERE security_id=? AND code_type='SHORT'", (b["security_id"],)).fetchone() or [""])[0]
+        bb.append({"issuer": b["name"], "code": code, "flag": flags.get(b["security_id"]), "kind": b["kind"], "amount": b["amount"], "amount_txt": won(b["amount"])[1:] if b["amount"] else "-",
+                   "shares": b["shares"], "period": f"{b['start']} ~ {b['end']}", "burn": b["burn"], "purpose": b["purpose"], "dday_end": R.dday(con, asof, b["end"]),
+                   "link": {"url": KIND_URL + b["acpt_no"], "label": f"KIND 공시 원문 — {b['title']} ({b['filed_date']})"}})
+    mx = max((abs(x["mc"] or 0) for x in t1 + t2), default=1) or 1
+    for x in t1 + t2:
         x["bar"] = round(abs(x["mc"] or 0) / mx * 100) if x["mc"] else 0
-    cbw.sort(key=lambda x: -x["sort"])
-    n_cbw_more = max(0, len(cbw) - CBW_TOP)
-    cbw = cbw[:CBW_TOP]
-    return {"asof": asof, "price_date": price_date, "n_small": len(small), "n_cbw_more": n_cbw_more, "min_mc": MIN_MC, "events": events, "cbw": cbw, "done": done, "generated": dt.datetime.now().strftime("%Y-%m-%d %H:%M")}
+    closed.sort(key=lambda x: x["date"], reverse=True)
+    return {"asof": asof, "price_date": price_date, "n_small": len(small), "min_mc": MIN_MC, "n_cbw_more": n_cbw_more, "t1": t1, "t2": t2, "cbw": cb_rows, "bb": bb, "closed": closed,
+            "generated": dt.datetime.now().strftime("%Y-%m-%d %H:%M")}
 
 
 TEMPLATE = open(os.path.join(HERE, "html_report_template.html"), encoding="utf-8").read()
@@ -249,7 +303,7 @@ def main():
     out = os.path.join(db.HERE, "reports", f"kind_report_{asof}.html")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     open(out, "w", encoding="utf-8").write(html)
-    print(out, f"events={len(data['events'])} cbw={len(data['cbw'])} done7d={len(data['done'])} price_date={data['price_date']}")
+    print(out, f"확정={len(data['t1'])} 미확정={len(data['t2'])} CB/BW={len(data['cbw'])} 취득진행={len(data['bb'])} 종결={len(data['closed'])} price_date={data['price_date']}")
 
 
 if __name__ == "__main__":

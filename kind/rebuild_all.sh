@@ -27,6 +27,9 @@ done
 # 종목 확장: 시총 상위 300 유니버스 등록 + 날짜 단위 이벤트 스캔(이벤트 유형만 서버 필터, 유가증권시장) → 유니버스 종목 공시 적재
 $PY kind/scan_range.py --register
 $PY kind/scan_range.py --from 2025-07-01 --to "$TO"
+# 누락된 최초 결정 공시를 해당 종목에 한해 하루 조회로 보충(스캔 시작일 앞의 원본) + 종목 상태 표지(관리종목)
+$PY kind/backfill_orphans.py
+$PY kind/status_flags.py --to "$TO"
 $PY kind/etf_parser.py
 $PY kind/m1_parser.py
 $PY kind/m3_parser.py

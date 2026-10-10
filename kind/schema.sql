@@ -272,3 +272,15 @@ CREATE VIEW IF NOT EXISTS v_event_calendar AS
 CREATE VIEW IF NOT EXISTS v_etf_units_daily AS
   SELECT security_id, create_date AS cal_date, units_after, net_change, listing_date
   FROM etf_unit_change WHERE superseded_by IS NULL;
+
+
+-- 종목 상태 표지(관리종목 등): KIND 시장조치 '관리종목' 공시(지정·지정사유변경·지정해제)의 최신 상태. kind/status_flags.py 가 갱신
+CREATE TABLE IF NOT EXISTS status_flag (
+  security_id INTEGER NOT NULL REFERENCES security(security_id),
+  flag        TEXT NOT NULL,                       -- '관리종목'
+  since       TEXT,                                -- 현재 지정 구간의 시작(최근 '지정' 공시일)
+  last_date   TEXT,                                -- 최근 관련 공시일(지정사유변경 포함)
+  note        TEXT,                                -- 최근 공시 제목
+  acpt_no     TEXT,                                -- 근거 접수번호
+  PRIMARY KEY (security_id, flag)
+) STRICT;

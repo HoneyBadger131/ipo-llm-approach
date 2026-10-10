@@ -141,8 +141,10 @@ def parse_relist(text):
             continue
         ab = re.search(r"종목약명\s*:\s*\(한글\)\s*([^/\n]+?)\s*/", blk)
         par = re.search(r"⑥[^:\n]*:\s*([\d,]+)원", blk)
+        dist = re.search(r"⑨\s*주식분포상황[^\n]*\n(.*?)(?=\n\s*⑩|\Z)", blk, re.S)  # 최대주주·소액주주 지분 등
         out.append({"label": n.group(1), "sec_type": "PREFERRED" if "우" in n.group(1) or "종류" in blk[:blk.find("①")+1] else "COMMON", "name": ab.group(1).strip() if ab else None,
-                    "short": m.group(2), "isin": m.group(1), "listing_date": kdate(d.group(1)), "shares": num(n.group(2)), "par": num(par.group(1)) if par else None})
+                    "short": m.group(2), "isin": m.group(1), "listing_date": kdate(d.group(1)), "shares": num(n.group(2)), "par": num(par.group(1)) if par else None,
+                    "distribution": re.sub(r"\s*\n\s*", " / ", dist.group(1).strip())[:400] if dist else None})
     return out
 
 
@@ -163,8 +165,9 @@ def load_relists(con):
             st = "PREFERRED" if "우" in (r["label"] or "") else "COMMON"
             sid = upsert_security(con, f["iss"], st, r["name"] or r["short"], r["short"], r["isin"], None, "KOSPI")
             con.execute("INSERT OR IGNORE INTO watchlist VALUES (?,?,?)", (WATCH, sid, NOW()))
-            con.execute("""INSERT OR IGNORE INTO share_ledger(security_id,effective_date,delta_shares,shares_before,shares_after,issue_date,is_computed,reason,source_filing_id)
-                           VALUES (?,?,?,?,?,NULL,0,'재상장(회사분할 신설)',?)""", (sid, r["listing_date"], r["shares"], 0, r["shares"], f["filing_id"]))
+            con.execute("""INSERT OR IGNORE INTO share_ledger(security_id,effective_date,delta_shares,shares_before,shares_after,issue_date,is_computed,reason,source_filing_id,issue_detail)
+                           VALUES (?,?,?,?,?,NULL,0,'재상장(회사분할 신설)',?,?)""", (sid, r["listing_date"], r["shares"], 0, r["shares"], f["filing_id"],
+                                                                                json.dumps({"distribution": r["distribution"]}, ensure_ascii=False) if r.get("distribution") else None))
             n += 1
         con.execute("UPDATE filing SET parse_status='parsed', skip_reason=NULL WHERE filing_id=?", (f["filing_id"],))
     con.commit()
