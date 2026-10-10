@@ -303,12 +303,15 @@ def build(con, asof):
         if (con.execute("SELECT code FROM security_code WHERE security_id=? AND code_type='SHORT'", (b["security_id"],)).fetchone() or [""])[0] in excl:
             continue
         code = (con.execute("SELECT code FROM security_code WHERE security_id=? AND code_type='SHORT'", (b["security_id"],)).fetchone() or [""])[0]
-        tot = max(1, (dt.date.fromisoformat(b["end"]) - dt.date.fromisoformat(b["start"])).days + 1)
-        el = min(tot, max(0, (asof_d - dt.date.fromisoformat(b["start"])).days + 1))
-        frac = el / tot
+        pr = b["prog"]
         amt = b["amount"] or 0
-        bb.append({"frac": round(frac, 3), "acquired": round(amt * frac), "remain": round(amt * (1 - frac)), "remain_txt": won(round(amt * (1 - frac)))[1:] if amt else "-",
-                   "days_left": tot - el, "issuer": b["name"], "code": code, "flag": flags.get(b["security_id"]), "kind": b["kind"], "amount": b["amount"], "amount_txt": won(b["amount"])[1:] if b["amount"] else "-",
+        end_eff = pr.get("proj_end") or b["end"]
+        nw = news.get(f"BB:{code}", {})
+        bb.append({"frac": round(pr["frac"], 3), "acquired": pr["acquired"], "remain": pr["remaining"], "remain_txt": won(pr["remaining"])[1:] if amt else "-",
+                   "acquired_txt": won(pr["acquired"])[1:] if amt else "-", "basis": pr["basis"], "through": pr.get("data_through"), "exhausted": bool(pr.get("exhausted")), "stalled": bool(pr.get("stalled")),
+                   "proj_end": pr.get("proj_end"), "pace_shares": pr.get("pace_shares"), "acq_shares": pr.get("acq_shares"), "plan_shares_notice": pr.get("plan_shares"),
+                   "days_left": (dt.date.fromisoformat(end_eff) - asof_d).days, "plan_end": b["end"], "note": nw.get("note"), "news": nw.get("news", []),
+                   "issuer": b["name"], "code": code, "flag": flags.get(b["security_id"]), "kind": b["kind"], "amount": b["amount"], "amount_txt": won(b["amount"])[1:] if b["amount"] else "-",
                    "shares": b["shares"], "period": f"{b['start']} ~ {b['end']}", "burn": b["burn"], "purpose": b["purpose"], "dday_end": R.dday(con, asof, b["end"]),
                    "link": {"url": KIND_URL + b["acpt_no"], "label": f"KIND 공시 원문 — {b['title']} ({b['filed_date']})"}})
     mx = max((abs(x["mc"] or 0) for x in t1 + t2), default=1) or 1

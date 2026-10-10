@@ -105,6 +105,7 @@ table.s tr.key.past td{color:inherit}
 .legend{color:var(--muted);font-size:12px;margin:8px 2px 0}
 .bb .big{font-weight:800;font-variant-numeric:tabular-nums}
 .bb a{color:var(--navy);text-decoration:none}
+.done{color:var(--muted);font-weight:800}
 .burn{background:var(--key);color:var(--key-ink);border:1px solid var(--key-line);border-radius:6px;padding:0 6px;font-size:11.5px;font-weight:700;margin-left:4px}
 </style>
 </head>
@@ -130,7 +131,7 @@ const CHIP = {key:"★ 중요", why:"왜", risk:"리스크", info:"참고", memo
 const TABS = [
   ["t1","일정 확정",DATA.t1.length,"지수 반영 앵커(권리락일, 없으면 신주·변경상장일)가 오래된 순 — 신주 상장 2일 후 '최근 종결'로 이동",null],
   ["t2","일정 미확정",DATA.t2.length+DATA.cbw.length,"변경상장 공시 전 — 변경상장 예정일(추정)이 빠른 순","소각일이 있으면 소각일 + 중앙값 약 11영업일, 없으면 취득 종료일 + 과거 간격(그 법인의 과거 3건 이상이면 그 법인 중앙값, 아니면 전체 중앙값). 변경상장 공시가 나오면 확정 탭으로 이동하고 추정은 사라진다."],
-  ["bb","자기주식 취득 진행",DATA.bb.length,"기준일 현재 취득 중 — 남은 취득액(추정)이 큰 순","취득 진행률은 취득 기간 경과 비례로 추정한 값이다(실제 취득 수량은 취득 결과보고서가 나오기 전까지 공시되지 않음). 남은 취득액 = 취득 예정금액 × (1 − 기간 경과율)."],
+  ["bb","자기주식 취득 진행",DATA.bb.length,"기준일 현재 취득 중 — 남은 취득액(추정)이 큰 순 · 체결 실적 반영","진행률 = 계획 시작일부터의 누적 체결금액 ÷ 취득 예정금액 (거래소 '자기주식매매 체결내역' 일별 공시 합산, 직접·신탁 모두). 한도는 금액이다 — 신고수량(주식수)을 넘겨도 금액이 남으면 계속 산다(삼성전자). 예상 소진일은 최근 10거래일 일평균 체결금액으로 남은 금액을 채우는 날. 체결내역이 없는 종목만 기간 경과 비례 추정."],
   ["cl","최근 종결",DATA.closed.length,"신주·변경상장 후 2~7일 이내 종결 건 (일주일이 지나면 사라짐)",null]
 ];
 let cur = "t1", bbFilter = "all", bbSort = "remain";
@@ -161,12 +162,21 @@ function renderTab(){
     const mx = Math.max(1, ...DATA.bb.map(b=>b.amount||0));
     const fb = (id,lbl,cur_,set) => `<button class="fbtn ${cur_===id?'on':''}" data-set="${set}" data-v="${id}">${lbl}</button>`;
     const ctl = `<div class="ctl"><div class="grp"><span class="lbl">필터</span>${fb("all",`전체 ${n_all}`,bbFilter,"f")}${fb("burn",`소각 목적 ${n_burn}`,bbFilter,"f")}${fb("other",`그 외 ${n_all-n_burn}`,bbFilter,"f")}</div><div class="grp"><span class="lbl">정렬</span>${fb("remain","남은 취득액(추정) 순",bbSort,"s")}${fb("amount","규모 순",bbSort,"s")}${fb("end","종료 임박 순",bbSort,"s")}</div></div>`;
-    html = ctl + `<div class="list bb">${rows.map(b=>{
+    const fmtAmt = v => v>=1e12 ? (v/1e12).toFixed(2)+"조원" : v>=1e8 ? Math.round(v/1e8).toLocaleString("ko-KR")+"억원" : Math.round(v).toLocaleString("ko-KR")+"원";
+    const totRem = rows.reduce((a,b)=>a+(b.remain||0),0);
+    const sum = `<div class="hint2" style="margin:-2px 2px 10px">표시 ${rows.length}건 · 남은 취득액 합계 <b>${fmtAmt(totRem)}</b> (예정금액 − 누적 체결금액)</div>`;
+    html = ctl + sum + `<div class="list bb">${rows.map(b=>{
       const w = Math.max(3, Math.round((b.amount||0)/mx*100));
-      return `<div class="row plain"><div class="l1"><div class="nm">${esc(b.issuer)}<small>${esc(b.code)}</small>${badge(b)}<span class="tag">${esc(b.kind)}</span>${b.burn?'<span class="burn">소각 목적</span>':''}</div><div class="mc big">남은 ${esc(b.remain_txt)}</div></div>
+      const act = b.basis==="actual";
+      const head = b.exhausted ? `<span class="done">소진 완료</span>` : `남은 ${esc(b.remain_txt)}`;
+      const l2 = act ? `취득 <b>${(b.frac*100).toFixed(0)}%</b>(체결 실적 ${esc(b.through.slice(5))} 기준) · 누적 ${esc(b.acquired_txt)} / 총 ${esc(b.amount_txt)}` : `취득 <b>${(b.frac*100).toFixed(0)}%</b>(기간 경과 비례 추정) · 총 ${esc(b.amount_txt)}`;
+      const pace = b.stalled ? `최근 체결 없음 — 마지막 체결 ${esc(b.through)} (중단·종료 여부 확인 필요)` : act && !b.exhausted && b.pace_shares ? `최근 10거래일 일평균 약 ${b.pace_shares.toLocaleString("ko-KR")}주 · <b>예상 소진 ${esc(b.proj_end||"-")}</b>${b.proj_end && b.proj_end<b.plan_end?` (계획 종료 ${esc(b.plan_end)}보다 빠름)`:""}` : (b.exhausted ? `계획 금액 소진 — 마지막 체결 ${esc(b.through)}${b.acq_shares?` · 누적 ${b.acq_shares.toLocaleString("ko-KR")}주`:""}` : "");
+      const note = b.note ? `<div class="pleg"><span>${esc(b.note)}${(b.news||[]).map(n=>` <a href="${esc(n.url)}" target="_blank" rel="noopener">[${esc(n.outlet)} ${esc(n.date.slice(5))} ↗]</a>`).join("")}</span></div>` : "";
+      return `<div class="row plain"><div class="l1"><div class="nm">${esc(b.issuer)}<small>${esc(b.code)}</small>${badge(b)}<span class="tag">${esc(b.kind)}</span>${b.burn?'<span class="burn">소각 목적</span>':'<span class="tag">소각 아님</span>'}</div><div class="mc big">${head}</div></div>
       <div class="pbar" style="width:${w}%"><i class="got" style="width:${(b.frac*100).toFixed(1)}%"></i><i class="rem" style="width:${((1-b.frac)*100).toFixed(1)}%"></i></div>
-      <div class="pleg"><span>취득 <b>${(b.frac*100).toFixed(0)}%</b>(추정) · 총 ${esc(b.amount_txt)}${b.shares?` · ${b.shares.toLocaleString('ko-KR')}주`:''}</span><span>${esc(b.period)} · 종료 ${esc(b.dday_end)} · <a href="${esc(b.link.url)}" target="_blank" rel="noopener">KIND ↗</a></span></div>
-      <div class="pleg"><span>${esc(b.purpose||'')}</span></div></div>`;}).join("")||'<div class="empty">조건에 맞는 자기주식 취득이 없습니다.</div>'}</div>`;
+      <div class="pleg"><span>${l2}</span><span>${esc(b.period)} · <a href="${esc(b.link.url)}" target="_blank" rel="noopener">KIND ↗</a></span></div>
+      ${pace?`<div class="pleg"><span>${pace}</span></div>`:""}
+      <div class="pleg"><span>${esc(b.purpose||'')}</span></div>${note}</div>`;}).join("")||'<div class="empty">조건에 맞는 자기주식 취득이 없습니다.</div>'}</div>`;
   } else {
     html = `<div class="list">${DATA.closed.map(e=>`<div class="row plain"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small>${badge(e)}<span class="tag">${esc(e.type)}</span></div><div class="mc" style="font-weight:600">종결 ${esc(e.date)}</div></div></div>`).join("")||'<div class="empty">최근 7일 안에 종결된 이벤트가 없습니다.</div>'}</div>`;
   }

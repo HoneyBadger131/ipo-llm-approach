@@ -284,3 +284,19 @@ CREATE TABLE IF NOT EXISTS status_flag (
   acpt_no     TEXT,                                -- 근거 접수번호
   PRIMARY KEY (security_id, flag)
 ) STRICT;
+
+
+-- 자기주식 매매 체결내역(유가증권시장, KIND 시장조치 0326 '체결내역', 하루 1건·전 종목). kind/buyback_exec.py 가 적재
+CREATE TABLE IF NOT EXISTS buyback_exec (
+  day          TEXT NOT NULL,                      -- 체결일자
+  code         TEXT NOT NULL,                      -- 단축코드(A 접두 제거)
+  kind         TEXT NOT NULL,                      -- '직접' | '신탁'
+  req_shares   INTEGER,                            -- 신청수량
+  exec_shares  INTEGER,                            -- 체결수량
+  exec_amount  INTEGER,                            -- 체결금액(원; 공시는 천원)
+  cum_shares   INTEGER,                            -- 누적체결량(직접만)
+  plan_shares  INTEGER,                            -- 신고수량(직접만)
+  avg_price    INTEGER,                            -- 평균체결가(신탁만; 직접은 금액/수량 계산)
+  acpt_no      TEXT NOT NULL,
+  PRIMARY KEY (day, code, kind)
+) STRICT;

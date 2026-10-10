@@ -19,6 +19,7 @@ import statistics
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import buyback
 import db
 from m1_parser import kdate, text_of
 from m2_decision import num, split_items, toks
@@ -208,10 +209,14 @@ def replay(con, t, asof, lag, acq_lag=None):
         # 소각일 미정(취득 중·취득 종료 후 소각 대기): 변경상장 '예정일' = 취득 종료일 + 관측 중앙 간격(임시값 — 변경상장 공시가 나오면 교체)
         own = acq_lag["by_issuer"].get(t["issuer_id"])
         al = own or acq_lag["all"]
-        d0 = dt.date.fromisoformat(dd["acq_end"]) + dt.timedelta(days=int(al["median"]))
+        end_eff, early = dd["acq_end"], False
+        pj = buyback.projection(con, t["issuer_id"], dd["acq_start"], asof) if dd.get("acq_start") else None
+        if pj and pj.get("proj_end") and pj["proj_end"] < dd["acq_end"]:
+            end_eff, early = pj["proj_end"], True  # 체결내역 기준 실제 속도로 계획보다 일찍 소진될 예상(또는 이미 소진) — 소각·변경상장도 그만큼 앞당겨 추정
+        d0 = dt.date.fromisoformat(end_eff) + dt.timedelta(days=int(al["median"]))
         mid = con.execute("SELECT min(cal_date) FROM calendar_day WHERE is_trading=1 AND cal_date>=?", (d0.isoformat(),)).fetchone()[0]
         S["estimate"] = {"lo": None, "hi": None, "mid": mid, "short": "추정", "acq_based": True,
-                         "basis": f"취득 종료일 + 약 {int(al['median'])}일({'이 법인' if own else '전체'} 과거 {al['n']}건 중앙값) — 변경상장 공시 전까지만 쓰는 임시 추정"}
+                         "basis": f"{'취득 소진 예상일(체결내역 기준 현 속도)' if early else '취득 종료일'} + 약 {int(al['median'])}일({'이 법인' if own else '전체'} 과거 {al['n']}건 중앙값) — 변경상장 공시 전까지만 쓰는 임시 추정"}
         set_slot(con, eid, "CHANGE_LISTING", mid, 1, S["sources"][0]["filing"])
     elif "CHANGE_LISTING" not in cur and cur.get("CANCEL_DATE") and lag:
         lo, hi, med = lag["cancel_to_listing"]["min"], lag["cancel_to_listing"]["max"], lag["cancel_to_listing"]["median"]
