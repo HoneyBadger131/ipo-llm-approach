@@ -12,7 +12,7 @@ import index_shares
 import m2_report
 
 ROLE = {"EX_DATE": "기준가/락", "HALT_START": "거래정지 시작", "HALT_END": "거래정지 해제"}
-TYPE = {"RIGHTS_EX": "권리락", "DIVIDEND_EX": "배당락", "HALT": "거래정지", "SPLIT_RELIST_PRICE": "분할 변경상장 기준가", "PAR_VALUE_CHANGE": "액면 변경"}
+TYPE = {"RIGHTS_EX": "권리락", "DIVIDEND_EX": "배당락", "HALT": "거래정지", "SPLIT_RELIST_PRICE": "분할 변경상장 기준가", "PAR_VALUE_CHANGE": "액면 변경", "CORPORATE_SPLIT": "회사분할(인적)", "CORPORATE_SPLIT_PHYSICAL": "회사분할(물적)"}
 
 
 def main():
@@ -45,9 +45,11 @@ def main():
                           FROM v_event_calendar v JOIN event e USING(event_id) JOIN security s ON s.security_id=e.security_id
                           WHERE v.the_date BETWEEN ? AND ? ORDER BY v.the_date, s.security_id""", (back, horizon)).fetchall()
     for r in rows:
+        if r["event_type"].startswith("CORPORATE_SPLIT") and r["role"] in ("HALT_START", "HALT_NOTICE"):
+            continue  # 거래정지는 M1 의 HALT 이벤트로 이미 표시
         d = json.loads(r["detail_json"] or "{}")
         info = d.get("reason") or ""
-        if d.get("prices"):
+        if d.get("prices") and "class" in d["prices"][0]:
             p = d["prices"][0]
             info += f" · {p['class']} {'/'.join(format(x, ',') for x in p['values'])}원"
         if r["condition_note"]:
@@ -79,6 +81,7 @@ def main():
     L += ["", "## 5. 유상증자 이벤트 스레드 (M2)", "", "★ = 지수·참여 핵심일 · D-day는 영업일 기준(`*`=휴장일) · ✅ 완료 / ⏳ 예정 / 추정 = 기준일에서 계산한 값", ""] + m2_report.render(con, asof)
     L += ["", "## 5-2. 자기주식 소각 스레드 (M2)", ""] + m2_report.render_cancel(con, asof)
     L += ["", "## 5-3. 전환사채·신주인수권부사채 (M2)", ""] + m2_report.render_cbbw(con, asof)
+    L += ["", "## 5-4. 회사분할 — 인적분할 (M2)", ""] + m2_report.render_split(con, asof)
     L += ["", "## 6. 처리 현황", ""]
     for r in con.execute("""SELECT cat_major, parse_status, count(*) n FROM filing WHERE src='KIND' AND cat_major IN ('시장조치','수시공시') GROUP BY 1,2 ORDER BY 1,2"""):
         L.append(f"- {r['cat_major']} / {r['parse_status']}: {r['n']}건")

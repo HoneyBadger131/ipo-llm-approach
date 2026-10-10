@@ -12,10 +12,14 @@ FROM=${1:-2025-01-01}; TO=${2:-$(date +%F)}; EFROM=${3:-2025-10-09}
 $PY kind/collector.py --from "$FROM" --to "$TO" --watch phase1
 $PY kind/collector.py --from 2024-01-01 --to "$TO" --watch phase1 --only 352820,066970,457190,000880   # CB/BW 종목은 발행결정(2024)부터
 $PY kind/collector.py --from "$EFROM" --to "$TO" --watch etf_core
+# 인적분할 신설법인: 결정 공시에서 이름을 읽어 KIND 해석 → 워치리스트 추가 → 그 법인의 공시(재상장 등) 수집
+NEWCO=$($PY kind/m2_split.py --register | tail -1)
+[ -n "$NEWCO" ] && $PY kind/collector.py --from 2025-01-01 --to "$TO" --watch phase1 --only "$NEWCO"
 $PY kind/etf_parser.py
 $PY kind/m1_parser.py
 $PY kind/m3_parser.py
 $PY kind/m2_rights_issue.py
 $PY kind/m2_cancel.py
 $PY kind/m2_cbbw.py
+$PY kind/m2_split.py
 $PY kind/daily_report.py
