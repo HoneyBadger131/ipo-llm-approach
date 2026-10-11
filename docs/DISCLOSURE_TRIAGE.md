@@ -44,7 +44,7 @@ DART 공시 → dart_rules.classify (제목 규칙 필터) → dart_subsidiary (
 - Q1 정례 우선, 단 ≥1,000억은 PASS_CHECK / Q2 연장·대환 DROP, 신규만, 증권·은행·보험 일상업무 DROP / Q3 풍문·"확정된 바 없다" DROP / Q4 보호예수 해제 PASS_CHECK / Q5 애매→DROP, 모름→PASS_CHECK / Q6 정정은 해지 또는 큰 금액 변동만 / Q7 바이오 임상 PASS / Q8 중대재해 PASS_CHECK, 불성실공시 PASS / Q11 분쟁 목록 / Q12 규칙 필터 조정.
 - N3 대표이사 변경 NOTIFY / N4 시총 상위 30 민감, 나머지 낮음 / N5 전망·밸류업 변경 ≥15%만, 아니면 DROP / N6 합병 절차 공시 DROP / N7 임원 거래계획 DROP(지배구조 영향 시 PASS) / N8 금융사 하이브리드 발행·타법인 취득 유지 / N9 신규 구간 Claude 판정 승인.
 
-- **2026-10-08 추가 결정**: 제일기획(소각 연동 매매거래정지)은 사람 PASS 유지 → R-HALT는 소각·감자·분할·합병 연동 정지를 제외하고 Jev에 맡김 / 약관 금융거래(R-FINTRANS)는 금액 무관 DROP / 풍문·조회공시는 삼성전자·SK하이닉스·LG에너지솔루션만 PASS_CHECK(나머지 DROP, 분쟁 종목 포함) / Jev 회색 지대에서 Choice가 DROP이면 DROP(연장·대환 대응; 개발·검증 재현율 99%→96%) / 심화 분석 기본 모델은 Sonnet(Haiku 비교: `trial_case_haiku/비교_Sonnet_vs_Haiku.md`) / 건설·조선 국내 수주는 중요도 1단계, 국내 재건축·재개발은 2단계 하향(`report_v2/AGENT_SPEC.md`).
+- **2026-10-08 추가 결정**: 제일기획(소각 연동 매매거래정지)은 사람 PASS 유지 → R-HALT는 소각·감자·분할·합병 연동 정지를 제외하고 Jev에 맡김 / 약관 금융거래(R-FINTRANS)는 금액 무관 DROP / 풍문·조회공시는 삼성전자·SK하이닉스·LG에너지솔루션만 PASS_CHECK(나머지 DROP, 분쟁 종목 포함) / Jev 회색 지대에서 Choice가 DROP이면 DROP(연장·대환 대응; 개발·검증 재현율 99%→96%) / 심화 분석 기본 모델은 Sonnet(Haiku 비교: `dep/experiments/trial_case_haiku/비교_Sonnet_vs_Haiku.md`) / 건설·조선 국내 수주는 중요도 1단계, 국내 재건축·재개발은 2단계 하향(`report_v2/AGENT_SPEC.md`).
 
 ## 6. 결과 (저장된 응답 재채점, API 호출 없음)
 | 구간 | 건수 | 노출 재현율 | 노출 정밀도 |

@@ -8,3 +8,15 @@ jev_test/data/bodies/
 !jev_test/review/*.csv
 logs/
 state/
+.DS_Store
+dep/local_only/
+node_modules/
+
+# KIND 축 산출물(재생성 가능)
+kind/data/
+
+# KIND 마크다운 리포트는 폐지(HTML 로 대체). 이력은 git 에서 daily_report.py/m2_report.py 로 확인
+kind/reports/*.md
+
+# KIND 유니버스 종가 기록(주간 누적)은 추적한다 — 클론 환경에서 유니버스(시총 상위 300)·시총 계산 재현에 필요
+!kind/universe/*.csv
