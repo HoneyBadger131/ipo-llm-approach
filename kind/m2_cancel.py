@@ -21,19 +21,11 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import buyback
 import db
-from m1_parser import kdate, text_of
+from common import after, cal, kdate, prune, set_slot, tdiff, text_of
 from m2_decision import num, split_items, toks
-from m2_rights_issue import cal, prune, set_slot, tdiff
 
 NOW = lambda: dt.datetime.now().isoformat(timespec="seconds")
 NOTICE_TO_LISTING = 3  # 변경상장 공시일 → 변경상장일 (영업일, 관측 4/4)
-
-
-def after(vals, label, n=1):
-    for i, v in enumerate(vals):
-        if v.startswith(label):
-            return vals[i + n] if i + n < len(vals) else None
-    return None
 
 
 def parse_cancel(text):

@@ -21,7 +21,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
 import kind_client as kc
-from m1_parser import text_of, kdate, sibling
+from common import kdate, text_of
+from m1_parser import sibling
 
 
 def flat(text):

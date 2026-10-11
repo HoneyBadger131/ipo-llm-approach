@@ -18,18 +18,10 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
 import kind_client as kc
+from common import kdate, text_of
 
 NOW = lambda: dt.datetime.now().isoformat(timespec="seconds")
 TODAY = dt.date.today().isoformat()
-
-
-def text_of(f):
-    return kc._html_to_text(open(os.path.join(db.HERE, f["body_path"]), encoding="utf-8").read())
-
-
-def kdate(s):
-    m = re.search(r"(\d{4})\D{0,2}(\d{1,2})\D{0,2}(\d{1,2})", s or "")
-    return f"{int(m.group(1)):04d}-{int(m.group(2)):02d}-{int(m.group(3)):02d}" if m else None
 
 
 def num(s):

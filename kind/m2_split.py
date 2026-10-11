@@ -23,9 +23,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
 import kind_client as kc
-from m1_parser import kdate, text_of
+from common import cal, kdate, prune, set_slot, tdiff, text_of
 from m2_decision import num, split_items, toks
-from m2_rights_issue import cal, prune, set_slot, tdiff
 
 NOW = lambda: dt.datetime.now().isoformat(timespec="seconds")
 WATCH = "phase1"

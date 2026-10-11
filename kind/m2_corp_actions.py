@@ -19,9 +19,8 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
-from m1_parser import kdate, text_of
+from common import after, cal, ex_from_record, kdate, prune, set_slot, tdiff, text_of
 from m2_decision import num, split_items, toks
-from m2_rights_issue import cal, ex_from_record, prune, set_slot, tdiff
 
 NOW = lambda: dt.datetime.now().isoformat(timespec="seconds")
 CFG = {
@@ -37,13 +36,6 @@ LABEL_KR = {"RESOLUTION": "결정(이사회)", "RECORD": "기준일", "EGM": "�
 
 
 # ───────────── 결정 공시 파서 ─────────────
-def after(vals, label, n=1):
-    for i, v in enumerate(vals):
-        if v.startswith(label):
-            return vals[i + n] if i + n < len(vals) else None
-    return None
-
-
 def dash(v):
     return None if v in (None, "-", "") else v
 

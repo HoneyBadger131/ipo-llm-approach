@@ -22,49 +22,13 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
 import kind_client as kc
-from m1_parser import kdate, text_of
+from common import cal, ex_from_record, kdate, prune, set_slot, tdiff, text_of
 from m2_decision import parse_decision, split_items, toks, num
 
 NOW = lambda: dt.datetime.now().isoformat(timespec="seconds")
 FOLLOW_TITLES = ("유상증자 신주발행가액", "신주인수권증서 신규상장", "유상증자 또는 주식관련사채 등의 청약결과", "유상증자 또는 주식관련사채 등의 발행결과")
 RIGHTS_METHODS = ("주주배정", "주주우선공모")
 DATE_RX = r"(\d{4}\s*년\s*\d{1,2}\s*월\s*\d{1,2}\s*일|\d{4}-\d{2}-\d{2})"
-
-
-# ───────────── 캘린더 유틸 ─────────────
-def cal(con, d, col):
-    r = con.execute(f"SELECT {col} FROM calendar_day WHERE cal_date=?", (d,)).fetchone()
-    return r[0] if r else None
-
-
-def ex_from_record(con, rec):
-    """권리락일 = (T+2 결제 기준) 신주배정기준일 직전 영업일. 기준일이 휴장이면 직전 영업일 L 의 직전 영업일."""
-    L = rec if cal(con, rec, "is_trading") else cal(con, rec, "prev_trading_date")
-    return cal(con, L, "prev_trading_date")
-
-
-def tdiff(con, a, b):
-    """영업일 수 차 (b - a). 비영업일은 직전 영업일 번호로 본다."""
-    return cal(con, b, "tseq") - cal(con, a, "tseq")
-
-
-# ───────────── 슬롯 관리 ─────────────
-def set_slot(con, eid, role, d, est, src, cond=None):
-    cur = con.execute("SELECT * FROM event_date WHERE event_id=? AND role=? AND superseded_by IS NULL", (eid, role)).fetchone()
-    if d is None:
-        if cur:  # 철회: 자기 자신으로 supersede
-            con.execute("UPDATE event_date SET superseded_by=event_date_id WHERE event_date_id=?", (cur["event_date_id"],))
-        return
-    if cur and cur["the_date"] == d and cur["is_estimated"] == est and cur["condition_note"] == cond:
-        return
-    if con.execute("SELECT 1 FROM calendar_day WHERE cal_date=?", (d,)).fetchone() is None:
-        print(f"  ⚠ 달력 범위 밖/잘못된 날짜 슬롯 생략: event {eid} {role} {d}", file=sys.stderr)  # 예: 만기 2040년 이후, 날짜 파싱 오류
-        return
-    new = con.execute("INSERT INTO event_date(event_id,role,the_date,is_estimated,condition_note,source_filing_id) VALUES (?,?,?,?,?,?)",
-                      (eid, role + "~", d, est, cond, src)).lastrowid
-    if cur:
-        con.execute("UPDATE event_date SET superseded_by=? WHERE event_date_id=?", (new, cur["event_date_id"]))
-    con.execute("UPDATE event_date SET role=? WHERE event_date_id=?", (role, new))
 
 
 # ───────────── 후속 공시 파서 ─────────────
@@ -252,16 +216,6 @@ def track_of(method):
     if "일반공모" in m or m.strip() in ("공모", "공모증자"):
         return "PUBLIC"
     return "OTHER"
-
-
-def prune(con, prefix, keep_keys):
-    """이번 실행에서 구성되지 않은(병합·삭제된) 스레드를 정리한다. 스레드 키는 접두 + 최초 결정일이라 규칙 변경 시 옛 키가 남을 수 있다."""
-    for (eid, k) in con.execute("SELECT event_id, thread_key FROM event WHERE thread_key LIKE ?", (prefix + "%",)).fetchall():
-        if k not in keep_keys:
-            for tb in ("index_share_adj", "event_date", "event_filing"):
-                con.execute(f"DELETE FROM {tb} WHERE event_id=?", (eid,))
-            con.execute("UPDATE share_ledger SET event_id=NULL WHERE event_id=?", (eid,))
-            con.execute("DELETE FROM event WHERE event_id=?", (eid,))
 
 
 def replay(con, t, asof, network=True):

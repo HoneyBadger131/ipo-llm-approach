@@ -12,7 +12,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
-from m1_parser import kdate, text_of
+from common import kdate, text_of
 from m2_decision import num, split_items, toks
 
 TITLES = ("자기주식 취득 결정", "자기주식취득 신탁계약 체결 결정")

@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import collector
 import db
 import scan_day
-from m1_parser import kdate, text_of
+from common import kdate, text_of
 
 DECISION_TITLES = ("유상증자결정", "주식 소각 결정", "회사합병 결정", "무상증자결정", "주식배당결정", "주식분할 결정", "회사분할 결정", "자기주식 취득 결정")
 

@@ -3,7 +3,7 @@
 """
 import re
 
-from m1_parser import kdate
+from common import kdate
 
 
 def toks(s):
