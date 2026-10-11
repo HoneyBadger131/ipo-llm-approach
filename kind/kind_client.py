@@ -92,7 +92,8 @@ def _parse_rows(t):
         tds = [_strip(x) for x in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
         # tds: 번호, 일시(YYYY-MM-DD HH:MM), 회사명, 제목, 제출인, ...
         out.append({"acpt_no": m.group(1), "title": html.unescape(m.group(2)),
-                    "datetime": tds[1] if len(tds) > 1 else "", "company": tds[2] if len(tds) > 2 else ""})
+                    "datetime": tds[1] if len(tds) > 1 else "", "company": tds[2] if len(tds) > 2 else "",
+                    "submitter": tds[4] if len(tds) > 4 else ""})
     return out
 
 
@@ -185,6 +186,27 @@ def body_text(acpt_no, which=None):
 def prior_versions(acpt_no):
     """정정공시의 기공시 본문 목록(selected 가 아닌 본문) = 정정 체인의 앞부분 [(docNo,label)]."""
     return [(d, l) for d, s, l in _viewer_docs(acpt_no) if not s]
+
+
+def list_etf_day(day, report_nm="수량변경", page_size=100, max_pages=10):
+    """하루치 ETF 전체 목록(운용사 무관) → 행 리스트. ETF 일괄공시는 운용사별 한 건이 소속 ETF 행마다 반복 노출되므로 호출 쪽에서 접수번호로 묶는다."""
+    return _cached("etfday", {"day": day, "to": day, "nm": report_nm}, lambda: _list_etf_day(day, report_nm, page_size, max_pages))
+
+
+def _list_etf_day(day, report_nm, page_size, max_pages):
+    _warmup()
+    res = []
+    for page in range(1, max_pages + 1):
+        d = dict(method="searchDisclosureByStockTypeEtfSub", currentPageSize=str(page_size), pageIndex=str(page), orderMode="1", orderStat="D",
+                 forward="disclosurebystocktype_etf_sub", searchCodeType="", repIsuSrtCd="", searchCorpName="", etfIsuSrtCd="", etfIsuSrtNm="",
+                 fromDate=day, toDate=day, reportNm=report_nm, reportCd="")
+        r = _s.post(f"{BASE}/disclosure/disclosurebystocktype.do", data=d, headers={"X-Requested-With": "XMLHttpRequest"}, timeout=30)
+        rows = _parse_rows(r.text)
+        res += rows
+        if len(rows) < page_size:
+            break
+        time.sleep(SLEEP)
+    return res
 
 
 def list_etf_filings(code, name, frm, to, page_size=100, max_pages=50):

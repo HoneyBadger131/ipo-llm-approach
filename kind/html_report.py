@@ -325,9 +325,20 @@ def build(con, asof):
 TEMPLATE = open(os.path.join(HERE, "html_report_template.html"), encoding="utf-8").read()
 
 
-def write_report(con, asof):
-    """기준일(영업일) 리포트를 만들어 저장한다. 반환 (경로, 데이터). 출력 폴더는 KIND_REPORT_DIR(테스트용)로 바꿀 수 있다."""
+def write_report(con, asof, etf=True):
+    """기준일(영업일) 리포트를 만들어 저장한다. 반환 (경로, 데이터). 출력 폴더는 KIND_REPORT_DIR(테스트용)로 바꿀 수 있다.
+    etf=True(기본)면 'ETF 흐름' 탭을 함께 넣는다. ETF 집계가 실패하거나 데이터가 없으면 탭만 빼고 나머지 리포트는 낸다(ETF 때문에 일일 리포트가 막히지 않게)."""
     data = build(con, asof)
+    if etf:
+        try:
+            import etf_flow
+            data["etf"] = etf_flow.build(con, asof)
+            bad = etf_flow.check(data["etf"])
+            if bad:  # 코멘트 숫자 대조 실패: 코멘트만 뺀다
+                data["etf"]["comment"] = None
+                data["etf_warn"] = f"ETF 코멘트 숫자 불일치 {bad[:3]}"
+        except Exception as e:  # noqa: BLE001
+            data["etf_warn"] = f"ETF 탭 생성 실패: {type(e).__name__}: {e}"
     html = TEMPLATE.replace("__DATA__", json.dumps(data, ensure_ascii=False, default=str).replace("</", "<\\/"))
     out = os.path.join(os.environ.get("KIND_REPORT_DIR") or os.path.join(db.HERE, "reports"), f"kind_report_{asof}.html")
     os.makedirs(os.path.dirname(out), exist_ok=True)
@@ -337,9 +348,10 @@ def write_report(con, asof):
 
 def main():
     con = db.connect()
-    today = sys.argv[1] if len(sys.argv) > 1 else dt.date.today().isoformat()
+    args = [x for x in sys.argv[1:] if not x.startswith("--")]
+    today = args[0] if args else dt.date.today().isoformat()
     asof = con.execute("SELECT max(cal_date) FROM calendar_day WHERE is_trading=1 AND cal_date<=?", (today,)).fetchone()[0]
-    out, data = write_report(con, asof)
+    out, data = write_report(con, asof, etf="--no-etf" not in sys.argv)
     print(out, f"확정={len(data['t1'])} 미확정={len(data['t2'])} CB/BW={len(data['cbw'])} 취득진행={len(data['bb'])} 종결={len(data['closed'])} price_date={data['price_date']}")
 
 

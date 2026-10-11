@@ -46,7 +46,9 @@ $PY kind/buyback_exec.py --from 2026-06-01 --to "$TO"
 # 누락된 최초 결정 공시를 해당 종목에 한해 하루 조회로 보충(스캔 시작일 앞의 원본) + 종목 상태 표지(관리종목)
 $PY kind/backfill_orphans.py
 $PY kind/status_flags.py --to "$TO"
+$PY kind/etf_scan.py --from 2026-07-01 --to "$TO"   # 날짜 단위 전체 ETF 일괄공시(대표 8종 경로가 놓친 운용사·무변동일 보강)
 $PY kind/etf_parser.py
+$PY kind/etf_prices.py --asof "$TO"                  # 네이버: 분류·종가·상위10 구성종목·거래대금
 $PY kind/m1_parser.py
 $PY kind/m3_parser.py
 $PY kind/m2_rights_issue.py

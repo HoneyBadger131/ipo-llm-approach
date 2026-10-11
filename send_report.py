@@ -8,7 +8,7 @@
   python send_report.py --alert "제목" "본문" --send          # 실패 알림 메일
 
 폴더 구조: <폴더>/bundle_<날짜>.html, bundle_<날짜>.pdf, reports/*.json
-환경변수(.env): GMAIL_USER, GMAIL_APP_PASSWORD, MAIL_TO(없으면 GMAIL_USER)
+환경변수(.env): GMAIL_USER, GMAIL_APP_PASSWORD, MAIL_TO(없으면 GMAIL_USER). 리포트 메일은 EXTRA_TO(crastibi@nps.or.kr)가 항상 추가 수신
 본문은 브리프 표(인라인 CSS), 첨부는 번들 HTML·PDF. 비밀번호는 출력·저장하지 않는다.
 """
 import glob
@@ -20,6 +20,13 @@ import sys
 from email.message import EmailMessage
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+EXTRA_TO = ["crastibi@nps.or.kr"]   # 일일 리포트 메일의 기본 추가 수신인(2026-10-11 사용자 지시). 실패 알림에는 넣지 않는다
+
+
+def recipients(default):
+    """MAIL_TO(없으면 발신 계정) + 기본 추가 수신인, 중복 제거"""
+    base = [x.strip() for x in (os.environ.get("MAIL_TO") or default or "").split(",") if x.strip()]
+    return ", ".join(dict.fromkeys(base + EXTRA_TO))
 
 
 def load_env():
@@ -40,6 +47,12 @@ def kind_section(kind_json):
         return ""
     if not sm:
         return ""
+    etf = sm.get("etf")
+    etf_html = ""
+    if etf and etf.get("lines"):
+        etf_html = ('<h3 style="margin:22px 0 2px;padding-top:10px;border-top:2px solid #e5e7eb">KIND · ETF 설정/환매 흐름</h3>'
+                    + "".join(f'<p style="margin:4px 0;font-size:13px">{html.escape(x)}</p>' for x in etf["lines"])
+                    + '<p style="margin:2px 0;color:#6b7280;font-size:12px">상세(테마·종목별 압력)는 첨부 KIND 리포트의 ETF 흐름 탭</p>')
     th = 'style="padding:6px 8px;border-bottom:1px solid #e5e7eb;vertical-align:top;font-size:12px"'
 
     def tbl(title, items):
@@ -56,9 +69,9 @@ def kind_section(kind_json):
         return ""
     if not body:
         return ('<h3 style="margin:22px 0 2px;padding-top:10px;border-top:2px solid #e5e7eb">KIND · 지수 주식수 변동</h3>'
-                '<p style="margin:4px 0;color:#6b7280;font-size:13px">직전 영업일 신규 이벤트와 5영업일 내 일정이 없습니다.</p>')
+                '<p style="margin:4px 0;color:#6b7280;font-size:13px">직전 영업일 신규 이벤트와 5영업일 내 일정이 없습니다.</p>') + etf_html
     return ('<h3 style="margin:22px 0 2px;padding-top:10px;border-top:2px solid #e5e7eb">KIND · 지수 주식수 변동</h3>'
-            f'<p style="margin:0;color:#6b7280;font-size:12px">상장주식수 기준(유동비율 미적용), 시총 변동은 종가({sm.get("price_date")}) 기준 추정 · 상세는 첨부 KIND 리포트</p>{body}')
+            f'<p style="margin:0;color:#6b7280;font-size:12px">상장주식수 기준(유동비율 미적용), 시총 변동은 종가({sm.get("price_date")}) 기준 추정 · 상세는 첨부 KIND 리포트</p>{body}' + etf_html)
 
 
 def kind_note(text):
@@ -103,7 +116,7 @@ def build(folder, date, note="", kind_json=None, test=False, kind_text=None, no_
     has_bundle = (not no_dart) and os.path.exists(os.path.join(folder, f"bundle_{date}.pdf"))
     msg["Subject"] = ("[테스트] " if test else "") + f"[AI Agent 공시 브리핑] {date}" + ("" if has_bundle else " · DART 중요 공시 없음")
     msg["From"] = user
-    msg["To"] = os.environ.get("MAIL_TO", user)
+    msg["To"] = recipients(user)
     msg.set_content(f"공시 브리프 {date} — HTML 메일을 지원하는 클라이언트에서 확인하세요. 첨부: 통합 리포트(HTML·PDF).")
     msg.add_alternative(body_html(folder, date, note, kind_json, kind_text, no_dart), subtype="html")
     for ext, mt in (("html", "text/html"), ("pdf", "application/pdf")):
@@ -157,7 +170,7 @@ def main():
         load_env()
         msg = EmailMessage()
         msg["Subject"], msg["From"] = a[1], os.environ.get("GMAIL_USER", "")
-        msg["To"] = os.environ.get("MAIL_TO", msg["From"])
+        msg["To"] = os.environ.get("MAIL_TO", msg["From"])   # 실패 알림은 운영자(본인)에게만
         msg.set_content(a[2])
     else:
         msg = build(a[0], a[1], note, kind_json, test, kind_text, no_dart)

@@ -300,3 +300,39 @@ CREATE TABLE IF NOT EXISTS buyback_exec (
   acpt_no      TEXT NOT NULL,
   PRIMARY KEY (day, code, kind)
 ) STRICT;
+
+
+-- ETF 일봉 종가(금액 환산용) + 전 ETF 스냅샷. 원천: 네이버 증권(fchart 일봉, etfItemList). kind/etf_prices.py 가 갱신. 후보 ETF(최근 흐름 상위+대표)만 일봉을 받는다.
+CREATE TABLE IF NOT EXISTS etf_price (
+  security_id INTEGER NOT NULL REFERENCES security(security_id),
+  trade_date  TEXT NOT NULL,
+  close       INTEGER NOT NULL,
+  PRIMARY KEY (security_id, trade_date)
+) STRICT;
+CREATE TABLE IF NOT EXISTS etf_snapshot (
+  security_id INTEGER PRIMARY KEY REFERENCES security(security_id),
+  snap_date   TEXT NOT NULL,
+  close       INTEGER,
+  nav         REAL,
+  mktcap_eok  INTEGER,                                                 -- 시가총액(억원)
+  ret3m       REAL,                                                    -- 3개월 수익률(%)
+  tab_code    INTEGER                                                  -- 네이버 분류: 1 국내시장지수 2 국내업종·테마 3 파생(레버리지·인버스) 4 해외주식 5 원자재 6 채권 7 기타(혼합·TDF·MMF)
+) STRICT;
+
+-- ETF 상위10 구성종목(네이버 etfAnalysis, 스냅샷) — 종목별 매수·매도 압력 추정용. kind/etf_prices.py --top10 이 갱신(최신 비중만, 덮어씀)
+CREATE TABLE IF NOT EXISTS etf_top10 (
+  security_id INTEGER NOT NULL REFERENCES security(security_id),
+  rank        INTEGER NOT NULL,
+  code        TEXT NOT NULL,
+  name        TEXT NOT NULL,
+  weight      REAL NOT NULL,                                           -- %
+  snap_date   TEXT NOT NULL,
+  PRIMARY KEY (security_id, rank)
+) STRICT;
+
+-- 종목 5영업일 평균 거래대금(원, 근사 = Σ 거래량×종가 / 5) — ETF 순유입 압력의 %ADV 계산용. 네이버 일봉. kind/etf_prices.py 가 갱신(최신값만)
+CREATE TABLE IF NOT EXISTS stock_adv (
+  code      TEXT PRIMARY KEY,
+  asof      TEXT NOT NULL,
+  adv5      INTEGER NOT NULL
+) STRICT;

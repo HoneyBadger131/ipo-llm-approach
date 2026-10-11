@@ -29,7 +29,10 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh 2025-01-01 2026-10-10   # 캐시만으로 �
 | `scan_range.py` | 유니버스 등록(`--register`) + 날짜 범위 스캔 적재. 유니버스 = `universe/prices_*.csv` ∪ `kospi_list_clean.md` − `universe/exclude.txt` |
 | `backfill_orphans.py` | 정정 공시의 최초제출일에 원본이 없으면 그 종목·그 하루만 보충 |
 | `status_flags.py` | 관리종목 상태(`status_flag` 테이블) |
-| `etf_parser.py`, `etf_report.py` | ETF 일괄공시(설정/해지) |
+| `etf_parser.py`, `etf_report.py` | ETF 일괄공시(설정/해지) 파싱(같은 ETF·설정일 중복은 늦은 공시가 유효) · 콘솔 현황 |
+| `etf_scan.py` | 날짜 단위 전체 ETF 일괄공시 스캔(운용사 19곳, 일일 파이프라인 포함) |
+| `etf_prices.py` | 네이버: ETF 분류·종가·상위10 구성종목·종목 5일 거래대금(`etf_price`·`etf_snapshot`·`etf_top10`·`stock_adv`) |
+| `etf_flow.py` | ETF 흐름 집계(1일/7일/3개월·테마·압력·%ADV)·자동 코멘트·`--check` 숫자 대조 → 리포트 'ETF 흐름' 탭 |
 
 **파싱·원장·이벤트**
 | 파일 | 역할 |

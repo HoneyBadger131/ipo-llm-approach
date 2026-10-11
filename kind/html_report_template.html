@@ -107,6 +107,7 @@ table.s tr.key.past td{color:inherit}
 .bb a{color:var(--navy);text-decoration:none}
 .done{color:var(--muted);font-weight:800}
 .burn{background:var(--key);color:var(--key-ink);border:1px solid var(--key-line);border-radius:6px;padding:0 6px;font-size:11.5px;font-weight:700;margin-left:4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}@media (max-width:900px){.two{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -134,6 +135,8 @@ const TABS = [
   ["bb","자기주식 취득 진행",DATA.bb.length,"기준일 현재 취득 중 — 남은 취득액(추정)이 큰 순 · 체결 실적 반영","진행률 = 계획 시작일부터의 누적 체결금액 ÷ 취득 예정금액 (거래소 '자기주식매매 체결내역' 일별 공시 합산, 직접·신탁 모두). 한도는 금액이다 — 신고수량(주식수)을 넘겨도 금액이 남으면 계속 산다(삼성전자). 예상 소진일은 최근 10거래일 일평균 체결금액으로 남은 금액을 채우는 날. 체결내역이 없는 종목만 기간 경과 비례 추정."],
   ["cl","최근 종결",DATA.closed.length,"신주·변경상장 후 2~7일 이내 종결 건 (일주일이 지나면 사라짐)",null]
 ];
+if(DATA.etf) TABS.splice(3,0,["etf","ETF 흐름",DATA.etf.windows["7d"].n_etf,"대표 ETF·테마 ETF 설정/환매 — 순유입 금액(좌수 × 설정일 종가) 기준","금액 = 순증감 좌수 × 설정/환매일 종가(공시 연결이 끊긴 구간은 잔고 차분으로 보정). 국내 ETF만 집계하고 채권·머니마켓·해외 ETF는 제외했다. 1일·7일은 네이버 누적순유입과 1% 이내로 일치, 3개월은 10~30% 차이가 날 수 있다."]);
+
 let cur = "t1", bbFilter = "all", bbSort = "remain";
 const badge = e => e.flag ? `<span class="mgmt">${esc(e.flag)}</span>` : "";
 
@@ -142,12 +145,42 @@ function rowHtml(e){
   const sh = e.delta_txt ? `${e.delta_txt}주${e.pct!=null?` (${e.pct>0?'+':''}${e.pct}%)`:''}` : '수량 미정';
   return `<div class="row" data-id="${e.id}"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small>${badge(e)}<span class="tag">${esc(e.type)}</span>${e.tag2?`<span class="tag risk">⚠ ${esc(e.tag2)}</span>`:''}</div><div class="mc">${mc}</div></div><div class="l2"><span>${sh}</span><span>${esc(e.right)}${e.dd?` · ${esc(e.dd)}`:''}</span></div><div class="bar"><i style="width:${e.bar}%"></i></div></div>`;
 }
+let etfWin = "7d";
+function etfRows(list){
+  if(!list.length) return '<div class="empty">해당 없음</div>';
+  const mx = Math.max(1, ...list.map(i=>Math.abs(i.amt||0)));
+  return list.map(i=>`<div class="row plain"><div class="l1"><div class="nm">${esc(i.name)}<small>${esc(i.mgr||"")}</small><span class="tag">${esc(i.theme)}</span>${i.adj?'<span class="tag risk" title="공시 연결이 끊긴 구간을 잔고 차분으로 보정">보정</span>':''}</div><div class="mc ${i.amt>0?'up':'down'}">${esc(i.amt_txt)}</div></div><div class="l2"><span>${esc(i.net_txt)} · 현재 ${esc(i.cum_txt)}</span><span></span></div><div class="bar"><i style="width:${Math.round(Math.abs(i.amt||0)/mx*100)}%"></i></div></div>`).join("");
+}
+function pressHtml(w){
+  const P = w.pressure; if(!P || (!P.up.length && !P.down.length)) return "";
+  const rows = (L,pct) => L.map(o=>`<tr><td>${esc(o.name)}<small style="color:var(--muted)"> ${esc(pct?("5일 평균 거래대금 "+o.adv_txt):o.src.join(", "))}</small></td><td class="d ${o.amt>0?'up':'down'}">${esc(pct?o.pct_txt:o.amt_txt)}${pct?`<small style="color:var(--muted)"> (${esc(o.amt_txt)})</small>`:''}</td></tr>`).join("") || '<tr><td>없음</td><td></td></tr>';
+  const tip = "상위·하위 ETF의 순유입 금액 × 상위10 구성비중. 상위10 밖 종목과 레버리지·인버스는 빠지는 대략치입니다.";
+  let h = `<div class="two"><div class="card"><h4>매수 압력 종목 (추정)</h4><table class="s">${rows(P.up,false)}</table></div><div class="card"><h4>매도 압력 종목 (추정) <span class="q" title="${tip}">?</span></h4><table class="s">${rows(P.down,false)}</table></div></div>`;
+  if(etfWin!=="3m" && (P.up_adv.length||P.down_adv.length)) h += `<div class="two"><div class="card"><h4>매수 압력 / 거래대금 (%ADV)</h4><table class="s">${rows(P.up_adv,true)}</table></div><div class="card"><h4>매도 압력 / 거래대금 (%ADV) <span class="q" title="압력 ÷ 최근 5영업일 평균 거래대금(거래량×종가 근사). 압력 3억원 이상 종목만 순위에 올립니다.">?</span></h4><table class="s">${rows(P.down_adv,true)}</table></div></div>`;
+  return h;
+}
+function etfHtml(){
+  const E = DATA.etf, w = E.windows[etfWin];
+  const btn = k => `<button class="fbtn ${etfWin===k?'on':''}" data-v="${k}">${E.windows[k].label}</button>`;
+  const cm = E.comment ? `<div class="card"><h4>시장 코멘트</h4>${E.comment.lines.map(l=>`<div class="pt"><span class="chip why">코멘트</span><span class="tx">${esc(l)}</span></div>`).join("")}</div>` : "";
+  const k = w.kpi, cls = v => v>0?'up':v<0?'down':'';
+  const kp = (lbl,txt,v,sub) => `<div class="kpi key"><small>${lbl}</small><b class="${cls(v)}">${esc(txt)}</b><small>${sub||''}</small></div>`;
+  const kpis = `<div class="kpis">${kp("국내 ETF 순유입 합계",w.total_txt,w.total,`ETF ${w.n_etf}종 (채권·해외 ${w.n_excl}종 제외)`)}${kp("국내 시장대표",k.market,k.market_v,"200·코스닥150 등")}${kp("레버리지 / 인버스",k.lev+" / "+k.inv,k.lev_v-k.inv_v,"레버리지 순유입 / 인버스 순유입")}${kp("가장 많이 들어온 테마",k.top_in,k.top_in_v,"")}${kp("가장 많이 나간 테마",k.top_out,k.top_out_v,"")}</div>`;
+  const th = w.themes.map(t=>`<tr><td>${esc(t.theme)}</td><td class="d ${cls(t.amt)}">${esc(t.amt_txt)}</td><td class="d" style="color:var(--muted)">${t.n}종</td></tr>`).join("");
+  const nw = w.new.length ? w.new.map(i=>`<tr><td>${esc(i.name)}</td><td class="d">${esc(i.theme)}</td><td class="d ${cls(i.amt)}">${esc(i.amt_txt)}</td></tr>`).join("") : '<tr><td>없음</td><td></td><td></td></tr>';
+  return `<div class="ctl"><div class="grp"><span class="lbl">기간</span>${btn("1d")}${btn("7d")}${btn("3m")}<span class="lbl" style="margin-left:8px">${esc(w.from)} ~ ${esc(w.to)} 설정/환매일</span></div></div>${cm}${kpis}
+  <div class="two"><div><h2>순유입 상위</h2><div class="list">${etfRows(w.inflow)}</div></div><div><h2>순유출 상위</h2><div class="list">${etfRows(w.outflow)}</div></div></div>
+  <div class="two"><div class="card"><h4>테마별 순유입</h4><table class="s">${th}</table></div><div class="card"><h4>신규 등장 ETF ${w.n_new}종 <span class="q" title="수집 시작(2025-10) 30일 이후 처음 공시에 등장한 ETF — 신규 상장 추정">?</span></h4><table class="s">${nw}</table></div></div>
+  ${pressHtml(w)}
+  <div class="foot">표본: ETF 일괄공시를 올린 운용사 전체(국내 ETF만, 채권·머니마켓·해외는 제외). 금액 미산정 ${w.n_unpriced}종 · 종가 대신 근사가 ${w.n_approx}건 · 보정 ${w.n_adj}종 · 공시 연결 커버리지 ${w.coverage}%. 코멘트는 집계 수치만 인용합니다. 정보 제공용이며 투자 권유가 아닙니다.</div>`;
+}
 function renderTab(){
   document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("on", b.dataset.t===cur));
   const tb = TABS.find(t=>t[0]===cur);
   $("#hint2").innerHTML = esc(tb[3]) + (tb[4] ? `<span class="q" title="${esc(tb[4])}">?</span>` : "");
   const main = $("#main"); let html = "";
   const two = (cur==="t1"||cur==="t2");
+  if(cur==="etf"){ main.style.gridTemplateColumns="1fr"; $("#detail").style.display="none"; $("#left").innerHTML = etfHtml(); document.querySelectorAll("#left .fbtn").forEach(b=>b.onclick=()=>{etfWin=b.dataset.v; renderTab();}); return; }
   main.style.gridTemplateColumns = two ? "" : "1fr";
   $("#detail").style.display = two ? "" : "none";
   if(cur==="t1"){

@@ -49,6 +49,22 @@ def parse(h):
     return rep, rows
 
 
+def supersede(con):
+    """같은 ETF·설정일·사유에 공시가 둘 이상이면 접수시각이 가장 늦은 것만 유효(앞선 것은 superseded_by). 멱등. 예: WON 신규상장 2026-08-05 15:23 공시(증감전 0)를 18:17 공시가 정정."""
+    n = 0
+    groups = con.execute("""SELECT security_id, create_date, reason FROM etf_unit_change WHERE superseded_by IS NULL
+                            GROUP BY 1,2,3 HAVING count(*) > 1""").fetchall()
+    for g in groups:
+        rows = con.execute("""SELECT e.filing_id FROM etf_unit_change e JOIN filing f USING(filing_id)
+                              WHERE e.security_id=? AND e.create_date=? AND e.reason=? AND e.superseded_by IS NULL ORDER BY f.filed_at, e.filing_id""", tuple(g)).fetchall()
+        last = rows[-1][0]
+        for (fid,) in rows[:-1]:
+            con.execute("UPDATE etf_unit_change SET superseded_by=? WHERE filing_id=? AND security_id=? AND create_date=? AND reason=?", (last, fid, *g))
+            n += 1
+    con.commit()
+    return n
+
+
 def process(con, only_new=True):
     q = """SELECT f.filing_id, f.body_path, f.filed_date FROM filing f
            WHERE f.src='KIND' AND f.cat_major='ETF' AND f.title LIKE '%상장신청서%' AND f.body_path IS NOT NULL"""
@@ -61,6 +77,9 @@ def process(con, only_new=True):
         mgr = con.execute("""SELECT s.manager FROM filing_subject fs JOIN security s USING(security_id)
                              WHERE fs.filing_id=? AND s.manager IS NOT NULL LIMIT 1""", (f["filing_id"],)).fetchone()
         mgr = mgr[0] if mgr else None
+        if mgr is None:  # etf_scan.py 가 날짜 스캔으로 넣은 공시: 제출인(운용사)을 meta 에 보관
+            m = con.execute("SELECT value FROM meta WHERE key=?", ("etf_mgr:" + f["filing_id"],)).fetchone()
+            mgr = m[0] if m else None
         problems = []
         if not rep or not rows:
             problems.append("no_rows_or_date")
@@ -94,6 +113,7 @@ def process(con, only_new=True):
         stats["filings"] += 1
         stats["review"] += st == "review"
         con.commit()
+    stats["superseded"] = supersede(con)
     return stats
 
 

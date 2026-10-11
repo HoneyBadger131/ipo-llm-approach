@@ -54,6 +54,7 @@ def summarize(con, data, asof):
         "new": [slim(x) for x in rows if x.get("id") in new_ids],
         "window": [win_from, asof],
         "price_date": data["price_date"],
+        "etf": ({"latest": data["etf"]["latest"], "lines": (data["etf"].get("comment") or {}).get("lines", [])[:3]} if data.get("etf") else None),
     }
 
 
@@ -147,6 +148,11 @@ def main():
     step("buyback_exec", ["kind/buyback_exec.py", "--from", be, "--to", asof])
     step("backfill_orphans", ["kind/backfill_orphans.py"])
     step("status_flags", ["kind/status_flags.py", "--to", asof])
+    # 1c) ETF: 최근 7일 일괄공시 날짜 스캔(캐시된 과거일은 재호출 없음) → 파싱 → 가격·구성종목 갱신(네이버). 실패해도 다른 단계를 막지 않는다
+    etf_from = (dt.date.fromisoformat(asof) - dt.timedelta(days=7)).isoformat()
+    step("etf_scan", ["kind/etf_scan.py", "--from", etf_from, "--to", asof])
+    step("etf_parser", ["kind/etf_parser.py"], network=False)
+    step("etf_prices", ["kind/etf_prices.py", "--asof", asof])
     # 2) 파싱(오프라인 가능): 원장·시장조치 → M2 스레드
     step("m1_parser", ["kind/m1_parser.py"], network=False)
     step("m3_parser", ["kind/m3_parser.py", "--asof", asof], network=False)
@@ -162,6 +168,19 @@ def main():
         path, data = html_report.write_report(con, asof)
         st["html"] = path
         st["summary"] = summarize(con, data, asof)
+        if data.get("etf_warn"):
+            st["warnings"].append(data["etf_warn"])
+        etf = data.get("etf")
+        if etf:   # ETF 정합성 점검: 최신 설정일이 기준일보다 2영업일 넘게 뒤처지면 수집 누락, 가격 스냅샷이 낡으면 금액 환산 오차
+            lag = con.execute("SELECT count(*) FROM calendar_day WHERE is_trading=1 AND cal_date>? AND cal_date<=?", (etf["latest"], asof)).fetchone()[0]
+            if lag > 2:
+                st["warnings"].append(f"ETF 최신 설정일 {etf['latest']} — 기준일 {asof} 보다 {lag}영업일 뒤(수집 누락 점검)")
+            sd = con.execute("SELECT max(snap_date) FROM etf_snapshot").fetchone()[0]
+            if not sd or (dt.date.fromisoformat(asof) - dt.date.fromisoformat(sd)).days > 3:
+                st["warnings"].append(f"ETF 가격 스냅샷 {sd} 낡음(etf_prices 단계 확인)")
+            nrev = con.execute("SELECT count(*) FROM filing WHERE cat_major='ETF' AND parse_status IN ('review','failed')").fetchone()[0]
+            if nrev:
+                st["warnings"].append(f"ETF 공시 검토 필요 {nrev}건(parse_status review/failed)")
         pd = data["price_date"]
         if not pd or (dt.date.fromisoformat(asof) - dt.date.fromisoformat(pd)).days > 7:
             st["warnings"].append(f"종가 기준일 {pd} — 기준일 {asof} 보다 7일 넘게 오래됨(주간 갱신 필요), 시총 변동 추정이 낡았을 수 있음")
