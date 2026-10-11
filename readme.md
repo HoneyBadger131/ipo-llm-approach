@@ -9,6 +9,16 @@ DART 공시를 수집하고 LLM으로 중요도를 판단·심화 분석해, 종
 
 **KIND 축을 이어 작업한다면 [`docs/KIND_HANDOFF.md`](docs/KIND_HANDOFF.md) 먼저.**
 
+## 레포 지도
+| 경로 | 내용 |
+|---|---|
+| `run_daily.py` · `send_report.py` · `kind_hook.py` · `ops/` | **일일 무인 실행**(launchd) · 메일(DART 번들 + KIND 섹션 한 통) · KIND 훅 · plist |
+| `dart_*.py` · `judge_rules.md` · `jev_test/` · `report_v2/` | DART 축: 수집·규칙 필터·Jev 분류·심화 분석 지침·렌더러 |
+| `kind/` | KIND 축: 공시 수집·주식수 원장·이벤트 스레드·리포트 (`kind/README.md`) |
+| `trial_case/` · `disclosure_md/` | 일자별 DART 산출물 · 인덱싱용 MD |
+| `docs/` | 인수인계·설계 문서 (`HANDOFF.md`, `KIND_HANDOFF.md`, `KIND_DART_INTEGRATION.md`) |
+| `dep/` | 더 이상 쓰지 않는 파일 보관(삭제 아님) — `dep/README.md` |
+
 ## 파이프라인
 0. `dart_day_pipeline.py stage|brief <YYYYMMDD>` — 에이전트 입력/한 줄 프롬프트 생성, 통합 브리프 생성·점검 (실행 절차는 HANDOFF §4)
 1. `dart_prep_day.py <YYYYMMDD>` — 하루치 공시 조회 → 종목 리스트(`kospi_list_clean.md`) 필터 → 규칙 필터(`dart_rules.py`) → 본문 수집(`dart_body.py`) → 판단용 digest

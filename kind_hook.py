@@ -34,6 +34,7 @@ def collect(h, deadline=1200):
     r = {"ok": False, "asof": h["asof"], "summary_path": None, "html_path": None, "note": "", "warnings": []}
     try:
         if h.get("disabled"):
+            r["disabled"] = True
             return r   # 비활성: 조용히 KIND 섹션 없음
         if h.get("proc") is None:
             r["note"] = "KIND 일일 작업 시작 실패: " + h.get("error", "?")

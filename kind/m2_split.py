@@ -115,6 +115,8 @@ def register(con):
         if d["kind"] != "PERSONAL" or not d["new_name"]:
             continue
         res = pick_listed(kc.resolve_name(d["new_name"]), d["new_name"])
+        if not res:   # 상장 전에 받은 낡은 영구 캐시일 수 있다 → 다시 조회(하루 1콜 수준; OFFLINE 이면 refresh 무시)
+            res = pick_listed(kc.resolve_name(d["new_name"], refresh=True), d["new_name"])
         if not res:
             print(f"  신설법인 미상장/해석 실패: {d['new_name']} ({f['filing_id']})", file=sys.stderr)
             continue

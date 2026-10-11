@@ -6,6 +6,7 @@ set -e
 cd "$(dirname "$0")/.."
 PY=.venv/bin/python
 mkdir -p kind/data
+$PY -c "import fcntl; f = open('kind/data/.daily.lock', 'a'); fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)" || { echo "KIND 일일 작업이 진행 중입니다(.daily.lock) — 끝난 뒤 다시 실행하세요." >&2; exit 1; }
 touch kind/data/.rebuilding   # run_kind_daily.py 가 재생성 중에는 건너뛴다
 trap 'rm -f kind/data/.rebuilding' EXIT
 rm -f kind/data/kind.db kind/data/kind.db-wal kind/data/kind.db-shm
@@ -31,6 +32,15 @@ done
 # 종목 확장: 시총 상위 300 유니버스 등록 + 날짜 단위 이벤트 스캔(이벤트 유형만 서버 필터, 유가증권시장) → 유니버스 종목 공시 적재
 $PY kind/scan_range.py --register
 $PY kind/scan_range.py --from 2025-07-01 --to "$TO"
+# 스캔에서 새로 잡힌 분할·합병 결정의 신설·소멸 법인을 한 번 더 등록·수집(멱등) — 일일 작업 run_kind_daily.py 와 같은 순서.
+# 앞의 등록은 유니버스 등록(코드→이름 해석 캐시가 없는 신설법인 코드)을 위해 그대로 둔다.
+# 인적분할 신설법인: 결정 공시에서 이름을 읽어 KIND 해석 → 워치리스트 추가 → 그 법인의 공시(재상장 등) 수집
+NEWCO=$($PY kind/m2_split.py --register | tail -1)
+[ -n "$NEWCO" ] && $PY kind/collector.py --from 2025-01-01 --to "$TO" --watch phase1 --only "$NEWCO"
+# 합병 소멸회사(상장사, 상장폐지 포함): 결정 공시에서 이름 해석 → 워치리스트(merger_extinct) → 거래정지·상장폐지 공시 수집
+for x in $($PY kind/m2_corp_actions.py --register-extinct | tail -1 | tr ',' ' '); do
+  $PY kind/collector.py --from "${x#*:}" --to "$TO" --watch merger_extinct --only "${x%%:*}" --body-re '합병|상장폐지|매매거래정지'
+done
 # 자기주식 매매 체결내역(유가증권시장, 하루 1건 전 종목) → 취득 프로그램의 실제 진행(누적 체결금액)·예상 소진일
 $PY kind/buyback_exec.py --from 2026-06-01 --to "$TO"
 # 누락된 최초 결정 공시를 해당 종목에 한해 하루 조회로 보충(스캔 시작일 앞의 원본) + 종목 상태 표지(관리종목)

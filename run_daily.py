@@ -8,7 +8,7 @@
   .venv/bin/python run_daily.py --force           # 이미 발송한 날도 다시 실행
   --no-kind / --with-kind                         # KIND 일일 작업 끄기 / --date 재실행에서도 켜기(기본: --date 없는 정규 실행에서만)
 
-종료 규칙: 휴장일·통과 공시 0건 → 조용히 종료(메일 없음). 실패 → 알림 메일 + macOS 알림.
+종료 규칙: 휴장일 → 조용히 종료. 영업일에는 항상 한 통(통과 0건이면 KIND 요약만). 실패 → 알림 메일 + macOS 알림.
 재시도: DART 수집 10분×최대 6회, 분류 60초×3회, 에이전트(회사 단위) 1회 재실행, 메일 60초×3회.
 상한: 에이전트 투입 공시 최대 30건(분류 라벨 PASS > PASS_CHECK > HOLD, 같은 라벨은 noul 점수 내림차순).
 """
@@ -188,19 +188,23 @@ def main():
         log(f"{day} 이미 발송함 — 종료(--force 로 재실행)")
         return
     log(f"=== 시작: 기준일 {date} ===")
+    if base > cal.COVERED_THROUGH:
+        log(f"경고: dart_calendar.HOLIDAYS 가 {cal.COVERED_THROUGH} 까지만 있음 — 휴장일을 추가할 것")
     t0 = time.time()
 
+    # KIND 일일 작업(백그라운드, 실패해도 DART 계속)을 DART 수집보다 먼저 시작 — DART 수집이 실패해도 KIND 는 진행된다.
+    # 정규 실행에서만: 과거 날짜 재실행(--date)은 KIND DB 를 과거 기준으로 되돌리므로 --with-kind 를 줘야 한다
+    kind_h = kind_hook.start(date) if ("--no-kind" not in a and ("--date" not in a or "--with-kind" in a)) else {"proc": None, "asof": date, "t0": time.time(), "disabled": True}
     prep = prep_with_retry(day)
     log(f"prep 완료: 전체 {prep['total']} / 판단 대상 {len(prep['review'])}")
-    # KIND 일일 작업(백그라운드, 실패해도 DART 계속). 정규 실행에서만 — 과거 날짜 재실행(--date)은 KIND DB 를 과거 기준으로 되돌리므로 --with-kind 를 줘야 한다
-    kind_h = kind_hook.start(date) if ("--no-kind" not in a and ("--date" not in a or "--with-kind" in a)) else {"proc": None, "asof": date, "t0": time.time(), "disabled": True}
     triage_with_retry(day)
     judg = json.load(open(f"trial_case/{day}/judgments.json", encoding="utf-8"))
     passed = [j for j in judg if j["proceed"]]
     if not passed:
-        log("통과 공시 0건 — 메일 없이 종료")
-        kr = kind_hook.collect(kind_h, deadline=1200)   # KIND 리포트는 메일과 무관하게 생성되도록 끝까지 기다린다
-        log(f"KIND: ok={kr['ok']} {kr['note']}")
+        log("통과 공시 0건 — DART 번들 없음, KIND 요약으로 간단한 메일 발송")
+        kr = kind_hook.collect(kind_h, deadline=1200)
+        log(f"KIND: ok={kr['ok']} summary={kr['summary_path']} {kr['note']}")
+        deliver(day, date, [kr["note"]] if kr["note"] else [], kr, a, t0, sent_mark, dart_none=True)
         return
     rc, out = sh([PY, "dart_day_pipeline.py", "stage", day, str(BATCH)])
     if rc != 0:
@@ -238,12 +242,25 @@ def main():
     log(f"KIND: ok={kr['ok']} summary={kr['summary_path']} {kr['note']}")
     if kr["note"]:
         notes.append(kr["note"])
+    deliver(day, date, notes, kr, a, t0, sent_mark)
+
+
+def deliver(day, date, notes, kr, a, t0, sent_mark, dart_none=False):
+    """하나의 메일: DART 번들(있으면) + KIND 섹션/첨부(있으면). 영업일마다 최소 1통 — DART 통과 0건이어도 KIND 요약·'없음' 안내가 나간다."""
     if "--no-send" in a:
         log("--no-send: 메일 생략")
         return
     for n in range(1, 4):
         cmd = [PY, "send_report.py", f"trial_case/{day}", date, "--send"] + (["--note", " / ".join(notes)] if notes else []) \
-            + (["--kind-json", kr["summary_path"]] if kr["summary_path"] and kr["ok"] and n == 1 else [])   # 첫 시도가 실패하면 KIND 없이 재시도(KIND 쪽 문제가 DART 메일을 막지 않게)
+            + (["--no-dart"] if dart_none else [])
+        if kr.get("disabled"):
+            pass   # KIND 비활성(--date 재실행 등): KIND 섹션 없음
+        elif kr["summary_path"] and kr["ok"] and n == 1:
+            cmd += ["--kind-json", kr["summary_path"]]
+        elif kr["ok"]:   # 첫 발송 시도가 실패해 KIND 를 빼고 재시도(KIND 쪽 문제가 DART 메일을 막지 않게)
+            cmd += ["--kind-note", "KIND 섹션은 메일 재시도 때문에 이번 메일에서 생략했습니다."]
+        else:
+            cmd += ["--kind-note", "오늘은 KIND 집계를 받지 못했습니다(비고 참고)."]
         rc, out = sh(cmd)
         if rc == 0:
             open(sent_mark, "w").write(dt.datetime.now().isoformat())

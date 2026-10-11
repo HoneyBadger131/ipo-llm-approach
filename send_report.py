@@ -3,6 +3,7 @@
 사용법:
   python send_report.py <리포트 폴더> <YYYY-MM-DD>            # 드라이런: 발송 없이 .eml 파일만 만든다
   python send_report.py <리포트 폴더> <YYYY-MM-DD> --send     # 실제 발송
+  --kind-json <kind_daily_*.json>   # KIND 섹션·첨부 추가.  번들이 없으면(DART 통과 0건) KIND 요약만 보낸다.  --test: 제목 앞에 [테스트]  --no-dart: 폴더의 DART 산출물을 무시(통과 0건인 날)  --kind-note "문구": KIND 섹션 대신 안내 한 줄
   python send_report.py <폴더> <날짜> --note "비고 문구" --send   # 본문 하단에 노란 비고 박스
   python send_report.py --alert "제목" "본문" --send          # 실패 알림 메일
 
@@ -54,14 +55,20 @@ def kind_section(kind_json):
     except Exception:  # noqa: BLE001
         return ""
     if not body:
-        return ""
+        return ('<h3 style="margin:22px 0 2px;padding-top:10px;border-top:2px solid #e5e7eb">KIND · 지수 주식수 변동</h3>'
+                '<p style="margin:4px 0;color:#6b7280;font-size:13px">직전 영업일 신규 이벤트와 5영업일 내 일정이 없습니다.</p>')
     return ('<h3 style="margin:22px 0 2px;padding-top:10px;border-top:2px solid #e5e7eb">KIND · 지수 주식수 변동</h3>'
             f'<p style="margin:0;color:#6b7280;font-size:12px">상장주식수 기준(유동비율 미적용), 시총 변동은 종가({sm.get("price_date")}) 기준 추정 · 상세는 첨부 KIND 리포트</p>{body}')
 
 
-def body_html(folder, date, note="", kind_json=None):
+def kind_note(text):
+    return ('<h3 style="margin:22px 0 2px;padding-top:10px;border-top:2px solid #e5e7eb">KIND · 지수 주식수 변동</h3>'
+            f'<p style="margin:4px 0;color:#6b7280;font-size:13px">{html.escape(text)}</p>')
+
+
+def body_html(folder, date, note="", kind_json=None, kind_text=None, no_dart=False):
     rows = []
-    for f in glob.glob(os.path.join(folder, "reports", "*.json")):
+    for f in ([] if no_dart else glob.glob(os.path.join(folder, "reports", "*.json"))):
         rows.append(json.load(open(f, encoding="utf-8")))
     rows.sort(key=lambda r: (-r.get("importance", 0), -r.get("importance_score", 0)))
     tr = ""
@@ -78,26 +85,31 @@ def body_html(folder, date, note="", kind_json=None):
     return (
         '<div style="font-family:-apple-system,\'Apple SD Gothic Neo\',\'Malgun Gothic\',sans-serif;max-width:680px;margin:0 auto;color:#111827">'
         f'<h2 style="margin:0 0 4px">AI Agent 공시 브리핑 · {date}</h2>'
-        '<p style="margin:0 0 14px;color:#6b7280;font-size:13px">중요도 순 · 상세 리포트는 첨부(HTML·PDF)를 확인하세요.</p>'
-        f'<table style="border-collapse:collapse;width:100%">{tr}</table>'
-        + (kind_section(kind_json) if kind_json else "")
+        + ('<p style="margin:0 0 14px;color:#6b7280;font-size:13px">중요도 순 · 상세 리포트는 첨부(HTML·PDF)를 확인하세요.</p>' if rows else
+         ('<p style="margin:0 0 14px;color:#6b7280;font-size:13px">상세는 첨부 KIND 리포트(HTML)를 확인하세요.</p>' if kind_json else ""))
+        + (f'<table style="border-collapse:collapse;width:100%">{tr}</table>' if rows else
+           '<p style="margin:8px 0;padding:10px;background:#f3f4f6;color:#374151;font-size:13px">DART: 오늘은 중요 공시(심화 분석 대상)가 없습니다.</p>')
+        + ((kind_section(kind_json) or kind_note("KIND 요약을 읽지 못했습니다.")) if kind_json else (kind_note(kind_text) if kind_text else ""))
         + (f'<p style="margin-top:12px;padding:8px 10px;background:#fef3c7;color:#92400e;font-size:12px">{html.escape(note)}</p>' if note else "")
         +
         '<p style="margin-top:16px;color:#9ca3af;font-size:11px">DART 공시와 공개 자료 기반 자동 생성 문서이며 투자 권유가 아닙니다.</p></div>'
     )
 
 
-def build(folder, date, note="", kind_json=None):
+def build(folder, date, note="", kind_json=None, test=False, kind_text=None, no_dart=False):
     load_env()
     user = os.environ.get("GMAIL_USER", "")
     msg = EmailMessage()
-    msg["Subject"] = f"[AI Agent 공시 브리핑] {date}"
+    has_bundle = (not no_dart) and os.path.exists(os.path.join(folder, f"bundle_{date}.pdf"))
+    msg["Subject"] = ("[테스트] " if test else "") + f"[AI Agent 공시 브리핑] {date}" + ("" if has_bundle else " · DART 중요 공시 없음")
     msg["From"] = user
     msg["To"] = os.environ.get("MAIL_TO", user)
     msg.set_content(f"공시 브리프 {date} — HTML 메일을 지원하는 클라이언트에서 확인하세요. 첨부: 통합 리포트(HTML·PDF).")
-    msg.add_alternative(body_html(folder, date, note, kind_json), subtype="html")
+    msg.add_alternative(body_html(folder, date, note, kind_json, kind_text, no_dart), subtype="html")
     for ext, mt in (("html", "text/html"), ("pdf", "application/pdf")):
         p = os.path.join(folder, f"bundle_{date}.{ext}")
+        if no_dart or not os.path.exists(p):   # DART 통과 0건인 날은 번들이 없다 — KIND 요약만
+            continue
         maintype, subtype = mt.split("/")
         msg.add_attachment(open(p, "rb").read(), maintype=maintype, subtype=subtype, filename=os.path.basename(p))
     if kind_json:  # KIND 리포트(단일 HTML) 별도 첨부 — 없으면 생략
@@ -128,6 +140,14 @@ def main():
         i = a.index("--note")
         note = a[i + 1]
         del a[i:i + 2]
+    test = "--test" in a
+    no_dart = "--no-dart" in a
+    a = [x for x in a if x not in ("--test", "--no-dart")]
+    kind_text = None
+    if "--kind-note" in a:
+        i = a.index("--kind-note")
+        kind_text = a[i + 1]
+        del a[i:i + 2]
     kind_json = None
     if "--kind-json" in a:
         i = a.index("--kind-json")
@@ -140,7 +160,7 @@ def main():
         msg["To"] = os.environ.get("MAIL_TO", msg["From"])
         msg.set_content(a[2])
     else:
-        msg = build(a[0], a[1], note, kind_json)
+        msg = build(a[0], a[1], note, kind_json, test, kind_text, no_dart)
     if send:
         deliver(msg)
         print("발송 완료 →", msg["To"])

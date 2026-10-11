@@ -40,8 +40,7 @@ dart_watchlist_filings.py  종목 리스트 로더(load_watchlist) + 단독 실�
 dart_rules.py              공시명 규칙 필터: exclude / separate / review
 dart_body.py               document.xml(zip) 다운로드 → text body 정리
 dart_prep_day.py           하루치 준비 단계 일괄(조회·분류·본문 저장·digest 출력)
-dart_trial_case.py         (초기 시험용) 종목 여러 개의 특정일 공시 분류·본문 저장
-dart_company_filings.py, dart_hd_test.py, dart_filings_20260910.csv   (초기 시험용 산출물/스크립트)
+dep/                       더 이상 쓰지 않는 파일(초기 시험 스크립트·모델 비교 산출물·시안) — 목록과 복원법은 dep/README.md
 report_v2/
   AGENT_SPEC.md            에이전트 작성 지침(확정본) ← 심화 분석의 단일 기준
   render.js                대시보드 JSON → HTML/PDF(A4 1쪽) + MD 생성
@@ -200,6 +199,6 @@ Jev 하이브리드 분류 단계의 현황·규칙·결정 기록은 `docs/DISC
 `node report_v2/render_bundle.js <YYYYMMDD>` → `trial_case/<날짜>/bundle_<YYYY-MM-DD>.pdf`(브리프 1~2쪽 + 공시별 1쪽 리포트, 카드 클릭·"↑ 브리프" 버튼·북마크) 와 `bundle_<YYYY-MM-DD>.html`(오프라인 단일 파일: 요약 → 상세 → TOP). 선행: `dart_day_pipeline.py brief` 까지 완료. 구현: `report_v2/render_bundle.js`, `merge_pdf.py`(pypdf), `render_summary.js`(모듈화), `render.js`(html 내보내기, `MD_DIR` 환경변수로 MD 출력 위치 변경).
 기준일 구간: `dart_calendar.py` (직전 영업일 다음 날~기준일, 주말·휴일 공시 포함).
 
-안내 페이지(전체 흐름 소개): `docs/guide/front_page.html`·`.pdf`. 금융용 레이아웃 시안: `docs/design/finance_layout_sample.*` (`report_v2/render_fin_sample.js`). 심화 분석 기본 모델 Sonnet. 번들의 상세 페이지 순서는 전체 중요도순, NOTIFY는 브리프 상단 알림 띠(`triage.json` 기준).
+안내 페이지(전체 흐름 소개): `docs/guide/front_page.html`·`.pdf`. 금융용 레이아웃 시안: `dep/samples/design/finance_layout_sample.*` (`dep/samples/render_fin_sample.js`). 심화 분석 기본 모델 Sonnet. 번들의 상세 페이지 순서는 전체 중요도순, NOTIFY는 브리프 상단 알림 띠(`triage.json` 기준).
 
 **2026-10-08 기본 지침 개정**: `report_v2/AGENT_SPEC.md`가 최근 3년 실적(매출·영업이익 막대)·가치평가·컨센서스·뉴스를 모두 넣는 기본 구성이다(최소 구성은 `AGENT_SPEC_V3_basic.md`). 뉴스는 기준일 30일 이내, 장래사업ㆍ경영계획(공정공시)은 비판적 서술, 매출 5조 이하는 억원 단위, 컨센서스 `meta`에 최근 4주 업데이트 횟수. 비교 결과: `docs/비교_현재안_vs_풀버전.md`.

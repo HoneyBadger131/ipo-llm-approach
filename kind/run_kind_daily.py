@@ -88,10 +88,11 @@ def main():
     st = {"ok": True, "asof": asof, "requested": tag, "offline": offline, "steps": [], "warnings": []}
     blocked = {"v": False}
 
-    def step(name, args, network=True, timeout=STEP_CAP):
+    def step(name, args, network=True, timeout=STEP_CAP, reserve=0):
+        """reserve: 이 단계는 남은 예산이 reserve 초 이하면 건너뛴다(뒤의 파싱·리포트 몫을 남긴다)."""
         left = budget - (time.time() - t0)
         rec = {"name": name}
-        if left <= 5:
+        if left <= 5 + reserve:
             rec.update(rc=None, skipped="시간 상한")
             st["warnings"].append(f"{name}: 시간 상한({budget}초)으로 건너뜀")
         elif network and (offline or blocked["v"]):
@@ -101,7 +102,8 @@ def main():
             try:
                 env = dict(os.environ, KIND_OFFLINE="1") if (offline or blocked["v"]) else dict(os.environ)  # 차단 후엔 캐시만(재생성과 같은 경로)
                 r = subprocess.run([PY] + args, cwd=ROOT, env=env, capture_output=True, text=True, timeout=min(timeout, left))
-                rec.update(rc=r.returncode, secs=round(time.time() - s, 1), tail=(r.stdout + r.stderr).strip()[-300:])
+                rec.update(rc=r.returncode, secs=round(time.time() - s, 1), tail=(r.stdout + r.stderr).strip()[-300:],
+                           last=(r.stdout.strip().splitlines() or [""])[-1])
                 if r.returncode != 0:
                     st["warnings"].append(f"{name}: 실패 rc={r.returncode}")
                     if "KindBlocked" in r.stderr:
@@ -124,6 +126,23 @@ def main():
             con.commit()
         else:
             break  # 이후 날짜를 건너뛰고 last_scan_date 를 올리면 구멍이 생긴다 — 다음 실행이 이어 받는다
+    # 1b) 자동 등록: 인적분할 신설법인 · 합병 소멸회사(상장사) → 워치리스트 등록 + 그 법인 공시 수집(재상장·상장폐지 등). 마지막 수집일을 meta 에 두고 이어 받는다
+    def collect_new(label, reg_args, watch, body_re=None, dated=False):
+        r = step(label, reg_args, network=True)
+        if r.get("rc") != 0:
+            return
+        for item in [x for x in (r.get("last") or "").split(",") if x]:
+            code, _, d0 = item.partition(":")
+            if not (code.isalnum() and len(code) == 6):   # 신규 단축코드는 영문 섞임(0126Z0)
+                continue
+            m = con.execute("SELECT value FROM meta WHERE key=?", ("collect:" + code,)).fetchone()
+            frm = (dt.date.fromisoformat(m[0]) - dt.timedelta(days=3)).isoformat() if m else (d0 if dated and d0 else "2025-01-01")
+            args = ["kind/collector.py", "--from", frm, "--to", asof, "--watch", watch, "--only", code] + (["--body-re", body_re] if body_re else [])
+            if step(f"collect {code}", args, reserve=360).get("rc") == 0:   # 파싱·리포트 몫(360초)은 남긴다
+                con.execute("INSERT INTO meta(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value", ("collect:" + code, asof))
+                con.commit()
+    collect_new("register_split", ["kind/m2_split.py", "--register"], "phase1")
+    collect_new("register_extinct", ["kind/m2_corp_actions.py", "--register-extinct"], "merger_extinct", "합병|상장폐지|매매거래정지", dated=True)
     be = con.execute("SELECT max(day) FROM buyback_exec").fetchone()[0] or "2026-06-01"
     step("buyback_exec", ["kind/buyback_exec.py", "--from", be, "--to", asof])
     step("backfill_orphans", ["kind/backfill_orphans.py"])

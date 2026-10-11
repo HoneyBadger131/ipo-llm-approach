@@ -39,8 +39,8 @@
 5. 상위 이벤트의 '왜'·뉴스·리스크·메모를 `kind/news.json` 에 사람이 추가(기준일 이하 게재 기사, 날짜·매체 확인).
 6. 사용자 확인 후 커밋·푸시.
 
-**회귀 도구 `kind/regress.py`**(리팩터링 전후 비교의 정본): `snap <이름> [DB경로]` 로 전 테이블 내용 해시(시각 컬럼·event_date id 제외)를 `kind/data/regress/<이름>.json` 에 저장, `diff <이름>` 으로 현재 DB 와 비교(다른 행 표시, 종료코드 1), `html <파일>` 은 `generated` 시각을 뺀 HTML 해시. 기준선 `base_db`(= 2026-10-11 오프라인 재생성 DB)는 `data/` 에 있어 새 환경에선 없다 — 첫 재생성 직후 `snap base_db` 로 만든 뒤 리팩터링 후 `diff base_db`. 2026-10-11 기준 HTML 해시(기준일 10-08) `11431d2e9fd1ee2c`.
-**회귀 기준(2026-10-11, 오프라인 재생성)**: filing 4,348 · share_ledger 436(활성 434) · event 538 · event_date 1,615 · event_filing 924 · designation 72 · index_share_adj 31 · etf_unit_change 54,454 · security 1,223 · status_flag 1 · buyback_exec 3,780행(88거래일) · review/failed 1(키움증권 주식의종류변경) · FK/무결성 OK · 원장 체인 불일치 0 · M2 모듈 반복 실행 시 행 수 불변. 워치리스트: etf_core 8 · phase1 15 · k200_pilot 6 · merger_extinct 3 · **universe 291**.
+**회귀 도구 `kind/regress.py`**(리팩터링 전후 비교의 정본): `snap <이름> [DB경로]` 로 전 테이블 내용 해시(시각 컬럼·event_date/designation id 제외)를 `kind/data/regress/<이름>.json` 에 저장, `diff <이름>` 으로 현재 DB 와 비교(다른 행 표시, 종료코드 1), `html <파일>` 은 `generated` 시각을 뺀 HTML 해시. 기준선은 `data/` 에 있어 새 환경엔 없다 — 첫 재생성 직후 `snap base2` 로 만든 뒤 변경 후 `diff base2`. **현재 기준선 `base2`**(2026-10-11, 신설·소멸 법인 자동 등록 반영 재생성) HTML 해시(기준일 10-08) `1d7832848262582d`. 주의: 보조 키(`security_id`·`event_id`)는 등록 순서에 따라 달라져 *증분(일일 작업) DB 와 재생성 DB 는 내용이 같아도 해시가 다르다* — 비교는 같은 경로끼리(재생성↔재생성).
+**회귀 기준(2026-10-11, 재생성 base2)**: filing 4,377 · share_ledger 436(활성 434) · event 542 · event_date 1,625 · event_filing 932 · designation 76 · index_share_adj 31 · etf_unit_change 54,454 · security 1,225 · status_flag 1 · buyback_exec 3,780행(88거래일) · review/failed 1(키움증권 주식의종류변경) · FK/무결성 OK · 원장 체인 불일치 0 · M2 모듈 반복 실행 시 행 수 불변. 워치리스트: etf_core 8 · phase1 15 · k200_pilot 6 · merger_extinct **6**(신규 대한항공←아시아나·HD현대중공업←HD현대미포·한일시멘트←한일현대시멘트 소멸회사) · **universe 291**. *이전 재생성은 합병 소멸회사 등록이 유니버스 스캔보다 앞서 일부를 놓쳤다 → 등록 블록을 스캔 뒤에 한 번 더 둠.*
 `kind/data/`(DB·캐시·본문, 약 200MB)는 git 제외. 처음 클론한 환경은 온라인 재생성 1회 필요 — **이때 요청이 많으니 천천히**(5절).
 
 ## 4. 설계 대원칙 (원칙만 지킨다)
@@ -118,3 +118,8 @@
 **남은 과제**: 오프라인 캐시 키가 '오늘'에 묶임(`m2_cbbw` 신고사항 조회) → 기준일 고정 옵션 · 신규 종목 상장주식수 시드 · 법인별 소각 간격 · 합산 소각 변경상장 복잡 사례 · 유/무상감자·물적분할·주식병합·M4 대량매매 · 카카오 분할 신규칙 · DART 모듈 통합(2차, 아래).
 **DART 통합 1단계(느슨한 결합) 구현 완료·미푸시** — `kind/run_kind_daily.py`, `kind_hook.py`, `run_daily.py`/`send_report.py` 연결, 가동 테스트 결과와 운영 전 확인 사항은 [`KIND_DART_INTEGRATION.md`](KIND_DART_INTEGRATION.md) 7절. 2단계(DART 대시보드에 KIND 지수 영향 칩·에이전트 입력 주입)는 미착수.
 **DART 통합 시 참고**: `kospi_list_clean.md`(DART 명단 사본)·`prices_*.csv`·`exclude.txt` 가 유니버스의 단일 소스이므로 DART 쪽 명단과 공유할 지점은 `kind/universe/`. 공시 PK(`filing_id` = `KIND:`/`DART:` 접두)와 `security_id` 대리키는 이미 DART 공시를 받을 수 있게 설계돼 있다(원칙 2·3).
+
+## 11. 통합 1.5단계(2026-10-11, 미푸시→푸시 예정)와 다음 세션 메모
+**추가 완료**: 메일 통합(영업일마다 한 통: DART 번들 + KIND 섹션·첨부, DART 통과 0건이면 'DART 중요 공시 없음' + KIND 요약만 — 실제 테스트 발송 2통 확인) · 신설·소멸 법인 **자동 등록·수집**(`run_kind_daily.py` collect_new, 마지막 수집일 `meta.collect:<코드>`; 신규 단축코드는 영문 포함 `0126Z0`) · KIND 를 DART prep **이전**에 시작 · `rebuild_all.sh` 는 일일 작업 중(`.daily.lock`)이면 거부 · `dart_calendar` 2027 휴장일 + 범위 밖 경고 · 구 버전 파일 `dep/` 정리(`dep/README.md`).
+**종가(prices_*.csv) 자동 갱신 방안**(미구현 — 사용자 환경에서 MCP 인증 확인 후): ① *권장* `run_daily.py` 가 이미 `claude -p`(헤드리스, 허용 도구에 `mcp__claude_ai_OpenProxyMCP` 포함)로 에이전트를 돌리므로, 최신 prices 가 기준일보다 5일 넘게 낡았을 때 같은 방식으로 한 줄 프롬프트(“`trading_data(scope=universe, universe='코스피 시총 상위 300', format=md)` 결과를 `kind/universe/save_prices.py` 표준입력으로 저장”) 실행 — 모델 Haiku 로 충분, 검증은 새 파일 행수 ≥ 290. ② KRX 정보데이터시스템 직접 호출은 약관·차단 위험으로 비권장. 낡으면 지금도 비고 경고가 붙는다.
+**다음 세션 (사용자 계획)**: ⓐ 액면분할 등 세부 이벤트 보강 — 가온전선 건 포함 ⓑ **ETF 설정·해지(`etf_unit_change`, 대표 8종 54,454행)에 따른 영향도**를 KIND 인덱스 리포트에 통합. 그 밖의 남은 과제는 10절.

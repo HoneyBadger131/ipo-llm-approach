@@ -211,8 +211,14 @@ def _list_etf_filings(code, name, frm, to, page_size=100, max_pages=50):
     return res
 
 
-def resolve_name(name):
-    return _cached("resolve", {"name": name, "to": "2000-01-01"}, lambda: _resolve_name(name))
+def resolve_name(name, refresh=False):
+    """종목명 → KIND 종목 정보. 영구 캐시(상장 전 조회가 빈 결과로 고정되지 않도록 refresh=True 로 다시 받아 덮어쓸 수 있다; OFFLINE 이면 무시)."""
+    key = {"name": name, "to": "2000-01-01"}
+    if refresh and not OFFLINE:
+        rows = _resolve_name(name)
+        _json.dump({"at": time.time(), "to": key["to"], "rows": rows}, open(_cache_path("resolve", key), "w", encoding="utf-8"), ensure_ascii=False)
+        return rows
+    return _cached("resolve", key, lambda: _resolve_name(name))
 
 
 def _resolve_name(name):
