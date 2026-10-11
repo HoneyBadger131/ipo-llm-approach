@@ -21,7 +21,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
 import buyback
 import index_shares
-import m2_report as R
+import common
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TYPE_KR = {"PAID_CAPITAL_INCREASE": "유상증자", "TREASURY_CANCELLATION": "자기주식 소각", "CONVERTIBLE_ISSUE": "CB/BW", "CORPORATE_SPLIT": "인적분할",
@@ -182,7 +182,7 @@ def schedule(con, e, slots, asof):
             continue
         txt = date[5:].replace("-", "/") + (" ~ " + end[5:].replace("-", "/") if end and end != date else "")
         rows.append({"label": label, "sort": date, "date": f"{date[:4]}/{txt}" if date[:4] != asof[:4] or True else txt, "est": est, "key": role in SCHED_KEY,
-                     "past": (end or date) <= asof, "dday": R.dday(con, asof, date if date > asof else (end or date)) if (end or date) > asof else ""})
+                     "past": (end or date) <= asof, "dday": common.dday(con, asof, date if date > asof else (end or date)) if (end or date) > asof else ""})
     if t == "TREASURY_CANCELLATION" and "CHANGE_LISTING" not in slots:
         rows.append({"label": "소각일 → 변경상장 = 지수 주식수 감소", "sort": "9999", "date": "미정", "est": 0, "key": True, "past": False, "dday": ""})
     rows.sort(key=lambda r: r["sort"])
@@ -252,7 +252,7 @@ def build(con, asof):
         anchor = ex or lst_d or idate
         applied = bool(idate and idate <= asof)
         base.update({"delta": delta, "date": idate, "est": (ix or {}).get("est"), "applied": applied, "price": price, "mc": mc, "mc_txt": won(mc) if mc is not None else None,
-                     "dday": R.dday(con, asof, idate) if idate else None, "pct": round(delta / listed * 100, 2) if (delta is not None and listed) else None,
+                     "dday": common.dday(con, asof, idate) if idate else None, "pct": round(delta / listed * 100, 2) if (delta is not None and listed) else None,
                      "delta_txt": sgn(delta) if delta is not None else None, "listed": listed, "anchor": anchor})
         if confirmed and anchor:
             parts = []
@@ -263,12 +263,12 @@ def build(con, asof):
             else:
                 parts.append(f"{'변경상장' if e['event_type'] in ('PAR_SPLIT',) else '상장'} {md(lst_d)}{'' if not lst[1] else ' (예정)'}")
             base["right"] = " · ".join(parts)
-            base["dd"] = R.dday(con, asof, anchor)
+            base["dd"] = common.dday(con, asof, anchor)
             t1.append(base)
         else:
             est = (d.get("estimate") or {}).get("mid") if e["event_type"] == "TREASURY_CANCELLATION" else lst_d
             base["right"] = f"변경상장 예정 {md(est)} (추정)" if est else "일정 미정"
-            base["dd"] = R.dday(con, asof, est) if est else ""
+            base["dd"] = common.dday(con, asof, est) if est else ""
             base["anchor"] = est or "9999"
             t2.append(base)
     t1.sort(key=lambda x: x["anchor"] or "9999")   # 앵커(권리락일 > 신주 상장일) 가장 오래된 것이 위
@@ -312,7 +312,7 @@ def build(con, asof):
                    "proj_end": pr.get("proj_end"), "pace_shares": pr.get("pace_shares"), "acq_shares": pr.get("acq_shares"), "plan_shares_notice": pr.get("plan_shares"),
                    "days_left": (dt.date.fromisoformat(end_eff) - asof_d).days, "plan_end": b["end"], "note": nw.get("note"), "news": nw.get("news", []), "ctx": pr.get("ctx"),
                    "issuer": b["name"], "code": code, "flag": flags.get(b["security_id"]), "kind": b["kind"], "amount": b["amount"], "amount_txt": won(b["amount"])[1:] if b["amount"] else "-",
-                   "shares": b["shares"], "period": f"{b['start']} ~ {b['end']}", "burn": b["burn"], "purpose": b["purpose"], "dday_end": R.dday(con, asof, b["end"]),
+                   "shares": b["shares"], "period": f"{b['start']} ~ {b['end']}", "burn": b["burn"], "purpose": b["purpose"], "dday_end": common.dday(con, asof, b["end"]),
                    "link": {"url": KIND_URL + b["acpt_no"], "label": f"KIND 공시 원문 — {b['title']} ({b['filed_date']})"}})
     mx = max((abs(x["mc"] or 0) for x in t1 + t2), default=1) or 1
     for x in t1 + t2:

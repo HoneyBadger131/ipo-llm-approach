@@ -11,3 +11,6 @@ state/
 
 # KIND 축 산출물(재생성 가능)
 kind/data/
+
+# KIND 마크다운 리포트는 폐지(HTML 로 대체). 이력은 git 에서 daily_report.py/m2_report.py 로 확인
+kind/reports/*.md
