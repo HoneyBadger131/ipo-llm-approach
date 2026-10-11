@@ -55,7 +55,7 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh 2025-01-01 2026-10-10   # 캐시만으로 �
 **리포트**
 | 파일 | 역할 |
 |---|---|
-| `html_report.py`, `html_report_template.html` | HTML 4탭 리포트(데이터 구성 + 화면) |
+| `html_report.py`, `html_report_template.html` | HTML 탭 리포트(데이터 구성 + 화면) |
 | `news.json` | 스레드 키별 '왜'·리스크·메모·태그·뉴스(사람이 추가) |
 | `universe/` | `prices_<날짜>.csv`(주간 종가), `save_prices.py`, `bb_quotes.json`(삼성전자·SK하이닉스 일별 시세 — 취득 맥락), `exclude.txt`, `kospi_list_clean.md` |
 
@@ -70,7 +70,7 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh 2025-01-01 2026-10-10   # 캐시만으로 �
 for m in m2_rights_issue m2_cancel m2_cbbw m2_split m2_corp_actions; do .venv/bin/python kind/$m.py; done
 .venv/bin/python kind/buyback_exec.py --from 2026-06-01 --to 2026-10-09  # 자기주식 체결내역 적재(멱등)
 .venv/bin/python kind/buyback_exec.py --show 000660 --from 2026-09-28    # 종목별 일별 체결
-.venv/bin/python kind/buyback.py 2026-10-08                             # 자기주식 취득 진행 목록(실적·예상 소진일)
+.venv/bin/python kind/buyback.py 2026-10-08                             # 자사주 매매 추적 목록(실적·예상 소진일)
 .venv/bin/python kind/index_shares.py 2026-10-08                        # 지수 반영 주식수
 .venv/bin/python kind/universe/save_prices.py < mcp_result.md           # 주간 종가 저장
 ```
