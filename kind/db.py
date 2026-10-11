@@ -3,7 +3,7 @@ import os
 import sqlite3
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(HERE, "data", "kind.db")
+DB_PATH = os.environ.get("KIND_DB") or os.path.join(HERE, "data", "kind.db")  # KIND_DB: 테스트용 DB 복사본 지정
 
 
 def connect(path=DB_PATH):

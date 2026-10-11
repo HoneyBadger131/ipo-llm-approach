@@ -31,7 +31,7 @@
 - `m2_cbbw.py` 의 전환·행사 현황 조회(KIND 신고사항)는 '오늘'이 구간에 들어가 오프라인 재현이 안 된다 → 재생성 후 **온라인으로 `m2_cbbw.py` 한 번** 더(없으면 해당 스레드는 리포트에서 빠진다).
 - 환경: 레포 `.venv`(requests, exchange_calendars, holidays, pypdf), 항상 `.venv/bin/python`. Playwright 는 `node_modules`(리포트 렌더 확인용).
 
-**일일 운영 루틴**
+**일일 운영 루틴** (1~4단계는 `kind/run_kind_daily.py` 로 자동화됨 — DART 일일 실행(`run_daily.py`)이 백그라운드로 호출, 수동 실행: `.venv/bin/python kind/run_kind_daily.py --asof <영업일>`; 설계·테스트는 [`KIND_DART_INTEGRATION.md`](KIND_DART_INTEGRATION.md) 7절)
 1. (주 1회) 종가 갱신(+ 삼성전자·SK하이닉스 일별 시세 `kind/universe/bb_quotes.json` 최근 10거래일 — MCP `trading_data(scope=quote, company=…, as_of=YYYYMMDD)`): MCP `trading_data(scope=universe, universe='코스피 시총 상위 300', format=md)` → 결과를 `kind/universe/save_prices.py` 에 표준입력으로 → `prices_<기준일>.csv` 누적(기록 겸용).
 2. `scan_range.py --from <마지막 스캔일+1> --to <어제>` (하루 ~5콜, 거래일 1일 ≈ 5~10초) → `buyback_exec.py --from <마지막+1> --to <어제>`(자기주식 체결내역, 하루 1건 ≈ 1콜).
 3. `backfill_orphans.py` → `status_flags.py --to <어제>`
@@ -116,4 +116,5 @@
 - `html_report` 분리(`build()`가 데이터, `main()`이 템플릿 치환으로 이미 분리), `m1_parser` 파일 분할, `parse_listing` 표 기반 전환, `rebuild_all.sh` 의 `parse_all.sh` 분리(`--register` 류가 파싱 결과로 수집 대상을 만들어 수집/파싱이 섞여 있음 → 분리하려면 "DB 초기화 여부" 정의가 먼저).
 
 **남은 과제**: 오프라인 캐시 키가 '오늘'에 묶임(`m2_cbbw` 신고사항 조회) → 기준일 고정 옵션 · 신규 종목 상장주식수 시드 · 법인별 소각 간격 · 합산 소각 변경상장 복잡 사례 · 유/무상감자·물적분할·주식병합·M4 대량매매 · 카카오 분할 신규칙 · DART 모듈 통합(2차, 아래).
+**DART 통합 1단계(느슨한 결합) 구현 완료·미푸시** — `kind/run_kind_daily.py`, `kind_hook.py`, `run_daily.py`/`send_report.py` 연결, 가동 테스트 결과와 운영 전 확인 사항은 [`KIND_DART_INTEGRATION.md`](KIND_DART_INTEGRATION.md) 7절. 2단계(DART 대시보드에 KIND 지수 영향 칩·에이전트 입력 주입)는 미착수.
 **DART 통합 시 참고**: `kospi_list_clean.md`(DART 명단 사본)·`prices_*.csv`·`exclude.txt` 가 유니버스의 단일 소스이므로 DART 쪽 명단과 공유할 지점은 `kind/universe/`. 공시 PK(`filing_id` = `KIND:`/`DART:` 접두)와 `security_id` 대리키는 이미 DART 공시를 받을 수 있게 설계돼 있다(원칙 2·3).

@@ -44,6 +44,7 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh 2025-01-01 2026-10-10   # 캐시만으로 �
 | `m2_corp_actions.py` | 무상증자·주식배당·액면분할·합병(+소멸회사 등록 `--register-extinct`) |
 | `buyback.py` | 기준일 현재 취득 중인 자기주식 취득(직접·신탁) + 실적 진행(`progress`)·예상 소진일(`projection`, m2_cancel 이 변경상장 예정 추정에 사용) |
 | `buyback_exec.py` | 자기주식 매매 체결내역(유가증권시장, 시장조치 0326 하루 1건) 적재 → `buyback_exec` 테이블(누적 체결금액·수량) |
+| `run_kind_daily.py` | 일일 작업(스캔→체결내역→보충→상태→파싱→M2→리포트→요약 JSON). `--asof`·`--offline`·`--budget`. 환경변수 `KIND_DB`·`KIND_REPORT_DIR`(테스트용). 루트 `kind_hook.py` 가 `run_daily.py` 에서 호출 |
 | `common.py` | 공용 함수: 달력(`cal`·`tdiff`·`ex_from_record`·`dday`), 슬롯(`set_slot`·`prune`·`link_filing`), 본문(`text_of`·`kdate`·`after`) |
 | `regress.py` | 회귀 스냅샷(전 표 내용 해시·HTML 해시) — 리팩터링 전후 비교 |
 | `index_rules.py`, `index_shares.py` | 지수 규칙표 · 지수 반영 주식수 산출(상장주식수 + 선반영) |

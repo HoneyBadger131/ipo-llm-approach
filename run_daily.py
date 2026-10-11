@@ -6,6 +6,7 @@
   .venv/bin/python run_daily.py --no-send         # 메일만 건너뜀(로그에 사유 기록)
   .venv/bin/python run_daily.py --no-agents       # 스모크: 에이전트 생략(기존 reports 사용)
   .venv/bin/python run_daily.py --force           # 이미 발송한 날도 다시 실행
+  --no-kind / --with-kind                         # KIND 일일 작업 끄기 / --date 재실행에서도 켜기(기본: --date 없는 정규 실행에서만)
 
 종료 규칙: 휴장일·통과 공시 0건 → 조용히 종료(메일 없음). 실패 → 알림 메일 + macOS 알림.
 재시도: DART 수집 10분×최대 6회, 분류 60초×3회, 에이전트(회사 단위) 1회 재실행, 메일 60초×3회.
@@ -23,6 +24,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 os.chdir(ROOT)
 sys.path.insert(0, ROOT)
 import dart_calendar as cal  # noqa: E402
+import kind_hook  # noqa: E402
 
 PY = os.path.join(ROOT, ".venv", "bin", "python")
 CAP = 30                 # 하드캡: 에이전트에 넘기는 공시 수
@@ -190,11 +192,15 @@ def main():
 
     prep = prep_with_retry(day)
     log(f"prep 완료: 전체 {prep['total']} / 판단 대상 {len(prep['review'])}")
+    # KIND 일일 작업(백그라운드, 실패해도 DART 계속). 정규 실행에서만 — 과거 날짜 재실행(--date)은 KIND DB 를 과거 기준으로 되돌리므로 --with-kind 를 줘야 한다
+    kind_h = kind_hook.start(date) if ("--no-kind" not in a and ("--date" not in a or "--with-kind" in a)) else {"proc": None, "asof": date, "t0": time.time(), "disabled": True}
     triage_with_retry(day)
     judg = json.load(open(f"trial_case/{day}/judgments.json", encoding="utf-8"))
     passed = [j for j in judg if j["proceed"]]
     if not passed:
         log("통과 공시 0건 — 메일 없이 종료")
+        kr = kind_hook.collect(kind_h, deadline=1200)   # KIND 리포트는 메일과 무관하게 생성되도록 끝까지 기다린다
+        log(f"KIND: ok={kr['ok']} {kr['note']}")
         return
     rc, out = sh([PY, "dart_day_pipeline.py", "stage", day, str(BATCH)])
     if rc != 0:
@@ -228,11 +234,16 @@ def main():
         notes.append(f"비용 상한({CAP}건)으로 분석 제외 {len(dropped)}건: " + ", ".join(dropped[:8]) + (" 등" if len(dropped) > 8 else ""))
     if failed:
         notes.append("분석 실패(누락): " + ", ".join(failed))
+    kr = kind_hook.collect(kind_h, deadline=1200)
+    log(f"KIND: ok={kr['ok']} summary={kr['summary_path']} {kr['note']}")
+    if kr["note"]:
+        notes.append(kr["note"])
     if "--no-send" in a:
         log("--no-send: 메일 생략")
         return
     for n in range(1, 4):
-        cmd = [PY, "send_report.py", f"trial_case/{day}", date, "--send"] + (["--note", " / ".join(notes)] if notes else [])
+        cmd = [PY, "send_report.py", f"trial_case/{day}", date, "--send"] + (["--note", " / ".join(notes)] if notes else []) \
+            + (["--kind-json", kr["summary_path"]] if kr["summary_path"] and kr["ok"] and n == 1 else [])   # 첫 시도가 실패하면 KIND 없이 재시도(KIND 쪽 문제가 DART 메일을 막지 않게)
         rc, out = sh(cmd)
         if rc == 0:
             open(sent_mark, "w").write(dt.datetime.now().isoformat())

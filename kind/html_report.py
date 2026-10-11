@@ -325,15 +325,21 @@ def build(con, asof):
 TEMPLATE = open(os.path.join(HERE, "html_report_template.html"), encoding="utf-8").read()
 
 
+def write_report(con, asof):
+    """기준일(영업일) 리포트를 만들어 저장한다. 반환 (경로, 데이터). 출력 폴더는 KIND_REPORT_DIR(테스트용)로 바꿀 수 있다."""
+    data = build(con, asof)
+    html = TEMPLATE.replace("__DATA__", json.dumps(data, ensure_ascii=False, default=str).replace("</", "<\\/"))
+    out = os.path.join(os.environ.get("KIND_REPORT_DIR") or os.path.join(db.HERE, "reports"), f"kind_report_{asof}.html")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    open(out, "w", encoding="utf-8").write(html)
+    return out, data
+
+
 def main():
     con = db.connect()
     today = sys.argv[1] if len(sys.argv) > 1 else dt.date.today().isoformat()
     asof = con.execute("SELECT max(cal_date) FROM calendar_day WHERE is_trading=1 AND cal_date<=?", (today,)).fetchone()[0]
-    data = build(con, asof)
-    html = TEMPLATE.replace("__DATA__", json.dumps(data, ensure_ascii=False, default=str).replace("</", "<\\/"))
-    out = os.path.join(db.HERE, "reports", f"kind_report_{asof}.html")
-    os.makedirs(os.path.dirname(out), exist_ok=True)
-    open(out, "w", encoding="utf-8").write(html)
+    out, data = write_report(con, asof)
     print(out, f"확정={len(data['t1'])} 미확정={len(data['t2'])} CB/BW={len(data['cbw'])} 취득진행={len(data['bb'])} 종결={len(data['closed'])} price_date={data['price_date']}")
 
 

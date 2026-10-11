@@ -5,6 +5,9 @@
 set -e
 cd "$(dirname "$0")/.."
 PY=.venv/bin/python
+mkdir -p kind/data
+touch kind/data/.rebuilding   # run_kind_daily.py 가 재생성 중에는 건너뛴다
+trap 'rm -f kind/data/.rebuilding' EXIT
 rm -f kind/data/kind.db kind/data/kind.db-wal kind/data/kind.db-shm
 $PY kind/build_calendar.py
 $PY kind/seed_master.py

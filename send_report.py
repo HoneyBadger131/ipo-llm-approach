@@ -31,7 +31,35 @@ def load_env():
                 os.environ.setdefault(k.strip(), v.strip().strip("'\""))
 
 
-def body_html(folder, date, note=""):
+def kind_section(kind_json):
+    """KIND 지수 주식수 변동 요약(kind/run_kind_daily.py 산출 JSON) → 메일 본문 HTML. 읽기 실패·내용 없음이면 빈 문자열."""
+    try:
+        sm = (json.load(open(kind_json, encoding="utf-8")) or {}).get("summary")
+    except Exception:  # noqa: BLE001 — KIND 쪽 형식 오류가 DART 메일을 막으면 안 된다
+        return ""
+    if not sm:
+        return ""
+    th = 'style="padding:6px 8px;border-bottom:1px solid #e5e7eb;vertical-align:top;font-size:12px"'
+
+    def tbl(title, items):
+        if not items:
+            return ""
+        tr = "".join(
+            f'<tr><td {th}><b>{html.escape(x["issuer"])}</b><br><span style="color:#6b7280">{html.escape(x["type"])}</span></td>'
+            f'<td {th}>{html.escape(x.get("delta_txt") or "")} ({x.get("pct") if x.get("pct") is not None else "-"}%)<br>{html.escape(x.get("mc_txt") or "")}</td>'
+            f'<td {th}>{html.escape(x.get("right") or "")}<br><span style="color:#6b7280">{html.escape(x.get("dd") or "")}</span></td></tr>' for x in items)
+        return f'<h4 style="margin:12px 0 4px;font-size:13px">{title}</h4><table style="border-collapse:collapse;width:100%">{tr}</table>'
+    try:
+        body = tbl("신규 이벤트(직전 영업일 공시)", sm["new"]) + tbl("5영업일 내 일정(권리락·상장·변경상장일 기준)", sm["upcoming"]) + tbl("시총 변동 상위(일정 확정, 미반영)", sm["important"][:5])
+    except Exception:  # noqa: BLE001
+        return ""
+    if not body:
+        return ""
+    return ('<h3 style="margin:22px 0 2px;padding-top:10px;border-top:2px solid #e5e7eb">KIND · 지수 주식수 변동</h3>'
+            f'<p style="margin:0;color:#6b7280;font-size:12px">상장주식수 기준(유동비율 미적용), 시총 변동은 종가({sm.get("price_date")}) 기준 추정 · 상세는 첨부 KIND 리포트</p>{body}')
+
+
+def body_html(folder, date, note="", kind_json=None):
     rows = []
     for f in glob.glob(os.path.join(folder, "reports", "*.json")):
         rows.append(json.load(open(f, encoding="utf-8")))
@@ -52,13 +80,14 @@ def body_html(folder, date, note=""):
         f'<h2 style="margin:0 0 4px">AI Agent 공시 브리핑 · {date}</h2>'
         '<p style="margin:0 0 14px;color:#6b7280;font-size:13px">중요도 순 · 상세 리포트는 첨부(HTML·PDF)를 확인하세요.</p>'
         f'<table style="border-collapse:collapse;width:100%">{tr}</table>'
+        + (kind_section(kind_json) if kind_json else "")
         + (f'<p style="margin-top:12px;padding:8px 10px;background:#fef3c7;color:#92400e;font-size:12px">{html.escape(note)}</p>' if note else "")
         +
         '<p style="margin-top:16px;color:#9ca3af;font-size:11px">DART 공시와 공개 자료 기반 자동 생성 문서이며 투자 권유가 아닙니다.</p></div>'
     )
 
 
-def build(folder, date, note=""):
+def build(folder, date, note="", kind_json=None):
     load_env()
     user = os.environ.get("GMAIL_USER", "")
     msg = EmailMessage()
@@ -66,11 +95,18 @@ def build(folder, date, note=""):
     msg["From"] = user
     msg["To"] = os.environ.get("MAIL_TO", user)
     msg.set_content(f"공시 브리프 {date} — HTML 메일을 지원하는 클라이언트에서 확인하세요. 첨부: 통합 리포트(HTML·PDF).")
-    msg.add_alternative(body_html(folder, date, note), subtype="html")
+    msg.add_alternative(body_html(folder, date, note, kind_json), subtype="html")
     for ext, mt in (("html", "text/html"), ("pdf", "application/pdf")):
         p = os.path.join(folder, f"bundle_{date}.{ext}")
         maintype, subtype = mt.split("/")
         msg.add_attachment(open(p, "rb").read(), maintype=maintype, subtype=subtype, filename=os.path.basename(p))
+    if kind_json:  # KIND 리포트(단일 HTML) 별도 첨부 — 없으면 생략
+        try:
+            kp = (json.load(open(kind_json, encoding="utf-8")) or {}).get("html")
+            if kp and os.path.exists(kp):
+                msg.add_attachment(open(kp, "rb").read(), maintype="text", subtype="html", filename=os.path.basename(kp))
+        except Exception:  # noqa: BLE001
+            pass
     return msg
 
 
@@ -92,6 +128,11 @@ def main():
         i = a.index("--note")
         note = a[i + 1]
         del a[i:i + 2]
+    kind_json = None
+    if "--kind-json" in a:
+        i = a.index("--kind-json")
+        kind_json = a[i + 1]
+        del a[i:i + 2]
     if a and a[0] == "--alert":
         load_env()
         msg = EmailMessage()
@@ -99,7 +140,7 @@ def main():
         msg["To"] = os.environ.get("MAIL_TO", msg["From"])
         msg.set_content(a[2])
     else:
-        msg = build(a[0], a[1], note)
+        msg = build(a[0], a[1], note, kind_json)
     if send:
         deliver(msg)
         print("발송 완료 →", msg["To"])

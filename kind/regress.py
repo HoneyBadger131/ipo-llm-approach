@@ -17,7 +17,7 @@ DETAIL_MAX = 5000  # 이 행 수 이하인 표는 행 문자열을 저장해 어
 
 
 # 생성 순서(autoincrement id)에 따라 달라지는 컬럼은 내용으로 환원해 비교한다(증분 실행 DB vs 재생성 DB 비교용)
-DROP_COLS = {"event_date": {"event_date_id"}}
+DROP_COLS = {"event_date": {"event_date_id"}, "designation": {"designation_id"}}  # m3_parser 는 재실행 시 행을 다시 만든다(id 만 달라짐)
 
 
 def table_rows(con, tb):
