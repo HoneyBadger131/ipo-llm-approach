@@ -19,7 +19,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
-from common import after, cal, ex_from_record, kdate, prune, set_slot, tdiff, text_of
+from common import after, cal, ex_from_record, kdate, link_filing, prune, set_slot, tdiff, text_of
 from m2_decision import num, split_items, toks
 
 NOW = lambda: dt.datetime.now().isoformat(timespec="seconds")
@@ -318,8 +318,7 @@ def replay(con, t, asof):
     prev, first = None, True
     for at, k, f, p in t["items"]:
         fid = f["filing_id"]
-        con.execute("INSERT OR IGNORE INTO event_filing VALUES (?,?,?)", (eid, fid, "initial" if (k == "DECISION" and first) else ("amend" if k == "DECISION" else "follow")))
-        S["sources"].append({"filing": fid, "at": f["filed_at"], "title": f["title"]})
+        link_filing(con, eid, f, k == "DECISION", first, S)
         if k == "DECISION":
             d = p
             if first:

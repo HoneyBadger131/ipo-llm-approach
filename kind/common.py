@@ -80,3 +80,10 @@ def after(vals, label, n=1):
         if v.startswith(label):
             return vals[i + n] if i + n < len(vals) else None
     return None
+
+
+def link_filing(con, eid, f, is_decision, first, S):
+    """스레드 replay 의 공시 한 건을 event_filing 에 연결(결정 최초=initial, 결정 정정=amend, 그 외=follow)하고 S['sources'] 에 근거를 쌓는다."""
+    fid = f["filing_id"]
+    con.execute("INSERT OR IGNORE INTO event_filing VALUES (?,?,?)", (eid, fid, "initial" if (is_decision and first) else ("amend" if is_decision else "follow")))
+    S["sources"].append({"filing": fid, "at": f["filed_at"], "title": f["title"]})

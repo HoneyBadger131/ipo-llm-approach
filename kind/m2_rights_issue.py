@@ -22,7 +22,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
 import kind_client as kc
-from common import cal, ex_from_record, kdate, prune, set_slot, tdiff, text_of
+from common import cal, ex_from_record, kdate, link_filing, prune, set_slot, tdiff, text_of
 from m2_decision import parse_decision, split_items, toks, num
 
 NOW = lambda: dt.datetime.now().isoformat(timespec="seconds")
@@ -234,8 +234,7 @@ def replay(con, t, asof, network=True):
     first_decision = True
     for at, kind, f, p in t["items"]:
         fid = f["filing_id"]
-        con.execute("INSERT OR IGNORE INTO event_filing VALUES (?,?,?)", (eid, fid, "initial" if (kind == "DECISION" and first_decision) else ("amend" if kind == "DECISION" else "follow")))
-        S["sources"].append({"filing": fid, "at": f["filed_at"], "title": f["title"]})
+        link_filing(con, eid, f, kind == "DECISION", first_decision, S)
         if kind == "DECISION":
             d = p
             S["method"], S["track"] = d["method"], track_of(d["method"])
