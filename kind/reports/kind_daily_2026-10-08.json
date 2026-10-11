@@ -1,0 +1,376 @@
+{
+ "ok": true,
+ "asof": "2026-10-08",
+ "requested": "2026-10-08",
+ "offline": false,
+ "steps": [
+  {
+   "name": "register_split",
+   "rc": 0,
+   "secs": 0.7,
+   "tail": "0126Z0,0220W0\n  신설법인 미상장/해석 실패: 카카오에이아이 (KIND:20260821000082)",
+   "last": "0126Z0,0220W0"
+  },
+  {
+   "name": "collect 0126Z0",
+   "rc": 0,
+   "secs": 0.8,
+   "tail": "phase1 삼성에피스홀딩스: 신규 0",
+   "last": "phase1 삼성에피스홀딩스: 신규 0"
+  },
+  {
+   "name": "collect 0220W0",
+   "rc": 0,
+   "secs": 0.7,
+   "tail": "phase1 한화머시너리앤서비스홀딩스: 신규 0",
+   "last": "phase1 한화머시너리앤서비스홀딩스: 신규 0"
+  },
+  {
+   "name": "register_extinct",
+   "rc": 0,
+   "secs": 0.2,
+   "tail": "3000235)\n  소멸회사 KIND 해석 실패: 코오롱이앤피 (KIND:20260413000772)\n  소멸회사 KIND 해석 실패: 코오롱이앤피 (KIND:20251124000333)\n  소멸회사 KIND 해석 실패: 엔에이치엔인베스트먼트파트너스 (KIND:20251023000408)\n  소멸회사 KIND 해석 실패: 피앤오케미칼 (KIND:20250924000285)\n  소멸회사 KIND 해석 실패: 아트랩 (KIND:20250901000928)\n  소멸회사 KIND 해석 실패: 에코스틸 (KIND:20250715000447)",
+   "last": "361610:2026-08-11,020560:2026-04-29,010620:2025-08-12,006390:2025-07-03,042670:2025-06-16,091990:2023-08-02"
+  },
+  {
+   "name": "collect 361610",
+   "rc": 0,
+   "secs": 0.8,
+   "tail": "merger_extinct SK아이이테크놀로지: 신규 0",
+   "last": "merger_extinct SK아이이테크놀로지: 신규 0"
+  },
+  {
+   "name": "collect 020560",
+   "rc": 0,
+   "secs": 1.0,
+   "tail": "merger_extinct 아시아나항공: 신규 0",
+   "last": "merger_extinct 아시아나항공: 신규 0"
+  },
+  {
+   "name": "collect 010620",
+   "rc": 0,
+   "secs": 0.7,
+   "tail": "merger_extinct HD현대미포: 신규 0",
+   "last": "merger_extinct HD현대미포: 신규 0"
+  },
+  {
+   "name": "collect 006390",
+   "rc": 0,
+   "secs": 0.9,
+   "tail": "merger_extinct 한일현대시멘트: 신규 0",
+   "last": "merger_extinct 한일현대시멘트: 신규 0"
+  },
+  {
+   "name": "collect 042670",
+   "rc": 0,
+   "secs": 0.7,
+   "tail": "merger_extinct HD현대인프라코어: 신규 0",
+   "last": "merger_extinct HD현대인프라코어: 신규 0"
+  },
+  {
+   "name": "collect 091990",
+   "rc": 0,
+   "secs": 0.7,
+   "tail": "merger_extinct 셀트리온헬스케어: 신규 0",
+   "last": "merger_extinct 셀트리온헬스케어: 신규 0"
+  },
+  {
+   "name": "buyback_exec",
+   "rc": 0,
+   "secs": 0.5,
+   "tail": "체결내역 신규 0일 · 0행",
+   "last": "체결내역 신규 0일 · 0행"
+  },
+  {
+   "name": "backfill_orphans",
+   "rc": 0,
+   "secs": 0.3,
+   "tail": "보충 LIG디펜스앤에어로스페이스 2026-06-25 유상증자결정: 신규 0건\n누락 원본 후보 1건 → 신규 적재 0건",
+   "last": "누락 원본 후보 1건 → 신규 적재 0건"
+  },
+  {
+   "name": "status_flags",
+   "rc": 0,
+   "secs": 17.3,
+   "tail": "관리종목 지정 중 54곳 중 유니버스 1곳 기록\n  금양: 지정 2025-03-04 · 최근 2026-08-14 관리종목지정사유변경",
+   "last": "  금양: 지정 2025-03-04 · 최근 2026-08-14 관리종목지정사유변경"
+  },
+  {
+   "name": "etf_scan",
+   "rc": 0,
+   "secs": 6.0,
+   "tail": "2026-10-01 일괄공시 14건 신규 0\n2026-10-02 일괄공시 17건 신규 0\n2026-10-06 일괄공시 15건 신규 0\n2026-10-07 일괄공시 16건 신규 0\n2026-10-08 일괄공시 16건 신규 0\n신규 총 0",
+   "last": "신규 총 0"
+  },
+  {
+   "name": "etf_parser",
+   "rc": 0,
+   "secs": 0.1,
+   "tail": "{'filings': 0, 'rows': 0, 'review': 0, 'newsec': 0, 'superseded': 0}",
+   "last": "{'filings': 0, 'rows': 0, 'review': 0, 'newsec': 0, 'superseded': 0}"
+  },
+  {
+   "name": "etf_prices",
+   "rc": 0,
+   "secs": 57.9,
+   "tail": "스냅샷 1069/1172 ETF\n구성종목 33/33 ETF\n거래대금 62/62 종목\n후보 151 (기준 최신 설정일 2026-10-08) · 일봉 성공 151 실패 0",
+   "last": "후보 151 (기준 최신 설정일 2026-10-08) · 일봉 성공 151 실패 0"
+  },
+  {
+   "name": "m1_parser",
+   "rc": 0,
+   "secs": 0.1,
+   "tail": "'신규상장(주식회사 케이뱅크, 상장일 2026.03.05)')\n  미처리(M3 등): ('2026-03-04', '공매도 과열종목 연장(공매도 거래 금지 연장)')\n  미처리(M3 등): ('2026-04-17', '불성실공시법인지정예고')\n  미처리(M3 등): ('2026-05-04', '상장안내(주식소각 및 감자(주식소각))')\n  미처리(M3 등): ('2026-05-20', '상장폐지')\n  미처리(M3 등): ('2026-05-21', '상장폐지')\n  미처리(M3 등): ('2026-06-12', '불성실공시법인지정')",
+   "last": "  미처리(M3 등): ('2026-06-12', '불성실공시법인지정')"
+  },
+  {
+   "name": "m3_parser",
+   "rc": 0,
+   "secs": 0.1,
+   "tail": " 지정(한화솔루션우)')\n  미처리: ('2026-03-03', '신규상장(주식회사 케이뱅크, 상장일 2026.03.05)')\n  미처리: ('2026-03-04', '공매도 과열종목 연장(공매도 거래 금지 연장)')\n  미처리: ('2026-04-17', '불성실공시법인지정예고')\n  미처리: ('2026-05-04', '상장안내(주식소각 및 감자(주식소각))')\n  미처리: ('2026-05-20', '상장폐지')\n  미처리: ('2026-05-21', '상장폐지')\n  미처리: ('2026-06-12', '불성실공시법인지정')",
+   "last": "  미처리: ('2026-06-12', '불성실공시법인지정')"
+  },
+  {
+   "name": "m2_rights_issue",
+   "rc": 0,
+   "secs": 1.3,
+   "tail": ": 48560951}\nPCI:75:2026-06-25:T event 320 | 제3자배정증자 | None\nPCI:237:2026-09-30:T event 321 | 제3자배정증자 | {'delta_shares': 50000000, 'effective_date': '2026-10-22', 'basis': 'PLANNED', 'is_estimated': 1, 'why': '제3자배정: 신주 상장일에 지수 주식수 증가 — 상장일 미확정(추가상장 공시 대기)', 'listed_before': None, 'index_after': None}",
+   "last": "PCI:237:2026-09-30:T event 321 | 제3자배정증자 | {'delta_shares': 50000000, 'effective_date': '2026-10-22', 'basis': 'PLANNED', 'is_estimated': 1, 'why': '제3자배정: 신주 상장일에 지수 주식수 증가 — 상장일 미확정(추가상장 공시 대기)', 'listed_before': None, 'index_after': None}"
+  },
+  {
+   "name": "m2_cancel",
+   "rc": 0,
+   "secs": 0.2,
+   "tail": "SNT다이내믹스 EXISTING 8334579 0 소각 대기 2026-10-28\nCXL:178:2026-09-30 472 제일기획 EXISTING 13762500 0 소각 대기 2026-10-30\nCXL:95:2026-09-30 473 크래프톤 EXISTING 433543 0 소각 대기 2026-10-27\nCXL:173:2026-10-02 474 영원무역홀딩스 EXISTING 712460 0 소각 대기 2026-10-29\nCXL:211:2026-10-08 475 HDC EXISTING 3413340 0 소각 대기 2026-10-30",
+   "last": "CXL:211:2026-10-08 475 HDC EXISTING 3413340 0 소각 대기 2026-10-30"
+  },
+  {
+   "name": "m2_cbbw",
+   "rc": 0,
+   "secs": 4.0,
+   "tail": "-03:CB 490 KG모빌리티 CB 124 전환/행사 0 잔여 39182065  {}\nCBW:298:2026-08-27:CB 491 KG모빌리티 CB 125 전환/행사 0 잔여 56948028  {}\norphan conversions: 45 [10, 74, 113, 226, 234, 235, 242, 246, 250, 257]\n  ⚠ 달력 범위 밖/잘못된 날짜 슬롯 생략: event 481 EXERCISE_END 2055-10-13\n  ⚠ 달력 범위 밖/잘못된 날짜 슬롯 생략: event 481 MATURITY 2055-11-13",
+   "last": "orphan conversions: 45 [10, 74, 113, 226, 234, 235, 242, 246, 250, 257]"
+  },
+  {
+   "name": "m2_split",
+   "rc": 0,
+   "secs": 0.1,
+   "tail": "없음) None None\nSPL:71:2026-08-21 496 카카오 PERSONAL 0.3648537 분할 일정 진행 중 None None\nSPL:271:2026-09-09 497 금양 PHYSICAL None 물적분할 — 범위 밖(주식수 조정 없음) None None\nSPL:256:2026-09-15 498 보령 PHYSICAL None 물적분할 — 범위 밖(주식수 조정 없음) None None\nSPL:45:2026-09-30 499 현대모비스 PHYSICAL None 물적분할 — 범위 밖(주식수 조정 없음) None None",
+   "last": "SPL:45:2026-09-30 499 현대모비스 PHYSICAL None 물적분할 — 범위 밖(주식수 조정 없음) None None"
+  },
+  {
+   "name": "m2_corp_actions",
+   "rc": 0,
+   "secs": 0.2,
+   "tail": "정 진행 중 — 신주 발행 없음(100% 자회사 흡수 등): 지수 주식수 영향 없음 계획 None 실제 None 지수 None 추정\nMRG:263:2026-09-01 541 SNT모티브 MERGER 합병 일정 진행 중 — 신주 발행 없음(100% 자회사 흡수 등): 지수 주식수 영향 없음 계획 None 실제 None 지수 None 추정\nMRG:73:2026-09-09 542 에이피알 MERGER 합병 일정 진행 중 — 신주 발행 없음(100% 자회사 흡수 등): 지수 주식수 영향 없음 계획 None 실제 None 지수 None 추정",
+   "last": "MRG:73:2026-09-09 542 에이피알 MERGER 합병 일정 진행 중 — 신주 발행 없음(100% 자회사 흡수 등): 지수 주식수 영향 없음 계획 None 실제 None 지수 None 추정"
+  },
+  {
+   "name": "etf_comment",
+   "rc": 0,
+   "secs": 0.0,
+   "tail": "이미 있음 /Users/danny/Projects/quant-research/ipo-llm-approach/kind/data/etf_comment/2026-10-08.json",
+   "last": "이미 있음 /Users/danny/Projects/quant-research/ipo-llm-approach/kind/data/etf_comment/2026-10-08.json"
+  }
+ ],
+ "warnings": [],
+ "html": "/Users/danny/Projects/quant-research/ipo-llm-approach/kind/reports/kind_report_2026-10-08.html",
+ "summary": {
+  "counts": {
+   "t1": 8,
+   "t2": 19,
+   "cbw": 6,
+   "bb": 26,
+   "closed": 2
+  },
+  "important": [
+   {
+    "id": 496,
+    "issuer": "카카오",
+    "code": "035720",
+    "type": "인적분할",
+    "headline": "인적분할 — 0주",
+    "delta_txt": "−161,630,375",
+    "pct": -36.49,
+    "mc_txt": "−5.22조원",
+    "mc": -5220661112500,
+    "right": "상장 01/27 (예정)",
+    "dd": "D-75",
+    "anchor": "2027-01-27",
+    "est": 1,
+    "applied": false,
+    "url": "https://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno=20260821000082"
+   },
+   {
+    "id": 318,
+    "issuer": "NAVER",
+    "code": "035420",
+    "type": "3자배정 유상증자",
+    "headline": "신주 7,241,564주(4.61%) · 약 1.48조원 조달 — 제3자배정증자",
+    "delta_txt": "+7,241,564",
+    "pct": 4.76,
+    "mc_txt": "+1.33조원",
+    "mc": 1330999463200,
+    "right": "상장 11/20",
+    "dd": "D-30",
+    "anchor": "2026-11-20",
+    "est": 1,
+    "applied": false,
+    "url": "https://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno=20260727000002"
+   },
+   {
+    "id": 539,
+    "issuer": "SK이노베이션",
+    "code": "096770",
+    "type": "합병",
+    "headline": "SK아이이테크놀로지 흡수합병 — 합병신주 4,481,300주 · 합병비율 1:0.117454",
+    "delta_txt": "+4,481,300",
+    "pct": 2.65,
+    "mc_txt": "+7,210억원",
+    "mc": 721041170000,
+    "right": "상장 01/18 (예정)",
+    "dd": "D-68",
+    "anchor": "2027-01-18",
+    "est": 1,
+    "applied": false,
+    "url": "https://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno=20260826000318"
+   },
+   {
+    "id": 530,
+    "issuer": "대한항공",
+    "code": "003490",
+    "type": "합병",
+    "headline": "아시아나항공 흡수합병 — 합병신주 20,337,721주 · 합병비율 1:0.2736432",
+    "delta_txt": "+20,337,721",
+    "pct": 5.52,
+    "mc_txt": "+6,244억원",
+    "mc": 624368034700,
+    "right": "상장 01/04 (예정)",
+    "dd": "D-58",
+    "anchor": "2027-01-04",
+    "est": 1,
+    "applied": false,
+    "url": "https://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno=20260626000010"
+   },
+   {
+    "id": 321,
+    "issuer": "한화투자증권",
+    "code": "003530",
+    "type": "3자배정 유상증자",
+    "headline": "신주 50,000,000주(23.3%) · 약 0.25조원 조달 — 제3자배정증자",
+    "delta_txt": "+50,000,000",
+    "pct": 23.3,
+    "mc_txt": "+2,192억원",
+    "mc": 219250000000,
+    "right": "상장 10/22",
+    "dd": "D-9",
+    "anchor": "2026-10-22",
+    "est": 1,
+    "applied": false,
+    "url": "https://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno=20260930001138"
+   },
+   {
+    "id": 302,
+    "issuer": "금양",
+    "code": "001570",
+    "type": "3자배정 유상증자",
+    "headline": "신주 13,000,000주(20.32%) · 약 0.20조원 조달 — 제3자배정증자",
+    "delta_txt": "+13,000,000",
+    "pct": 20.32,
+    "mc_txt": "+1,287억원",
+    "mc": 128700000000,
+    "right": "상장 01/21",
+    "dd": "D-71",
+    "anchor": "2027-01-21",
+    "est": 1,
+    "applied": false,
+    "url": "https://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno=20260930000756"
+   },
+   {
+    "id": 465,
+    "issuer": "대신증권",
+    "code": "003540",
+    "type": "자기주식 소각",
+    "headline": "기취득 자기주식 1,553,637주 소각",
+    "delta_txt": "−1,553,637",
+    "pct": -3.26,
+    "mc_txt": "−383억원",
+    "mc": -38297152050,
+    "right": "변경상장 10/13",
+    "dd": "D-2",
+    "anchor": "2026-10-13",
+    "est": 0,
+    "applied": false,
+    "url": "https://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno=20260914000439"
+   }
+  ],
+  "upcoming": [
+   {
+    "id": 465,
+    "issuer": "대신증권",
+    "code": "003540",
+    "type": "자기주식 소각",
+    "headline": "기취득 자기주식 1,553,637주 소각",
+    "delta_txt": "−1,553,637",
+    "pct": -3.26,
+    "mc_txt": "−383억원",
+    "mc": -38297152050,
+    "right": "변경상장 10/13",
+    "dd": "D-2",
+    "anchor": "2026-10-13",
+    "est": 0,
+    "applied": false,
+    "url": "https://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno=20260914000439"
+   },
+   {
+    "id": 378,
+    "issuer": "케이티",
+    "code": "030200",
+    "type": "자기주식 소각",
+    "headline": "자기주식 4,215,851주(1.67%) 장내 취득 후 전량 소각 — 예정 0.2조원",
+    "delta_txt": "−4,215,851",
+    "pct": -1.67,
+    "mc_txt": "−2,196억원",
+    "mc": -219645837100,
+    "right": "변경상장 예정 10/15 (추정)",
+    "dd": "D-4",
+    "anchor": "2026-10-15",
+    "est": 1,
+    "applied": false,
+    "url": "https://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno=20260210000432"
+   },
+   {
+    "id": 466,
+    "issuer": "금호석유화학",
+    "code": "011780",
+    "type": "자기주식 소각",
+    "headline": "기취득 자기주식 237,628주 소각",
+    "delta_txt": "−237,628",
+    "pct": -0.94,
+    "mc_txt": "−273억원",
+    "mc": -27255931600,
+    "right": "변경상장 예정 10/16 (추정)",
+    "dd": "D-5",
+    "anchor": "2026-10-16",
+    "est": 1,
+    "applied": false,
+    "url": "https://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno=20260915000586"
+   }
+  ],
+  "new": [],
+  "window": [
+   "2026-10-08",
+   "2026-10-08"
+  ],
+  "price_date": "2026-10-08",
+  "etf": {
+   "latest": "2026-10-08",
+   "lines": [
+    "10월 8일 국내 ETF에서는 하루 동안 2,182억원이 순유출됐습니다. 국내 시장대표가 +1,198억원 들어왔지만 AI·반도체에서 −4,864억원이 빠져나갔습니다.",
+    "KODEX 레버리지로 +1,825억원이 들어와 지수 상승을 기대하는 자금이 이어진 것으로 보입니다. 인버스는 −81억원, KODEX 인버스는 −197억원으로 하락 방어 수요는 크지 않았습니다.",
+    "최근 7일은 +2,487억원 순유입입니다. 국내 시장대표 +2,493억원과 배당·커버드콜 +2,262억원이 들어왔고 원자력·SMR도 +425억원 유입됐습니다. 반도체는 TIGER 반도체TOP10에서 −5,127억원이 나가 AI·반도체가 −2,321억원입니다."
+   ]
+  }
+ },
+ "secs": 95.5
+}
