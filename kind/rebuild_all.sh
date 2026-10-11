@@ -17,6 +17,7 @@ NEWCO=$($PY kind/m2_split.py --register | tail -1)
 [ -n "$NEWCO" ] && $PY kind/collector.py --from 2025-01-01 --to "$TO" --watch phase1 --only "$NEWCO"
 # K200 시범 종목(합병·무상증자·주식배당·액면분할): 종목별 구간. 본문은 관련 제목만 받는다(호출 절제)
 PILOT_RE='합병|주식분할|액면분할|무상증자|주식배당|배당락|권배락|권리락|기준가격|매매거래정지.*(분할|합병)|^(변경상장|추가상장|상장안내)'
+[ -s kind/pilot_targets.txt ] || { echo 'kind/pilot_targets.txt 없음/비어 있음' >&2; exit 1; }
 while read -r code frm _; do   # 목록: kind/pilot_targets.txt
   $PY kind/collector.py --from "$frm" --to "$TO" --watch k200_pilot --only "$code" --body-re "$PILOT_RE" </dev/null
 done < <(grep -vE '^\s*(#|$)' kind/pilot_targets.txt)

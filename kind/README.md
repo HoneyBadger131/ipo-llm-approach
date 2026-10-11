@@ -10,7 +10,7 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh 2025-01-01 2026-10-10   # 캐시만으로 �
 .venv/bin/python kind/m2_cbbw.py                     # 재생성 후 온라인으로 한 번(전환·행사 현황은 '오늘'이 구간에 들어감)
 .venv/bin/python kind/html_report.py 2026-10-09      # → reports/kind_report_2026-10-08.html
 ```
-`rebuild_all.sh` 단계: 캘린더 → 시드 → 종목별 수집(phase1·k200_pilot) → 신설·소멸 법인 등록·수집 → 유니버스 등록 + 날짜 스캔 → 누락 원본 보충 → 관리종목 → ETF → m1 → m3 → m2_* → daily_report → html_report.
+`rebuild_all.sh` 단계: 캘린더 → 시드 → 종목별 수집(phase1·k200_pilot) → 신설·소멸 법인 등록·수집 → 유니버스 등록 + 날짜 스캔 → 누락 원본 보충 → 관리종목 → ETF → m1 → m3 → m2_* → html_report.
 
 ## 파일 지도
 **기반**
@@ -19,7 +19,7 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh 2025-01-01 2026-10-10   # 캐시만으로 �
 | `schema.sql`, `db.py` | 스키마 v1(날짜 PK=`calendar_day`, 종목 PK=`security_id`, 공시 PK=접수번호) · 연결/적용 |
 | `build_calendar.py` | 메인 캘린더(2015~2040, 휴장 보정 `calendar_override`) |
 | `kind_client.py` | KIND 목록·본문·종목 검색(캐시 `data/cache`·`data/raw`, `KIND_OFFLINE`, 403 백오프) |
-| `seed_master.py` | 법인·증권·워치리스트(phase1·k200_pilot·etf_core)·주식수 시드(DART 반기) |
+| `seed_master.py` | 법인·증권·워치리스트(phase1·k200_pilot·etf_core)·주식수 시드(DART 반기). K200 시범 종목 목록은 `pilot_targets.txt` |
 
 **수집**
 | 파일 | 역할 |
@@ -37,20 +37,21 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh 2025-01-01 2026-10-10   # 캐시만으로 �
 | `m1_parser.py` | 변경·추가·재상장 → `share_ledger`, 기준가격 안내 → 이벤트, 거래정지 → HALT(+원장 체인 완성) |
 | `m3_parser.py` | 투자경고·공매도 과열·거래정지 기간 → `designation` |
 | `m2_decision.py` | 유상증자 결정 공시 파서·공용 토큰 함수 |
-| `m2_rights_issue.py` | 유상증자 스레드(키 `PCI:<issuer>:<최초제출일>:<R|T|P>`) — **공용 함수 `cal`·`tdiff`·`set_slot`·`prune`·`ex_from_record` 도 여기** |
+| `m2_rights_issue.py` | 유상증자 스레드(키 `PCI:<issuer>:<최초제출일>:<R|T|P>`)  |
 | `m2_cancel.py` | 자기주식 소각(취득 프로그램 스레드 `CXL:<issuer>:A<취득시작일>`, 변경상장 합산 적용, 변경상장 예정 추정) |
 | `m2_cbbw.py` | CB/BW(발행 조건·전환·행사 상장·잔여 희석) |
 | `m2_split.py` | 인적분할(신설법인 등록·재상장 원장·존속 감소) |
 | `m2_corp_actions.py` | 무상증자·주식배당·액면분할·합병(+소멸회사 등록 `--register-extinct`) |
 | `buyback.py` | 기준일 현재 취득 중인 자기주식 취득(직접·신탁) + 실적 진행(`progress`)·예상 소진일(`projection`, m2_cancel 이 변경상장 예정 추정에 사용) |
 | `buyback_exec.py` | 자기주식 매매 체결내역(유가증권시장, 시장조치 0326 하루 1건) 적재 → `buyback_exec` 테이블(누적 체결금액·수량) |
+| `common.py` | 공용 함수: 달력(`cal`·`tdiff`·`ex_from_record`·`dday`), 슬롯(`set_slot`·`prune`·`link_filing`), 본문(`text_of`·`kdate`·`after`) |
+| `regress.py` | 회귀 스냅샷(전 표 내용 해시·HTML 해시) — 리팩터링 전후 비교 |
 | `index_rules.py`, `index_shares.py` | 지수 규칙표 · 지수 반영 주식수 산출(상장주식수 + 선반영) |
 
 **리포트**
 | 파일 | 역할 |
 |---|---|
 | `html_report.py`, `html_report_template.html` | HTML 4탭 리포트(데이터 구성 + 화면) |
-| `daily_report.py`, `m2_report.py` | 마크다운 리포트·카드(이전 형식, `reports/*.md`) |
 | `news.json` | 스레드 키별 '왜'·리스크·메모·태그·뉴스(사람이 추가) |
 | `universe/` | `prices_<날짜>.csv`(주간 종가), `save_prices.py`, `bb_quotes.json`(삼성전자·SK하이닉스 일별 시세 — 취득 맥락), `exclude.txt`, `kospi_list_clean.md` |
 
@@ -69,4 +70,4 @@ for m in m2_rights_issue m2_cancel m2_cbbw m2_split m2_corp_actions; do .venv/bi
 .venv/bin/python kind/index_shares.py 2026-10-08                        # 지수 반영 주식수
 .venv/bin/python kind/universe/save_prices.py < mcp_result.md           # 주간 종가 저장
 ```
-세부(수집 함정·서식 변형·사용자 결정 로그)는 HANDOFF 5~6절, 모듈별 설명은 `docs/KIND_M1_M3.md`·`KIND_M2_*.md`.
+세부(수집 함정·서식 변형·사용자 결정 로그)는 HANDOFF 5~6절, 모듈별 설명은 `docs/KIND_M1_M3.md`·`KIND_M2.md`.

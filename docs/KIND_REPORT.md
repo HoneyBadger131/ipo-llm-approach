@@ -47,11 +47,11 @@
 
 ## 6. 입력 파일
 - `kind/news.json` — 스레드 키별 `why`(왜 한 줄)·`risk`·`memo`·`tag`·`news[]`. 키: 유상증자 `PCI:<issuer_id>:<최초제출일>:<R|T|P>` · 소각 `CXL:<issuer_id>:A<취득시작일>` 또는 `CXL:<issuer_id>:<최초결정일>` · 합병 `MRG:<issuer_id>:<최초제출일>` · 분할 `SPL:<issuer_id>:<일자>`. 뉴스는 기준일 이하 게재분만, 날짜·매체는 기사 페이지에서 확인한 것. 현재 등록: 삼바(R)·SK하이닉스·SK이노베이션·금양(T)·대한항공·카카오(memo).
-- `kind/universe/prices_<YYYYMMDD>.csv` — 주 1회 종가(`save_prices.py`). `kind/universe/exclude.txt` — 제외. `kind/universe/kospi_list_clean.md` — DART 모듈 명단 사본.
+- `kind/universe/prices_<YYYYMMDD>.csv` — 주 1회 종가(`save_prices.py`, git 추적). `kind/universe/exclude.txt` — 제외. `kind/universe/kospi_list_clean.md` — DART 모듈 명단 사본.
 
 ## 7. 화면 확인 방법
 ```
 .venv/bin/python kind/html_report.py 2026-10-09
 node <scratchpad>/shot3.js <출력접두>      # playwright(레포 node_modules)로 4탭 스크린샷
 ```
-콘솔 오류 없음 확인(`pageerror`). 마크다운 형태의 이전 리포트는 `daily_report.py`(`kind_<기준일>.md`)·`m2_report.py`(`m2_rights_issue_<기준일>.md`)로 계속 생성된다(중복 정리는 오버뷰 세션 과제).
+콘솔 오류 없음 확인(`pageerror`). 마크다운 리포트(`daily_report.py`·`m2_report.py`)는 폐지됐다 — 필요하면 `git show 33f027e:kind/daily_report.py`·`33f027e:kind/m2_report.py` 로 이전 렌더러를 볼 수 있다(원장 현황·변동 이력·시장경보 절은 HTML 에 없고 DB 에만 있다). 회귀 비교는 `kind/regress.py`(HANDOFF 3절).

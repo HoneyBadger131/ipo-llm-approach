@@ -1,32 +1,32 @@
-# KIND 축 인수인계 (새 세션용) — 2026-10-11
+# KIND 축 인수인계 (새 세션용) — 2026-10-11 (오버뷰·리팩터링 반영)
 
 사용자는 한국어로 소통한다. **이 문서가 KIND 축의 단일 진입점**이다(세부는 아래 링크). DART 축 인수인계는 [`HANDOFF.md`](HANDOFF.md).
 브랜치 `claude/open-dart-api-disclosure-test-482bxk`. 커밋은 로컬 `git log` 확인 — **푸시는 사용자가 렌더링된 리포트를 확인한 뒤**에 한다.
 
 ## 1. 목표 (한 문단)
-프로젝트 두 번째 축 = **Index expert(가칭)**: KRX KIND(거래소 공시)로 *주식수 변동·일정·조치*를 영업일 단위로 추적해 리포트. 벤치마크는 **KOSPI 시총 상위 300(보통주)**. 핵심 질문 하나 — **"지수 주식수가 언제, 얼마나 바뀌는가"**. 설계 [`KIND_DESIGN.md`](KIND_DESIGN.md), 지수 규칙 [`KIND_INDEX_METHOD.md`](KIND_INDEX_METHOD.md), 리포트 사양 [`KIND_REPORT.md`](KIND_REPORT.md), 파일 지도 [`../kind/README.md`](../kind/README.md).
+프로젝트 두 번째 축 = **Index expert(가칭)**: KRX KIND(거래소 공시)로 *주식수 변동·일정·조치*를 영업일 단위로 추적해 리포트. 벤치마크는 **KOSPI 시총 상위 300(보통주)**. 핵심 질문 하나 — **"지수 주식수가 언제, 얼마나 바뀌는가"**. 설계 [`KIND_DESIGN.md`](KIND_DESIGN.md), 지수 규칙 [`KIND_INDEX_METHOD.md`](KIND_INDEX_METHOD.md), 리포트 사양 [`KIND_REPORT.md`](KIND_REPORT.md), M2 이벤트 스레드 [`KIND_M2.md`](KIND_M2.md), 파일 지도 [`../kind/README.md`](../kind/README.md).
 
 ## 2. 현재 상태
 | 모듈 | 상태 | 코드 · 문서 |
 |---|---|---|
 | 메인 캘린더(영업일, 휴장 보정, 2015~2040) | ✅ | `build_calendar.py`, 설계서 6.1 |
-| 수집(종목별 `collector.py` · **날짜 단위 `scan_range.py`**)·본문 캐시·오프라인 재생성 | ✅ | `kind_client.py`, `rebuild_all.sh`, [`KIND_SCAN_TEST.md`](KIND_SCAN_TEST.md) |
+| 수집(종목별 `collector.py` · **날짜 단위 `scan_range.py`**)·본문 캐시·오프라인 재생성 | ✅ | `kind_client.py`, `rebuild_all.sh`, [`KIND_DESIGN.md`](KIND_DESIGN.md) 3절 |
 | M5 ETF 설정/해지(대표 8종) | ✅ | `etf_parser.py`, `etf_report.py` |
 | M1 시장조치 → 주식수 원장·기준가·정지 | ✅ | `m1_parser.py`, [`KIND_M1_M3.md`](KIND_M1_M3.md) |
 | M3 투자경고·공매도·거래정지 기간 | ✅(투자위험·단기과열 서식 미관측) | `m3_parser.py` |
-| M2 유상증자(주주배정=권리락일, 제3자·공모=신주 상장일) | ✅ | `m2_rights_issue.py`, [`KIND_M2_RIGHTS_ISSUE.md`](KIND_M2_RIGHTS_ISSUE.md) |
-| M2 자기주식 소각(변경상장일; 취득 프로그램 단위) | ✅ | `m2_cancel.py`, [`KIND_M2_ROUND2.md`](KIND_M2_ROUND2.md) |
+| M2 유상증자(주주배정=권리락일, 제3자·공모=신주 상장일) | ✅ | `m2_rights_issue.py`, [`KIND_M2.md`](KIND_M2.md) 1절 |
+| M2 자기주식 소각(변경상장일; 취득 프로그램 단위) | ✅ | `m2_cancel.py`, [`KIND_M2.md`](KIND_M2.md) 2절 |
 | M2 CB/BW(전환·행사 상장 + 잔여 희석) | ✅ | `m2_cbbw.py` |
-| M2 인적분할(신설법인 자동 등록, 계산→재상장 공시 덮어쓰기) | ✅ | `m2_split.py`, [`KIND_M2_SPLIT.md`](KIND_M2_SPLIT.md) |
-| M2 무상증자·주식배당·액면분할·합병(+소멸회사 상장폐지 추적) | ✅ | `m2_corp_actions.py`, [`KIND_M2_CORP_ACTIONS.md`](KIND_M2_CORP_ACTIONS.md) |
+| M2 인적분할(신설법인 자동 등록, 계산→재상장 공시 덮어쓰기) | ✅ | `m2_split.py`, [`KIND_M2.md`](KIND_M2.md) 4절 |
+| M2 무상증자·주식배당·액면분할·합병(+소멸회사 상장폐지 추적) | ✅ | `m2_corp_actions.py`, [`KIND_M2.md`](KIND_M2.md) 5절 |
 | 종목 확장(시총 상위 300, 292종목 등록) | ✅ | `scan_range.py`, `kind/universe/` |
 | 누락 최초 공시 보충 · 관리종목 표지 · 자기주식 취득 진행 | ✅ | `backfill_orphans.py`, `status_flags.py`, `buyback.py` |
 | 자기주식 *실제* 취득 진행(체결내역 누적금액·속도·예상 소진일) → 소각 변경상장 예정일 보정 | ✅ | `buyback_exec.py`(`buyback_exec` 테이블), `buyback.progress/projection` |
-| HTML 리포트(4탭) | ✅ 사용자 승인 대기(푸시 전 최종 확인) | `html_report.py` + `html_report_template.html`, [`KIND_REPORT.md`](KIND_REPORT.md) |
+| HTML 리포트(4탭) | ✅ 사용자 확인·푸시 완료(마크다운 리포트는 폐지) | `html_report.py` + `html_report_template.html`, [`KIND_REPORT.md`](KIND_REPORT.md) |
 | 유/무상감자 · 물적분할 · 주식병합 · M4 대량매매 | ⏳ 미구현 | 설계서 M4 |
 
 ## 3. 파이프라인과 운영
-**재생성**(처음부터, 모두 멱등): `./kind/rebuild_all.sh <FROM=2025-01-01> <TO>` — 캘린더 → 시드 → 종목별 수집(phase1·시범) → 신설·소멸 법인 등록·수집 → **유니버스 등록 + 날짜 스캔(2025-07-01~)** → **자기주식 체결내역(2026-06-01~)** → 누락 원본 보충 → 관리종목 상태 → ETF → m1 → m3 → m2_rights_issue → m2_cancel → m2_cbbw → m2_split → m2_corp_actions → daily_report → html_report.
+**재생성**(처음부터, 모두 멱등): `./kind/rebuild_all.sh <FROM=2025-01-01> <TO>` — 캘린더 → 시드 → 종목별 수집(phase1·시범) → 신설·소멸 법인 등록·수집 → **유니버스 등록 + 날짜 스캔(2025-07-01~)** → **자기주식 체결내역(2026-06-01~)** → 누락 원본 보충 → 관리종목 상태 → ETF → m1 → m3 → m2_rights_issue → m2_cancel → m2_cbbw → m2_split → m2_corp_actions → html_report.
 - `KIND_OFFLINE=1` — 네트워크 없이 캐시(kind/data/cache·raw)만으로 동일 재생성. **`TO` 를 명시해야 한다**(기본값 '오늘'이라 날짜가 바뀌면 캐시 키가 달라져 실패). 마지막 온라인 실행 `TO`=2026-10-10.
 - `m2_cbbw.py` 의 전환·행사 현황 조회(KIND 신고사항)는 '오늘'이 구간에 들어가 오프라인 재현이 안 된다 → 재생성 후 **온라인으로 `m2_cbbw.py` 한 번** 더(없으면 해당 스레드는 리포트에서 빠진다).
 - 환경: 레포 `.venv`(requests, exchange_calendars, holidays, pypdf), 항상 `.venv/bin/python`. Playwright 는 `node_modules`(리포트 렌더 확인용).
@@ -39,6 +39,7 @@
 5. 상위 이벤트의 '왜'·뉴스·리스크·메모를 `kind/news.json` 에 사람이 추가(기준일 이하 게재 기사, 날짜·매체 확인).
 6. 사용자 확인 후 커밋·푸시.
 
+**회귀 도구 `kind/regress.py`**(리팩터링 전후 비교의 정본): `snap <이름> [DB경로]` 로 전 테이블 내용 해시(시각 컬럼·event_date id 제외)를 `kind/data/regress/<이름>.json` 에 저장, `diff <이름>` 으로 현재 DB 와 비교(다른 행 표시, 종료코드 1), `html <파일>` 은 `generated` 시각을 뺀 HTML 해시. 기준선 `base_db`(= 2026-10-11 오프라인 재생성 DB)는 `data/` 에 있어 새 환경에선 없다 — 첫 재생성 직후 `snap base_db` 로 만든 뒤 리팩터링 후 `diff base_db`. 2026-10-11 기준 HTML 해시(기준일 10-08) `11431d2e9fd1ee2c`.
 **회귀 기준(2026-10-11, 오프라인 재생성)**: filing 4,348 · share_ledger 436(활성 434) · event 538 · event_date 1,615 · event_filing 924 · designation 72 · index_share_adj 31 · etf_unit_change 54,454 · security 1,223 · status_flag 1 · buyback_exec 3,780행(88거래일) · review/failed 1(키움증권 주식의종류변경) · FK/무결성 OK · 원장 체인 불일치 0 · M2 모듈 반복 실행 시 행 수 불변. 워치리스트: etf_core 8 · phase1 15 · k200_pilot 6 · merger_extinct 3 · **universe 291**.
 `kind/data/`(DB·캐시·본문, 약 200MB)는 git 제외. 처음 클론한 환경은 온라인 재생성 1회 필요 — **이때 요청이 많으니 천천히**(5절).
 
@@ -64,7 +65,7 @@
 | 10-11 | 리포트 4탭(일정 확정 / 일정 미확정 / 자기주식 취득 진행 / 최근 종결), 앵커·정렬 규칙, 관리종목 표지, 유상증자 태그 세분(주주배정/3자배정/공모), 이슈·리스크 태그, 하나금융처럼 법인 고유 간격이 분명하면 법인별 추정 사용(관측 3건 이상). 태영건설(009410) 유니버스 제외. 푸시는 사용자의 최종 렌더링 확인 후. |
 | 10-11 | 자기주식 취득 진행을 시간 비례 추정이 아니라 KIND '자기주식매매 체결내역'(하루 1건 전 종목)의 누적 체결금액으로 보정(삼성전자·SK하이닉스처럼 규모가 크고 시장이 민감한 종목 — 실제로 삼성전자는 15조원 계획이 10/06 소진). 소진 예상일은 소각 변경상장 예정일 추정에도 반영. |
 | 10-11 | 리포트 사용자 최종 확인 완료·푸시. 대한항공 ← 아시아나항공 합병은 소규모합병이 맞음(확정). 금양 상장폐지 효력정지 가처분은 **결과를 추적하지 않는다** — 이슈가 있다는 사실(리스크 태그)만 알린다. |
-| 10-11 | 전반 오버뷰(중복·불필요 정리, 통합 가능/분리 권장 구분)는 별도 세션 — [`KIND_NEXT_SESSION.md`](KIND_NEXT_SESSION.md). |
+| 10-11 | 전반 오버뷰: 마크다운 리포트(`daily_report`·`m2_report`)는 없애도 됨(이력만 git 에 남김), `prices_*.csv` 는 git 추적(`.gitignore` 예외), 세부 진행은 위임 + 독립 조언자 에이전트 감사를 거쳐 진행. 결과는 10절. |
 
 ## 6. 반드시 알아야 할 함정
 - **KIND 방화벽 403**: 요청이 짧은 시간에 많으면 간헐 차단. `KindBlocked` + 백오프 재시도. 403 HTML 을 "0건"으로 오해해 빈 결과가 캐시에 영구 저장될 뻔했음(수정됨). **스캔은 sleep, 불필요한 호출 금지.**
@@ -100,4 +101,19 @@
 - 한국어. **가볍게 한 사이클 돌려 보고 → 점검 → 커밋 → 다음**. 세부 지침은 단계별로. 완벽 추구보다 핵심 날짜·수량을 명확히.
 - 커밋은 사용자 요청 시 KIND 파일만(`git add kind docs/KIND_*.md`), DART 쪽 미커밋 변경(`disclosure_md`, `trial_case`, `node_modules`, `package*.json`, `report_v2/sample_v3.*`)은 건드리지 않는다. **푸시는 리포트 최종 확인 후.** 커밋 메시지 끝 `Co-Authored-By` 줄은 시스템 지침 따름.
 - 사용자가 참조 문서를 주면 먼저 읽고 `KIND_INDEX_METHOD.md` 에 반영.
-- 이 세션 이후: **전반 오버뷰는 새 세션에서**([`KIND_NEXT_SESSION.md`](KIND_NEXT_SESSION.md)).
+- 리팩터링은 항상 `regress.py` 로 전후 비교(건수만으로는 값 변화를 못 잡는다). 구조 변경 전에는 독립 조언자(읽기 전용 에이전트)에게 계획을 감사받는다 — 이번 세션에서 계획 오류 5건(유사 함수 오인·universe.csv 순서 위험 등)을 사전에 걸렀다.
+
+## 10. 오버뷰·리팩터링 결과 (2026-10-11) 와 남은 과제
+**완료(전부 `regress.py` 전 표 동일 + HTML 해시 동일 + M2 모듈 반복 실행 멱등 확인, 커밋 `33f027e`…)**
+- `kind/regress.py` 신설(회귀 도구) · `kind/common.py` 신설(`cal`·`tdiff`·`ex_from_record`·`set_slot`·`prune`·`text_of`·`kdate`·`after`·`dday`·`link_filing` — 이전엔 `m2_rights_issue`/`m1_parser` 안에 있었고 다른 모듈이 거기서 import) · 5개 스레드 모듈의 `event_filing`+sources 중복 블록을 `link_filing` 으로.
+- 마크다운 리포트 폐지: `daily_report.py`·`m2_report.py`·`kind/reports/*.md` 삭제(`git show 33f027e:kind/daily_report.py`). 원장 현황·변동 이력·시장경보(M3) 요약은 이제 DB 조회로만 본다.
+- `prices_*.csv` git 추적(클론 환경에서 유니버스 300 재현), `watchlist_phase1.json` 삭제, K200 파일럿 목록 → `kind/pilot_targets.txt`(`rebuild_all.sh` 가 빈 파일이면 종료).
+- 문서: `KIND_M2_*` 4종 → `KIND_M2.md`, `REPORT_OUTLINE`→`REPORT`, `SCAN_TEST`→`DESIGN` 3절, `NEXT_SESSION` 삭제.
+
+**일부러 하지 않은 것(재검토 근거)**
+- 스레드 엔진 통합/플러그인화: `finalize` 가 유형별로 크게 다르고, `mark_parsed`(rights 는 후속 공시까지, 나머지는 DECISION 만; corp_actions 는 `failed` 상태 제외)·`get_or_create_event`(rights 만 `index_share_adj` 삭제, split 은 `CAL_MARK` 원장 행 삭제, event 타입·title 상이) 차이가 있어 인자가 늘고 이득이 작다. 공통 골격(load→attach→replay→finalize→prune)은 문서화만.
+- 같은 이름의 *다른* 함수는 합치지 않음: `num`(`m1_parser`/`etf_parser` int 전용 vs `m2_decision` float/None 허용), `after`(`m2_decision` 의 `stop` 인자판, `m2_split` 지역함수), `NOW`(`seed_master` 는 문자열 상수 — `scan_range` 가 바인딩), `won`(`html_report` 는 부호 포함 2자리).
+- `html_report` 분리(`build()`가 데이터, `main()`이 템플릿 치환으로 이미 분리), `m1_parser` 파일 분할, `parse_listing` 표 기반 전환, `rebuild_all.sh` 의 `parse_all.sh` 분리(`--register` 류가 파싱 결과로 수집 대상을 만들어 수집/파싱이 섞여 있음 → 분리하려면 "DB 초기화 여부" 정의가 먼저).
+
+**남은 과제**: 오프라인 캐시 키가 '오늘'에 묶임(`m2_cbbw` 신고사항 조회) → 기준일 고정 옵션 · 신규 종목 상장주식수 시드 · 법인별 소각 간격 · 합산 소각 변경상장 복잡 사례 · 유/무상감자·물적분할·주식병합·M4 대량매매 · 카카오 분할 신규칙 · DART 모듈 통합(2차, 아래).
+**DART 통합 시 참고**: `kospi_list_clean.md`(DART 명단 사본)·`prices_*.csv`·`exclude.txt` 가 유니버스의 단일 소스이므로 DART 쪽 명단과 공유할 지점은 `kind/universe/`. 공시 PK(`filing_id` = `KIND:`/`DART:` 접두)와 `security_id` 대리키는 이미 DART 공시를 받을 수 있게 설계돼 있다(원칙 2·3).
