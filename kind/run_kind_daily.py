@@ -121,7 +121,11 @@ def main():
     last = m[0] if m else con.execute("SELECT max(filed_date) FROM filing").fetchone()[0]
     days = [r[0] for r in con.execute("SELECT cal_date FROM calendar_day WHERE is_trading=1 AND cal_date>? AND cal_date<=? ORDER BY cal_date", (last, asof))]
     for d in days:
-        r = step(f"scan {d}", ["kind/scan_range.py", "--from", d, "--to", d])
+        # 직전 영업일 다음 날부터 d 까지(주말·휴일 포함): 휴일에 올라온 공시도 다음 영업일 스캔에서 받는다
+        pv = con.execute("SELECT prev_trading_date FROM calendar_day WHERE cal_date=?", (d,)).fetchone()
+        gap_from = (dt.date.fromisoformat(pv[0]) + dt.timedelta(days=1)).isoformat() if pv and pv[0] else d
+        gap_from = min(max(gap_from, (dt.date.fromisoformat(last) + dt.timedelta(days=1)).isoformat()), d)
+        r = step(f"scan {d}", ["kind/scan_range.py", "--from", gap_from, "--to", d, "--all-days"])
         if r.get("rc") == 0:
             con.execute("INSERT INTO meta(key,value) VALUES('last_scan_date',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value", (d,))
             con.commit()

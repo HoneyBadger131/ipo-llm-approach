@@ -58,18 +58,20 @@ def register(con):
     return n_new, miss
 
 
-def trading_days(con, frm, to):
-    return [r[0] for r in con.execute("SELECT cal_date FROM calendar_day WHERE is_trading=1 AND cal_date BETWEEN ? AND ? ORDER BY cal_date", (frm, to))]
+def trading_days(con, frm, to, all_days=False):
+    """스캔 대상 날짜. all_days=True 면 휴장일·주말도 포함(드물게 휴일에 올라오는 공시 대비 — 일일 작업이 직전 영업일 다음 날부터 훑을 때 사용)."""
+    cond = "" if all_days else "is_trading=1 AND "
+    return [r[0] for r in con.execute(f"SELECT cal_date FROM calendar_day WHERE {cond}cal_date BETWEEN ? AND ? ORDER BY cal_date", (frm, to))]
 
 
-def run(con, frm, to, market="1"):
+def run(con, frm, to, market="1", all_days=False):
     uni = {r[0]: r[1] for r in con.execute("""SELECT sc.code, s.security_id FROM watchlist w JOIN security s USING(security_id)
                                               JOIN security_code sc ON sc.security_id=s.security_id AND sc.code_type='SHORT' WHERE w.watch_name=?""", (WATCH,))}
     for c in excluded_codes():
         uni.pop(c, None)
     st = {"days": 0, "rows": 0, "event": 0, "universe": 0, "new": 0, "bodies": 0, "unresolved": set()}
     mj_names = {"01": "수시공시", "02": "시장조치"}
-    for i, day in enumerate(trading_days(con, frm, to), 1):
+    for i, day in enumerate(trading_days(con, frm, to, all_days), 1):
         rows = scan_day.scan(day, market)
         st["days"] += 1
         st["rows"] += len(rows)
@@ -104,13 +106,14 @@ if __name__ == "__main__":
     ap.add_argument("--from", dest="frm")
     ap.add_argument("--to")
     ap.add_argument("--market", default="1")
+    ap.add_argument("--all-days", action="store_true", help="휴장일·주말도 스캔")
     a = ap.parse_args()
     con = db.connect()
     if a.register:
         n, miss = register(con)
         print(f"등록 신규 {n}종목, 해석 실패 {len(miss)}: {miss}")
     if a.frm and a.to:
-        st = run(con, a.frm, a.to, a.market)
+        st = run(con, a.frm, a.to, a.market, a.all_days)
         print({k: (v if k != "unresolved" else f"{len(v)}곳") for k, v in st.items()})
         if st["unresolved"]:
             print("미해석 회사(일부):", sorted(st["unresolved"])[:15])
