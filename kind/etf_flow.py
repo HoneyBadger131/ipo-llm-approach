@@ -118,12 +118,24 @@ def auto_comment(d):
     return lines
 
 
+AGENT_DIR = os.path.join(HERE, "data", "etf_comment")
+
+
 def load_comment(asof):
+    """수작업(kind/etf_comment.json) > 에이전트 산출(kind/data/etf_comment/<기준일>.json) 순. 없으면 None(호출 쪽이 자동 코멘트로 대체)."""
     try:
-        c = json.load(open(COMMENT_PATH, encoding="utf-8"))
-        return c.get(asof)
+        c = json.load(open(COMMENT_PATH, encoding="utf-8")).get(asof)
+        if c:
+            return dict(c, src="수작업")
     except (OSError, ValueError):
-        return None
+        pass
+    try:
+        c = json.load(open(os.path.join(AGENT_DIR, f"{asof}.json"), encoding="utf-8"))
+        if c.get("lines"):
+            return dict(c, src="에이전트")
+    except (OSError, ValueError):
+        pass
+    return None
 
 
 def price_of(prices, snap, sid, day):
@@ -160,7 +172,8 @@ def pressure(con, etfs, topn=4):
         o = {"code": a["code"], "name": a["name"], "amt": a["amt"], "amt_txt": won(a["amt"]), "src": [k for k, _ in top]}
         if a["code"] in adv and adv[a["code"]]:
             o["pct"] = a["amt"] / adv[a["code"]] * 100
-            o["pct_txt"] = f"{o['pct']:+.1f}%".replace("-", "−")
+            o["days"] = o["pct"] / 100   # 하루 거래대금의 몇 배(수익률과 혼동되지 않게 % 대신 일수로 표시)
+            o["days_txt"] = f"{o['days']:+.2f}일".replace("-", "−")
             o["adv_txt"] = won(adv[a["code"]]).lstrip("+")
         out.append(o)
     up = sorted([o for o in out if o["amt"] > 0], key=lambda o: -o["amt"])
@@ -257,9 +270,8 @@ def build(con, asof, cand=False):
         for w in out["windows"].values():
             w["pressure"].pop("cand", None)
     out["comment"] = load_comment(asof)
-    out["comment_src"] = "수작업" if out["comment"] else "자동"
     if not out["comment"] and out["windows"]["1d"]["inflow"] + out["windows"]["1d"]["outflow"]:
-        out["comment"] = {"lines": auto_comment(out)}
+        out["comment"] = {"lines": auto_comment(out), "src": "자동"}
     return out
 
 

@@ -6,6 +6,7 @@
   .venv/bin/python run_daily.py --no-send         # 메일만 건너뜀(로그에 사유 기록)
   .venv/bin/python run_daily.py --no-agents       # 스모크: 에이전트 생략(기존 reports 사용)
   .venv/bin/python run_daily.py --force           # 이미 발송한 날도 다시 실행
+  --reuse-dart                                    # 스모크: 기존 trial_case/<day> DART 번들을 재사용(수집·분류·에이전트 생략), KIND 와 메일은 정상 실행
   --no-kind / --with-kind                         # KIND 일일 작업 끄기 / --date 재실행에서도 켜기(기본: --date 없는 정규 실행에서만)
 
 종료 규칙: 휴장일 → 조용히 종료. 영업일에는 항상 한 통(통과 0건이면 KIND 요약만). 실패 → 알림 메일 + macOS 알림.
@@ -195,6 +196,14 @@ def main():
     # KIND 일일 작업(백그라운드, 실패해도 DART 계속)을 DART 수집보다 먼저 시작 — DART 수집이 실패해도 KIND 는 진행된다.
     # 정규 실행에서만: 과거 날짜 재실행(--date)은 KIND DB 를 과거 기준으로 되돌리므로 --with-kind 를 줘야 한다
     kind_h = kind_hook.start(date) if ("--no-kind" not in a and ("--date" not in a or "--with-kind" in a)) else {"proc": None, "asof": date, "t0": time.time(), "disabled": True}
+    if "--reuse-dart" in a:   # 스모크: DART 수집·분류·에이전트·번들 단계를 건너뛰고 trial_case/<day> 의 기존 산출물(번들)을 쓴다
+        if not os.path.exists(f"trial_case/{day}/bundle_{date}.pdf"):
+            fail(day, f"--reuse-dart: trial_case/{day}/bundle_{date}.pdf 없음")
+        log("--reuse-dart: 기존 DART 번들 사용")
+        kr = kind_hook.collect(kind_h, deadline=1200)
+        log(f"KIND: ok={kr['ok']} summary={kr['summary_path']} {kr['note']}")
+        deliver(day, date, ["스모크 테스트: DART 는 기존 산출물 재사용"] + ([kr["note"]] if kr["note"] else []), kr, a, t0, sent_mark)
+        return
     prep = prep_with_retry(day)
     log(f"prep 완료: 전체 {prep['total']} / 판단 대상 {len(prep['review'])}")
     triage_with_retry(day)

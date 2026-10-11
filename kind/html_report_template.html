@@ -153,10 +153,10 @@ function etfRows(list){
 }
 function pressHtml(w){
   const P = w.pressure; if(!P || (!P.up.length && !P.down.length)) return "";
-  const rows = (L,pct) => L.map(o=>`<tr><td>${esc(o.name)}<small style="color:var(--muted)"> ${esc(pct?("5일 평균 거래대금 "+o.adv_txt):o.src.join(", "))}</small></td><td class="d ${o.amt>0?'up':'down'}">${esc(pct?o.pct_txt:o.amt_txt)}${pct?`<small style="color:var(--muted)"> (${esc(o.amt_txt)})</small>`:''}</td></tr>`).join("") || '<tr><td>없음</td><td></td></tr>';
+  const rows = (L,pct) => L.map(o=>`<tr><td>${esc(o.name)}<small style="color:var(--muted)"> ${esc(pct?("5일 평균 거래대금 "+o.adv_txt):o.src.join(", "))}</small></td><td class="d ${o.amt>0?'up':'down'}">${esc(pct?o.days_txt:o.amt_txt)}${pct?`<small style="color:var(--muted)"> (${esc(o.amt_txt)})</small>`:''}</td></tr>`).join("") || '<tr><td>없음</td><td></td></tr>';
   const tip = "상위·하위 ETF의 순유입 금액 × 상위10 구성비중. 상위10 밖 종목과 레버리지·인버스는 빠지는 대략치입니다.";
   let h = `<div class="two"><div class="card"><h4>매수 압력 종목 (추정)</h4><table class="s">${rows(P.up,false)}</table></div><div class="card"><h4>매도 압력 종목 (추정) <span class="q" title="${tip}">?</span></h4><table class="s">${rows(P.down,false)}</table></div></div>`;
-  if(etfWin!=="3m" && (P.up_adv.length||P.down_adv.length)) h += `<div class="two"><div class="card"><h4>매수 압력 / 거래대금 (%ADV)</h4><table class="s">${rows(P.up_adv,true)}</table></div><div class="card"><h4>매도 압력 / 거래대금 (%ADV) <span class="q" title="압력 ÷ 최근 5영업일 평균 거래대금(거래량×종가 근사). 압력 3억원 이상 종목만 순위에 올립니다.">?</span></h4><table class="s">${rows(P.down_adv,true)}</table></div></div>`;
+  if(etfWin!=="3m" && (P.up_adv.length||P.down_adv.length)) h += `<div class="two"><div class="card"><h4>매수 압력 / 하루 거래대금 대비</h4><table class="s">${rows(P.up_adv,true)}</table></div><div class="card"><h4>매도 압력 / 하루 거래대금 대비 <span class="q" title="압력 ÷ 최근 5영업일 평균 거래대금(거래량×종가 근사). +0.50일이면 하루 거래대금의 절반만큼 사들이는 힘입니다. 압력 3억원 이상 종목만 순위에 올립니다.">?</span></h4><table class="s">${rows(P.down_adv,true)}</table></div></div>`;
   return h;
 }
 function etfHtml(){

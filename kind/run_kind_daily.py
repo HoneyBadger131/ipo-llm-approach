@@ -162,6 +162,9 @@ def main():
     step("m2_split", ["kind/m2_split.py", "--asof", asof], network=False)
     step("m2_corp_actions", ["kind/m2_corp_actions.py", "--asof", asof], network=False)
 
+    # 2b) ETF 코멘트(에이전트, claude -p). 실패하면 리포트가 자동 코멘트를 쓴다(경고만)
+    step("etf_comment", ["kind/etf_comment_agent.py", "--asof", asof], network=True, timeout=300)
+
     # 3) 리포트 + 요약
     try:
         import html_report
