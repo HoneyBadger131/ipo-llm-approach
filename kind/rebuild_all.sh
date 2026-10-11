@@ -17,9 +17,9 @@ NEWCO=$($PY kind/m2_split.py --register | tail -1)
 [ -n "$NEWCO" ] && $PY kind/collector.py --from 2025-01-01 --to "$TO" --watch phase1 --only "$NEWCO"
 # K200 시범 종목(합병·무상증자·주식배당·액면분할): 종목별 구간. 본문은 관련 제목만 받는다(호출 절제)
 PILOT_RE='합병|주식분할|액면분할|무상증자|주식배당|배당락|권배락|권리락|기준가격|매매거래정지.*(분할|합병)|^(변경상장|추가상장|상장안내)'
-for x in "267270 2025-01-01" "096770 2024-01-01" "068270 2022-01-01" "185750 2024-10-01" "010120 2026-01-01" "000670 2024-10-01"; do
-  set -- $x; $PY kind/collector.py --from "$2" --to "$TO" --watch k200_pilot --only "$1" --body-re "$PILOT_RE"
-done
+while read -r code frm _; do   # 목록: kind/pilot_targets.txt
+  $PY kind/collector.py --from "$frm" --to "$TO" --watch k200_pilot --only "$code" --body-re "$PILOT_RE" </dev/null
+done < <(grep -vE '^\s*(#|$)' kind/pilot_targets.txt)
 # 합병 소멸회사(상장사, 상장폐지 포함): 결정 공시에서 이름 해석 → 워치리스트(merger_extinct) → 거래정지·상장폐지 공시 수집
 for x in $($PY kind/m2_corp_actions.py --register-extinct | tail -1 | tr ',' ' '); do
   $PY kind/collector.py --from "${x#*:}" --to "$TO" --watch merger_extinct --only "${x%%:*}" --body-re '합병|상장폐지|매매거래정지'
