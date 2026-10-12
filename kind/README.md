@@ -8,7 +8,7 @@
 ./kind/rebuild_all.sh 2025-01-01 2026-10-10          # 온라인(처음, 천천히 — KIND 방화벽). TO 는 반드시 명시
 KIND_OFFLINE=1 ./kind/rebuild_all.sh 2025-01-01 2026-10-10   # 캐시만으로 동일 결과(재현성 확인)
 .venv/bin/python kind/m2_cbbw.py                     # 재생성 후 온라인으로 한 번(전환·행사 현황은 '오늘'이 구간에 들어감)
-.venv/bin/python kind/html_report.py 2026-10-09      # → reports/kind_report_2026-10-08.html
+.venv/bin/python kind/html_report.py 2026-10-09      # → reports/ai-disclosure-report_2026-10-08.html
 ```
 `rebuild_all.sh` 단계: 캘린더 → 시드 → 종목별 수집(phase1·k200_pilot) → 신설·소멸 법인 등록·수집 → 유니버스 등록 + 날짜 스캔 → 누락 원본 보충 → 관리종목 → ETF → m1 → m3 → m2_* → html_report.
 
@@ -70,7 +70,7 @@ KIND_OFFLINE=1 ./kind/rebuild_all.sh 2025-01-01 2026-10-10   # 캐시만으로 �
 for m in m2_rights_issue m2_cancel m2_cbbw m2_split m2_corp_actions; do .venv/bin/python kind/$m.py; done
 .venv/bin/python kind/buyback_exec.py --from 2026-06-01 --to 2026-10-09  # 자기주식 체결내역 적재(멱등)
 .venv/bin/python kind/buyback_exec.py --show 000660 --from 2026-09-28    # 종목별 일별 체결
-.venv/bin/python kind/buyback.py 2026-10-08                             # 자사주 매매 추적 목록(실적·예상 소진일)
+.venv/bin/python kind/buyback.py 2026-10-08                             # 자사주 취득 목록(실적·예상 소진일)
 .venv/bin/python kind/index_shares.py 2026-10-08                        # 지수 반영 주식수
 .venv/bin/python kind/universe/save_prices.py < mcp_result.md           # 주간 종가 저장
 ```

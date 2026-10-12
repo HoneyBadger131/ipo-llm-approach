@@ -254,13 +254,23 @@ def main():
     deliver(day, date, notes, kr, a, t0, sent_mark)
 
 
+def build_combined(day, date, kr):
+    """KIND 리포트에 DART 공시분석 탭을 맨 앞에 합친 단일 HTML 로 ai-disclosure-report_<date>.html 을 다시 만든다(DART 산출물이 다 나온 뒤에만 가능).
+    실패하면 KIND 만 담긴 기존 HTML 이 그대로 남고, 메일은 그 파일(KIND 만)이나 DART 번들로 대체된다."""
+    if not (kr.get("ok") and kr.get("summary_path")):
+        return
+    rc, out = sh([PY, "kind/html_report.py", date, "--dart-day", day], timeout=300)
+    log(f"통합 리포트: rc={rc} {out.strip().splitlines()[-1][:160] if out.strip() else ''}")
+
+
 def deliver(day, date, notes, kr, a, t0, sent_mark, dart_none=False):
     """하나의 메일: DART 번들(있으면) + KIND 섹션/첨부(있으면). 영업일마다 최소 1통 — DART 통과 0건이어도 KIND 요약·'없음' 안내가 나간다."""
+    build_combined(day, date, kr)
     if "--no-send" in a:
         log("--no-send: 메일 생략")
         return
     for n in range(1, 4):
-        cmd = [PY, "send_report.py", f"trial_case/{day}", date, "--send"] + (["--note", " / ".join(notes)] if notes else []) \
+        cmd = [PY, "send_report.py", f"trial_case/{day}", date, "--send"] + (["--note", " / ".join(notes)] if notes else []) + (["--test"] if "--test-mail" in a else []) \
             + (["--no-dart"] if dart_none else [])
         if kr.get("disabled"):
             pass   # KIND 비활성(--date 재실행 등): KIND 섹션 없음

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KIND 인덱스 리포트</title>
+<title>AI Agent 공시 브리핑</title>
 <style>
 :root{
   --bg:#f5f6fa; --card:#fff; --ink:#151a24; --muted:#667085; --line:#e4e7ee; --navy:#24477f; --navy-ink:#fff;
@@ -108,12 +108,52 @@ table.s tr.key.past td{color:inherit}
 .done{color:var(--muted);font-weight:800}
 .burn{background:var(--key);color:var(--key-ink);border:1px solid var(--key-line);border-radius:6px;padding:0 6px;font-size:11.5px;font-weight:700;margin-left:4px}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}@media (max-width:900px){.two{grid-template-columns:1fr}}
+
+:root{--dpos:#127a4a;--dpos-bg:#e3f4eb}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--dpos:#5cd29b;--dpos-bg:#14382a}}
+:root[data-theme="dark"]{--dpos:#5cd29b;--dpos-bg:#14382a}
+
+.band h1 small{font-weight:500;opacity:.8;font-size:13px;margin-left:8px}
+.sent{display:inline-block;border-radius:999px;padding:0 9px;font-size:11.5px;font-weight:700;margin-left:4px;white-space:nowrap}
+.sent.pos{background:var(--dpos-bg);color:var(--dpos)}.sent.neg{background:var(--neg);color:var(--neg-ink)}.sent.mix{background:var(--key);color:var(--key-ink)}.sent.unk{background:var(--line);color:var(--muted)}
+.chip.pos{background:var(--dpos-bg);color:var(--dpos)}
+.rank{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;font-size:12px;font-weight:800;align-items:center;justify-content:center;margin-right:8px;flex:none}
+.row.dr .nm{display:flex;align-items:center;flex-wrap:wrap;gap:2px}
+.row.dr .ttl{color:var(--muted);font-size:12.5px;margin-top:3px}
+.row.dr .brief{font-size:13.5px;margin-top:5px;line-height:1.5}
+.dots{color:var(--navy);letter-spacing:1px;font-size:12px;white-space:nowrap}
+.funnel{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:baseline;margin:8px 2px 12px;color:var(--muted);font-size:13px}
+.funnel b{color:var(--ink);font-size:15px;font-variant-numeric:tabular-nums}.funnel .ar{opacity:.6}
+.dh .meta{margin-top:8px;font-size:12.5px;opacity:.88;display:flex;gap:6px 12px;flex-wrap:wrap;align-items:center}
+.dh .meta .dots{color:var(--navy-ink)}
+.pill.sent{margin-left:0;background:rgba(255,255,255,.18);color:var(--navy-ink)}
+.fin{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 26px}
+.fin h5{margin:0 0 6px;font-size:12.5px;color:var(--muted);font-weight:700}
+.vc{position:relative;height:150px;display:flex;gap:14px;align-items:stretch;padding:0 6px}
+.vc .col{flex:1;position:relative;min-width:0}
+.vc .b{position:absolute;left:18%;right:18%;background:var(--navy);border-radius:4px 4px 0 0}
+.vc .b.n{background:var(--neg-ink);border-radius:0 0 4px 4px}
+.vc .v{position:absolute;left:0;right:0;text-align:center;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.2}
+.vc .v.n{color:var(--neg-ink)}
+.vc .zero{position:absolute;left:0;right:0;border-top:1px solid var(--muted);opacity:.5}
+.vx{display:flex;gap:14px;padding:4px 6px 0}.vx span{flex:1;text-align:center;color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.kpis.k2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kpis.k2 .kpi b{white-space:normal}
+.cs{width:100%;height:auto;display:block;margin-top:4px}
+.cs text{font-family:inherit;fill:var(--ink)}.cs .m{fill:var(--muted);font-size:11px}.cs .vv{font-size:13px;font-weight:700}
+.cs .ln{stroke:var(--navy);stroke-width:2.5;fill:none}.cs .gd{stroke:var(--line);stroke-width:1}
+.chg{display:inline-flex;gap:8px;align-items:baseline;margin:0 0 2px}.chg b{font-size:20px;font-variant-numeric:tabular-nums}
+.mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.mini div{background:var(--bg);border-radius:10px;padding:8px 10px}
+.mini small{display:block;color:var(--muted);font-size:11.5px}.mini b{display:block;font-size:16px;font-variant-numeric:tabular-nums}
+.cmeta{color:var(--muted);font-size:12px;margin-top:6px}
+.card h4 small{font-weight:400;color:var(--muted);font-size:12px;margin-left:6px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="band">
-    <h1>KIND 인덱스 리포트 · 기준일 <span id="asof"></span></h1>
+    <h1>AI Agent 기반 공시분석 · 기준일 <span id="asof"></span></h1>
     <div class="sub" id="sub"></div>
   </div>
   <div class="tabs" id="tabs"></div>
@@ -122,7 +162,7 @@ table.s tr.key.past td{color:inherit}
     <div id="left"></div>
     <div class="detail" id="detail"><div class="hint">왼쪽에서 이벤트를 선택하세요.</div></div>
   </div>
-  <div class="legend"><span class="star">★</span> = 지수 주식수에 직접 영향(변동 수량·시총 변동·반영일). 시총 변동 = 변동 주식수 × 기준일 종가(추정), 상장주식수 기준 · 우선주 제외.</div>
+  <div class="legend" id="legend"><span class="star">★</span> = 지수 주식수에 직접 영향(변동 수량·시총 변동·반영일). 시총 변동 = 변동 주식수 × 기준일 종가(추정), 상장주식수 기준 · 우선주 제외.</div>
 </div>
 <script>
 const DATA = __DATA__;
@@ -132,14 +172,21 @@ const CHIP = {key:"★ 중요", why:"왜", risk:"리스크", info:"참고", memo
 const TABS = [
   ["t1","예정 CA(확정)",DATA.t1.length,"일정 확정 — 지수 반영 앵커(권리락일, 없으면 신주·변경상장일)가 오래된 순 — 신주 상장 2일 후 '반영된 CA'로 이동",null],
   ["t2","예정 CA(미확정)",DATA.t2.length+DATA.cbw.length,"일정 미확정 — 변경상장 공시 전, 변경상장 예정일(추정)이 빠른 순","소각일이 있으면 소각일 + 중앙값 약 11영업일, 없으면 취득 종료일 + 과거 간격(그 법인의 과거 3건 이상이면 그 법인 중앙값, 아니면 전체 중앙값). 변경상장 공시가 나오면 예정 CA(확정) 탭으로 이동하고 추정은 사라진다."],
-  ["bb","자사주 매매 추적",DATA.bb.length,"기준일 현재 취득 중 — 남은 취득액(추정)이 큰 순 · 체결 실적 반영","진행률 = 계획 시작일부터의 누적 체결금액 ÷ 취득 예정금액 (거래소 '자기주식매매 체결내역' 일별 공시 합산, 직접·신탁 모두). 한도는 금액이다 — 신고수량(주식수)을 넘겨도 금액이 남으면 계속 산다(삼성전자). 예상 소진일은 최근 10거래일 일평균 체결금액으로 남은 금액을 채우는 날. 체결내역이 없는 종목만 기간 경과 비례 추정."],
+  ["bb","자사주 취득",DATA.bb.length,"기준일 현재 취득 중 — 남은 취득액(추정)이 큰 순 · 체결 실적 반영","진행률 = 계획 시작일부터의 누적 체결금액 ÷ 취득 예정금액 (거래소 '자기주식매매 체결내역' 일별 공시 합산, 직접·신탁 모두). 한도는 금액이다 — 신고수량(주식수)을 넘겨도 금액이 남으면 계속 산다(삼성전자). 예상 소진일은 최근 10거래일 일평균 체결금액으로 남은 금액을 채우는 날. 체결내역이 없는 종목만 기간 경과 비례 추정."],
   ["cl","반영된 CA",DATA.closed.length,"신주·변경상장 후 2~7일 이내 종결 건 (일주일이 지나면 사라짐)",null]
 ];
+if(DATA.dart) TABS.unshift(["dart","DART 공시분석",DATA.dart.items.length,"전일 DART 공시 중 중요도 순 심화 분석 · 목록에서 고르면 종목별 상세 리포트가 열립니다","전체 공시를 대상 종목·제목 규칙으로 거른 뒤 Jev가 중요도를 판정하고, 통과한 공시를 AI 에이전트가 본문·재무·컨센서스·뉴스로 분석한 결과입니다. 중요도 ●○ 는 같은 날 공시끼리 비교한 5단계 척도입니다."]);
 if(DATA.etf) TABS.splice(3,0,["etf","ETF 흐름",DATA.etf.windows["7d"].n_etf,"대표 ETF·테마 ETF 설정/환매 — 순유입 금액(좌수 × 설정일 종가) 기준","금액 = 순증감 좌수 × 설정/환매일 종가(공시 연결이 끊긴 구간은 잔고 차분으로 보정). 국내 ETF만 집계하고 채권·머니마켓·해외 ETF는 제외했다. 1일·7일은 네이버 누적순유입과 1% 이내로 일치, 3개월은 10~30% 차이가 날 수 있다."]);
 
-let cur = "t1", bbFilter = "all", bbSort = "remain";
+let cur = DATA.dart ? "dart" : "t1", bbFilter = "all", bbSort = "remain", t2Sort = "date";
 const badge = e => e.flag ? `<span class="mgmt">${esc(e.flag)}</span>` : "";
 
+function t2List(){   // 기본은 서버가 정한 순서(변경상장 예정일 빠른 순, 추정 없으면 맨 아래). 시총·비율 순은 절대값 큰 순
+  const l = DATA.t2.slice();
+  if(t2Sort==="mc") l.sort((a,b)=>Math.abs(b.mc||0)-Math.abs(a.mc||0));
+  else if(t2Sort==="pct") l.sort((a,b)=>Math.abs(b.pct||0)-Math.abs(a.pct||0));
+  return l;
+}
 function rowHtml(e){
   const mc = e.mc_txt ? `<span class="${e.mc>0?'up':'down'}">${esc(e.mc_txt)}</span>` : '<span style="color:var(--muted)">시총 -</span>';
   const sh = e.delta_txt ? `${e.delta_txt}주${e.pct!=null?` (${e.pct>0?'+':''}${e.pct}%)`:''}` : '수량 미정';
@@ -179,6 +226,8 @@ function renderTab(){
   const tb = TABS.find(t=>t[0]===cur);
   $("#hint2").innerHTML = esc(tb[3]) + (tb[4] ? `<span class="q" title="${esc(tb[4])}">?</span>` : "");
   const main = $("#main"); let html = "";
+  $("#legend").style.display = cur==="dart" ? "none" : "";
+  if(cur==="dart"){ main.style.gridTemplateColumns=""; $("#detail").style.display=""; const f=(DATA.dart.funnel||[]).map((x,i,a)=>`<span><b>${x[0]}</b> ${esc(x[1])}</span>${i<a.length-1?'<span class="ar">›</span>':""}`).join(""); $("#left").innerHTML = `<div class="funnel">${f}</div>`+(DATA.dart.items.length?dartList():'<div class="list"><div class="empty">오늘은 중요 공시(심화 분석 대상)가 없습니다.</div></div>'); if(!DATA.dart.items.length){ $("#detail").innerHTML='<div class="hint">분석 대상 공시가 없습니다.</div>'; return; } document.querySelectorAll("#left .row.dr").forEach(r=>r.onclick=()=>selectDart(+r.dataset.d,true)); selectDart(dsel); return; }
   const two = (cur==="t1"||cur==="t2");
   if(cur==="etf"){ main.style.gridTemplateColumns="1fr"; $("#detail").style.display="none"; $("#left").innerHTML = etfHtml(); document.querySelectorAll("#left .fbtn").forEach(b=>b.onclick=()=>{etfWin=b.dataset.v; renderTab();}); return; }
   main.style.gridTemplateColumns = two ? "" : "1fr";
@@ -186,7 +235,9 @@ function renderTab(){
   if(cur==="t1"){
     html = `<div class="list">${DATA.t1.map(rowHtml).join("")||'<div class="empty">일정이 확정된 예정 CA가 없습니다.</div>'}</div>`;
   } else if(cur==="t2"){
-    html = `<div class="list">${DATA.t2.map(rowHtml).join("")||'<div class="empty">일정이 미확정인 예정 CA가 없습니다.</div>'}</div>`;
+    const sb = (id,lbl) => `<button class="fbtn ${t2Sort===id?'on':''}" data-set="t2" data-v="${id}">${lbl}</button>`;
+    html = `<div class="ctl"><div class="grp"><span class="lbl">정렬</span>${sb("date","변경상장 예정일 순")}${sb("mc","시총 변동 순")}${sb("pct","변동 비율 순")}</div></div>`
+      + `<div class="list">${t2List().map(rowHtml).join("")||'<div class="empty">일정이 미확정인 예정 CA가 없습니다.</div>'}</div>`;
     if(DATA.cbw.length) html += `<h2>장기 대기 — CB/BW 잔여 전환 (감만${DATA.n_cbw_more?` · 그 외 ${DATA.n_cbw_more}건 생략`:''})</h2><div class="list">${DATA.cbw.map(e=>`<div class="row" data-id="${e.id}"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small>${badge(e)}<span class="tag">${esc(e.type)}</span></div><div class="mc" style="font-weight:600">${esc(e.line)}</div></div><div class="l2"><span></span><span>${esc(e.nextkey)}</span></div></div>`).join("")}</div>`;
   } else if(cur==="bb"){
     const n_all = DATA.bb.length, n_burn = DATA.bb.filter(b=>b.burn).length;
@@ -216,10 +267,10 @@ function renderTab(){
     html = `<div class="list">${DATA.closed.map(e=>`<div class="row plain"><div class="l1"><div class="nm">${esc(e.issuer)}<small>${esc(e.code)}</small>${badge(e)}<span class="tag">${esc(e.type)}</span></div><div class="mc" style="font-weight:600">종결 ${esc(e.date)}</div></div></div>`).join("")||'<div class="empty">최근 7일 안에 종결된 이벤트가 없습니다.</div>'}</div>`;
   }
   $("#left").innerHTML = html;
-  document.querySelectorAll("#left .fbtn").forEach(b => b.onclick = () => { if(b.dataset.set==="f") bbFilter=b.dataset.v; else bbSort=b.dataset.v; renderTab(); });
+  document.querySelectorAll("#left .fbtn").forEach(b => b.onclick = () => { if(b.dataset.set==="f") bbFilter=b.dataset.v; else if(b.dataset.set==="t2") t2Sort=b.dataset.v; else bbSort=b.dataset.v; renderTab(); });
   document.querySelectorAll("#left .row[data-id]").forEach(r => r.onclick = () => select(+r.dataset.id, true));
   if(two){
-    const list = cur==="t1"?DATA.t1:DATA.t2;
+    const list = cur==="t1"?DATA.t1:t2List();
     if(list.length) select(list[0].id); else $("#detail").innerHTML = '<div class="hint">이벤트가 없습니다.</div>';
   }
 }
@@ -237,6 +288,57 @@ function select(id, user){
   const sched = e.sched && e.sched.length ? `<div class="card"><h4>일정</h4><table class="s">${e.sched.map(s=>`<tr class="${s.key?'key':''}${s.past?' past':''}"><td>${s.key?'<span class="star">★</span> ':''}${esc(s.label)}</td><td class="d">${esc(s.date)}</td><td class="d" style="color:var(--muted)">${s.past?'완료':esc(s.dday)}${s.est&&!s.past?' <span class="est">추정</span>':''}</td></tr>`).join("")}</table></div>` : "";
   const news = e.news && e.news.length ? `<div class="card news"><h4>뉴스 근거</h4>${e.news.map(n=>`<div><span>${esc(n.outlet)} · ${esc(n.date)}</span><a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a></div>`).join("")}</div>` : "";
   $("#detail").innerHTML = `<div class="dh"><div class="t"><h3>${esc(e.issuer)}<small>${esc(e.code)}</small>${badge(e)}</h3><span class="pill">${esc(e.type)}${e.tag2?` · ⚠ ${esc(e.tag2)}`:''}</span></div><div class="hl">${esc(e.headline)}</div></div><div class="kpis">${kpi}</div><div class="card"><h4>핵심 포인트</h4>${pts}</div>${sched}${news}<div class="foot">${e.link?`<a href="${esc(e.link.url)}" target="_blank" rel="noopener">${esc(e.link.label)}</a>`:''} · 정보 제공용이며 투자 권유가 아닙니다.</div>`;
+  if(user && window.innerWidth<=900) $("#detail").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+const dots = n => "●".repeat(n)+"○".repeat(5-n);
+let dsel = 0;
+const PT = {pos:["pos","긍정"], neg:["risk","리스크"], mix:["key","혼재"], unk:["info","미확인"]};
+function dartList(){
+  return `<div class="list">${DATA.dart.items.map((d,i)=>`<div class="row dr" data-d="${i}"><div class="l1"><div class="nm"><span class="rank">${d.rank}</span>${esc(d.j.corp_name)}<small>${esc(d.j.stock_code)}</small><span class="tag">${esc(d.j.tag)}</span><span class="sent ${d.sent}">${esc(d.sent_l)}</span></div><div class="dots" title="중요도 ${d.imp}/5">${dots(d.imp)}</div></div><div class="ttl">${esc(d.j.disclosure_title)}</div><div class="brief">${esc(d.brief)}</div></div>`).join("")}</div>`;
+}
+function vchart(r, years){
+  const vals = r.values.map(v=>v.v), H=150, pad=18;
+  const mn = Math.min(0,...vals), mx = Math.max(0,...vals), rg = (mx-mn)||1, ph = H-2*pad;
+  const base = pad + (0-mn)/rg*ph;                 // zero line, px from bottom
+  const cols = r.values.map(v=>{
+    const h = Math.max(2, Math.abs(v.v)/rg*ph), neg = v.v<0;
+    const bar = neg ? `<div class="b n" style="bottom:${(base-h).toFixed(1)}px;height:${h.toFixed(1)}px"></div>` : `<div class="b" style="bottom:${base.toFixed(1)}px;height:${h.toFixed(1)}px"></div>`;
+    const lab = neg ? `<div class="v n" style="bottom:${(base-h-16).toFixed(1)}px">${esc(v.d)}</div>` : `<div class="v" style="bottom:${(base+h+2).toFixed(1)}px">${esc(v.d)}</div>`;
+    return `<div class="col">${bar}${lab}</div>`;
+  }).join("");
+  return `<div><h5>${esc(r.label)}</h5><div class="vc">${cols}<div class="zero" style="bottom:${base.toFixed(1)}px"></div></div><div class="vx">${years.map(y=>`<span>${esc(y)}</span>`).join("")}</div></div>`;
+}
+function finCard(f){
+  if(!f || !f.rows || !f.rows.length) return "";
+  return `<div class="card"><h4>최근 3년 실적<small>${esc(f.basis||"")}</small></h4><div class="fin">${f.rows.map(r=>vchart(r,f.years)).join("")}</div></div>`;
+}
+function valCard(v){
+  if(!v || !v.items || !v.items.length) return "";
+  return `<div class="card"><h4>가치평가 · 추정치</h4><div class="mini">${v.items.map(x=>`<div><small>${esc(x.label)}</small><b>${esc(x.value)}</b><small>${esc(x.sub||"")}</small></div>`).join("")}</div>${v.note?`<div class="cmeta">${esc(v.note)}</div>`:""}</div>`;
+}
+function consCard(c){
+  if(!c || !c.series || !c.series.length) return "";
+  const sr=c.series, vs=sr.map(x=>x.v), lo=Math.min(...vs), hi=Math.max(...vs);
+  const first=vs[0], last=vs[vs.length-1], ch=first?(last/first-1)*100:0, up=ch>=0;
+  const W=600,Hh=140,L=70,R=70,T=34,B=28, span=(hi-lo)||Math.abs(hi)*0.02||1;
+  const y0=lo-span*0.6, y1=hi+span*0.6;                       // axis zoomed on the move, not from zero
+  const X=i=>sr.length===1?W/2:L+i*(W-L-R)/(sr.length-1), Y=v=>T+(1-(v-y0)/(y1-y0))*(Hh-T-B);
+  const col = up?"var(--up)":"var(--down)";
+  const pts = sr.map((x,i)=>`${X(i).toFixed(1)},${Y(x.v).toFixed(1)}`).join(" ");
+  const dots = sr.map((x,i)=>`<circle cx="${X(i).toFixed(1)}" cy="${Y(x.v).toFixed(1)}" r="${i===sr.length-1?6:4.5}" fill="${i===sr.length-1?col:'var(--card)'}" stroke="${col}" stroke-width="2.5"/><text class="vv" x="${X(i).toFixed(1)}" y="${(Y(x.v)-12).toFixed(1)}" text-anchor="middle">${esc(x.d)}</text><text class="m" x="${X(i).toFixed(1)}" y="${Hh-8}" text-anchor="middle">${esc(x.label)}</text>`).join("");
+  const grid = [0.25,0.5,0.75].map(f=>`<line class="gd" x1="${L-14}" x2="${W-R+14}" y1="${(T+f*(Hh-T-B)).toFixed(1)}" y2="${(T+f*(Hh-T-B)).toFixed(1)}"/>`).join("");
+  return `<div class="card"><h4>컨센서스 추이<small>${esc(c.metric||"")} · ${esc(c.window||"")}</small></h4><div class="chg"><b class="${up?'up':'down'}">${up?'▲':'▼'} ${Math.abs(ch).toFixed(1)}%</b><span class="hint2" style="margin:0">${esc(c.window_label||"")}</span></div><svg class="cs" viewBox="0 0 ${W} ${Hh}" role="img" aria-label="컨센서스 추이">${grid}<polyline class="ln" points="${pts}" style="stroke:${col}"/>${dots}</svg><div class="cmeta">세로축은 변화가 잘 보이도록 확대했습니다(0 기준 아님). ${esc(c.meta||"")}</div></div>`;
+}
+function selectDart(i, user){
+  dsel = i; const d = DATA.dart.items[i], j = d.j;
+  document.querySelectorAll("#left .row.dr").forEach(r=>r.classList.toggle("sel", +r.dataset.d===i));
+  const kp = (j.kpis||[]).map(k=>`<div class="kpi"><small>${esc(k.label)}</small><b>${esc(k.value)}</b><small>${esc(k.sub||"")}</small></div>`).join("");
+  const pts = [`<div class="pt"><span class="chip why">투심</span><span class="tx">${esc(j.sentiment.label)} · ${esc(j.sentiment.reason||"")}</span></div>`]
+    .concat(j.points.map(p=>{const m=PT[p.type]||PT.unk; return `<div class="pt"><span class="chip ${m[0]}">${m[1]}</span><span class="tx">${esc(p.text)}</span></div>`;}))
+    .concat([`<div class="pt"><span class="chip info">중요도</span><span class="tx"><span class="dots">${dots(d.imp)}</span> ${esc(j.importance_reason||"")}</span></div>`]).join("");
+  const news = (j.news||[]).length ? `<div class="card news"><h4>뉴스 근거</h4>${j.news.map(n=>`<div><span>${esc(n.outlet)} · ${esc(n.date)}</span><a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a></div>`).join("")}</div>` : "";
+  $("#detail").innerHTML = `<div class="dh"><div class="t"><h3>${esc(j.corp_name)}<small>${esc(j.stock_code)}</small></h3><span class="pill">${esc(j.tag)} · ${esc(j.sentiment.label)}</span></div><div class="hl">${esc(j.headline)}</div><div class="meta"><span>${esc(j.disclosure_title)}</span><span>${esc(j.disclosure_date)} 공시</span></div></div><div class="kpis k2">${kp}</div><div class="card"><h4>핵심 포인트</h4>${pts}</div>${finCard(j.financials)}${valCard(j.valuation)}${consCard(j.consensus)}${news}<div class="foot">${j.dart_url?`<a href="${esc(j.dart_url)}" target="_blank" rel="noopener">DART 원문 ↗</a> · `:''}${esc(j.sources_note||"")} 정보 제공용이며 투자 권유가 아닙니다.</div>`;
   if(user && window.innerWidth<=900) $("#detail").scrollIntoView({behavior:"smooth",block:"start"});
 }
 function init(){

@@ -1,7 +1,7 @@
 """KIND 인덱스 리포트(HTML) — 다가오는 이벤트를 시총 변동 순으로 나열, 선택하면 상세(DART 리포트 양식: 헤더·KPI·핵심 포인트·뉴스 근거·원문 링크 1개).
 
   .venv/bin/python kind/html_report.py [YYYY-MM-DD]     # 기본: 오늘 이전 마지막 영업일
-출력: kind/reports/kind_report_<기준일>.html (단일 파일, 외부 의존 없음)
+출력: kind/reports/ai-disclosure-report_<기준일>.html (단일 파일, 외부 의존 없음)
 
 원칙(사용자 지침 2026-10-10): 주의력은 한정 자원 — 지수 주식수 변동에 직접 관련된 것만 보인다(우선주·우리사주·일반공모·정정 이력·근거 공시 나열은 넣지 않고 DB 에만 둔다).
   · 정렬 = |시총 변동| (변동 주식수 × 기준일 종가, kind/universe/prices_<날짜>.csv)
@@ -322,10 +322,48 @@ def build(con, asof):
             "generated": dt.datetime.now().strftime("%Y-%m-%d %H:%M")}
 
 
+SENT_TXT = {"긍정적": "▲ 긍정적", "부정적": "▼ 부정적", "혼재됨": "◆ 혼재됨"}
+SENT_CLS = {"긍정적": "pos", "부정적": "neg", "혼재됨": "mix"}
+ROOT = os.path.dirname(HERE)
+
+
+def load_dart(day):
+    """DART 일일 산출물(trial_case/<day>)에서 'DART 공시분석' 탭 데이터를 읽는다. 폴더가 없으면 None(탭 없음), 보고서가 0건이면 items=[](탭은 '없음' 안내).
+    순서·퍼널은 DART 브리프와 같다: 중요도·점수 내림차순, 퍼널은 summary_meta.json(없으면 prep.json)."""
+    d = os.path.join(ROOT, "trial_case", day)
+    if not os.path.isdir(d):
+        return None
+    rows = []
+    for f in glob.glob(os.path.join(d, "reports", "*_v2.json")):
+        try:
+            rows.append(json.load(open(f, encoding="utf-8")))
+        except Exception:  # noqa: BLE001 — 깨진 보고서 하나가 탭 전체를 막지 않게
+            continue
+    rows.sort(key=lambda r: (-r.get("importance", 0), -r.get("importance_score", 0)))
+    items = [{"rank": i + 1, "id": r.get("rcept_no"), "sent": SENT_CLS.get((r.get("sentiment") or {}).get("label"), "unk"), "sent_l": SENT_TXT.get((r.get("sentiment") or {}).get("label"), "? 알수 없음"),
+              "imp": int(r.get("importance", 0)), "brief": r.get("brief", ""), "j": r} for i, r in enumerate(rows)]
+    funnel = None
+    try:
+        funnel = json.load(open(os.path.join(d, "summary_meta.json"), encoding="utf-8")).get("funnel")
+        if funnel:   # summary_meta 는 [라벨, 건수] — 화면용 [건수, 라벨]로, 마지막(심화 분석)은 실제 보고서 수
+            funnel = [[n, l] for l, n in funnel]
+            if rows:
+                funnel[-1][0] = len(rows)
+    except Exception:  # noqa: BLE001
+        pass
+    if not funnel:
+        try:
+            pr = json.load(open(os.path.join(d, "prep.json"), encoding="utf-8"))
+            funnel = [[pr["total"], "전체 공시"], [pr["watchlist_filings"], "리스트 종목 공시"], [len(pr["review"]), "판단 대상"], [len(rows), "심화 분석"]]
+        except Exception:  # noqa: BLE001
+            funnel = []
+    return {"day": day, "items": items, "funnel": funnel}
+
+
 TEMPLATE = open(os.path.join(HERE, "html_report_template.html"), encoding="utf-8").read()
 
 
-def write_report(con, asof, etf=True):
+def write_report(con, asof, etf=True, dart_day=None):
     """기준일(영업일) 리포트를 만들어 저장한다. 반환 (경로, 데이터). 출력 폴더는 KIND_REPORT_DIR(테스트용)로 바꿀 수 있다.
     etf=True(기본)면 'ETF 흐름' 탭을 함께 넣는다. ETF 집계가 실패하거나 데이터가 없으면 탭만 빼고 나머지 리포트는 낸다(ETF 때문에 일일 리포트가 막히지 않게)."""
     data = build(con, asof)
@@ -339,8 +377,13 @@ def write_report(con, asof, etf=True):
                 data["etf_warn"] = f"ETF 코멘트 숫자 불일치 {bad[:3]}"
         except Exception as e:  # noqa: BLE001
             data["etf_warn"] = f"ETF 탭 생성 실패: {type(e).__name__}: {e}"
+    if dart_day:
+        try:
+            data["dart"] = load_dart(dart_day)
+        except Exception as e:  # noqa: BLE001
+            data["dart_warn"] = f"DART 탭 생성 실패: {type(e).__name__}: {e}"
     html = TEMPLATE.replace("__DATA__", json.dumps(data, ensure_ascii=False, default=str).replace("</", "<\\/"))
-    out = os.path.join(os.environ.get("KIND_REPORT_DIR") or os.path.join(db.HERE, "reports"), f"kind_report_{asof}.html")
+    out = os.path.join(os.environ.get("KIND_REPORT_DIR") or os.path.join(db.HERE, "reports"), f"ai-disclosure-report_{asof}.html")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     open(out, "w", encoding="utf-8").write(html)
     return out, data
@@ -351,8 +394,10 @@ def main():
     args = [x for x in sys.argv[1:] if not x.startswith("--")]
     today = args[0] if args else dt.date.today().isoformat()
     asof = con.execute("SELECT max(cal_date) FROM calendar_day WHERE is_trading=1 AND cal_date<=?", (today,)).fetchone()[0]
-    out, data = write_report(con, asof, etf="--no-etf" not in sys.argv)
-    print(out, f"확정={len(data['t1'])} 미확정={len(data['t2'])} CB/BW={len(data['cbw'])} 취득진행={len(data['bb'])} 종결={len(data['closed'])} price_date={data['price_date']}")
+    dd = sys.argv[sys.argv.index("--dart-day") + 1] if "--dart-day" in sys.argv else None   # YYYYMMDD: trial_case/<dd> 의 DART 산출물을 첫 탭으로
+    args = [x for x in args if x != dd]
+    out, data = write_report(con, asof, etf="--no-etf" not in sys.argv, dart_day=dd)
+    print(out, f"확정={len(data['t1'])} 미확정={len(data['t2'])} CB/BW={len(data['cbw'])} 취득진행={len(data['bb'])} 종결={len(data['closed'])} DART={len((data.get('dart') or {}).get('items', []))} price_date={data['price_date']}")
 
 
 if __name__ == "__main__":

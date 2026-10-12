@@ -2,7 +2,7 @@
   .venv/bin/python kind/run_kind_daily.py [--asof YYYY-MM-DD] [--offline] [--budget 900]
 - --asof: 기준일(없으면 오늘 이전 마지막 영업일). 반드시 ISO 형식.
 - --offline: 네트워크 단계 생략, 캐시만(KIND_OFFLINE=1).  --budget: 전체 시간 상한(초). 넘기면 남은 단계를 건너뛴다.
-출력: kind/reports/kind_report_<기준일>.html · kind/reports/kind_daily_<기준일>.json(요약+단계 결과+경고).
+출력: kind/reports/ai-disclosure-report_<기준일>.html · kind/reports/kind_daily_<기준일>.json(요약+단계 결과+경고).
 격리 설계: 각 단계는 별도 프로세스(타임아웃), 실패해도 다음 단계 진행. 방화벽 차단(KindBlocked) 감지 시 이후 온라인 단계는 건너뛴다.
 재생성(rebuild_all.sh) 중(.rebuilding)이거나 다른 일일 작업이 돌고 있으면(.daily.lock) 아무것도 하지 않고 종료한다.
 종가(prices_*.csv)는 주 1회 사람이 갱신 — 기준일보다 7일 넘게 오래되면 경고.

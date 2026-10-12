@@ -8,8 +8,8 @@
   python send_report.py --alert "제목" "본문" --send          # 실패 알림 메일
 
 폴더 구조: <폴더>/bundle_<날짜>.html, bundle_<날짜>.pdf, reports/*.json
-환경변수(.env): GMAIL_USER, GMAIL_APP_PASSWORD, MAIL_TO(없으면 GMAIL_USER). 리포트 메일은 EXTRA_TO(crastibi@nps.or.kr)가 항상 추가 수신
-본문은 브리프 표(인라인 CSS), 첨부는 번들 HTML·PDF. 비밀번호는 출력·저장하지 않는다.
+환경변수(.env): GMAIL_USER, GMAIL_APP_PASSWORD, MAIL_TO(없으면 GMAIL_USER). 리포트 메일은 EXTRA_TO(쉼표로 구분, .env 에만 둠 — git 에 올리지 않는다)가 항상 추가 수신
+본문은 브리프 표(인라인 CSS), 첨부는 통합 리포트 HTML 하나(KIND 리포트 + DART 공시분석 첫 탭; 없을 때만 번들 HTML·PDF). 비밀번호는 출력·저장하지 않는다.
 """
 import glob
 import html
@@ -20,13 +20,15 @@ import sys
 from email.message import EmailMessage
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-EXTRA_TO = ["crastibi@nps.or.kr"]   # 일일 리포트 메일의 기본 추가 수신인(2026-10-11 사용자 지시). 실패 알림에는 넣지 않는다
 
 
 def recipients(default):
     """MAIL_TO(없으면 발신 계정) + 기본 추가 수신인, 중복 제거"""
     base = [x.strip() for x in (os.environ.get("MAIL_TO") or default or "").split(",") if x.strip()]
-    return ", ".join(dict.fromkeys(base + EXTRA_TO))
+    extra = [x.strip() for x in os.environ.get("EXTRA_TO", "").split(",") if x.strip()]   # 정규 수신자 명단은 .env 에만 둔다(레포가 public). 실패 알림에는 쓰지 않는다
+    if not extra:
+        print("경고: .env 에 EXTRA_TO 가 없어 추가 수신자 없이 발송합니다.", file=sys.stderr)
+    return ", ".join(dict.fromkeys(base + extra))
 
 
 def load_env():
@@ -52,7 +54,7 @@ def kind_section(kind_json):
     if etf and etf.get("lines"):
         etf_html = ('<h3 style="margin:22px 0 2px;padding-top:10px;border-top:2px solid #e5e7eb">KIND · ETF 설정/환매 흐름</h3>'
                     + "".join(f'<p style="margin:4px 0;font-size:13px">{html.escape(x)}</p>' for x in etf["lines"])
-                    + '<p style="margin:2px 0;color:#6b7280;font-size:12px">상세(테마·종목별 압력)는 첨부 KIND 리포트의 ETF 흐름 탭</p>')
+                    + '<p style="margin:2px 0;color:#6b7280;font-size:12px">상세(테마·종목별 압력)는 첨부 HTML의 ETF 흐름 탭</p>')
     th = 'style="padding:6px 8px;border-bottom:1px solid #e5e7eb;vertical-align:top;font-size:12px"'
 
     def tbl(title, items):
@@ -71,7 +73,7 @@ def kind_section(kind_json):
         return ('<h3 style="margin:22px 0 2px;padding-top:10px;border-top:2px solid #e5e7eb">KIND · 지수 주식수 변동</h3>'
                 '<p style="margin:4px 0;color:#6b7280;font-size:13px">직전 영업일 신규 이벤트와 5영업일 내 일정이 없습니다.</p>') + etf_html
     return ('<h3 style="margin:22px 0 2px;padding-top:10px;border-top:2px solid #e5e7eb">KIND · 지수 주식수 변동</h3>'
-            f'<p style="margin:0;color:#6b7280;font-size:12px">상장주식수 기준(유동비율 미적용), 시총 변동은 종가({sm.get("price_date")}) 기준 추정 · 상세는 첨부 KIND 리포트</p>{body}' + etf_html)
+            f'<p style="margin:0;color:#6b7280;font-size:12px">상장주식수 기준(유동비율 미적용), 시총 변동은 종가({sm.get("price_date")}) 기준 추정 · 상세는 첨부 HTML</p>{body}' + etf_html)
 
 
 def kind_note(text):
@@ -98,8 +100,8 @@ def body_html(folder, date, note="", kind_json=None, kind_text=None, no_dart=Fal
     return (
         '<div style="font-family:-apple-system,\'Apple SD Gothic Neo\',\'Malgun Gothic\',sans-serif;max-width:680px;margin:0 auto;color:#111827">'
         f'<h2 style="margin:0 0 4px">AI Agent 공시 브리핑 · {date}</h2>'
-        + ('<p style="margin:0 0 14px;color:#6b7280;font-size:13px">중요도 순 · 상세 리포트는 첨부(HTML·PDF)를 확인하세요.</p>' if rows else
-         ('<p style="margin:0 0 14px;color:#6b7280;font-size:13px">상세는 첨부 KIND 리포트(HTML)를 확인하세요.</p>' if kind_json else ""))
+        + ('<p style="margin:0 0 14px;color:#6b7280;font-size:13px">중요도 순 · 상세 리포트는 첨부 HTML 한 파일에서 확인하세요(첫 탭이 DART 공시분석).</p>' if rows else
+         ('<p style="margin:0 0 14px;color:#6b7280;font-size:13px">상세는 첨부 HTML 한 파일에서 확인하세요.</p>' if kind_json else ""))
         + (f'<table style="border-collapse:collapse;width:100%">{tr}</table>' if rows else
            '<p style="margin:8px 0;padding:10px;background:#f3f4f6;color:#374151;font-size:13px">DART: 오늘은 중요 공시(심화 분석 대상)가 없습니다.</p>')
         + ((kind_section(kind_json) or kind_note("KIND 요약을 읽지 못했습니다.")) if kind_json else (kind_note(kind_text) if kind_text else ""))
@@ -116,22 +118,25 @@ def build(folder, date, note="", kind_json=None, test=False, kind_text=None, no_
     has_bundle = (not no_dart) and os.path.exists(os.path.join(folder, f"bundle_{date}.pdf"))
     msg["Subject"] = ("[테스트] " if test else "") + f"[AI Agent 공시 브리핑] {date}" + ("" if has_bundle else " · DART 중요 공시 없음")
     msg["From"] = user
-    msg["To"] = recipients(user)
-    msg.set_content(f"공시 브리프 {date} — HTML 메일을 지원하는 클라이언트에서 확인하세요. 첨부: 통합 리포트(HTML·PDF).")
+    msg["To"] = ", ".join(x.strip() for x in (os.environ.get("MAIL_TO") or user).split(",") if x.strip()) if test else recipients(user)   # --test 는 본인(MAIL_TO)에게만
+    msg.set_content(f"공시 브리프 {date} — HTML 메일을 지원하는 클라이언트에서 확인하세요. 첨부: 통합 리포트(HTML).")
     msg.add_alternative(body_html(folder, date, note, kind_json, kind_text, no_dart), subtype="html")
-    for ext, mt in (("html", "text/html"), ("pdf", "application/pdf")):
-        p = os.path.join(folder, f"bundle_{date}.{ext}")
-        if no_dart or not os.path.exists(p):   # DART 통과 0건인 날은 번들이 없다 — KIND 요약만
-            continue
-        maintype, subtype = mt.split("/")
-        msg.add_attachment(open(p, "rb").read(), maintype=maintype, subtype=subtype, filename=os.path.basename(p))
-    if kind_json:  # KIND 리포트(단일 HTML) 별도 첨부 — 없으면 생략
+    # 첨부는 통합 리포트(KIND 리포트 + DART 공시분석 첫 탭) HTML 하나. 통합 HTML 이 없을 때만(KIND 실패 등) DART 번들 HTML·PDF 로 대체한다.
+    kp = None
+    if kind_json:
         try:
             kp = (json.load(open(kind_json, encoding="utf-8")) or {}).get("html")
-            if kp and os.path.exists(kp):
-                msg.add_attachment(open(kp, "rb").read(), maintype="text", subtype="html", filename=os.path.basename(kp))
         except Exception:  # noqa: BLE001
-            pass
+            kp = None
+    if kp and os.path.exists(kp):
+        msg.add_attachment(open(kp, "rb").read(), maintype="text", subtype="html", filename=os.path.basename(kp))
+    else:
+        for ext, mt in (("html", "text/html"), ("pdf", "application/pdf")):
+            p = os.path.join(folder, f"bundle_{date}.{ext}")
+            if no_dart or not os.path.exists(p):   # DART 통과 0건인 날은 번들이 없다
+                continue
+            maintype, subtype = mt.split("/")
+            msg.add_attachment(open(p, "rb").read(), maintype=maintype, subtype=subtype, filename=os.path.basename(p))
     return msg
 
 

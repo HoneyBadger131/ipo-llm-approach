@@ -57,7 +57,7 @@
 - *과거 날짜 재실행*: `run_daily.py --date <과거>` 는 KIND DB 를 과거 기준으로 되돌리므로 KIND 를 **기본 비활성**(`--with-kind` 로 켜고 `--no-kind` 로 끔).
 
 **신규/변경 파일**: `kind/run_kind_daily.py`(일일 작업 + 요약 JSON) · `kind_hook.py`(루트, run_daily 훅; `KIND_DAILY_CMD` 로 명령 교체=장애 주입) · `run_daily.py`(+7줄, KIND 시작·수집·메일 인자) · `send_report.py`(`--kind-json`: 본문 표 3개 + 첨부) · `kind/db.py`(`KIND_DB` 환경변수=테스트용 DB 경로) · `kind/html_report.py`(`write_report()` 분리, `KIND_REPORT_DIR`) · `kind/rebuild_all.sh`(.rebuilding 마커) · `kind/regress.py`(designation id 제외).
-출력: `kind/reports/kind_report_<기준일>.html`, `kind/reports/kind_daily_<기준일>.json`(단계 결과·경고·요약), `logs/kind_<날짜>.log`.
+출력: `kind/reports/ai-disclosure-report_<기준일>.html`, `kind/reports/kind_daily_<기준일>.json`(단계 결과·경고·요약), `logs/kind_<날짜>.log`.
 
 **가동 테스트(전부 복사본 DB 또는 패치 하네스 — 운영 DB·메일 무영향)**
 | 테스트 | 결과 |
@@ -65,7 +65,7 @@
 | 오프라인 실행(`--asof 2026-10-08 --offline`) | 0.8초, `regress diff base_db` 전 표 동일, HTML 해시 `11431d2e9fd1ee2c` 동일, 요약 탭 건수 8·19·6·26·2 |
 | 온라인 실행(복사본) | 18.8초(`status_flags` 17초가 대부분), DB·HTML 동일 |
 | 스캔 루프(`last_scan_date`=10-05 → 10-06~08 스캔) | 3일 성공, 마지막 스캔일 갱신, DB 동일(meta 키만 추가) |
-| `send_report` 드라이런(`--kind-json`) | 본문에 'KIND · 지수 주식수 변동' 표 3개, 첨부 `kind_report_2026-10-08.html` |
+| `send_report` 드라이런(`--kind-json`) | 본문에 'KIND · 지수 주식수 변동' 표 3개, 첨부 `ai-disclosure-report_2026-10-08.html` |
 | 훅 장애 주입(`false`/`sleep 30`+3초 마감/없는 명령/결과 파일 미생성) | 모두 `ok=False` + 한 줄 비고, 예외 없음; 낡은 JSON 오인 없음 |
 | `run_daily.main` 하네스(DART 단계 패치): 정상 / KIND 실패 주입 / `--date` 단독 | 메일 명령에 `--kind-json` 포함 / `--note` 만 / KIND 비활성, 모두 DART 흐름 완주 |
 | 운영 DB 오프라인 재생성 | 전 표 동일, 탭 건수 동일 |
