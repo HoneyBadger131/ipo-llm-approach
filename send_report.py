@@ -81,7 +81,7 @@ def kind_note(text):
             f'<p style="margin:4px 0;color:#6b7280;font-size:13px">{html.escape(text)}</p>')
 
 
-def body_html(folder, date, note="", kind_json=None, kind_text=None, no_dart=False):
+def body_html(folder, date, note="", kind_json=None, kind_text=None, no_dart=False, dart_error=False):
     rows = []
     for f in ([] if no_dart else glob.glob(os.path.join(folder, "reports", "*.json"))):
         rows.append(json.load(open(f, encoding="utf-8")))
@@ -103,7 +103,8 @@ def body_html(folder, date, note="", kind_json=None, kind_text=None, no_dart=Fal
         + ('<p style="margin:0 0 14px;color:#6b7280;font-size:13px">중요도 순 · 상세 리포트는 첨부 HTML 한 파일에서 확인하세요(첫 탭이 DART 공시분석).</p>' if rows else
          ('<p style="margin:0 0 14px;color:#6b7280;font-size:13px">상세는 첨부 HTML 한 파일에서 확인하세요.</p>' if kind_json else ""))
         + (f'<table style="border-collapse:collapse;width:100%">{tr}</table>' if rows else
-           '<p style="margin:8px 0;padding:10px;background:#f3f4f6;color:#374151;font-size:13px">DART: 오늘은 중요 공시(심화 분석 대상)가 없습니다.</p>')
+           ('<p style="margin:8px 0;padding:10px;background:#fee2e2;color:#991b1b;font-size:13px">DART: 처리 중 오류가 발생해 이번 메일에는 DART 분석이 없습니다(비고 참고).</p>' if dart_error else
+            '<p style="margin:8px 0;padding:10px;background:#f3f4f6;color:#374151;font-size:13px">DART: 오늘은 중요 공시(심화 분석 대상)가 없습니다.</p>'))
         + ((kind_section(kind_json) or kind_note("KIND 요약을 읽지 못했습니다.")) if kind_json else (kind_note(kind_text) if kind_text else ""))
         + (f'<p style="margin-top:12px;padding:8px 10px;background:#fef3c7;color:#92400e;font-size:12px">{html.escape(note)}</p>' if note else "")
         +
@@ -111,16 +112,16 @@ def body_html(folder, date, note="", kind_json=None, kind_text=None, no_dart=Fal
     )
 
 
-def build(folder, date, note="", kind_json=None, test=False, kind_text=None, no_dart=False):
+def build(folder, date, note="", kind_json=None, test=False, kind_text=None, no_dart=False, dart_error=False):
     load_env()
     user = os.environ.get("GMAIL_USER", "")
     msg = EmailMessage()
     has_bundle = (not no_dart) and os.path.exists(os.path.join(folder, f"bundle_{date}.pdf"))
-    msg["Subject"] = ("[테스트] " if test else "") + f"[AI Agent 공시 브리핑] {date}" + ("" if has_bundle else " · DART 중요 공시 없음")
+    msg["Subject"] = ("[테스트] " if test else "") + f"[AI Agent 공시 브리핑] {date}" + ("" if has_bundle else (" · DART 처리 오류" if dart_error else " · DART 중요 공시 없음"))
     msg["From"] = user
     msg["To"] = ", ".join(x.strip() for x in (os.environ.get("MAIL_TO") or user).split(",") if x.strip()) if test else recipients(user)   # --test 는 본인(MAIL_TO)에게만
     msg.set_content(f"공시 브리프 {date} — HTML 메일을 지원하는 클라이언트에서 확인하세요. 첨부: 통합 리포트(HTML).")
-    msg.add_alternative(body_html(folder, date, note, kind_json, kind_text, no_dart), subtype="html")
+    msg.add_alternative(body_html(folder, date, note, kind_json, kind_text, no_dart, dart_error), subtype="html")
     # 첨부는 통합 리포트(KIND 리포트 + DART 공시분석 첫 탭) HTML 하나. 통합 HTML 이 없을 때만(KIND 실패 등) DART 번들 HTML·PDF 로 대체한다.
     kp = None
     if kind_json:
@@ -160,7 +161,8 @@ def main():
         del a[i:i + 2]
     test = "--test" in a
     no_dart = "--no-dart" in a
-    a = [x for x in a if x not in ("--test", "--no-dart")]
+    dart_error = "--dart-error" in a   # DART 단계 오류로 KIND 만 보내는 날: 제목·본문에 'DART 처리 오류' 표시
+    a = [x for x in a if x not in ("--test", "--no-dart", "--dart-error")]
     kind_text = None
     if "--kind-note" in a:
         i = a.index("--kind-note")
@@ -178,7 +180,7 @@ def main():
         msg["To"] = os.environ.get("MAIL_TO", msg["From"])   # 실패 알림은 운영자(본인)에게만
         msg.set_content(a[2])
     else:
-        msg = build(a[0], a[1], note, kind_json, test, kind_text, no_dart)
+        msg = build(a[0], a[1], note, kind_json, test, kind_text, no_dart, dart_error)
     if send:
         deliver(msg)
         print("발송 완료 →", msg["To"])

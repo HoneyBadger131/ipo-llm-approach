@@ -38,6 +38,7 @@ ALLOWED = ("Read Write Edit WebSearch WebFetch ToolSearch mcp__claude_ai_OpenPro
            "Bash(node *) Bash(.venv/bin/python *) Bash(python3 *) Bash(ls *) Bash(cat *) Bash(mkdir *) Bash(pdfinfo *) Bash(pdftoppm *)")
 
 LOG = None
+CTX = {}   # main() 이 채움: 단계 실패 시 HTML 이 있으면 메일은 보내는 대체 경로(fail → fallback_mail)가 쓴다
 
 
 def log(msg):
@@ -79,7 +80,32 @@ def fail(day, why):
     notify_mac("공시 리포트 실패", f"{day}: {why}"[:120])
     if "--no-send" not in sys.argv:
         sh([PY, "send_report.py", "--alert", f"[AI Agent 공시 브리핑 실패] {day}", f"{why}\n\n로그: logs/{day}.log", "--send"])
+        fallback_mail(why)
     sys.exit(1)
+
+
+def fallback_mail(why):
+    """단계 오류가 나도 리포트 HTML(통합 HTML)이 이번 실행에서 만들어졌거나 만들 수 있으면 메일은 보낸다(2026-10-13 사용자 지시).
+    KIND 결과를 모아 통합 HTML 을 (DART 산출물이 일부라도 있으면 포함해) 다시 만들고, 첨부가 있을 때만 발송한다. 오류는 비고와 제목('DART 처리 오류')에 표시.
+    HTML 이 없으면 아무것도 보내지 않는다(위의 실패 알림만 간다). 이 함수 자체의 오류는 삼킨다."""
+    if not CTX or CTX.get("fallback_done"):
+        return
+    CTX["fallback_done"] = True
+    try:
+        day, date, a = CTX["day"], CTX["date"], CTX["a"]
+        kr = kind_hook.collect(CTX["kind_h"], deadline=max(60, 1200 - (time.time() - CTX["t0"])))
+        log(f"대체 발송: KIND ok={kr['ok']} {kr['note']}")
+        if kr.get("disabled") or not (kr["ok"] and kr["summary_path"]):
+            log("대체 발송 안 함: KIND 결과 없음(HTML 없음)")
+            return
+        hp = kr.get("html_path")
+        if not (hp and os.path.exists(hp) and os.path.getmtime(hp) >= CTX["t0"] - 1):
+            log("대체 발송 안 함: 이번 실행의 HTML 없음")
+            return
+        deliver(day, date, [f"DART 단계 오류로 DART 분석이 빠졌거나 일부만 포함됨: {why}"] + ([kr["note"]] if kr["note"] else []), kr, a, CTX["t0"], CTX["sent_mark"],
+                dart_none=not os.path.exists(f"trial_case/{day}/bundle_{date}.pdf"), dart_error=True)
+    except BaseException as e:  # noqa: BLE001 — 대체 경로가 원래 오류 처리를 깨지 않게
+        log(f"대체 발송 실패: {type(e).__name__}: {e}")
 
 
 # ---------- 단계 ----------
@@ -195,7 +221,11 @@ def main():
 
     # KIND 일일 작업(백그라운드, 실패해도 DART 계속)을 DART 수집보다 먼저 시작 — DART 수집이 실패해도 KIND 는 진행된다.
     # 정규 실행에서만: 과거 날짜 재실행(--date)은 KIND DB 를 과거 기준으로 되돌리므로 --with-kind 를 줘야 한다
+    CTX.update(day=day, date=date, a=a, t0=t0, sent_mark=sent_mark)
     kind_h = kind_hook.start(date) if ("--no-kind" not in a and ("--date" not in a or "--with-kind" in a)) else {"proc": None, "asof": date, "t0": time.time(), "disabled": True}
+    CTX["kind_h"] = kind_h
+    if os.environ.get("RUN_DAILY_INJECT_FAIL") == "dart":   # 테스트용 장애 주입: DART 단계 실패 시 KIND HTML 대체 발송 경로 확인
+        fail(day, "테스트: DART 단계 장애 주입")
     if "--reuse-dart" in a:   # 스모크: DART 수집·분류·에이전트·번들 단계를 건너뛰고 trial_case/<day> 의 기존 산출물(번들)을 쓴다
         if not os.path.exists(f"trial_case/{day}/bundle_{date}.pdf"):
             fail(day, f"--reuse-dart: trial_case/{day}/bundle_{date}.pdf 없음")
@@ -263,7 +293,7 @@ def build_combined(day, date, kr):
     log(f"통합 리포트: rc={rc} {out.strip().splitlines()[-1][:160] if out.strip() else ''}")
 
 
-def deliver(day, date, notes, kr, a, t0, sent_mark, dart_none=False):
+def deliver(day, date, notes, kr, a, t0, sent_mark, dart_none=False, dart_error=False):
     """하나의 메일: DART 번들(있으면) + KIND 섹션/첨부(있으면). 영업일마다 최소 1통 — DART 통과 0건이어도 KIND 요약·'없음' 안내가 나간다."""
     build_combined(day, date, kr)
     if "--no-send" in a:
@@ -271,7 +301,7 @@ def deliver(day, date, notes, kr, a, t0, sent_mark, dart_none=False):
         return
     for n in range(1, 4):
         cmd = [PY, "send_report.py", f"trial_case/{day}", date, "--send"] + (["--note", " / ".join(notes)] if notes else []) + (["--test"] if "--test-mail" in a else []) \
-            + (["--no-dart"] if dart_none else [])
+            + (["--no-dart"] if dart_none else []) + (["--dart-error"] if dart_error else [])
         if kr.get("disabled"):
             pass   # KIND 비활성(--date 재실행 등): KIND 섹션 없음
         elif kr["summary_path"] and kr["ok"] and n == 1:
@@ -302,4 +332,6 @@ if __name__ == "__main__":
         if LOG:
             LOG.write(traceback.format_exc())
         notify_mac("공시 리포트 오류", str(e)[:100])
+        if "--no-send" not in sys.argv:
+            fallback_mail(f"예기치 못한 오류: {type(e).__name__}: {e}")
         raise
