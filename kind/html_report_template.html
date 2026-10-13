@@ -122,6 +122,7 @@ table.s tr.key.past td{color:inherit}
 .row.dr .ttl{color:var(--muted);font-size:12.5px;margin-top:3px}
 .row.dr .brief{font-size:13.5px;margin-top:5px;line-height:1.5}
 .dots{color:var(--navy);letter-spacing:1px;font-size:12px;white-space:nowrap}
+.wd{color:var(--muted);font-size:12px;margin-right:6px;letter-spacing:0;font-variant-numeric:tabular-nums}
 .funnel{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:baseline;margin:8px 2px 12px;color:var(--muted);font-size:13px}
 .funnel b{color:var(--ink);font-size:15px;font-variant-numeric:tabular-nums}.funnel .ar{opacity:.6}
 .dh .meta{margin-top:8px;font-size:12.5px;opacity:.88;display:flex;gap:6px 12px;flex-wrap:wrap;align-items:center}
@@ -175,10 +176,11 @@ const TABS = [
   ["bb","자사주 취득",DATA.bb.length,"기준일 현재 취득 중 — 남은 취득액(추정)이 큰 순 · 체결 실적 반영","진행률 = 계획 시작일부터의 누적 체결금액 ÷ 취득 예정금액 (거래소 '자기주식매매 체결내역' 일별 공시 합산, 직접·신탁 모두). 한도는 금액이다 — 신고수량(주식수)을 넘겨도 금액이 남으면 계속 산다(삼성전자). 예상 소진일은 최근 10거래일 일평균 체결금액으로 남은 금액을 채우는 날. 체결내역이 없는 종목만 기간 경과 비례 추정."],
   ["cl","반영된 CA",DATA.closed.length,"신주·변경상장 후 2~7일 이내 종결 건 (일주일이 지나면 사라짐)",null]
 ];
-if(DATA.dart) TABS.unshift(["dart","DART 공시분석",DATA.dart.items.length,"전일 DART 공시 중 중요도 순 심화 분석 · 목록에서 고르면 종목별 상세 리포트가 열립니다","전체 공시를 대상 종목·제목 규칙으로 거른 뒤 Jev가 중요도를 판정하고, 통과한 공시를 AI 에이전트가 본문·재무·컨센서스·뉴스로 분석한 결과입니다. 중요도 ●○ 는 같은 날 공시끼리 비교한 5단계 척도입니다."]);
+if(DATA.dart) TABS.unshift(["dart","DART 공시분석(당일)",DATA.dart.items.length,"전일 DART 공시 중 중요도 순 심화 분석 · 목록에서 고르면 종목별 상세 리포트가 열립니다","전체 공시를 대상 종목·제목 규칙으로 거른 뒤 Jev가 중요도를 판정하고, 통과한 공시를 AI 에이전트가 본문·재무·컨센서스·뉴스로 분석한 결과입니다. 중요도 ●○ 는 같은 날 공시끼리 비교한 5단계 척도입니다."]);
 if(DATA.etf) TABS.splice(3,0,["etf","ETF 흐름",DATA.etf.windows["7d"].n_etf,"대표 ETF·테마 ETF 설정/환매 — 순유입 금액(좌수 × 설정일 종가) 기준","금액 = 순증감 좌수 × 설정/환매일 종가(공시 연결이 끊긴 구간은 잔고 차분으로 보정). 국내 ETF만 집계하고 채권·머니마켓·해외 ETF는 제외했다. 1일·7일은 네이버 누적순유입과 1% 이내로 일치, 3개월은 10~30% 차이가 날 수 있다."]);
 
-let cur = DATA.dart ? "dart" : "t1", bbFilter = "all", bbSort = "remain", t2Sort = "date";
+if(DATA.week) TABS.splice(DATA.dart?1:0,0,["week","주요 공시 모아보기",DATA.week.items.length,"최근 일주일 DART 심화 분석 공시 중 중요도 상위 · 같은 중요도면 최신 공시가 먼저","DART 공시분석 탭에서 심화 분석한 공시를 날짜 구분 없이 모아 중요도(●○ 5단계), 중요도 점수, 공시일 순으로 정렬합니다. 중요도는 같은 날 공시끼리 비교한 척도라 날짜가 다른 공시를 비교할 때는 참고용입니다."]);
+let cur = DATA.week ? "week" : DATA.dart ? "dart" : "t1", bbFilter = "all", bbSort = "remain", t2Sort = "date";
 const badge = e => e.flag ? `<span class="mgmt">${esc(e.flag)}</span>` : "";
 
 function t2List(){   // 기본은 서버가 정한 순서(변경상장 예정일 빠른 순, 추정 없으면 맨 아래). 시총·비율 순은 절대값 큰 순
@@ -226,8 +228,9 @@ function renderTab(){
   const tb = TABS.find(t=>t[0]===cur);
   $("#hint2").innerHTML = esc(tb[3]) + (tb[4] ? `<span class="q" title="${esc(tb[4])}">?</span>` : "");
   const main = $("#main"); let html = "";
-  $("#legend").style.display = cur==="dart" ? "none" : "";
-  if(cur==="dart"){ main.style.gridTemplateColumns=""; $("#detail").style.display=""; const f=(DATA.dart.funnel||[]).map((x,i,a)=>`<span><b>${x[0]}</b> ${esc(x[1])}</span>${i<a.length-1?'<span class="ar">›</span>':""}`).join(""); $("#left").innerHTML = `<div class="funnel">${f}</div>`+(DATA.dart.items.length?dartList():'<div class="list"><div class="empty">오늘은 중요 공시(심화 분석 대상)가 없습니다.</div></div>'); if(!DATA.dart.items.length){ $("#detail").innerHTML='<div class="hint">분석 대상 공시가 없습니다.</div>'; return; } document.querySelectorAll("#left .row.dr").forEach(r=>r.onclick=()=>selectDart(+r.dataset.d,true)); selectDart(dsel); return; }
+  $("#legend").style.display = (cur==="dart"||cur==="week") ? "none" : "";
+  if(cur==="week"){ ditems=DATA.week.items; main.style.gridTemplateColumns=""; $("#detail").style.display=""; $("#left").innerHTML=`<div class="funnel"><span>최근 7일(${esc(DATA.week.from)} ~ ${esc(DATA.week.to)}) 심화 분석 <b>${DATA.week.n_all}</b>건 중 중요도 상위 <b>${DATA.week.items.length}</b>건</span></div>`+dartList(); document.querySelectorAll("#left .row.dr").forEach(r=>r.onclick=()=>selectDart(+r.dataset.d,true)); selectDart(0); return; }
+  if(cur==="dart"){ ditems=DATA.dart.items; main.style.gridTemplateColumns=""; $("#detail").style.display=""; const f=(DATA.dart.funnel||[]).map((x,i,a)=>`<span><b>${x[0]}</b> ${esc(x[1])}</span>${i<a.length-1?'<span class="ar">›</span>':""}`).join(""); $("#left").innerHTML = `<div class="funnel">${f}</div>`+(DATA.dart.items.length?dartList():'<div class="list"><div class="empty">오늘은 중요 공시(심화 분석 대상)가 없습니다.</div></div>'); if(!DATA.dart.items.length){ $("#detail").innerHTML='<div class="hint">분석 대상 공시가 없습니다.</div>'; return; } document.querySelectorAll("#left .row.dr").forEach(r=>r.onclick=()=>selectDart(+r.dataset.d,true)); selectDart(dsel); return; }
   const two = (cur==="t1"||cur==="t2");
   if(cur==="etf"){ main.style.gridTemplateColumns="1fr"; $("#detail").style.display="none"; $("#left").innerHTML = etfHtml(); document.querySelectorAll("#left .fbtn").forEach(b=>b.onclick=()=>{etfWin=b.dataset.v; renderTab();}); return; }
   main.style.gridTemplateColumns = two ? "" : "1fr";
@@ -292,10 +295,10 @@ function select(id, user){
 }
 
 const dots = n => "●".repeat(n)+"○".repeat(5-n);
-let dsel = 0;
+let dsel = 0, ditems = [];
 const PT = {pos:["pos","긍정"], neg:["risk","리스크"], mix:["key","혼재"], unk:["info","미확인"]};
 function dartList(){
-  return `<div class="list">${DATA.dart.items.map((d,i)=>`<div class="row dr" data-d="${i}"><div class="l1"><div class="nm"><span class="rank">${d.rank}</span>${esc(d.j.corp_name)}<small>${esc(d.j.stock_code)}</small><span class="tag">${esc(d.j.tag)}</span><span class="sent ${d.sent}">${esc(d.sent_l)}</span></div><div class="dots" title="중요도 ${d.imp}/5">${dots(d.imp)}</div></div><div class="ttl">${esc(d.j.disclosure_title)}</div><div class="brief">${esc(d.brief)}</div></div>`).join("")}</div>`;
+  return `<div class="list">${ditems.map((d,i)=>`<div class="row dr" data-d="${i}"><div class="l1"><div class="nm"><span class="rank">${d.rank}</span>${esc(d.j.corp_name)}<small>${esc(d.j.stock_code)}</small><span class="tag">${esc(d.j.tag)}</span><span class="sent ${d.sent}">${esc(d.sent_l)}</span></div><div class="dots" title="중요도 ${d.imp}/5">${cur==="week"?`<span class="wd">${esc(d.j.disclosure_date.slice(5))}</span> `:""}${dots(d.imp)}</div></div><div class="ttl">${esc(d.j.disclosure_title)}</div><div class="brief">${esc(d.brief)}</div></div>`).join("")}</div>`;
 }
 function vchart(r, years){
   const vals = r.values.map(v=>v.v), H=150, pad=18;
@@ -331,7 +334,7 @@ function consCard(c){
   return `<div class="card"><h4>컨센서스 추이<small>${esc(c.metric||"")} · ${esc(c.window||"")}</small></h4><div class="chg"><b class="${up?'up':'down'}">${up?'▲':'▼'} ${Math.abs(ch).toFixed(1)}%</b><span class="hint2" style="margin:0">${esc(c.window_label||"")}</span></div><svg class="cs" viewBox="0 0 ${W} ${Hh}" role="img" aria-label="컨센서스 추이">${grid}<polyline class="ln" points="${pts}" style="stroke:${col}"/>${dots}</svg><div class="cmeta">세로축은 변화가 잘 보이도록 확대했습니다(0 기준 아님). ${esc(c.meta||"")}</div></div>`;
 }
 function selectDart(i, user){
-  dsel = i; const d = DATA.dart.items[i], j = d.j;
+  dsel = i; const d = ditems[i], j = d.j;
   document.querySelectorAll("#left .row.dr").forEach(r=>r.classList.toggle("sel", +r.dataset.d===i));
   const kp = (j.kpis||[]).map(k=>`<div class="kpi"><small>${esc(k.label)}</small><b>${esc(k.value)}</b><small>${esc(k.sub||"")}</small></div>`).join("");
   const pts = [`<div class="pt"><span class="chip why">투심</span><span class="tx">${esc(j.sentiment.label)} · ${esc(j.sentiment.reason||"")}</span></div>`]

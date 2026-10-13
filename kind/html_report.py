@@ -360,6 +360,31 @@ def load_dart(day):
     return {"day": day, "items": items, "funnel": funnel}
 
 
+WEEK_DAYS, WEEK_TOP = 7, 15   # '주요 공시 모아보기': 기준일 포함 최근 7일, 중요도 상위 15건
+
+
+def load_week(asof):
+    """최근 7일(달력일)의 DART 심화 분석 보고서(trial_case/*/reports/*_v2.json)를 모아 중요도 상위 WEEK_TOP 건. 중요도 > 점수 > 최신 공시일 순.
+    같은 접수번호는 한 번만 센다. 보고서가 하나도 없으면 None(탭 없음)."""
+    end = dt.date.fromisoformat(asof)
+    start = end - dt.timedelta(days=WEEK_DAYS - 1)
+    seen = {}
+    for f in glob.glob(os.path.join(ROOT, "trial_case", "*", "reports", "*_v2.json")):
+        try:
+            j = json.load(open(f, encoding="utf-8"))
+            if start <= dt.date.fromisoformat(j["disclosure_date"]) <= end:
+                seen[j["rcept_no"]] = j
+        except Exception:  # noqa: BLE001 — 깨진 보고서 하나가 탭 전체를 막지 않게
+            continue
+    rows = sorted(seen.values(), key=lambda r: (r.get("importance", 0), r.get("importance_score", 0), r["disclosure_date"]), reverse=True)
+    if not rows:
+        return None
+    items = [{"rank": i + 1, "id": r.get("rcept_no"), "sent": SENT_CLS.get((r.get("sentiment") or {}).get("label"), "unk"),
+              "sent_l": SENT_TXT.get((r.get("sentiment") or {}).get("label"), "? 알수 없음"), "imp": int(r.get("importance", 0)), "brief": r.get("brief", ""), "j": r}
+             for i, r in enumerate(rows[:WEEK_TOP])]
+    return {"from": start.isoformat(), "to": end.isoformat(), "n_all": len(rows), "items": items}
+
+
 TEMPLATE = open(os.path.join(HERE, "html_report_template.html"), encoding="utf-8").read()
 
 
@@ -380,6 +405,7 @@ def write_report(con, asof, etf=True, dart_day=None):
     if dart_day:
         try:
             data["dart"] = load_dart(dart_day)
+            data["week"] = load_week(asof)
         except Exception as e:  # noqa: BLE001
             data["dart_warn"] = f"DART 탭 생성 실패: {type(e).__name__}: {e}"
     html = TEMPLATE.replace("__DATA__", json.dumps(data, ensure_ascii=False, default=str).replace("</", "<\\/"))
