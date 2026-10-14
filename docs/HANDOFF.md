@@ -202,3 +202,4 @@ Jev 하이브리드 분류 단계의 현황·규칙·결정 기록은 `docs/DISC
 안내 페이지(전체 흐름 소개): `docs/guide/front_page.html`·`.pdf`. 금융용 레이아웃 시안: `dep/samples/design/finance_layout_sample.*` (`dep/samples/render_fin_sample.js`). 심화 분석 기본 모델 Sonnet. 번들의 상세 페이지 순서는 전체 중요도순, NOTIFY는 브리프 상단 알림 띠(`triage.json` 기준).
 
 **2026-10-08 기본 지침 개정**: `report_v2/AGENT_SPEC.md`가 최근 3년 실적(매출·영업이익 막대)·가치평가·컨센서스·뉴스를 모두 넣는 기본 구성이다(최소 구성은 `AGENT_SPEC_V3_basic.md`). 뉴스는 기준일 30일 이내, 장래사업ㆍ경영계획(공정공시)은 비판적 서술, 매출 5조 이하는 억원 단위, 컨센서스 `meta`에 최근 4주 업데이트 횟수. 비교 결과: `docs/비교_현재안_vs_풀버전.md`.
+- 2026-10-14: **자본으로인정되는채무증권발행결정 ↔ CB/BW 발행결정 이중 신고는 CB/BW 1건만 처리**(두산퓨얼셀 10-13: CB·BW 영구채가 각 2건씩 4건으로 돌았음). 짝 판정 = 같은 종목, 사채 회차·종류·권면총액이 본문에서 같음(`dart_subsidiary.drop_capital_twins`, `dart_prep_day` 가 자회사 중복 제거 직후 실행, `prep.json` 에 `capital_twin_dup`). 짝이 없는 자본인정 공시(순수 신종자본증권 등)는 그대로 분석. 9/17~10/8 의 단독 자본인정 7건은 모두 유지됨을 확인.

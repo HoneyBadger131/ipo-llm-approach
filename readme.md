@@ -94,7 +94,7 @@ flowchart TD
 ```
 
 ### DART 축 단계
-1. **수집·필터** (`dart_prep_day.py`): 전일 공시 전체를 OpenDART로 조회 → 대상 종목 명단(`kospi_list_clean.md`, KOSPI 시총 상위) 필터 → 제목 규칙 필터(`dart_rules.py`) → 자회사 중복 제거(`dart_subsidiary.py`) → 원문 수집(`dart_body.py`). DART 점검으로 본문이 비면 10분 간격으로 최대 6회 재시도.
+1. **수집·필터** (`dart_prep_day.py`): 전일 공시 전체를 OpenDART로 조회 → 대상 종목 명단(`kospi_list_clean.md`, KOSPI 시총 상위) 필터 → 제목 규칙 필터(`dart_rules.py`) → 자회사 중복 제거 → 영구채 CB/BW 이중 신고 제거(`자본으로인정되는채무증권발행결정`이 같은 사채의 CB/BW 발행결정과 내용이 같으면 CB/BW 1건만 남김)(`dart_subsidiary.py`) → 원문 수집(`dart_body.py`). DART 점검으로 본문이 비면 10분 간격으로 최대 6회 재시도.
 2. **분류 (Jev 사용)** (`jev_test/triage_day.py`): 각 공시가 심화 분석할 만큼 중요한지 **Jev(TypeSafe System One 모델)** 로 판정합니다. 먼저 하드 규칙(`rules_core.py`)으로 확정되는 건(정정, 단순 형식 등)은 모델 호출 없이 처리하고, 나머지는 Jev v3에 질문을 던져 확률로 PASS / PASS_CHECK / HOLD / NOTIFY / DROP 라벨을 붙입니다(시총 구간별 임계값). 실제 운영 로그 기준 2026-10-08은 7건 전부, 10-07은 14건 중 12건이 Jev 판정이었습니다. 키는 `.env`의 `TYPE_SAFE_AI_KEY`. 상세: [`docs/DISCLOSURE_TRIAGE.md`](docs/DISCLOSURE_TRIAGE.md).
 3. **심화 분석** (`run_daily.py` → `claude -p --model sonnet`): 통과 공시 최대 30건을 회사 단위(공시 3건씩)로 묶어 4개 에이전트가 병렬로 처리. 재무·가치평가·컨센서스·수주(OpenProxyMCP)와 뉴스를 조회해 대시보드 JSON을 작성합니다. 지침은 [`report_v2/AGENT_SPEC.md`](report_v2/AGENT_SPEC.md)(기준일 이후 데이터 혼입 금지 등). 결과가 빠진 회사는 1회 재실행.
 4. **렌더·번들** (`report_v2/render.js`, `render_bundle.js`): 공시 1건당 A4 한 장 HTML/PDF와 인덱싱용 MD(`disclosure_md/`), 하루치 통합 번들.
@@ -142,7 +142,7 @@ npm i playwright && npx playwright install chromium   # 렌더러(PDF 변환)
 | 경로 | 내용 |
 |---|---|
 | `run_daily.py` · `send_report.py` · `kind_hook.py` · `ops/` | 일일 무인 실행 · 메일 · KIND 훅 · launchd 설정 |
-| `dart_*.py` · `judge_rules.md` | DART 축: 수집·규칙 필터·자회사 중복 제거·본문·휴장일 |
+| `dart_*.py` · `judge_rules.md` | DART 축: 수집·규칙 필터·자회사/CB·BW 중복 제거·본문·휴장일 |
 | `jev_test/` | Jev 분류(하드 규칙 + Jev v3)와 평가·라벨링 도구 → [`jev_test/README.md`](jev_test/README.md) |
 | `report_v2/` | 대시보드 에이전트 지침과 HTML/PDF 렌더러 |
 | `kind/` | KIND 축: 수집·원장·이벤트·ETF·리포트 → [`kind/README.md`](kind/README.md) |

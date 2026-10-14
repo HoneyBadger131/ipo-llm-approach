@@ -54,3 +54,37 @@ def find_listed_twin(parent_row, parent_text, allrows, fetch_text):
         if mine & _big_numbers(other):
             return r
     return None
+
+
+# ---- 자본으로 인정되는 채무증권 발행결정 ↔ 전환사채·신주인수권부사채·교환사채 발행결정 중복 -------------------------------------------
+# 영구채 CB/BW 는 같은 사채를 두 번 신고한다: '○○권 발행결정'(6.4) 과 '자본으로인정되는채무증권발행결정'(6.2). 내용(회차·종류·권면총액)이 같다.
+# 같은 회사·같은 날의 쌍을 찾아 자본인정 쪽을 빼고 CB/BW 쪽 1건만 남긴다. 짝이 없는 자본인정 공시(순수 신종자본증권 등)는 그대로 둔다.
+CAPITAL_NM = "자본으로인정되는채무증권발행결정"
+CBBW_NM = re.compile(r"(전환사채권|신주인수권부사채권?|교환사채권)발행결정")
+_KEY = re.compile(r"사채의\s*종류\s*회차\s*(\S+)\s*종류\s*(.+?)\s*2\.\s*사채의\s*권면\(전자등록\)총액\s*\(원\)\s*([\d,]+)", re.S)
+
+
+def _bond_key(text):
+    m = _KEY.search(re.sub(r"\s+", " ", text or ""))
+    return (m.group(1), re.sub(r"\s+", "", m.group(2)), m.group(3).replace(",", "")) if m else None
+
+
+def drop_capital_twins(rows, read_text):
+    """rows: prep['review'] 의 row 목록, read_text(row)->본문(없으면 ''). 반환 (남길 목록, [제외 row + twin_rcept_no]).
+    짝 판정: 같은 stock_code, 한쪽은 자본으로인정되는채무증권발행결정, 다른 쪽은 CB/BW/EB 발행결정이고 (회차, 사채 종류, 권면총액)이 같다. 본문을 못 읽으면 짝짓지 않는다."""
+    cbbw = {}
+    for r in rows:
+        if CBBW_NM.search(_squash(r["report_nm"])):
+            k = _bond_key(read_text(r))
+            if k:
+                cbbw.setdefault((r["stock_code"], k), r)
+    keep, dup = [], []
+    for r in rows:
+        if CAPITAL_NM in _squash(r["report_nm"]):
+            k = _bond_key(read_text(r))
+            tw = cbbw.get((r["stock_code"], k)) if k else None
+            if tw:
+                dup.append(dict(r, twin_rcept_no=tw["rcept_no"], twin_report_nm=tw["report_nm"]))
+                continue
+        keep.append(r)
+    return keep, dup
