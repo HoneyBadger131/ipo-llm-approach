@@ -7,6 +7,8 @@
   .venv/bin/python run_daily.py --no-agents       # 스모크: 에이전트 생략(기존 reports 사용)
   .venv/bin/python run_daily.py --force           # 이미 발송한 날도 다시 실행
   --reuse-dart                                    # 스모크: 기존 trial_case/<day> DART 번들을 재사용(수집·분류·에이전트 생략), KIND 와 메일은 정상 실행
+  --remerge                                       # 스모크/재발송: --reuse-dart 에서도 복합공시 병합(dart_merge)을 다시 돌린다(기본은 merge.json 이 없을 때만)
+  --note-extra "문구"                             # 메일 비고 박스에 문구를 더한다(재발송 사유 등)
   --no-kind / --with-kind                         # KIND 일일 작업 끄기 / --date 재실행에서도 켜기(기본: --date 없는 정규 실행에서만)
 
 종료 규칙: 휴장일 → 조용히 종료. 영업일에는 항상 한 통(통과 0건이면 KIND 요약만). 실패 → 알림 메일 + macOS 알림.
@@ -230,6 +232,8 @@ def main():
         if not os.path.exists(f"trial_case/{day}/bundle_{date}.pdf"):
             fail(day, f"--reuse-dart: trial_case/{day}/bundle_{date}.pdf 없음")
         log("--reuse-dart: 기존 DART 번들 사용")
+        if "--remerge" in a or not os.path.exists(f"trial_case/{day}/merge.json"):
+            merge_step(day)
         kr = kind_hook.collect(kind_h, deadline=1200)
         log(f"KIND: ok={kr['ok']} summary={kr['summary_path']} {kr['note']}")
         deliver(day, date, ["스모크 테스트: DART 는 기존 산출물 재사용"] + ([kr["note"]] if kr["note"] else []), kr, a, t0, sent_mark)
@@ -266,6 +270,7 @@ def main():
     if done == 0:
         fail(day, "에이전트 결과 0건")
 
+    merge_step(day)   # 복합공시 병합(병합 에이전트 + 검수). 실패해도 공시별 보고서로 계속 진행
     rc, out = sh([PY, "dart_day_pipeline.py", "brief", day])
     log("brief: " + " / ".join(l for l in out.strip().splitlines()[-3:]))
     rc, out = sh(["node", "report_v2/render_bundle.js", day])
@@ -284,6 +289,15 @@ def main():
     deliver(day, date, notes, kr, a, t0, sent_mark)
 
 
+def merge_step(day):
+    """공시별 보고서가 다 나온 뒤 같은 거래·같은 회사의 같은 날 공시를 한 꼭지로 병합한다(dart_merge.py). 실패는 경고만 — 병합본이 없으면 공시별로 나간다."""
+    try:
+        rc, out = sh([PY, "dart_merge.py", day], timeout=2400)
+        log("병합: " + " / ".join(l.strip() for l in out.strip().splitlines()[-4:])[:400] + ("" if rc == 0 else f" (rc={rc})"))
+    except Exception as e:  # noqa: BLE001
+        log(f"병합 단계 오류(무시하고 계속): {type(e).__name__}: {e}")
+
+
 def build_combined(day, date, kr):
     """KIND 리포트에 DART 공시분석 탭을 맨 앞에 합친 단일 HTML 로 ai-disclosure-report_<date>.html 을 다시 만든다(DART 산출물이 다 나온 뒤에만 가능).
     실패하면 KIND 만 담긴 기존 HTML 이 그대로 남고, 메일은 그 파일(KIND 만)이나 DART 번들로 대체된다."""
@@ -295,6 +309,8 @@ def build_combined(day, date, kr):
 
 def deliver(day, date, notes, kr, a, t0, sent_mark, dart_none=False, dart_error=False):
     """하나의 메일: DART 번들(있으면) + KIND 섹션/첨부(있으면). 영업일마다 최소 1통 — DART 통과 0건이어도 KIND 요약·'없음' 안내가 나간다."""
+    if "--note-extra" in a:
+        notes = notes + [a[a.index("--note-extra") + 1]]
     build_combined(day, date, kr)
     if "--no-send" in a:
         log("--no-send: 메일 생략")

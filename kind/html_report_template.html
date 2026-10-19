@@ -123,6 +123,11 @@ table.s tr.key.past td{color:inherit}
 .row.dr .brief{font-size:13.5px;margin-top:5px;line-height:1.5}
 .dots{color:var(--navy);letter-spacing:1px;font-size:12px;white-space:nowrap}
 .wd{color:var(--muted);font-size:12px;margin-right:6px;letter-spacing:0;font-variant-numeric:tabular-nums}
+.tag.cx{background:#6d28d9;border-color:#6d28d9;color:#fff;font-weight:700}
+.srcb{display:inline-block;margin-left:6px;border:1px solid var(--line);border-radius:6px;padding:0 6px;font-size:11px;color:var(--muted);white-space:nowrap}
+.refs .rf{padding:7px 0;border-top:1px solid var(--line);font-size:13px}.refs .rf:first-of-type{border-top:0}
+.refs .rd{color:var(--muted);font-size:12px;margin-right:8px;font-variant-numeric:tabular-nums}.refs .rt{color:var(--muted);margin-left:8px}.refs a{margin-left:8px;color:var(--navy)}
+.refs .rf .sent{margin-left:8px}.refs .rh{color:var(--ink);margin:2px 0 0 38px}
 .funnel{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:baseline;margin:8px 2px 12px;color:var(--muted);font-size:13px}
 .funnel b{color:var(--ink);font-size:15px;font-variant-numeric:tabular-nums}.funnel .ar{opacity:.6}
 .dh .meta{margin-top:8px;font-size:12.5px;opacity:.88;display:flex;gap:6px 12px;flex-wrap:wrap;align-items:center}
@@ -294,11 +299,12 @@ function select(id, user){
   if(user && window.innerWidth<=900) $("#detail").scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-const dots = n => "●".repeat(n)+"○".repeat(5-n);
+const dots = n => { const f=Math.floor(n), h=(n-f)>=0.5; return "●".repeat(f)+(h?"◐":"")+"○".repeat(5-f-(h?1:0)); };
 let dsel = 0, ditems = [];
 const PT = {pos:["pos","긍정"], neg:["risk","리스크"], mix:["key","혼재"], unk:["info","미확인"]};
+function coName(j){ const c=j.composite; return c ? c.companies.map(x=>`${esc(x.corp_name)}<small>${esc(x.stock_code)}</small>`).join(' · ') : `${esc(j.corp_name)}<small>${esc(j.stock_code)}</small>`; }
 function dartList(){
-  return `<div class="list">${ditems.map((d,i)=>`<div class="row dr" data-d="${i}"><div class="l1"><div class="nm"><span class="rank">${d.rank}</span>${esc(d.j.corp_name)}<small>${esc(d.j.stock_code)}</small><span class="tag">${esc(d.j.tag)}</span><span class="sent ${d.sent}">${esc(d.sent_l)}</span></div><div class="dots" title="중요도 ${d.imp}/5">${cur==="week"?`<span class="wd">${esc(d.j.disclosure_date.slice(5))}</span> `:""}${dots(d.imp)}</div></div><div class="ttl">${esc(d.j.disclosure_title)}</div><div class="brief">${esc(d.brief)}</div></div>`).join("")}</div>`;
+  return `<div class="list">${ditems.map((d,i)=>`<div class="row dr" data-d="${i}"><div class="l1"><div class="nm"><span class="rank">${d.rank}</span>${coName(d.j)}<span class="tag">${esc(d.j.tag)}</span>${d.j.composite?'<span class="tag cx">복합공시</span>':""}<span class="sent ${d.sent}">${esc(d.sent_l)}</span></div><div class="dots" title="중요도 ${d.imp}/5">${cur==="week"?`<span class="wd">${esc(d.j.disclosure_date.slice(5))}</span> `:""}${dots(d.imp)}</div></div><div class="ttl">${esc(d.j.disclosure_title)}</div><div class="brief">${esc(d.brief)}</div></div>`).join("")}</div>`;
 }
 function vchart(r, years){
   const vals = r.values.map(v=>v.v), H=150, pad=18;
@@ -338,10 +344,12 @@ function selectDart(i, user){
   document.querySelectorAll("#left .row.dr").forEach(r=>r.classList.toggle("sel", +r.dataset.d===i));
   const kp = (j.kpis||[]).map(k=>`<div class="kpi"><small>${esc(k.label)}</small><b>${esc(k.value)}</b><small>${esc(k.sub||"")}</small></div>`).join("");
   const pts = [`<div class="pt"><span class="chip why">투심</span><span class="tx">${esc(j.sentiment.label)} · ${esc(j.sentiment.reason||"")}</span></div>`]
-    .concat(j.points.map(p=>{const m=PT[p.type]||PT.unk; return `<div class="pt"><span class="chip ${m[0]}">${m[1]}</span><span class="tx">${esc(p.text)}</span></div>`;}))
+    .concat(j.points.map(p=>{const m=PT[p.type]||PT.unk; return `<div class="pt"><span class="chip ${m[0]}">${m[1]}</span><span class="tx">${esc(p.text)}${p.src?`<span class="srcb">${esc(p.src)}</span>`:""}</span></div>`;}))
     .concat([`<div class="pt"><span class="chip info">중요도</span><span class="tx"><span class="dots">${dots(d.imp)}</span> ${esc(j.importance_reason||"")}</span></div>`]).join("");
+  const SC = {"긍정적":["pos","▲ 긍정적"],"부정적":["neg","▼ 부정적"],"혼재됨":["mix","◆ 혼재됨"]};
+  const refs = j.composite ? `<div class="card refs"><h4>참고 공시<small>같은 날 함께 묶인 ${j.composite.refs.length}건 · 대표 공시는 ${esc(j.corp_name)} ${esc(j.disclosure_title.replace(/ 외 \d+건$/,""))}</small></h4>${j.composite.refs.map(r=>{const c=SC[(r.sentiment||{}).label]||["unk","? 알수 없음"];return `<div class="rf"><span class="rd">${esc(r.disclosure_date.slice(5))}</span><b>${esc(r.corp_name)}</b><span class="rt">${esc(r.disclosure_title)}</span><span class="sent ${c[0]}">${c[1]}</span><a href="${esc(r.dart_url)}" target="_blank" rel="noopener">DART ↗</a><div class="rh">${esc(r.headline)}</div></div>`;}).join("")}</div>` : "";
   const news = (j.news||[]).length ? `<div class="card news"><h4>뉴스 근거</h4>${j.news.map(n=>`<div><span>${esc(n.outlet)} · ${esc(n.date)}</span><a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a></div>`).join("")}</div>` : "";
-  $("#detail").innerHTML = `<div class="dh"><div class="t"><h3>${esc(j.corp_name)}<small>${esc(j.stock_code)}</small></h3><span class="pill">${esc(j.tag)} · ${esc(j.sentiment.label)}</span></div><div class="hl">${esc(j.headline)}</div><div class="meta"><span>${esc(j.disclosure_title)}</span><span>${esc(j.disclosure_date)} 공시</span></div></div><div class="kpis k2">${kp}</div><div class="card"><h4>핵심 포인트</h4>${pts}</div>${finCard(j.financials)}${valCard(j.valuation)}${consCard(j.consensus)}${news}<div class="foot">${j.dart_url?`<a href="${esc(j.dart_url)}" target="_blank" rel="noopener">DART 원문 ↗</a> · `:''}${esc(j.sources_note||"")} 정보 제공용이며 투자 권유가 아닙니다.</div>`;
+  $("#detail").innerHTML = `<div class="dh"><div class="t"><h3>${coName(j)}</h3><span class="pill">${esc(j.tag)}${j.composite?" · 복합공시":""} · ${esc(j.sentiment.label)}</span></div><div class="hl">${esc(j.headline)}</div><div class="meta"><span>${esc(j.disclosure_title)}</span><span>${esc(j.disclosure_date)} 공시</span></div></div><div class="kpis k2">${kp}</div><div class="card"><h4>핵심 포인트</h4>${pts}</div>${finCard(j.financials)}${valCard(j.valuation)}${consCard(j.consensus)}${news}${refs}<div class="foot">${j.dart_url?`<a href="${esc(j.dart_url)}" target="_blank" rel="noopener">DART 원문 ↗</a> · `:''}${esc(j.sources_note||"")} 정보 제공용이며 투자 권유가 아닙니다.</div>`;
   if(user && window.innerWidth<=900) $("#detail").scrollIntoView({behavior:"smooth",block:"start"});
 }
 function init(){

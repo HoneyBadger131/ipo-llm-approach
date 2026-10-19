@@ -97,6 +97,7 @@ flowchart TD
 1. **수집·필터** (`dart_prep_day.py`): 전일 공시 전체를 OpenDART로 조회 → 대상 종목 명단(`kospi_list_clean.md`, KOSPI 시총 상위) 필터 → 제목 규칙 필터(`dart_rules.py`) → 자회사 중복 제거 → 영구채 CB/BW 이중 신고 제거(`자본으로인정되는채무증권발행결정`이 같은 사채의 CB/BW 발행결정과 내용이 같으면 CB/BW 1건만 남김)(`dart_subsidiary.py`) → 원문 수집(`dart_body.py`). DART 점검으로 본문이 비면 10분 간격으로 최대 6회 재시도.
 2. **분류 (Jev 사용)** (`jev_test/triage_day.py`): 각 공시가 심화 분석할 만큼 중요한지 **Jev(TypeSafe System One 모델)** 로 판정합니다. 먼저 하드 규칙(`rules_core.py`)으로 확정되는 건(정정, 단순 형식 등)은 모델 호출 없이 처리하고, 나머지는 Jev v3에 질문을 던져 확률로 PASS / PASS_CHECK / HOLD / NOTIFY / DROP 라벨을 붙입니다(시총 구간별 임계값). 실제 운영 로그 기준 2026-10-08은 7건 전부, 10-07은 14건 중 12건이 Jev 판정이었습니다. 키는 `.env`의 `TYPE_SAFE_AI_KEY`. 상세: [`docs/DISCLOSURE_TRIAGE.md`](docs/DISCLOSURE_TRIAGE.md).
 3. **심화 분석** (`run_daily.py` → `claude -p --model sonnet`): 통과 공시 최대 30건을 회사 단위(공시 3건씩)로 묶어 4개 에이전트가 병렬로 처리. 재무·가치평가·컨센서스·수주(OpenProxyMCP)와 뉴스를 조회해 대시보드 JSON을 작성합니다. 지침은 [`report_v2/AGENT_SPEC.md`](report_v2/AGENT_SPEC.md)(기준일 이후 데이터 혼입 금지 등). 결과가 빠진 회사는 1회 재실행.
+3-1. **복합공시 병합** (`dart_merge.py`, 지침 `report_v2/MERGE_SPEC.md`): 에이전트가 공시별 보고서를 다 만든 뒤, 같은 날 같은 거래·같은 회사의 공시를 규칙으로 묶어(Jev 미사용) 대표 1건으로 합칩니다. 병합 에이전트가 텍스트를 쓰고 검수(형식·금지 문구·구성원에 없는 숫자)를 거치며, 실패하면 규칙 병합으로 대체합니다. 병합본은 태그 "복합공시", 중요도 +0.5, 맨 아래 "참고 공시" 목록(건별 투심·DART 링크)이 붙고, DART 탭·주요 공시 모아보기·메일 표가 병합본을 씁니다(개별 보고서는 그대로 보관).
 4. **렌더·번들** (`report_v2/render.js`, `render_bundle.js`): 공시 1건당 A4 한 장 HTML/PDF와 인덱싱용 MD(`disclosure_md/`), 하루치 통합 번들.
 
 ### KIND 축 단계

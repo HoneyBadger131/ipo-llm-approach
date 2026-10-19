@@ -20,6 +20,8 @@ import sys
 from email.message import EmailMessage
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, ROOT)
+import dart_merge   # 복합공시 병합본 적용
 
 
 def recipients(default):
@@ -85,13 +87,20 @@ def body_html(folder, date, note="", kind_json=None, kind_text=None, no_dart=Fal
     rows = []
     for f in ([] if no_dart else glob.glob(os.path.join(folder, "reports", "*.json"))):
         rows.append(json.load(open(f, encoding="utf-8")))
+    rows = dart_merge.apply_merge(os.path.basename(os.path.normpath(folder)), rows)   # 복합공시는 대표 1건으로
     rows.sort(key=lambda r: (-r.get("importance", 0), -r.get("importance_score", 0)))
     tr = ""
     for r in rows:
-        stars = "●" * r.get("importance", 0) + "○" * (5 - r.get("importance", 0))
+        imp = r.get("importance", 0)
+        fl, half = int(imp), (imp - int(imp)) >= 0.5
+        stars = "●" * fl + ("◐" if half else "") + "○" * (5 - fl - (1 if half else 0))
+        comp = r.get("composite")
+        names = " · ".join(c["corp_name"] for c in comp["companies"]) if comp else r["corp_name"]
+        codes = " · ".join(c["stock_code"] for c in comp["companies"]) if comp else r["stock_code"]
+        badge = ' <span style="background:#6d28d9;color:#fff;border-radius:4px;padding:0 6px;font-size:11px">복합공시</span>' if comp else ""
         tr += (
             '<tr><td style="padding:10px 8px;border-bottom:1px solid #e5e7eb;vertical-align:top">'
-            f'<b>{html.escape(r["corp_name"])}</b><br><span style="color:#6b7280;font-size:12px">{r["stock_code"]}</span></td>'
+            f'<b>{html.escape(names)}</b>{badge}<br><span style="color:#6b7280;font-size:12px">{codes}</span></td>'
             '<td style="padding:10px 8px;border-bottom:1px solid #e5e7eb;vertical-align:top;font-size:13px">'
             f'<a href="{html.escape(r["dart_url"])}" style="color:#1d4ed8;text-decoration:none">{html.escape(r["disclosure_title"])}</a><br>'
             f'{html.escape(r.get("brief", ""))}</td>'
