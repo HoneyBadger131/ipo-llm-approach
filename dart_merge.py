@@ -8,9 +8,12 @@
   trial_case/<day>/merged/<대표접수번호>_merged.json  : 병합 보고서(대표 보고서 + 병합 텍스트 + composite{companies, refs[]})
   공시별 보고서(reports/*_v2.json)·PDF·MD 는 그대로 둔다. 화면·메일·주요 공시 모아보기가 apply_merge() 로 병합본을 대신 쓴다.
 
-묶음 규칙(같은 거래 판단은 규칙만 쓴다 — Jev 미사용, 사용자 결정): 같은 날 보고서끼리
-  (a) 같은 종목(stock_code)이면 묶는다(같은 회사의 여러 공시는 되도록 병합이 기본 원칙).
-  (b) 다른 회사끼리는: 금액이 1% 이내로 일치하고(10억 이상) 상대 회사명이 언급되거나 related_ids 로 이어질 때, 또는 related_ids 로 이어지고 키워드가 3개 이상 겹칠 때.
+묶음 규칙(같은 거래 판단은 규칙만 쓴다 — Jev 미사용, 사용자 결정): 같은 날 보고서끼리. **공시 유형군(family)이 다르면 절대 묶지 않는다**(수주 vs 중대재해, 영업양수도 vs 자기주식 등 — 2026-10-21 사용자 결정).
+  유형군: 중대재해 / 자기주식 / 잠정실적 / 장래사업계획 / 수주(단일판매·공급계약) / 거래(영업양수도·합병·분할·부동산·특수관계인·타법인주식·출자·담보·자율공시 양수도). 그 밖(투자판단관련주요경영사항 등)은 자동 병합 대상이 아니다.
+  (a) 같은 종목이고 같은 유형군이면 묶는다(같은 회사의 여러 공시는 되도록 병합이 기본 원칙).
+  (b) 다른 회사끼리: 같은 유형군이면서 금액이 1% 이내로 일치하고(10억 이상) 상대 회사명이 언급되거나 related_ids 로 이어질 때.
+  (c) 모회사 사본 쌍둥이: 둘 다 '(자회사/종속회사의 주요경영사항)' 공시이고 기준 제목이 같고 본문이 거의 같을 때(토큰 자카드 0.9 이상). 같은 자회사 사건을 지배구조상 여러 상위회사가 각자 낸 경우다.
+  related_ids·키워드만으로는 묶지 않는다(같은 발주처·같은 그룹이라는 이유만으로 별개 회사의 수주가 묶이던 문제, 10-20).
 대표 = 묶음 안에서 중요도 > 점수가 가장 높은 공시. 병합본 중요도 = 대표 + 0.5(최대 5). 투심은 건별로 따로 판단하고 묶음 투심도 에이전트가 따로 정한다.
 묶인 공시는 사라지지 않는다: 대표 한 건 + 맨 아래 '참고 공시'(날짜·회사·제목·한 줄·건별 투심·DART 링크).
 """
@@ -58,11 +61,41 @@ def _edge(A, B):
     rel = B["rcept_no"] in A.get("related_ids", []) or A["rcept_no"] in B.get("related_ids", [])
     name = B["corp_name"] in _txt(A) or A["corp_name"] in _txt(B)
     amt = any(abs(x - y) / max(x, y) < 0.01 for x in _money(_txt(A)) for y in _money(_txt(B)) if x > 1e9 and y > 1e9)
-    kw = len((set(A["keywords"]) & set(B["keywords"])) - {A["corp_name"], B["corp_name"]})
-    return (amt and (name or rel)) or (rel and kw >= 3)
+    return amt and (name or rel)
 
 
-def clusters(reports):
+FAMILIES = [("incident", r"중대재해"), ("treasury", r"자기주식"), ("earnings", r"잠정\)?실적|영업\(잠정\)"), ("plan", r"장래사업|경영계획"),
+            ("contract", r"단일판매|공급계약|수주"),
+            ("deal", r"영업양수|영업양도|합병|분할|부동산|특수관계인|타법인주식|출자|담보|채무보증")]
+SUFFIX = re.compile(r"\((자|종속)회사의주요경영사항\)$")
+
+
+def family(j):
+    t = re.sub(r"\s+", "", j["disclosure_title"] + " " + (j.get("event_type") or ""))
+    for name, pat in FAMILIES:
+        if re.search(pat, t):
+            return name
+    return None   # 유형군 없음: 자동 병합 대상 아님
+
+
+def _tokens(day, j):
+    p = os.path.join(ROOT, "bodies", day, f"{j['stock_code']}_{j['rcept_no']}.txt")
+    try:
+        return set(re.findall(r"[0-9A-Za-z가-힣\.,]+", open(p, encoding="utf-8").read().replace("에이치디", "HD")))
+    except OSError:
+        return set()
+
+
+def _twin(day, A, B):
+    """(c) 모회사 사본 쌍둥이: 같은 자회사 사건을 서로 다른 상위회사가 낸 공시."""
+    ta, tb = re.sub(r"\s+", "", A["disclosure_title"]), re.sub(r"\s+", "", B["disclosure_title"])
+    if not (SUFFIX.search(ta) and SUFFIX.search(tb) and SUFFIX.sub("", ta) == SUFFIX.sub("", tb)):
+        return False
+    xa, xb = _tokens(day, A), _tokens(day, B)
+    return bool(xa and xb) and len(xa & xb) / len(xa | xb) >= 0.9
+
+
+def clusters(reports, day=""):
     par = {k: k for k in reports}
 
     def find(x):
@@ -72,7 +105,8 @@ def clusters(reports):
         return x
     for a, b in itertools.combinations(reports, 2):
         A, B = reports[a], reports[b]
-        if A["stock_code"] == B["stock_code"] or _edge(A, B):
+        fa, fb = family(A), family(B)
+        if _twin(day, A, B) or (fa and fa == fb and (A["stock_code"] == B["stock_code"] or _edge(A, B))):
             par[find(a)] = find(b)
     g = {}
     for k in reports:
@@ -81,7 +115,8 @@ def clusters(reports):
 
 
 def rep_of(reports, members):
-    return max(members, key=lambda i: (reports[i].get("importance", 0), reports[i].get("importance_score", 0), i))
+    # 동점이면 먼저 접수된 공시(접수번호가 작은 쪽)를 대표로: 모회사 사본 쌍둥이는 사건에 더 가까운 쪽이 먼저 나오는 경향(10-20 HD한국조선해양 < HD현대)
+    return min(members, key=lambda i: (-reports[i].get("importance", 0), -reports[i].get("importance_score", 0), i))
 
 
 # ---------------- 에이전트 ----------------
@@ -226,7 +261,12 @@ def main():
     day = sys.argv[1]
     use_agent = "--no-agent" not in sys.argv
     reports = load_reports(day)
-    cl = clusters(reports)
+    cl = clusters(reports, day)
+    if "--plan" in sys.argv:   # 묶음만 보여 주고 끝낸다(에이전트·파일 쓰기 없음)
+        for c in cl:
+            print("묶음:", [(reports[i]["corp_name"], reports[i]["disclosure_title"][:22], i[-6:]) for i in c])
+        print(f"{day}: 보고서 {len(reports)}건, 묶음 {len(cl)}개")
+        return
     p = os.path.join(ROOT, "trial_case", day, "merge.json")
     if not cl:
         if os.path.exists(p):
