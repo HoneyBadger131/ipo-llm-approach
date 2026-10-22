@@ -22,6 +22,7 @@ from dart_rules import classify, normalize
 from dart_watchlist_filings import load_watchlist
 from dart_body import fetch_body_text
 from dart_subsidiary import is_sub_filing, find_listed_twin, sub_name, drop_capital_twins
+from dart_filters import drop_hard_filtered
 
 
 def digest(text, cap=1500):
@@ -109,6 +110,19 @@ def main():
             json.dump(prep, open(f"{out_dir}/prep.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
             print(f"자본인정 채무증권 중복 제외 {len(cdup)}건 (같은 사채의 CB/BW 발행결정으로 처리): "
                   + ", ".join(f"{d['corp_name']} {d['rcept_no']}→{d['twin_rcept_no']}" for d in cdup))
+            print(f"판단 대상 {len(prep['review'])}건({len({r['stock_code'] for r in prep['review']})}개 회사)", flush=True)
+
+    # 본문 기반 하드 필터(2026-10-23): 우선주만 발행하는 유상증자, 특수관계인 금융거래 1,000억 미만·MMF
+    if allrows is not None:
+        def _read2(r):
+            pth = f"{body_dir}/{r['stock_code']}_{r['rcept_no']}.txt"
+            return open(pth, encoding="utf-8").read() if os.path.exists(pth) else ""
+        keep, hdrop = drop_hard_filtered(prep["review"], _read2)
+        if hdrop:
+            prep["review"], prep["hard_filtered"] = keep, hdrop
+            prep["excluded"] += len(hdrop)
+            json.dump(prep, open(f"{out_dir}/prep.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+            print(f"하드 필터 제외 {len(hdrop)}건: " + ", ".join(f"{d['corp_name']}({d['reason']})" for d in hdrop))
             print(f"판단 대상 {len(prep['review'])}건({len({r['stock_code'] for r in prep['review']})}개 회사)", flush=True)
 
     print("\n===== 판단 대상 digest =====")

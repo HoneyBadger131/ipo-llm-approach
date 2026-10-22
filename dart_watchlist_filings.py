@@ -8,6 +8,7 @@
   python dart_watchlist_filings.py 20260910 [종목리스트.md]
 """
 import csv
+import os
 import re
 import sys
 
@@ -21,6 +22,13 @@ def load_watchlist(path):
         m = re.match(r"\|\s*\d+\s*\|\s*`(\w{6})`\s*\|\s*(.+?)\s*\|", line)
         if m:
             out[m.group(1)] = m.group(2)
+    # DART 관심 유니버스 제외 종목(watchlists/dart_exclude.txt: 줄 첫 토큰=단축코드, '#' 주석). 공시 조회·분류에서 아예 빠진다.
+    ex = os.path.join(os.path.dirname(os.path.abspath(__file__)), "watchlists", "dart_exclude.txt")
+    if os.path.exists(ex):
+        for ln in open(ex, encoding="utf-8"):
+            ln = ln.strip()
+            if ln and not ln.startswith("#"):
+                out.pop(ln.split()[0], None)
     return out
 
 
